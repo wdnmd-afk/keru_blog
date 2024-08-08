@@ -1,0 +1,37 @@
+{
+  "name": "prisma-mvc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.ts",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon --exec tsx main.ts",
+    "generate": "npx prisma generate && npx prisma migrate dev --name keru"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/plugin-transform-modules-commonjs": "^7.24.7",
+    "@prisma/client": "5.17.0",
+    "@types/express": "^4.17.21",
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.14.1",
+    "crypto-js": "^4.2.0",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "inversify": "^6.0.2",
+    "inversify-express-utils": "^6.4.6",
+    "log4js": "^6.9.1",
+    "passport": "^0.7.0",
+    "passport-jwt": "^4.0.1",
+    "reflect-metadata": "^0.2.2"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "jsonwebtoken": "^9.0.2",
+    "prisma": "^5.17.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.5"
+  }
+}

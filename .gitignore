@@ -1,0 +1,6 @@
+# 忽略编译输出文件夹
+/dist
+/build
+
+# 忽略依赖文件夹
+node_modules/
