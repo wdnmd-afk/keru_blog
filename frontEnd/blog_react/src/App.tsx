@@ -1,12 +1,14 @@
 import './App.css'
-import 'virtual:svg-icons-register';
-import Route from './routes/index.tsx'
-function App() {
+import AppRoutes from './routes/index.tsx'
+import React from 'react';
+// import 'virtual:svg-icons-register';
+
+const App: React.FC = () => {
     return (
-        <div className="App">
-            <Route></Route>
-        </div>
+       <div>
+           <AppRoutes></AppRoutes>
+       </div>
     );
-}
+};
 
 export default App
