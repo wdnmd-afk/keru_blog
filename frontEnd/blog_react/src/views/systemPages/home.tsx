@@ -10,7 +10,7 @@ const Home: React.FC = () => {
   };
 
   return (
-    <div h-full bg-amber>
+    <div className={"container"}>
       <h1 style={styles.title}>欢迎来到我的主页</h1>
 
       <p style={styles.description}>
