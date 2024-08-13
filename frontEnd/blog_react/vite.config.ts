@@ -1,7 +1,7 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import { createSvgIconsPlugin } from "vite-plugin-svg-icons";
-import path from "path";
+import path, { resolve } from "path";
 import UnoCSS from "unocss/vite";
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -20,7 +20,7 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      "@": "./src", // 你可以根据需要设置别名
+      "@": resolve(__dirname, "./src"),
     },
   },
 });

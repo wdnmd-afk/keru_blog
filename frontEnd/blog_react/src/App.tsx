@@ -1,6 +1,5 @@
-import AppRoutes from "./routes/index.tsx";
+import AppRoutes from "@/routes/index.tsx";
 import React from "react";
-// import 'virtual:svg-icons-register';
 
 const App: React.FC = () => {
   return (
