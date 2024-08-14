@@ -16,7 +16,7 @@ const Login: React.FC = () => {
     <div className={style.login_container}>
       <div className={style.login_top}></div>
       <div className={style.login_box}>
-        <div w600>
+        <div w-600>
           <Form
             name="basic"
             labelCol={{ span: 8 }}
