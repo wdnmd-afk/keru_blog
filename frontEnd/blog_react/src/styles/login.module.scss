@@ -1,16 +1,42 @@
 .login_container {
-  width: 100%;
+  width: 100vw;
   height: 100%;
   display: flex;
   flex-direction: column;
-  background-image: url("@/assets/images/bg.png");
-  background-repeat: no-repeat;
-  background-size: cover;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  color: white;
 
+  .outsideBox {
+    z-index: 999;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
 
   .login_top {
     height: 80px;
-    background-color: #fff;
+    display: flex;
+    align-items: center;
+    font-size: 40px;
+    font-weight: 700;
+    word-spacing: 10px;
+  }
+  .formBox{
+display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 10px;
   }
 
   .login_box {
@@ -33,7 +59,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: pink;
     height: 80px;
   }
 

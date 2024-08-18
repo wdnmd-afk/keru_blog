@@ -8,6 +8,12 @@ importers:
 
   .:
     dependencies:
+      '@ant-design/icons':
+        specifier: ^5.4.0
+        version: 5.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@react-buddy/palette-antd':
+        specifier: ^5.3.0
+        version: 5.3.1(@ant-design/icons@5.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(antd@5.20.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)
       '@reduxjs/toolkit':
         specifier: ^2.2.7
         version: 2.2.7(react-redux@9.1.2(@types/react@18.3.3)(react@18.3.1)(redux@5.0.1))(react@18.3.1)
@@ -767,6 +773,18 @@ packages:
     peerDependencies:
       react: '>=16.9.0'
       react-dom: '>=16.9.0'
+
+  '@react-buddy/ide-toolbox@2.4.0':
+    resolution: {integrity: sha512-TWHX6gwa0Gop7215uHhjFMbYLLdjM/b9rr0wYE3E0m7GNJ56gbPpbZiq86w9uI8zksl827acqGeT437MkuO64w==}
+    peerDependencies:
+      react: ^17.0.0 || ^18.0.0
+
+  '@react-buddy/palette-antd@5.3.1':
+    resolution: {integrity: sha512-G75Pik29FnmyvANiGLSpMFpru4Uzv5woq/IFrkmfYmJb+5vW3lhc+Y/PftLqatSH9fjXs/UOszuSbPzlykT9cw==}
+    peerDependencies:
+      '@ant-design/icons': ^5.1.4
+      antd: ^5.3.0
+      react: ^17.0.0 || ^18.0.0
 
   '@reduxjs/toolkit@2.2.7':
     resolution: {integrity: sha512-faI3cZbSdFb8yv9dhDTmGwclW0vk0z5o1cia+kf7gCbaCwHI5e+7tP57mJUv22pNcNbeA62GSrPpfrUfdXcQ6g==}
@@ -4164,6 +4182,17 @@ snapshots:
       rc-util: 5.43.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
+
+  '@react-buddy/ide-toolbox@2.4.0(react@18.3.1)':
+    dependencies:
+      react: 18.3.1
+
+  '@react-buddy/palette-antd@5.3.1(@ant-design/icons@5.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(antd@5.20.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react@18.3.1)':
+    dependencies:
+      '@ant-design/icons': 5.4.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      '@react-buddy/ide-toolbox': 2.4.0(react@18.3.1)
+      antd: 5.20.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      react: 18.3.1
 
   '@reduxjs/toolkit@2.2.7(react-redux@9.1.2(@types/react@18.3.3)(react@18.3.1)(redux@5.0.1))(react@18.3.1)':
     dependencies:
