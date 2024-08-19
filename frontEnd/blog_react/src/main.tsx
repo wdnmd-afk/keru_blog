@@ -4,12 +4,12 @@ import App from "./App.tsx";
 import "./styles/init.scss";
 import "./index.css";
 import "virtual:uno.css";
-import { Provider } from "react-redux";
-import { SystemStore } from "@/store";
+import { GlobalStoreProvider } from "@/store/global";
+
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <Provider store={SystemStore}>
+    <GlobalStoreProvider>
       <App />
-    </Provider>
+    </GlobalStoreProvider>
   </React.StrictMode>,
 );

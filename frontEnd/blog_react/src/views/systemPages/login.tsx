@@ -2,9 +2,7 @@ import React from "react";
 import style from "@/styles/login.module.scss";
 import { Button, Form, Input, Checkbox, Tabs } from "antd";
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
-import { useDispatch, useSelector } from "react-redux";
-import { setUserInfo, selectUser } from "@/store";
-
+import useStores from "@/hooks/useStores.ts";
 type FieldType = {
   username?: string;
   password?: string;
@@ -12,21 +10,16 @@ type FieldType = {
 };
 
 const Login: React.FC = () => {
-  const dispatch = useDispatch();
-  const userInfo = useSelector(selectUser);
-
   const onFinish = (data: FieldType) => {
-    dispatch(setUserInfo(data));
-    setTimeout(() => {
-      console.log("User Info:", userInfo);
-    }, 100);
+    console.log(GlobalStore, "ss");
   };
-
+  const { GlobalStore } = useStores();
   const loginForm = (
     <Form
       name="login"
       initialValues={{ remember: true }}
       onFinish={onFinish}
+      style={{ width: 400, marginTop: 20 }}
       autoComplete="off"
     >
       <Form.Item
@@ -47,18 +40,25 @@ const Login: React.FC = () => {
         />
       </Form.Item>
       <Form.Item name="remember" valuePropName="checked">
-        <Checkbox>Remember me</Checkbox>
+        <Checkbox className={"color-[#fff]"}>记住密码</Checkbox>
       </Form.Item>
       <Form.Item>
-        <Button size="large" type="primary" htmlType="submit">
-          登录
-        </Button>
+        <div flex justify-center>
+          <Button size="large" type="primary" htmlType="submit" w-50>
+            登录
+          </Button>
+        </div>
       </Form.Item>
     </Form>
   );
 
   const registerForm = (
-    <Form name="register" onFinish={onFinish} autoComplete="off">
+    <Form
+      name="register"
+      style={{ width: 400, marginTop: 20 }}
+      onFinish={onFinish}
+      autoComplete="off"
+    >
       <Form.Item
         name="username"
         rules={[{ required: true, message: "Please input your username!" }]}
@@ -88,9 +88,11 @@ const Login: React.FC = () => {
         />
       </Form.Item>
       <Form.Item>
-        <Button size="large" type="primary" htmlType="submit">
-          注册
-        </Button>
+        <div flex justify-center>
+          <Button size="large" type="primary" htmlType="submit" w-50>
+            注册
+          </Button>
+        </div>
       </Form.Item>
     </Form>
   );

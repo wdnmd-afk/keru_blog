@@ -8,6 +8,15 @@
   position: relative;
   overflow: hidden;
   color: white;
+  :global {
+      .ant-tabs-tab{
+        width: 150px;
+        justify-content: center;
+        display: flex;
+        margin: 0 !important;
+        color: #fff;
+      }
+  }
 
   .outsideBox {
     z-index: 999;
@@ -28,6 +37,7 @@
     font-size: 40px;
     font-weight: 700;
     word-spacing: 10px;
+    margin-left: 20px;
   }
   .formBox{
 display: flex;
