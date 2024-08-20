@@ -1,18 +1,22 @@
-import { makeAutoObservable } from "mobx";
+import { makeAutoObservable, observable } from "mobx";
+interface User {
+  id?: string;
+  name?: string;
+  admin?: boolean;
+  token?: string;
+}
 
 class GlobalStore {
-  count = 0;
+  user: User = {};
 
   constructor() {
-    makeAutoObservable(this);
+    makeAutoObservable(this, {
+      user: observable,
+    });
   }
 
-  increment() {
-    this.count += 1;
-  }
-
-  decrement() {
-    this.count -= 1;
+  setUserInfo(data: User) {
+    this.user = data;
   }
 }
 

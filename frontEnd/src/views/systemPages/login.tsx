@@ -3,6 +3,9 @@ import style from "@/styles/login.module.scss";
 import { Button, Form, Input, Checkbox, Tabs } from "antd";
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
 import useStores from "@/hooks/useStores.ts";
+import { LoginApi } from "@/api";
+import {getRandomNumber} from '@/utils'
+
 type FieldType = {
   username?: string;
   password?: string;
@@ -11,7 +14,19 @@ type FieldType = {
 
 const Login: React.FC = () => {
   const onFinish = (data: FieldType) => {
-    console.log(GlobalStore, "ss");
+    console.log(GlobalStore.user, "ss");
+    GlobalStore.setUserInfo({ name: "12423532" });
+    console.log(GlobalStore.user, "ss");
+  };
+  const onFinishRegistry = async (params: FieldType) => {
+  const temp = {
+      username: params.username,
+      password: params.password,
+    random: getRandomNumber(1,1000),
+  }
+
+    const res = await LoginApi.register(temp);
+    console.log(res, "ress");
   };
   const { GlobalStore } = useStores();
   const loginForm = (
@@ -56,7 +71,7 @@ const Login: React.FC = () => {
     <Form
       name="register"
       style={{ width: 400, marginTop: 20 }}
-      onFinish={onFinish}
+      onFinish={onFinishRegistry}
       autoComplete="off"
     >
       <Form.Item
@@ -105,16 +120,23 @@ const Login: React.FC = () => {
         className="w-full h-full"
       />
       <div className={style.outsideBox}>
-        <div className={style.login_top}>K爷的空间</div>
+        <div className={style.login_top}>K爷的空间{GlobalStore.user.name}</div>
         <div className={style.login_box}>
-          <Tabs defaultActiveKey="login">
-            <Tabs.TabPane tab="登录" key="login">
-              {loginForm}
-            </Tabs.TabPane>
-            <Tabs.TabPane tab="注册" key="register">
-              {registerForm}
-            </Tabs.TabPane>
-          </Tabs>
+          <Tabs
+            defaultActiveKey="login"
+            items={[
+              {
+                label: "登录",
+                key: "login",
+                children: loginForm,
+              },
+              {
+                label: "注册",
+                key: "register",
+                children: registerForm,
+              },
+            ]}
+          />
         </div>
         <div className={style.login_bottom}></div>
       </div>

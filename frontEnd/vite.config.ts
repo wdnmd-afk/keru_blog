@@ -3,6 +3,7 @@ import react from "@vitejs/plugin-react";
 import { createSvgIconsPlugin } from "vite-plugin-svg-icons";
 import path, { resolve } from "path";
 import UnoCSS from "unocss/vite";
+import { createViteProxy } from "./src/build/proxy";
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
@@ -16,7 +17,8 @@ export default defineConfig({
     }),
   ],
   server: {
-    port: 3000, // 你可以根据需要更改端口
+    port: 8080, // 你可以根据需要更改端口
+    proxy: createViteProxy(true, "dev", "/dev-api"),
   },
   resolve: {
     alias: {
