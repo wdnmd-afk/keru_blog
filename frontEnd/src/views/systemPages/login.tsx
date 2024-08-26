@@ -1,15 +1,17 @@
 import React from "react";
 import style from "@/styles/login.module.scss";
 import { Button, Form, Input, Checkbox, Tabs } from "antd";
-import { LockOutlined, UserOutlined } from "@ant-design/icons";
+import { LockOutlined, UserOutlined, MailOutlined } from "@ant-design/icons";
 import useStores from "@/hooks/useStores.ts";
 import { LoginApi } from "@/api";
-import {getRandomNumber} from '@/utils'
+import { getRandomNumber } from "@/utils";
 
 type FieldType = {
-  username?: string;
+  name?: string;
   password?: string;
+  email?: string;
   remember?: boolean;
+  admin?: boolean;
 };
 
 const Login: React.FC = () => {
@@ -19,11 +21,13 @@ const Login: React.FC = () => {
     console.log(GlobalStore.user, "ss");
   };
   const onFinishRegistry = async (params: FieldType) => {
-  const temp = {
-      username: params.username,
+    const temp = {
+      name: params.name,
       password: params.password,
-    random: getRandomNumber(1,1000),
-  }
+      email: params.email,
+      random: getRandomNumber(1, 1000),
+      admin: true,
+    };
 
     const res = await LoginApi.register(temp);
     console.log(res, "ress");
@@ -75,10 +79,16 @@ const Login: React.FC = () => {
       autoComplete="off"
     >
       <Form.Item
-        name="username"
+        name="name"
         rules={[{ required: true, message: "Please input your username!" }]}
       >
         <Input size="large" prefix={<UserOutlined />} placeholder="Username" />
+      </Form.Item>
+      <Form.Item
+        name="email"
+        rules={[{ required: true, message: "Please input your email!" }]}
+      >
+        <Input size="large" prefix={<MailOutlined />} placeholder="Email" />
       </Form.Item>
       <Form.Item
         name="password"
