@@ -1,5 +1,6 @@
 
 import crypto from 'node:crypto'
+import {Result} from "@/utils/result";
 const hashString = (str: string,random:number) => {
     const hash = crypto.createHash('md5');
     hash.update(str);
@@ -22,6 +23,17 @@ const generateUniqueBigIntId = (): bigint=> {
     return timestamp * BigInt(1e10) + randomPart; // 组合为一个唯一的大整数
 }
 
+const handleError = (errors:any[],callBack:Function) => {
+    if (errors.length) {
+        const messages = errors.map(error => {
+            return Object.values(error.constraints || {}).join(',');
+        });
+        return Result.validationError(messages.join(','))
+    }else {
+        return  callBack()
+    }
+}
 
 
-export {hashString,generateUniqueBigIntId}
+
+export {hashString,generateUniqueBigIntId,handleError}

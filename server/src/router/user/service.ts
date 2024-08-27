@@ -1,5 +1,5 @@
 import {injectable, inject} from 'inversify'
-import {hashString} from "@/utils";
+import {hashString, Result,handleError} from "@/utils";
 import {PrismaDB} from '@/db'
 import * as crypto from 'crypto';
 import {UserDto, LoginDto} from './user.dto'
@@ -23,24 +23,17 @@ export class UserService {
     public async createUser(user: UserDto) {
         const userDto = plainToClass(UserDto, user)
         const errors = await validate(userDto)
-        if (errors.length) {
-            return errors
-        } else {
+        return  handleError(errors, async () => {
             //创建用户
             const {password, random} = user
             user.password = hashString(password, random)
             // 生成随机长整型ID
-            const longId = this.generateRandomLongId();
-            console.log('Generated ID:', longId);
-            user.id = longId;
+            user.id = this.generateRandomLongId();
             try {
                 await this.PrismaDB.prisma.user.create({
                     data: user
                 })
-                return {
-                    code: 200,
-                    message: '创建用户成功',
-                }
+                return Result.success('创建用户成功')
             } catch (error) {
                 console.log(error, 'err')
                 return {
@@ -48,9 +41,8 @@ export class UserService {
                     message: '创建用户失败',
                 }
             }
+        })
 
-
-        }
 
     }
 

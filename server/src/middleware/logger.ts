@@ -1,4 +1,5 @@
 import log4js from 'log4js';
+import {NextFunction, Request, Response} from "express";
 
 // 配置 log4js
 log4js.configure({
@@ -26,7 +27,7 @@ log4js.configure({
 const logger = log4js.getLogger('default');
 
 // 日志中间件
-const loggerMiddleware = (req, res, next) => {
+const loggerMiddleware = (req:Request, _res:Response, next:NextFunction) => {
     logger.debug(`${req.method} ${req.url}`,req.body); // 记录请求方法和URL
     next();
 };

@@ -18,11 +18,11 @@ export class User {
     @PostMapping('/create')
     public async createUser(req: Request, res: Response) {
         const result = await this.UserService.createUser(req.body)
-        res.send(result)
+        res.sendResponse (result)
     }
     @PostMapping('/login')
     public async login(req: Request, res: Response) {
         const result = await this.UserService.login(req.body)
-        res.send(result)
+        res.sendResponse(result)
     }
 }
