@@ -1,5 +1,3 @@
-declare module 'express' {
-    interface Response {
-        sendResponse(result: any): void;
-    }
+interface customResponse extends Response{
+    sendResponse(result: any): void;
 }

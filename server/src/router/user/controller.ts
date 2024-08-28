@@ -1,7 +1,7 @@
 import { controller,  httpPost as PostMapping } from 'inversify-express-utils'
 import { UserService } from './service'
 import { inject } from 'inversify'
-import type { Request, Response } from 'express'
+import { Request} from 'express'
 // import { JWT } from '../../jwt'
 // const {middleware}  = new JWT()
 @controller('/user')
@@ -16,13 +16,14 @@ export class User {
     }*/
 
     @PostMapping('/create')
-    public async createUser(req: Request, res: Response) {
+    public async createUser(req: Request, res: customResponse) {
         const result = await this.UserService.createUser(req.body)
         res.sendResponse (result)
     }
     @PostMapping('/login')
-    public async login(req: Request, res: Response) {
+    public async login(req: Request, res: customResponse) {
         const result = await this.UserService.login(req.body)
+
         res.sendResponse(result)
     }
 }
