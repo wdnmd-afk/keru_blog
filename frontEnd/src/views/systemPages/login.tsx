@@ -1,11 +1,11 @@
 import React from "react";
 import style from "@/styles/login.module.scss";
-import { Button, Form, Input, Checkbox, Tabs } from "antd";
+import { Button, Form, Input, Checkbox, Tabs, message } from "antd";
 import { LockOutlined, UserOutlined, MailOutlined } from "@ant-design/icons";
 import useStores from "@/hooks/useStores.ts";
 import { LoginApi } from "@/api";
-import { getRandomNumber } from "@/utils";
-
+import { BrowserLocalStorage, getRandomNumber } from "@/utils";
+import backgroundImage from "@/assets/images/login.png";
 type FieldType = {
   name?: string;
   password?: string;
@@ -15,10 +15,19 @@ type FieldType = {
 };
 
 const Login: React.FC = () => {
-  const onFinish = (data: FieldType) => {
-    console.log(GlobalStore.user, "ss");
-    GlobalStore.setUserInfo({ name: "12423532" });
-    console.log(GlobalStore.user, "ss");
+  const [messageApi, contextHolder] = message.useMessage();
+
+  const onFinish = async (params: FieldType) => {
+    const { data } = await LoginApi.login({
+      ...params,
+    });
+    if (data) {
+      data.token = "Bearer " + data.token;
+      GlobalStore.setUserInfo(data);
+      BrowserLocalStorage.set("userInfo", data);
+      messageApi.success("登录成功");
+      reset();
+    }
   };
   const onFinishRegistry = async (params: FieldType) => {
     const temp = {
@@ -29,10 +38,15 @@ const Login: React.FC = () => {
       admin: true,
     };
 
-    const res = await LoginApi.register(temp);
-    console.log(res, "ress");
+    await LoginApi.register(temp);
+    messageApi.success("注册成功");
+    reset();
   };
   const { GlobalStore } = useStores();
+  const [form] = Form.useForm();
+  const reset = () => {
+    form.resetFields();
+  };
   const loginForm = (
     <Form
       name="login"
@@ -40,9 +54,11 @@ const Login: React.FC = () => {
       onFinish={onFinish}
       style={{ width: 400, marginTop: 20 }}
       autoComplete="off"
+      clearOnDestroy
+      form={form}
     >
       <Form.Item
-        name="username"
+        name="name"
         rules={[{ required: true, message: "Please input your username!" }]}
       >
         <Input size="large" prefix={<UserOutlined />} placeholder="Username" />
@@ -77,6 +93,8 @@ const Login: React.FC = () => {
       style={{ width: 400, marginTop: 20 }}
       onFinish={onFinishRegistry}
       autoComplete="off"
+      clearOnDestroy
+      form={form}
     >
       <Form.Item
         name="name"
@@ -124,11 +142,8 @@ const Login: React.FC = () => {
 
   return (
     <div className={style.login_container}>
-      <img
-        src="/src/assets/images/login.png"
-        alt=""
-        className="w-full h-full"
-      />
+      {contextHolder}
+      <img src={backgroundImage} alt="" className="w-full h-full" />
       <div className={style.outsideBox}>
         <div className={style.login_top}>K爷的空间{GlobalStore.user.name}</div>
         <div className={style.login_box}>

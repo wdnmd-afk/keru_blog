@@ -52,13 +52,13 @@ export class UserService {
         if (errors.length) {
             return errors
         } else {
-            const {user, password, email} = info
+            const {name, password, email} = info
             //根据用户名查找用户
             const res = await this.PrismaDB.prisma.user.findMany({
                 where: {
                     OR: [
                         {
-                            name: user
+                            name
                         },
                         {
                             email
@@ -67,26 +67,16 @@ export class UserService {
                 }
             })
             if (!res.length) {
-                return {
-                    code: 500,
-                    message: '用户不存在',
-                }
+                return  Result.error(500, '用户不存在')
             }
             const data = res[0]
             //校验密码
             if (data.password !== hashString(password, data.random)) {
-                return {
-                    code: 500,
-                    message: '密码不正确',
-                }
+                return  Result.error(500, '密码不正确')
             }
             const token = this.jwt.createToken(data)
-            const result = {email: data.email, name: data.name, token}
-            return {
-                code: 200,
-                message: '登录成功',
-                data: result
-            }
+            const result = {email: data.email, name: data.name, token,userId:data.id}
+            return Result.success(result)
         }
     }
     private generateRandomLongId(): string {

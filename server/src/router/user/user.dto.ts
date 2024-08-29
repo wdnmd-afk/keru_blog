@@ -20,12 +20,12 @@ export class UserDto {
 
 export class LoginDto {
     @IsNotEmpty({ message: '用户名或邮箱必填' })
-    @ValidateIf((object) => !object.email)
-    @Transform(user => user.value.trim())
-    user: string;
+    @ValidateIf((object) => !object.email && !object.name)
+    @Transform(name => name.value.trim())
+    name: string;
 
     @IsNotEmpty({ message: '用户名或邮箱必填' })
-    @ValidateIf((object) => !object.user)
+    @ValidateIf((object) => !object.email && !object.name)
     @Transform(email => email.value.trim())
     email: string;
 

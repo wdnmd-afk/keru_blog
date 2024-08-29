@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useEffect } from "react";
 import { Http } from "@/utils";
 import { Button } from "antd";
 import { createContext, useContext, useState } from "react";
@@ -39,7 +39,9 @@ const CounterProvider = ({ children }) => {
 const HomeBox: React.FC = () => {
   const { count, setCount } = useContext(CounterContext);
   const { theme, setTheme } = useContext(themeContext);
-
+  useEffect(() => {
+    console.log("进入了HOme组件");
+  }, []);
   const handleClick = useCallback(() => {
     setCount(count + 1);
     setTheme("dddd");
