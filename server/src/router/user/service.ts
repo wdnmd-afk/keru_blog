@@ -19,7 +19,7 @@ export class UserService {
     public async getList() {
         return this.PrismaDB.prisma.user.findMany();
     }
-
+//用户注册列国
     public async createUser(user: UserDto) {
         const userDto = plainToClass(UserDto, user)
         const errors = await validate(userDto)
@@ -46,6 +46,7 @@ export class UserService {
 
     }
 
+    //用户登录接口
     public async login(info: LoginDto) {
         const userDto = plainToClass(LoginDto, info)
         const errors = await validate(userDto)

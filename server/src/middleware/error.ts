@@ -1,6 +1,7 @@
 // errorHandlingMiddleware.ts
 import { Request, Response, NextFunction } from 'express';
 import { Result } from '@/utils';
+import {AuthenticationError} from '@/jwt/AuthenticationError'
  function errorHandlingMiddleware() {
     return (err: any, _req: Request, res: Response, next: NextFunction) => {
         if (err.status === 403) {
@@ -17,7 +18,7 @@ import { Result } from '@/utils';
 }
 
 // 中间件来处理状态码
-function responseHandler(_req: Request, res: Response, next: NextFunction) {
+function responseHandler(_req: Request, res: Response, next: NextFunction):void {
     res.sendResponse = (result: any) => {
         if (result.code === 400) {
             res.status(400).json(result);
@@ -29,4 +30,13 @@ function responseHandler(_req: Request, res: Response, next: NextFunction) {
 
 }
 
-export {errorHandlingMiddleware,responseHandler}
+// @ts-ignore
+function authenticationErrorHandler(err:any,_req: Request, res: Response, next: NextFunction) {
+    console.log(err,'errrr')
+    if (err instanceof AuthenticationError) {
+        return res.status(401).json({ message: err.message });
+    }
+    next(err);
+}
+
+export {errorHandlingMiddleware,responseHandler,authenticationErrorHandler}

@@ -22,6 +22,7 @@
     "express": "^4.19.2",
     "inversify": "^6.0.2",
     "inversify-express-utils": "^6.4.6",
+    "ioredis": "^5.4.1",
     "log4js": "^6.9.1",
     "passport": "^0.7.0",
     "passport-jwt": "^4.0.1",
