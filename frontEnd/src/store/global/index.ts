@@ -1,4 +1,4 @@
-import { makeAutoObservable, observable } from "mobx";
+/*import { makeAutoObservable, observable } from "mobx";
 interface User {
   id?: string;
   name?: string;
@@ -18,7 +18,24 @@ class GlobalStore {
   setUserInfo(data: User) {
     this.user = data;
   }
+  clearUserInfo() {
+    this.user = {};
+  }
 }
 
 export { GlobalStore };
-export * from "./provider.tsx";
+export * from "./provider.tsx";*/
+import { create } from "zustand";
+const useGlobalStore = create((set) => ({
+  user: { id: "", name: "", admin: false, token: "" },
+  setUserInfo: (data) =>
+    set((state) => {
+      console.log(data, state.user);
+      return {
+        user: { token: 1 },
+      };
+    }),
+  removeAllBears: () => set({ user: {} }),
+}));
+
+export { useGlobalStore };

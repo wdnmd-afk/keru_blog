@@ -75,7 +75,7 @@ export class UserService {
             if (data.password !== hashString(password, data.random)) {
                 return  Result.error(500, '密码不正确')
             }
-            const token = this.jwt.createToken(data)
+            const token = await this.jwt.createToken(data)
             const result = {email: data.email, name: data.name, token,userId:data.id}
             return Result.success(result)
         }

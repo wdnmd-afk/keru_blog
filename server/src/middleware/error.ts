@@ -1,7 +1,7 @@
 // errorHandlingMiddleware.ts
 import { Request, Response, NextFunction } from 'express';
 import { Result } from '@/utils';
-import {AuthenticationError} from '@/jwt/AuthenticationError'
+import passport from 'passport'
  function errorHandlingMiddleware() {
     return (err: any, _req: Request, res: Response, next: NextFunction) => {
         if (err.status === 403) {
@@ -29,14 +29,27 @@ function responseHandler(_req: Request, res: Response, next: NextFunction):void 
     next();
 
 }
+// 自定义的认证失败处理器
+const AuthenticationErrorHandler = (req:Request, res:Response, next:NextFunction) => {
+    passport.authenticate('jwt', { session: false }, (err, user) => {
+        console.log(err,user,'log')
+        // 定义不需要身份验证的路径
+        const openPaths = ['/login', '/register'];
+        for (let i = 0; i < openPaths.length; i++) {
+            if (req.path.includes(openPaths[i])) {
+               return  next()
+            }
+        }
+        if (err) {
+            return next(err);
+        }
+        if (!user) {
+            return res.status(401).json({ code: 401, msg: 'Unauthorized！缺少token或者token无效！' });
+        }
+        console.log(user,'uu')
+        next();
+    })(req, res, next);
+};
 
-// @ts-ignore
-function authenticationErrorHandler(err:any,_req: Request, res: Response, next: NextFunction) {
-    console.log(err,'errrr')
-    if (err instanceof AuthenticationError) {
-        return res.status(401).json({ message: err.message });
-    }
-    next(err);
-}
 
-export {errorHandlingMiddleware,responseHandler,authenticationErrorHandler}
+export {errorHandlingMiddleware,responseHandler,AuthenticationErrorHandler}

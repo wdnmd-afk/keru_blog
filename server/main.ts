@@ -7,7 +7,7 @@ import express from 'express'
 import { PrismaClient } from '@prisma/client'
 import { PrismaDB } from '@/db'
 import { JWT } from '@/jwt'
-import {errorHandlingMiddleware,responseHandler,authenticationErrorHandler} from "@/middleware/error";
+import {errorHandlingMiddleware,responseHandler,AuthenticationErrorHandler} from "@/middleware/error";
 // 加载环境变量 少了无法直接读取到.env文件
 import dotenv from 'dotenv';
 dotenv.config();
@@ -40,10 +40,13 @@ container.bind(JWT).to(JWT) //主要代码
 const server = new InversifyExpressServer(container)
 server.setConfig((app) => {
     app.use(express.json())
-
-    app.use(container.get(JWT).init()) //主要代码
-    app.use(authenticationErrorHandler)
+    //passport-jwt自我校验
+    app.use(container.get(JWT).init())
+    //token错误校验
+    app.use(AuthenticationErrorHandler)
+    //常规错误中间件
     app.use(errorHandlingMiddleware())
+    //响应请求中间件
     app.use(responseHandler)
 })
 const app = server.build()

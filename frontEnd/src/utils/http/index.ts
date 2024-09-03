@@ -37,7 +37,7 @@ class RequestHttp {
         if (config.headers && typeof config.headers.set === "function") {
           config.headers.set("x-access-token", "token");
           const data = BrowserLocalStorage.get("userInfo");
-          config.headers.set("Authorization", data.token);
+          config.headers.set("Authorization", data?.token || "");
         }
         return config;
       },

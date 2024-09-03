@@ -1,69 +1,33 @@
-import React, { useCallback, useEffect } from "react";
-import { Http } from "@/utils";
+import React, { useEffect } from "react";
+import { HomeApi } from "@/api";
 import { Button } from "antd";
-import { createContext, useContext, useState } from "react";
-
-const CounterContext = createContext({
-  count: 0,
-  setCount: (data: number) => {},
-});
-const themeContext = createContext({
-  theme: "dark",
-  setTheme: (data: string) => {},
-});
-
-const ThemeProvider = ({ children }) => {
-  const [theme, setTheme] = useState("dark");
-  return (
-    <themeContext.Provider value={{ theme, setTheme }}>
-      {children}
-    </themeContext.Provider>
-  );
-};
-
-const CounterProvider = ({ children }) => {
-  const [count, setCount] = useState(0);
-
-  return (
-    <ThemeProvider>
-      <Button></Button>
-
-      <CounterContext.Provider value={{ count, setCount }}>
-        {children}
-      </CounterContext.Provider>
-    </ThemeProvider>
-  );
-};
+// import useStores from "@/hooks/useStores.ts";
 
 // 定义 Home 组件
 const HomeBox: React.FC = () => {
-  const { count, setCount } = useContext(CounterContext);
-  const { theme, setTheme } = useContext(themeContext);
+  // const { GlobalStore } = useStores();
   useEffect(() => {
     console.log("进入了HOme组件");
-  }, []);
-  const handleClick = useCallback(() => {
-    setCount(count + 1);
-    setTheme("dddd");
-  }, [count, setCount]);
-
+  });
+  const handleClick = () => {
+    HomeApi.test({});
+  };
+  const clear = () => {};
   return (
     <div className={"container"}>
       <Button type="primary" ghost onClick={handleClick}>
-        点击我{theme}
+        点击我
       </Button>
-      {count}
+      <Button type="primary" ghost onClick={clear}>
+        点击我2
+      </Button>
     </div>
   );
 };
 
 // 将 CounterProvider 包裹在 Home 组件的外部
 const Home = () => {
-  return (
-    <CounterProvider>
-      <HomeBox />
-    </CounterProvider>
-  );
+  return <HomeBox />;
 };
 
 // 导出 App 组件

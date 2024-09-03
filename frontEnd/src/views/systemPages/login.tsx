@@ -2,10 +2,13 @@ import React from "react";
 import style from "@/styles/login.module.scss";
 import { Button, Form, Input, Checkbox, Tabs, message } from "antd";
 import { LockOutlined, UserOutlined, MailOutlined } from "@ant-design/icons";
-import useStores from "@/hooks/useStores.ts";
+// import useStores from "@/hooks/useStores.ts";
+import { useGlobalStore } from "@/store";
 import { LoginApi } from "@/api";
 import { BrowserLocalStorage, getRandomNumber } from "@/utils";
 import backgroundImage from "@/assets/images/login.png";
+import { useNavigate } from "react-router-dom";
+
 type FieldType = {
   name?: string;
   password?: string;
@@ -16,16 +19,23 @@ type FieldType = {
 
 const Login: React.FC = () => {
   const [messageApi, contextHolder] = message.useMessage();
-
+  const navigate = useNavigate();
+  const setUserInfo = useGlobalStore((state) => state.setUserInfo);
+  const user = useGlobalStore((state) => state.user.token);
   const onFinish = async (params: FieldType) => {
     const { data } = await LoginApi.login({
       ...params,
     });
     if (data) {
       data.token = "Bearer " + data.token;
-      GlobalStore.setUserInfo(data);
+      setUserInfo(data);
       BrowserLocalStorage.set("userInfo", data);
       messageApi.success("登录成功");
+      setTimeout(() => {
+        console.log("log", user);
+      }, 500);
+      return;
+      navigate("/");
       reset();
     }
   };
@@ -37,12 +47,11 @@ const Login: React.FC = () => {
       random: getRandomNumber(1, 1000),
       admin: true,
     };
-
     await LoginApi.register(temp);
     messageApi.success("注册成功");
     reset();
   };
-  const { GlobalStore } = useStores();
+
   const [form] = Form.useForm();
   const reset = () => {
     form.resetFields();
@@ -145,7 +154,7 @@ const Login: React.FC = () => {
       {contextHolder}
       <img src={backgroundImage} alt="" className="w-full h-full" />
       <div className={style.outsideBox}>
-        <div className={style.login_top}>K爷的空间{GlobalStore.user.name}</div>
+        <div className={style.login_top}>K爷的空间{user.name}</div>
         <div className={style.login_box}>
           <Tabs
             defaultActiveKey="login"

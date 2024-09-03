@@ -1,11 +1,12 @@
-import React, { lazy } from "react";
+import React, { lazy, useEffect } from "react";
 import {
   BrowserRouter as Router,
   Routes,
   Route,
   Navigate,
 } from "react-router-dom";
-import Home from "../views/systemPages/home";
+// import useStores from "@/hooks/useStores.ts";
+import { BrowserLocalStorage } from "@/utils";
 
 const LazyComponents = {
   Home: lazy(() => import("@/views/systemPages/home.tsx")),
@@ -20,8 +21,12 @@ const routesConfig = [
 ];
 
 const AppRoutes: React.FC = () => {
-  const isAuthenticated = false; // 替换为你的验证逻辑
+  /*const { GlobalStore } = useStores();
+  console.log(GlobalStore.user.token, "uuuu");
 
+  useEffect(() => {
+    console.log(GlobalStore.user.token, "uuuu");
+  }, [GlobalStore.user.token]);*/
   return (
     <Router>
       <Routes>
@@ -30,7 +35,7 @@ const AppRoutes: React.FC = () => {
             key={path}
             path={path}
             element={
-              requiresAuth && !isAuthenticated ? (
+              requiresAuth ? (
                 <Navigate to="/login" />
               ) : (
                 <React.Suspense fallback={<div>Loading...</div>}>
