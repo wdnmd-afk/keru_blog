@@ -1,32 +1,24 @@
-/*import { makeAutoObservable, observable } from "mobx";
-interface User {
-  id?: string;
-  name?: string;
-  admin?: boolean;
-  token?: string;
-}
-
-class GlobalStore {
-  user: User = {};
-
-  constructor() {
-    makeAutoObservable(this, {
-      user: observable,
-    });
-  }
-
-  setUserInfo(data: User) {
-    this.user = data;
-  }
-  clearUserInfo() {
-    this.user = {};
-  }
-}
-
-export { GlobalStore };
-export * from "./provider.tsx";*/
 import { create } from "zustand";
-const useGlobalStore = create((set, get) => ({
+import { useShallow } from "zustand/react/shallow";
+interface GlobalState {
+  user: {
+    id: string;
+    name: string;
+    admin: boolean;
+    token: string;
+  };
+}
+
+interface GlobalGetter {
+  getUser: () => any;
+}
+interface GlobalSetter {
+  setUserInfo: (data: any) => void;
+}
+
+type GlobalStore = GlobalGetter & GlobalSetter & GlobalState;
+
+const useGlobalStore = create<GlobalStore>((set, get) => ({
   user: { id: "", name: "", admin: false, token: "" },
   getUser() {
     return get().user;
@@ -36,5 +28,13 @@ const useGlobalStore = create((set, get) => ({
     set(() => ({ user }));
   },
 }));
+//将Action抛出
+const useGlobalStoreAction = () => {
+  return useGlobalStore(
+    useShallow((state) => ({
+      setUserInfo: state.setUserInfo,
+    })),
+  );
+};
 
-export { useGlobalStore };
+export { useGlobalStore, useGlobalStoreAction };

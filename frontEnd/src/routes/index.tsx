@@ -6,6 +6,7 @@ import {
   Navigate,
 } from "react-router-dom";
 // import useStores from "@/hooks/useStores.ts";
+import { useGlobalStore } from "@/store";
 import { BrowserLocalStorage } from "@/utils";
 
 const LazyComponents = {
@@ -21,12 +22,8 @@ const routesConfig = [
 ];
 
 const AppRoutes: React.FC = () => {
-  /*const { GlobalStore } = useStores();
-  console.log(GlobalStore.user.token, "uuuu");
-
-  useEffect(() => {
-    console.log(GlobalStore.user.token, "uuuu");
-  }, [GlobalStore.user.token]);*/
+  const user = useGlobalStore((state) => state.user);
+  const localToken = BrowserLocalStorage.get("userInfo");
   return (
     <Router>
       <Routes>
@@ -35,7 +32,7 @@ const AppRoutes: React.FC = () => {
             key={path}
             path={path}
             element={
-              requiresAuth ? (
+              requiresAuth && !user.token && !localToken ? (
                 <Navigate to="/login" />
               ) : (
                 <React.Suspense fallback={<div>Loading...</div>}>

@@ -1,4 +1,4 @@
-import { ResultEnum, ResultData } from "./httpEnum";
+import { ResultEnum, ResultData, CustomError } from "./httpEnum";
 import axios, {
   AxiosInstance,
   AxiosRequestConfig,
@@ -6,7 +6,7 @@ import axios, {
   InternalAxiosRequestConfig,
   AxiosError,
 } from "axios";
-import { BrowserLocalStorage } from "@/utils";
+import { BrowserLocalStorage, MessageBox } from "@/utils";
 const config = {
   // 默认地址请求地址，可在 .env.** 文件中修改
   baseURL: import.meta.env.VITE_API_URL as string,
@@ -42,6 +42,7 @@ class RequestHttp {
         return config;
       },
       (error: AxiosError) => {
+        console.log(123);
         return Promise.reject(error);
       },
     );
@@ -55,12 +56,7 @@ class RequestHttp {
         const { data } = response;
         // const userStore = useUserStore();
         // tryHideFullScreenLoading();
-        // 登陆失效
-        if (data.code == ResultEnum.OVERDUE) {
-          // userStore.setToken("");
-          // router.replace(LOGIN_URL);
-          return Promise.reject(data);
-        }
+
         // 全局错误信息拦截（防止下载文件的时候返回数据流，没有 code 直接报错）
         if (data.code && data.code !== ResultEnum.SUCCESS) {
           // ElMessage.error(data.msg);
@@ -69,10 +65,26 @@ class RequestHttp {
         // 成功请求（在页面上除非特殊情况，否则不用处理失败逻辑）
         return data;
       },
-      async (error: AxiosError) => {
+      async (error: CustomError) => {
         const { response } = error;
         // tryHideFullScreenLoading();
         // 请求超时 && 网络错误单独判断，没有 response
+        console.log(response, "s");
+        const { data } = response;
+        // token 过期，直接退出
+        if (data.code == ResultEnum.OVERDUE) {
+          // userStore.setToken("");
+          MessageBox.confirm({
+            content: "登录过期,请重新登录",
+            onOk: () => {
+              BrowserLocalStorage.clear();
+              window.location.reload();
+            },
+          });
+          // router.replace(LOGIN_URL);
+          return Promise.reject(data);
+        }
+        console.log(123456789);
         if (error.message.indexOf("timeout") !== -1)
           alert("请求超时！请您稍后重试");
         if (error.message.indexOf("Network Error") !== -1)

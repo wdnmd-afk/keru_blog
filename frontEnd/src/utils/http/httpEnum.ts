@@ -1,3 +1,5 @@
+import { AxiosError, AxiosResponse } from "axios";
+
 /**
  * @description：请求配置
  */
@@ -36,8 +38,14 @@ export enum ContentTypeEnum {
 
 // 请求响应参数（不包含data）
 export interface Result {
-  code: string;
+  code: number;
   message: string;
+}
+export interface CustomAxiosResponse extends AxiosResponse {
+  data: Result;
+}
+export interface CustomError extends AxiosError {
+  response: CustomAxiosResponse;
 }
 
 // 请求响应参数（包含data）
