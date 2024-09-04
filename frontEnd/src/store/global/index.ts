@@ -26,16 +26,15 @@ class GlobalStore {
 export { GlobalStore };
 export * from "./provider.tsx";*/
 import { create } from "zustand";
-const useGlobalStore = create((set) => ({
+const useGlobalStore = create((set, get) => ({
   user: { id: "", name: "", admin: false, token: "" },
-  setUserInfo: (data) =>
-    set((state) => {
-      console.log(data, state.user);
-      return {
-        user: { token: 1 },
-      };
-    }),
-  removeAllBears: () => set({ user: {} }),
+  getUser() {
+    return get().user;
+  },
+  setUserInfo: (data) => {
+    const user = { ...get().user, ...data };
+    set(() => ({ user }));
+  },
 }));
 
 export { useGlobalStore };

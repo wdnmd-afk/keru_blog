@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import style from "@/styles/login.module.scss";
 import { Button, Form, Input, Checkbox, Tabs, message } from "antd";
 import { LockOutlined, UserOutlined, MailOutlined } from "@ant-design/icons";
@@ -21,11 +21,16 @@ const Login: React.FC = () => {
   const [messageApi, contextHolder] = message.useMessage();
   const navigate = useNavigate();
   const setUserInfo = useGlobalStore((state) => state.setUserInfo);
-  const user = useGlobalStore((state) => state.user.token);
+  const user = useGlobalStore((state) => state.getUser());
+  useEffect(() => {
+    console.log(user, "ussss");
+  }, [user]);
+
   const onFinish = async (params: FieldType) => {
-    const { data } = await LoginApi.login({
+    /*   const { data } = await LoginApi.login({
       ...params,
-    });
+    });*/
+    const data = { token: "123412423", name: "test" };
     if (data) {
       data.token = "Bearer " + data.token;
       setUserInfo(data);
@@ -33,7 +38,9 @@ const Login: React.FC = () => {
       messageApi.success("登录成功");
       setTimeout(() => {
         console.log("log", user);
-      }, 500);
+        const data = { name: "dfgdfgdfgdfg" };
+        setUserInfo(data);
+      }, 1000);
       return;
       navigate("/");
       reset();
@@ -154,7 +161,7 @@ const Login: React.FC = () => {
       {contextHolder}
       <img src={backgroundImage} alt="" className="w-full h-full" />
       <div className={style.outsideBox}>
-        <div className={style.login_top}>K爷的空间{user.name}</div>
+        <div className={style.login_top}>K爷的空间</div>
         <div className={style.login_box}>
           <Tabs
             defaultActiveKey="login"
