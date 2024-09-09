@@ -6,7 +6,8 @@ import { AxiosError, AxiosResponse } from "axios";
 export enum ResultEnum {
   SUCCESS = 200,
   ERROR = 500,
-  OVERDUE = 401,
+  NORMAL_ERROR = 400,
+  UNAUTHORIZED = 401,
   TIMEOUT = 30000,
   TYPE = "success",
 }

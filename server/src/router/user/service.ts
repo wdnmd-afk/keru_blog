@@ -20,7 +20,7 @@ export class UserService {
         return this.PrismaDB.prisma.user.findMany();
     }
 //用户注册列国
-    public async createUser(user: UserDto) {
+    public async register(user: UserDto) {
         const userDto = plainToClass(UserDto, user)
         const errors = await validate(userDto)
         return  handleError(errors, async () => {
@@ -68,12 +68,12 @@ export class UserService {
                 }
             })
             if (!res.length) {
-                return  Result.error(500, '用户不存在')
+                return  Result.error(400, '用户不存在')
             }
             const data = res[0]
             //校验密码
             if (data.password !== hashString(password, data.random)) {
-                return  Result.error(500, '密码不正确')
+                return  Result.error(400, '密码不正确')
             }
             const token = await this.jwt.createToken(data)
             const result = {email: data.email, name: data.name, token,userId:data.id}

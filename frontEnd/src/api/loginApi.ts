@@ -8,7 +8,7 @@ interface LoginProp {
 }
 class LoginApi {
   public static async register(params: LoginProp) {
-    return await Http.post("/user/create", params);
+    return await Http.post("/user/register", params);
   }
   public static async login(params: LoginProp) {
     return await Http.post("/user/login", params);

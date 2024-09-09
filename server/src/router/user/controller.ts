@@ -15,9 +15,9 @@ export class User {
         res.send(result)
     }
 
-    @PostMapping('/create')
-    public async createUser(req: Request, res: customResponse) {
-        const result = await this.UserService.createUser(req.body)
+    @PostMapping('/register')
+    public async register(req: Request, res: customResponse) {
+        const result = await this.UserService.register(req.body)
         res.sendResponse (result)
     }
     @PostMapping('/login')

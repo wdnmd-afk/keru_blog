@@ -6,7 +6,9 @@ import axios, {
   InternalAxiosRequestConfig,
   AxiosError,
 } from "axios";
+import { message } from "antd";
 import { BrowserLocalStorage, MessageBox } from "@/utils";
+
 const config = {
   // 默认地址请求地址，可在 .env.** 文件中修改
   baseURL: import.meta.env.VITE_API_URL as string,
@@ -15,11 +17,14 @@ const config = {
   // 跨域时候允许携带凭证
   withCredentials: true,
 };
+
 export interface CustomAxiosRequestConfig extends InternalAxiosRequestConfig {
   noLoading?: boolean;
 }
+
 class RequestHttp {
   service: AxiosInstance;
+
   public constructor(config: AxiosRequestConfig) {
     // instantiation
     this.service = axios.create(config);
@@ -69,28 +74,26 @@ class RequestHttp {
         const { response } = error;
         // tryHideFullScreenLoading();
         // 请求超时 && 网络错误单独判断，没有 response
-        console.log(response, "s");
         const { data } = response;
         // token 过期，直接退出
-        if (data.code == ResultEnum.OVERDUE) {
-          // userStore.setToken("");
-          MessageBox.confirm({
-            content: "登录过期,请重新登录",
-            onOk: () => {
-              BrowserLocalStorage.clear();
-              window.location.reload();
-            },
-          });
-          // router.replace(LOGIN_URL);
-          return Promise.reject(data);
+
+        switch (data.code) {
+          case ResultEnum.UNAUTHORIZED:
+            MessageBox.confirm({
+              content: "登录过期,请重新登录",
+              confirm: () => {
+                BrowserLocalStorage.clear();
+                window.location.href = "/login";
+              },
+            });
+            return Promise.reject(data);
+          case ResultEnum.ERROR:
+            message.error(data.message);
+            break;
+          case ResultEnum.NORMAL_ERROR:
+            message.error(data.message);
+            break;
         }
-        console.log(123456789);
-        if (error.message.indexOf("timeout") !== -1)
-          alert("请求超时！请您稍后重试");
-        if (error.message.indexOf("Network Error") !== -1)
-          alert("网络错误！请您稍后重试");
-        // 根据服务器响应的错误状态码，做不同的处理
-        if (response) console.error(response.status);
         // 服务器结果都没有返回(可能服务器错误可能客户端断网)，断网处理:可以跳转到断网页面
         // if (!window.navigator.onLine) router.replace("/500");
         return Promise.reject(error);
@@ -104,6 +107,7 @@ class RequestHttp {
   get(url: string, params?: object, _object = {}): Promise<ResultData> {
     return this.service.get(url, { params, ..._object });
   }
+
   post(
     url: string,
     params?: object | string,
@@ -111,12 +115,15 @@ class RequestHttp {
   ): Promise<ResultData> {
     return this.service.post(url, params, _object);
   }
+
   put<T>(url: string, params?: object, _object = {}): Promise<ResultData<T>> {
     return this.service.put(url, params, _object);
   }
+
   delete<T>(url: string, params?: any, _object = {}): Promise<ResultData<T>> {
     return this.service.delete(url, { params, ..._object });
   }
+
   download(url: string, params?: object, _object = {}): Promise<BlobPart> {
     return this.service.post(url, params, { ..._object, responseType: "blob" });
   }
