@@ -14,12 +14,14 @@ const LazyComponents = {
   Home: lazy(() => import("@/views/systemPages/Home.tsx")),
   NotFound: lazy(() => import("@/views/systemPages/NotFound.tsx")),
   Login: lazy(() => import("@/views/systemPages/Login.tsx")),
+  Books: lazy(() => import("@/views/normalPages/Books.tsx")),
 };
 
 const routesConfig = [
   { path: "/", component: <LazyComponents.Home />, requiresAuth: true },
+  { path: "/books", component: <LazyComponents.Login />, requiresAuth: true },
   { path: "/login", component: <LazyComponents.Login />, requiresAuth: false },
-  { path: "*", component: <LazyComponents.NotFound />, requiresAuth: true },
+  { path: "*", component: <LazyComponents.NotFound />, requiresAuth: false },
 ];
 
 const AppRoutes: React.FC = () => {
