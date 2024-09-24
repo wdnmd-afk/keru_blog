@@ -3,12 +3,15 @@
     height: 100%;
   background: url("@/assets/images/main_bg2.webp") no-repeat;
   background-size: 100% 100%;
+  display: flex;
+  flex-direction: column;
   .layout_header{
     height: 60px;
     width: 100%;
     background-color: rgba(0,0,0,.6);
     display: flex;
     align-items: center;
+    padding: 0 10px;
     .header_logo{
       width: 200px;
     }
@@ -40,7 +43,24 @@
     }
     .header_person{
       width: 150px;
-      background-color: deepskyblue;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      .img{
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: white;
+      }
+      .name{
+        color: white;
+        font-weight: 700;
+        font-size: 20px;
+        flex: 1;
+        width: 0;
+        padding-left: 10px;
+      }
     }
   }
 

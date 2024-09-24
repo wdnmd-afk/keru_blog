@@ -4,6 +4,8 @@ import App from "./App.tsx";
 import "./styles/init.scss";
 import "./index.css";
 import "virtual:uno.css";
+import "virtual:svg-icons-register";
+
 // import { GlobalStoreProvider } from "@/store/global";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
