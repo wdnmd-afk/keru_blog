@@ -1,34 +1,34 @@
 {
-  "hash": "f264858e",
-  "configHash": "4da6e4bf",
-  "lockfileHash": "c74e51df",
-  "browserHash": "36cb9431",
-  "optimized": {
-    "react": {
-      "src": "../../node_modules/.pnpm/react@18.3.1/node_modules/react/index.js",
-      "file": "react.js",
-      "fileHash": "3c30162f",
-      "needsInterop": true
+    "hash": "f264858e",
+    "configHash": "4da6e4bf",
+    "lockfileHash": "c74e51df",
+    "browserHash": "36cb9431",
+    "optimized": {
+        "react": {
+            "src": "../../node_modules/.pnpm/react@18.3.1/node_modules/react/index.js",
+            "file": "react.js",
+            "fileHash": "3c30162f",
+            "needsInterop": true
+        },
+        "react-dom/client": {
+            "src": "../../node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/client.js",
+            "file": "react-dom_client.js",
+            "fileHash": "af83e106",
+            "needsInterop": true
+        },
+        "react-router-dom": {
+            "src": "../../node_modules/.pnpm/react-router-dom@6.26.0_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-router-dom/dist/index.js",
+            "file": "react-router-dom.js",
+            "fileHash": "cfafd1e8",
+            "needsInterop": false
+        }
     },
-    "react-dom/client": {
-      "src": "../../node_modules/.pnpm/react-dom@18.3.1_react@18.3.1/node_modules/react-dom/client.js",
-      "file": "react-dom_client.js",
-      "fileHash": "af83e106",
-      "needsInterop": true
-    },
-    "react-router-dom": {
-      "src": "../../node_modules/.pnpm/react-router-dom@6.26.0_react-dom@18.3.1_react@18.3.1__react@18.3.1/node_modules/react-router-dom/dist/index.js",
-      "file": "react-router-dom.js",
-      "fileHash": "cfafd1e8",
-      "needsInterop": false
+    "chunks": {
+        "chunk-7XA4PLQE": {
+            "file": "chunk-7XA4PLQE.js"
+        },
+        "chunk-BMKNQQUQ": {
+            "file": "chunk-BMKNQQUQ.js"
+        }
     }
-  },
-  "chunks": {
-    "chunk-7XA4PLQE": {
-      "file": "chunk-7XA4PLQE.js"
-    },
-    "chunk-BMKNQQUQ": {
-      "file": "chunk-BMKNQQUQ.js"
-    }
-  }
 }

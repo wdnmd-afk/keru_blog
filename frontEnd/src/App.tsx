@@ -1,24 +1,24 @@
-import AppRoutes from "@/routes/index.tsx";
-import React from "react";
-import { ConfigProvider, ThemeConfig } from "antd";
+import AppRoutes from '@/routes/index.tsx'
+import React from 'react'
+import { ConfigProvider, ThemeConfig } from 'antd'
 const App: React.FC = () => {
-  const theme: Partial<ThemeConfig> = {
-    token: {
-      colorPrimary: "#1C47B5",
-      colorBgBase: "#f0f2f5",
-      colorError: "#B81919",
-      colorWarning: "#786C36",
-      colorInfo: "#7F2F4F",
-      colorSuccess: "#2F7F55",
-    },
-  };
-  return (
-    <ConfigProvider theme={theme}>
-      <div h-full>
-        <AppRoutes></AppRoutes>
-      </div>
-    </ConfigProvider>
-  );
-};
+    const theme: Partial<ThemeConfig> = {
+        token: {
+            colorPrimary: '#1C47B5',
+            colorBgBase: '#f0f2f5',
+            colorError: '#B81919',
+            colorWarning: '#786C36',
+            colorInfo: '#7F2F4F',
+            colorSuccess: '#2F7F55'
+        }
+    }
+    return (
+        <ConfigProvider theme={theme}>
+            <div h-full>
+                <AppRoutes></AppRoutes>
+            </div>
+        </ConfigProvider>
+    )
+}
 
-export default App;
+export default App

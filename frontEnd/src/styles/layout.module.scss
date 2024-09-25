@@ -1,67 +1,65 @@
 .layout_container {
     width: 100%;
     height: 100%;
-  background: url("@/assets/images/main_bg2.webp") no-repeat;
-  background-size: 100% 100%;
-  display: flex;
-  flex-direction: column;
-  .layout_header{
-    height: 60px;
-    width: 100%;
-    background-color: rgba(0,0,0,.6);
+    background: url('@/assets/images/main_bg2.webp') no-repeat;
+    background-size: 100% 100%;
     display: flex;
-    align-items: center;
-    padding: 0 10px;
-    .header_logo{
-      width: 200px;
-    }
-    .header_menu{
-      flex: 1;
-      width: 0;
-      padding: 0 30px;
-      display: flex;
-      color: white;
-      font-weight: 700;
-
-      .menu_item{
-        cursor: pointer;
+    flex-direction: column;
+    .layout_header {
         height: 60px;
-        padding: 0 20px;
-        line-height: 60px;
-        font-size: 16px;
-        &:hover{
-          color: #409eff;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.6);
+        display: flex;
+        align-items: center;
+        padding: 0 10px;
+        .header_logo {
+            width: 200px;
         }
+        .header_menu {
+            flex: 1;
+            width: 0;
+            padding: 0 30px;
+            display: flex;
+            color: white;
+            font-weight: 700;
 
-      }
-      .menu_item_active{
-        @extend .menu_item;
-        color: #409eff;
-        background-color:#1D1D3C;
-        opacity: .8;
-      }
+            .menu_item {
+                cursor: pointer;
+                height: 60px;
+                padding: 0 20px;
+                line-height: 60px;
+                font-size: 16px;
+                &:hover {
+                    color: #409eff;
+                }
+            }
+            .menu_item_active {
+                @extend .menu_item;
+                color: #409eff;
+                background-color: #1d1d3c;
+                opacity: 0.8;
+            }
+        }
+        .header_person {
+            width: 150px;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            .img {
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                background-color: white;
+            }
+            .name {
+                color: white;
+                font-weight: 700;
+                font-size: 20px;
+                flex: 1;
+                width: 0;
+                padding-left: 10px;
+            }
+        }
     }
-    .header_person{
-      width: 150px;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      cursor: pointer;
-      .img{
-        width: 40px;
-        height: 40px;
-        border-radius: 50%;
-        background-color: white;
-      }
-      .name{
-        color: white;
-        font-weight: 700;
-        font-size: 20px;
-        flex: 1;
-        width: 0;
-        padding-left: 10px;
-      }
-    }
-  }
-
 }
