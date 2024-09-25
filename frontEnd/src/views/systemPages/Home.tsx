@@ -8,6 +8,7 @@ import lyfImage from '@/assets/images/lyf.png'
 const { Meta } = Card
 // 将 CounterProvider 包裹在 Home 组件的外部
 const Home = () => {
+    console.log(132456)
     return (
         <div className={style.home_container}>
             <div className={style.home_main}>
