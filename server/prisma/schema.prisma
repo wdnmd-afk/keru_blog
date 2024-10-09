@@ -1,9 +1,6 @@
 // This is your Prisma schema file,
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -21,10 +18,12 @@ model User {
   password   String       @default(dbgenerated("123456"))
   random     Int          @default(dbgenerated("10"))
   UserDetail UserDetail[]
+  files      File[]
 }
 
 model UserDetail {
   id          String  @id @unique
+  name        String?
   address     String?
   phoneNumber String?
   bio         String?
@@ -34,4 +33,17 @@ model UserDetail {
   avatar      String
   user        User    @relation(fields: [userId], references: [id])
   userId      String
+}
+
+model File {
+  id           Int      @id @default(autoincrement())
+  filename     String
+  originalName String
+  mimeType     String
+  size         Int
+  path         String
+  uploadedAt   DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  uploader     User     @relation(fields: [uploaderId], references: [id])
+  uploaderId   String
 }

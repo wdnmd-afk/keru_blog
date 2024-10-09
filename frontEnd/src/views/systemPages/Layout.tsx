@@ -7,21 +7,23 @@ import { Dropdown } from 'antd'
 import SvgIcon from '@/components/SvgIcon.tsx'
 
 interface MenuItem {
-    name: string
-    path: string
+    name: string;
+    path: string;
 }
 
 const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     const headerList: MenuItem[] = [
         { name: 'Home', path: '/' },
-        { name: 'Books', path: '/books' }
+        { name: 'Books', path: '/books' },
+        { name: 'Files', path: '/files' },
+        { name: 'Technology', path: '/technology' },
     ]
+
 
     const navigate = useNavigate()
     const location = useLocation()
     const [activeMenu, setActiveMenu] = useState<string>(location.pathname)
     const handleMenuClick = (item: MenuItem) => {
-        console.log(item, 'item', location.pathname)
         if (item.path === location.pathname) return
         navigate(item.path)
         setActiveMenu(item.path)
@@ -30,8 +32,8 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     const items: MenuProps['items'] = [
         {
             label: '退出登录',
-            key: 'exit'
-        }
+            key: 'exit',
+        },
     ]
     const onClick = ({ key }: { key: string }) => {
         if (key === 'exit') {
@@ -56,7 +58,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
                         </div>
                     ))}
                 </div>
-                <Dropdown menu={{ items, onClick }} arrow={{ pointAtCenter: true }} placement='bottom'>
+                <Dropdown menu={{ items, onClick }} arrow={{ pointAtCenter: true }} placement="bottom">
                     <div className={style.header_person}>
                         {/*<div className={style.img}></div>*/}
                         <SvgIcon name={'react'} size={35}></SvgIcon>

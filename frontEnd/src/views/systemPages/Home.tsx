@@ -4,11 +4,11 @@ import style from '@/styles/home.module.scss'
 import bookImage from '@/assets/images/book.png'
 import technologyImage from '@/assets/images/technology.png'
 import lyfImage from '@/assets/images/lyf.png'
+import lyf2Image from '@/assets/images/bg.png'
 
 const { Meta } = Card
 // 将 CounterProvider 包裹在 Home 组件的外部
 const Home = () => {
-    console.log(132456)
     return (
         <div className={style.home_container}>
             <div className={style.home_main}>
@@ -26,22 +26,11 @@ const Home = () => {
                         <Meta title='Technology' description='We can learn a lot of new technologies here.' />
                     </Card>
 
-                    <Card hoverable cover={<img alt='example' src={lyfImage} style={{ height: 300 }} />}>
+                    <Card hoverable cover={<img alt='example' src={lyfImage} />}>
                         <Meta title='Yifei Liu' description="We can admire Liu Yifei's beauty here" />
                     </Card>
-                    <Card
-                        hoverable
-                        style={{ height: 300 }}
-                        cover={<img alt='books' src={bookImage} style={{ height: 200 }} />}
-                    >
-                        <Meta title='Books' description='We can read many technology-related books here.' />
-                    </Card>
-                    <Card
-                        hoverable
-                        style={{ height: 300 }}
-                        cover={<img alt='books' src={bookImage} style={{ height: 200 }} />}
-                    >
-                        <Meta title='Books' description='We can read many technology-related books here.' />
+                    <Card hoverable cover={<img alt='example' src={lyf2Image} />}>
+                        <Meta title='Yifei Liu' description="We can admire Liu Yifei's beauty here" />
                     </Card>
                 </div>
             </div>

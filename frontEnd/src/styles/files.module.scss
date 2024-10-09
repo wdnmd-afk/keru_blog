@@ -1,0 +1,21 @@
+.file_container {
+  height: 100%;
+  display: flex;
+
+  :global {
+    .ant-tabs-content {
+      height: 100%;
+    }
+
+    .ant-tabs-tabpane {
+      height: 100%;
+    }
+  }
+
+  > div {
+    flex: 1;
+    height: 100%;
+    padding: 12px;
+    background-color: #f8f8f8;
+  }
+}

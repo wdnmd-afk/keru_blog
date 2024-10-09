@@ -1,7 +1,7 @@
 import React from 'react'
 import style from '@/styles/login.module.scss'
-import { Button, Form, Input, Checkbox, Tabs, message } from 'antd'
-import { LockOutlined, UserOutlined, MailOutlined } from '@ant-design/icons'
+import { Button, Checkbox, Form, Input, message, Tabs } from 'antd'
+import { LockOutlined, MailOutlined, UserOutlined } from '@ant-design/icons'
 // import useStores from "@/hooks/useStores.ts";
 import { useGlobalStoreAction } from '@/store'
 import { LoginApi } from '@/api'
@@ -17,13 +17,14 @@ type FieldType = {
     admin?: boolean
 }
 
+
 const Login: React.FC = () => {
     const [messageApi, contextHolder] = message.useMessage()
     const navigate = useNavigate()
     const { setUserInfo } = useGlobalStoreAction()
     const onFinish = async (params: FieldType) => {
         const { data } = await LoginApi.login({
-            ...params
+            ...params,
         })
 
         if (data) {
@@ -41,7 +42,7 @@ const Login: React.FC = () => {
             password: params.password,
             email: params.email,
             random: getRandomNumber(1, 1000),
-            admin: true
+            admin: true,
         }
         await LoginApi.register(temp)
         messageApi.success('注册成功')
@@ -54,26 +55,26 @@ const Login: React.FC = () => {
     }
     const loginForm = (
         <Form
-            name='login'
+            name="login"
             initialValues={{ remember: true }}
             onFinish={onFinish}
             style={{ width: 400, marginTop: 20 }}
-            autoComplete='off'
+            autoComplete="off"
             clearOnDestroy
             form={form}
         >
-            <Form.Item name='name' rules={[{ required: true, message: 'Please input your username!' }]}>
-                <Input size='large' prefix={<UserOutlined />} placeholder='Username' />
+            <Form.Item name="name" rules={[{ required: true, message: 'Please input your username!' }]}>
+                <Input size="large" prefix={<UserOutlined />} placeholder="Username" />
             </Form.Item>
-            <Form.Item name='password' rules={[{ required: true, message: 'Please input your Password!' }]}>
-                <Input prefix={<LockOutlined />} type='password' placeholder='Password' size='large' />
+            <Form.Item name="password" rules={[{ required: true, message: 'Please input your Password!' }]}>
+                <Input prefix={<LockOutlined />} type="password" placeholder="Password" size="large" />
             </Form.Item>
-            <Form.Item name='remember' valuePropName='checked'>
+            <Form.Item name="remember" valuePropName="checked">
                 <Checkbox className={'color-[#fff]'}>记住密码</Checkbox>
             </Form.Item>
             <Form.Item>
                 <div flex justify-center>
-                    <Button size='large' type='primary' htmlType='submit' w-50>
+                    <Button size="large" type="primary" htmlType="submit" w-50>
                         登录
                     </Button>
                 </div>
@@ -83,28 +84,28 @@ const Login: React.FC = () => {
 
     const registerForm = (
         <Form
-            name='register'
+            name="register"
             style={{ width: 400, marginTop: 20 }}
             onFinish={onFinishRegistry}
-            autoComplete='off'
+            autoComplete="off"
             clearOnDestroy
             form={form}
         >
-            <Form.Item name='name' rules={[{ required: true, message: 'Please input your username!' }]}>
-                <Input size='large' prefix={<UserOutlined />} placeholder='Username' />
+            <Form.Item name="name" rules={[{ required: true, message: 'Please input your username!' }]}>
+                <Input size="large" prefix={<UserOutlined />} placeholder="Username" />
             </Form.Item>
-            <Form.Item name='email' rules={[{ required: true, message: 'Please input your email!' }]}>
-                <Input size='large' prefix={<MailOutlined />} placeholder='Email' />
+            <Form.Item name="email" rules={[{ required: true, message: 'Please input your email!' }]}>
+                <Input size="large" prefix={<MailOutlined />} placeholder="Email" />
             </Form.Item>
-            <Form.Item name='password' rules={[{ required: true, message: 'Please input your Password!' }]}>
-                <Input prefix={<LockOutlined />} type='password' placeholder='Password' size='large' />
+            <Form.Item name="password" rules={[{ required: true, message: 'Please input your Password!' }]}>
+                <Input prefix={<LockOutlined />} type="password" placeholder="Password" size="large" />
             </Form.Item>
-            <Form.Item name='confirmPassword' rules={[{ required: true, message: 'Please confirm your Password!' }]}>
-                <Input prefix={<LockOutlined />} type='password' placeholder='Confirm Password' size='large' />
+            <Form.Item name="confirmPassword" rules={[{ required: true, message: 'Please confirm your Password!' }]}>
+                <Input prefix={<LockOutlined />} type="password" placeholder="Confirm Password" size="large" />
             </Form.Item>
             <Form.Item>
                 <div flex justify-center>
-                    <Button size='large' type='primary' htmlType='submit' w-50>
+                    <Button size="large" type="primary" htmlType="submit" w-50>
                         注册
                     </Button>
                 </div>
@@ -115,24 +116,24 @@ const Login: React.FC = () => {
     return (
         <div className={style.login_container}>
             {contextHolder}
-            <img src={backgroundImage} alt='' className='w-full h-full' />
+            <img src={backgroundImage} alt="" className="w-full h-full" />
             <div className={style.outsideBox}>
                 <div className={style.login_top}>K爷的空间</div>
                 <div className={style.login_box}>
                     <Tabs
-                        defaultActiveKey='login'
+                        defaultActiveKey="login"
                         destroyInactiveTabPane={true}
                         items={[
                             {
                                 label: '登录',
                                 key: 'login',
-                                children: loginForm
+                                children: loginForm,
                             },
                             {
                                 label: '注册',
                                 key: 'register',
-                                children: registerForm
-                            }
+                                children: registerForm,
+                            },
                         ]}
                     />
                 </div>
