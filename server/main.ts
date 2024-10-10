@@ -1,16 +1,17 @@
 import 'reflect-metadata'
 import { InversifyExpressServer } from 'inversify-express-utils'
 import { Container } from 'inversify'
-import { User,Base } from '@/router/controller'
-import { UserService,BaseService } from '@/router/service'
+import { Base, File, User } from '@/router/controller'
+import { BaseService, FileService, UserService } from '@/router/service'
 import express from 'express'
 import { PrismaClient } from '@prisma/client'
 import { PrismaDB } from '@/db'
 import { JWT } from '@/jwt'
-import {errorHandlingMiddleware,responseHandler,AuthenticationErrorHandler} from "@/middleware/error";
+import { AuthenticationErrorHandler, errorHandlingMiddleware, responseHandler } from '@/middleware/error'
 // 加载环境变量 少了无法直接读取到.env文件
-import dotenv from 'dotenv';
-dotenv.config();
+import dotenv from 'dotenv'
+
+dotenv.config()
 
 const container = new Container()
 /**
@@ -24,6 +25,12 @@ container.bind(UserService).to(UserService)
  */
 container.bind(Base).to(Base)
 container.bind(BaseService).to(BaseService)
+
+/**
+ * file模块
+ */
+container.bind(File).to(File)
+container.bind(FileService).to(FileService)
 /**
  *  封装PrismaClient
  */
@@ -50,7 +57,6 @@ server.setConfig((app) => {
     app.use(responseHandler)
 })
 const app = server.build()
-
 
 
 app.listen(3000, () => {

@@ -13,16 +13,17 @@ export default defineConfig({
             // Specify the icon folder to be cached
             iconDirs: [path.resolve(process.cwd(), 'src/assets/svgs')],
             // Specify symbolId format
-            symbolId: '[name]'
-        })
+            symbolId: '[name]',
+        }),
     ],
     server: {
         port: 8080, // 你可以根据需要更改端口
-        proxy: createViteProxy(true, 'dev', '/dev-api')
+        proxy: createViteProxy(true, 'dev', '/dev-api'),
     },
     resolve: {
         alias: {
-            '@': resolve(__dirname, './src')
-        }
-    }
+            '@': resolve(__dirname, './src'),
+        },
+        mainFields: ['module', 'main'],
+    },
 })
