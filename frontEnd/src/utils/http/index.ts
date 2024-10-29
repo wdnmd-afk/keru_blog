@@ -1,5 +1,11 @@
-import { ResultEnum, ResultData, CustomError } from './httpEnum'
-import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse, InternalAxiosRequestConfig, AxiosError } from 'axios'
+import { CustomError, ResultData, ResultEnum } from './httpEnum'
+import axios, {
+    AxiosError,
+    AxiosInstance,
+    AxiosRequestConfig,
+    AxiosResponse,
+    InternalAxiosRequestConfig,
+} from 'axios'
 import { message } from 'antd'
 import { BrowserLocalStorage, MessageBox } from '@/utils'
 
@@ -9,7 +15,7 @@ const config = {
     // 设置超时时间
     timeout: ResultEnum.TIMEOUT as number,
     // 跨域时候允许携带凭证
-    withCredentials: true
+    withCredentials: true,
 }
 
 export interface CustomAxiosRequestConfig extends InternalAxiosRequestConfig {
@@ -18,10 +24,12 @@ export interface CustomAxiosRequestConfig extends InternalAxiosRequestConfig {
 
 class RequestHttp {
     service: AxiosInstance
+    public controller = new AbortController()
+    public signal = this.controller.signal
 
     public constructor(config: AxiosRequestConfig) {
         // instantiation
-        this.service = axios.create(config)
+        this.service = axios.create({ ...config, signal: this.signal })
 
         /**
          * @description 请求拦截器
@@ -78,7 +86,7 @@ class RequestHttp {
                             confirm: () => {
                                 BrowserLocalStorage.clear()
                                 window.location.href = '/login'
-                            }
+                            },
                         })
                         return Promise.reject(data)
                     case ResultEnum.ERROR:
@@ -104,6 +112,15 @@ class RequestHttp {
 
     post(url: string, params?: object | string, _object = {}): Promise<ResultData> {
         return this.service.post(url, params, _object)
+    }
+
+    postFile(url: string, params?: FormData, _object = {}): Promise<ResultData> {
+        return this.service.post(url, params, {
+            headers: {
+                'Content-Type': 'multipart/form-data',
+            },
+            signal: this.signal,
+        })
     }
 
     put<T>(url: string, params?: object, _object = {}): Promise<ResultData<T>> {

@@ -2,38 +2,29 @@ import React, { useState } from 'react'
 import { Button, GetProp, Upload, UploadFile, UploadProps } from 'antd'
 import { InboxOutlined } from '@ant-design/icons'
 import { FileApi } from '@/api'
+import { useUpload } from '@/hooks/useUpload.ts'
 
 const { Dragger } = Upload
 type FileType = Parameters<GetProp<UploadProps, 'beforeUpload'>>[0]
 
-interface UploadTabProps {
-    onUpload: (info: any) => void
-}
-
-const UploadTab: React.FC<UploadTabProps> = ({ onUpload }) => {
+const UploadTab: React.FC = () => {
     const [fileList, setFileList] = useState<UploadFile[]>([])
     const [uploading, setUploading] = useState(false)
-
+    const { upload, uploadProgress } = useUpload()
     const handleUpload = () => {
-        const formData = new FormData()
-        fileList.forEach((file) => {
-            formData.append('files[]', file as FileType)
-        })
-        console.log(fileList, 'file')
-        setUploading(true)
+        console.log(fileList, 'list', uploadProgress)
+        upload(fileList)
     }
     const props: UploadProps = {
-        onRemove: (file) => {
-            const index = fileList.indexOf(file)
-            const newFileList = fileList.slice()
-            newFileList.splice(index, 1)
-            setFileList(newFileList)
-        },
+        onRemove: (file) => {},
         beforeUpload: (file) => {
-            setFileList([...fileList, file])
+            console.log(file, 'file')
+            if (file.size === 0) return false
 
+            setFileList([file, ...fileList])
             return false
         },
+        multiple: true,
         fileList,
     }
     const test = async () => {
