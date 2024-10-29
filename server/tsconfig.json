@@ -113,7 +113,8 @@
   },
   "include": [
     "src/**/*.ts",
-    "express.d.ts"
+    "express.d.ts",
+    "global.d.ts"
   ],
   "types": ["reflect-metadata"]
 }

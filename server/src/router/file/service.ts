@@ -1,11 +1,16 @@
 import { inject, injectable } from 'inversify'
 import { PrismaDB } from '@/db'
-import { FileUploadDto } from './file.dto'
+import { FileCheckDto, FileUploadDto } from './file.dto'
 import { plainToClass } from 'class-transformer'
 import { validate } from 'class-validator'
-import { generateUniqueBigIntId } from '@/utils'
+import { createUploadedList, extractExt, generateUniqueBigIntId, getChunkDir, Result } from '@/utils'
+import multiparty from 'multiparty'
 import * as fs from 'fs'
 import * as path from 'path'
+import * as process from 'node:process'
+import fse from 'fs-extra'
+
+const UPLOAD_DIR = path.resolve(process.cwd(), 'temp')
 
 @injectable()
 export class FileService {
@@ -16,7 +21,7 @@ export class FileService {
 
     // ... 其他现有方法 ...
 
-    public async uploadFile(fileData: FileUploadDto) {
+    public async mergeFile(fileData: FileUploadDto) {
         // 将传入的 fileData 转换为 FileUploadDto 实例
         const fileDto = plainToClass(FileUploadDto, fileData)
 
@@ -74,6 +79,32 @@ export class FileService {
                 message: '文件上传失败',
                 error: error.message,
             }
+        }
+    }
+
+    public async uploadFile(fileChunk:) {
+
+    }
+
+    public async checkFile(fileData: FileCheckDto) {
+        const { fileHash, fileName } = fileData
+        // 文件名后缀
+        const ext = extractExt(fileName)
+        // 最终文件路径
+        const filePath = path.resolve(UPLOAD_DIR, `${fileHash}${ext}`)
+        const isExist = fse.existsSync(filePath)
+        if (isExist) {
+            return Result.success({
+                shouldUpload: false,
+                uploadedList: [],
+            })
+        } else {
+            const data = await createUploadedList(fileHash)
+            console.log(data, 'data')
+            return Result.success({
+                shouldUpload: true,
+                uploadedList: data,
+            })
         }
     }
 }
