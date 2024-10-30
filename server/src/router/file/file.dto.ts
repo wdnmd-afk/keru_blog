@@ -81,7 +81,7 @@ export class FileChunkDto {
     index: number
 
     @IsNotEmpty()
-    chunkFile: any // 切片文件本身
+    chunkFile: Blob // 切片文件本身
 
     @IsNotEmpty()
     @IsString()

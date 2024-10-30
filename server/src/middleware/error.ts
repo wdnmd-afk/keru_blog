@@ -21,7 +21,6 @@ function errorHandlingMiddleware() {
 // 中间件来处理状态码
 function responseHandler(_req: Request, res: Response, next: NextFunction): void {
     res.sendResponse = (result: any) => {
-        console.log(result, 'ressssssssssssssss')
         if (result.code === 400) {
             res.status(400).json(result)
         } else {

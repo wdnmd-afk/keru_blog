@@ -42,10 +42,10 @@ export class File {
         res.send(result)
     }
 
-    @PostMapping('/upload', upload.single('file'))
+    @PostMapping('/upload', upload.single('chunkFile'))
     public async uploadFile(req: Request, res: Response) {
 
-        const result = await this.FileService.uploadFile({ file: req.file, ...req.body })
+        const result = await this.FileService.uploadFile({ chunkFile: req.file, ...req.body })
 
         res.sendResponse(result)
 
