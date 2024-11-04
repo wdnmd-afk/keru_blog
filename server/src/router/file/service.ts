@@ -1,12 +1,13 @@
 import { inject, injectable } from 'inversify'
 import { PrismaDB } from '@/db'
-import { FileCheckDto, FileChunkDto, FileUploadDto } from './file.dto'
-import { createUploadedList, extractExt, getChunkDir, Result } from '@/utils'
+import { FileCheckDto, FileChunkDto, FileMergeDto } from './file.dto'
+import { createUploadedList, extractExt, getChunkDir, pipeStream, Result } from '@/utils'
 import * as path from 'path'
 import * as process from 'node:process'
 import fse from 'fs-extra'
 
 const UPLOAD_DIR = path.resolve(process.cwd(), 'temp')
+
 
 @injectable()
 export class FileService {
@@ -17,8 +18,59 @@ export class FileService {
 
     // ... 其他现有方法 ...
 
-    public async mergeFile(fileData: FileUploadDto) {
+    public async mergeFile(fileData: FileMergeDto) {
+        const { chunkSize, fileHash, fileName } = fileData
+        // 提取文件后缀名
+        const ext = extractExt(fileName)
+        // 整个文件路径 /target/文件hash.文件后缀
+        const filePath = path.resolve(UPLOAD_DIR, `${fileHash}${ext}`)
+        try {
+            // target/chunkCache_fileHash值
+            const chunkCache = getChunkDir(fileHash)
+            // 读取 临时所有切片目录 chunkCache 下的所有文件和子目录，并返回这些文件和子目录的名称。
+            const chunkPaths = await fse.readdir(chunkCache)
+            // 根据切片下标进行排序
+            // 否则直接读取目录的获得的顺序会错乱
+            chunkPaths.sort((a, b) => a.split('-')[1] - b.split('-')[1])
+            console.log(chunkPaths)
 
+            let promiseList = []
+            for (let index = 0; index < chunkPaths.length; index++) {
+                // target/chunkCache_hash值/文件切片位置
+                let chunkPath = path.resolve(chunkCache, chunkPaths[index])
+                // 根据 index * chunkSize 在指定位置创建可写流
+                let writeStream = fse.createWriteStream(filePath, {
+                    start: index * chunkSize,
+                })
+                promiseList.push(pipeStream(chunkPath, writeStream))
+            }
+
+            // 使用 Promise.all 等待所有 Promise 完成
+            // (相当于等待所有的切片已写入完成且删除了所有的切片文件)
+            Promise.all(promiseList)
+                .then(() => {
+                    console.log('所有文件切片已成功处理并删除')
+                    // 在这里执行所有切片处理完成后的操作
+                    // 递归删除缓存切片目录及其内容 (注意，如果删除不存在的内容会报错)
+                    if (fse.pathExistsSync(chunkCache)) {
+                        fse.remove(chunkCache)
+                        console.log(`chunkCache缓存目录删除成功`)
+                        // 合并成功，返回 Promise.resolve
+                        return Promise.resolve()
+                    } else {
+
+                        return Promise.reject(Result.error(400, `${chunkCache} 不存在，不能删除`))
+                    }
+                })
+                .catch((err) => {
+                    console.error('文件处理过程中发生错误：', err)
+                    return Result.error(400, `文件处理过程中发生错误：${err}`)
+                })
+        } catch (err) {
+            console.log(err, '合并切片函数失败')
+            return Result.error(400, `合并切片函数失败:${err}`)
+        }
+        return Result.success({ fileName })
     }
 
     public async uploadFile(fileData: { chunkFile: Express.Multer.File } & FileChunkDto) {

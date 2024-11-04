@@ -5,6 +5,10 @@ interface CheckProp {
     fileName: string
 }
 
+interface mergeProp extends CheckProp {
+    chunkSize: number
+}
+
 class FileApi {
     public static async test(params: any) {
         return await Http.post('/file/test', params)
@@ -12,6 +16,10 @@ class FileApi {
 
     public static async checkFile(params: CheckProp) {
         return await Http.post('/file/check', params)
+    }
+
+    public static async mergeChunk(params: mergeProp) {
+        return await Http.post('/file/merge', params)
     }
 
     public static async uploadFile(params: FormData, onCancel: (fn: () => void) => void) {

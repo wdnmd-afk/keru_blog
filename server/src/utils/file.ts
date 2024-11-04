@@ -1,7 +1,6 @@
 import path from 'node:path'
 import fse from 'fs-extra'
 import process from 'node:process'
-import multiparty from 'multiparty'
 
 const UPLOAD_DIR = path.resolve(process.cwd(), 'temp')
 
@@ -30,18 +29,21 @@ const createUploadedList = async (fileHash: string) => {
         ? await fse.readdir(getChunkDir(fileHash))
         : []
 }
-
-const uploadFile = async (file: any) => {
-    const form = new multiparty.Form()
+// 把文件切片写成总的一个文件流
+const pipeStream = (path: string, writeStream: Blob) => {
     return new Promise((resolve, reject) => {
-        form.parse(file, (err: any, fields: any, files: any) => {
-            if (err) {
-                reject(err)
-            } else {
-                resolve(files)
-            }
+        // 创建可读流
+        const readStream = fse.createReadStream(path).on('error', (err) => {
+            // 如果在读取过程中发生错误，拒绝 Promise
+            reject(err)
+        })
+        // 在一个指定位置写入文件流
+        readStream.pipe(writeStream).on('finish', () => {
+            // 写入完成后，删除原切片文件
+            fse.unlinkSync(path)
+            resolve(1)
         })
     })
 }
 
-export { extractExt, createUploadedList, getChunkDir }
+export { extractExt, createUploadedList, getChunkDir, pipeStream }

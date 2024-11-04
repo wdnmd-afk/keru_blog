@@ -52,6 +52,7 @@ export class FileFragment {
 
 }
 
+
 export class FileCheckDto {
 
     @IsNotEmpty()
@@ -61,6 +62,12 @@ export class FileCheckDto {
     @IsNotEmpty()
     @IsString()
     fileName: string
+}
+
+export class FileMergeDto extends FileCheckDto {
+    @IsNotEmpty()
+    @IsNumber()
+    chunkSize: number
 }
 
 export class FileChunkDto {

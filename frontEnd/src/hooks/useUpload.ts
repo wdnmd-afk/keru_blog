@@ -1,5 +1,6 @@
 import { useCallback, useState } from 'react'
 import { FileApi } from '@/api'
+import { message } from 'antd'
 
 interface UploadOptions {
     chunkSize?: number // 切片大小，默认 1M
@@ -63,7 +64,7 @@ export const useUpload = (options?: UploadOptions) => {
         status: 'pending',
         fileName: '',
     })
-
+    const [messageApi] = message.useMessage()
     const [uploadFileList, setUploadFileList] = useState<FileChunkProp[]>([])
     //设置单次请求最大并发数
     const [maxRequest, setMaxRequest] = useState<number>(6)
@@ -71,13 +72,7 @@ export const useUpload = (options?: UploadOptions) => {
     // 生成文件 hash（web-worker）
     const useWorker = (file: Blob): Promise<{ fileHash: string; fileChunkList: ChunkProp[] }> => {
         return new Promise((resolve) => {
-            const worker = new Worker(
-                new URL('@/utils/upload/hash-worker.js', import.meta.url)
-                // {
-                //   type: 'module',
-                // }
-                //
-            )
+            const worker = new Worker(new URL('@/utils/upload/hash-worker.js', import.meta.url))
             worker.postMessage({ file, chunkSize: DEFAULT_OPTIONS.chunkSize })
             worker.onmessage = (e) => {
                 const { fileHash, fileChunkList } = e.data
@@ -121,29 +116,30 @@ export const useUpload = (options?: UploadOptions) => {
         //   itemB.cancel ? itemB.cancel() : ''
         // }
     }
+    const updateProgress = (chunk: ChunkProp, taskArrItem: FileChunkProp) => {
+        // 即使是超时请求也是会频繁的返回上传进度的,所以只能写成完成一片就添加它所占百分之多少,否则会造成误会
+        taskArrItem.percentage = Number(
+            ((taskArrItem.finishNumber / chunk.chunkNumber) * 100).toFixed(2)
+        )
+    }
 
     // 调取合并接口处理所有切片
     const handleMerge = async (taskArrItem: FileChunkProp) => {
-        console.log(123456)
-        /* const { fileName, fileHash } = taskArrItem
-         const res = await mergeChunk({
-             chunkSize: chunkSize,
-             fileName,
-             fileHash,
-         }).catch(() => {})
-         //  如果合并成功则标识该文件已经上传完成
-
-         if (res && res.code === 0) {
-             // 设置文件上传状态
-             finishTask(taskArrItem)
-             console.log('文件合并成功！')
-         } else {
-             // 否则暂停上传该文件
-             pauseUpload(taskArrItem, true)
-             console.log('文件合并失败！')
-         }
-         // 最后赋值文件切片上传完成个数为0
-         taskArrItem.finishNumber = 0*/
+        const { fileName, fileHash } = taskArrItem
+        const res = await FileApi.mergeChunk({
+            chunkSize: DEFAULT_OPTIONS.chunkSize!,
+            fileName,
+            fileHash,
+        }).catch(() => {
+            // 否则暂停上传该文件
+            pauseUpload(taskArrItem, true)
+            console.log('文件合并失败！')
+        })
+        //  如果合并成功则标识该文件已经上传完成
+        finishTask(taskArrItem)
+        // 最后赋值文件切片上传完成个数为0
+        taskArrItem.finishNumber = 0
+        messageApi.success(fileName + '文件上传成功！')
     }
     // 单个文件上传
     const uploadSingleFile = (taskArrItem: FileChunkProp) => {
@@ -197,35 +193,24 @@ export const useUpload = (options?: UploadOptions) => {
             fd.append('chunkHash', chunkHash)
             fd.append('chunkSize', String(chunkSize))
             fd.append('chunkNumber', String(chunkNumber))
-            const res = await FileApi.uploadFile(fd, (onCancelFunc) => {
-                // 在调用接口的同时，相当于同时调用了传入的这个函数，又能同时拿到返回的取消方法去赋值
-                chunk.cancel = onCancelFunc
-            }).catch(() => {})
-            // 先判断是不是处于暂停还是取消状态
-            // 你的状态都已经变成暂停或者中断了,就什么都不要再做了,及时停止
-            if (taskArrItem.state === 3 || taskArrItem.state === 5) {
-                return false
-            }
-
-            // 请求异常,或者请求成功服务端返回报错都按单片上传失败逻辑处理,.then.catch的.catch是只能捕捉请求异常的
-            if (!res || res.code === -1) {
-                taskArrItem.errNumber++
-                // 超过3次之后直接上传中断
-                if (taskArrItem.errNumber > 3) {
-                    console.log('切片上传失败超过三次了')
-                    pauseUpload(taskArrItem, false) // 上传中断
-                } else {
-                    console.log('切片上传失败还没超过3次')
-                    uploadChunk(chunk) // 失败了一片,继续当前分片请求
+            try {
+                const res = await FileApi.uploadFile(fd, (onCancelFunc) => {
+                    // 在调用接口的同时，相当于同时调用了传入的这个函数，又能同时拿到返回的取消方法去赋值
+                    chunk.cancel = onCancelFunc
+                })
+                // 先判断是不是处于暂停还是取消状态
+                // 你的状态都已经变成暂停或者中断了,就什么都不要再做了,及时停止
+                if (taskArrItem.state === 3 || taskArrItem.state === 5) {
+                    return false
                 }
-            } else if (res.code === 0) {
                 // 单个文件上传失败次数大于0则要减少一个
                 taskArrItem.errNumber > 0 ? taskArrItem.errNumber-- : 0
                 // 单个文件切片上传成功数+1
                 taskArrItem.finishNumber++
                 // 单个切片上传完成
                 chunk.finish = true
-                // signleFileProgress(chunk, taskArrItem) // 更新进度条
+                // 更新进度条(还没做)
+                updateProgress(chunk, taskArrItem)
                 // 上传成功了就删掉请求中数组中的那一片请求
                 taskArrItem.whileRequests = taskArrItem.whileRequests.filter(
                     (item) => item.chunkFile !== chunk.chunkFile
@@ -234,10 +219,20 @@ export const useUpload = (options?: UploadOptions) => {
                 // 如果单个文件最终成功数等于切片个数
                 if (taskArrItem.finishNumber === chunkNumber) {
                     // 全部上传完切片后就开始合并切片
-                    handleMerge(taskArrItem)
+                    await handleMerge(taskArrItem)
                 } else {
                     // 如果还没完全上传完，则继续上传
                     uploadSingleFile(taskArrItem)
+                }
+            } catch (e) {
+                taskArrItem.errNumber++
+                // 超过3次之后直接上传中断
+                if (taskArrItem.errNumber > 3) {
+                    console.log('切片上传失败超过三次了')
+                    pauseUpload(taskArrItem, false) // 上传中断
+                } else {
+                    console.log('切片上传失败还没超过3次')
+                    await uploadChunk(chunk) // 失败了一片,继续当前分片请求
                 }
             }
         }
@@ -301,19 +296,16 @@ export const useUpload = (options?: UploadOptions) => {
                         }
                         // 否则，返回从fileName开始到'.'前一个字符的子串作为文件名（不包含'.'）
                         baseName = file.name.slice(0, lastIndex)
-                        console.log(baseName, 'base')
                         // 这里要注意！可能同一个文件，是复制出来的，出现文件名不同但是内容相同，导致获取到的hash值也是相同的
                         // 所以文件hash要特殊处理
                         uploadTask.fileHash = `${fileHash}${baseName}`
                         uploadTask.state = 2
-                        console.log(uploadFileList, 'fileList')
                         // 检查文件是否已经存在
                         //fetch（check）
                         const { data, code } = await FileApi.checkFile({
                             fileHash: `${fileHash}${baseName}`,
                             fileName: file.name,
                         })
-                        if (code !== 200) return
                         const { shouldUpload, uploadedList } = data
                         if (!shouldUpload) {
                             finishTask(uploadTask)
@@ -334,7 +326,6 @@ export const useUpload = (options?: UploadOptions) => {
                                 finish: false,
                             }
                         })
-                        console.log(uploadTask.allChunkList, 'file')
                         // 如果已存在部分文件切片，则要过滤调已经上传的切片
                         if (uploadedList.length > 0) {
                             // 过滤掉已经上传过的切片
