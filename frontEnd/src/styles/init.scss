@@ -3,12 +3,10 @@
     margin: 0;
     padding: 0;
     border: 0;
-    vertical-align: baseline;
+
 }
 
-body {
-    line-height: 1;
-}
+
 
 ol,
 ul {
@@ -27,18 +25,7 @@ td {
     font-weight: normal;
 }
 
-blockquote,
-q {
-    quotes: none;
-}
 
-blockquote:before,
-blockquote:after,
-q:before,
-q:after {
-    content: '';
-    content: none;
-}
 
 a img {
     border: none;
@@ -55,7 +42,7 @@ a img {
 /* 设置字体 */
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: "Microsoft JhengHei UI", serif;
     font-size: 16px;
     line-height: 1.5;
 }
@@ -70,29 +57,6 @@ h6 {
     margin-bottom: 0.5em;
 }
 
-h1 {
-    font-size: 2em;
-}
-
-h2 {
-    font-size: 1.75em;
-}
-
-h3 {
-    font-size: 1.5em;
-}
-
-h4 {
-    font-size: 1.25em;
-}
-
-h5 {
-    font-size: 1em;
-}
-
-h6 {
-    font-size: 0.875em;
-}
 
 /* 设置颜色 */
 
@@ -117,4 +81,25 @@ a:hover {
     flex-direction: column;
     background: #fff;
     max-width: 100% !important;
+}
+
+.boxTitle{
+    font-size: 20px;
+    font-weight: 700;
+    background-color: rgba(203, 215, 232, 0.6);
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    letter-spacing: 2px;
+
+    &::before{
+        content: '';
+        display: inline-block;
+        width: 3px;
+        height: 24px;
+        background: #2b71fe;
+        margin-right: 8px;
+        border-radius: 7px;
+        vertical-align: middle;
+    }
 }

@@ -44,7 +44,7 @@ const Files: React.FC = () => {
         {
             key: '1',
             label: 'Upload',
-            children: <UploadTab onUpload={handleUpload} />,
+            children: <UploadTab />,
         },
         {
             key: '2',
@@ -65,20 +65,6 @@ const Files: React.FC = () => {
                         flexDirection: 'column',
                     }}
                 />
-            </div>
-            <div style={{ padding: '20px' }}>
-                {selectedFile ? (
-                    <div>
-                        <h2>File Preview</h2>
-                        <p>Filename: {selectedFile.name}</p>
-                        <p>Size: {selectedFile.size} bytes</p>
-                        {/* Add more preview logic here based on file type */}
-                    </div>
-                ) : (
-                    <div flex items-center justify-center h-full>
-                        Select a file to preview
-                    </div>
-                )}
             </div>
         </div>
     )

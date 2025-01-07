@@ -107,6 +107,7 @@ export class FileService {
             })
         } else {
             const data = await createUploadedList(fileHash)
+            console.log(data, 'ddd')
             return Result.success({
                 shouldUpload: true,
                 uploadedList: data,

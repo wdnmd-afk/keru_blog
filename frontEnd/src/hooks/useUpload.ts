@@ -1,6 +1,7 @@
 import { useCallback, useState } from 'react'
 import { FileApi } from '@/api'
 import { message } from 'antd'
+import { UploadFile } from 'antd/es/upload/interface'
 
 interface UploadOptions {
     chunkSize?: number // 切片大小，默认 1M
@@ -251,7 +252,7 @@ export const useUpload = (options?: UploadOptions) => {
     }
     // 主上传函数
     const handleUpload = useCallback(
-        async (files: File[]) => {
+        async (files: UploadFile[]) => {
             for await (const [index, file] of files.entries()) {
                 const chunkSize = options?.chunkSize || DEFAULT_OPTIONS.chunkSize
                 const uploadTask: FileChunkProp = {
