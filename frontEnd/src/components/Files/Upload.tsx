@@ -4,6 +4,7 @@ import { InboxOutlined } from '@ant-design/icons'
 import { useUpload } from '@/hooks/useUpload.ts'
 import { UploadFile } from 'antd/es/upload/interface'
 import EmptyContainer from '@/components/EmptyContainer.tsx'
+import KTable from '@/components/KTable.tsx'
 
 const { Dragger } = Upload
 
@@ -30,10 +31,33 @@ const UploadTab: React.FC = () => {
     useEffect(() => {
         console.log(fileList, 'file')
     }, [fileList])
-
+    const column = [
+        {
+            title: 'File Name',
+            key: 'name',
+        },
+        {
+            title: 'File Size（Bytes）',
+            key: 'size',
+        },
+        {
+            title: 'Operate',
+            render: (file: UploadFile) => (
+                <Button
+                    onClick={() => {
+                        setFileList((prevState) => {
+                            return prevState.filter((item) => item.uid !== file.uid)
+                        })
+                    }}
+                >
+                    删除
+                </Button>
+            ),
+        },
+    ]
     return (
         <div flex h-full>
-            <div flex-1 h-full flex-col>
+            <div flex-1 w-0 h-full flex-col>
                 {/* <div flex items-center>
                     <Button
                         type="primary"
@@ -55,11 +79,12 @@ const UploadTab: React.FC = () => {
                     </Dragger>
                 </div>
             </div>
-            <div flex-1 ml-5 flex-col>
+            <div flex-1 w-0 ml-5 flex-col>
                 <div className={'boxTitle'}>待上传文件列表</div>
                 <div flex-1 h-0 mt-5>
                     <EmptyContainer flag={fileList.length}>
-                        <table w-full text-align-center className={'text-[16px]'}>
+                        <KTable w-0 columns={column} dataSource={fileList}></KTable>
+                        {/*<table w-full text-align-center className={'text-[16px]'}>
                             <thead>
                                 <tr>
                                     <th className={'text-[18px] font-bold'}>File Name</th>
@@ -89,7 +114,7 @@ const UploadTab: React.FC = () => {
                                     </td>
                                 </tr>
                             ))}
-                        </table>
+                        </table>*/}
                     </EmptyContainer>
                 </div>
             </div>

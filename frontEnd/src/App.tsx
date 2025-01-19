@@ -1,6 +1,7 @@
 import AppRoutes from '@/routes/index.tsx'
 import React from 'react'
 import { ConfigProvider, ThemeConfig } from 'antd'
+
 const App: React.FC = () => {
     const theme: Partial<ThemeConfig> = {
         token: {
@@ -9,8 +10,16 @@ const App: React.FC = () => {
             colorError: '#B81919',
             colorWarning: '#786C36',
             colorInfo: '#7F2F4F',
-            colorSuccess: '#2F7F55'
-        }
+            colorSuccess: '#2F7F55',
+        },
+        components: {
+            Table: {
+                borderColor: '#566B99',
+                headerColor: '#fff',
+                headerBorderRadius: 0,
+                headerBg: '#5E83BB',
+            },
+        },
     }
     return (
         <ConfigProvider theme={theme}>
