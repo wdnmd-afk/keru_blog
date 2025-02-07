@@ -36,9 +36,8 @@ model UserDetail {
 }
 
 model File {
-  id           Int      @id @default(autoincrement())
+  id           String      @id @unique
   filename     String
-  originalName String
   mimeType     String
   size         Int
   path         String

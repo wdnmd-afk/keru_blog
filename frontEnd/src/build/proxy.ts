@@ -6,18 +6,19 @@ interface ProxyConfig {
     /** 代理目标地址，后端真实接口地址 */
     target: string
 }
+
 const proxyConfigMappings: Record<ProxyType, ProxyConfig> = {
     // 开发环境调用的接口
     dev: {
         prefix: '/dev-api',
-        target: 'http://127.0.0.1:3000'
+        target: 'http://127.0.0.1:3000',
     },
 
     // 生产环境调用的接口
     prod: {
         prefix: '/prod-api',
-        target: 'http://127.0.0.1:3000'
-    }
+        target: 'http://127.0.0.1:3000',
+    },
 }
 
 function getProxyConfig(envType: ProxyType = 'dev'): ProxyConfig {
@@ -32,8 +33,8 @@ function createViteProxy(isUseProxy = true, proxyType: ProxyType, basePath: stri
         [proxyConfig.prefix]: {
             target: proxyConfig.target,
             changeOrigin: true,
-            rewrite: path => path.replace(new RegExp('^' + basePath), '')
-        }
+            rewrite: (path) => path.replace(new RegExp('^' + basePath), ''),
+        },
     }
     return proxy
 }

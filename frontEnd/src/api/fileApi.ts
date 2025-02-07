@@ -8,6 +8,10 @@ interface CheckProp {
 interface mergeProp extends CheckProp {
     chunkSize: number
 }
+interface queryProp extends Page {
+    userName?: string
+    fileName?: string
+}
 
 class FileApi {
     public static async test(params: any) {
@@ -21,7 +25,9 @@ class FileApi {
     public static async mergeChunk(params: mergeProp) {
         return await Http.post('/file/merge', params)
     }
-
+    public static async queryFileList(params: queryProp) {
+        return await Http.post('/file/query', params)
+    }
     public static async uploadFile(params: FormData, onCancel: (fn: () => void) => void) {
         // 如果提供了 onCancel 回调，则传递取消函数
         if (typeof onCancel === 'function') {

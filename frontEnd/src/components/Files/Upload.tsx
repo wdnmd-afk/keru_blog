@@ -58,64 +58,42 @@ const UploadTab: React.FC = () => {
     return (
         <div flex h-full>
             <div flex-1 w-0 h-full flex-col>
-                {/* <div flex items-center>
-                    <Button
-                        type="primary"
-                        onClick={handleUpload}
-                        disabled={fileList.length === 0}
-                        loading={uploading}
-                        mr-10
-                    >
-                        {uploading ? 'Uploading' : 'Start Upload'}
-                    </Button>
-                </div>*/}
                 <div className={'boxTitle'}>拖拽/点击上传区域</div>
                 <div flex-1 h-0 mt-5>
                     <Dragger {...props}>
                         <p className="ant-upload-drag-icon">
                             <InboxOutlined />
                         </p>
-                        <p className="ant-upload-text">Click or drag file to this area to upload</p>
+                        <p className="ant-upload-text font-bold text-[18px]">
+                            点击上传或者拖拽文件到此区域上传！！！
+                        </p>
                     </Dragger>
                 </div>
             </div>
             <div flex-1 w-0 ml-5 flex-col>
                 <div className={'boxTitle'}>待上传文件列表</div>
-                <div flex-1 h-0 mt-5>
-                    <EmptyContainer flag={fileList.length}>
-                        <KTable w-0 columns={column} dataSource={fileList}></KTable>
-                        {/*<table w-full text-align-center className={'text-[16px]'}>
-                            <thead>
-                                <tr>
-                                    <th className={'text-[18px] font-bold'}>File Name</th>
-                                    <th className={'text-[18px] font-bold'}>File Size(bytes)</th>
-                                    <th className={'text-[18px] font-bold'}>Operate</th>
-                                </tr>
-                            </thead>
-                            {fileList.map((file) => (
-                                <tr>
-                                    <td>{file.name}</td>
-                                    <td>{file.size} </td>
-                                    <td>
-                                        <Button
-                                            onClick={() => {
-                                                setFileList((prevState) => {
-                                                    console.log(prevState, 'r')
-                                                    return prevState.filter(
-                                                        (item) => item.uid !== file.uid
-                                                    )
-                                                })
-                                            }}
-                                            type={'text'}
-                                            danger
-                                        >
-                                            删除
-                                        </Button>
-                                    </td>
-                                </tr>
-                            ))}
-                        </table>*/}
+                <div flex-1 h-0 mt-5 flex-col>
+                    <EmptyContainer flex-1 flag={fileList.length}>
+                        <KTable
+                            w-0
+                            columns={column}
+                            dataSource={fileList}
+                            rowKey={'uid'}
+                            total={0}
+                            pageSize={0}
+                        ></KTable>
                     </EmptyContainer>
+                    <div flex items-center justify-end bg-white p-2 pt-0>
+                        <Button
+                            type="primary"
+                            size={'large'}
+                            onClick={handleUpload}
+                            disabled={fileList.length === 0}
+                            loading={uploading}
+                        >
+                            {uploading ? '上传中' : '开始上传'}
+                        </Button>
+                    </div>
                 </div>
             </div>
         </div>

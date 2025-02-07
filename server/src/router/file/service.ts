@@ -1,7 +1,15 @@
 import { inject, injectable } from 'inversify'
 import { PrismaDB } from '@/db'
-import { FileCheckDto, FileChunkDto, FileMergeDto } from './file.dto'
-import { createUploadedList, extractExt, getChunkDir, pipeStream, Result } from '@/utils'
+import { FileCheckDto, FileChunkDto, FileMergeDto, FileQueryDto } from './file.dto'
+import {
+    createUploadedList,
+    extractExt,
+    generateUniqueBigIntId,
+    getChunkDir,
+    getJwt,
+    pipeStream,
+    Result,
+} from '@/utils'
 import * as path from 'path'
 import * as process from 'node:process'
 import fse from 'fs-extra'
@@ -18,7 +26,8 @@ export class FileService {
 
     // ... 其他现有方法 ...
 
-    public async mergeFile(fileData: FileMergeDto) {
+    public async mergeFile(req: { body: FileMergeDto }) {
+        const fileData: FileMergeDto = req.body
         const { chunkSize, fileHash, fileName } = fileData
         // 提取文件后缀名
         const ext = extractExt(fileName)
@@ -32,29 +41,44 @@ export class FileService {
             // 根据切片下标进行排序
             // 否则直接读取目录的获得的顺序会错乱
             chunkPaths.sort((a, b) => a.split('-')[1] - b.split('-')[1])
-            console.log(chunkPaths)
-
+            let totalSize = 0
             let promiseList = []
             for (let index = 0; index < chunkPaths.length; index++) {
                 // target/chunkCache_hash值/文件切片位置
                 let chunkPath = path.resolve(chunkCache, chunkPaths[index])
+                const stats = await fse.stat(chunkPath)
+                totalSize += stats.size
                 // 根据 index * chunkSize 在指定位置创建可写流
                 let writeStream = fse.createWriteStream(filePath, {
                     start: index * chunkSize,
                 })
                 promiseList.push(pipeStream(chunkPath, writeStream))
             }
-
+            const usr = await getJwt(req)
             // 使用 Promise.all 等待所有 Promise 完成
             // (相当于等待所有的切片已写入完成且删除了所有的切片文件)
             Promise.all(promiseList)
-                .then(() => {
+                .then(async () => {
                     console.log('所有文件切片已成功处理并删除')
-                    // 在这里执行所有切片处理完成后的操作
                     // 递归删除缓存切片目录及其内容 (注意，如果删除不存在的内容会报错)
                     if (fse.pathExistsSync(chunkCache)) {
                         fse.remove(chunkCache)
                         console.log(`chunkCache缓存目录删除成功`)
+                        // 在这里执行所有切片处理完成后的操作，把文件地址写入数据库
+                        const mimeType = fileName.split('.').pop()
+                        await this.PrismaDB.prisma.file.create({
+                            data: {
+                                filename: fileName,
+                                path: filePath,
+                                id: generateUniqueBigIntId(true) as string,
+                                mimeType,
+                                size: totalSize,
+                                uploader: {
+                                    connect: { id: usr.id }
+                                }
+                            },
+                        })
+
                         // 合并成功，返回 Promise.resolve
                         return Promise.resolve()
                     } else {
@@ -74,7 +98,6 @@ export class FileService {
     }
 
     public async uploadFile(fileData: { chunkFile: Express.Multer.File } & FileChunkDto) {
-        console.log(fileData)
         // 文件hash ，切片hash ，文件名
         const { fileHash, chunkHash, fileName, chunkFile } = fileData
         // 创建一个临时文件目录用于 临时存储所有文件切片
@@ -107,11 +130,40 @@ export class FileService {
             })
         } else {
             const data = await createUploadedList(fileHash)
-            console.log(data, 'ddd')
             return Result.success({
                 shouldUpload: true,
                 uploadedList: data,
             })
         }
+    }
+
+    public async queryFileList(queryDto:FileQueryDto) {
+        const { page, pageSize, fileName, userName } = queryDto;
+        const prisma = this.PrismaDB.prisma
+
+        // 构建查询条件：如果传入了 fileName 则做模糊匹配；
+        // 如果传入了 userName，则通过 uploader 关联做模糊匹配
+
+        const files = await prisma.file.findMany({
+            where: {
+
+            },
+            skip: (page - 1) * pageSize,
+            take: pageSize,
+            // 查询关联的 uploader，并只取出 name 字段
+            include: {
+                uploader: {
+                    select: {
+                        name: true,
+                    },
+                },
+            },
+            // 可以按上传时间降序排序（可根据实际需求调整）
+            orderBy: {
+                uploadedAt: 'desc',
+            },
+        });
+
+        return files;
     }
 }

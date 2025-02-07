@@ -16,23 +16,20 @@ export class File {
 
     @PostMapping('/merge')
     public async mergeFile(req: Request, res: Response) {
-        const result = await this.FileService.mergeFile(req.body)
+        const result = await this.FileService.mergeFile(req)
         res.sendResponse(result)
     }
 
     @PostMapping('/upload', upload.single('chunkFile'))
     public async uploadFile(req: Request, res: Response) {
-
         const result = await this.FileService.uploadFile({ chunkFile: req.file, ...req.body })
-
         res.sendResponse(result)
-
     }
 
-    @PostMapping('/test', middleware())
+    @PostMapping('/query')
     public async deleteFile(req: Request, res: Response) {
-
-        res.json({ ...req.user })
+        const data = await this.FileService.queryFileList(req.body)
+        res.sendResponse(data)
     }
 
     @PostMapping('/check')

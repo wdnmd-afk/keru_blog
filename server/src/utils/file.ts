@@ -25,7 +25,6 @@ const getChunkDir = (fileHash: string) => {
 const createUploadedList = async (fileHash: string) => {
     // 如果存在这个目录则返回这个目录下的所有切片
     // fse.readdir返回一个数组，其中包含指定目录中的文件名。
-    console.log(getChunkDir(fileHash), fse.existsSync(getChunkDir(fileHash)))
     return fse.existsSync(getChunkDir(fileHash))
         ? await fse.readdir(getChunkDir(fileHash))
         : []

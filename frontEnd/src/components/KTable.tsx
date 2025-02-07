@@ -6,7 +6,7 @@ import '@/styles/antd.scss'
 interface IKTableProps extends TableProps<any> {
     // 你可以在这里扩展额外的属性，像分页、数据加载等
     fetchData?: (page: number, pageSize: number) => void // 获取数据的函数
-    loading: boolean // 加载状态
+    loading?: boolean // 加载状态
     total: number // 总记录数
     pageSize: number // 每页显示条数
     columns: IKTableColumns[] // 表格列配置
@@ -26,6 +26,7 @@ const KTable = React.forwardRef<any, IKTableProps>(
             size = 'middle',
             total = 0,
             pageSize = 10,
+            rowKey = 'id',
             dataSource,
             columns,
             onChange,
@@ -166,7 +167,7 @@ const KTable = React.forwardRef<any, IKTableProps>(
                         scroll={{ y: height }}
                         style={{ overflow: 'hidden' }}
                         size={size}
-                        rowKey={'age'}
+                        rowKey={rowKey}
                         bordered={bordered}
                         rowClassName={rowClassName}
                         {...props}

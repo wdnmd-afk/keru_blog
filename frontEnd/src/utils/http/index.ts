@@ -36,6 +36,7 @@ class RequestHttp {
          * 客户端发送请求 -> [请求拦截器] -> 服务器
          * token校验(JWT) : 接受服务器返回的 token,存储到 vuex/pinia/本地储存当中
          */
+
         this.service.interceptors.request.use(
             (config: CustomAxiosRequestConfig) => {
                 // const userStore = useUserStore();

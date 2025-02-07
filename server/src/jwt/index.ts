@@ -5,6 +5,8 @@ import { ExtractJwt, Strategy } from 'passport-jwt'
 import Redis from 'ioredis'
 import { AuthenticationError } from './AuthenticationError'
 
+
+
 @injectable()
 export class JWT {
     private secret: string = 'keru$%^&*()asdsd'
@@ -103,4 +105,5 @@ export class JWT {
     public init() {
         return passport.initialize()
     }
+
 }

@@ -1,56 +1,11 @@
 // file.dto.ts
-import { IsDate, IsNotEmpty, IsNumber, IsOptional, IsString } from 'class-validator'
-
-export class FileUploadDto {
-    @IsOptional()
-    @IsNumber()
-    id?: number
-
-    @IsNotEmpty()
-    @IsString()
-    filename: string
-
-    @IsNotEmpty()
-    @IsString()
-    originalName: string
-
-    @IsNotEmpty()
-    @IsString()
-    mimeType: string
-
-    @IsNotEmpty()
-    @IsNumber()
-    size: number
-
-    @IsNotEmpty()
-    @IsString()
-    path: string
-
-    @IsOptional()
-    @IsDate()
-    uploadedAt?: Date
-
-    @IsOptional()
-    @IsDate()
-    updatedAt?: Date
-
-    @IsNotEmpty()
-    @IsString()
-    uploaderId: string
-
-    @IsOptional()
-    buffer?: Buffer
-}
+import {  IsNotEmpty, IsNumber, IsOptional, IsString } from 'class-validator'
+import { PageDto } from '@/common/dto'
 
 
-export class FileFragment {
-    @IsNotEmpty()
-    fragmentId: string
 
-    @IsNotEmpty()
-    file: File
 
-}
+
 
 
 export class FileCheckDto {
@@ -101,4 +56,11 @@ export class FileChunkDto {
     @IsNotEmpty()
     @IsNumber()
     chunkNumber: number // 切片个数
+}
+
+export class FileQueryDto extends PageDto{
+    @IsString()
+    userName?:string
+    @IsString()
+    fileName?:string
 }

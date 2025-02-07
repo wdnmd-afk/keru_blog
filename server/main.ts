@@ -7,7 +7,7 @@ import express from 'express'
 import { PrismaClient } from '@prisma/client'
 import { PrismaDB } from '@/db'
 import { JWT } from '@/jwt'
-import { AuthenticationErrorHandler, errorHandlingMiddleware, responseHandler } from '@/middleware/error'
+import { AuthenticationErrorHandler, errorHandlingMiddleware, responseHandler } from '@/middleware'
 // 加载环境变量 少了无法直接读取到.env文件
 import dotenv from 'dotenv'
 

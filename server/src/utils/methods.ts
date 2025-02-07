@@ -1,5 +1,6 @@
 import crypto from 'node:crypto'
 import { Result } from '@/utils/result'
+import jsonwebtoken from 'jsonwebtoken'
 
 const hashString = (str: string, random: number) => {
     const hash = crypto.createHash('md5')
@@ -17,10 +18,11 @@ const hashString = (str: string, random: number) => {
  * 生成一个唯一的 bigInt ID
  * @returns {bigint} 唯一的 bigInt ID
  */
-const generateUniqueBigIntId = (): bigint => {
+const generateUniqueBigIntId = (isString?:boolean): bigint|string => {
     const timestamp = BigInt(Date.now()) // 获取当前时间戳
     const randomPart = BigInt(Math.floor(Math.random() * 1e10)) // 随机生成一个大整数部分
-    return timestamp * BigInt(1e10) + randomPart // 组合为一个唯一的大整数
+    const id = timestamp * BigInt(1e10) + randomPart
+    return isString?id.toString():id // 组合为一个唯一的大整数
 }
 
 const handleError = (errors: any[], callBack: Function) => {
@@ -33,6 +35,14 @@ const handleError = (errors: any[], callBack: Function) => {
         return callBack()
     }
 }
+//获取JWT信息
+const getJwt = (req:any)=>{
+    const secret = 'keru$%^&*()asdsd'
+    const token = req.headers.authorization?.split(' ')[1]
+    if (!token) return null
+
+    return jsonwebtoken.verify(token, secret)
+}
 
 
-export { hashString, generateUniqueBigIntId, handleError }
+export { hashString, generateUniqueBigIntId, handleError,getJwt }
