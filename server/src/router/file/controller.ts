@@ -2,10 +2,8 @@ import { controller, httpPost as PostMapping } from 'inversify-express-utils'
 import { FileService } from './service'
 import { inject } from 'inversify'
 import type { Request, Response } from 'express'
-import { JWT } from '@/jwt'
 import multer from 'multer'
 
-const { middleware } = new JWT()
 
 const upload = multer({ storage: multer.memoryStorage() })
 

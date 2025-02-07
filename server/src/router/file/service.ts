@@ -144,26 +144,40 @@ export class FileService {
         // 构建查询条件：如果传入了 fileName 则做模糊匹配；
         // 如果传入了 userName，则通过 uploader 关联做模糊匹配
 
-        const files = await prisma.file.findMany({
-            where: {
-
-            },
-            skip: (page - 1) * pageSize,
-            take: pageSize,
-            // 查询关联的 uploader，并只取出 name 字段
-            include: {
-                uploader: {
-                    select: {
-                        name: true,
+        const [files, total] = await prisma.$transaction([
+            prisma.file.findMany({
+                where: { /* 你的过滤条件 */ }, // 保持与 count 相同的条件
+                skip: (page - 1) * pageSize,
+                take: pageSize,
+                include: {
+                    uploader: {
+                        select: {
+                            name: true,
+                        },
                     },
                 },
-            },
-            // 可以按上传时间降序排序（可根据实际需求调整）
-            orderBy: {
-                uploadedAt: 'desc',
-            },
-        });
+                orderBy: {
+                    uploadedAt: 'desc',
+                },
+            }),
+            prisma.file.count({
+                where: { /* 相同的过滤条件 */ } // 必须与 findMany 的条件一致
+            })
+        ]);
+        const result = files.map((file) => {
 
-        return files;
+            return {
+                ...file,
+                total,
+                uploader: file.uploader.name,
+            }
+        })
+
+        return Result.success(
+            {
+                fileList:result,
+                total
+            }
+        );
     }
 }

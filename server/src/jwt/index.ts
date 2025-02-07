@@ -6,7 +6,6 @@ import Redis from 'ioredis'
 import { AuthenticationError } from './AuthenticationError'
 
 
-
 @injectable()
 export class JWT {
     private secret: string = 'keru$%^&*()asdsd'
@@ -57,7 +56,6 @@ export class JWT {
             if (!user) {
                 return next(new AuthenticationError('User not authenticated'))
             }
-            console.log(user, 'user')
             req.user = user // 将用户信息添加到 req 对象
             next()
         }

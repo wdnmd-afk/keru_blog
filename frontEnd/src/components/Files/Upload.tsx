@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Button, Upload, UploadProps } from 'antd'
+import { Button, message, Upload, UploadProps } from 'antd'
 import { InboxOutlined } from '@ant-design/icons'
 import { useUpload } from '@/hooks/useUpload.ts'
 import { UploadFile } from 'antd/es/upload/interface'
@@ -13,7 +13,10 @@ const UploadTab: React.FC = () => {
     const [uploading, setUploading] = useState(false)
     const { upload } = useUpload()
     const handleUpload = async () => {
+        if (fileList.length === 0) return message.error('请选择文件')
         await upload(fileList)
+        message.success('上传成功')
+        setFileList([])
     }
     const props: UploadProps = {
         onRemove: (file: UploadFile) => {
@@ -28,6 +31,7 @@ const UploadTab: React.FC = () => {
         showUploadList: false,
         style: { height: '100%' },
     }
+
     useEffect(() => {
         console.log(fileList, 'file')
     }, [fileList])
@@ -71,7 +75,9 @@ const UploadTab: React.FC = () => {
                 </div>
             </div>
             <div flex-1 w-0 ml-5 flex-col>
-                <div className={'boxTitle'}>待上传文件列表</div>
+                <div className={'boxTitle flex '}>
+                    <div>待上传文件列表</div>
+                </div>
                 <div flex-1 h-0 mt-5 flex-col>
                     <EmptyContainer flex-1 flag={fileList.length}>
                         <KTable
@@ -83,17 +89,17 @@ const UploadTab: React.FC = () => {
                             pageSize={0}
                         ></KTable>
                     </EmptyContainer>
-                    <div flex items-center justify-end bg-white p-2 pt-0>
-                        <Button
-                            type="primary"
-                            size={'large'}
-                            onClick={handleUpload}
-                            disabled={fileList.length === 0}
-                            loading={uploading}
-                        >
-                            {uploading ? '上传中' : '开始上传'}
-                        </Button>
-                    </div>
+                </div>
+                <div>
+                    <Button
+                        type="primary"
+                        onClick={handleUpload}
+                        loading={uploading}
+                        variant={'outlined'}
+                        w-full
+                    >
+                        {uploading ? '上传中' : '开始上传'}
+                    </Button>
                 </div>
             </div>
         </div>

@@ -9,6 +9,7 @@ function errorHandlingMiddleware() {
             // 对于 403 错误，返回相应的 Result
             res.status(403).send(Result.tokenMissing())
         } else if (err.status === 500 || !err.status) {
+            console.log('这里出现500',err)
             // 处理其他错误，比如 500
             res.status(500).send(Result.serverError())
         } else {
@@ -34,7 +35,6 @@ function responseHandler(_req: Request, res: Response, next: NextFunction): void
 // 自定义的认证失败处理器
 const AuthenticationErrorHandler = (req: Request, res: Response, next: NextFunction) => {
     passport.authenticate('jwt', { session: false }, (err, user) => {
-        console.log(err, user, 'log')
         // 定义不需要身份验证的路径
         const openPaths = ['/login', '/register']
         for (let i = 0; i < openPaths.length; i++) {

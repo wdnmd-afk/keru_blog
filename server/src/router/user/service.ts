@@ -1,11 +1,11 @@
-import {injectable, inject} from 'inversify'
-import {hashString, Result,handleError} from "@/utils";
-import {PrismaDB} from '@/db'
-import * as crypto from 'crypto';
-import {UserDto, LoginDto} from './user.dto'
-import {plainToClass} from 'class-transformer'
-import {validate} from 'class-validator'
-import {JWT} from '@/jwt'
+import { inject, injectable } from 'inversify'
+import { handleError, hashString, Result } from '@/utils'
+import { PrismaDB } from '@/db'
+import * as crypto from 'crypto'
+import { LoginDto, UserDto } from './user.dto'
+import { plainToClass } from 'class-transformer'
+import { validate } from 'class-validator'
+import { JWT } from '@/jwt'
 
 @injectable()
 export class UserService {
@@ -35,7 +35,6 @@ export class UserService {
                 })
                 return Result.success('创建用户成功')
             } catch (error) {
-                console.log(error, 'err')
                 return {
                     code: 500,
                     message: '创建用户失败',
