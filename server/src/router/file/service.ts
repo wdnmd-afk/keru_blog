@@ -13,6 +13,7 @@ import {
 import * as path from 'path'
 import * as process from 'node:process'
 import fse from 'fs-extra'
+import { getFileType } from '../../../../enum'
 
 const UPLOAD_DIR = path.resolve(process.cwd(), 'temp')
 
@@ -96,7 +97,27 @@ export class FileService {
         }
         return Result.success({ fileName })
     }
+ public  async uploadSingle(file: { chunkFile: Express.Multer.File }& FileChunkDto ){
+        const {chunkFile,fileName} = file
+     // 提取文件后缀名
+     const ext = extractExt(fileName)
+     const type = getFileType(ext)
+     const UPLOAD_DIR = path.resolve(process.cwd(), `static/${type}`)
+     if (!fse.existsSync(UPLOAD_DIR)) {
+         await fse.mkdirs(UPLOAD_DIR)
+     }
+     // 整个文件路径 /target/文件hash.文件后缀
+     const filePath = path.resolve(UPLOAD_DIR, `${fileName}`)
+     // 检查 chunkDir临时文件目录 是否存在，如果不存在则创建它。
+     // 获取文件buffer
+     const buffer = Buffer.from(chunkFile.buffer)
+     // 将文件内容写入指定路径
+     console.log(UPLOAD_DIR, 'UPLOAD_DIR',filePath)
 
+     await fse.writeFile(filePath, buffer)
+     return Result.success({  fileName })
+
+ }
     public async uploadFile(fileData: { chunkFile: Express.Multer.File } & FileChunkDto) {
         // 文件hash ，切片hash ，文件名
         const { fileHash, chunkHash, fileName, chunkFile } = fileData

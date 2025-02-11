@@ -23,6 +23,11 @@ export class File {
         const result = await this.FileService.uploadFile({ chunkFile: req.file, ...req.body })
         res.sendResponse(result)
     }
+    @PostMapping('/uploadSingle', upload.single('file'))
+    public async uploadSingle(req: Request, res: Response) {
+        const result = await this.FileService.uploadSingle({ chunkFile: req.file, ...req.body })
+        res.sendResponse(result)
+    }
 
     @PostMapping('/query')
     public async queryFile(req: Request, res: Response) {
