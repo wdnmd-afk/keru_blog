@@ -2,8 +2,13 @@ import React, { useEffect, useState } from 'react'
 import EmptyContainer from '@/components/EmptyContainer.tsx'
 import KTable from '@/components/KTable.tsx'
 import { FileApi } from '@/api'
+import { Button, Input } from 'antd'
 
-const FilePreview: React.FC = () => {
+interface IProps {
+    changeKey: number
+}
+
+const FilePreview: React.FC<IProps> = ({ changeKey }) => {
     const [fileList, setFileList] = useState<any[]>([])
     const column = [
         {
@@ -30,6 +35,7 @@ const FilePreview: React.FC = () => {
             title: '更新时间',
             key: 'updatedAt',
         },
+
         {
             title: '上传者',
             key: 'uploader',
@@ -45,12 +51,33 @@ const FilePreview: React.FC = () => {
     const [total, setTotal] = useState(0)
     useEffect(() => {
         init()
-    }, [])
+    }, [changeKey])
+    const handleRowClick = (row) => {
+        console.log(row, 'rrr')
+        fetch(`http://localhost:3000${row.path}`)
+    }
     return (
         <div flex h-full>
             <div flex-1 w-0 h-full flex-col>
                 <div className={'boxTitle'}>文件列表</div>
-                <div flex-1 h-0 mt-5>
+                <div f-ic p-2>
+                    <Input
+                        onInput={(e) => {
+                            setQueryDto((prevState) => ({ ...prevState, fileName: e.target.value }))
+                        }}
+                        placeholder="请输入文件名称"
+                        mr-2
+                    />
+                    <Input
+                        onInput={(e) => {
+                            setQueryDto((prevState) => ({ ...prevState, userName: e.target.value }))
+                        }}
+                        placeholder="请输入上传者名称"
+                        mr-2
+                    />
+                    <Button onClick={init}>搜索</Button>
+                </div>
+                <div flex-1 h-0 mt-2>
                     <EmptyContainer flex-1 flag={fileList.length}>
                         <KTable
                             w-0
@@ -58,6 +85,7 @@ const FilePreview: React.FC = () => {
                             dataSource={fileList}
                             total={total}
                             pageSize={queryDto.pageSize}
+                            rowClick={(row) => handleRowClick(row)}
                         ></KTable>
                     </EmptyContainer>
                 </div>

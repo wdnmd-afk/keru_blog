@@ -32,16 +32,14 @@ const UploadTab: React.FC = () => {
         style: { height: '100%' },
     }
 
-    useEffect(() => {
-        console.log(fileList, 'file')
-    }, [fileList])
     const column = [
         {
-            title: 'File Name',
+            title: '文件名称',
             key: 'name',
         },
+
         {
-            title: 'File Size（Bytes）',
+            title: '文件大小',
             key: 'size',
         },
         {

@@ -36,7 +36,7 @@ function responseHandler(_req: Request, res: Response, next: NextFunction): void
 const AuthenticationErrorHandler = (req: Request, res: Response, next: NextFunction) => {
     passport.authenticate('jwt', { session: false }, (err, user) => {
         // 定义不需要身份验证的路径
-        const openPaths = ['/login', '/register']
+        const openPaths = ['/login', '/register','/static']
         for (let i = 0; i < openPaths.length; i++) {
             if (req.path.includes(openPaths[i])) {
                 return next()

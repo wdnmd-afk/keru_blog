@@ -32,7 +32,7 @@ export class FileService {
         // 提取文件后缀名
         const ext = extractExt(fileName)
         // 整个文件路径 /target/文件hash.文件后缀
-        const filePath = path.resolve(UPLOAD_DIR, `${fileHash}${ext}`)
+        const filePath = path.resolve(UPLOAD_DIR, `${fileName}`)
         try {
             // target/chunkCache_fileHash值
             const chunkCache = getChunkDir(fileHash)
@@ -69,13 +69,13 @@ export class FileService {
                         await this.PrismaDB.prisma.file.create({
                             data: {
                                 filename: fileName,
-                                path: filePath,
+                                path: `/static/${fileName}`,
                                 id: generateUniqueBigIntId(true) as string,
                                 mimeType,
                                 size: totalSize,
                                 uploader: {
-                                    connect: { id: usr.id }
-                                }
+                                    connect: { id: usr.id },
+                                },
                             },
                         })
 
@@ -137,16 +137,19 @@ export class FileService {
         }
     }
 
-    public async queryFileList(queryDto:FileQueryDto) {
-        const { page, pageSize, fileName, userName } = queryDto;
+    public async queryFileList(queryDto: FileQueryDto) {
+        const { page, pageSize, fileName, userName } = queryDto
         const prisma = this.PrismaDB.prisma
-
+        const where = {
+            filename: fileName ? { contains: fileName } : undefined, // 模糊匹配文件名，忽略大小写
+            uploader: userName ? { name: { contains: userName } } : undefined, // 模糊匹配用户名，忽略大小写
+        }
         // 构建查询条件：如果传入了 fileName 则做模糊匹配；
         // 如果传入了 userName，则通过 uploader 关联做模糊匹配
 
         const [files, total] = await prisma.$transaction([
             prisma.file.findMany({
-                where: { /* 你的过滤条件 */ }, // 保持与 count 相同的条件
+                where,
                 skip: (page - 1) * pageSize,
                 take: pageSize,
                 include: {
@@ -161,9 +164,9 @@ export class FileService {
                 },
             }),
             prisma.file.count({
-                where: { /* 相同的过滤条件 */ } // 必须与 findMany 的条件一致
-            })
-        ]);
+                where,
+            }),
+        ])
         const result = files.map((file) => {
 
             return {
@@ -175,9 +178,9 @@ export class FileService {
 
         return Result.success(
             {
-                fileList:result,
-                total
-            }
-        );
+                fileList: result,
+                total,
+            },
+        )
     }
 }

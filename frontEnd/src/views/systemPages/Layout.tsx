@@ -7,8 +7,8 @@ import { Dropdown } from 'antd'
 import SvgIcon from '@/components/SvgIcon.tsx'
 
 interface MenuItem {
-    name: string;
-    path: string;
+    name: string
+    path: string
 }
 
 const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
@@ -18,7 +18,6 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
         { name: 'Files', path: '/files' },
         { name: 'Technology', path: '/technology' },
     ]
-
 
     const navigate = useNavigate()
     const location = useLocation()
@@ -41,12 +40,13 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
             navigate('/login')
         }
     }
+
     return (
         <div className={style.layout_container}>
             <div className={style.layout_header}>
                 <div className={style.header_logo}></div>
                 <div className={style.header_menu}>
-                    {headerList.map(item => (
+                    {headerList.map((item) => (
                         <div
                             className={`${style.menu_item} ${activeMenu === item.path ? style.menu_item_active : ''}`}
                             key={item.name}
@@ -58,7 +58,11 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
                         </div>
                     ))}
                 </div>
-                <Dropdown menu={{ items, onClick }} arrow={{ pointAtCenter: true }} placement="bottom">
+                <Dropdown
+                    menu={{ items, onClick }}
+                    arrow={{ pointAtCenter: true }}
+                    placement="bottom"
+                >
                     <div className={style.header_person}>
                         {/*<div className={style.img}></div>*/}
                         <SvgIcon name={'react'} size={35}></SvgIcon>

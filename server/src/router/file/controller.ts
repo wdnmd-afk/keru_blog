@@ -25,6 +25,11 @@ export class File {
     }
 
     @PostMapping('/query')
+    public async queryFile(req: Request, res: Response) {
+        const data = await this.FileService.queryFileList(req.body)
+        res.sendResponse(data)
+    }
+    @PostMapping('/deleteFile')
     public async deleteFile(req: Request, res: Response) {
         const data = await this.FileService.queryFileList(req.body)
         res.sendResponse(data)

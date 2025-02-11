@@ -260,7 +260,7 @@ export const useUpload = (options?: UploadOptions) => {
                     state: 0, // 0是什么都不做,1文件处理中,2是上传中,3是暂停,4是上传完成,5上传中断，6是上传失败
                     fileHash: '',
                     fileName: file.name,
-                    fileSize: file.size,
+                    fileSize: file.size!,
                     allChunkList: [], // 所有请求的数据
                     whileRequests: [], // 正在请求中的请求个数,目前是要永远都保存请求个数为6
                     finishNumber: 0, //请求完成的个数
@@ -278,7 +278,7 @@ export const useUpload = (options?: UploadOptions) => {
                         fileName: file.name,
                     })
 
-                    if (file.size <= chunkSize!) {
+                    if (file.size! <= chunkSize!) {
                         // 小文件直接上传
                         console.log(file, 'size <= chunkSize')
                         uploadTask.state = 2

@@ -66,7 +66,7 @@ export class JWT {
      */
     public middleware() {
         return (req: any, res: any, next: any) => {
-            passport.authenticate('jwt', { session: false }, (err: any, user: any, info: any) => {
+            passport.authenticate('jwt', { session: false }, (err: any, user: any) => {
                 if (err) {
                     return next(err)
                 }

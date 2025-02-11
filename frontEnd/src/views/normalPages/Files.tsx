@@ -1,40 +1,26 @@
-import React, { useState } from 'react'
-import { List, message, Tabs, TabsProps } from 'antd'
-import type { UploadFile } from 'antd/es/upload/interface'
+import React from 'react'
+import { Tabs, TabsProps } from 'antd'
 import styles from '@/styles/files.module.scss'
 import UploadTab from '@/components/Files/Upload.tsx'
 import FilePreview from '@/components/Files/FilePreview.tsx'
 
-interface FileListTabProps {
-    files: UploadFile[]
-    onFileSelect: (file: UploadFile) => void
-}
-
-const FileListTab: React.FC<FileListTabProps> = ({ files, onFileSelect }) => {
-    return (
-        <List
-            itemLayout="horizontal"
-            dataSource={files}
-            renderItem={(item) => (
-                <List.Item onClick={() => onFileSelect(item)}>
-                    <List.Item.Meta title={item.name} description={`Size: ${item.size} bytes`} />
-                </List.Item>
-            )}
-        />
-    )
-}
-
 const Files: React.FC = () => {
+    const [changeKey, setChangeKey] = React.useState(1)
+    const handleChange = (key: string) => {
+        if (key === '2') {
+            setChangeKey(changeKey + 1)
+        }
+    }
     const items: TabsProps['items'] = [
         {
             key: '1',
-            label: 'Upload',
+            label: '文件上传',
             children: <UploadTab />,
         },
         {
             key: '2',
-            label: 'File List',
-            children: <FilePreview />,
+            label: '文件列表',
+            children: <FilePreview changeKey={changeKey} />,
         },
     ]
 
@@ -49,6 +35,7 @@ const Files: React.FC = () => {
                         display: 'flex',
                         flexDirection: 'column',
                     }}
+                    onChange={handleChange}
                 />
             </div>
         </div>
