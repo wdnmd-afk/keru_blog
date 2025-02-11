@@ -39,6 +39,9 @@ class FileApi {
         }
         return await Http.postFile('/file/upload', params)
     }
+    public static async uploadFileSingle(params: FormData) {
+        return await Http.postFile('/file/uploadSingle', params)
+    }
 }
 
 export { FileApi }

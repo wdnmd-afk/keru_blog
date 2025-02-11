@@ -250,6 +250,14 @@ export const useUpload = (options?: UploadOptions) => {
         // 4是上传完成
         item.state = 4
     }
+    const uploadComplete = async (file: File) => {
+        console.log(file, 'ffff')
+        //单独把小于1m的文件上传
+        const fd = new FormData()
+        fd.append('file', file)
+        fd.append('fileName', file.name)
+        const res = await FileApi.uploadFileSingle(fd)
+    }
     // 主上传函数
     const handleUpload = useCallback(
         async (files: UploadFile[]) => {
@@ -282,7 +290,8 @@ export const useUpload = (options?: UploadOptions) => {
                         // 小文件直接上传
                         console.log(file, 'size <= chunkSize')
                         uploadTask.state = 2
-                        // await uploadComplete(file)
+
+                        await uploadComplete(file)
                     } else {
                         // 大文件切片上传
                         // eslint-disable-next-line react-hooks/rules-of-hooks

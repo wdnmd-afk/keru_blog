@@ -19,6 +19,7 @@ const getFileType = (data:string,isFileName = false):TFileType => {
     if(isFileName){
          fileExtension = data.split('.').pop().toLowerCase();
     }
+    console.log(data,'dddd')
     for (const key in FileType) {
         if (FileType[key as TFileType].includes(fileExtension)) {
             return key as TFileType

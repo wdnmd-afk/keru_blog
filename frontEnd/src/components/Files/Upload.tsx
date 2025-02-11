@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { Button, message, Upload, UploadProps } from 'antd'
 import { InboxOutlined } from '@ant-design/icons'
 import { useUpload } from '@/hooks/useUpload.ts'
@@ -18,6 +18,7 @@ const UploadTab: React.FC = () => {
         message.success('上传成功')
         setFileList([])
     }
+
     const props: UploadProps = {
         onRemove: (file: UploadFile) => {
             setFileList(fileList.filter((item: any) => item.uid !== file.uid))
