@@ -6,14 +6,15 @@ const UPLOAD_DIR = path.resolve(process.cwd(), 'temp')
 
 // 提取文件后缀名
 const extractExt = (fileName: string) => {
+    console.log(fileName,'fffle')
     // 查找'.'在fileName中最后出现的位置
     const lastIndex = fileName.lastIndexOf('.')
     // 如果'.'不存在，则返回空字符串
     if (lastIndex === -1) {
         return ''
     }
-    // 否则，返回从'.'后一个字符到fileName末尾的子串作为文件后缀（包含'.'）
-    return fileName.slice(lastIndex)
+    // 否则，返回从'.'后一个字符到fileName末尾的子串作为文件后缀（不包含'.'）
+    return fileName.split('.').pop()
 }
 // 创建临时文件夹用于临时存储 所有的文件切片
 const getChunkDir = (fileHash: string) => {

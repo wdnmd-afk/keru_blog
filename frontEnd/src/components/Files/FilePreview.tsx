@@ -3,6 +3,8 @@ import EmptyContainer from '@/components/EmptyContainer.tsx'
 import KTable from '@/components/KTable.tsx'
 import { FileApi } from '@/api'
 import { Button, Input } from 'antd'
+import { UploadFile } from 'antd/es/upload/interface'
+import { MessageBox } from '@/utils'
 
 interface IProps {
     changeKey: number
@@ -40,6 +42,26 @@ const FilePreview: React.FC<IProps> = ({ changeKey }) => {
             title: '上传者',
             key: 'uploader',
         },
+        {
+            title: '操作',
+            render: (file: any) => (
+                <Button
+                    onClick={() => {
+                        MessageBox.confirm({
+                            confirm: () => {
+                                FileApi.deleteFile({ id: file.id }).then(() => {
+                                    init()
+                                })
+                            },
+                            content: '确定要删除该文件吗',
+                        })
+                    }}
+                    type={'text'}
+                >
+                    删除
+                </Button>
+            ),
+        },
     ]
 
     const init = async () => {
@@ -54,7 +76,7 @@ const FilePreview: React.FC<IProps> = ({ changeKey }) => {
     }, [changeKey])
     const handleRowClick = (row) => {
         console.log(row, 'rrr')
-        fetch(`http://localhost:3000${row.path}`)
+        // fetch(`http://localhost:3000${row.path}`)
     }
     return (
         <div flex h-full>

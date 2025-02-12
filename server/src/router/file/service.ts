@@ -13,7 +13,7 @@ import {
 import * as path from 'path'
 import * as process from 'node:process'
 import fse from 'fs-extra'
-import { getFileType } from '../../../../enum'
+import { getFileType } from '@/enum'
 
 const UPLOAD_DIR = path.resolve(process.cwd(), 'temp')
 
@@ -32,6 +32,11 @@ export class FileService {
         const { chunkSize, fileHash, fileName } = fileData
         // 提取文件后缀名
         const ext = extractExt(fileName)
+        const pathType = getFileType(ext)
+        const UPLOAD_DIR = path.resolve(process.cwd(), `static/${pathType}`)
+        if (!fse.existsSync(UPLOAD_DIR)) {
+            await fse.mkdirs(UPLOAD_DIR)
+        }
         // 整个文件路径 /target/文件hash.文件后缀
         const filePath = path.resolve(UPLOAD_DIR, `${fileName}`)
         try {
@@ -64,15 +69,13 @@ export class FileService {
                     // 递归删除缓存切片目录及其内容 (注意，如果删除不存在的内容会报错)
                     if (fse.pathExistsSync(chunkCache)) {
                         fse.remove(chunkCache)
-                        console.log(`chunkCache缓存目录删除成功`)
-                        // 在这里执行所有切片处理完成后的操作，把文件地址写入数据库
-                        const mimeType = fileName.split('.').pop()
+
                         await this.PrismaDB.prisma.file.create({
                             data: {
                                 filename: fileName,
-                                path: `/static/${fileName}`,
+                                path: `/static/${pathType}/${fileName}`,
                                 id: generateUniqueBigIntId(true) as string,
-                                mimeType,
+                                mimeType: ext,
                                 size: totalSize,
                                 uploader: {
                                     connect: { id: usr.id },
@@ -97,27 +100,44 @@ export class FileService {
         }
         return Result.success({ fileName })
     }
- public  async uploadSingle(file: { chunkFile: Express.Multer.File }& FileChunkDto ){
-        const {chunkFile,fileName} = file
-     // 提取文件后缀名
-     const ext = extractExt(fileName)
-     const type = getFileType(ext)
-     const UPLOAD_DIR = path.resolve(process.cwd(), `static/${type}`)
-     if (!fse.existsSync(UPLOAD_DIR)) {
-         await fse.mkdirs(UPLOAD_DIR)
-     }
-     // 整个文件路径 /target/文件hash.文件后缀
-     const filePath = path.resolve(UPLOAD_DIR, `${fileName}`)
-     // 检查 chunkDir临时文件目录 是否存在，如果不存在则创建它。
-     // 获取文件buffer
-     const buffer = Buffer.from(chunkFile.buffer)
-     // 将文件内容写入指定路径
-     console.log(UPLOAD_DIR, 'UPLOAD_DIR',filePath)
 
-     await fse.writeFile(filePath, buffer)
-     return Result.success({  fileName })
+    public async uploadSingle(req: any) {
+        const { file } = req
+        const fileName = file.originalname
+        // 提取文件后缀名
+        const ext = extractExt(fileName)
+        const type = getFileType(ext)
+        const UPLOAD_DIR = path.resolve(process.cwd(), `static/${type}`)
+        if (!fse.existsSync(UPLOAD_DIR)) {
+            await fse.mkdirs(UPLOAD_DIR)
+        }
+        const usr = await getJwt(req)
 
- }
+        // 整个文件路径 /target/文件hash.文件后缀
+        const filePath = path.resolve(UPLOAD_DIR, `${fileName}`)
+        // 检查 chunkDir临时文件目录 是否存在，如果不存在则创建它。
+        // 获取文件buffer
+        const buffer = Buffer.from(file.buffer)
+        // 将文件内容写入指定路径
+        await fse.writeFile(filePath, buffer)
+        await this.PrismaDB.prisma.file.create({
+            data: {
+                filename: fileName,
+                path: `/static/${type}/${fileName}`,
+                id: generateUniqueBigIntId(true) as string,
+                mimeType: ext,
+                size: file.size,
+                uploader: {
+                    connect: { id: usr.id },
+                },
+            },
+        })
+
+
+        return Result.success({ fileName })
+
+    }
+
     public async uploadFile(fileData: { chunkFile: Express.Multer.File } & FileChunkDto) {
         // 文件hash ，切片hash ，文件名
         const { fileHash, chunkHash, fileName, chunkFile } = fileData
@@ -203,5 +223,21 @@ export class FileService {
                 total,
             },
         )
+    }
+    public async deleteFile(id:string) {
+       const data = await this.PrismaDB.prisma.file.findUnique({
+           where:{id}
+        })
+       if(!data){
+           return Result.error(400,'文件记录不存在')
+       }
+       const tempPath = data.path.substring(1)
+        const UPLOAD_DIR = path.resolve(process.cwd(), `${tempPath}`)
+        await this.PrismaDB.prisma.file.delete({where: { id } })
+        const exists = await fse.pathExists(UPLOAD_DIR);
+        if (exists) {
+            await fse.remove(UPLOAD_DIR);
+        }
+        return  Result.success('删除成功')
     }
 }

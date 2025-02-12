@@ -59,7 +59,7 @@ server.setConfig((app) => {
     app.use(responseHandler)
     // 静态文件托管
     // 假设你要托管的静态文件位于 'public' 文件夹
-    app.use('/static',express.static(path.resolve(process.cwd(), 'temp')))
+    app.use('/static',express.static(path.resolve(process.cwd(), 'static')))
 })
 const app = server.build()
 

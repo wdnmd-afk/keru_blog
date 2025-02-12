@@ -25,7 +25,7 @@ export class File {
     }
     @PostMapping('/uploadSingle', upload.single('file'))
     public async uploadSingle(req: Request, res: Response) {
-        const result = await this.FileService.uploadSingle({ chunkFile: req.file, ...req.body })
+        const result = await this.FileService.uploadSingle(req)
         res.sendResponse(result)
     }
 
@@ -36,7 +36,7 @@ export class File {
     }
     @PostMapping('/deleteFile')
     public async deleteFile(req: Request, res: Response) {
-        const data = await this.FileService.queryFileList(req.body)
+        const data = await this.FileService.deleteFile(req.body.id)
         res.sendResponse(data)
     }
 

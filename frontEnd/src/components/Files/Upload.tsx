@@ -44,7 +44,7 @@ const UploadTab: React.FC = () => {
             key: 'size',
         },
         {
-            title: 'Operate',
+            title: '操作',
             render: (file: UploadFile) => (
                 <Button
                     onClick={() => {

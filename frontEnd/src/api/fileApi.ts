@@ -42,6 +42,9 @@ class FileApi {
     public static async uploadFileSingle(params: FormData) {
         return await Http.postFile('/file/uploadSingle', params)
     }
+    public static async deleteFile(params: { id: string }) {
+        return await Http.post('/file/deleteFile', params)
+    }
 }
 
 export { FileApi }
