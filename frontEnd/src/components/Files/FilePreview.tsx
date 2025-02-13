@@ -3,9 +3,8 @@ import EmptyContainer from '@/components/EmptyContainer.tsx'
 import KTable from '@/components/KTable.tsx'
 import { FileApi } from '@/api'
 import { Button, Input } from 'antd'
-import { UploadFile } from 'antd/es/upload/interface'
 import { MessageBox } from '@/utils'
-
+import FileViewerContainer from './FileViewerContainer.tsx'
 interface IProps {
     changeKey: number
 }
@@ -74,10 +73,16 @@ const FilePreview: React.FC<IProps> = ({ changeKey }) => {
     useEffect(() => {
         init()
     }, [changeKey])
-    const handleRowClick = (row) => {
+    const handleRowClick = (row: any) => {
         console.log(row, 'rrr')
+        const baseUrl = 'http://localhost:3000'
         // fetch(`http://localhost:3000${row.path}`)
+        setCurrentFileInfo({
+            ...row,
+            url: baseUrl + row.path,
+        })
     }
+    const [currentFileInfo, setCurrentFileInfo] = useState<any>({})
     return (
         <div flex h-full>
             <div flex-1 w-0 h-full flex-col>
@@ -85,6 +90,8 @@ const FilePreview: React.FC<IProps> = ({ changeKey }) => {
                 <div f-ic p-2>
                     <Input
                         onInput={(e) => {
+                            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                            // @ts-expect-error
                             setQueryDto((prevState) => ({ ...prevState, fileName: e.target.value }))
                         }}
                         placeholder="请输入文件名称"
@@ -92,6 +99,8 @@ const FilePreview: React.FC<IProps> = ({ changeKey }) => {
                     />
                     <Input
                         onInput={(e) => {
+                            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                            // @ts-expect-error
                             setQueryDto((prevState) => ({ ...prevState, userName: e.target.value }))
                         }}
                         placeholder="请输入上传者名称"
@@ -114,7 +123,9 @@ const FilePreview: React.FC<IProps> = ({ changeKey }) => {
             </div>
             <div flex-1 w-0 ml-5 flex-col>
                 <div className={'boxTitle'}>文件预览</div>
-                <div flex-1 h-0 mt-5 flex-col></div>
+                <div flex-1 h-0 flex-col>
+                    <FileViewerContainer fileInfo={currentFileInfo}></FileViewerContainer>
+                </div>
             </div>
         </div>
     )
