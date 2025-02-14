@@ -3,15 +3,10 @@ import ImageViewer from './ImageViewer'
 import UnsupportedViewer from './UnsupportedViewer.tsx'
 import EmptyContainer from '@/components/EmptyContainer.tsx'
 import { getFileType } from '@/enum'
-export type FileType = 'image' | 'pdf' | 'video' | 'audio' | 'unsupported'
+import { FileInfo } from '@/components/Files/dto.ts'
 
 interface FileViewerContainerProps {
-    fileInfo: {
-        url: string
-        type: FileType
-        name: string
-        mimeType: string
-    }
+    fileInfo: FileInfo
 }
 
 export default function FileViewerContainer({ fileInfo }: FileViewerContainerProps) {
@@ -35,16 +30,6 @@ export default function FileViewerContainer({ fileInfo }: FileViewerContainerPro
 
     const ViewerComponent = getViewerComponent()
 
-    const handleDownload = () => {
-        // 通用下载逻辑
-        const link = document.createElement('a')
-        link.href = fileInfo.url
-        link.download = fileInfo.name
-        document.body.appendChild(link)
-        link.click()
-        document.body.removeChild(link)
-    }
-
     return (
         <div className={`viewer-container ${isFullscreen ? 'fullscreen' : ''} h-full bg-white`}>
             {/* <Toolbar
@@ -60,7 +45,7 @@ export default function FileViewerContainer({ fileInfo }: FileViewerContainerPro
             />*/}
             <div className="h-full">
                 <EmptyContainer flag={fileInfo.url}>
-                    <ViewerComponent url={fileInfo.url} />
+                    <ViewerComponent url={fileInfo.url} fileInfo={fileInfo} />
                 </EmptyContainer>
             </div>
         </div>

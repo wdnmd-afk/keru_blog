@@ -1,5 +1,11 @@
+interface FileInfo {
+    url: string
+    name: string
+    mimeType: string
+}
 interface ViewerComponentProps {
     url: string
+    fileInfo?: FileInfo
 }
 
-export type { ViewerComponentProps }
+export type { ViewerComponentProps, FileInfo }
