@@ -1,6 +1,6 @@
 // components/FileViewer/viewers/PDFViewer.tsx
 import { Document, Page, pdfjs } from 'react-pdf'
-import React, { KeyboardEvent, useEffect, useState } from 'react'
+import React, { KeyboardEvent, useEffect, useMemo, useState } from 'react'
 import { ViewerComponentProps } from './dto.ts'
 pdfjs.GlobalWorkerOptions.workerSrc = `http://localhost:3000/static/JS/pdf.worker.min.js`
 import 'react-pdf/dist/Page/TextLayer.css'
@@ -34,10 +34,12 @@ function PDFViewer({ url, fileInfo }: ViewerComponentProps) {
     const [pageNumber, setPageNumber] = useState(1)
     const [numPages, setNumPages] = useState(10)
     const [ratio, setRatio] = useState(100)
+    const scale = useMemo(() => ratio / 100, [ratio])
     const [inputValue, setInputValue] = useState(1)
     useEffect(() => {
         setInputValue(pageNumber)
     }, [pageNumber])
+
     // 页码更新和缩放更新函数
     const handleZoomIn = () => setRatio((prev) => Math.min(prev + 10, 200))
     const handleZoomOut = () => setRatio((prev) => Math.max(prev - 10, 50))
@@ -106,7 +108,7 @@ function PDFViewer({ url, fileInfo }: ViewerComponentProps) {
                         setNumPages(numPages)
                     }}
                 >
-                    <Page h-full pageNumber={pageNumber} width={800} z-111 />
+                    <Page h-full pageNumber={pageNumber} scale={scale} z-111 />
                 </Document>
             </div>
         </div>
