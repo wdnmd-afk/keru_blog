@@ -102,41 +102,54 @@ export class FileService {
     }
 
     public async uploadSingle(req: any) {
-        const { file } = req
-        const fileName = file.originalname
-        // 提取文件后缀名
-        const ext = extractExt(fileName)
-        const type = getFileType(ext)
-        const UPLOAD_DIR = path.resolve(process.cwd(), `static/${type}`)
-        if (!fse.existsSync(UPLOAD_DIR)) {
-            await fse.mkdirs(UPLOAD_DIR)
-        }
-        const usr = await getJwt(req)
+        try {
+            const { file } = req;
+            const fileName = file.originalname;
 
-        // 整个文件路径 /target/文件hash.文件后缀
-        const filePath = path.resolve(UPLOAD_DIR, `${fileName}`)
-        // 检查 chunkDir临时文件目录 是否存在，如果不存在则创建它。
-        // 获取文件buffer
-        const buffer = Buffer.from(file.buffer)
-        // 将文件内容写入指定路径
-        await fse.writeFile(filePath, buffer)
-        await this.PrismaDB.prisma.file.create({
-            data: {
-                filename: fileName,
-                path: `/static/${type}/${fileName}`,
-                id: generateUniqueBigIntId(true) as string,
-                mimeType: ext,
-                size: file.size,
-                uploader: {
-                    connect: { id: usr.id },
+            // 提取文件后缀名并获取类型
+            const ext = extractExt(fileName);
+            const type = getFileType(ext);
+            const UPLOAD_DIR = path.resolve(process.cwd(), `static/${type}`);
+
+            // 确保文件目录存在
+            if (!fse.existsSync(UPLOAD_DIR)) {
+                await fse.mkdirs(UPLOAD_DIR);
+            }
+
+            // 获取当前用户信息
+            const usr = await getJwt(req);
+
+            // 生成完整的文件路径（直接使用文件名，无需编码）
+            const filePath = path.resolve(UPLOAD_DIR, fileName);
+
+            // 获取文件的 buffer
+            const buffer = file.buffer;
+
+            // 将文件内容写入指定路径
+            await fse.writeFile(filePath, buffer);
+
+            // 将文件元数据插入到数据库
+            await this.PrismaDB.prisma.file.create({
+                data: {
+                    filename: fileName,
+                    path: `/static/${type}/${fileName}`, // 使用原始文件名
+                    id: generateUniqueBigIntId(true) as string,
+                    mimeType: ext,
+                    size: file.size,
+                    uploader: {
+                        connect: { id: usr.id },
+                    },
                 },
-            },
-        })
+            });
 
-
-        return Result.success({ fileName })
-
+            return Result.success({ fileName });
+        } catch (error) {
+            console.error("文件上传错误:", error);
+            return Result.error(400,"文件上传失败，请重试！");
+        }
     }
+
+
 
     public async uploadFile(fileData: { chunkFile: Express.Multer.File } & FileChunkDto) {
         // 文件hash ，切片hash ，文件名

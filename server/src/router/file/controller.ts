@@ -20,11 +20,13 @@ export class File {
 
     @PostMapping('/upload', upload.single('chunkFile'))
     public async uploadFile(req: Request, res: Response) {
-        const result = await this.FileService.uploadFile({ chunkFile: req.file, ...req.body })
+        const fileName = req.file.originalname; // 获取原始文件名
+        const result = await this.FileService.uploadFile({ chunkFile: req.file, ...req.body,fileName })
         res.sendResponse(result)
     }
     @PostMapping('/uploadSingle', upload.single('file'))
     public async uploadSingle(req: Request, res: Response) {
+
         const result = await this.FileService.uploadSingle(req)
         res.sendResponse(result)
     }

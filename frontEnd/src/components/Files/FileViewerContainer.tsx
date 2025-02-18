@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import ImageViewer from './ImageViewer'
+import PDFViewer from './PDFViewer'
 import UnsupportedViewer from './UnsupportedViewer.tsx'
 import EmptyContainer from '@/components/EmptyContainer.tsx'
 import { getFileType } from '@/enum'
@@ -17,9 +18,9 @@ export default function FileViewerContainer({ fileInfo }: FileViewerContainerPro
         switch (type) {
             case 'IMAGE':
                 return ImageViewer
-            /*case 'pdf':
+            case 'PDF':
                 return PDFViewer
-            case 'video':
+            /*case 'video':
                 return VideoViewer
             case 'audio':
                 return AudioViewer*/

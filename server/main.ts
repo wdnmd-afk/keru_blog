@@ -8,6 +8,7 @@ import { PrismaClient } from '@prisma/client'
 import { PrismaDB } from '@/db'
 import { JWT } from '@/jwt'
 import path from 'path'
+import cors from 'cors'
 import { AuthenticationErrorHandler, errorHandlingMiddleware, responseHandler } from '@/middleware'
 // 加载环境变量 少了无法直接读取到.env文件
 import dotenv from 'dotenv'
@@ -49,6 +50,7 @@ container.bind(JWT).to(JWT) //主要代码
 const server = new InversifyExpressServer(container)
 server.setConfig((app) => {
     app.use(express.json())
+    app.use(cors()); // 启用所有域名的 CORS
     //passport-jwt自我校验
     app.use(container.get(JWT).init())
     //token错误校验

@@ -1,6 +1,6 @@
 import SvgIcon from '@/components/SvgIcon.tsx'
 import { Tooltip } from 'antd'
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 interface ToolbarProps {
     toolList: FunctionProps[]
@@ -9,13 +9,23 @@ interface ToolbarProps {
     fileName?: string
 }
 
-export interface FunctionProps {
+export interface FunctionPropsBase {
     icon: string
     size?: number
     color?: string
-    onClick: () => void
+    onClick: () => void | any
+    title?: string
+    type?: 'normal' | 'custom'
+    customComponent?: React.ReactNode
+}
+
+export interface CustomFunctionProps {
+    type: 'custom'
+    customComponent: React.ReactNode
     title?: string
 }
+
+export type FunctionProps = FunctionPropsBase | CustomFunctionProps
 
 function Toolbar({ toolList, isDownload, fileUrl, fileName }: ToolbarProps) {
     const [realToolList, setRealToolList] = useState<FunctionProps[]>(toolList)
@@ -59,20 +69,28 @@ function Toolbar({ toolList, isDownload, fileUrl, fileName }: ToolbarProps) {
                 background: 'linear-gradient(to bottom right,#e0f7fa, #ffffff)',
             }}
         >
-            {realToolList?.map((item) => (
-                <div
-                    key={item.title}
-                    cursor-pointer
-                    onClick={item.onClick}
-                    className={'mx-2 f-c-c'}
-                >
-                    <Tooltip placement="bottom" title={item.title}>
-                        <span className="inline-block">
-                            <SvgIcon name={item.icon} size={item.size || 24} color={item.color} />
-                        </span>
-                    </Tooltip>
-                </div>
-            ))}
+            {realToolList?.map((item, index) =>
+                item.type === 'custom' ? (
+                    <div key={item.title}>{item.customComponent}</div>
+                ) : (
+                    <div
+                        key={item.title}
+                        cursor-pointer
+                        onClick={item.onClick}
+                        className={'mx-2 f-c-c'}
+                    >
+                        <Tooltip placement="bottom" title={item.title}>
+                            <span className="f-c-c">
+                                <SvgIcon
+                                    name={item.icon}
+                                    size={item.size || 24}
+                                    color={item.color}
+                                />
+                            </span>
+                        </Tooltip>
+                    </div>
+                )
+            )}
         </div>
     )
 }
