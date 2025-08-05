@@ -1,8 +1,8 @@
 import React from 'react'
 import { Tabs, TabsProps } from 'antd'
 import styles from '@/styles/files.module.scss'
-import UploadTab from '@/components/Files/Upload.tsx'
-import FilePreview from '@/components/Files/FilePreview.tsx'
+import Upload from './Upload'
+import FilePreview from './FilePreview'
 
 const Files: React.FC = () => {
     const [changeKey, setChangeKey] = React.useState(1)
@@ -15,7 +15,7 @@ const Files: React.FC = () => {
         {
             key: '1',
             label: '文件上传',
-            children: <UploadTab />,
+            children: <Upload />,
         },
         {
             key: '2',
