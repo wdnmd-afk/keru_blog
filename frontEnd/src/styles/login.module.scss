@@ -1,83 +1,791 @@
-.login_container {
+// 深蓝偏黑主题色彩变量
+:root {
+    --primary-dark: #0f1419;
+    --primary-blue: #1a2332;
+    --accent-blue: #2d4263;
+    --highlight-blue: #3e5c7a;
+    --text-primary: #ffffff;
+    --text-secondary: #b8c5d1;
+    --text-muted: #8a9ba8;
+    --border-color: #2d4263;
+    --input-bg: rgba(45, 66, 99, 0.3);
+    --card-bg: rgba(26, 35, 50, 0.95);
+    --shadow-dark: rgba(0, 0, 0, 0.5);
+    --gradient-primary: linear-gradient(135deg, #0f1419 0%, #1a2332 50%, #2d4263 100%);
+    --gradient-accent: linear-gradient(135deg, #2d4263 0%, #3e5c7a 100%);
+}
+
+.loginContainer {
     width: 100vw;
-    height: 100%;
+    height: 100vh;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    position: relative;
+    background: var(--gradient-primary);
     overflow: hidden;
-    color: white;
-    :global {
-        .ant-tabs-tab {
-            width: 150px;
-            justify-content: center;
-            display: flex;
-            margin: 0 !important;
-            color: #fff;
-        }
+    position: relative;
+
+    @media (max-width: 1024px) {
+        flex-direction: column;
+    }
+}
+
+.backgroundSection {
+    flex: 1;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+
+    @media (max-width: 1024px) {
+        height: 40vh;
+        flex: none;
+    }
+}
+
+.backgroundImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.backgroundOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        135deg,
+        rgba(15, 20, 25, 0.8) 0%,
+        rgba(26, 35, 50, 0.7) 50%,
+        rgba(45, 66, 99, 0.6) 100%
+    );
+    backdrop-filter: blur(2px);
+}
+
+.brandSection {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: var(--text-primary);
+    padding: 2rem;
+
+    @media (max-width: 1024px) {
+        padding: 1rem;
+    }
+}
+
+
+
+.brandTitle {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, #ffffff 0%, #b8c5d1 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 4px 8px var(--shadow-dark);
+    letter-spacing: 2px;
+
+    @media (max-width: 1024px) {
+        font-size: 2.5rem;
     }
 
-    .outsideBox {
-        z-index: 999;
+    @media (max-width: 768px) {
+        font-size: 2rem;
+    }
+}
+
+.brandSubtitle {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    font-weight: 300;
+    letter-spacing: 1px;
+
+    @media (max-width: 768px) {
+        font-size: 1rem;
+    }
+}
+
+.formSection {
+    flex: 1;
+    max-width: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    position: relative;
+
+    @media (max-width: 1024px) {
+        max-width: none;
+        flex: 1;
+    }
+
+    @media (max-width: 768px) {
+        padding: 1rem;
+    }
+}
+.loginCard {
+    width: 100%;
+    max-width: 450px;
+    background: var(--card-bg);
+    border-radius: 20px;
+    padding: 3rem 2.5rem;
+    box-shadow:
+        0 20px 40px var(--shadow-dark),
+        0 0 0 1px rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+        content: '';
         position: absolute;
         top: 0;
         left: 0;
         right: 0;
-        bottom: 0;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
+        height: 2px;
+        background: var(--gradient-accent);
     }
 
-    .login_top {
-        height: 80px;
-        display: flex;
-        align-items: center;
-        font-size: 40px;
-        font-weight: 700;
-        word-spacing: 10px;
-        margin-left: 20px;
-    }
-    .formBox {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 20px;
-        color: #fff;
-        border: 1px solid #ccc;
-        border-radius: 10px;
-    }
-
-    .login_box {
-        flex: 1;
-        height: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        > div {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto;
-        }
-    }
-
-    .login_bottom {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        height: 80px;
+    @media (max-width: 768px) {
+        padding: 2rem 1.5rem;
+        border-radius: 16px;
     }
 }
 
-.login_container::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
+.formContainer {
     width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.formHeader {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.formLogo {
+    width: 90px;
+    height: 90px;
+    object-fit: cover;
+    border-radius: 20px;
+    margin-bottom: 0;
+    position: relative;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+
+    // 多层阴影效果
+    box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.3),
+        0 4px 16px rgba(0, 0, 0, 0.2),
+        0 0 0 1px rgba(255, 255, 255, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+
+    // 渐变边框效果
+    border: 2px solid transparent;
+    background:
+        linear-gradient(var(--card-bg), var(--card-bg)) padding-box,
+        linear-gradient(135deg, rgba(255, 255, 255, 0.3), rgba(62, 92, 122, 0.5), rgba(255, 255, 255, 0.1)) border-box;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: -3px;
+        left: -3px;
+        right: -3px;
+        bottom: -3px;
+        background: linear-gradient(135deg, var(--highlight-blue), #4a6b8a, var(--accent-blue));
+        border-radius: 23px;
+        z-index: -1;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    &::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+        border-radius: 50%;
+        transform: translate(-50%, -50%) scale(0);
+        transition: transform 0.3s ease;
+        pointer-events: none;
+    }
+
+    &:hover {
+        transform: translateY(-4px) scale(1.08);
+        box-shadow:
+            0 12px 40px rgba(0, 0, 0, 0.4),
+            0 6px 20px rgba(0, 0, 0, 0.3),
+            0 0 0 1px rgba(255, 255, 255, 0.2),
+            inset 0 1px 0 rgba(255, 255, 255, 0.3);
+
+        &::before {
+            opacity: 1;
+        }
+
+        &::after {
+            transform: translate(-50%, -50%) scale(1.2);
+        }
+    }
+
+    &:active {
+        transform: translateY(-2px) scale(1.05);
+    }
+
+    @media (max-width: 768px) {
+        width: 80px;
+        height: 80px;
+        border-radius: 18px;
+
+        &::before {
+            border-radius: 21px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        width: 70px;
+        height: 70px;
+        border-radius: 16px;
+
+        &::before {
+            border-radius: 19px;
+        }
+    }
+}
+
+.loginForm {
+    width: 100%;
+}
+
+.formItem {
+    margin-bottom: 2rem;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+
+    // 为不同类型的表单项设置不同间距
+    &.submitButton {
+        margin-top: 2.5rem;
+        margin-bottom: 0;
+    }
+
+    &.rememberMe {
+        margin-bottom: 2.5rem;
+    }
+}
+
+.inputWrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.inputIcon {
+    position: absolute;
+    left: 1rem;
+    color: var(--text-muted);
+    z-index: 2;
+    font-size: 16px;
+}
+
+.customInput {
+    width: 100%;
+    height: 48px;
+    padding: 0 1rem 0 2.8rem;
+    background: var(--input-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+
+    &::placeholder {
+        color: var(--text-muted);
+    }
+
+    &:hover {
+        border-color: var(--highlight-blue);
+        background: rgba(45, 66, 99, 0.4);
+    }
+
+    &:focus {
+        border-color: var(--highlight-blue);
+        background: rgba(45, 66, 99, 0.5);
+        box-shadow: 0 0 0 3px rgba(62, 92, 122, 0.2);
+        outline: none;
+    }
+
+    &.ant-input-status-error {
+        border-color: #ff6b6b;
+        background: rgba(255, 107, 107, 0.05);
+
+        &:focus {
+            border-color: #ff6b6b;
+            box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.15);
+            background: rgba(255, 107, 107, 0.08);
+        }
+
+        &:hover {
+            border-color: #ff6b6b;
+            background: rgba(255, 107, 107, 0.08);
+        }
+    }
+}
+
+.togglePassword {
+    position: absolute;
+    right: 0.8rem;
+    color: var(--text-muted);
+    border: none;
+    background: transparent;
+    padding: 0;
+    height: auto;
+    z-index: 2;
+
+    &:hover {
+        color: var(--text-secondary);
+        background: transparent;
+    }
+
+    &:focus {
+        background: transparent;
+        box-shadow: none;
+    }
+}
+
+.rememberMe {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+
+    :global(.ant-checkbox-wrapper) {
+        color: var(--text-secondary);
+        font-size: 0.9rem;
+
+        .ant-checkbox {
+            .ant-checkbox-inner {
+                background-color: var(--input-bg);
+                border-color: var(--border-color);
+                border-radius: 4px;
+            }
+
+            &.ant-checkbox-checked .ant-checkbox-inner {
+                background-color: var(--highlight-blue);
+                border-color: var(--highlight-blue);
+            }
+        }
+
+        &:hover .ant-checkbox-inner {
+            border-color: var(--highlight-blue);
+        }
+    }
+}
+
+.forgotPassword {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: color 0.3s ease;
+
+    &:hover {
+        color: var(--highlight-blue);
+        text-decoration: none;
+    }
+}
+
+.submitButton {
+    margin-bottom: 0;
+}
+
+.loginButton {
+    width: 100%;
+    height: 48px;
+    background: var(--gradient-accent);
+    border: none;
+    border-radius: 12px;
+    color: var(--text-primary);
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(45, 66, 99, 0.4);
+
+    &:hover {
+        background: linear-gradient(135deg, #3e5c7a 0%, #4a6b8a 100%);
+        transform: translateY(-1px);
+        box-shadow: 0 6px 16px rgba(45, 66, 99, 0.5);
+        border: none;
+        color: var(--text-primary);
+    }
+
+    &:focus {
+        background: var(--gradient-accent);
+        border: none;
+        box-shadow: 0 0 0 3px rgba(62, 92, 122, 0.3);
+        color: var(--text-primary);
+    }
+
+    &:active {
+        transform: translateY(0);
+    }
+
+    &.ant-btn-loading {
+        background: var(--gradient-accent);
+        border: none;
+        color: var(--text-primary);
+        animation: pulse 2s infinite;
+    }
+
+    &:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+        transform: none;
+        box-shadow: none;
+
+        &:hover {
+            transform: none;
+            box-shadow: none;
+        }
+    }
+}
+
+.customTabs {
+    width: 100%;
+
+    :global {
+        .ant-tabs-nav {
+            margin-bottom: 2rem;
+            margin-top: 1.5rem;
+            position: relative;
+
+            &::before {
+                border-bottom: 1px solid var(--border-color);
+            }
+        }
+
+        .ant-tabs-nav-wrap {
+            justify-content: center;
+        }
+
+        .ant-tabs-nav-list {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .ant-tabs-tab {
+            width: 120px;
+            justify-content: center;
+            display: flex;
+            margin: 0;
+            padding: 12px 0 16px 0;
+            color: var(--text-muted);
+            font-size: 1rem;
+            font-weight: 500;
+            border: none;
+            border-radius: 0;
+            transition: all 0.3s ease;
+            background: transparent;
+            position: relative;
+
+            &:hover {
+                color: var(--text-secondary);
+            }
+
+            &.ant-tabs-tab-active {
+                color: var(--text-primary);
+
+                .ant-tabs-tab-btn {
+                    color: var(--text-primary);
+                    font-weight: 600;
+                }
+            }
+
+            .ant-tabs-tab-btn {
+                transition: all 0.3s ease;
+            }
+        }
+
+        .ant-tabs-ink-bar {
+            background: linear-gradient(90deg, var(--highlight-blue) 0%, #4a6b8a 100%);
+            height: 3px;
+            border-radius: 2px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .ant-tabs-content-holder {
+            border: none;
+            padding-top: 0.5rem;
+        }
+
+        .ant-tabs-tabpane {
+            padding: 0;
+            animation: fadeInContent 0.4s ease-out;
+        }
+
+        .ant-tabs-tabpane-active {
+            animation: slideInUp 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+    }
+}
+
+// 全局Antd组件样式覆盖
+:global {
+    .ant-form-item-explain-error {
+        color: #ff6b6b;
+        font-size: 0.75rem;
+        margin-top: 0.5rem;
+        margin-bottom: 0;
+        padding: 0;
+        background: none;
+        border: none;
+        line-height: 1.3;
+        font-weight: 400;
+        opacity: 0.9;
+        animation: errorFadeIn 0.3s ease-out;
+    }
+
+    // 在登录表单中的表单项样式
+    .loginForm .ant-form-item {
+        margin-bottom: 2rem;
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+
+        // 错误状态下保持间距
+        &.ant-form-item-has-error {
+            margin-bottom: 2rem;
+        }
+
+        // 错误提示容器
+        .ant-form-item-explain {
+            margin-top: 0.5rem;
+            min-height: 1.2rem;
+        }
+    }
+
+    .ant-form-item-label {
+        padding-bottom: 0.5rem;
+
+        > label {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            font-weight: 500;
+            height: auto;
+
+            &.ant-form-item-required::before {
+                color: #ff4d4f;
+            }
+        }
+    }
+
+    .ant-input-affix-wrapper {
+        background: transparent;
+        border: none;
+        padding: 0;
+
+        .ant-input {
+            background: var(--input-bg);
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+
+            &::placeholder {
+                color: var(--text-muted);
+            }
+        }
+
+        &:hover,
+        &:focus,
+        &.ant-input-affix-wrapper-focused {
+            border: none;
+            box-shadow: none;
+
+            .ant-input {
+                border-color: var(--highlight-blue);
+                box-shadow: 0 0 0 3px rgba(62, 92, 122, 0.2);
+            }
+        }
+    }
+
+    // 只在登录页面内应用message样式
+    .loginContainer .ant-message {
+        .ant-message-notice-content {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: var(--text-primary);
+            backdrop-filter: blur(10px);
+        }
+
+        .ant-message-success .anticon {
+            color: #52c41a;
+        }
+
+        .ant-message-error .anticon {
+            color: #ff4d4f;
+        }
+    }
+}
+
+// 响应式设计
+@media (max-width: 768px) {
+    .loginContainer {
+        .formSection {
+            padding: 1rem;
+        }
+
+        .loginCard {
+            padding: 2rem 1.5rem;
+            border-radius: 16px;
+        }
+
+        .formHeader h1 {
+            font-size: 1.5rem;
+        }
+
+        .customTabs :global(.ant-tabs-tab) {
+            width: 100px;
+            font-size: 0.9rem;
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    .brandTitle {
+        font-size: 1.8rem;
+    }
+
+    .brandSubtitle {
+        font-size: 0.9rem;
+    }
+
+    .loginCard {
+        padding: 1.5rem 1rem;
+    }
+
+    .formHeader {
+        margin-bottom: 2rem;
+
+        h1 {
+            font-size: 1.3rem;
+        }
+
+        p {
+            font-size: 0.85rem;
+        }
+    }
+}
+
+// 动画效果
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInContent {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(62, 92, 122, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(62, 92, 122, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(62, 92, 122, 0);
+    }
+}
+
+@keyframes logoGlow {
+    0%, 100% {
+        box-shadow:
+            0 8px 32px rgba(0, 0, 0, 0.3),
+            0 4px 16px rgba(0, 0, 0, 0.2),
+            0 0 0 1px rgba(255, 255, 255, 0.1),
+            inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    }
+    50% {
+        box-shadow:
+            0 8px 32px rgba(0, 0, 0, 0.3),
+            0 4px 16px rgba(0, 0, 0, 0.2),
+            0 0 0 1px rgba(255, 255, 255, 0.2),
+            inset 0 1px 0 rgba(255, 255, 255, 0.3),
+            0 0 20px rgba(62, 92, 122, 0.3);
+    }
+}
+
+@keyframes errorFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-4px);
+    }
+    to {
+        opacity: 0.9;
+        transform: translateY(0);
+    }
+}
+
+.loginCard {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.brandSection {
+    animation: slideInRight 0.8s ease-out;
+}
+
+.formLogo {
+    animation:
+        fadeInUp 0.6s ease-out 0.3s both,
+        logoGlow 3s ease-in-out 1s infinite;
 }

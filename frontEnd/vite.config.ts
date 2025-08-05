@@ -17,7 +17,7 @@ export default defineConfig({
         }),
     ],
     server: {
-        port: 8080, // 你可以根据需要更改端口
+        port: 9394, // 你可以根据需要更改端口
         proxy: createViteProxy(true, 'dev', '/dev-api'),
     },
     resolve: {

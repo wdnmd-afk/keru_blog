@@ -1,12 +1,19 @@
-import React from 'react'
+import React, { useState } from 'react'
 import style from '@/styles/login.module.scss'
 import { Button, Checkbox, Form, Input, message, Tabs } from 'antd'
-import { LockOutlined, MailOutlined, UserOutlined } from '@ant-design/icons'
+import {
+    LockOutlined,
+    MailOutlined,
+    UserOutlined,
+    EyeOutlined,
+    EyeInvisibleOutlined,
+} from '@ant-design/icons'
 // import useStores from "@/hooks/useStores.ts";
 import { useGlobalStoreAction } from '@/store'
 import { LoginApi } from '@/api'
 import { BrowserLocalStorage, getRandomNumber } from '@/utils'
 import backgroundImage from '@/assets/images/login.png'
+import logoImage from '@/assets/images/k.jpg'
 import { useNavigate } from 'react-router-dom'
 
 type FieldType = {
@@ -17,36 +24,51 @@ type FieldType = {
     admin?: boolean
 }
 
-
 const Login: React.FC = () => {
     const [messageApi, contextHolder] = message.useMessage()
     const navigate = useNavigate()
     const { setUserInfo } = useGlobalStoreAction()
+    const [showPassword, setShowPassword] = useState(false)
+    const [loading, setLoading] = useState(false)
     const onFinish = async (params: FieldType) => {
-        const { data } = await LoginApi.login({
-            ...params,
-        })
+        setLoading(true)
+        try {
+            const { data } = await LoginApi.login({
+                ...params,
+            })
 
-        if (data) {
-            data.token = 'Bearer ' + data.token
-            setUserInfo(data)
-            BrowserLocalStorage.set('userInfo', data)
-            messageApi.success('登录成功')
-            navigate('/')
-            reset()
+            if (data) {
+                data.token = 'Bearer ' + data.token
+                setUserInfo(data)
+                BrowserLocalStorage.set('userInfo', data)
+                messageApi.success('登录成功')
+                navigate('/')
+                reset()
+            }
+        } catch (error) {
+            messageApi.error('登录失败，请检查用户名和密码')
+        } finally {
+            setLoading(false)
         }
     }
     const onFinishRegistry = async (params: FieldType) => {
-        const temp = {
-            name: params.name,
-            password: params.password,
-            email: params.email,
-            random: getRandomNumber(1, 1000),
-            admin: true,
+        setLoading(true)
+        try {
+            const temp = {
+                name: params.name,
+                password: params.password,
+                email: params.email,
+                random: getRandomNumber(1, 1000),
+                admin: true,
+            }
+            await LoginApi.register(temp)
+            messageApi.success('注册成功')
+            reset()
+        } catch (error) {
+            messageApi.error('注册失败，请稍后重试')
+        } finally {
+            setLoading(false)
         }
-        await LoginApi.register(temp)
-        messageApi.success('注册成功')
-        reset()
     }
 
     const [form] = Form.useForm()
@@ -54,75 +76,205 @@ const Login: React.FC = () => {
         form.resetFields()
     }
     const loginForm = (
-        <Form
-            name="login"
-            initialValues={{ remember: true }}
-            onFinish={onFinish}
-            style={{ width: 400, marginTop: 20 }}
-            autoComplete="off"
-            clearOnDestroy
-            form={form}
-        >
-            <Form.Item name="name" rules={[{ required: true, message: 'Please input your username!' }]}>
-                <Input size="large" prefix={<UserOutlined />} placeholder="Username" />
-            </Form.Item>
-            <Form.Item name="password" rules={[{ required: true, message: 'Please input your Password!' }]}>
-                <Input prefix={<LockOutlined />} type="password" placeholder="Password" size="large" />
-            </Form.Item>
-            <Form.Item name="remember" valuePropName="checked">
-                <Checkbox className={'color-[#fff]'}>记住密码</Checkbox>
-            </Form.Item>
-            <Form.Item>
-                <div flex justify-center>
-                    <Button size="large" type="primary" htmlType="submit" w-50>
+        <div className={style.formContainer}>
+            <div className={style.formHeader}>
+                <img src={logoImage} alt="K爷的空间" className={style.formLogo} />
+            </div>
+            <Form
+                name="login"
+                initialValues={{ remember: true }}
+                onFinish={onFinish}
+                autoComplete="off"
+                clearOnDestroy
+                form={form}
+                className={style.loginForm}
+            >
+                <Form.Item
+                    name="name"
+                    rules={[{ required: true, message: '请输入用户名!' }]}
+                    className={style.formItem}
+                >
+                    <div className={style.inputWrapper}>
+                        <UserOutlined className={style.inputIcon} />
+                        <Input
+                            size="large"
+                            placeholder="请输入用户名或邮箱"
+                            className={style.customInput}
+                        />
+                    </div>
+                </Form.Item>
+                <Form.Item
+                    name="password"
+                    rules={[{ required: true, message: '请输入密码!' }]}
+                    className={style.formItem}
+                >
+                    <div className={style.inputWrapper}>
+                        <LockOutlined className={style.inputIcon} />
+                        <Input
+                            type={showPassword ? 'text' : 'password'}
+                            placeholder="请输入密码"
+                            size="large"
+                            className={style.customInput}
+                        />
+                        <Button
+                            type="text"
+                            icon={showPassword ? <EyeInvisibleOutlined /> : <EyeOutlined />}
+                            onClick={() => setShowPassword(!showPassword)}
+                            className={style.togglePassword}
+                        />
+                    </div>
+                </Form.Item>
+                <div className={style.rememberMe}>
+                    <Form.Item name="remember" valuePropName="checked" style={{ margin: 0 }}>
+                        <Checkbox>记住密码</Checkbox>
+                    </Form.Item>
+                    <a href="#" className={style.forgotPassword}>
+                        忘记密码?
+                    </a>
+                </div>
+                <Form.Item className={style.submitButton}>
+                    <Button
+                        size="large"
+                        type="primary"
+                        htmlType="submit"
+                        loading={loading}
+                        className={style.loginButton}
+                        block
+                    >
                         登录
                     </Button>
-                </div>
-            </Form.Item>
-        </Form>
+                </Form.Item>
+            </Form>
+        </div>
     )
 
     const registerForm = (
-        <Form
-            name="register"
-            style={{ width: 400, marginTop: 20 }}
-            onFinish={onFinishRegistry}
-            autoComplete="off"
-            clearOnDestroy
-            form={form}
-        >
-            <Form.Item name="name" rules={[{ required: true, message: 'Please input your username!' }]}>
-                <Input size="large" prefix={<UserOutlined />} placeholder="Username" />
-            </Form.Item>
-            <Form.Item name="email" rules={[{ required: true, message: 'Please input your email!' }]}>
-                <Input size="large" prefix={<MailOutlined />} placeholder="Email" />
-            </Form.Item>
-            <Form.Item name="password" rules={[{ required: true, message: 'Please input your Password!' }]}>
-                <Input prefix={<LockOutlined />} type="password" placeholder="Password" size="large" />
-            </Form.Item>
-            <Form.Item name="confirmPassword" rules={[{ required: true, message: 'Please confirm your Password!' }]}>
-                <Input prefix={<LockOutlined />} type="password" placeholder="Confirm Password" size="large" />
-            </Form.Item>
-            <Form.Item>
-                <div flex justify-center>
-                    <Button size="large" type="primary" htmlType="submit" w-50>
+        <div className={style.formContainer}>
+            <div className={style.formHeader}>
+                <img src={logoImage} alt="K爷的空间" className={style.formLogo} />
+            </div>
+            <Form
+                name="register"
+                onFinish={onFinishRegistry}
+                autoComplete="off"
+                clearOnDestroy
+                form={form}
+                className={style.loginForm}
+            >
+                <Form.Item
+                    name="name"
+                    rules={[{ required: true, message: '请输入用户名!' }]}
+                    className={style.formItem}
+                >
+                    <div className={style.inputWrapper}>
+                        <UserOutlined className={style.inputIcon} />
+                        <Input
+                            size="large"
+                            placeholder="请输入用户名"
+                            className={style.customInput}
+                        />
+                    </div>
+                </Form.Item>
+                <Form.Item
+                    name="email"
+                    rules={[
+                        { required: true, message: '请输入邮箱!' },
+                        { type: 'email', message: '请输入有效的邮箱地址!' },
+                    ]}
+                    className={style.formItem}
+                >
+                    <div className={style.inputWrapper}>
+                        <MailOutlined className={style.inputIcon} />
+                        <Input
+                            size="large"
+                            placeholder="请输入邮箱"
+                            className={style.customInput}
+                        />
+                    </div>
+                </Form.Item>
+                <Form.Item
+                    name="password"
+                    rules={[
+                        { required: true, message: '请输入密码!' },
+                        { min: 6, message: '密码长度至少为6位!' },
+                    ]}
+                    className={style.formItem}
+                >
+                    <div className={style.inputWrapper}>
+                        <LockOutlined className={style.inputIcon} />
+                        <Input
+                            type={showPassword ? 'text' : 'password'}
+                            placeholder="请输入密码"
+                            size="large"
+                            className={style.customInput}
+                        />
+                        <Button
+                            type="text"
+                            icon={showPassword ? <EyeInvisibleOutlined /> : <EyeOutlined />}
+                            onClick={() => setShowPassword(!showPassword)}
+                            className={style.togglePassword}
+                        />
+                    </div>
+                </Form.Item>
+                <Form.Item
+                    name="confirmPassword"
+                    dependencies={['password']}
+                    rules={[
+                        { required: true, message: '请确认密码!' },
+                        ({ getFieldValue }) => ({
+                            validator(_, value) {
+                                if (!value || getFieldValue('password') === value) {
+                                    return Promise.resolve()
+                                }
+                                return Promise.reject(new Error('两次输入的密码不一致!'))
+                            },
+                        }),
+                    ]}
+                    className={style.formItem}
+                >
+                    <div className={style.inputWrapper}>
+                        <LockOutlined className={style.inputIcon} />
+                        <Input
+                            type="password"
+                            placeholder="请确认密码"
+                            size="large"
+                            className={style.customInput}
+                        />
+                    </div>
+                </Form.Item>
+                <Form.Item className={style.submitButton}>
+                    <Button
+                        size="large"
+                        type="primary"
+                        htmlType="submit"
+                        loading={loading}
+                        className={style.loginButton}
+                        block
+                    >
                         注册
                     </Button>
-                </div>
-            </Form.Item>
-        </Form>
+                </Form.Item>
+            </Form>
+        </div>
     )
 
     return (
-        <div className={style.login_container}>
+        <div className={style.loginContainer}>
             {contextHolder}
-            <img src={backgroundImage} alt="" className="w-full h-full" />
-            <div className={style.outsideBox}>
-                <div className={style.login_top}>K爷的空间</div>
-                <div className={style.login_box}>
+            <div className={style.backgroundSection}>
+                <img src={backgroundImage} alt="" className={style.backgroundImage} />
+                <div className={style.backgroundOverlay}></div>
+                <div className={style.brandSection}>
+                    <h1 className={style.brandTitle}>KeruのBlog</h1>
+                    <p className={style.brandSubtitle}>探索技术的无限可能</p>
+                </div>
+            </div>
+            <div className={style.formSection}>
+                <div className={style.loginCard}>
                     <Tabs
                         defaultActiveKey="login"
                         destroyInactiveTabPane={true}
+                        className={style.customTabs}
                         items={[
                             {
                                 label: '登录',
@@ -137,7 +289,6 @@ const Login: React.FC = () => {
                         ]}
                     />
                 </div>
-                <div className={style.login_bottom}></div>
             </div>
         </div>
     )

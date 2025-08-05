@@ -5,6 +5,7 @@ import { BrowserLocalStorage } from '@/utils'
 import type { MenuProps } from 'antd'
 import { Dropdown } from 'antd'
 import SvgIcon from '@/components/SvgIcon.tsx'
+import FloatingActions from '@/components/FloatingActions.tsx'
 
 interface MenuItem {
     name: string
@@ -73,6 +74,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
             <div flex-1 h-0>
                 {children}
             </div>
+            <FloatingActions />
         </div>
     )
 }
