@@ -1,0 +1,371 @@
+.tech_detail_container {
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    padding: 20px 30px;
+    // 兼容Firefox和IE
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+
+    // 隐藏滚动条
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+.detail_header {
+    background: var(--card-bg);
+    border-radius: 20px;
+    padding: 30px;
+    margin-bottom: 30px;
+    box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.3),
+        0 0 0 1px rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(62, 92, 122, 0.3);
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+
+    .tech_icon {
+        width: 60px;
+        height: 60px;
+        background: var(--gradient-accent);
+        border-radius: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--text-primary);
+        font-size: 1.8rem;
+        flex-shrink: 0;
+        box-shadow: 0 4px 15px rgba(62, 92, 122, 0.3);
+    }
+
+    .tech_info {
+        flex: 1;
+
+        h1 {
+            color: var(--text-primary);
+            font-size: 2rem;
+            font-weight: 700;
+            margin: 0 0 10px 0;
+            line-height: 1.3;
+        }
+
+        p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin: 0 0 15px 0;
+        }
+
+        .tech_tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+
+            :global(.ant-tag) {
+                margin: 0;
+                padding: 4px 12px;
+                border-radius: 8px;
+                font-size: 0.85rem;
+                font-weight: 500;
+            }
+        }
+    }
+}
+
+.detail_content {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.content_card {
+    background: var(--card-bg);
+    border: 1px solid rgba(62, 92, 122, 0.3);
+    border-radius: 16px;
+    box-shadow:
+        0 4px 20px rgba(0, 0, 0, 0.2),
+        0 0 0 1px rgba(255, 255, 255, 0.05);
+
+    :global(.ant-card-head) {
+        background: transparent;
+        border-bottom: 1px solid rgba(62, 92, 122, 0.2);
+
+        .ant-card-head-title {
+            color: var(--text-primary);
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+    }
+
+    :global(.ant-card-body) {
+        padding: 24px;
+        background: transparent;
+    }
+
+    // Timeline样式
+    :global(.ant-timeline) {
+        .ant-timeline-item-head {
+            background: transparent;
+        }
+
+        .ant-timeline-item-content {
+            h4 {
+                color: var(--text-primary);
+                font-size: 1.2rem;
+                font-weight: 700;
+                margin: 0 0 8px 0;
+            }
+
+            p {
+                color: var(--text-primary);
+                line-height: 1.6;
+                margin: 0;
+                opacity: 0.9;
+            }
+        }
+    }
+
+    // Collapse样式
+    :global(.ant-collapse) {
+        background: transparent;
+        border: none;
+
+        .ant-collapse-item {
+            background: rgba(62, 92, 122, 0.1);
+            border: 1px solid rgba(62, 92, 122, 0.2);
+            border-radius: 12px;
+            margin-bottom: 12px;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+
+            .ant-collapse-header {
+                background: transparent;
+                color: var(--text-primary);
+                font-weight: 600;
+                border-radius: 12px 12px 0 0;
+
+                &:hover {
+                    background: rgba(62, 92, 122, 0.15);
+                }
+            }
+
+            .ant-collapse-content {
+                background: transparent;
+                border-top: 1px solid rgba(62, 92, 122, 0.2);
+
+                .ant-collapse-content-box {
+                    color: var(--text-primary);
+
+                    h5 {
+                        color: var(--text-primary);
+                        font-weight: 700;
+                        margin: 16px 0 8px 0;
+                        font-size: 1.1rem;
+                    }
+
+                    ul {
+                        margin: 8px 0;
+                        padding-left: 20px;
+                        color: var(--text-primary);
+
+                        li {
+                            margin: 4px 0;
+                            line-height: 1.6;
+                            color: var(--text-primary);
+                            opacity: 0.9;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // Alert组件样式
+    :global(.ant-alert) {
+        background: rgba(62, 92, 122, 0.1);
+        border: 1px solid rgba(62, 92, 122, 0.3);
+        border-radius: 8px;
+
+        :global(.ant-alert-message) {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        :global(.ant-alert-description) {
+            color: var(--text-primary);
+            opacity: 0.9;
+        }
+
+        :global(.ant-alert-icon) {
+            color: var(--text-primary);
+        }
+
+        &:global(.ant-alert-warning) {
+            background: rgba(250, 140, 22, 0.1);
+            border-color: rgba(250, 140, 22, 0.3);
+
+            :global(.ant-alert-message) {
+                color: var(--text-primary);
+            }
+
+            :global(.ant-alert-description) {
+                color: var(--text-primary);
+            }
+
+            :global(.ant-alert-icon) {
+                color: #fa8c16;
+            }
+        }
+
+        &:global(.ant-alert-error) {
+            background: rgba(245, 34, 45, 0.1);
+            border-color: rgba(245, 34, 45, 0.3);
+
+            :global(.ant-alert-message) {
+                color: var(--text-primary);
+            }
+
+            :global(.ant-alert-description) {
+                color: var(--text-primary);
+            }
+
+            :global(.ant-alert-icon) {
+                color: #ff4d4f;
+            }
+        }
+    }
+}
+
+.best_practices {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+
+    .practice_item {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        padding: 16px;
+        background: rgba(62, 92, 122, 0.1);
+        border-radius: 12px;
+        border: 1px solid rgba(62, 92, 122, 0.2);
+        transition: all 0.3s ease;
+
+        &:hover {
+            background: rgba(62, 92, 122, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .practice_icon {
+            color: #52c41a;
+            font-size: 1.2rem;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+
+        h4 {
+            color: var(--text-primary);
+            font-size: 1rem;
+            font-weight: 600;
+            margin: 0 0 4px 0;
+        }
+
+        p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin: 0;
+        }
+    }
+}
+
+.resources {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+
+    :global(.ant-tag) {
+        margin: 0;
+        padding: 6px 12px;
+        border-radius: 8px;
+        font-size: 0.9rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+
+        &:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+    }
+}
+
+// 响应式设计
+@media (max-width: 768px) {
+    .tech_detail_container {
+        padding: 15px 20px;
+    }
+
+    .detail_header {
+        padding: 20px;
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+
+        .tech_icon {
+            width: 50px;
+            height: 50px;
+            font-size: 1.5rem;
+            align-self: center;
+        }
+
+        .tech_info {
+            h1 {
+                font-size: 1.6rem;
+            }
+
+            p {
+                font-size: 1rem;
+            }
+        }
+    }
+
+    .best_practices {
+        grid-template-columns: 1fr;
+        gap: 15px;
+
+        .practice_item {
+            padding: 12px;
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    .tech_detail_container {
+        padding: 10px 15px;
+    }
+
+    .detail_header {
+        padding: 15px;
+
+        .tech_info {
+            h1 {
+                font-size: 1.4rem;
+            }
+
+            p {
+                font-size: 0.9rem;
+            }
+        }
+    }
+
+    .content_card {
+        :global(.ant-card-body) {
+            padding: 16px;
+        }
+    }
+}

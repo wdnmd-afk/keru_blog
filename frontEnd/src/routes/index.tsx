@@ -40,6 +40,10 @@ const LazyComponents = {
     Books: lazy(() => import('@/views/Books/index.tsx')),               // 书籍推荐模块 - 技术书籍展示和推荐
     Technology: lazy(() => import('@/views/Technology/index.tsx')),     // 技术栈展示模块 - 技能、项目、学习历程
     Files: lazy(() => import('@/views/Files/index.tsx')),               // 文件管理模块 - 文件上传、预览、管理
+
+    // ==================== Technology子模块 ====================
+    TechnologyLayout: lazy(() => import('@/views/Technology/TechnologyLayout.tsx')), // Technology子路由布局
+    ReactDetail: lazy(() => import('@/views/Technology/pages/ReactDetail.tsx')),     // React技术详解
 }
 
 /**
@@ -83,6 +87,16 @@ const privateRoutes = [
         path: '/technology',
         component: <LazyComponents.Technology />,
         description: '技术栈 - 个人技能、项目经验、学习历程展示'
+    },
+    {
+        path: '/technology/:tech',
+        component: <LazyComponents.TechnologyLayout />,
+        description: '技术详解 - 具体技术的深度解析'
+    },
+    {
+        path: '/technology/:tech/:topic',
+        component: <LazyComponents.TechnologyLayout />,
+        description: '技术主题详解 - 具体技术主题的深度解析'
     },
     {
         path: '/files',

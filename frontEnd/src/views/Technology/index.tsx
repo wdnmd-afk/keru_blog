@@ -1,12 +1,17 @@
 import React from 'react'
 import { Card, Row, Col, Tag, Button, Tabs, Timeline, Progress } from 'antd'
-import { 
-    CodeOutlined, 
-    RocketOutlined, 
-    BulbOutlined, 
+import { useNavigate } from 'react-router-dom'
+import {
+    CodeOutlined,
+    RocketOutlined,
+    BulbOutlined,
     TrophyOutlined,
     GithubOutlined,
-    LinkOutlined
+    LinkOutlined,
+    DatabaseOutlined,
+    ApiOutlined,
+    CloudOutlined,
+    ToolOutlined
 } from '@ant-design/icons'
 import styles from '@/styles/technology.module.scss'
 
@@ -14,12 +19,70 @@ const { TabPane } = Tabs
 
 // 技术栈数据
 const techStack = [
-    { name: 'React', level: 90, color: '#61dafb' },
-    { name: 'TypeScript', level: 85, color: '#3178c6' },
-    { name: 'Node.js', level: 80, color: '#339933' },
-    { name: 'Vue.js', level: 75, color: '#4fc08d' },
-    { name: 'Python', level: 70, color: '#3776ab' },
-    { name: 'Docker', level: 65, color: '#2496ed' },
+    {
+        name: 'React',
+        level: 90,
+        color: '#61dafb',
+        icon: <CodeOutlined />,
+        route: 'react',
+        description: 'React生态系统与最佳实践'
+    },
+    {
+        name: 'TypeScript',
+        level: 85,
+        color: '#3178c6',
+        icon: <CodeOutlined />,
+        route: 'typescript',
+        description: 'TypeScript类型系统与进阶'
+    },
+    {
+        name: 'Node.js',
+        level: 80,
+        color: '#339933',
+        icon: <DatabaseOutlined />,
+        route: 'nodejs',
+        description: 'Node.js后端开发技术'
+    },
+    {
+        name: 'Vue.js',
+        level: 75,
+        color: '#4fc08d',
+        icon: <CodeOutlined />,
+        route: 'vue',
+        description: 'Vue.js框架深度解析'
+    },
+    {
+        name: 'Python',
+        level: 70,
+        color: '#3776ab',
+        icon: <ApiOutlined />,
+        route: 'python',
+        description: 'Python开发与数据处理'
+    },
+    {
+        name: 'Docker',
+        level: 65,
+        color: '#2496ed',
+        icon: <CloudOutlined />,
+        route: 'docker',
+        description: 'Docker容器化技术'
+    },
+    {
+        name: '开发工具',
+        level: 80,
+        color: '#ff6b6b',
+        icon: <ToolOutlined />,
+        route: 'tools',
+        description: '开发工具与效率提升'
+    },
+    {
+        name: 'Git & GitHub',
+        level: 85,
+        color: '#f1502f',
+        icon: <GithubOutlined />,
+        route: 'git',
+        description: '版本控制与团队协作'
+    }
 ]
 
 // 项目数据
@@ -85,6 +148,13 @@ const learningTimeline = [
 ]
 
 const Technology: React.FC = () => {
+    const navigate = useNavigate()
+
+    // 处理技术栈卡片点击
+    const handleTechClick = (route: string) => {
+        navigate(`/technology/${route}`)
+    }
+
     return (
         <div className={styles.technology_container}>
             <div className={styles.tech_header}>
@@ -111,16 +181,22 @@ const Technology: React.FC = () => {
                             <Row gutter={[24, 24]}>
                                 {techStack.map(tech => (
                                     <Col xs={24} sm={12} lg={8} key={tech.name}>
-                                        <Card className={styles.skill_card}>
+                                        <Card
+                                            className={styles.skill_card}
+                                            hoverable
+                                            onClick={() => handleTechClick(tech.route)}
+                                        >
                                             <div className={styles.skill_header}>
-                                                <span 
-                                                    className={styles.skill_dot}
-                                                    style={{ backgroundColor: tech.color }}
-                                                />
-                                                <h3>{tech.name}</h3>
+                                                <div className={styles.skill_icon} style={{ color: tech.color }}>
+                                                    {tech.icon}
+                                                </div>
+                                                <div className={styles.skill_info}>
+                                                    <h3>{tech.name}</h3>
+                                                    <p>{tech.description}</p>
+                                                </div>
                                             </div>
-                                            <Progress 
-                                                percent={tech.level} 
+                                            <Progress
+                                                percent={tech.level}
                                                 strokeColor={tech.color}
                                                 showInfo={false}
                                             />
