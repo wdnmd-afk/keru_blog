@@ -1,9 +1,35 @@
+/* CSS变量定义 */
+:root {
+  --primary-color: #1890ff;
+  --success-color: #52c41a;
+  --warning-color: #faad14;
+  --error-color: #ff4d4f;
+  --info-color: #1890ff;
+
+  --text-primary: #ffffff;
+  --text-secondary: #bfbfbf;
+  --text-disabled: #595959;
+
+  --bg-color: #141414;
+  --bg-secondary: #1f1f1f;
+  --bg-tertiary: #262626;
+
+  --border-color: #303030;
+  --border-color-light: #434343;
+
+  --shadow-color: rgba(0, 0, 0, 0.45);
+
+  --highlight-blue: #1890ff;
+  --highlight-green: #52c41a;
+  --highlight-orange: #fa8c16;
+  --highlight-purple: #722ed1;
+}
+
 /* 清除浏览器默认样式 */
 * {
     margin: 0;
     padding: 0;
     border: 0;
-
 }
 
 
@@ -55,6 +81,7 @@ h5,
 h6 {
     font-weight: bold;
     margin-bottom: 0.5em;
+  color: #fff;
 }
 
 
