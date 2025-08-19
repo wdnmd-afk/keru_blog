@@ -1,0 +1,52 @@
+{
+  "principleComparison": {
+    "title": "Vue 2 vs Vue 3 响应式原理",
+    "language": "javascript",
+    "code": "// Vue 2 - Object.defineProperty\nfunction defineReactive(obj, key, val) {\n  const dep = new Dep()\n  \n  Object.defineProperty(obj, key, {\n    get() {\n      // 依赖收集\n      if (Dep.target) {\n        dep.depend()\n      }\n      return val\n    },\n    set(newVal) {\n      if (newVal === val) return\n      val = newVal\n      // 派发更新\n      dep.notify()\n    }\n  })\n}\n\n// Vue 3 - Proxy\nfunction reactive(target) {\n  return new Proxy(target, {\n    get(target, key, receiver) {\n      // 依赖收集\n      track(target, key)\n      return Reflect.get(target, key, receiver)\n    },\n    set(target, key, value, receiver) {\n      const result = Reflect.set(target, key, value, receiver)\n      // 派发更新\n      trigger(target, key)\n      return result\n    }\n  })\n}"
+  },
+  "reactiveUsage": {
+    "title": "reactive() 使用",
+    "language": "javascript",
+    "code": "import { reactive } from 'vue'\n\n// 创建响应式对象\nconst state = reactive({\n  count: 0,\n  user: {\n    name: 'Vue',\n    age: 3\n  },\n  todos: []\n})\n\n// 直接修改属性会触发更新\nstate.count++\nstate.user.name = 'Vue 3'\nstate.todos.push({ id: 1, text: '学习Vue 3' })\n\n// 注意：不能替换整个对象\n// state = reactive({ count: 10 }) // ❌ 会失去响应性\n\n// 正确的方式是修改属性\nObject.assign(state, { count: 10, newProp: 'value' }) // ✅"
+  },
+  "refUsage": {
+    "title": "ref() 使用",
+    "language": "javascript",
+    "code": "import { ref, isRef, unref } from 'vue'\n\n// 基本类型\nconst count = ref(0)\nconst message = ref('Hello Vue 3')\n\n// 对象类型（会自动调用reactive）\nconst user = ref({\n  name: 'Vue',\n  age: 3\n})\n\n// 访问和修改值\nconsole.log(count.value) // 0\ncount.value = 10\n\n// 在模板中自动解包\n// <template>{{ count }}</template> // 不需要 .value\n\n// 工具函数\nconsole.log(isRef(count)) // true\nconsole.log(unref(count)) // 10，等同于 count.value\n\n// ref 的自动解包规则\nconst state = reactive({\n  count: ref(0),\n  user: ref({ name: 'Vue' })\n})\n\nconsole.log(state.count) // 0，自动解包\nconsole.log(state.user.name) // 'Vue'，自动解包"
+  },
+  "computedUsage": {
+    "title": "computed() 使用",
+    "language": "javascript",
+    "code": "import { ref, computed } from 'vue'\n\nconst firstName = ref('John')\nconst lastName = ref('Doe')\n\n// 只读计算属性\nconst fullName = computed(() => {\n  return `${firstName.value} ${lastName.value}`\n})\n\n// 可写计算属性\nconst fullNameWritable = computed({\n  get() {\n    return `${firstName.value} ${lastName.value}`\n  },\n  set(value) {\n    const names = value.split(' ')\n    firstName.value = names[0]\n    lastName.value = names[1]\n  }\n})\n\n// 使用\nconsole.log(fullName.value) // \"John Doe\"\nfullNameWritable.value = \"Jane Smith\" // 会更新 firstName 和 lastName\n\n// 计算属性缓存\nconst expensiveComputed = computed(() => {\n  console.log('计算执行') // 只有依赖变化时才会执行\n  return firstName.value.toUpperCase()\n})"
+  },
+  "shallowReactiveUsage": {
+    "title": "shallowReactive 使用",
+    "language": "javascript",
+    "code": "import { shallowReactive } from 'vue'\n\nconst state = shallowReactive({\n  count: 0,\n  user: {\n    name: 'Vue',\n    age: 3\n  }\n})\n\n// 只有根级别的属性是响应式的\nstate.count++ // ✅ 触发更新\nstate.user.name = 'Vue 3' // ❌ 不会触发更新\nstate.user = { name: 'Vue 3', age: 4 } // ✅ 触发更新"
+  },
+  "readonlyUsage": {
+    "title": "readonly 使用",
+    "language": "javascript",
+    "code": "import { reactive, readonly } from 'vue'\n\nconst original = reactive({ count: 0 })\nconst copy = readonly(original)\n\n// 修改原始对象会触发更新\noriginal.count++\n\n// 修改只读副本会警告且无效\ncopy.count++ // 警告：Set operation on key \"count\" failed"
+  },
+  "toRefsUsage": {
+    "title": "toRefs 使用",
+    "language": "javascript",
+    "code": "import { reactive, toRefs } from 'vue'\n\nconst state = reactive({\n  count: 0,\n  user: {\n    name: 'Vue'\n  }\n})\n\n// 直接解构会失去响应性\nconst { count, user } = state // ❌ 失去响应性\n\n// 使用 toRefs 保持响应性\nconst { count: countRef, user: userRef } = toRefs(state) // ✅\n\n// 现在可以安全地使用\nconsole.log(countRef.value) // 0\ncountRef.value++ // 会触发更新"
+  },
+  "apiSelection": {
+    "title": "响应式API选择",
+    "language": "vue",
+    "code": "<script setup>\nimport { ref, reactive, shallowRef, shallowReactive, markRaw } from 'vue'\n\n// ✅ 基本类型使用ref\nconst count = ref(0)\nconst message = ref('hello')\n\n// ✅ 对象使用reactive\nconst user = reactive({\n  name: 'Vue',\n  age: 3\n})\n\n// ✅ 大型对象使用shallowReactive\nconst largeData = shallowReactive({\n  items: [], // 只有根级别响应式\n  metadata: {}\n})\n\n// ✅ 第三方库实例使用markRaw\nconst chart = markRaw(new Chart())\n\n// ✅ 大型数组使用shallowRef\nconst bigList = shallowRef([])\n\n// 手动触发更新\nconst updateBigList = () => {\n  bigList.value = [...bigList.value, newItem]\n}\n</script>"
+  },
+  "computedOptimization": {
+    "title": "计算属性优化",
+    "language": "vue",
+    "code": "<script setup>\nimport { ref, computed, watchEffect } from 'vue'\n\nconst items = ref([])\nconst filter = ref('')\nconst sortBy = ref('name')\n\n// ✅ 使用计算属性缓存复杂计算\nconst filteredAndSortedItems = computed(() => {\n  console.log('重新计算') // 只有依赖变化时才执行\n  \n  return items.value\n    .filter(item => item.name.includes(filter.value))\n    .sort((a, b) => a[sortBy.value].localeCompare(b[sortBy.value]))\n})\n\n// ❌ 避免在模板中直接计算\n// <div v-for=\"item in items.filter(...).sort(...)\" :key=\"item.id\">\n\n// ✅ 使用watchEffect处理副作用\nwatchEffect(() => {\n  // 自动追踪依赖\n  if (filter.value) {\n    console.log('过滤条件变化:', filter.value)\n  }\n})\n</script>"
+  },
+  "bestPractices": {
+    "title": "响应式最佳实践",
+    "language": "javascript",
+    "code": "// ✅ 最佳实践示例\nimport { ref, reactive, computed, toRefs, markRaw } from 'vue'\n\nexport default {\n  setup() {\n    // 基本类型使用 ref\n    const count = ref(0)\n    const loading = ref(false)\n    \n    // 对象使用 reactive\n    const user = reactive({\n      name: '',\n      email: '',\n      profile: {\n        avatar: '',\n        bio: ''\n      }\n    })\n    \n    // 第三方库实例标记为非响应式\n    const chart = markRaw(new Chart())\n    \n    // 计算属性\n    const displayName = computed(() => {\n      return user.name || '匿名用户'\n    })\n    \n    // 返回时保持响应性\n    return {\n      count,\n      loading,\n      ...toRefs(user),\n      displayName,\n      chart\n    }\n  }\n}"
+  }
+}

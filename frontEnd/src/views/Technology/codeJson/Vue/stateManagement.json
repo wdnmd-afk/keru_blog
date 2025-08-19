@@ -1,0 +1,47 @@
+{
+  "comparison": {
+    "title": "Vuex vs Pinia 对比",
+    "language": "javascript",
+    "code": "// Vuex 4 特点\n✅ 成熟稳定，生态丰富\n✅ 时间旅行调试\n✅ 插件系统完善\n❌ TypeScript支持复杂\n❌ 模块化配置繁琐\n❌ 组合式API支持有限\n\n// Pinia 特点 (Vue官方推荐)\n✅ 完美的TypeScript支持\n✅ 组合式API原生支持\n✅ 模块化更简单\n✅ 更好的代码分割\n✅ 更小的包体积\n✅ 支持Vue 2和Vue 3\n\n// 迁移建议\n- 新项目：直接使用Pinia\n- 现有Vuex项目：可以渐进式迁移\n- Vue 3项目：强烈推荐Pinia"
+  },
+  "vuexBasicConfig": {
+    "title": "Vuex基础配置",
+    "language": "javascript",
+    "code": "// store/index.js\nimport { createStore } from 'vuex'\n\nconst store = createStore({\n  state: {\n    count: 0,\n    user: null,\n    todos: []\n  },\n  \n  getters: {\n    doubleCount: (state) => state.count * 2,\n    completedTodos: (state) => state.todos.filter(todo => todo.completed),\n    todoCount: (state, getters) => getters.completedTodos.length\n  },\n  \n  mutations: {\n    INCREMENT(state) {\n      state.count++\n    },\n    SET_USER(state, user) {\n      state.user = user\n    },\n    ADD_TODO(state, todo) {\n      state.todos.push(todo)\n    }\n  },\n  \n  actions: {\n    async fetchUser({ commit }, userId) {\n      try {\n        const user = await api.getUser(userId)\n        commit('SET_USER', user)\n      } catch (error) {\n        console.error('获取用户失败:', error)\n      }\n    }\n  }\n})\n\nexport default store"
+  },
+  "vuexUsage": {
+    "title": "组件中使用Vuex",
+    "language": "vue",
+    "code": "<template>\n  <div>\n    <h1>计数器: {{ count }}</h1>\n    <p>双倍计数: {{ doubleCount }}</p>\n    <button @click=\"increment\">增加</button>\n    \n    <div v-if=\"user\">\n      <h2>用户: {{ user.name }}</h2>\n    </div>\n  </div>\n</template>\n\n<script>\nimport { mapState, mapGetters, mapMutations, mapActions } from 'vuex'\n\nexport default {\n  computed: {\n    ...mapState(['count', 'user']),\n    ...mapGetters(['doubleCount', 'completedTodos'])\n  },\n  \n  methods: {\n    ...mapMutations(['INCREMENT']),\n    ...mapActions(['fetchUser']),\n    \n    increment() {\n      this.INCREMENT()\n    }\n  },\n  \n  created() {\n    this.fetchUser(1)\n  }\n}\n</script>\n\n<!-- 组合式API使用 -->\n<script setup>\nimport { computed } from 'vue'\nimport { useStore } from 'vuex'\n\nconst store = useStore()\n\nconst count = computed(() => store.state.count)\nconst increment = () => store.commit('INCREMENT')\n</script>"
+  },
+  "piniaBasicConfig": {
+    "title": "Pinia基础配置",
+    "language": "javascript",
+    "code": "// main.js\nimport { createApp } from 'vue'\nimport { createPinia } from 'pinia'\nimport App from './App.vue'\n\nconst pinia = createPinia()\nconst app = createApp(App)\n\napp.use(pinia)\napp.mount('#app')\n\n// stores/counter.js - 选项式API风格\nimport { defineStore } from 'pinia'\n\nexport const useCounterStore = defineStore('counter', {\n  state: () => ({\n    count: 0,\n    name: 'Eduardo'\n  }),\n  \n  getters: {\n    doubleCount: (state) => state.count * 2,\n    doubleCountPlusOne() {\n      return this.doubleCount + 1\n    }\n  },\n  \n  actions: {\n    increment() {\n      this.count++\n    },\n    \n    async fetchData() {\n      try {\n        const data = await api.getData()\n        this.data = data\n      } catch (error) {\n        console.error('获取数据失败:', error)\n      }\n    }\n  }\n})"
+  },
+  "piniaCompositionAPI": {
+    "title": "组合式API风格Store",
+    "language": "javascript",
+    "code": "// stores/user.js - 组合式API风格\nimport { ref, computed } from 'vue'\nimport { defineStore } from 'pinia'\n\nexport const useUserStore = defineStore('user', () => {\n  // state\n  const user = ref(null)\n  const isLoading = ref(false)\n  const error = ref(null)\n  \n  // getters\n  const isLoggedIn = computed(() => !!user.value)\n  const userName = computed(() => user.value?.name || '游客')\n  \n  // actions\n  const login = async (credentials) => {\n    isLoading.value = true\n    error.value = null\n    \n    try {\n      const response = await api.login(credentials)\n      user.value = response.user\n      localStorage.setItem('token', response.token)\n    } catch (err) {\n      error.value = err.message\n      throw err\n    } finally {\n      isLoading.value = false\n    }\n  }\n  \n  const logout = () => {\n    user.value = null\n    localStorage.removeItem('token')\n  }\n  \n  return {\n    user, isLoading, error,\n    isLoggedIn, userName,\n    login, logout\n  }\n})"
+  },
+  "piniaUsage": {
+    "title": "组件中使用Pinia",
+    "language": "vue",
+    "code": "<template>\n  <div>\n    <h1>{{ counter.count }}</h1>\n    <p>双倍: {{ counter.doubleCount }}</p>\n    <button @click=\"counter.increment\">增加</button>\n    \n    <div v-if=\"user.isLoggedIn\">\n      <h2>欢迎, {{ user.userName }}!</h2>\n      <button @click=\"user.logout\">退出</button>\n    </div>\n  </div>\n</template>\n\n<script setup>\nimport { storeToRefs } from 'pinia'\nimport { useCounterStore } from '@/stores/counter'\nimport { useUserStore } from '@/stores/user'\n\n// 使用store\nconst counter = useCounterStore()\nconst user = useUserStore()\n\n// 解构响应式状态 (需要使用storeToRefs)\nconst { count, doubleCount } = storeToRefs(counter)\nconst { isLoggedIn, userName } = storeToRefs(user)\n\n// 解构actions (不需要storeToRefs)\nconst { increment } = counter\nconst { login, logout } = user\n</script>"
+  },
+  "storeComposition": {
+    "title": "Store组合与复用",
+    "language": "javascript",
+    "code": "// stores/useAuth.js - 可复用的认证逻辑\nimport { ref, computed } from 'vue'\nimport { defineStore } from 'pinia'\n\nexport const useAuthStore = defineStore('auth', () => {\n  const token = ref(localStorage.getItem('token'))\n  const user = ref(null)\n  \n  const isAuthenticated = computed(() => !!token.value)\n  \n  const setAuth = (authData) => {\n    token.value = authData.token\n    user.value = authData.user\n    localStorage.setItem('token', authData.token)\n  }\n  \n  const clearAuth = () => {\n    token.value = null\n    user.value = null\n    localStorage.removeItem('token')\n  }\n  \n  return { token, user, isAuthenticated, setAuth, clearAuth }\n})\n\n// stores/useApi.js - API调用逻辑\nimport { useAuthStore } from './useAuth'\n\nexport const useApiStore = defineStore('api', () => {\n  const auth = useAuthStore()\n  \n  const apiCall = async (url, options = {}) => {\n    const headers = {\n      'Content-Type': 'application/json',\n      ...options.headers\n    }\n    \n    if (auth.isAuthenticated) {\n      headers.Authorization = `Bearer ${auth.token}`\n    }\n    \n    const response = await fetch(url, {\n      ...options,\n      headers\n    })\n    \n    if (response.status === 401) {\n      auth.clearAuth()\n      throw new Error('未授权')\n    }\n    \n    return response.json()\n  }\n  \n  return { apiCall }\n})"
+  },
+  "piniaPlugins": {
+    "title": "Pinia插件系统",
+    "language": "javascript",
+    "code": "// plugins/persistence.js - 持久化插件\nexport function persistencePlugin({ store }) {\n  // 从localStorage恢复状态\n  const saved = localStorage.getItem(store.$id)\n  if (saved) {\n    store.$patch(JSON.parse(saved))\n  }\n  \n  // 监听状态变化并保存\n  store.$subscribe((mutation, state) => {\n    localStorage.setItem(store.$id, JSON.stringify(state))\n  })\n}\n\n// main.js - 使用插件\nimport { createPinia } from 'pinia'\nimport { persistencePlugin } from './plugins/persistence'\n\nconst pinia = createPinia()\npinia.use(persistencePlugin)\n\n// 或者只对特定store使用\n// stores/settings.js\nexport const useSettingsStore = defineStore('settings', {\n  state: () => ({\n    theme: 'light',\n    language: 'zh-CN'\n  }),\n  \n  // 使用插件\n  persist: true\n})"
+  },
+  "typescriptSupport": {
+    "title": "TypeScript支持",
+    "language": "typescript",
+    "code": "// types/user.ts\nexport interface User {\n  id: number\n  name: string\n  email: string\n  role: 'admin' | 'user'\n}\n\nexport interface LoginCredentials {\n  username: string\n  password: string\n}\n\n// stores/user.ts - TypeScript Store\nimport { ref, computed } from 'vue'\nimport { defineStore } from 'pinia'\nimport type { User, LoginCredentials } from '@/types/user'\n\nexport const useUserStore = defineStore('user', () => {\n  // 类型化的state\n  const user = ref<User | null>(null)\n  const isLoading = ref<boolean>(false)\n  const error = ref<string | null>(null)\n  \n  // 类型化的getters\n  const isLoggedIn = computed((): boolean => !!user.value)\n  const isAdmin = computed((): boolean => user.value?.role === 'admin')\n  \n  // 类型化的actions\n  const login = async (credentials: LoginCredentials): Promise<void> => {\n    isLoading.value = true\n    error.value = null\n    \n    try {\n      const response = await api.login(credentials)\n      user.value = response.user\n    } catch (err) {\n      error.value = err instanceof Error ? err.message : '登录失败'\n      throw err\n    } finally {\n      isLoading.value = false\n    }\n  }\n  \n  const updateUser = (userData: Partial<User>): void => {\n    if (user.value) {\n      user.value = { ...user.value, ...userData }\n    }\n  }\n  \n  return {\n    user: readonly(user),\n    isLoading: readonly(isLoading),\n    error: readonly(error),\n    isLoggedIn,\n    isAdmin,\n    login,\n    updateUser\n  }\n})"
+  }
+}

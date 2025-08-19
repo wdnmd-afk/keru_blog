@@ -18,7 +18,7 @@ import UseContextDetail from './pages/react/UseContextDetail'
 import CustomHooksDetail from './pages/react/CustomHooksDetail'
 import PerformanceDetail from './pages/react/PerformanceDetail'
 import ErrorBoundaryDetail from './pages/react/ErrorBoundaryDetail'
-import TestingDetail from './pages/react/TestingDetail'
+import ReactTestingDetail from './pages/react/TestingDetail'
 import VueDetail from './pages/VueDetail'
 import TypeScriptDetail from './pages/TypeScriptDetail'
 import NodeJSDetail from './pages/NodeJSDetail'
@@ -32,12 +32,16 @@ import EventLoopDetail from './pages/nodejs/EventLoopDetail'
 import DockerFundamentalsDetail from './pages/docker/FundamentalsDetail'
 import ReactivityDetail from './pages/vue/ReactivityDetail'
 import BasicTypesDetail from './pages/typescript/BasicTypesDetail'
-import ModulesDetail from './pages/nodejs/ModulesDetail'
+import NodeModulesDetail from './pages/nodejs/ModulesDetail'
 import WebFrameworksDetail from './pages/python/WebFrameworksDetail'
 import GitBasicsDetail from './pages/git/GitBasicsDetail'
 import VSCodeDetail from './pages/tools/VSCodeDetail'
 import GenericsDetail from './pages/typescript/GenericsDetail'
 import DecoratorsDetail from './pages/typescript/DecoratorsDetail'
+import TSModulesDetail from './pages/typescript/ModulesDetail'
+import UtilityTypesDetail from './pages/typescript/UtilityTypesDetail'
+import ReactTypeScriptDetail from './pages/typescript/ReactTypeScriptDetail'
+import ConfigurationDetail from './pages/typescript/ConfigurationDetail'
 
 import DockerComposeDetail from './pages/docker/DockerComposeDetail'
 import NetworkingDetail from './pages/docker/NetworkingDetail'
@@ -47,11 +51,24 @@ import KubernetesDetail from './pages/docker/KubernetesDetail'
 import PerformanceOptimizationDetail from './pages/docker/PerformanceOptimizationDetail'
 import VueRouterDetail from './pages/vue/VueRouterDetail'
 import ExpressDetail from './pages/nodejs/ExpressDetail'
+import DatabaseDetail from './pages/nodejs/DatabaseDetail'
+import AuthenticationDetail from './pages/nodejs/AuthenticationDetail'
+import NodeTestingDetail from './pages/nodejs/TestingDetail'
+import MicroservicesDetail from './pages/nodejs/MicroservicesDetail'
 import WebpackDetail from './pages/tools/WebpackDetail'
 import GitHubActionsDetail from './pages/git/GitHubActionsDetail'
 import BranchingDetail from './pages/git/BranchingDetail'
 import GitHubWorkflowDetail from './pages/git/GitHubWorkflowDetail'
 import AdvancedTechniquesDetail from './pages/git/AdvancedTechniquesDetail'
+import TestingToolsDetail from './pages/tools/TestingToolsDetail'
+import GitHooksDetail from './pages/git/GitHooksDetail'
+import CollaborationDetail from './pages/git/CollaborationDetail'
+import PerformanceToolsDetail from './pages/tools/PerformanceToolsDetail'
+import AutomationToolsDetail from './pages/tools/AutomationToolsDetail'
+import PostmanDetail from './pages/tools/PostmanDetail'
+import TerminalDetail from './pages/tools/TerminalDetail'
+import ProductivityDetail from './pages/tools/ProductivityDetail'
+import SecurityBestPracticesDetail from './pages/git/SecurityBestPracticesDetail'
 import VuexPiniaDetail from './pages/vue/VuexPiniaDetail'
 import VuePerformanceDetail from './pages/vue/PerformanceDetail'
 import VueTestingDetail from './pages/vue/TestingDetail'
@@ -145,7 +162,7 @@ const TechnologyLayout: React.FC = () => {
                 case 'error-boundary':
                     return <ErrorBoundaryDetail />
                 case 'testing':
-                    return <TestingDetail />
+                    return <ReactTestingDetail />
                 default:
                     return <ReactDetail />
             }
@@ -189,13 +206,13 @@ const TechnologyLayout: React.FC = () => {
                 case 'decorators':
                     return <DecoratorsDetail />
                 case 'modules':
-                    return <div className={styles.coming_soon}>模块系统详解页面开发中...</div>
+                    return <TSModulesDetail />
                 case 'utility-types':
-                    return <div className={styles.coming_soon}>工具类型详解页面开发中...</div>
+                    return <UtilityTypesDetail />
                 case 'react-typescript':
-                    return <div className={styles.coming_soon}>React + TypeScript详解页面开发中...</div>
+                    return <ReactTypeScriptDetail />
                 case 'configuration':
-                    return <div className={styles.coming_soon}>配置与工具链详解页面开发中...</div>
+                    return <ConfigurationDetail />
                 default:
                     return <TypeScriptDetail />
             }
@@ -208,19 +225,19 @@ const TechnologyLayout: React.FC = () => {
                 case 'event-loop':
                     return <EventLoopDetail />
                 case 'modules':
-                    return <ModulesDetail />
+                    return <NodeModulesDetail />
                 case 'express':
                     return <ExpressDetail />
                 case 'database':
-                    return <div className={styles.coming_soon}>数据库集成详解页面开发中...</div>
+                    return <DatabaseDetail />
                 case 'authentication':
-                    return <div className={styles.coming_soon}>身份认证详解页面开发中...</div>
+                    return <AuthenticationDetail />
                 case 'testing':
-                    return <div className={styles.coming_soon}>测试策略详解页面开发中...</div>
+                    return <NodeTestingDetail />
                 case 'performance':
                     return <PerformanceDetail />
                 case 'microservices':
-                    return <div className={styles.coming_soon}>微服务架构详解页面开发中...</div>
+                    return <MicroservicesDetail />
                 default:
                     return <NodeJSDetail />
             }
@@ -253,30 +270,7 @@ const TechnologyLayout: React.FC = () => {
             }
         }
 
-        // 开发工具子路由处理
-        if (currentPath.includes('/technology/tools/')) {
-            const subTopic = currentPath.split('/').pop()
-            switch (subTopic) {
-                case 'vscode':
-                    return <VSCodeDetail />
-                case 'webpack':
-                    return <WebpackDetail />
-                case 'vite':
-                    return <div className={styles.coming_soon}>Vite详解页面开发中...</div>
-                case 'eslint-prettier':
-                    return <div className={styles.coming_soon}>ESLint & Prettier详解页面开发中...</div>
-                case 'chrome-devtools':
-                    return <div className={styles.coming_soon}>Chrome DevTools详解页面开发中...</div>
-                case 'postman':
-                    return <div className={styles.coming_soon}>Postman详解页面开发中...</div>
-                case 'terminal':
-                    return <div className={styles.coming_soon}>终端工具详解页面开发中...</div>
-                case 'productivity':
-                    return <div className={styles.coming_soon}>效率工具详解页面开发中...</div>
-                default:
-                    return <ToolsDetail />
-            }
-        }
+
 
         // Git & GitHub子路由处理
         if (currentPath.includes('/technology/git/')) {
@@ -293,11 +287,11 @@ const TechnologyLayout: React.FC = () => {
                 case 'advanced-git':
                     return <AdvancedTechniquesDetail />
                 case 'git-hooks':
-                    return <div className={styles.coming_soon}>Git Hooks详解页面开发中...</div>
+                    return <GitHooksDetail />
                 case 'collaboration':
-                    return <div className={styles.coming_soon}>团队协作详解页面开发中...</div>
+                    return <CollaborationDetail />
                 case 'security':
-                    return <div className={styles.coming_soon}>安全最佳实践详解页面开发中...</div>
+                    return <SecurityBestPracticesDetail />
                 default:
                     return <GitDetail />
             }
@@ -307,22 +301,22 @@ const TechnologyLayout: React.FC = () => {
         if (currentPath.includes('/technology/tools/')) {
             const subTopic = currentPath.split('/').pop()
             switch (subTopic) {
-                case 'chrome-devtools':
-                    return <ChromeDevToolsDetail />
+                case 'vscode':
+                    return <VSCodeDetail />
                 case 'webpack':
-                    return <div className={styles.coming_soon}>Webpack详解页面开发中...</div>
+                    return <WebpackDetail />
                 case 'vite':
                     return <ViteDetail />
-                case 'eslint':
+                case 'eslint-prettier':
                     return <ESLintPrettierDetail />
-                case 'prettier':
-                    return <ESLintPrettierDetail />
-                case 'testing':
-                    return <div className={styles.coming_soon}>测试工具详解页面开发中...</div>
-                case 'performance':
-                    return <div className={styles.coming_soon}>性能工具详解页面开发中...</div>
-                case 'automation':
-                    return <div className={styles.coming_soon}>自动化工具详解页面开发中...</div>
+                case 'chrome-devtools':
+                    return <ChromeDevToolsDetail />
+                case 'postman':
+                    return <PostmanDetail />
+                case 'terminal':
+                    return <TerminalDetail />
+                case 'productivity':
+                    return <ProductivityDetail />
                 default:
                     return <ToolsDetail />
             }

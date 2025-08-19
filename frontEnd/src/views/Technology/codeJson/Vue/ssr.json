@@ -1,0 +1,52 @@
+{
+  "ssrComparison": {
+    "title": "SSR vs SPA对比",
+    "language": "javascript",
+    "code": "// SPA (单页应用) 渲染流程\n1. 浏览器请求页面\n2. 服务器返回基本HTML + JavaScript bundle\n3. 浏览器下载并执行JavaScript\n4. JavaScript渲染页面内容\n5. 页面可交互\n\n// SSR (服务端渲染) 渲染流程  \n1. 浏览器请求页面\n2. 服务器执行Vue应用，生成完整HTML\n3. 服务器返回渲染好的HTML\n4. 浏览器显示页面内容 (首屏快速显示)\n5. 浏览器下载JavaScript进行\"激活\"\n6. 页面可交互\n\n// SSR优势\n✅ 更好的SEO - 搜索引擎可以直接抓取内容\n✅ 更快的首屏加载 - 用户立即看到内容\n✅ 更好的社交媒体分享 - 预渲染的meta标签\n\n// SSR挑战\n❌ 服务器负载增加\n❌ 开发复杂度提升\n❌ 部署和缓存策略复杂"
+  },
+  "basicSSRSetup": {
+    "title": "基础SSR设置",
+    "language": "javascript",
+    "code": "# 安装依赖\nnpm install vue @vue/server-renderer express\n\n# 项目结构\nsrc/\n├── components/\n│   └── App.vue\n├── server.js\n├── client.js\n└── index.html\n\n// server.js - 服务端入口\nimport express from 'express'\nimport { createSSRApp } from 'vue'\nimport { renderToString } from '@vue/server-renderer'\nimport App from './components/App.vue'\n\nconst server = express()\n\nserver.get('/', async (req, res) => {\n  // 创建Vue应用实例\n  const app = createSSRApp(App)\n  \n  // 渲染为HTML字符串\n  const html = await renderToString(app)\n  \n  // 发送完整HTML\n  res.send(`\n    <!DOCTYPE html>\n    <html>\n      <head>\n        <title>Vue SSR</title>\n      </head>\n      <body>\n        <div id=\"app\">${html}</div>\n        <script src=\"/client.js\"></script>\n      </body>\n    </html>\n  `)\n})\n\nserver.listen(3000)"
+  },
+  "clientActivation": {
+    "title": "客户端激活",
+    "language": "vue",
+    "code": "// client.js - 客户端入口\nimport { createSSRApp } from 'vue'\nimport App from './components/App.vue'\n\n// 创建应用实例\nconst app = createSSRApp(App)\n\n// 激活服务端渲染的HTML\napp.mount('#app')\n\n// App.vue - 应用组件\n<template>\n  <div>\n    <h1>{{ title }}</h1>\n    <p>当前时间: {{ currentTime }}</p>\n    <button @click=\"updateTime\">更新时间</button>\n  </div>\n</template>\n\n<script setup>\nimport { ref, onMounted } from 'vue'\n\nconst title = ref('Vue SSR 应用')\nconst currentTime = ref(new Date().toLocaleString())\n\nconst updateTime = () => {\n  currentTime.value = new Date().toLocaleString()\n}\n\n// 只在客户端执行\nonMounted(() => {\n  console.log('客户端激活完成')\n})\n</script>"
+  },
+  "buildConfiguration": {
+    "title": "构建配置",
+    "language": "javascript",
+    "code": "// vite.config.js\nimport { defineConfig } from 'vite'\nimport vue from '@vitejs/plugin-vue'\n\nexport default defineConfig({\n  plugins: [vue()],\n  build: {\n    rollupOptions: {\n      input: {\n        client: 'src/client.js',\n        server: 'src/server.js'\n      },\n      output: {\n        format: 'es'\n      }\n    },\n    ssr: true\n  },\n  ssr: {\n    noExternal: ['vue', '@vue/server-renderer']\n  }\n})\n\n// package.json scripts\n{\n  \"scripts\": {\n    \"build:client\": \"vite build --outDir dist/client\",\n    \"build:server\": \"vite build --ssr src/server.js --outDir dist/server\",\n    \"build\": \"npm run build:client && npm run build:server\",\n    \"serve\": \"node dist/server/server.js\"\n  }\n}"
+  },
+  "nuxtQuickStart": {
+    "title": "Nuxt.js快速开始",
+    "language": "bash",
+    "code": "# 创建Nuxt项目\nnpx nuxi@latest init my-nuxt-app\ncd my-nuxt-app\nnpm install\n\n# 启动开发服务器\nnpm run dev\n\n# 项目结构\nmy-nuxt-app/\n├── pages/          # 页面路由\n├── components/     # 组件\n├── layouts/        # 布局\n├── middleware/     # 中间件\n├── plugins/        # 插件\n├── server/         # 服务端API\n├── static/         # 静态文件\n└── nuxt.config.ts  # 配置文件"
+  },
+  "nuxtPagesRouting": {
+    "title": "Nuxt.js页面和路由",
+    "language": "vue",
+    "code": "<!-- pages/index.vue - 首页 -->\n<template>\n  <div>\n    <h1>欢迎来到Nuxt.js</h1>\n    <NuxtLink to=\"/about\">关于我们</NuxtLink>\n  </div>\n</template>\n\n<!-- pages/about.vue - 关于页面 -->\n<template>\n  <div>\n    <h1>关于我们</h1>\n    <p>这是关于页面</p>\n  </div>\n</template>\n\n<!-- pages/user/[id].vue - 动态路由 -->\n<template>\n  <div>\n    <h1>用户详情</h1>\n    <p>用户ID: {{ $route.params.id }}</p>\n    <p>用户信息: {{ user.name }}</p>\n  </div>\n</template>\n\n<script setup>\n// 页面级数据获取\nconst route = useRoute()\nconst { data: user } = await $fetch(`/api/users/${route.params.id}`)\n</script>\n\n<!-- layouts/default.vue - 默认布局 -->\n<template>\n  <div>\n    <header>\n      <nav>\n        <NuxtLink to=\"/\">首页</NuxtLink>\n        <NuxtLink to=\"/about\">关于</NuxtLink>\n      </nav>\n    </header>\n    <main>\n      <slot />\n    </main>\n    <footer>\n      <p>&copy; 2024 My Nuxt App</p>\n    </footer>\n  </div>\n</template>"
+  },
+  "nuxtDataFetching": {
+    "title": "Nuxt.js数据获取",
+    "language": "vue",
+    "code": "<script setup>\n// 服务端和客户端都会执行\nconst { data: posts } = await $fetch('/api/posts')\n\n// 只在服务端执行\nconst { data: serverData } = await $fetch('/api/server-only', {\n  server: true\n})\n\n// 响应式数据获取\nconst { data: users, pending, error, refresh } = await useFetch('/api/users')\n\n// 懒加载数据\nconst { data: lazyData } = await useLazyFetch('/api/lazy-data')\n\n// 异步数据\nconst { data: asyncData } = await useAsyncData('users', () => \n  $fetch('/api/users')\n)\n\n// 条件数据获取\nconst route = useRoute()\nconst { data: userData } = await useFetch(`/api/users/${route.params.id}`, {\n  key: 'user-' + route.params.id,\n  default: () => ({ name: '默认用户' })\n})\n</script>\n\n<template>\n  <div>\n    <div v-if=\"pending\">加载中...</div>\n    <div v-else-if=\"error\">错误: {{ error.message }}</div>\n    <div v-else>\n      <h1>用户列表</h1>\n      <ul>\n        <li v-for=\"user in users\" :key=\"user.id\">\n          {{ user.name }}\n        </li>\n      </ul>\n      <button @click=\"refresh\">刷新数据</button>\n    </div>\n  </div>\n</template>"
+  },
+  "ssrCaching": {
+    "title": "SSR缓存策略",
+    "language": "javascript",
+    "code": "// 页面级缓存\nexport default defineNuxtConfig({\n  routeRules: {\n    // 首页预渲染\n    '/': { prerender: true },\n    \n    // 产品页面按需生成，缓存1小时\n    '/products/**': { isr: 3600 },\n    \n    // 管理页面客户端渲染\n    '/admin/**': { ssr: false },\n    \n    // API路由缓存\n    '/api/**': { cors: true, headers: { 'cache-control': 's-maxage=60' } }\n  }\n})\n\n// 组件级缓存\n<template>\n  <div>\n    <!-- 缓存昂贵的组件 -->\n    <LazyExpensiveComponent v-if=\"showExpensive\" />\n  </div>\n</template>\n\n<script setup>\n// 使用缓存键\nconst { data } = await useFetch('/api/data', {\n  key: 'cached-data',\n  server: true,\n  default: () => []\n})\n</script>"
+  },
+  "codeSplittingOptimization": {
+    "title": "代码分割优化",
+    "language": "vue",
+    "code": "// 组件懒加载\n<template>\n  <div>\n    <!-- 懒加载组件 -->\n    <LazyHeavyComponent v-if=\"showHeavy\" />\n    \n    <!-- 客户端组件 -->\n    <ClientOnly>\n      <InteractiveChart />\n      <template #fallback>\n        <div>图表加载中...</div>\n      </template>\n    </ClientOnly>\n  </div>\n</template>\n\n<script setup>\n// 动态导入\nconst showHeavy = ref(false)\n\nconst loadHeavyComponent = async () => {\n  const { default: HeavyComponent } = await import('~/components/HeavyComponent.vue')\n  return HeavyComponent\n}\n\n// 预加载关键资源\nuseHead({\n  link: [\n    { rel: 'preload', href: '/api/critical-data', as: 'fetch' }\n  ]\n})\n</script>"
+  },
+  "seoOptimization": {
+    "title": "SEO优化",
+    "language": "vue",
+    "code": "<script setup>\n// 动态SEO标签\nconst route = useRoute()\nconst { data: post } = await useFetch(`/api/posts/${route.params.id}`)\n\n// 设置页面元数据\nuseHead({\n  title: post.value?.title || '默认标题',\n  meta: [\n    { name: 'description', content: post.value?.excerpt },\n    { property: 'og:title', content: post.value?.title },\n    { property: 'og:description', content: post.value?.excerpt },\n    { property: 'og:image', content: post.value?.image },\n    { property: 'og:url', content: `https://example.com${route.path}` },\n    { name: 'twitter:card', content: 'summary_large_image' }\n  ],\n  link: [\n    { rel: 'canonical', href: `https://example.com${route.path}` }\n  ]\n})\n\n// 结构化数据\nuseJsonld({\n  '@context': 'https://schema.org',\n  '@type': 'Article',\n  headline: post.value?.title,\n  description: post.value?.excerpt,\n  author: {\n    '@type': 'Person',\n    name: post.value?.author\n  },\n  datePublished: post.value?.publishedAt\n})\n</script>\n\n<template>\n  <article>\n    <h1>{{ post.title }}</h1>\n    <p>{{ post.content }}</p>\n  </article>\n</template>"
+  }
+}

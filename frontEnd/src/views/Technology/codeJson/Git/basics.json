@@ -1,0 +1,77 @@
+{
+  "gitObjectModel": {
+    "title": "Git对象模型",
+    "language": "bash",
+    "code": "# Git 四种对象类型\n1. Blob (二进制大对象) - 存储文件内容\n2. Tree (树对象) - 存储目录结构\n3. Commit (提交对象) - 存储提交信息\n4. Tag (标签对象) - 存储标签信息\n\n# 查看对象信息\ngit cat-file -t <hash>    # 查看对象类型\ngit cat-file -p <hash>    # 查看对象内容\ngit ls-tree <tree-hash>   # 查看树对象内容\n\n# 查看对象关系\ngit log --graph --oneline # 查看提交图\ngit show-branch --all     # 显示分支关系"
+  },
+  "gitInstallation": {
+    "title": "Git安装配置",
+    "language": "bash",
+    "code": "# Windows安装\n# 下载Git for Windows: https://git-scm.com/download/win\n# 安装后打开Git Bash\n\n# macOS安装\nbrew install git\n# 或者下载安装包: https://git-scm.com/download/mac\n\n# Ubuntu/Debian安装\nsudo apt update\nsudo apt install git\n\n# CentOS/RHEL安装\nsudo yum install git\n# 或者\nsudo dnf install git\n\n# 验证安装\ngit --version\n\n# 全局配置\ngit config --global user.name \"你的姓名\"\ngit config --global user.email \"your.email@example.com\"\n\n# 查看配置\ngit config --list\ngit config user.name\ngit config user.email"
+  },
+  "repositoryInit": {
+    "title": "仓库初始化",
+    "language": "bash",
+    "code": "# 初始化新仓库\ngit init\ngit init my-project  # 创建并初始化新目录\n\n# 克隆远程仓库\ngit clone https://github.com/user/repo.git\ngit clone https://github.com/user/repo.git my-folder  # 克隆到指定目录\n\n# 克隆指定分支\ngit clone -b develop https://github.com/user/repo.git\n\n# 浅克隆（只克隆最近的提交）\ngit clone --depth 1 https://github.com/user/repo.git\n\n# 查看仓库状态\ngit status\ngit status -s  # 简短格式\n\n# 查看仓库信息\ngit remote -v  # 查看远程仓库\ngit branch -a  # 查看所有分支"
+  },
+  "basicWorkflow": {
+    "title": "基本工作流程",
+    "language": "bash",
+    "code": "# 1. 查看文件状态\ngit status\n\n# 2. 添加文件到暂存区\ngit add file.txt          # 添加单个文件\ngit add .                 # 添加所有文件\ngit add *.js              # 添加所有js文件\ngit add src/              # 添加整个目录\n\n# 3. 查看暂存区状态\ngit status\ngit diff --cached         # 查看暂存区与上次提交的差异\n\n# 4. 提交更改\ngit commit -m \"提交信息\"\ngit commit -am \"提交信息\"  # 添加并提交已跟踪文件\n\n# 5. 查看提交历史\ngit log\ngit log --oneline         # 简洁格式\ngit log --graph           # 图形化显示\n\n# 6. 推送到远程仓库\ngit push origin main\ngit push                  # 推送到默认远程分支"
+  },
+  "fileOperations": {
+    "title": "文件操作",
+    "language": "bash",
+    "code": "# 查看文件差异\ngit diff                  # 工作区与暂存区的差异\ngit diff --cached         # 暂存区与最新提交的差异\ngit diff HEAD             # 工作区与最新提交的差异\ngit diff file.txt         # 查看特定文件的差异\n\n# 撤销更改\ngit checkout -- file.txt  # 撤销工作区的更改\ngit reset HEAD file.txt   # 从暂存区移除文件\ngit reset --hard HEAD     # 撤销所有更改（危险操作）\n\n# 删除文件\ngit rm file.txt           # 删除文件并暂存删除操作\ngit rm --cached file.txt  # 从Git中删除但保留本地文件\n\n# 重命名文件\ngit mv old-name.txt new-name.txt\n\n# 忽略文件\n# 创建.gitignore文件\necho \"node_modules/\" >> .gitignore\necho \"*.log\" >> .gitignore\necho \".env\" >> .gitignore"
+  },
+  "commitBestPractices": {
+    "title": "提交最佳实践",
+    "language": "bash",
+    "code": "# 好的提交信息格式\ngit commit -m \"feat: 添加用户登录功能\"\ngit commit -m \"fix: 修复登录页面样式问题\"\ngit commit -m \"docs: 更新README文档\"\ngit commit -m \"refactor: 重构用户服务代码\"\n\n# 提交信息类型\n# feat: 新功能\n# fix: 修复bug\n# docs: 文档更新\n# style: 代码格式调整\n# refactor: 代码重构\n# test: 添加测试\n# chore: 构建过程或辅助工具的变动\n\n# 修改最后一次提交\ngit commit --amend -m \"新的提交信息\"\ngit commit --amend --no-edit  # 只修改文件，不修改提交信息\n\n# 查看提交详情\ngit show HEAD             # 查看最新提交\ngit show commit-hash      # 查看指定提交\n\n# 比较提交\ngit diff HEAD~1 HEAD      # 比较最近两次提交\ngit diff commit1 commit2  # 比较两个提交"
+  },
+  "remoteOperations": {
+    "title": "远程仓库操作",
+    "language": "bash",
+    "code": "# 查看远程仓库\ngit remote -v\ngit remote show origin\n\n# 添加远程仓库\ngit remote add origin https://github.com/user/repo.git\ngit remote add upstream https://github.com/original/repo.git\n\n# 修改远程仓库URL\ngit remote set-url origin https://github.com/user/new-repo.git\n\n# 获取远程更新\ngit fetch origin          # 获取但不合并\ngit pull origin main      # 获取并合并\ngit pull --rebase origin main  # 获取并变基\n\n# 推送到远程\ngit push origin main\ngit push -u origin main   # 设置上游分支\ngit push --all origin     # 推送所有分支\ngit push --tags origin    # 推送所有标签\n\n# 删除远程分支\ngit push origin --delete branch-name\n\n# 同步fork仓库\ngit fetch upstream\ngit checkout main\ngit merge upstream/main\ngit push origin main"
+  },
+  "historyNavigation": {
+    "title": "历史记录导航",
+    "language": "bash",
+    "code": "# 查看提交历史\ngit log                   # 详细历史\ngit log --oneline         # 简洁历史\ngit log --graph --oneline # 图形化历史\ngit log -n 5              # 最近5次提交\ngit log --since=\"2023-01-01\" # 指定时间后的提交\ngit log --author=\"张三\"     # 指定作者的提交\ngit log --grep=\"bug\"       # 搜索提交信息\n\n# 查看文件历史\ngit log -- file.txt       # 文件的提交历史\ngit log -p file.txt       # 文件的详细变更历史\n\n# 查看提交统计\ngit log --stat            # 显示文件变更统计\ngit shortlog              # 按作者分组的提交统计\ngit shortlog -sn          # 按提交数量排序的作者统计\n\n# 搜索代码历史\ngit log -S \"function_name\" # 搜索添加或删除特定代码的提交\ngit log -G \"regex_pattern\" # 使用正则表达式搜索\n\n# 查看分支历史\ngit log --all --graph --oneline # 所有分支的图形化历史"
+  },
+  "undoOperations": {
+    "title": "撤销操作",
+    "language": "bash",
+    "code": "# 撤销工作区更改\ngit checkout -- file.txt  # 撤销单个文件\ngit checkout -- .         # 撤销所有文件\ngit restore file.txt      # Git 2.23+新命令\n\n# 撤销暂存区更改\ngit reset HEAD file.txt   # 从暂存区移除文件\ngit restore --staged file.txt # Git 2.23+新命令\n\n# 撤销提交\ngit reset --soft HEAD~1   # 撤销提交，保留更改在暂存区\ngit reset --mixed HEAD~1  # 撤销提交，保留更改在工作区（默认）\ngit reset --hard HEAD~1   # 撤销提交，丢弃所有更改（危险）\n\n# 创建反向提交\ngit revert HEAD           # 创建一个新提交来撤销最新提交\ngit revert commit-hash    # 撤销指定提交\n\n# 修改提交历史（危险操作）\ngit rebase -i HEAD~3      # 交互式变基最近3次提交\n\n# 恢复删除的提交\ngit reflog                # 查看引用日志\ngit reset --hard commit-hash # 恢复到指定提交"
+  },
+  "branchBasics": {
+    "title": "分支基础操作",
+    "language": "bash",
+    "code": "# 查看分支\ngit branch                  # 查看本地分支\ngit branch -r               # 查看远程分支\ngit branch -a               # 查看所有分支\n\n# 创建分支\ngit branch <branch-name>    # 创建新分支\ngit checkout -b <branch>    # 创建并切换到新分支\ngit switch -c <branch>      # 创建并切换到新分支（新语法）\n\n# 切换分支\ngit checkout <branch>       # 切换到指定分支\ngit switch <branch>         # 切换到指定分支（新语法）\n\n# 合并分支\ngit merge <branch>          # 将指定分支合并到当前分支\ngit merge --no-ff <branch>  # 强制创建合并提交\n\n# 删除分支\ngit branch -d <branch>      # 删除已合并的分支\ngit branch -D <branch>      # 强制删除分支"
+  },
+  "mergeStrategies": {
+    "title": "分支合并策略",
+    "language": "bash",
+    "code": "# Fast-forward合并（默认）\ngit merge feature-branch    # 如果可能，直接移动指针\n\n# 非Fast-forward合并\ngit merge --no-ff feature-branch  # 总是创建合并提交\n\n# Squash合并\ngit merge --squash feature-branch  # 将多个提交压缩为一个\ngit commit -m \"合并feature分支的所有更改\"\n\n# 变基合并\ngit checkout feature-branch\ngit rebase main             # 将feature分支变基到main\ngit checkout main\ngit merge feature-branch    # 然后进行fast-forward合并\n\n# 解决合并冲突\ngit merge feature-branch    # 如果有冲突，Git会暂停\n# 手动编辑冲突文件\ngit add conflicted-file.txt # 标记冲突已解决\ngit commit                  # 完成合并\n\n# 取消合并\ngit merge --abort           # 取消正在进行的合并"
+  },
+  "tagOperations": {
+    "title": "标签操作",
+    "language": "bash",
+    "code": "# 创建标签\ngit tag v1.0.0              # 创建轻量标签\ngit tag -a v1.0.0 -m \"版本1.0.0\" # 创建附注标签\n\n# 查看标签\ngit tag                     # 列出所有标签\ngit tag -l \"v1.*\"           # 列出匹配的标签\ngit show v1.0.0             # 查看标签信息\n\n# 推送标签\ngit push origin v1.0.0      # 推送单个标签\ngit push origin --tags      # 推送所有标签\n\n# 删除标签\ngit tag -d v1.0.0           # 删除本地标签\ngit push origin --delete v1.0.0 # 删除远程标签\n\n# 检出标签\ngit checkout v1.0.0         # 检出到标签（分离HEAD状态）\ngit checkout -b hotfix-1.0.0 v1.0.0 # 基于标签创建分支"
+  },
+  "commitMessageFormat": {
+    "title": "提交信息规范",
+    "language": "bash",
+    "code": "# 推荐的提交信息格式\n<type>(<scope>): <subject>\n\n<body>\n\n<footer>\n\n# 示例\nfeat(auth): 添加用户登录功能\n\n- 实现用户名密码验证\n- 添加JWT token生成\n- 集成Redis会话存储\n\nCloses #123\n\n# 常用类型\nfeat: 新功能\nfix: 修复bug\ndocs: 文档更新\nstyle: 代码格式调整\nrefactor: 代码重构\ntest: 添加测试\nchore: 构建过程或辅助工具的变动"
+  },
+  "gitignoreExample": {
+    "title": ".gitignore配置示例",
+    "language": "bash",
+    "code": "# .gitignore 示例\n# 依赖目录\nnode_modules/\nvendor/\n\n# 构建输出\ndist/\nbuild/\n*.min.js\n\n# 环境配置\n.env\n.env.local\n.env.production\n\n# 日志文件\n*.log\nlogs/\n\n# 操作系统文件\n.DS_Store\nThumbs.db\n\n# IDE文件\n.vscode/\n.idea/\n*.swp\n*.swo\n\n# 临时文件\n*.tmp\n*.temp\n\n# 数据库文件\n*.sqlite\n*.db"
+  },
+  "workflowBestPractices": {
+    "title": "工作流最佳实践",
+    "language": "bash",
+    "code": "# 1. 功能分支工作流\ngit checkout -b feature/user-login\n# 开发功能...\ngit add .\ngit commit -m \"feat: 实现用户登录功能\"\ngit push origin feature/user-login\n# 创建Pull Request\n\n# 2. 保持提交历史整洁\ngit rebase -i HEAD~3  # 整理最近3次提交\n# 或者使用squash合并\ngit merge --squash feature-branch\n\n# 3. 定期同步主分支\ngit checkout main\ngit pull origin main\ngit checkout feature-branch\ngit rebase main  # 或者 git merge main\n\n# 4. 使用标签标记版本\ngit tag -a v1.0.0 -m \"Release version 1.0.0\"\ngit push origin v1.0.0"
+  }
+}

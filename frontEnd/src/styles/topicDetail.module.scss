@@ -257,10 +257,16 @@
         border-radius: 12px;
         border: 1px solid rgba(62, 92, 122, 0.2);
         transition: all 0.3s ease;
+        height: 100%;
 
         &:hover {
             background: rgba(62, 92, 122, 0.15);
             transform: translateY(-2px);
+        }
+
+        > div {
+            flex: 1;
+            width: 100%;
         }
 
         .practice_icon {
@@ -275,6 +281,12 @@
             font-size: 1rem;
             font-weight: 600;
             margin: 0 0 6px 0;
+        }
+
+        p {
+            color: #ffffff !important;
+            line-height: 1.6;
+            margin: 0 0 12px 0;
         }
 
         p {
@@ -450,6 +462,17 @@
             color: var(--text-primary) !important;
         }
 
+        // 更具体的列表项样式
+        .concept_content ul li,
+        .usage_grid ul li,
+        .concepts_grid ul li,
+        .concept_item ul li,
+        .usage_item ul li,
+        .best_practices ul li,
+        .practice_item ul li {
+            color: #ffffff !important;
+        }
+
         // 表格文字
         table, td, th {
             color: var(--text-primary) !important;
@@ -550,9 +573,25 @@
     margin: 20px 0;
 }
 
+.preparation_section {
+    .step_item {
+        margin-bottom: 24px;
+        padding: 20px;
+        background: rgba(24, 144, 255, 0.02);
+        border: 1px solid rgba(24, 144, 255, 0.1);
+        border-radius: 8px;
+
+        h4 {
+            color: #1890ff;
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+    }
+}
+
 .step_item {
-    display: flex;
-    align-items: flex-start;
+
     gap: 16px;
     padding: 16px;
     background: rgba(62, 92, 122, 0.05);
@@ -599,6 +638,105 @@
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 16px;
     margin: 20px 0;
+}
+
+// Vue页面特定样式
+.api_section {
+    .api_item {
+        margin-bottom: 32px;
+        padding: 20px;
+        background: rgba(24, 144, 255, 0.02);
+        border: 1px solid rgba(24, 144, 255, 0.1);
+        border-radius: 8px;
+
+        h4 {
+            color: #1890ff;
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+    }
+}
+
+.advanced_section {
+    h3 {
+        color: #1890ff;
+        font-size: 18px;
+        font-weight: 600;
+        margin: 24px 0 16px 0;
+    }
+}
+
+.ecosystem_migration {
+    h3 {
+        color: #1890ff;
+        font-size: 18px;
+        font-weight: 600;
+        margin: 24px 0 16px 0;
+    }
+}
+
+.breaking_changes {
+    h3 {
+        color: #1890ff;
+        font-size: 18px;
+        font-weight: 600;
+        margin: 24px 0 16px 0;
+    }
+}
+
+// 更多Vue页面样式
+.render_optimization,
+.component_optimization,
+.reactivity_optimization,
+.memory_optimization,
+.ssr_overview,
+.manual_ssr,
+.nuxt_framework,
+.ssr_optimization,
+.dynamic_routes,
+.nested_routes,
+.route_guards,
+.programmatic_navigation,
+.vuex_basics,
+.pinia_basics,
+.pinia_advanced,
+.state_management_overview {
+    h3 {
+        color: #1890ff;
+        font-size: 18px;
+        font-weight: 600;
+        margin: 24px 0 16px 0;
+    }
+
+    .technique_item,
+    .type_item,
+    .issue_item {
+        margin-bottom: 24px;
+        padding: 20px;
+        background: rgba(24, 144, 255, 0.02);
+        border: 1px solid rgba(24, 144, 255, 0.1);
+        border-radius: 8px;
+
+        h4 {
+            color: #1890ff;
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+
+        .problem {
+            color: #ff4d4f;
+            font-weight: 600;
+            margin: 16px 0 8px 0;
+        }
+
+        .solution {
+            color: #52c41a;
+            font-weight: 600;
+            margin: 16px 0 8px 0;
+        }
+    }
 }
 
 .concept_item {
@@ -654,7 +792,7 @@
 }
 
 // 更多缺失的样式类
-.bind_section, .merge_section, .network_section, .runtime_section, .console_section, .sources_section, .performance_section, .monitoring_section, .backup_section, .security_section, .protection_section, .review_section, .issue_section, .method_section, .property_section, .application_section {
+.bind_section, .merge_section, .network_section, .runtime_section, .console_section, .sources_section, .performance_section, .monitoring_section, .backup_section, .security_section, .protection_section, .review_section, .issue_section, .method_section, .property_section, .application_section, .lighthouse_section, .bundle_section, .newman_section, .window_section, .automation_section, .codegen_section, .tools_section, .script_section {
     h3 {
         color: var(--text-primary) !important;
         font-size: 1.2rem;
@@ -668,6 +806,14 @@
         margin: 0 0 16px 0;
         opacity: 0.9;
     }
+
+    ul, ol {
+        li {
+            color: #ffffff !important;
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+    }
 }
 
 .secrets_section {
@@ -676,5 +822,33 @@
         font-size: 1.2rem;
         font-weight: 600;
         margin: 20px 0 12px 0;
+    }
+
+    ul, ol {
+        li {
+            color: #ffffff !important;
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+    }
+}
+
+// 全局li标签样式覆盖，确保所有技术详情页面的li都是白色
+.topic_detail_container {
+    li {
+        color: #ffffff !important;
+    }
+
+    // 确保所有可能的容器中的li都是白色
+    .content_sections li,
+    .content_card li,
+    .concept_content li,
+    .usage_grid li,
+    .concepts_grid li,
+    .concept_item li,
+    .usage_item li,
+    .best_practices li,
+    .practice_item li {
+        color: #ffffff !important;
     }
 }

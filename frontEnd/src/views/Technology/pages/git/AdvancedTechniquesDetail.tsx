@@ -1,28 +1,39 @@
 import React from 'react'
 import { Card, Tag, Alert, Divider, Button } from 'antd'
 import { useNavigate } from 'react-router-dom'
-import { 
-    ArrowLeftOutlined, 
-    RocketOutlined, 
+import {
+    ArrowLeftOutlined,
+    RocketOutlined,
     WarningOutlined,
     CheckCircleOutlined,
     BugOutlined
 } from '@ant-design/icons'
+import CodeHighlight from '@/components/CodeHighlight'
+import { useCodeData } from '@/hooks/useCodeData'
 import styles from '@/styles/topicDetail.module.scss'
 
 const AdvancedTechniquesDetail: React.FC = () => {
     const navigate = useNavigate()
-    
+    const { codeData, loading, error } = useCodeData('Git', 'advanced')
+
     const handleBack = () => {
         navigate('/technology/git')
     }
-    
+
+    if (loading) {
+        return <div className={styles.loading}>加载中...</div>
+    }
+
+    if (error) {
+        return <div className={styles.error}>加载失败: {error}</div>
+    }
+
     return (
         <div className={styles.topic_detail_container}>
             {/* 返回按钮 */}
             <div className={styles.back_section}>
-                <Button 
-                    type="text" 
+                <Button
+                    type="text"
                     icon={<ArrowLeftOutlined />}
                     onClick={handleBack}
                     className={styles.back_button}
@@ -30,7 +41,7 @@ const AdvancedTechniquesDetail: React.FC = () => {
                     返回Git & GitHub技术卡片
                 </Button>
             </div>
-            
+
             {/* 页面头部 */}
             <div className={styles.detail_header}>
                 <div className={styles.topic_icon}>
@@ -47,41 +58,21 @@ const AdvancedTechniquesDetail: React.FC = () => {
                     </div>
                 </div>
             </div>
-            
+
             {/* 内容区域 */}
             <div className={styles.content_sections}>
                 {/* 高级提交技巧 */}
                 <Card title="📝 高级提交技巧" className={styles.content_card}>
                     <div className={styles.concept_content}>
                         <h3>交互式提交</h3>
-                        <div className={styles.code_block}>
-                            <pre>
-{`# 交互式添加文件
-git add -i
+                        {codeData.advancedCommands && (
+                            <CodeHighlight
+                                code={codeData.advancedCommands.code}
+                                language={codeData.advancedCommands.language}
+                                title={codeData.advancedCommands.title}
+                            />
+                        )}
 
-# 部分添加文件内容
-git add -p <file>
-
-# 交互式提交
-git commit -v  # 显示diff信息
-
-# 修改最后一次提交
-git commit --amend
-git commit --amend --no-edit  # 不修改提交信息
-
-# 空提交（用于触发CI）
-git commit --allow-empty -m "Trigger CI"
-
-# 提交时跳过hooks
-git commit --no-verify -m "Skip hooks"
-
-# 签名提交
-git commit -S -m "Signed commit"
-git config --global user.signingkey <key-id>
-git config --global commit.gpgsign true`}
-                            </pre>
-                        </div>
-                        
                         <h3>提交信息规范</h3>
                         <div className={styles.code_block}>
                             <pre>
@@ -120,44 +111,21 @@ git cz  # 交互式提交`}
                         </div>
                     </div>
                 </Card>
-                
+
                 {/* 高级分支操作 */}
                 <Card title="🌿 高级分支操作" className={styles.content_card}>
                     <div className={styles.usage_grid}>
                         <div className={styles.usage_item}>
                             <h4>1. 交互式变基</h4>
-                            <div className={styles.code_block}>
-                                <pre>
-{`# 交互式变基最近3个提交
-git rebase -i HEAD~3
-
-# 变基选项
-pick a1b2c3d Add feature A
-squash e4f5g6h Fix typo in feature A
-reword h7i8j9k Add feature B
-edit k1l2m3n Add feature C
-drop n4o5p6q Remove debug code
-
-# 操作说明
-pick: 使用该提交
-reword: 使用该提交，但修改提交信息
-edit: 使用该提交，但停下来修改
-squash: 将该提交合并到前一个提交
-fixup: 类似squash，但丢弃提交信息
-drop: 删除该提交
-
-# 继续变基
-git rebase --continue
-
-# 中止变基
-git rebase --abort
-
-# 跳过当前提交
-git rebase --skip`}
-                                </pre>
-                            </div>
+                            {codeData.interactiveRebase && (
+                                <CodeHighlight
+                                    code={codeData.interactiveRebase.code}
+                                    language={codeData.interactiveRebase.language}
+                                    title={codeData.interactiveRebase.title}
+                                />
+                            )}
                         </div>
-                        
+
                         <div className={styles.usage_item}>
                             <h4>2. 高级合并策略</h4>
                             <div className={styles.code_block}>
@@ -186,7 +154,7 @@ git merge --no-ff feature-branch`}
                                 </pre>
                             </div>
                         </div>
-                        
+
                         <div className={styles.usage_item}>
                             <h4>3. 分支管理技巧</h4>
                             <div className={styles.code_block}>
@@ -222,7 +190,7 @@ git branch --merged | grep -v "main\|master" | xargs -n 1 git branch -d`}
                         </div>
                     </div>
                 </Card>
-                
+
                 {/* 高级查询与搜索 */}
                 <Card title="🔍 高级查询与搜索" className={styles.content_card}>
                     <div className={styles.search_section}>
@@ -255,7 +223,7 @@ git merge-base main feature-branch
 git log --oneline $(git merge-base main feature-branch)..feature-branch`}
                             </pre>
                         </div>
-                        
+
                         <h3>内容搜索</h3>
                         <div className={styles.code_block}>
                             <pre>
@@ -290,7 +258,7 @@ git rev-list --objects --all | \
                         </div>
                     </div>
                 </Card>
-                
+
                 {/* 数据恢复与修复 */}
                 <Card title="🔧 数据恢复与修复" className={styles.content_card}>
                     <div className={styles.recovery_section}>
@@ -326,7 +294,7 @@ git checkout -- path/to/file
 git restore path/to/file`}
                             </pre>
                         </div>
-                        
+
                         <h3>历史修改</h3>
                         <div className={styles.code_block}>
                             <pre>
@@ -364,7 +332,7 @@ fi
                         </div>
                     </div>
                 </Card>
-                
+
                 {/* 性能优化 */}
                 <Card title="⚡ Git 性能优化" className={styles.content_card}>
                     <div className={styles.performance_section}>
@@ -402,7 +370,7 @@ git config --global core.fscache true
 git config --global gc.auto 256`}
                             </pre>
                         </div>
-                        
+
                         <h3>大文件处理</h3>
                         <div className={styles.code_block}>
                             <pre>
@@ -442,7 +410,7 @@ git clone --filter=tree:0 <repository-url>`}
                         </div>
                     </div>
                 </Card>
-                
+
                 {/* 最佳实践 */}
                 <Card title="✅ Git 高级技巧最佳实践" className={styles.content_card}>
                     <div className={styles.best_practices}>
@@ -459,7 +427,7 @@ git clone --filter=tree:0 <repository-url>`}
                                 </ul>
                             </div>
                         </div>
-                        
+
                         <div className={styles.practice_item}>
                             <CheckCircleOutlined className={styles.practice_icon} />
                             <div>
@@ -473,7 +441,7 @@ git clone --filter=tree:0 <repository-url>`}
                                 </ul>
                             </div>
                         </div>
-                        
+
                         <div className={styles.practice_item}>
                             <CheckCircleOutlined className={styles.practice_icon} />
                             <div>
@@ -487,7 +455,7 @@ git clone --filter=tree:0 <repository-url>`}
                                 </ul>
                             </div>
                         </div>
-                        
+
                         <div className={styles.practice_item}>
                             <CheckCircleOutlined className={styles.practice_icon} />
                             <div>

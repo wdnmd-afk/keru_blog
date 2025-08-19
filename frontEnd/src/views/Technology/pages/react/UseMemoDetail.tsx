@@ -9,13 +9,24 @@ import {
     BugOutlined,
     RocketOutlined
 } from '@ant-design/icons'
+import CodeHighlight from '@/components/CodeHighlight'
+import { useCodeData } from '@/hooks/useCodeData'
 import styles from '@/styles/topicDetail.module.scss'
 
 const UseMemoDetail: React.FC = () => {
     const navigate = useNavigate()
+    const { codeData, loading, error } = useCodeData('React', 'useMemo')
 
     const handleBack = () => {
         navigate('/technology/react')
+    }
+
+    if (loading) {
+        return <div className={styles.loading}>加载中...</div>
+    }
+
+    if (error) {
+        return <div className={styles.error}>加载失败: {error}</div>
     }
 
     return (
@@ -58,17 +69,13 @@ const UseMemoDetail: React.FC = () => {
                         <p>useMemo是React提供的一个Hook，用于缓存计算结果。它会在依赖项不变的情况下返回缓存的值，避免在每次渲染时重复执行昂贵的计算。</p>
 
                         <h3>基本语法</h3>
-                        <div className={styles.code_block}>
-                            <pre>
-{`const memoizedValue = useMemo(
-  () => {
-    // 昂贵的计算逻辑
-    return computeExpensiveValue(a, b);
-  },
-  [a, b] // 依赖数组
-);`}
-                            </pre>
-                        </div>
+                        {codeData.basicUsage && (
+                            <CodeHighlight
+                                code={codeData.basicUsage.code}
+                                language={codeData.basicUsage.language}
+                                title={codeData.basicUsage.title}
+                            />
+                        )}
 
                         <h3>工作原理</h3>
                         <p>useMemo会比较依赖数组中的值，如果依赖项没有变化，就返回上次缓存的计算结果；如果依赖项发生变化，则重新执行计算函数并缓存新的结果。</p>
@@ -80,81 +87,35 @@ const UseMemoDetail: React.FC = () => {
                     <div className={styles.usage_grid}>
                         <div className={styles.usage_item}>
                             <h4>1. 昂贵计算优化</h4>
-                            <div className={styles.code_block}>
-                                <pre>
-{`const ExpensiveComponent = ({ items, filter }) => {
-  // 缓存过滤和排序结果
-  const filteredAndSortedItems = useMemo(() => {
-    console.log('执行昂贵的计算...');
-    return items
-      .filter(item => item.name.includes(filter))
-      .sort((a, b) => a.priority - b.priority);
-  }, [items, filter]);
-  
-  return (
-    <div>
-      {filteredAndSortedItems.map(item => (
-        <div key={item.id}>{item.name}</div>
-      ))}
-    </div>
-  );
-};`}
-                                </pre>
-                            </div>
+                            {codeData.performanceOptimization && (
+                                <CodeHighlight
+                                    code={codeData.performanceOptimization.code}
+                                    language={codeData.performanceOptimization.language}
+                                    title={codeData.performanceOptimization.title}
+                                />
+                            )}
                         </div>
 
                         <div className={styles.usage_item}>
                             <h4>2. 对象引用稳定化</h4>
-                            <div className={styles.code_block}>
-                                <pre>
-{`const Component = ({ userId, userName }) => {
-  // 缓存用户对象，避免子组件不必要的重新渲染
-  const user = useMemo(() => ({
-    id: userId,
-    name: userName,
-    avatar: \`/avatars/\${userId}.jpg\`
-  }), [userId, userName]);
-  
-  return <UserProfile user={user} />;
-};
-
-// 子组件使用React.memo优化
-const UserProfile = React.memo(({ user }) => {
-  console.log('UserProfile 重新渲染');
-  return (
-    <div>
-      <img src={user.avatar} alt={user.name} />
-      <span>{user.name}</span>
-    </div>
-  );
-});`}
-                                </pre>
-                            </div>
+                            {codeData.objectMemoization && (
+                                <CodeHighlight
+                                    code={codeData.objectMemoization.code}
+                                    language={codeData.objectMemoization.language}
+                                    title={codeData.objectMemoization.title}
+                                />
+                            )}
                         </div>
 
                         <div className={styles.usage_item}>
                             <h4>3. 复杂数据转换</h4>
-                            <div className={styles.code_block}>
-                                <pre>
-{`const ChartComponent = ({ rawData, chartType }) => {
-  // 缓存图表数据转换结果
-  const chartData = useMemo(() => {
-    switch (chartType) {
-      case 'line':
-        return transformToLineData(rawData);
-      case 'bar':
-        return transformToBarData(rawData);
-      case 'pie':
-        return transformToPieData(rawData);
-      default:
-        return rawData;
-    }
-  }, [rawData, chartType]);
-  
-  return <Chart data={chartData} type={chartType} />;
-};`}
-                                </pre>
-                            </div>
+                            {codeData.dataTransformation && (
+                                <CodeHighlight
+                                    code={codeData.dataTransformation.code}
+                                    language={codeData.dataTransformation.language}
+                                    title={codeData.dataTransformation.title}
+                                />
+                            )}
                         </div>
                     </div>
                 </Card>
@@ -178,34 +139,14 @@ const UserProfile = React.memo(({ user }) => {
                             </div>
                             <div className={styles.trap_content}>
                                 <p className={styles.problem}>❌ 错误示例：</p>
-                                <div className={styles.code_block}>
-                                    <pre>
-{`// 对简单计算使用useMemo是多余的
-const Component = ({ a, b }) => {
-  // 简单的加法运算不需要缓存
-  const sum = useMemo(() => a + b, [a, b]);
-
-  // 简单的字符串拼接不需要缓存
-  const greeting = useMemo(() => \`Hello, \${name}!\`, [name]);
-
-  return <div>{sum} - {greeting}</div>;
-};`}
-                                    </pre>
-                                </div>
-
-                                <p className={styles.solution}>✅ 正确做法：</p>
-                                <div className={styles.code_block}>
-                                    <pre>
-{`// 只对昂贵计算使用useMemo
-const Component = ({ a, b, name }) => {
-  // 简单计算直接执行
-  const sum = a + b;
-  const greeting = \`Hello, \${name}!\`;
-
-  return <div>{sum} - {greeting}</div>;
-};`}
-                                    </pre>
-                                </div>
+                                <p className={styles.problem}>❌ 错误示例：</p>
+                                {codeData.commonMistakes && (
+                                    <CodeHighlight
+                                        code={codeData.commonMistakes.code}
+                                        language={codeData.commonMistakes.language}
+                                        title={codeData.commonMistakes.title}
+                                    />
+                                )}
                             </div>
                         </div>
 
@@ -216,32 +157,14 @@ const Component = ({ a, b, name }) => {
                             </div>
                             <div className={styles.trap_content}>
                                 <p className={styles.problem}>❌ 错误示例：</p>
-                                <div className={styles.code_block}>
-                                    <pre>
-{`const Component = ({ config }) => {
-  // config是对象，每次渲染都是新的引用
-  const processedData = useMemo(() => {
-    return expensiveProcess(config);
-  }, [config]); // config变化会导致重新计算
-
-  return <div>{processedData}</div>;
-};`}
-                                    </pre>
-                                </div>
-
-                                <p className={styles.solution}>✅ 正确示例：</p>
-                                <div className={styles.code_block}>
-                                    <pre>
-{`const Component = ({ config }) => {
-  // 解构出具体的属性作为依赖
-  const processedData = useMemo(() => {
-    return expensiveProcess(config);
-  }, [config.type, config.value, config.enabled]);
-
-  return <div>{processedData}</div>;
-};`}
-                                    </pre>
-                                </div>
+                                <p className={styles.problem}>❌ 错误示例：</p>
+                                {codeData.commonMistakes && (
+                                    <CodeHighlight
+                                        code={codeData.commonMistakes.code}
+                                        language={codeData.commonMistakes.language}
+                                        title={codeData.commonMistakes.title}
+                                    />
+                                )}
                             </div>
                         </div>
                     </div>
@@ -288,52 +211,31 @@ const Component = ({ a, b, name }) => {
                 <Card title="🚀 进阶技巧" className={styles.content_card}>
                     <div className={styles.advanced_section}>
                         <h3>1. 与useCallback的区别</h3>
-                        <div className={styles.code_block}>
-                            <pre>
-{`// useMemo缓存计算结果
-const memoizedValue = useMemo(() => computeExpensiveValue(a, b), [a, b]);
-
-// useCallback缓存函数引用
-const memoizedCallback = useCallback(() => doSomething(a, b), [a, b]);
-
-// 等价写法
-const memoizedCallback = useMemo(() => () => doSomething(a, b), [a, b]);`}
-                            </pre>
-                        </div>
+                        {codeData.vsUseCallback && (
+                            <CodeHighlight
+                                code={codeData.vsUseCallback.code}
+                                language={codeData.vsUseCallback.language}
+                                title={codeData.vsUseCallback.title}
+                            />
+                        )}
 
                         <h3>2. 条件性缓存</h3>
-                        <div className={styles.code_block}>
-                            <pre>
-{`const Component = ({ data, shouldOptimize }) => {
-  const processedData = useMemo(() => {
-    if (!shouldOptimize) {
-      // 不需要优化时直接计算
-      return expensiveProcess(data);
-    }
-    // 需要优化时才缓存
-    return expensiveProcess(data);
-  }, shouldOptimize ? [data] : [data, Math.random()]);
-
-  return <div>{processedData}</div>;
-};`}
-                            </pre>
-                        </div>
+                        {codeData.conditionalCaching && (
+                            <CodeHighlight
+                                code={codeData.conditionalCaching.code}
+                                language={codeData.conditionalCaching.language}
+                                title={codeData.conditionalCaching.title}
+                            />
+                        )}
 
                         <h3>3. 自定义Hook中的应用</h3>
-                        <div className={styles.code_block}>
-                            <pre>
-{`const useFilteredData = (data, filters) => {
-  return useMemo(() => {
-    return data.filter(item => {
-      return Object.entries(filters).every(([key, value]) => {
-        if (!value) return true;
-        return item[key]?.toString().toLowerCase().includes(value.toLowerCase());
-      });
-    });
-  }, [data, filters]);
-};`}
-                            </pre>
-                        </div>
+                        {codeData.customHookUsage && (
+                            <CodeHighlight
+                                code={codeData.customHookUsage.code}
+                                language={codeData.customHookUsage.language}
+                                title={codeData.customHookUsage.title}
+                            />
+                        )}
                     </div>
                 </Card>
             </div>

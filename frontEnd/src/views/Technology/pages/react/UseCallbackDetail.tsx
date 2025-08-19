@@ -1,29 +1,40 @@
 import React from 'react'
 import { Card, Tag, Alert, Divider, Button } from 'antd'
 import { useNavigate } from 'react-router-dom'
-import { 
-    ArrowLeftOutlined, 
-    ThunderboltOutlined, 
+import {
+    ArrowLeftOutlined,
+    ThunderboltOutlined,
     WarningOutlined,
     CheckCircleOutlined,
     BugOutlined,
-    RocketOutlined
+    RocketOutlined,
 } from '@ant-design/icons'
+import CodeHighlight from '@/components/CodeHighlight'
+import { useCodeData } from '@/hooks/useCodeData'
 import styles from '@/styles/topicDetail.module.scss'
 
 const UseCallbackDetail: React.FC = () => {
     const navigate = useNavigate()
-    
+    const { codeData, loading, error } = useCodeData('React', 'useCallback')
+
     const handleBack = () => {
         navigate('/technology/react')
     }
-    
+
+    if (loading) {
+        return <div className={styles.loading}>加载中...</div>
+    }
+
+    if (error) {
+        return <div className={styles.error}>加载失败: {error}</div>
+    }
+
     return (
         <div className={styles.topic_detail_container}>
             {/* 返回按钮 */}
             <div className={styles.back_section}>
-                <Button 
-                    type="text" 
+                <Button
+                    type="text"
                     icon={<ArrowLeftOutlined />}
                     onClick={handleBack}
                     className={styles.back_button}
@@ -31,7 +42,7 @@ const UseCallbackDetail: React.FC = () => {
                     返回React技术卡片
                 </Button>
             </div>
-            
+
             {/* 页面头部 */}
             <div className={styles.detail_header}>
                 <div className={styles.topic_icon}>
@@ -48,115 +59,67 @@ const UseCallbackDetail: React.FC = () => {
                     </div>
                 </div>
             </div>
-            
+
             {/* 内容区域 */}
             <div className={styles.content_sections}>
                 {/* 基础概念 */}
                 <Card title="📚 基础概念" className={styles.content_card}>
                     <div className={styles.concept_content}>
                         <h3>什么是useCallback？</h3>
-                        <p>useCallback是React提供的一个Hook，用于缓存函数引用。它返回一个记忆化的回调函数，只有当依赖项发生变化时，才会重新创建函数。这对于优化子组件的性能非常有用。</p>
-                        
+                        <p>
+                            useCallback是React提供的一个Hook，用于缓存函数引用。它返回一个记忆化的回调函数，只有当依赖项发生变化时，才会重新创建函数。这对于优化子组件的性能非常有用。
+                        </p>
+
                         <h3>基本语法</h3>
-                        <div className={styles.code_block}>
-                            <pre>
-{`const memoizedCallback = useCallback(
-  () => {
-    // 回调函数逻辑
-    doSomething(a, b);
-  },
-  [a, b] // 依赖数组
-);`}
-                            </pre>
-                        </div>
-                        
+                        {codeData.basicUsage && (
+                            <CodeHighlight
+                                code={codeData.basicUsage.code}
+                                language={codeData.basicUsage.language}
+                                title={codeData.basicUsage.title}
+                            />
+                        )}
+
                         <h3>工作原理</h3>
-                        <p>useCallback会在依赖项不变的情况下返回相同的函数引用，避免子组件因为接收到新的函数引用而进行不必要的重新渲染。</p>
+                        <p>
+                            useCallback会在依赖项不变的情况下返回相同的函数引用，避免子组件因为接收到新的函数引用而进行不必要的重新渲染。
+                        </p>
                     </div>
                 </Card>
-                
+
                 {/* 使用场景 */}
                 <Card title="🎯 核心使用场景" className={styles.content_card}>
                     <div className={styles.usage_grid}>
                         <div className={styles.usage_item}>
                             <h4>1. 优化子组件渲染</h4>
-                            <div className={styles.code_block}>
-                                <pre>
-{`// 父组件
-const ParentComponent = () => {
-  const [count, setCount] = useState(0);
-  const [name, setName] = useState('');
-  
-  // 使用useCallback缓存函数
-  const handleClick = useCallback(() => {
-    console.log('按钮被点击');
-  }, []); // 空依赖，函数永远不变
-  
-  return (
-    <div>
-      <input 
-        value={name} 
-        onChange={(e) => setName(e.target.value)} 
-      />
-      <ChildComponent onClick={handleClick} />
-      <button onClick={() => setCount(count + 1)}>
-        Count: {count}
-      </button>
-    </div>
-  );
-};
+                            {codeData.basicUsage && (
+                                <CodeHighlight
+                                    code={codeData.basicUsage.code}
+                                    language={codeData.basicUsage.language}
+                                    title={codeData.basicUsage.title}
+                                />
+                            )}
+                        </div>
 
-// 子组件使用React.memo优化
-const ChildComponent = React.memo(({ onClick }) => {
-  console.log('ChildComponent 重新渲染');
-  return <button onClick={onClick}>子组件按钮</button>;
-});`}
-                                </pre>
-                            </div>
-                        </div>
-                        
                         <div className={styles.usage_item}>
-                            <h4>2. 依赖于props的回调</h4>
-                            <div className={styles.code_block}>
-                                <pre>
-{`const SearchComponent = ({ searchTerm, onSearch }) => {
-  // 当searchTerm变化时，重新创建搜索函数
-  const handleSearch = useCallback(() => {
-    if (searchTerm.trim()) {
-      onSearch(searchTerm);
-    }
-  }, [searchTerm, onSearch]);
-  
-  return (
-    <button onClick={handleSearch}>
-      搜索 "{searchTerm}"
-    </button>
-  );
-};`}
-                                </pre>
-                            </div>
+                            <h4>2. 依赖数组的使用</h4>
+                            {codeData.dependencyArray && (
+                                <CodeHighlight
+                                    code={codeData.dependencyArray.code}
+                                    language={codeData.dependencyArray.language}
+                                    title={codeData.dependencyArray.title}
+                                />
+                            )}
                         </div>
-                        
+
                         <div className={styles.usage_item}>
-                            <h4>3. 事件处理器优化</h4>
-                            <div className={styles.code_block}>
-                                <pre>
-{`const TodoList = ({ todos, onToggle, onDelete }) => {
-  return (
-    <div>
-      {todos.map(todo => (
-        <TodoItem
-          key={todo.id}
-          todo={todo}
-          onToggle={useCallback(() => onToggle(todo.id), [todo.id, onToggle])}
-          onDelete={useCallback(() => onDelete(todo.id), [todo.id, onDelete])}
-        />
-      ))}
-    </div>
-  );
-};`}
-                                </pre>
-                            </div>
+                            <h4>3. 常见错误和最佳实践</h4>
+                            {codeData.commonMistakes && (
+                                <CodeHighlight
+                                    code={codeData.commonMistakes.code}
+                                    language={codeData.commonMistakes.language}
+                                    title={codeData.commonMistakes.title}
+                                />
+                            )}
                         </div>
                     </div>
                 </Card>
@@ -176,83 +139,32 @@ const ChildComponent = React.memo(({ onClick }) => {
                         <div className={styles.trap_item}>
                             <div className={styles.trap_header}>
                                 <BugOutlined className={styles.trap_icon} />
-                                <h4>陷阱1: 过度使用useCallback</h4>
+                                <h4>不使用 useCallback 的问题</h4>
                             </div>
                             <div className={styles.trap_content}>
-                                <p className={styles.problem}>❌ 错误示例：</p>
-                                <div className={styles.code_block}>
-                                    <pre>
-{`// 不必要的useCallback使用
-const Component = () => {
-  const [count, setCount] = useState(0);
-
-  // 这里使用useCallback是多余的
-  const handleClick = useCallback(() => {
-    console.log('clicked');
-  }, []);
-
-  // 直接传递给DOM元素，不需要缓存
-  return <button onClick={handleClick}>Click</button>;
-};`}
-                                    </pre>
-                                </div>
-
-                                <p className={styles.solution}>✅ 正确做法：</p>
-                                <div className={styles.code_block}>
-                                    <pre>
-{`// 只在传递给子组件时才使用useCallback
-const Component = () => {
-  const [count, setCount] = useState(0);
-
-  // 直接定义函数，传递给DOM元素
-  const handleClick = () => {
-    console.log('clicked');
-  };
-
-  return <button onClick={handleClick}>Click</button>;
-};`}
-                                    </pre>
-                                </div>
+                                {codeData.withoutCallback && (
+                                    <CodeHighlight
+                                        code={codeData.withoutCallback.code}
+                                        language={codeData.withoutCallback.language}
+                                        title={codeData.withoutCallback.title}
+                                    />
+                                )}
                             </div>
                         </div>
 
                         <div className={styles.trap_item}>
                             <div className={styles.trap_header}>
                                 <BugOutlined className={styles.trap_icon} />
-                                <h4>陷阱2: 依赖项不完整</h4>
+                                <h4>性能优化实战</h4>
                             </div>
                             <div className={styles.trap_content}>
-                                <p className={styles.problem}>❌ 错误示例：</p>
-                                <div className={styles.code_block}>
-                                    <pre>
-{`const Component = ({ userId, onUpdate }) => {
-  const [data, setData] = useState(null);
-
-  // 缺少onUpdate依赖
-  const handleUpdate = useCallback(() => {
-    onUpdate(userId, data);
-  }, [userId, data]); // 缺少onUpdate
-
-  return <button onClick={handleUpdate}>更新</button>;
-};`}
-                                    </pre>
-                                </div>
-
-                                <p className={styles.solution}>✅ 正确示例：</p>
-                                <div className={styles.code_block}>
-                                    <pre>
-{`const Component = ({ userId, onUpdate }) => {
-  const [data, setData] = useState(null);
-
-  // 包含所有依赖项
-  const handleUpdate = useCallback(() => {
-    onUpdate(userId, data);
-  }, [userId, data, onUpdate]);
-
-  return <button onClick={handleUpdate}>更新</button>;
-};`}
-                                    </pre>
-                                </div>
+                                {codeData.performanceOptimization && (
+                                    <CodeHighlight
+                                        code={codeData.performanceOptimization.code}
+                                        language={codeData.performanceOptimization.language}
+                                        title={codeData.performanceOptimization.title}
+                                    />
+                                )}
                             </div>
                         </div>
                     </div>
@@ -266,6 +178,13 @@ const Component = () => {
                             <div>
                                 <h4>1. 配合React.memo使用</h4>
                                 <p>useCallback最大的价值在于配合React.memo使用，避免子组件不必要的重新渲染</p>
+                                {codeData.withReactMemo && (
+                                    <CodeHighlight
+                                        code={codeData.withReactMemo.code}
+                                        language={codeData.withReactMemo.language}
+                                        title={codeData.withReactMemo.title}
+                                    />
+                                )}
                             </div>
                         </div>
 
@@ -295,52 +214,7 @@ const Component = () => {
                     </div>
                 </Card>
 
-                {/* 进阶技巧 */}
-                <Card title="🚀 进阶技巧" className={styles.content_card}>
-                    <div className={styles.advanced_section}>
-                        <h3>1. 与useRef结合使用</h3>
-                        <div className={styles.code_block}>
-                            <pre>
-{`const Component = ({ onSave }) => {
-  const [data, setData] = useState('');
-  const onSaveRef = useRef(onSave);
 
-  // 使用ref避免onSave变化导致的重新创建
-  useEffect(() => {
-    onSaveRef.current = onSave;
-  });
-
-  const handleSave = useCallback(() => {
-    onSaveRef.current(data);
-  }, [data]);
-
-  return <ChildComponent onSave={handleSave} />;
-};`}
-                            </pre>
-                        </div>
-
-                        <h3>2. 自定义Hook中的应用</h3>
-                        <div className={styles.code_block}>
-                            <pre>
-{`const useDebounce = (callback, delay) => {
-  const callbackRef = useRef(callback);
-
-  useEffect(() => {
-    callbackRef.current = callback;
-  });
-
-  return useCallback((...args) => {
-    const timer = setTimeout(() => {
-      callbackRef.current(...args);
-    }, delay);
-
-    return () => clearTimeout(timer);
-  }, [delay]);
-};`}
-                            </pre>
-                        </div>
-                    </div>
-                </Card>
             </div>
         </div>
     )

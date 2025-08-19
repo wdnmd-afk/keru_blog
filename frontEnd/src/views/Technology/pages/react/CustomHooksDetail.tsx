@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, Tag, Alert, Divider, Button } from 'antd'
+import { Card, Tag, Alert, Divider, Button, Spin } from 'antd'
 import { useNavigate } from 'react-router-dom'
 import {
     ArrowLeftOutlined,
@@ -7,15 +7,37 @@ import {
     WarningOutlined,
     CheckCircleOutlined,
     BugOutlined,
-    RocketOutlined
+    RocketOutlined,
 } from '@ant-design/icons'
+import CodeHighlight from '@/components/CodeHighlight'
+import { useCodeData } from '@/hooks/useCodeData'
 import styles from '@/styles/topicDetail.module.scss'
 
 const CustomHooksDetail: React.FC = () => {
     const navigate = useNavigate()
+    const { codeData, loading, error } = useCodeData('React', 'customHooks')
 
     const handleBack = () => {
         navigate('/technology/react')
+    }
+
+    if (loading) {
+        return (
+            <div className={styles.topic_detail_container}>
+                <div style={{ textAlign: 'center', padding: '50px' }}>
+                    <Spin size="large" />
+                    <p style={{ marginTop: '16px', color: '#ffffff' }}>加载代码数据中...</p>
+                </div>
+            </div>
+        )
+    }
+
+    if (error) {
+        return (
+            <div className={styles.topic_detail_container}>
+                <Alert message="加载失败" description={error} type="error" showIcon />
+            </div>
+        )
     }
 
     return (
@@ -55,33 +77,33 @@ const CustomHooksDetail: React.FC = () => {
                 <Card title="📚 基础概念" className={styles.content_card}>
                     <div className={styles.concept_content}>
                         <h3>什么是Custom Hooks？</h3>
-                        <p>自定义Hook是一个JavaScript函数，其名称以"use"开头，可以调用其他Hook。它是React提供的一种机制，用于在组件之间共享状态逻辑，而不需要改变组件层次结构。</p>
+                        <p>
+                            自定义Hook是一个JavaScript函数，其名称以"use"开头，可以调用其他Hook。它是React提供的一种机制，用于在组件之间共享状态逻辑，而不需要改变组件层次结构。
+                        </p>
 
                         <h3>基本规则</h3>
-                        <div className={styles.code_block}>
-                            <pre>
-{`// 1. 函数名必须以"use"开头
-// 2. 可以调用其他Hook
-// 3. 遵循Hook的使用规则
-
-const useCustomHook = (initialValue) => {
-  const [state, setState] = useState(initialValue);
-  
-  const updateState = useCallback((newValue) => {
-    setState(newValue);
-  }, []);
-  
-  return { state, updateState };
-};`}
-                            </pre>
-                        </div>
+                        {codeData.basicRules && (
+                            <CodeHighlight
+                                code={codeData.basicRules.code}
+                                language={codeData.basicRules.language}
+                                title={codeData.basicRules.title}
+                            />
+                        )}
 
                         <h3>核心优势</h3>
                         <ul>
-                            <li><strong>逻辑复用</strong>：在多个组件间共享状态逻辑</li>
-                            <li><strong>关注点分离</strong>：将复杂逻辑从组件中抽离</li>
-                            <li><strong>易于测试</strong>：可以独立测试Hook逻辑</li>
-                            <li><strong>组合性</strong>：可以组合多个Hook创建更复杂的逻辑</li>
+                            <li>
+                                <strong>逻辑复用</strong>：在多个组件间共享状态逻辑
+                            </li>
+                            <li>
+                                <strong>关注点分离</strong>：将复杂逻辑从组件中抽离
+                            </li>
+                            <li>
+                                <strong>易于测试</strong>：可以独立测试Hook逻辑
+                            </li>
+                            <li>
+                                <strong>组合性</strong>：可以组合多个Hook创建更复杂的逻辑
+                            </li>
                         </ul>
                     </div>
                 </Card>
@@ -91,158 +113,68 @@ const useCustomHook = (initialValue) => {
                     <div className={styles.usage_grid}>
                         <div className={styles.usage_item}>
                             <h4>1. useLocalStorage - 本地存储Hook</h4>
-                            <div className={styles.code_block}>
-                                <pre>
-{`const useLocalStorage = (key, initialValue) => {
-  // 获取初始值
-  const [storedValue, setStoredValue] = useState(() => {
-    try {
-      const item = window.localStorage.getItem(key);
-      return item ? JSON.parse(item) : initialValue;
-    } catch (error) {
-      console.error('Error reading localStorage:', error);
-      return initialValue;
-    }
-  });
-  
-  // 设置值的函数
-  const setValue = useCallback((value) => {
-    try {
-      // 允许传入函数来更新状态
-      const valueToStore = value instanceof Function ? value(storedValue) : value;
-      setStoredValue(valueToStore);
-      window.localStorage.setItem(key, JSON.stringify(valueToStore));
-    } catch (error) {
-      console.error('Error setting localStorage:', error);
-    }
-  }, [key, storedValue]);
-  
-  return [storedValue, setValue];
-};
-
-// 使用示例
-const UserSettings = () => {
-  const [theme, setTheme] = useLocalStorage('theme', 'light');
-  const [language, setLanguage] = useLocalStorage('language', 'zh-CN');
-  
-  return (
-    <div>
-      <button onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}>
-        切换主题: {theme}
-      </button>
-      <select value={language} onChange={(e) => setLanguage(e.target.value)}>
-        <option value="zh-CN">中文</option>
-        <option value="en-US">English</option>
-      </select>
-    </div>
-  );
-};`}
-                                </pre>
-                            </div>
+                            {codeData.useLocalStorage && (
+                                <CodeHighlight
+                                    code={codeData.useLocalStorage.code}
+                                    language={codeData.useLocalStorage.language}
+                                    title={codeData.useLocalStorage.title}
+                                />
+                            )}
                         </div>
 
                         <div className={styles.usage_item}>
                             <h4>2. useFetch - 数据获取Hook</h4>
-                            <div className={styles.code_block}>
-                                <pre>
-{`const useFetch = (url, options = {}) => {
-  const [data, setData] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-  
-  const fetchData = useCallback(async () => {
-    try {
-      setLoading(true);
-      setError(null);
-      
-      const response = await fetch(url, options);
-      if (!response.ok) {
-        throw new Error(\`HTTP error! status: \${response.status}\`);
-      }
-      
-      const result = await response.json();
-      setData(result);
-    } catch (err) {
-      setError(err.message);
-    } finally {
-      setLoading(false);
-    }
-  }, [url, JSON.stringify(options)]);
-  
-  useEffect(() => {
-    fetchData();
-  }, [fetchData]);
-  
-  const refetch = useCallback(() => {
-    fetchData();
-  }, [fetchData]);
-  
-  return { data, loading, error, refetch };
-};
-
-// 使用示例
-const UserList = () => {
-  const { data: users, loading, error, refetch } = useFetch('/api/users');
-  
-  if (loading) return <div>加载中...</div>;
-  if (error) return <div>错误: {error}</div>;
-  
-  return (
-    <div>
-      <button onClick={refetch}>刷新</button>
-      {users?.map(user => (
-        <div key={user.id}>{user.name}</div>
-      ))}
-    </div>
-  );
-};`}
-                                </pre>
-                            </div>
+                            {codeData.useFetch && (
+                                <CodeHighlight
+                                    code={codeData.useFetch.code}
+                                    language={codeData.useFetch.language}
+                                    title={codeData.useFetch.title}
+                                />
+                            )}
                         </div>
 
                         <div className={styles.usage_item}>
                             <h4>3. useDebounce - 防抖Hook</h4>
-                            <div className={styles.code_block}>
-                                <pre>
-{`const useDebounce = (value, delay) => {
-  const [debouncedValue, setDebouncedValue] = useState(value);
-  
-  useEffect(() => {
-    const handler = setTimeout(() => {
-      setDebouncedValue(value);
-    }, delay);
-    
-    return () => {
-      clearTimeout(handler);
-    };
-  }, [value, delay]);
-  
-  return debouncedValue;
-};
+                            {codeData.useDebounce && (
+                                <CodeHighlight
+                                    code={codeData.useDebounce.code}
+                                    language={codeData.useDebounce.language}
+                                    title={codeData.useDebounce.title}
+                                />
+                            )}
+                        </div>
 
-// 使用示例
-const SearchComponent = () => {
-  const [searchTerm, setSearchTerm] = useState('');
-  const debouncedSearchTerm = useDebounce(searchTerm, 500);
-  
-  useEffect(() => {
-    if (debouncedSearchTerm) {
-      // 执行搜索
-      console.log('搜索:', debouncedSearchTerm);
-    }
-  }, [debouncedSearchTerm]);
-  
-  return (
-    <input
-      type="text"
-      value={searchTerm}
-      onChange={(e) => setSearchTerm(e.target.value)}
-      placeholder="输入搜索关键词..."
-    />
-  );
-};`}
-                                </pre>
-                            </div>
+                        <div className={styles.usage_item}>
+                            <h4>4. useToggle - 切换状态Hook</h4>
+                            {codeData.useToggle && (
+                                <CodeHighlight
+                                    code={codeData.useToggle.code}
+                                    language={codeData.useToggle.language}
+                                    title={codeData.useToggle.title}
+                                />
+                            )}
+                        </div>
+
+                        <div className={styles.usage_item}>
+                            <h4>5. useCounter - 计数器Hook</h4>
+                            {codeData.useCounter && (
+                                <CodeHighlight
+                                    code={codeData.useCounter.code}
+                                    language={codeData.useCounter.language}
+                                    title={codeData.useCounter.title}
+                                />
+                            )}
+                        </div>
+
+                        <div className={styles.usage_item}>
+                            <h4>6. useArray - 数组操作Hook</h4>
+                            {codeData.useArray && (
+                                <CodeHighlight
+                                    code={codeData.useArray.code}
+                                    language={codeData.useArray.language}
+                                    title={codeData.useArray.title}
+                                />
+                            )}
                         </div>
                     </div>
                 </Card>
@@ -255,9 +187,8 @@ const SearchComponent = () => {
                             <div>
                                 <h4>1. 单一职责原则</h4>
                                 <p>每个自定义Hook应该只负责一个特定的功能，保持简单和专注</p>
-                                <div className={styles.code_block}>
-                                    <pre>
-{`// ✅ 好的设计 - 单一职责
+                                <CodeHighlight
+                                    code={`// ✅ 好的设计 - 单一职责
 const useCounter = (initialValue = 0) => {
   const [count, setCount] = useState(initialValue);
   const increment = () => setCount(c => c + 1);
@@ -267,17 +198,17 @@ const useCounter = (initialValue = 0) => {
 };
 
 // ❌ 不好的设计 - 职责过多
-const useEverything = () => {
-  // 计数器逻辑
-  const [count, setCount] = useState(0);
-  // 用户信息逻辑
+const useBadHook = (initialValue = 0) => {
+  const [count, setCount] = useState(initialValue);
   const [user, setUser] = useState(null);
-  // 主题逻辑
   const [theme, setTheme] = useState('light');
-  // ... 太多不相关的逻辑
+
+  // 混合了计数器、用户管理、主题管理等多个职责
+  return { count, setCount, user, setUser, theme, setTheme };
 };`}
-                                    </pre>
-                                </div>
+                                    language="javascript"
+                                    title="单一职责原则示例"
+                                />
                             </div>
                         </div>
 
@@ -286,9 +217,8 @@ const useEverything = () => {
                             <div>
                                 <h4>2. 返回对象而非数组</h4>
                                 <p>对于复杂的返回值，使用对象可以提供更好的可读性和灵活性</p>
-                                <div className={styles.code_block}>
-                                    <pre>
-{`// ✅ 推荐 - 返回对象
+                                <CodeHighlight
+                                    code={`// ✅ 推荐 - 返回对象
 const useApi = (url) => {
   return { data, loading, error, refetch };
 };
@@ -297,25 +227,24 @@ const useApi = (url) => {
 const { data, loading } = useApi('/api/users');
 
 // ❌ 不推荐 - 返回数组（对于复杂情况）
-const useApi = (url) => {
+const useBadApi = (url) => {
   return [data, loading, error, refetch];
 };
 
-// 使用时必须按顺序，不够灵活
-const [data, loading, , refetch] = useApi('/api/users');`}
-                                    </pre>
-                                </div>
+// 使用时必须按顺序解构，不够灵活
+const [data, , , refetch] = useBadApi('/api/users');`}
+                                    language="javascript"
+                                    title="返回对象 vs 返回数组"
+                                />
                             </div>
                         </div>
-
                         <div className={styles.practice_item}>
                             <CheckCircleOutlined className={styles.practice_icon} />
                             <div>
                                 <h4>3. 提供清理机制</h4>
                                 <p>确保自定义Hook能够正确清理副作用，避免内存泄漏</p>
-                                <div className={styles.code_block}>
-                                    <pre>
-{`const useInterval = (callback, delay) => {
+                                <CodeHighlight
+                                    code={`const useInterval = (callback, delay) => {
   const savedCallback = useRef();
 
   useEffect(() => {
@@ -329,142 +258,10 @@ const [data, loading, , refetch] = useApi('/api/users');`}
     }
   }, [delay]);
 };`}
-                                    </pre>
-                                </div>
+                                    language="javascript"
+                                    title="提供清理机制示例"
+                                />
                             </div>
-                        </div>
-                    </div>
-                </Card>
-
-                {/* 高级模式 */}
-                <Card title="🚀 高级设计模式" className={styles.content_card}>
-                    <div className={styles.advanced_section}>
-                        <h3>1. Hook组合模式</h3>
-                        <div className={styles.code_block}>
-                            <pre>
-{`// 基础Hook
-const useToggle = (initialValue = false) => {
-  const [value, setValue] = useState(initialValue);
-  const toggle = useCallback(() => setValue(v => !v), []);
-  return [value, toggle];
-};
-
-// 组合Hook
-const useModal = () => {
-  const [isOpen, toggleOpen] = useToggle(false);
-
-  const openModal = useCallback(() => {
-    if (!isOpen) toggleOpen();
-  }, [isOpen, toggleOpen]);
-
-  const closeModal = useCallback(() => {
-    if (isOpen) toggleOpen();
-  }, [isOpen, toggleOpen]);
-
-  return { isOpen, openModal, closeModal };
-};`}
-                            </pre>
-                        </div>
-
-                        <h3>2. 状态机模式</h3>
-                        <div className={styles.code_block}>
-                            <pre>
-{`const useAsyncState = () => {
-  const [state, setState] = useState({
-    status: 'idle', // idle | loading | success | error
-    data: null,
-    error: null
-  });
-
-  const execute = useCallback(async (asyncFunction) => {
-    setState({ status: 'loading', data: null, error: null });
-
-    try {
-      const data = await asyncFunction();
-      setState({ status: 'success', data, error: null });
-    } catch (error) {
-      setState({ status: 'error', data: null, error });
-    }
-  }, []);
-
-  return { ...state, execute };
-};`}
-                            </pre>
-                        </div>
-
-                        <h3>3. 工厂模式</h3>
-                        <div className={styles.code_block}>
-                            <pre>
-{`// Hook工厂函数
-const createUseStorage = (storage) => {
-  return (key, initialValue) => {
-    const [storedValue, setStoredValue] = useState(() => {
-      try {
-        const item = storage.getItem(key);
-        return item ? JSON.parse(item) : initialValue;
-      } catch {
-        return initialValue;
-      }
-    });
-
-    const setValue = useCallback((value) => {
-      try {
-        setStoredValue(value);
-        storage.setItem(key, JSON.stringify(value));
-      } catch (error) {
-        console.error('Storage error:', error);
-      }
-    }, [key]);
-
-    return [storedValue, setValue];
-  };
-};
-
-// 创建不同的存储Hook
-const useLocalStorage = createUseStorage(localStorage);
-const useSessionStorage = createUseStorage(sessionStorage);`}
-                            </pre>
-                        </div>
-                    </div>
-                </Card>
-
-                {/* 测试策略 */}
-                <Card title="🧪 测试策略" className={styles.content_card}>
-                    <div className={styles.testing_section}>
-                        <h3>使用@testing-library/react-hooks测试</h3>
-                        <div className={styles.code_block}>
-                            <pre>
-{`import { renderHook, act } from '@testing-library/react-hooks';
-import { useCounter } from './useCounter';
-
-describe('useCounter', () => {
-  it('应该初始化为默认值', () => {
-    const { result } = renderHook(() => useCounter());
-    expect(result.current.count).toBe(0);
-  });
-
-  it('应该能够递增', () => {
-    const { result } = renderHook(() => useCounter());
-
-    act(() => {
-      result.current.increment();
-    });
-
-    expect(result.current.count).toBe(1);
-  });
-
-  it('应该能够重置', () => {
-    const { result } = renderHook(() => useCounter(5));
-
-    act(() => {
-      result.current.increment();
-      result.current.reset();
-    });
-
-    expect(result.current.count).toBe(5);
-  });
-});`}
-                            </pre>
                         </div>
                     </div>
                 </Card>

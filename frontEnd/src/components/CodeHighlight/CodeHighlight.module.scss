@@ -1,0 +1,363 @@
+.codeHighlight {
+  position: relative;
+  background: #1e1e1e;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #333;
+  margin: 16px 0;
+  max-width: 100%;
+  width: 100%;
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+    background: #2d2d2d;
+    border-bottom: 1px solid #333;
+
+    .titleSection {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+
+      .title {
+        color: #ffffff;
+        font-weight: 500;
+        font-size: 14px;
+      }
+
+      .stats {
+        display: flex;
+        gap: 12px;
+
+        span {
+          color: #888;
+          font-size: 12px;
+          padding: 2px 6px;
+          background: #333;
+          border-radius: 4px;
+        }
+      }
+    }
+
+    .actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+
+      .copyButton {
+        color: #888 !important;
+        border: none !important;
+        background: transparent !important;
+
+        &:hover {
+          color: #ffffff !important;
+          background: #333 !important;
+        }
+
+        &.copied {
+          color: #52c41a !important;
+        }
+      }
+
+      .languageTag {
+        background: #333;
+        color: #888;
+        padding: 2px 8px;
+        border-radius: 4px;
+        font-size: 12px;
+        font-family: monospace;
+        text-transform: uppercase;
+      }
+    }
+  }
+
+  .codeContainer {
+    position: relative;
+    overflow: auto;
+    max-width: 100%;
+    width: 100%;
+
+    &::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: #2d2d2d;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: #555;
+      border-radius: 4px;
+
+      &:hover {
+        background: #666;
+      }
+    }
+
+    .codeBlock {
+      margin: 0;
+      padding: 16px;
+      background: transparent;
+      color: #ffffff;
+      font-family: 'Fira Code', 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+      font-size: 14px;
+      line-height: 1.5;
+      white-space: pre;
+      overflow-x: auto;
+
+      code {
+        background: transparent;
+        color: inherit;
+        padding: 0;
+        border: none;
+        font-family: inherit;
+        font-size: inherit;
+
+        // JavaScript/TypeScript 语法高亮
+        .keyword {
+          color: #569cd6;
+          font-weight: bold;
+        }
+
+        .string {
+          color: #ce9178;
+        }
+
+        .comment {
+          color: #6a9955;
+          font-style: italic;
+        }
+
+        .number {
+          color: #b5cea8;
+        }
+
+        .function {
+          color: #dcdcaa;
+        }
+
+        .variable {
+          color: #9cdcfe;
+        }
+
+        .operator {
+          color: #d4d4d4;
+        }
+
+        .punctuation {
+          color: #d4d4d4;
+        }
+
+        .class-name {
+          color: #4ec9b0;
+        }
+
+        .property {
+          color: #92c5f7;
+        }
+
+        .boolean {
+          color: #569cd6;
+        }
+
+        .null {
+          color: #569cd6;
+        }
+
+        .undefined {
+          color: #569cd6;
+        }
+
+        // HTML/JSX 语法高亮
+        .tag {
+          color: #569cd6;
+
+          .attr-name {
+            color: #92c5f7;
+          }
+
+          .attr-value {
+            color: #ce9178;
+          }
+        }
+
+        // CSS 语法高亮
+        .selector {
+          color: #d7ba7d;
+        }
+
+        .property {
+          color: #92c5f7;
+        }
+
+        .value {
+          color: #ce9178;
+        }
+
+        // JSON 语法高亮
+        .json-key {
+          color: #92c5f7;
+        }
+
+        .json-value {
+          color: #ce9178;
+        }
+
+        // Shell/Bash 语法高亮
+        .shell-command {
+          color: #dcdcaa;
+        }
+
+        .shell-option {
+          color: #569cd6;
+        }
+      }
+    }
+  }
+
+
+}
+
+// 暗色主题适配
+.codeHighlight {
+  // VS Code Dark+ 主题色彩
+  .codeBlock code {
+    // 关键字
+    .token.keyword,
+    .token.control,
+    .token.directive,
+    .token.unit,
+    .token.rule {
+      color: #569cd6;
+    }
+
+    // 字符串
+    .token.string,
+    .token.attr-value {
+      color: #ce9178;
+    }
+
+    // 注释
+    .token.comment,
+    .token.prolog,
+    .token.doctype,
+    .token.cdata {
+      color: #6a9955;
+      font-style: italic;
+    }
+
+    // 数字
+    .token.number {
+      color: #b5cea8;
+    }
+
+    // 函数
+    .token.function,
+    .token.function-name {
+      color: #dcdcaa;
+    }
+
+    // 变量
+    .token.variable {
+      color: #9cdcfe;
+    }
+
+    // 操作符
+    .token.operator {
+      color: #d4d4d4;
+    }
+
+    // 标点符号
+    .token.punctuation {
+      color: #d4d4d4;
+    }
+
+    // 类名
+    .token.class-name {
+      color: #4ec9b0;
+    }
+
+    // 属性
+    .token.property,
+    .token.attr-name {
+      color: #92c5f7;
+    }
+
+    // 布尔值
+    .token.boolean {
+      color: #569cd6;
+    }
+
+    // null/undefined
+    .token.null,
+    .token.undefined {
+      color: #569cd6;
+    }
+
+    // 标签
+    .token.tag {
+      color: #569cd6;
+    }
+
+    // 选择器
+    .token.selector {
+      color: #d7ba7d;
+    }
+
+    // 重要标记
+    .token.important {
+      color: #ff6b6b;
+      font-weight: bold;
+    }
+
+    // 插入的内容
+    .token.inserted {
+      color: #98c379;
+    }
+
+    // 删除的内容
+    .token.deleted {
+      color: #e06c75;
+    }
+  }
+}
+
+// 响应式设计
+@media (max-width: 768px) {
+  .codeHighlight {
+    margin: 12px 0;
+    border-radius: 6px;
+
+    .header {
+      padding: 8px 12px;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+
+      .titleSection {
+        width: 100%;
+        justify-content: space-between;
+      }
+
+      .actions {
+        align-self: flex-end;
+      }
+    }
+
+    .codeContainer {
+      .codeBlock {
+        padding: 12px;
+        font-size: 13px;
+      }
+    }
+
+    .languageTag {
+      top: 6px;
+      right: 6px;
+      font-size: 11px;
+    }
+  }
+}

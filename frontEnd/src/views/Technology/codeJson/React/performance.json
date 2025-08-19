@@ -1,0 +1,37 @@
+{
+  "performanceMonitoring": {
+    "title": "性能监控工具",
+    "language": "javascript",
+    "code": "// 在代码中添加性能标记\nimport { Profiler } from 'react'\n\nfunction onRenderCallback(id, phase, actualDuration, baseDuration, startTime, commitTime) {\n  console.log('组件:', id)\n  console.log('阶段:', phase) // \"mount\" 或 \"update\"\n  console.log('实际渲染时间:', actualDuration)\n  console.log('基准渲染时间:', baseDuration)\n}\n\nfunction App() {\n  return (\n    <Profiler id=\"App\" onRender={onRenderCallback}>\n      <Navigation />\n      <Main />\n    </Profiler>\n  )\n}\n\n// 使用 React DevTools\n// 1. 安装 React Developer Tools 浏览器扩展\n// 2. 打开开发者工具，切换到 \"Profiler\" 标签\n// 3. 点击录制按钮，执行操作，停止录制\n// 4. 分析组件渲染时间和次数"
+  },
+  "reactMemoUsage": {
+    "title": "React.memo 使用",
+    "language": "javascript",
+    "code": "// 基础用法\nconst ExpensiveComponent = React.memo(({ data, config }) => {\n  console.log('ExpensiveComponent 重新渲染')\n  \n  return (\n    <div>\n      <h3>{data.title}</h3>\n      <p>{data.content}</p>\n    </div>\n  )\n})\n\n// 自定义比较函数\nconst MyComponent = React.memo(({ user, settings }) => {\n  return <div>{user.name} - {settings.theme}</div>\n}, (prevProps, nextProps) => {\n  // 返回 true 表示 props 相等，不需要重新渲染\n  return prevProps.user.id === nextProps.user.id &&\n         prevProps.settings.theme === nextProps.settings.theme\n})\n\n// 使用示例\nfunction Parent() {\n  const [count, setCount] = useState(0)\n  const [user] = useState({ id: 1, name: '张三' })\n  \n  return (\n    <div>\n      <button onClick={() => setCount(count + 1)}>\n        计数: {count}\n      </button>\n      {/* user 没有变化时，MyComponent 不会重新渲染 */}\n      <MyComponent user={user} settings={{ theme: 'dark' }} />\n    </div>\n  )\n}"
+  },
+  "virtualizedList": {
+    "title": "虚拟化长列表",
+    "language": "javascript",
+    "code": "// 使用 react-window 进行虚拟化\nimport { FixedSizeList as List } from 'react-window'\n\nconst Row = ({ index, style }) => (\n  <div style={style}>\n    <div className=\"list-item\">\n      <h4>项目 {index}</h4>\n      <p>这是第 {index} 个列表项的内容</p>\n    </div>\n  </div>\n)\n\nconst VirtualizedList = ({ items }) => (\n  <List\n    height={600}        // 容器高度\n    itemCount={items.length}  // 总项目数\n    itemSize={80}       // 每项高度\n    width=\"100%\"\n  >\n    {Row}\n  </List>\n)\n\n// 动态高度列表\nimport { VariableSizeList as List } from 'react-window'\n\nconst getItemSize = (index) => {\n  // 根据内容动态计算高度\n  return index % 2 === 0 ? 80 : 120\n}\n\nconst DynamicList = ({ items }) => (\n  <List\n    height={600}\n    itemCount={items.length}\n    itemSize={getItemSize}\n    width=\"100%\"\n  >\n    {Row}\n  </List>\n)"
+  },
+  "codeSplitting": {
+    "title": "代码分割与懒加载",
+    "language": "javascript",
+    "code": "// 路由级别的代码分割\nimport { lazy, Suspense } from 'react'\nimport { BrowserRouter, Routes, Route } from 'react-router-dom'\n\n// 懒加载组件\nconst Home = lazy(() => import('./pages/Home'))\nconst About = lazy(() => import('./pages/About'))\nconst Dashboard = lazy(() => import('./pages/Dashboard'))\n\nfunction App() {\n  return (\n    <BrowserRouter>\n      <Suspense fallback={<div>加载中...</div>}>\n        <Routes>\n          <Route path=\"/\" element={<Home />} />\n          <Route path=\"/about\" element={<About />} />\n          <Route path=\"/dashboard\" element={<Dashboard />} />\n        </Routes>\n      </Suspense>\n    </BrowserRouter>\n  )\n}\n\n// 组件级别的懒加载\nconst HeavyComponent = lazy(() => \n  import('./HeavyComponent').then(module => ({\n    default: module.HeavyComponent\n  }))\n)\n\nfunction Parent() {\n  const [showHeavy, setShowHeavy] = useState(false)\n  \n  return (\n    <div>\n      <button onClick={() => setShowHeavy(!showHeavy)}>\n        {showHeavy ? '隐藏' : '显示'}重型组件\n      </button>\n      \n      {showHeavy && (\n        <Suspense fallback={<div>加载重型组件中...</div>}>\n          <HeavyComponent />\n        </Suspense>\n      )}\n    </div>\n  )\n}"
+  },
+  "avoidObjectCreation": {
+    "title": "性能问题示例",
+    "language": "javascript",
+    "code": "// 每次渲染都创建新对象/函数\nfunction BadComponent({ items }) {\n  return (\n    <div>\n      {items.map(item => (\n        <ItemComponent\n          key={item.id}\n          item={item}\n          style={{ margin: '10px' }}  // ❌ 每次都是新对象\n          onClick={() => handleClick(item.id)}  // ❌ 每次都是新函数\n        />\n      ))}\n    </div>\n  )\n}"
+  },
+  "optimizedCode": {
+    "title": "优化后的代码",
+    "language": "javascript",
+    "code": "// 缓存对象和函数\nconst itemStyle = { margin: '10px' }  // 移到组件外部\n\nfunction GoodComponent({ items }) {\n  const handleClick = useCallback((id) => {\n    // 处理点击\n  }, [])\n  \n  return (\n    <div>\n      {items.map(item => (\n        <ItemComponent\n          key={item.id}\n          item={item}\n          style={itemStyle}  // ✅ 复用对象\n          onClick={handleClick}  // ✅ 稳定的函数引用\n        />\n      ))}\n    </div>\n  )\n}"
+  },
+  "correctKeys": {
+    "title": "正确使用 key",
+    "language": "javascript",
+    "code": "// ❌ 不好的做法\n{items.map((item, index) => (\n  <Item key={index} data={item} />  // 使用索引作为 key\n))}\n\n// ✅ 好的做法\n{items.map(item => (\n  <Item key={item.id} data={item} />  // 使用唯一标识作为 key\n))}\n\n// ✅ 对于没有唯一 ID 的情况\n{items.map(item => (\n  <Item key={`${item.name}-${item.category}`} data={item} />\n))}"
+  }
+}

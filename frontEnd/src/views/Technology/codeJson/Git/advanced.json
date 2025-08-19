@@ -1,0 +1,47 @@
+{
+  "interactiveRebase": {
+    "title": "交互式变基",
+    "language": "bash",
+    "code": "# 交互式变基最近3次提交\ngit rebase -i HEAD~3\n\n# 变基选项说明\npick a1b2c3d Add user login feature\nsquash e4f5g6h Fix login validation\nreword h7i8j9k Update login UI\ndrop k1l2m3n Remove debug code\nedit n4o5p6q Add password encryption\n\n# 选项说明：\n# pick: 使用提交\n# reword: 使用提交但修改提交信息\n# edit: 使用提交但停下来修改\n# squash: 使用提交但合并到前一个提交\n# fixup: 类似squash但丢弃提交信息\n# drop: 删除提交\n\n# 变基过程中的操作\ngit rebase --continue    # 继续变基\ngit rebase --skip        # 跳过当前提交\ngit rebase --abort       # 取消变基\n\n# 修改历史中的特定提交\ngit rebase -i <commit-hash>^"
+  },
+  "cherryPick": {
+    "title": "樱桃挑选",
+    "language": "bash",
+    "code": "# 应用特定提交到当前分支\ngit cherry-pick <commit-hash>\n\n# 应用多个提交\ngit cherry-pick <commit1> <commit2> <commit3>\n\n# 应用提交范围\ngit cherry-pick <start-commit>..<end-commit>\n\n# 应用但不自动提交\ngit cherry-pick -n <commit-hash>\ngit commit -m \"Cherry-picked: 添加新功能\"\n\n# 解决cherry-pick冲突\ngit cherry-pick <commit-hash>\n# 解决冲突后\ngit add .\ngit cherry-pick --continue\n\n# 取消cherry-pick\ngit cherry-pick --abort\n\n# 从其他分支cherry-pick\ngit checkout main\ngit cherry-pick feature-branch~2  # 应用feature分支倒数第3个提交\n\n# 查看可以cherry-pick的提交\ngit log --oneline main..feature-branch"
+  },
+  "stashOperations": {
+    "title": "储藏操作",
+    "language": "bash",
+    "code": "# 储藏当前工作区更改\ngit stash                    # 储藏所有更改\ngit stash -u                 # 包括未跟踪文件\ngit stash -a                 # 包括忽略的文件\ngit stash push -m \"WIP: 用户认证功能\"  # 带消息储藏\n\n# 查看储藏列表\ngit stash list\n# stash@{0}: WIP on main: a1b2c3d Add login feature\n# stash@{1}: On feature: e4f5g6h Fix validation\n\n# 应用储藏\ngit stash apply              # 应用最新储藏\ngit stash apply stash@{1}    # 应用特定储藏\ngit stash pop                # 应用并删除最新储藏\ngit stash pop stash@{1}      # 应用并删除特定储藏\n\n# 查看储藏内容\ngit stash show               # 显示储藏的文件列表\ngit stash show -p            # 显示储藏的详细差异\ngit stash show stash@{1} -p  # 显示特定储藏的差异\n\n# 删除储藏\ngit stash drop stash@{1}     # 删除特定储藏\ngit stash clear              # 删除所有储藏\n\n# 从储藏创建分支\ngit stash branch new-feature stash@{1}"
+  },
+  "reflogOperations": {
+    "title": "引用日志",
+    "language": "bash",
+    "code": "# 查看引用日志\ngit reflog                   # 查看HEAD的引用日志\ngit reflog show main         # 查看main分支的引用日志\ngit reflog show --all        # 查看所有引用的日志\n\n# 引用日志格式\n# a1b2c3d HEAD@{0}: commit: Add user authentication\n# e4f5g6h HEAD@{1}: merge feature-branch: Merge made by recursive\n# h7i8j9k HEAD@{2}: checkout: moving from feature to main\n\n# 恢复丢失的提交\ngit reset --hard HEAD@{1}    # 恢复到前一个状态\ngit reset --hard a1b2c3d     # 恢复到特定提交\n\n# 恢复删除的分支\ngit reflog show --all | grep \"branch-name\"\ngit checkout -b recovered-branch <commit-hash>\n\n# 查看特定时间的状态\ngit reflog --since=\"2 hours ago\"\ngit reflog --until=\"yesterday\"\n\n# 清理引用日志\ngit reflog expire --expire=30.days refs/heads/main\ngit reflog expire --expire-unreachable=7.days --all\ngit gc --prune=now           # 清理不可达对象"
+  },
+  "bisectDebugging": {
+    "title": "二分查找调试",
+    "language": "bash",
+    "code": "# 开始二分查找\ngit bisect start\ngit bisect bad               # 标记当前提交为坏的\ngit bisect good v1.0         # 标记已知好的提交\n\n# Git会自动检出中间的提交\n# 测试当前提交\n# 如果功能正常：\ngit bisect good\n# 如果功能异常：\ngit bisect bad\n\n# 重复上述过程直到找到问题提交\n# Bisecting: 0 revisions left to test after this (roughly 0 steps)\n# a1b2c3d is the first bad commit\n\n# 查看问题提交详情\ngit show a1b2c3d\n\n# 结束二分查找\ngit bisect reset             # 返回到开始前的状态\n\n# 自动化二分查找\ngit bisect start HEAD v1.0\ngit bisect run npm test      # 自动运行测试\n# 或者使用自定义脚本\ngit bisect run ./test-script.sh\n\n# 跳过无法测试的提交\ngit bisect skip              # 跳过当前提交\n\n# 可视化二分查找过程\ngit bisect visualize         # 在gitk中显示\ngit bisect view --oneline    # 命令行显示"
+  },
+  "submodules": {
+    "title": "子模块管理",
+    "language": "bash",
+    "code": "# 添加子模块\ngit submodule add https://github.com/user/library.git lib/external\ngit commit -m \"Add external library as submodule\"\n\n# 克隆包含子模块的仓库\ngit clone --recursive https://github.com/user/main-repo.git\n# 或者先克隆再初始化子模块\ngit clone https://github.com/user/main-repo.git\ngit submodule init\ngit submodule update\n\n# 更新子模块\ncd lib/external\ngit pull origin main\ncd ../..\ngit add lib/external\ngit commit -m \"Update external library\"\n\n# 更新所有子模块\ngit submodule update --remote\ngit submodule update --remote --merge\n\n# 查看子模块状态\ngit submodule status\ngit submodule summary\n\n# 在子模块中工作\ncd lib/external\ngit checkout -b feature-branch\n# 进行修改...\ngit commit -m \"Add new feature\"\ngit push origin feature-branch\n\n# 删除子模块\ngit submodule deinit lib/external\ngit rm lib/external\ngit commit -m \"Remove external library submodule\""
+  },
+  "worktrees": {
+    "title": "工作树管理",
+    "language": "bash",
+    "code": "# 创建新的工作树\ngit worktree add ../project-feature feature-branch\ngit worktree add ../project-hotfix -b hotfix/critical-bug\n\n# 列出所有工作树\ngit worktree list\n# /path/to/main-repo    a1b2c3d [main]\n# /path/to/project-feature  e4f5g6h [feature-branch]\n# /path/to/project-hotfix   h7i8j9k [hotfix/critical-bug]\n\n# 在不同工作树中工作\ncd ../project-feature\n# 在这里开发功能，不影响主工作区\ngit add .\ngit commit -m \"Implement new feature\"\n\ncd ../project-hotfix\n# 在这里修复bug\ngit add .\ngit commit -m \"Fix critical bug\"\n\n# 删除工作树\ngit worktree remove ../project-feature\ngit worktree prune              # 清理已删除的工作树引用\n\n# 移动工作树\ngit worktree move ../project-hotfix ../hotfix-new-location\n\n# 锁定工作树（防止被清理）\ngit worktree lock ../project-feature\ngit worktree unlock ../project-feature\n\n# 工作树的优势\n# - 同时在多个分支工作\n# - 避免频繁切换分支\n# - 并行开发和测试\n# - 保持工作区状态"
+  },
+  "hooks": {
+    "title": "Git钩子",
+    "language": "bash",
+    "code": "# Git钩子位置\n# .git/hooks/\n\n# 常用钩子类型\n# pre-commit: 提交前执行\n# pre-push: 推送前执行\n# post-commit: 提交后执行\n# pre-receive: 接收前执行（服务端）\n# post-receive: 接收后执行（服务端）\n\n# 创建pre-commit钩子\n#!/bin/sh\n# .git/hooks/pre-commit\n\n# 运行代码检查\nnpm run lint\nif [ $? -ne 0 ]; then\n  echo \"Lint检查失败，请修复后再提交\"\n  exit 1\nfi\n\n# 运行测试\nnpm test\nif [ $? -ne 0 ]; then\n  echo \"测试失败，请修复后再提交\"\n  exit 1\nfi\n\necho \"所有检查通过，允许提交\"\n\n# 设置钩子可执行权限\nchmod +x .git/hooks/pre-commit\n\n# 创建pre-push钩子\n#!/bin/sh\n# .git/hooks/pre-push\n\nprotected_branch='main'\ncurrent_branch=$(git symbolic-ref HEAD | sed -e 's,.*/\\(.*\\),\\1,')\n\nif [ $protected_branch = $current_branch ]; then\n  echo \"不允许直接推送到main分支\"\n  exit 1\nfi\n\n# 使用工具管理钩子\n# husky (Node.js项目)\nnpm install --save-dev husky\nnpx husky install\nnpx husky add .husky/pre-commit \"npm run lint && npm test\"\n\n# pre-commit (Python项目)\npip install pre-commit\n# 创建.pre-commit-config.yaml\npre-commit install"
+  },
+  "advancedCommands": {
+    "title": "高级命令",
+    "language": "bash",
+    "code": "# 查找引入bug的提交\ngit blame file.txt           # 查看文件每行的最后修改\ngit blame -L 10,20 file.txt  # 查看特定行范围\ngit blame -C file.txt        # 检测复制的代码\n\n# 搜索提交历史\ngit log -S \"function_name\"   # 搜索添加或删除特定代码的提交\ngit log -G \"regex_pattern\"   # 使用正则表达式搜索\ngit log --grep=\"bug fix\"     # 搜索提交信息\ngit log --author=\"张三\"       # 搜索特定作者的提交\n\n# 文件历史追踪\ngit log --follow file.txt    # 跟踪文件重命名\ngit log -p file.txt          # 显示文件的详细变更历史\ngit log --stat file.txt      # 显示文件的统计信息\n\n# 高级差异比较\ngit diff --word-diff         # 单词级别的差异\ngit diff --color-words       # 彩色单词差异\ngit diff --ignore-whitespace # 忽略空白字符\ngit diff --name-only         # 只显示文件名\ngit diff --stat              # 显示统计信息\n\n# 归档和打包\ngit archive --format=zip HEAD > project.zip\ngit archive --format=tar.gz --prefix=project/ HEAD > project.tar.gz\n\n# 清理和维护\ngit gc                       # 垃圾回收\ngit fsck                     # 文件系统检查\ngit count-objects -v         # 查看对象统计\ngit prune                    # 清理不可达对象\n\n# 配置别名\ngit config --global alias.st status\ngit config --global alias.co checkout\ngit config --global alias.br branch\ngit config --global alias.ci commit\ngit config --global alias.unstage 'reset HEAD --'\ngit config --global alias.last 'log -1 HEAD'\ngit config --global alias.visual '!gitk'"
+  }
+}

@@ -1,28 +1,39 @@
 import React from 'react'
 import { Card, Tag, Alert, Divider, Button } from 'antd'
 import { useNavigate } from 'react-router-dom'
-import { 
-    ArrowLeftOutlined, 
-    RocketOutlined, 
+import {
+    ArrowLeftOutlined,
+    RocketOutlined,
     WarningOutlined,
     CheckCircleOutlined,
     BugOutlined
 } from '@ant-design/icons'
+import CodeHighlight from '@/components/CodeHighlight'
+import { useCodeData } from '@/hooks/useCodeData'
 import styles from '@/styles/topicDetail.module.scss'
 
 const AdvancedTypesDetail: React.FC = () => {
     const navigate = useNavigate()
-    
+    const { codeData, loading, error } = useCodeData('TypeScript', 'advancedTypes')
+
     const handleBack = () => {
         navigate('/technology/typescript')
     }
-    
+
+    if (loading) {
+        return <div className={styles.loading}>加载中...</div>
+    }
+
+    if (error) {
+        return <div className={styles.error}>加载失败: {error}</div>
+    }
+
     return (
         <div className={styles.topic_detail_container}>
             {/* 返回按钮 */}
             <div className={styles.back_section}>
-                <Button 
-                    type="text" 
+                <Button
+                    type="text"
                     icon={<ArrowLeftOutlined />}
                     onClick={handleBack}
                     className={styles.back_button}
@@ -30,7 +41,7 @@ const AdvancedTypesDetail: React.FC = () => {
                     返回TypeScript技术卡片
                 </Button>
             </div>
-            
+
             {/* 页面头部 */}
             <div className={styles.detail_header}>
                 <div className={styles.topic_icon}>
@@ -47,7 +58,7 @@ const AdvancedTypesDetail: React.FC = () => {
                     </div>
                 </div>
             </div>
-            
+
             {/* 内容区域 */}
             <div className={styles.content_sections}>
                 {/* 联合类型与交叉类型 */}
@@ -55,7 +66,7 @@ const AdvancedTypesDetail: React.FC = () => {
                     <div className={styles.concept_content}>
                         <h3>联合类型 (Union Types)</h3>
                         <p>联合类型表示一个值可以是几种类型之一，使用 | 分隔每个类型。</p>
-                        
+
                         <div className={styles.code_block}>
                             <pre>
 {`// 基本联合类型
@@ -92,10 +103,10 @@ function handleResponse(response: ApiResponse) {
 }`}
                             </pre>
                         </div>
-                        
+
                         <h3>交叉类型 (Intersection Types)</h3>
                         <p>交叉类型将多个类型合并为一个类型，使用 & 连接。</p>
-                        
+
                         <div className={styles.code_block}>
                             <pre>
 {`// 基本交叉类型
@@ -144,7 +155,7 @@ const blogPost: TimestampedTagged<Article> = {
                         </div>
                     </div>
                 </Card>
-                
+
                 {/* 条件类型 */}
                 <Card title="🎯 条件类型" className={styles.content_card}>
                     <div className={styles.usage_grid}>
@@ -172,7 +183,7 @@ type FuncReturn2 = ReturnType<(x: number) => boolean>  // boolean`}
                                 </pre>
                             </div>
                         </div>
-                        
+
                         <div className={styles.usage_item}>
                             <h4>分布式条件类型</h4>
                             <div className={styles.code_block}>
@@ -198,7 +209,7 @@ type OnlyString = Extract<string | number | boolean, string>  // string`}
                         </div>
                     </div>
                 </Card>
-                
+
                 {/* 映射类型 */}
                 <Card title="🗺️ 映射类型" className={styles.content_card}>
                     <div className={styles.mapping_section}>
@@ -247,7 +258,7 @@ type RequiredUser = Required<User>
 // }`}
                             </pre>
                         </div>
-                        
+
                         <h3>高级映射类型</h3>
                         <div className={styles.code_block}>
                             <pre>
@@ -289,7 +300,7 @@ type ExampleData = NonFunctionProperties<Example>
                         </div>
                     </div>
                 </Card>
-                
+
                 {/* 模板字面量类型 */}
                 <Card title="📝 模板字面量类型" className={styles.content_card}>
                     <div className={styles.template_section}>
@@ -340,7 +351,7 @@ type FormHandlers = EventHandlers<FormData>
                         </div>
                     </div>
                 </Card>
-                
+
                 {/* 最佳实践 */}
                 <Card title="✅ 高级类型最佳实践" className={styles.content_card}>
                     <div className={styles.best_practices}>
@@ -374,7 +385,7 @@ function processValue(value: string | number | boolean) {
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div className={styles.practice_item}>
                             <CheckCircleOutlined className={styles.practice_icon} />
                             <div>

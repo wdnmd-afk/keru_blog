@@ -1,0 +1,52 @@
+{
+  "environmentCheck": {
+    "title": "环境检查命令",
+    "language": "bash",
+    "code": "# 检查当前Vue版本\nnpm list vue\n\n# 检查依赖兼容性\nnpx @vue/compat-check\n\n# 更新Node.js版本（Vue 3需要Node.js 12+）\nnode --version\n\n# 检查TypeScript版本（如果使用）\nnpx tsc --version"
+  },
+  "dependencyUpgrade": {
+    "title": "依赖升级",
+    "language": "bash",
+    "code": "# 升级Vue核心库\nnpm install vue@next\n\n# 升级Vue Router\nnpm install vue-router@4\n\n# 升级状态管理（推荐使用Pinia）\nnpm install pinia\nnpm uninstall vuex\n\n# 升级构建工具\nnpm install @vitejs/plugin-vue vite\nnpm uninstall vue-template-compiler\n\n# 升级测试工具\nnpm install @vue/test-utils@next\nnpm install @vitejs/plugin-vue"
+  },
+  "buildConfig": {
+    "title": "构建配置",
+    "language": "javascript",
+    "code": "// vite.config.js (推荐)\nimport { defineConfig } from 'vite'\nimport vue from '@vitejs/plugin-vue'\n\nexport default defineConfig({\n  plugins: [vue()],\n  resolve: {\n    alias: {\n      '@': path.resolve(__dirname, 'src')\n    }\n  }\n})\n\n// 或者继续使用webpack\n// vue.config.js\nmodule.exports = {\n  configureWebpack: {\n    resolve: {\n      alias: {\n        vue$: 'vue/dist/vue.runtime.esm-bundler.js'\n      }\n    }\n  }\n}"
+  },
+  "globalApiChanges": {
+    "title": "全局API变更",
+    "language": "javascript",
+    "code": "// Vue 2\nimport Vue from 'vue'\nimport App from './App.vue'\nimport router from './router'\nimport store from './store'\n\nVue.config.productionTip = false\nVue.use(router)\n\nnew Vue({\n  router,\n  store,\n  render: h => h(App)\n}).$mount('#app')\n\n// Vue 3\nimport { createApp } from 'vue'\nimport App from './App.vue'\nimport router from './router'\nimport store from './store'\n\nconst app = createApp(App)\n\napp.use(router)\napp.use(store)\napp.mount('#app')"
+  },
+  "componentApiMigration": {
+    "title": "组件API迁移",
+    "language": "vue",
+    "code": "<!-- Vue 2 选项式API -->\n<template>\n  <div>\n    <h1>{{ title }}</h1>\n    <p>Count: {{ count }}</p>\n    <button @click=\"increment\">+</button>\n  </div>\n</template>\n\n<script>\nexport default {\n  data() {\n    return {\n      title: 'Vue 2 Component',\n      count: 0\n    }\n  },\n  methods: {\n    increment() {\n      this.count++\n    }\n  },\n  mounted() {\n    console.log('Component mounted')\n  }\n}\n</script>\n\n<!-- Vue 3 组合式API -->\n<template>\n  <div>\n    <h1>{{ title }}</h1>\n    <p>Count: {{ count }}</p>\n    <button @click=\"increment\">+</button>\n  </div>\n</template>\n\n<script setup>\nimport { ref, onMounted } from 'vue'\n\nconst title = ref('Vue 3 Component')\nconst count = ref(0)\n\nconst increment = () => {\n  count.value++\n}\n\nonMounted(() => {\n  console.log('Component mounted')\n})\n</script>"
+  },
+  "lifecycleChanges": {
+    "title": "生命周期变更",
+    "language": "javascript",
+    "code": "// Vue 2 生命周期\nexport default {\n  beforeCreate() {},\n  created() {},\n  beforeMount() {},\n  mounted() {},\n  beforeUpdate() {},\n  updated() {},\n  beforeDestroy() {},\n  destroyed() {}\n}\n\n// Vue 3 组合式API生命周期\nimport {\n  onBeforeMount,\n  onMounted,\n  onBeforeUpdate,\n  onUpdated,\n  onBeforeUnmount,\n  onUnmounted\n} from 'vue'\n\nexport default {\n  setup() {\n    // beforeCreate 和 created 的逻辑直接写在 setup 中\n    \n    onBeforeMount(() => {})\n    onMounted(() => {})\n    onBeforeUpdate(() => {})\n    onUpdated(() => {})\n    onBeforeUnmount(() => {}) // 注意：beforeDestroy -> beforeUnmount\n    onUnmounted(() => {})     // 注意：destroyed -> unmounted\n  }\n}"
+  },
+  "routerMigration": {
+    "title": "Vue Router 4迁移",
+    "language": "javascript",
+    "code": "// Vue Router 3 (Vue 2)\nimport Vue from 'vue'\nimport VueRouter from 'vue-router'\n\nVue.use(VueRouter)\n\nconst router = new VueRouter({\n  mode: 'history',\n  routes: [\n    { path: '/', component: Home },\n    { path: '/about', component: About }\n  ]\n})\n\n// Vue Router 4 (Vue 3)\nimport { createRouter, createWebHistory } from 'vue-router'\n\nconst router = createRouter({\n  history: createWebHistory(),\n  routes: [\n    { path: '/', component: Home },\n    { path: '/about', component: About }\n  ]\n})\n\n// 路由守卫变更\n// Vue 2\nrouter.beforeEach((to, from, next) => {\n  // 必须调用 next()\n  next()\n})\n\n// Vue 3 - 可以返回值\nrouter.beforeEach((to, from) => {\n  // 可以返回 false 取消导航\n  // 可以返回路由位置进行重定向\n  return true\n})"
+  },
+  "stateManagementMigration": {
+    "title": "状态管理迁移",
+    "language": "javascript",
+    "code": "// Vuex 4 (Vue 3兼容)\nimport { createStore } from 'vuex'\n\nconst store = createStore({\n  state: {\n    count: 0\n  },\n  mutations: {\n    increment(state) {\n      state.count++\n    }\n  },\n  actions: {\n    increment({ commit }) {\n      commit('increment')\n    }\n  }\n})\n\n// Pinia (推荐)\nimport { defineStore } from 'pinia'\n\nexport const useCounterStore = defineStore('counter', {\n  state: () => ({\n    count: 0\n  }),\n  actions: {\n    increment() {\n      this.count++\n    }\n  }\n})\n\n// 或者使用组合式API风格\nexport const useCounterStore = defineStore('counter', () => {\n  const count = ref(0)\n  \n  const increment = () => {\n    count.value++\n  }\n  \n  return { count, increment }\n})"
+  },
+  "eventBusReplacement": {
+    "title": "事件总线替代方案",
+    "language": "javascript",
+    "code": "// Vue 2 事件总线\n// main.js\nVue.prototype.$eventBus = new Vue()\n\n// 组件中使用\nthis.$eventBus.$emit('custom-event', data)\nthis.$eventBus.$on('custom-event', handler)\n\n// Vue 3 替代方案 - 使用第三方库\n// npm install mitt\nimport mitt from 'mitt'\n\nconst emitter = mitt()\n\n// 发送事件\nemitter.emit('custom-event', data)\n\n// 监听事件\nemitter.on('custom-event', handler)\n\n// 或者使用 Provide/Inject\n// 父组件\nimport { provide } from 'vue'\nimport mitt from 'mitt'\n\nconst emitter = mitt()\nprovide('emitter', emitter)\n\n// 子组件\nimport { inject } from 'vue'\nconst emitter = inject('emitter')"
+  },
+  "filtersReplacement": {
+    "title": "过滤器替代方案",
+    "language": "vue",
+    "code": "<!-- Vue 2 过滤器 -->\n<template>\n  <div>\n    {{ message | capitalize }}\n    {{ price | currency }}\n  </div>\n</template>\n\n<script>\nexport default {\n  filters: {\n    capitalize(value) {\n      return value.charAt(0).toUpperCase() + value.slice(1)\n    },\n    currency(value) {\n      return '$' + value.toFixed(2)\n    }\n  }\n}\n</script>\n\n<!-- Vue 3 替代方案 - 使用计算属性或方法 -->\n<template>\n  <div>\n    {{ capitalizedMessage }}\n    {{ formatCurrency(price) }}\n  </div>\n</template>\n\n<script setup>\nimport { computed } from 'vue'\n\nconst props = defineProps(['message', 'price'])\n\nconst capitalizedMessage = computed(() => {\n  return props.message.charAt(0).toUpperCase() + props.message.slice(1)\n})\n\nconst formatCurrency = (value) => {\n  return '$' + value.toFixed(2)\n}\n</script>"
+  }
+}

@@ -1,28 +1,39 @@
 import React from 'react'
 import { Card, Tag, Alert, Divider, Button } from 'antd'
 import { useNavigate } from 'react-router-dom'
-import { 
-    ArrowLeftOutlined, 
-    CloudOutlined, 
+import {
+    ArrowLeftOutlined,
+    CloudOutlined,
     WarningOutlined,
     CheckCircleOutlined,
     BugOutlined
 } from '@ant-design/icons'
+import CodeHighlight from '@/components/CodeHighlight'
+import { useCodeData } from '@/hooks/useCodeData'
 import styles from '@/styles/topicDetail.module.scss'
 
 const FundamentalsDetail: React.FC = () => {
     const navigate = useNavigate()
-    
+    const { codeData, loading, error } = useCodeData('Docker', 'fundamentals')
+
     const handleBack = () => {
         navigate('/technology/docker')
     }
-    
+
+    if (loading) {
+        return <div className={styles.loading}>加载中...</div>
+    }
+
+    if (error) {
+        return <div className={styles.error}>加载失败: {error}</div>
+    }
+
     return (
         <div className={styles.topic_detail_container}>
             {/* 返回按钮 */}
             <div className={styles.back_section}>
-                <Button 
-                    type="text" 
+                <Button
+                    type="text"
                     icon={<ArrowLeftOutlined />}
                     onClick={handleBack}
                     className={styles.back_button}
@@ -30,7 +41,7 @@ const FundamentalsDetail: React.FC = () => {
                     返回Docker技术卡片
                 </Button>
             </div>
-            
+
             {/* 页面头部 */}
             <div className={styles.detail_header}>
                 <div className={styles.topic_icon}>
@@ -47,7 +58,7 @@ const FundamentalsDetail: React.FC = () => {
                     </div>
                 </div>
             </div>
-            
+
             {/* 内容区域 */}
             <div className={styles.content_sections}>
                 {/* 基础概念 */}
@@ -55,24 +66,24 @@ const FundamentalsDetail: React.FC = () => {
                     <div className={styles.concept_content}>
                         <h3>什么是Docker？</h3>
                         <p>Docker是一个开源的容器化平台，它允许开发者将应用程序及其依赖项打包到一个轻量级、可移植的容器中，然后可以在任何支持Docker的环境中运行。</p>
-                        
+
                         <h3>核心组件</h3>
                         <div className={styles.components_grid}>
                             <div className={styles.component_item}>
                                 <h4>🖼️ 镜像 (Image)</h4>
                                 <p>只读的模板，包含运行应用所需的代码、运行时、库、环境变量和配置文件</p>
                             </div>
-                            
+
                             <div className={styles.component_item}>
                                 <h4>📦 容器 (Container)</h4>
                                 <p>镜像的运行实例，是一个轻量级、可移植的执行环境</p>
                             </div>
-                            
+
                             <div className={styles.component_item}>
                                 <h4>📋 Dockerfile</h4>
                                 <p>文本文件，包含构建镜像的指令和配置</p>
                             </div>
-                            
+
                             <div className={styles.component_item}>
                                 <h4>🏪 仓库 (Registry)</h4>
                                 <p>存储和分发镜像的服务，如Docker Hub、私有仓库</p>
@@ -80,7 +91,7 @@ const FundamentalsDetail: React.FC = () => {
                         </div>
                     </div>
                 </Card>
-                
+
                 {/* 基本命令 */}
                 <Card title="⚡ 基本命令" className={styles.content_card}>
                     <div className={styles.commands_section}>
@@ -103,7 +114,7 @@ docker build -t myapp:1.0 .
 docker push myapp:1.0`}
                             </pre>
                         </div>
-                        
+
                         <h3>容器操作</h3>
                         <div className={styles.code_block}>
                             <pre>
@@ -137,7 +148,7 @@ docker logs mynginx`}
                         </div>
                     </div>
                 </Card>
-                
+
                 {/* 实践示例 */}
                 <Card title="🛠️ 实践示例" className={styles.content_card}>
                     <div className={styles.example_section}>
@@ -154,7 +165,7 @@ docker run -d \\
 # 访问 http://localhost:8080 查看效果`}
                             </pre>
                         </div>
-                        
+
                         <h3>2. 运行数据库</h3>
                         <div className={styles.code_block}>
                             <pre>
@@ -171,7 +182,7 @@ docker run -d \\
 docker exec -it mysql-db mysql -u root -p`}
                             </pre>
                         </div>
-                        
+
                         <h3>3. 创建简单的Node.js应用</h3>
                         <div className={styles.code_block}>
                             <pre>
@@ -196,7 +207,7 @@ docker run -d --name node-app -p 3000:3000 my-node-app`}
                         </div>
                     </div>
                 </Card>
-                
+
                 {/* 最佳实践 */}
                 <Card title="✅ 最佳实践" className={styles.content_card}>
                     <div className={styles.best_practices}>
@@ -207,7 +218,7 @@ docker run -d --name node-app -p 3000:3000 my-node-app`}
                                 <p>优先使用官方维护的镜像，它们经过安全审查和优化</p>
                             </div>
                         </div>
-                        
+
                         <div className={styles.practice_item}>
                             <CheckCircleOutlined className={styles.practice_icon} />
                             <div>
@@ -215,7 +226,7 @@ docker run -d --name node-app -p 3000:3000 my-node-app`}
                                 <p>使用Alpine Linux等轻量级基础镜像，减少镜像大小</p>
                             </div>
                         </div>
-                        
+
                         <div className={styles.practice_item}>
                             <CheckCircleOutlined className={styles.practice_icon} />
                             <div>
@@ -223,7 +234,7 @@ docker run -d --name node-app -p 3000:3000 my-node-app`}
                                 <p>优化Dockerfile层级结构，充分利用Docker的构建缓存</p>
                             </div>
                         </div>
-                        
+
                         <div className={styles.practice_item}>
                             <CheckCircleOutlined className={styles.practice_icon} />
                             <div>
@@ -231,7 +242,7 @@ docker run -d --name node-app -p 3000:3000 my-node-app`}
                                 <p>使用数据卷(Volume)来持久化重要数据，避免数据丢失</p>
                             </div>
                         </div>
-                        
+
                         <div className={styles.practice_item}>
                             <CheckCircleOutlined className={styles.practice_icon} />
                             <div>
@@ -239,7 +250,7 @@ docker run -d --name node-app -p 3000:3000 my-node-app`}
                                 <p>不要在镜像中包含敏感信息，使用环境变量传递配置</p>
                             </div>
                         </div>
-                        
+
                         <div className={styles.practice_item}>
                             <CheckCircleOutlined className={styles.practice_icon} />
                             <div>
