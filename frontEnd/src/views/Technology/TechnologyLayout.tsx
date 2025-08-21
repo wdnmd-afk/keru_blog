@@ -8,7 +8,8 @@ import {
     ApiOutlined,
     CloudOutlined,
     ToolOutlined,
-    GithubOutlined
+    GithubOutlined,
+    BugOutlined
 } from '@ant-design/icons'
 import ReactDetail from './pages/ReactDetail'
 import UseEffectDetail from './pages/react/UseEffectDetail'
@@ -26,6 +27,7 @@ import NodeJSDetail from './pages/NodeJSDetail'
 import DockerDetail from './pages/DockerDetail'
 import ToolsDetail from './pages/ToolsDetail'
 import GitDetail from './pages/GitDetail'
+import JestDetail from './pages/JestDetail'
 import CompositionAPIDetail from './pages/vue/CompositionAPIDetail'
 import AdvancedTypesDetail from './pages/typescript/AdvancedTypesDetail'
 import EventLoopDetail from './pages/nodejs/EventLoopDetail'
@@ -77,6 +79,12 @@ import MigrationDetail from './pages/vue/MigrationDetail'
 import ChromeDevToolsDetail from './pages/tools/ChromeDevToolsDetail'
 import ViteDetail from './pages/tools/ViteDetail'
 import ESLintPrettierDetail from './pages/tools/ESLintPrettierDetail'
+import JestBasicsDetail from './pages/jest/JestBasicsDetail'
+import UnitTestingDetail from './pages/jest/UnitTestingDetail'
+import MockingDetail from './pages/jest/MockingDetail'
+import AsyncTestingDetail from './pages/jest/AsyncTestingDetail'
+import CoverageDetail from './pages/jest/CoverageDetail'
+import BestPracticesDetail from './pages/jest/BestPracticesDetail'
 import styles from '@/styles/technologyLayout.module.scss'
 
 // 技术栈菜单配置
@@ -123,6 +131,12 @@ const techMenuItems = [
         label: 'Git & GitHub',
         icon: <GithubOutlined />,
         description: '版本控制与团队协作'
+    },
+    {
+        key: 'jest',
+        label: 'Jest',
+        icon: <BugOutlined />,
+        description: 'Jest测试框架与最佳实践'
     }
 ]
 
@@ -322,6 +336,27 @@ const TechnologyLayout: React.FC = () => {
             }
         }
 
+        // Jest子路由处理
+        if (currentPath.includes('/technology/jest/')) {
+            const subTopic = currentPath.split('/').pop()
+            switch (subTopic) {
+                case 'jest-basics':
+                    return <JestBasicsDetail />
+                case 'unit-testing':
+                    return <UnitTestingDetail />
+                case 'mocking':
+                    return <MockingDetail />
+                case 'async-testing':
+                    return <AsyncTestingDetail />
+                case 'coverage':
+                    return <CoverageDetail />
+                case 'best-practices':
+                    return <BestPracticesDetail />
+                default:
+                    return <JestDetail />
+            }
+        }
+
         // 主技术栈路由
         switch (tech) {
             case 'react':
@@ -339,6 +374,8 @@ const TechnologyLayout: React.FC = () => {
                 return <ToolsDetail />
             case 'git':
                 return <GitDetail />
+            case 'jest':
+                return <JestDetail />
             default:
                 return <div className={styles.coming_soon}>请选择一个技术栈查看详解</div>
         }

@@ -1,0 +1,57 @@
+{
+  "eslintInstallation": {
+    "title": "ESLint 安装与配置",
+    "language": "bash",
+    "code": "# 安装ESLint\nnpm install eslint --save-dev\n\n# 初始化配置\nnpx eslint --init\n\n# 或者手动安装配置\nnpm install --save-dev \\\n  eslint \\\n  @eslint/js \\\n  eslint-plugin-import \\\n  eslint-plugin-n \\\n  eslint-plugin-promise\n\n# package.json 脚本配置\n{\n  \"scripts\": {\n    \"lint\": \"eslint src/\",\n    \"lint:fix\": \"eslint src/ --fix\",\n    \"lint:check\": \"eslint src/ --max-warnings 0\"\n  }\n}"
+  },
+  "eslintBasicConfig": {
+    "title": "ESLint 基础配置",
+    "language": "javascript",
+    "code": "// .eslintrc.js\nmodule.exports = {\n  env: {\n    browser: true,\n    es2021: true,\n    node: true\n  },\n  extends: [\n    'eslint:recommended'\n  ],\n  parserOptions: {\n    ecmaVersion: 'latest',\n    sourceType: 'module'\n  },\n  rules: {\n    // 代码质量\n    'no-unused-vars': 'warn',\n    'no-console': 'warn',\n    'no-debugger': 'error',\n    'no-alert': 'error',\n    \n    // 代码风格\n    'indent': ['error', 2],\n    'quotes': ['error', 'single'],\n    'semi': ['error', 'never'],\n    'comma-dangle': ['error', 'never'],\n    \n    // 最佳实践\n    'eqeqeq': 'error',\n    'curly': 'error',\n    'no-eval': 'error',\n    'no-implied-eval': 'error'\n  }\n}"
+  },
+  "eslintReactConfig": {
+    "title": "React 项目配置",
+    "language": "javascript",
+    "code": "// React + TypeScript 配置\nmodule.exports = {\n  env: {\n    browser: true,\n    es2021: true\n  },\n  extends: [\n    'eslint:recommended',\n    '@typescript-eslint/recommended',\n    'plugin:react/recommended',\n    'plugin:react-hooks/recommended',\n    'plugin:jsx-a11y/recommended'\n  ],\n  parser: '@typescript-eslint/parser',\n  parserOptions: {\n    ecmaFeatures: {\n      jsx: true\n    },\n    ecmaVersion: 'latest',\n    sourceType: 'module'\n  },\n  plugins: [\n    'react',\n    '@typescript-eslint',\n    'react-hooks',\n    'jsx-a11y'\n  ],\n  rules: {\n    // React 规则\n    'react/react-in-jsx-scope': 'off',\n    'react/prop-types': 'off',\n    'react/jsx-uses-react': 'off',\n    'react/jsx-uses-vars': 'error',\n    \n    // TypeScript 规则\n    '@typescript-eslint/no-unused-vars': 'warn',\n    '@typescript-eslint/explicit-function-return-type': 'off',\n    '@typescript-eslint/explicit-module-boundary-types': 'off'\n  },\n  settings: {\n    react: {\n      version: 'detect'\n    }\n  }\n}"
+  },
+  "eslintVueConfig": {
+    "title": "Vue 项目配置",
+    "language": "javascript",
+    "code": "// Vue 3 + TypeScript 配置\nmodule.exports = {\n  env: {\n    browser: true,\n    es2021: true,\n    node: true\n  },\n  extends: [\n    'eslint:recommended',\n    '@typescript-eslint/recommended',\n    'plugin:vue/vue3-essential',\n    'plugin:vue/vue3-strongly-recommended',\n    'plugin:vue/vue3-recommended'\n  ],\n  parser: 'vue-eslint-parser',\n  parserOptions: {\n    ecmaVersion: 'latest',\n    parser: '@typescript-eslint/parser',\n    sourceType: 'module'\n  },\n  plugins: [\n    'vue',\n    '@typescript-eslint'\n  ],\n  rules: {\n    // Vue 规则\n    'vue/multi-word-component-names': 'off',\n    'vue/no-unused-vars': 'error',\n    'vue/component-definition-name-casing': ['error', 'PascalCase'],\n    'vue/component-name-in-template-casing': ['error', 'PascalCase'],\n    \n    // TypeScript 规则\n    '@typescript-eslint/no-unused-vars': 'warn',\n    '@typescript-eslint/no-explicit-any': 'warn'\n  }\n}"
+  },
+  "prettierInstallation": {
+    "title": "Prettier 安装与配置",
+    "language": "bash",
+    "code": "# 安装 Prettier\nnpm install --save-dev prettier\n\n# 创建配置文件\necho {}> .prettierrc.json\n\n# 或者创建 JS 配置文件\ntouch .prettierrc.js\n\n# 创建忽略文件\ntouch .prettierignore\n\n# package.json 脚本配置\n{\n  \"scripts\": {\n    \"format\": \"prettier --write .\",\n    \"format:check\": \"prettier --check .\",\n    \"format:staged\": \"prettier --write\"\n  }\n}"
+  },
+  "prettierConfig": {
+    "title": "Prettier 配置选项",
+    "language": "json",
+    "code": "// .prettierrc.json\n{\n  \"printWidth\": 80,\n  \"tabWidth\": 2,\n  \"useTabs\": false,\n  \"semi\": false,\n  \"singleQuote\": true,\n  \"quoteProps\": \"as-needed\",\n  \"jsxSingleQuote\": true,\n  \"trailingComma\": \"none\",\n  \"bracketSpacing\": true,\n  \"bracketSameLine\": false,\n  \"arrowParens\": \"avoid\",\n  \"endOfLine\": \"lf\",\n  \"embeddedLanguageFormatting\": \"auto\"\n}\n\n// .prettierignore\nnode_modules/\ndist/\nbuild/\ncoverage/\n*.min.js\n*.min.css\npublic/\n.next/\n.nuxt/\n.output/\n.vuepress/dist/\n.serverless/\n.fusebox/\n.dynamodb/\n.tern-port\n.vscode-test\n.yarn/cache\n.yarn/unplugged\n.yarn/build-state.yml\n.yarn/install-state.gz\n.pnp.*"
+  },
+  "eslintPrettierIntegration": {
+    "title": "ESLint 与 Prettier 集成",
+    "language": "bash",
+    "code": "# 安装集成插件\nnpm install --save-dev \\\n  eslint-config-prettier \\\n  eslint-plugin-prettier\n\n# 或者使用推荐配置\nnpm install --save-dev \\\n  eslint-config-prettier\n\n# .eslintrc.js 配置\nmodule.exports = {\n  extends: [\n    'eslint:recommended',\n    '@typescript-eslint/recommended',\n    'prettier'  // 必须放在最后，禁用与 Prettier 冲突的规则\n  ],\n  plugins: [\n    'prettier'\n  ],\n  rules: {\n    'prettier/prettier': 'error'\n  }\n}"
+  },
+  "editorIntegration": {
+    "title": "编辑器集成配置",
+    "language": "json",
+    "code": "// VS Code 设置 (.vscode/settings.json)\n{\n  \"editor.defaultFormatter\": \"esbenp.prettier-vscode\",\n  \"editor.formatOnSave\": true,\n  \"editor.codeActionsOnSave\": {\n    \"source.fixAll.eslint\": true,\n    \"source.organizeImports\": true\n  },\n  \"eslint.validate\": [\n    \"javascript\",\n    \"javascriptreact\",\n    \"typescript\",\n    \"typescriptreact\",\n    \"vue\"\n  ],\n  \"[javascript]\": {\n    \"editor.defaultFormatter\": \"esbenp.prettier-vscode\"\n  },\n  \"[typescript]\": {\n    \"editor.defaultFormatter\": \"esbenp.prettier-vscode\"\n  },\n  \"[vue]\": {\n    \"editor.defaultFormatter\": \"esbenp.prettier-vscode\"\n  }\n}\n\n// 推荐的 VS Code 扩展\n// - ESLint\n// - Prettier - Code formatter\n// - Vetur (Vue)\n// - ES7+ React/Redux/React-Native snippets"
+  },
+  "gitHooksIntegration": {
+    "title": "Git Hooks 集成",
+    "language": "bash",
+    "code": "# 安装 husky 和 lint-staged\nnpm install --save-dev husky lint-staged\n\n# 初始化 husky\nnpx husky install\n\n# 添加 pre-commit hook\nnpx husky add .husky/pre-commit \"npx lint-staged\"\n\n# package.json 配置\n{\n  \"lint-staged\": {\n    \"*.{js,jsx,ts,tsx,vue}\": [\n      \"eslint --fix\",\n      \"prettier --write\"\n    ],\n    \"*.{json,css,scss,md}\": [\n      \"prettier --write\"\n    ]\n  }\n}\n\n# 或者使用 commitizen\nnpm install --save-dev @commitlint/cli @commitlint/config-conventional\nnpx husky add .husky/commit-msg \"npx --no -- commitlint --edit $1\"\n\n# commitlint.config.js\nmodule.exports = {\n  extends: ['@commitlint/config-conventional']\n}"
+  },
+  "customRules": {
+    "title": "自定义规则配置",
+    "language": "javascript",
+    "code": "// 自定义 ESLint 规则\nmodule.exports = {\n  rules: {\n    // 禁用 console.log，但允许 warn 和 error\n    'no-console': ['error', { allow: ['warn', 'error'] }],\n    \n    // 强制使用 const\n    'prefer-const': 'error',\n    \n    // 禁用 var\n    'no-var': 'error',\n    \n    // 强制使用模板字符串\n    'prefer-template': 'error',\n    \n    // 强制使用箭头函数\n    'prefer-arrow-callback': 'error',\n    \n    // React 特定规则\n    'react/jsx-no-bind': 'error',\n    'react/jsx-key': 'error',\n    'react/no-array-index-key': 'warn',\n    \n    // Vue 特定规则\n    'vue/component-name-in-template-casing': ['error', 'PascalCase'],\n    'vue/no-unused-components': 'error',\n    'vue/order-in-components': 'error'\n  }\n}"
+  },
+  "projectSpecificConfig": {
+    "title": "项目特定配置",
+    "language": "javascript",
+    "code": "// 不同目录不同规则\nmodule.exports = {\n  root: true,\n  extends: ['eslint:recommended'],\n  overrides: [\n    {\n      // 测试文件特殊配置\n      files: ['**/__tests__/**/*', '**/*.test.*', '**/*.spec.*'],\n      env: {\n        jest: true\n      },\n      rules: {\n        'no-console': 'off'\n      }\n    },\n    {\n      // 配置文件特殊配置\n      files: ['*.config.js', '*.config.ts'],\n      env: {\n        node: true\n      },\n      rules: {\n        'no-console': 'off',\n        '@typescript-eslint/no-var-requires': 'off'\n      }\n    }\n  ]\n}\n\n// .eslintignore\nnode_modules/\ndist/\nbuild/\ncoverage/\n*.min.js\npublic/\n.next/\n.nuxt/\n.output/\n.vuepress/dist/\n.serverless/"
+  }
+}

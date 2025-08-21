@@ -1,20 +1,31 @@
 import React from 'react'
 import { Card, Tag, Alert, Divider, Button } from 'antd'
 import { useNavigate } from 'react-router-dom'
-import { 
-    ArrowLeftOutlined, 
-    RocketOutlined, 
+import {
+    ArrowLeftOutlined,
+    RocketOutlined,
     WarningOutlined,
     CheckCircleOutlined,
     BugOutlined
 } from '@ant-design/icons'
+import CodeHighlight from '@/components/CodeHighlight'
+import { useCodeData } from '@/hooks/useCodeData'
 import styles from '@/styles/topicDetail.module.scss'
 
 const GitHubActionsDetail: React.FC = () => {
     const navigate = useNavigate()
-    
+    const { codeData, loading, error } = useCodeData('Git', 'githubActions')
+
     const handleBack = () => {
         navigate('/technology/git')
+    }
+
+    if (loading) {
+        return <div className={styles.loading}>加载中...</div>
+    }
+
+    if (error) {
+        return <div className={styles.error}>加载失败: {error}</div>
     }
     
     return (
@@ -90,43 +101,13 @@ const GitHubActionsDetail: React.FC = () => {
                         </div>
                         
                         <h3>基本工作流文件</h3>
-                        <div className={styles.code_block}>
-                            <pre>
-{`# .github/workflows/ci.yml
-name: CI
-
-# 触发条件
-on:
-  push:
-    branches: [ main, develop ]
-  pull_request:
-    branches: [ main ]
-
-# 作业定义
-jobs:
-  test:
-    runs-on: ubuntu-latest
-    
-    steps:
-    - name: 检出代码
-      uses: actions/checkout@v3
-    
-    - name: 设置Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: '16'
-        cache: 'npm'
-    
-    - name: 安装依赖
-      run: npm ci
-    
-    - name: 运行测试
-      run: npm test
-    
-    - name: 运行构建
-      run: npm run build`}
-                            </pre>
-                        </div>
+                        {codeData.basicWorkflow && (
+                            <CodeHighlight
+                                code={codeData.basicWorkflow.code}
+                                language={codeData.basicWorkflow.language}
+                                title={codeData.basicWorkflow.title}
+                            />
+                        )}
                     </div>
                 </Card>
                 
@@ -135,37 +116,13 @@ jobs:
                     <div className={styles.usage_grid}>
                         <div className={styles.usage_item}>
                             <h4>1. 推送事件</h4>
-                            <div className={styles.code_block}>
-                                <pre>
-{`# 推送到特定分支
-on:
-  push:
-    branches:
-      - main
-      - develop
-      - 'release/*'
-
-# 推送特定文件时触发
-on:
-  push:
-    paths:
-      - 'src/**'
-      - 'package.json'
-
-# 推送标签时触发
-on:
-  push:
-    tags:
-      - 'v*'
-
-# 排除特定路径
-on:
-  push:
-    paths-ignore:
-      - 'docs/**'
-      - '*.md'`}
-                                </pre>
-                            </div>
+                            {codeData.pushEvents && (
+                                <CodeHighlight
+                                    code={codeData.pushEvents.code}
+                                    language={codeData.pushEvents.language}
+                                    title={codeData.pushEvents.title}
+                                />
+                            )}
                         </div>
                         
                         <div className={styles.usage_item}>

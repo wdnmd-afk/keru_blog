@@ -8,7 +8,7 @@ import {
     ThunderboltOutlined,
     ApiOutlined,
     CodeOutlined,
-    DatabaseOutlined,
+    ConsoleSqlOutlined,
     SafetyOutlined
 } from '@ant-design/icons'
 import styles from '@/styles/reactDetail.module.scss'
@@ -73,7 +73,7 @@ const toolsTopics = [
         id: 'terminal',
         title: '终端工具',
         description: 'Shell、Zsh、终端效率提升技巧',
-        icon: <DatabaseOutlined />,
+        icon: <ConsoleSqlOutlined />,
         color: '#000000',
         difficulty: '中等',
         category: '命令行'

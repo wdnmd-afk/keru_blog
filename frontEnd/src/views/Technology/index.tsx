@@ -11,7 +11,8 @@ import {
     DatabaseOutlined,
     ApiOutlined,
     CloudOutlined,
-    ToolOutlined
+    ToolOutlined,
+    BugOutlined
 } from '@ant-design/icons'
 import styles from '@/styles/technology.module.scss'
 
@@ -73,6 +74,14 @@ const techStack = [
         icon: <GithubOutlined />,
         route: 'git',
         description: '版本控制与团队协作'
+    },
+    {
+        name: 'Jest',
+        level: 75,
+        color: '#c21325',
+        icon: <BugOutlined />,
+        route: 'jest',
+        description: 'Jest测试框架与最佳实践'
     }
 ]
 

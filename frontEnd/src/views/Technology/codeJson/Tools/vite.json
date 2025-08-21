@@ -1,0 +1,52 @@
+{
+  "quickStart": {
+    "title": "快速开始",
+    "language": "bash",
+    "code": "# 使用npm创建项目\nnpm create vite@latest my-project\ncd my-project\nnpm install\nnpm run dev\n\n# 使用yarn创建项目\nyarn create vite my-project\ncd my-project\nyarn\nyarn dev\n\n# 使用pnpm创建项目\npnpm create vite my-project\ncd my-project\npnpm install\npnpm dev\n\n# 指定模板创建项目\nnpm create vite@latest my-vue-app -- --template vue\nnpm create vite@latest my-react-app -- --template react\nnpm create vite@latest my-react-ts-app -- --template react-ts\nnpm create vite@latest my-svelte-app -- --template svelte"
+  },
+  "projectStructure": {
+    "title": "项目结构",
+    "language": "text",
+    "code": "my-project/\n├── public/\n│   └── favicon.ico\n├── src/\n│   ├── assets/\n│   ├── components/\n│   ├── App.vue\n│   └── main.js\n├── index.html\n├── package.json\n├── vite.config.js\n└── README.md\n\n# index.html (入口文件)\n<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n  <meta charset=\"UTF-8\" />\n  <link rel=\"icon\" type=\"image/svg+xml\" href=\"/favicon.ico\" />\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n  <title>Vite App</title>\n</head>\n<body>\n  <div id=\"app\"></div>\n  <script type=\"module\" src=\"/src/main.js\"></script>\n</body>\n</html>"
+  },
+  "basicConfig": {
+    "title": "基本配置",
+    "language": "javascript",
+    "code": "// vite.config.js\nimport { defineConfig } from 'vite'\nimport vue from '@vitejs/plugin-vue'\nimport { resolve } from 'path'\n\nexport default defineConfig({\n  plugins: [vue()],\n  \n  // 路径别名\n  resolve: {\n    alias: {\n      '@': resolve(__dirname, 'src'),\n      'components': resolve(__dirname, 'src/components'),\n      'utils': resolve(__dirname, 'src/utils')\n    }\n  },\n  \n  // 开发服务器配置\n  server: {\n    port: 3000,\n    open: true,\n    cors: true\n  },\n  \n  // 构建配置\n  build: {\n    outDir: 'dist',\n    assetsDir: 'assets',\n    sourcemap: false,\n    minify: 'terser'\n  }\n})"
+  },
+  "officialPlugins": {
+    "title": "官方插件",
+    "language": "javascript",
+    "code": "// Vue支持\nimport vue from '@vitejs/plugin-vue'\nimport vueJsx from '@vitejs/plugin-vue-jsx'\n\n// React支持\nimport react from '@vitejs/plugin-react'\nimport reactRefresh from '@vitejs/plugin-react-refresh'\n\n// Svelte支持\nimport { svelte } from '@sveltejs/vite-plugin-svelte'\n\n// 配置示例\nexport default defineConfig({\n  plugins: [\n    vue({\n      // Vue配置选项\n      template: {\n        compilerOptions: {\n          // 编译器选项\n        }\n      }\n    }),\n    vueJsx({\n      // JSX配置选项\n    })\n  ]\n})"
+  },
+  "communityPlugins": {
+    "title": "社区插件",
+    "language": "bash",
+    "code": "# 安装常用插件\nnpm install -D @vitejs/plugin-legacy\nnpm install -D vite-plugin-eslint\nnpm install -D vite-plugin-mock\nnpm install -D vite-plugin-windicss\nnpm install -D unplugin-auto-import\nnpm install -D unplugin-vue-components\n\n# 配置示例\nimport legacy from '@vitejs/plugin-legacy'\nimport eslint from 'vite-plugin-eslint'\nimport { viteMockServe } from 'vite-plugin-mock'\nimport WindiCSS from 'vite-plugin-windicss'\nimport AutoImport from 'unplugin-auto-import/vite'\nimport Components from 'unplugin-vue-components/vite'\n\nexport default defineConfig({\n  plugins: [\n    vue(),\n    legacy({\n      targets: ['defaults', 'not IE 11']\n    }),\n    eslint(),\n    viteMockServe({\n      mockPath: 'mock',\n      localEnabled: true\n    }),\n    WindiCSS(),\n    AutoImport({\n      imports: ['vue', 'vue-router'],\n      dts: true\n    })\n  ]\n})"
+  },
+  "hmrApi": {
+    "title": "热模块替换 API",
+    "language": "javascript",
+    "code": "// Vite内置HMR API\nif (import.meta.hot) {\n  // 接受自身更新\n  import.meta.hot.accept()\n  \n  // 接受依赖更新\n  import.meta.hot.accept('./dependency.js', (newModule) => {\n    // 处理更新的依赖\n  })\n  \n  // 处理更新\n  import.meta.hot.accept((newModule) => {\n    // 更新逻辑\n  })\n  \n  // 销毁回调\n  import.meta.hot.dispose((data) => {\n    // 清理工作\n  })\n}\n\n// Vue组件HMR\n// 使用@vitejs/plugin-vue自动支持\n\n// React组件HMR\n// 使用@vitejs/plugin-react自动支持\n\n// CSS HMR\n// 自动支持，修改CSS文件会立即更新样式"
+  },
+  "environmentVariables": {
+    "title": "环境变量",
+    "language": "javascript",
+    "code": "// .env文件\nVITE_APP_TITLE=My App\nVITE_API_URL=https://api.example.com\nVITE_APP_VERSION=1.0.0\n\n// .env.development\nVITE_API_URL=http://localhost:3001\nVITE_DEBUG=true\n\n// .env.production\nVITE_API_URL=https://api.production.com\nVITE_DEBUG=false\n\n// 在代码中使用\nconsole.log(import.meta.env.VITE_APP_TITLE)\nconsole.log(import.meta.env.VITE_API_URL)\n\n// 内置环境变量\nconsole.log(import.meta.env.MODE) // 'development' 或 'production'\nconsole.log(import.meta.env.BASE_URL) // 基础URL\nconsole.log(import.meta.env.PROD) // 是否为生产环境\nconsole.log(import.meta.env.DEV) // 是否为开发环境\n\n// 类型定义 (env.d.ts)\ninterface ImportMetaEnv {\n  readonly VITE_APP_TITLE: string\n  readonly VITE_API_URL: string\n}\n\nif (import.meta.env.PROD) {\n  console.log('生产环境')\n}"
+  },
+  "buildOptimization": {
+    "title": "构建优化",
+    "language": "javascript",
+    "code": "// vite.config.js\nexport default defineConfig({\n  build: {\n    // 输出目录\n    outDir: 'dist',\n    \n    // 静态资源目录\n    assetsDir: 'assets',\n    \n    // 小于此阈值的导入或引用资源将内联为base64编码\n    assetsInlineLimit: 4096,\n    \n    // 启用/禁用CSS代码拆分\n    cssCodeSplit: true,\n    \n    // 构建后是否生成source map文件\n    sourcemap: false,\n    \n    // 自定义底层的Rollup打包配置\n    rollupOptions: {\n      input: {\n        main: resolve(__dirname, 'index.html'),\n        nested: resolve(__dirname, 'nested/index.html')\n      },\n      output: {\n        chunkFileNames: 'js/[name]-[hash].js',\n        entryFileNames: 'js/[name]-[hash].js',\n        assetFileNames: '[ext]/[name]-[hash].[ext]'\n      }\n    },\n    \n    // chunk大小警告的限制\n    chunkSizeWarningLimit: 500\n  }\n})"
+  },
+  "codeSplitting": {
+    "title": "代码分割",
+    "language": "javascript",
+    "code": "// 动态导入实现代码分割\nconst LazyComponent = lazy(() => import('./LazyComponent.vue'))\n\n// 路由级别的代码分割\nconst routes = [\n  {\n    path: '/home',\n    component: () => import('./views/Home.vue')\n  },\n  {\n    path: '/about',\n    component: () => import('./views/About.vue')\n  }\n]\n\n// 手动代码分割配置\nexport default defineConfig({\n  build: {\n    rollupOptions: {\n      output: {\n        manualChunks: {\n          // 将React相关库打包成一个chunk\n          'react-vendor': ['react', 'react-dom'],\n          // 将工具库打包成一个chunk\n          'utils': ['lodash', 'axios'],\n          // 将UI组件库打包成一个chunk\n          'ui-vendor': ['antd', '@ant-design/icons']\n        }\n      }\n    }\n  }\n})"
+  },
+  "performanceOptimization": {
+    "title": "性能优化",
+    "language": "javascript",
+    "code": "// 预构建优化\nexport default defineConfig({\n  optimizeDeps: {\n    // 强制预构建链接的包\n    include: ['lodash', 'axios'],\n    // 排除预构建\n    exclude: ['your-local-package']\n  },\n  \n  // 构建性能优化\n  build: {\n    // 启用gzip压缩大小报告\n    reportCompressedSize: false,\n    \n    // 规定触发警告的chunk大小\n    chunkSizeWarningLimit: 2000,\n    \n    rollupOptions: {\n      output: {\n        // 最小化rollup包\n        compact: true,\n        \n        // 手动分包\n        manualChunks(id) {\n          if (id.includes('node_modules')) {\n            return 'vendor'\n          }\n        }\n      }\n    }\n  },\n  \n  // 开发服务器优化\n  server: {\n    // 预热文件以提前转换和缓存结果\n    warmup: {\n      clientFiles: ['./src/components/*.vue']\n    }\n  }\n})"
+  }
+}

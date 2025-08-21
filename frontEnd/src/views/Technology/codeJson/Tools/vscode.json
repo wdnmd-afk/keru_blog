@@ -1,0 +1,37 @@
+{
+  "userSettings": {
+    "title": "用户设置配置",
+    "language": "json",
+    "code": "{\n  // 编辑器基础设置\n  \"editor.fontSize\": 14,\n  \"editor.fontFamily\": \"'Fira Code', 'Cascadia Code', Consolas, monospace\",\n  \"editor.fontLigatures\": true,\n  \"editor.lineHeight\": 1.5,\n  \"editor.tabSize\": 2,\n  \"editor.insertSpaces\": true,\n  \"editor.wordWrap\": \"on\",\n  \"editor.minimap.enabled\": true,\n  \"editor.bracketPairColorization.enabled\": true,\n  \"editor.guides.bracketPairs\": true,\n  \n  // 主题和外观\n  \"workbench.colorTheme\": \"One Dark Pro\",\n  \"workbench.iconTheme\": \"material-icon-theme\",\n  \"workbench.startupEditor\": \"newUntitledFile\",\n  \n  // 文件和搜索\n  \"files.autoSave\": \"afterDelay\",\n  \"files.autoSaveDelay\": 1000,\n  \"files.trimTrailingWhitespace\": true,\n  \"files.insertFinalNewline\": true,\n  \"files.exclude\": {\n    \"**/node_modules\": true,\n    \"**/dist\": true,\n    \"**/.git\": true\n  }\n}"
+  },
+  "workspaceSettings": {
+    "title": "工作区设置",
+    "language": "json",
+    "code": "// .vscode/settings.json (项目级配置)\n{\n  \"typescript.preferences.importModuleSpecifier\": \"relative\",\n  \"eslint.workingDirectories\": [\"./frontend\", \"./backend\"],\n  \"editor.defaultFormatter\": \"esbenp.prettier-vscode\",\n  \"[javascript]\": {\n    \"editor.defaultFormatter\": \"esbenp.prettier-vscode\"\n  },\n  \"[typescript]\": {\n    \"editor.defaultFormatter\": \"esbenp.prettier-vscode\"\n  },\n  \"[json]\": {\n    \"editor.defaultFormatter\": \"vscode.json-language-features\"\n  }\n}"
+  },
+  "shortcuts": {
+    "title": "常用快捷键",
+    "language": "text",
+    "code": "# 多光标编辑\nAlt + Click                 # 添加光标\nCtrl + Alt + ↑/↓           # 在上/下行添加光标\nCtrl + Shift + L           # 选择所有匹配项并添加光标\n\n# 代码导航\nCtrl + P                   # 快速打开文件\nCtrl + Shift + P           # 命令面板\nCtrl + G                   # 跳转到行\nF12                        # 跳转到定义\nAlt + F12                  # 查看定义\n\n# 代码折叠\nCtrl + Shift + [           # 折叠\nCtrl + Shift + ]           # 展开\nCtrl + K, Ctrl + 0         # 折叠所有\nCtrl + K, Ctrl + J         # 展开所有\n\n# 注释\nCtrl + /                   # 切换行注释\nShift + Alt + A            # 切换块注释"
+  },
+  "snippets": {
+    "title": "代码片段配置",
+    "language": "json",
+    "code": "// javascript.json\n{\n  \"React Functional Component\": {\n    \"prefix\": \"rfc\",\n    \"body\": [\n      \"import React from 'react'\",\n      \"\",\n      \"const ${1:ComponentName} = () => {\",\n      \"  return (\",\n      \"    <div>\",\n      \"      $0\",\n      \"    </div>\",\n      \"  )\",\n      \"}\",\n      \"\",\n      \"export default ${1:ComponentName}\"\n    ],\n    \"description\": \"React Functional Component\"\n  },\n  \"Console Log\": {\n    \"prefix\": \"clg\",\n    \"body\": [\n      \"console.log('$1', $1)$0\"\n    ],\n    \"description\": \"Console log with variable\"\n  },\n  \"Try Catch Block\": {\n    \"prefix\": \"try\",\n    \"body\": [\n      \"try {\",\n      \"  $1\",\n      \"} catch (error) {\",\n      \"  console.error('Error:', error)\",\n      \"  $0\",\n      \"}\"\n    ],\n    \"description\": \"Try catch block\"\n  }\n}"
+  },
+  "snippetVariables": {
+    "title": "代码片段变量",
+    "language": "text",
+    "code": "$TM_SELECTED_TEXT      # 当前选中的文本\n$TM_CURRENT_LINE       # 当前行的内容\n$TM_CURRENT_WORD       # 当前单词\n$TM_LINE_INDEX         # 行号（从0开始）\n$TM_LINE_NUMBER        # 行号（从1开始）\n$TM_FILENAME           # 当前文件名\n$TM_FILENAME_BASE      # 当前文件名（不含扩展名）\n$TM_DIRECTORY          # 当前文件所在目录\n$TM_FILEPATH           # 当前文件的完整路径\n$CURRENT_YEAR          # 当前年份\n$CURRENT_MONTH         # 当前月份\n$CURRENT_DATE          # 当前日期\n$CURRENT_HOUR          # 当前小时\n$CURRENT_MINUTE        # 当前分钟\n$CURRENT_SECOND        # 当前秒数"
+  },
+  "debugConfig": {
+    "title": "调试配置",
+    "language": "json",
+    "code": "// .vscode/launch.json\n{\n  \"version\": \"0.2.0\",\n  \"configurations\": [\n    {\n      \"name\": \"Launch Node.js\",\n      \"type\": \"node\",\n      \"request\": \"launch\",\n      \"program\": \"${workspaceFolder}/index.js\",\n      \"console\": \"integratedTerminal\",\n      \"env\": {\n        \"NODE_ENV\": \"development\"\n      }\n    },\n    {\n      \"name\": \"Launch Chrome\",\n      \"type\": \"chrome\",\n      \"request\": \"launch\",\n      \"url\": \"http://localhost:3000\",\n      \"webRoot\": \"${workspaceFolder}/src\"\n    },\n    {\n      \"name\": \"Attach to Docker\",\n      \"type\": \"node\",\n      \"request\": \"attach\",\n      \"port\": 9229,\n      \"address\": \"localhost\",\n      \"localRoot\": \"${workspaceFolder}\",\n      \"remoteRoot\": \"/app\"\n    }\n  ]\n}"
+  },
+  "performanceSettings": {
+    "title": "性能优化设置",
+    "language": "json",
+    "code": "// 性能优化设置\n{\n  \"files.watcherExclude\": {\n    \"**/node_modules/**\": true,\n    \"**/.git/objects/**\": true,\n    \"**/.git/subtree-cache/**\": true\n  },\n  \"search.followSymlinks\": false,\n  \"typescript.disableAutomaticTypeAcquisition\": true,\n  \"extensions.autoUpdate\": false\n}"
+  }
+}

@@ -1,437 +1,275 @@
 import React from 'react'
 import { Card, Tag, Alert, Divider, Button } from 'antd'
 import { useNavigate } from 'react-router-dom'
-import { 
-    ArrowLeftOutlined, 
-    GlobalOutlined, 
+import {
+    ArrowLeftOutlined,
+    CloudOutlined,
     WarningOutlined,
     CheckCircleOutlined,
-    BugOutlined
+    GlobalOutlined
 } from '@ant-design/icons'
+import CodeHighlight from '@/components/CodeHighlight'
+import { useCodeData } from '@/hooks/useCodeData'
 import styles from '@/styles/topicDetail.module.scss'
 
 const NetworkingDetail: React.FC = () => {
     const navigate = useNavigate()
-    
+    const { codeData, loading, error } = useCodeData('Docker', 'networking')
+
     const handleBack = () => {
         navigate('/technology/docker')
     }
-    
+
+    if (loading) {
+        return <div className={styles.loading}>加载中...</div>
+    }
+
+    if (error) {
+        return <div className={styles.error}>加载失败: {error}</div>
+    }
+
     return (
-        <div className={styles.topic_detail_container}>
-            {/* 返回按钮 */}
-            <div className={styles.back_section}>
+        <div className={styles.container}>
+            <div className={styles.header}>
                 <Button 
-                    type="text" 
-                    icon={<ArrowLeftOutlined />}
+                    icon={<ArrowLeftOutlined />} 
                     onClick={handleBack}
                     className={styles.back_button}
                 >
-                    返回Docker技术卡片
+                    返回Docker
                 </Button>
+                <h1><GlobalOutlined /> Docker 网络</h1>
+                <p>掌握Docker容器网络配置和管理</p>
             </div>
-            
-            {/* 页面头部 */}
-            <div className={styles.detail_header}>
-                <div className={styles.topic_icon}>
-                    <GlobalOutlined />
-                </div>
-                <div className={styles.topic_info}>
-                    <h1>Docker 网络详解</h1>
-                    <p>掌握Docker容器网络配置与通信机制</p>
-                    <div className={styles.topic_tags}>
-                        <Tag color="blue">Docker Network</Tag>
-                        <Tag color="green">容器通信</Tag>
-                        <Tag color="orange">网络配置</Tag>
-                        <Tag color="purple">端口映射</Tag>
-                    </div>
-                </div>
-            </div>
-            
-            {/* 内容区域 */}
-            <div className={styles.content_sections}>
-                {/* Docker网络基础 */}
-                <Card title="🌐 Docker 网络基础" className={styles.content_card}>
-                    <div className={styles.concept_content}>
-                        <h3>Docker网络模型</h3>
-                        <p>Docker使用CNM（Container Network Model）来管理容器网络，提供了多种网络驱动来满足不同的网络需求。</p>
-                        
+
+            <div className={styles.content}>
+                {/* 概述 */}
+                <Card title="📋 Docker 网络概述" className={styles.content_card}>
+                    <div className={styles.overview_section}>
+                        <h3>Docker 网络模式</h3>
+                        <p>
+                            Docker提供了多种网络模式来满足不同的应用场景，
+                            从简单的单机部署到复杂的多主机集群环境。
+                        </p>
+
                         <h3>网络驱动类型</h3>
-                        <div className={styles.concepts_grid}>
-                            <div className={styles.concept_item}>
-                                <h4>🔗 bridge（桥接）</h4>
-                                <p>默认网络驱动，适用于单主机上的容器通信</p>
-                            </div>
-                            
-                            <div className={styles.concept_item}>
-                                <h4>🌍 host（主机）</h4>
-                                <p>容器直接使用主机网络，性能最佳但隔离性差</p>
-                            </div>
-                            
-                            <div className={styles.concept_item}>
-                                <h4>🚫 none（无网络）</h4>
-                                <p>容器没有网络接口，完全隔离</p>
-                            </div>
-                            
-                            <div className={styles.concept_item}>
-                                <h4>🔄 overlay（覆盖）</h4>
-                                <p>用于Docker Swarm集群中的跨主机通信</p>
-                            </div>
+                        <div className={styles.network_types}>
+                            <Tag color="blue">bridge (桥接)</Tag>
+                            <Tag color="green">host (主机)</Tag>
+                            <Tag color="orange">none (无网络)</Tag>
+                            <Tag color="red">overlay (覆盖)</Tag>
+                            <Tag color="purple">macvlan (MAC虚拟)</Tag>
                         </div>
-                        
-                        <h3>基本网络命令</h3>
-                        <div className={styles.code_block}>
-                            <pre>
-{`# 查看网络列表
-docker network ls
 
-# 查看网络详细信息
-docker network inspect bridge
-
-# 创建自定义网络
-docker network create mynetwork
-
-# 删除网络
-docker network rm mynetwork
-
-# 连接容器到网络
-docker network connect mynetwork mycontainer
-
-# 断开容器网络连接
-docker network disconnect mynetwork mycontainer`}
-                            </pre>
-                        </div>
+                        <h3>网络特性</h3>
+                        <ul>
+                            <li><strong>隔离性</strong>：不同网络间的容器默认隔离</li>
+                            <li><strong>可发现性</strong>：同网络容器可通过名称通信</li>
+                            <li><strong>可扩展性</strong>：支持自定义网络驱动</li>
+                            <li><strong>安全性</strong>：内置网络安全机制</li>
+                        </ul>
                     </div>
                 </Card>
-                
+
+                {/* 基础网络操作 */}
+                <Card title="🌐 基础网络操作" className={styles.content_card}>
+                    <div className={styles.basic_operations}>
+                        <h3>网络管理命令</h3>
+                        {codeData.networkCommands && (
+                            <CodeHighlight
+                                code={codeData.networkCommands.code}
+                                language={codeData.networkCommands.language}
+                                title={codeData.networkCommands.title}
+                            />
+                        )}
+                    </div>
+                </Card>
+
+                {/* 网络驱动详解 */}
+                <Card title="🚗 网络驱动详解" className={styles.content_card}>
+                    <div className={styles.network_drivers}>
+                        <h3>Bridge 网络</h3>
+                        {codeData.bridgeNetwork && (
+                            <CodeHighlight
+                                code={codeData.bridgeNetwork.code}
+                                language={codeData.bridgeNetwork.language}
+                                title={codeData.bridgeNetwork.title}
+                            />
+                        )}
+                        
+                        <h3>Host 网络</h3>
+                        {codeData.hostNetwork && (
+                            <CodeHighlight
+                                code={codeData.hostNetwork.code}
+                                language={codeData.hostNetwork.language}
+                                title={codeData.hostNetwork.title}
+                            />
+                        )}
+                        
+                        <h3>Overlay 网络</h3>
+                        {codeData.overlayNetwork && (
+                            <CodeHighlight
+                                code={codeData.overlayNetwork.code}
+                                language={codeData.overlayNetwork.language}
+                                title={codeData.overlayNetwork.title}
+                            />
+                        )}
+                    </div>
+                </Card>
+
                 {/* 端口映射 */}
                 <Card title="🔌 端口映射与暴露" className={styles.content_card}>
-                    <div className={styles.usage_grid}>
-                        <div className={styles.usage_item}>
-                            <h4>1. 基本端口映射</h4>
-                            <div className={styles.code_block}>
-                                <pre>
-{`# 映射单个端口
-docker run -p 8080:80 nginx
-
-# 映射多个端口
-docker run -p 8080:80 -p 8443:443 nginx
-
-# 映射到随机端口
-docker run -P nginx
-
-# 指定协议
-docker run -p 8080:80/tcp -p 8081:80/udp nginx
-
-# 绑定到特定IP
-docker run -p 127.0.0.1:8080:80 nginx
-
-# 查看端口映射
-docker port container_name`}
-                                </pre>
-                            </div>
-                        </div>
+                    <div className={styles.port_mapping}>
+                        <h3>端口映射配置</h3>
+                        {codeData.portMapping && (
+                            <CodeHighlight
+                                code={codeData.portMapping.code}
+                                language={codeData.portMapping.language}
+                                title={codeData.portMapping.title}
+                            />
+                        )}
                         
-                        <div className={styles.usage_item}>
-                            <h4>2. EXPOSE指令</h4>
-                            <div className={styles.code_block}>
-                                <pre>
-{`# Dockerfile中暴露端口
-FROM nginx:alpine
-
-# 暴露端口（仅作为文档说明）
-EXPOSE 80 443
-
-# 运行时仍需要-p参数映射
-# docker run -p 8080:80 myimage
-
-# 使用-P参数自动映射所有EXPOSE的端口
-# docker run -P myimage
-
-# 查看镜像暴露的端口
-docker inspect myimage | grep ExposedPorts`}
-                                </pre>
-                            </div>
-                        </div>
-                        
-                        <div className={styles.usage_item}>
-                            <h4>3. 动态端口管理</h4>
-                            <div className={styles.code_block}>
-                                <pre>
-{`# 获取容器映射的端口
-PORT=$(docker port mycontainer 80/tcp | cut -d: -f2)
-echo "应用运行在端口: $PORT"
-
-# 使用docker-compose管理端口
-# docker-compose.yml
-version: '3.8'
-services:
-  web:
-    image: nginx
-    ports:
-      - "8080:80"        # 固定端口
-      - "80"             # 随机端口
-      - "127.0.0.1:8081:80"  # 绑定IP
-    expose:
-      - "3000"           # 仅容器间可访问
-
-# 查看服务端口
-docker-compose port web 80`}
-                                </pre>
-                            </div>
-                        </div>
+                        <h3>动态端口管理</h3>
+                        {codeData.dynamicPorts && (
+                            <CodeHighlight
+                                code={codeData.dynamicPorts.code}
+                                language={codeData.dynamicPorts.language}
+                                title={codeData.dynamicPorts.title}
+                            />
+                        )}
                     </div>
                 </Card>
-                
-                {/* 自定义网络 */}
-                <Card title="🏗️ 自定义网络配置" className={styles.content_card}>
-                    <div className={styles.network_section}>
-                        <h3>创建自定义网络</h3>
-                        <div className={styles.code_block}>
-                            <pre>
-{`# 创建bridge网络
-docker network create \
-  --driver bridge \
-  --subnet=172.20.0.0/16 \
-  --ip-range=172.20.240.0/20 \
-  --gateway=172.20.0.1 \
-  mynetwork
 
-# 创建带标签的网络
-docker network create \
-  --label environment=production \
-  --label team=backend \
-  prod-network
-
-# 查看网络配置
-docker network inspect mynetwork
-
-# 使用自定义网络运行容器
-docker run -d \
-  --name web1 \
-  --network mynetwork \
-  --ip 172.20.0.10 \
-  nginx
-
-docker run -d \
-  --name web2 \
-  --network mynetwork \
-  nginx`}
-                            </pre>
-                        </div>
+                {/* 容器间通信 */}
+                <Card title="💬 容器间通信" className={styles.content_card}>
+                    <div className={styles.container_communication}>
+                        <h3>同网络通信</h3>
+                        {codeData.containerCommunication && (
+                            <CodeHighlight
+                                code={codeData.containerCommunication.code}
+                                language={codeData.containerCommunication.language}
+                                title={codeData.containerCommunication.title}
+                            />
+                        )}
                         
-                        <h3>容器间通信</h3>
-                        <div className={styles.code_block}>
-                            <pre>
-{`# 在同一网络中的容器可以通过容器名通信
-docker network create app-network
-
-# 启动数据库容器
-docker run -d \
-  --name database \
-  --network app-network \
-  -e MYSQL_ROOT_PASSWORD=password \
-  mysql:8.0
-
-# 启动应用容器
-docker run -d \
-  --name webapp \
-  --network app-network \
-  -p 8080:80 \
-  myapp
-
-# 在webapp中可以通过 'database:3306' 连接数据库
-
-# 测试容器间连通性
-docker exec webapp ping database
-docker exec webapp nslookup database
-
-# 查看网络中的容器
-docker network inspect app-network`}
-                            </pre>
-                        </div>
-                        
-                        <h3>网络别名</h3>
-                        <div className={styles.code_block}>
-                            <pre>
-{`# 为容器设置网络别名
-docker run -d \
-  --name mysql-server \
-  --network app-network \
-  --network-alias db \
-  --network-alias database \
-  mysql:8.0
-
-# 现在可以通过多个名称访问同一容器
-# mysql-server, db, database 都指向同一容器
-
-# 在docker-compose中使用别名
-version: '3.8'
-services:
-  database:
-    image: mysql:8.0
-    networks:
-      app-network:
-        aliases:
-          - db
-          - mysql-server
-          
-networks:
-  app-network:
-    driver: bridge`}
-                            </pre>
-                        </div>
+                        <h3>跨网络通信</h3>
+                        {codeData.crossNetworkCommunication && (
+                            <CodeHighlight
+                                code={codeData.crossNetworkCommunication.code}
+                                language={codeData.crossNetworkCommunication.language}
+                                title={codeData.crossNetworkCommunication.title}
+                            />
+                        )}
                     </div>
                 </Card>
-                
+
                 {/* 网络安全 */}
-                <Card title="🔒 网络安全与隔离" className={styles.content_card}>
-                    <div className={styles.security_section}>
-                        <h3>网络隔离策略</h3>
-                        <div className={styles.code_block}>
-                            <pre>
-{`# 创建隔离的网络环境
-docker network create --internal backend-network
-docker network create frontend-network
-
-# 前端服务（可访问外网）
-docker run -d \
-  --name frontend \
-  --network frontend-network \
-  -p 80:80 \
-  nginx
-
-# 后端服务（内部网络，不能访问外网）
-docker run -d \
-  --name backend \
-  --network backend-network \
-  myapi
-
-# 数据库（完全隔离）
-docker run -d \
-  --name database \
-  --network backend-network \
-  mysql:8.0
-
-# 连接前后端网络
-docker network connect backend-network frontend`}
-                            </pre>
-                        </div>
+                <Card title="🔒 网络安全" className={styles.content_card}>
+                    <div className={styles.network_security}>
+                        <h3>网络隔离</h3>
+                        {codeData.networkIsolation && (
+                            <CodeHighlight
+                                code={codeData.networkIsolation.code}
+                                language={codeData.networkIsolation.language}
+                                title={codeData.networkIsolation.title}
+                            />
+                        )}
                         
-                        <h3>防火墙规则</h3>
-                        <div className={styles.code_block}>
-                            <pre>
-{`# Docker会自动创建iptables规则
-# 查看Docker创建的规则
-sudo iptables -L DOCKER
-
-# 禁用Docker的iptables管理（不推荐）
-# /etc/docker/daemon.json
-{
-  "iptables": false
-}
-
-# 自定义防火墙规则
-# 只允许特定IP访问容器
-sudo iptables -I DOCKER-USER -s 192.168.1.0/24 -j ACCEPT
-sudo iptables -I DOCKER-USER -j DROP
-
-# 限制容器间通信
-docker network create \
-  --opt com.docker.network.bridge.enable_icc=false \
-  isolated-network`}
-                            </pre>
-                        </div>
+                        <h3>防火墙配置</h3>
+                        {codeData.firewallConfiguration && (
+                            <CodeHighlight
+                                code={codeData.firewallConfiguration.code}
+                                language={codeData.firewallConfiguration.language}
+                                title={codeData.firewallConfiguration.title}
+                            />
+                        )}
                         
-                        <h3>TLS加密通信</h3>
-                        <div className={styles.code_block}>
-                            <pre>
-{`# 使用TLS保护Docker daemon
-# 生成证书
-openssl genrsa -aes256 -out ca-key.pem 4096
-openssl req -new -x509 -days 365 -key ca-key.pem -sha256 -out ca.pem
-
-# 配置Docker daemon使用TLS
-# /etc/docker/daemon.json
-{
-  "hosts": ["tcp://0.0.0.0:2376"],
-  "tls": true,
-  "tlscert": "/etc/docker/server-cert.pem",
-  "tlskey": "/etc/docker/server-key.pem",
-  "tlsverify": true,
-  "tlscacert": "/etc/docker/ca.pem"
-}
-
-# 客户端连接
-docker --tlsverify \
-  --tlscacert=ca.pem \
-  --tlscert=cert.pem \
-  --tlskey=key.pem \
-  -H=daemon.example.com:2376 \
-  version`}
-                            </pre>
-                        </div>
+                        <h3>TLS加密</h3>
+                        {codeData.tlsEncryption && (
+                            <CodeHighlight
+                                code={codeData.tlsEncryption.code}
+                                language={codeData.tlsEncryption.language}
+                                title={codeData.tlsEncryption.title}
+                            />
+                        )}
                     </div>
                 </Card>
-                
+
+                {/* 网络故障排查 */}
+                <Card title="🔧 网络故障排查" className={styles.content_card}>
+                    <div className={styles.troubleshooting}>
+                        <h3>常用诊断命令</h3>
+                        {codeData.networkTroubleshooting && (
+                            <CodeHighlight
+                                code={codeData.networkTroubleshooting.code}
+                                language={codeData.networkTroubleshooting.language}
+                                title={codeData.networkTroubleshooting.title}
+                            />
+                        )}
+                        
+                        <h3>性能监控</h3>
+                        {codeData.networkMonitoring && (
+                            <CodeHighlight
+                                code={codeData.networkMonitoring.code}
+                                language={codeData.networkMonitoring.language}
+                                title={codeData.networkMonitoring.title}
+                            />
+                        )}
+                    </div>
+                </Card>
+
                 {/* 最佳实践 */}
-                <Card title="✅ Docker 网络最佳实践" className={styles.content_card}>
+                <Card title="💡 最佳实践" className={styles.content_card}>
                     <div className={styles.best_practices}>
-                        <div className={styles.practice_item}>
-                            <CheckCircleOutlined className={styles.practice_icon} />
-                            <div>
-                                <h4>1. 网络设计原则</h4>
-                                <p>合理设计容器网络架构</p>
+                        <Alert
+                            message="网络配置建议"
+                            description={
                                 <ul>
-                                    <li>使用自定义网络而不是默认bridge</li>
-                                    <li>按功能划分网络（前端、后端、数据库）</li>
-                                    <li>避免使用host网络模式</li>
-                                    <li>合理规划IP地址段</li>
+                                    <li>为不同的应用创建独立的网络</li>
+                                    <li>使用自定义网络而非默认bridge网络</li>
+                                    <li>合理规划IP地址段，避免冲突</li>
+                                    <li>为容器设置有意义的网络别名</li>
+                                    <li>定期清理不使用的网络</li>
+                                    <li>监控网络性能和连接状态</li>
                                 </ul>
-                            </div>
-                        </div>
-                        
-                        <div className={styles.practice_item}>
-                            <CheckCircleOutlined className={styles.practice_icon} />
-                            <div>
-                                <h4>2. 安全配置</h4>
-                                <p>确保网络安全</p>
+                            }
+                            type="info"
+                            showIcon
+                        />
+
+                        <Divider />
+
+                        <Alert
+                            message="安全建议"
+                            description={
                                 <ul>
-                                    <li>使用内部网络隔离敏感服务</li>
-                                    <li>最小化端口暴露</li>
-                                    <li>定期审查网络配置</li>
-                                    <li>使用TLS加密通信</li>
+                                    <li><strong>网络隔离</strong>：将前端和后端服务分离到不同网络</li>
+                                    <li><strong>最小权限</strong>：只暴露必要的端口</li>
+                                    <li><strong>加密通信</strong>：在生产环境使用TLS加密</li>
+                                    <li><strong>访问控制</strong>：使用防火墙规则限制访问</li>
+                                    <li><strong>监控审计</strong>：记录网络访问日志</li>
                                 </ul>
-                            </div>
-                        </div>
-                        
-                        <div className={styles.practice_item}>
-                            <CheckCircleOutlined className={styles.practice_icon} />
-                            <div>
-                                <h4>3. 性能优化</h4>
-                                <p>优化网络性能</p>
+                            }
+                            type="warning"
+                            showIcon
+                        />
+
+                        <Divider />
+
+                        <Alert
+                            message="性能优化"
+                            description={
                                 <ul>
-                                    <li>选择合适的网络驱动</li>
-                                    <li>避免不必要的网络跳转</li>
-                                    <li>使用本地DNS解析</li>
-                                    <li>监控网络流量</li>
+                                    <li><strong>网络驱动选择</strong>：根据场景选择合适的网络驱动</li>
+                                    <li><strong>DNS优化</strong>：配置合适的DNS解析</li>
+                                    <li><strong>连接池</strong>：使用连接池减少连接开销</li>
+                                    <li><strong>负载均衡</strong>：合理分配网络流量</li>
+                                    <li><strong>缓存策略</strong>：减少不必要的网络请求</li>
                                 </ul>
-                            </div>
-                        </div>
-                        
-                        <div className={styles.practice_item}>
-                            <CheckCircleOutlined className={styles.practice_icon} />
-                            <div>
-                                <h4>4. 故障排查</h4>
-                                <p>网络问题诊断</p>
-                                <ul>
-                                    <li>使用docker network inspect检查配置</li>
-                                    <li>使用ping和telnet测试连通性</li>
-                                    <li>检查防火墙规则</li>
-                                    <li>查看容器日志</li>
-                                </ul>
-                            </div>
-                        </div>
+                            }
+                            type="success"
+                            showIcon
+                        />
                     </div>
                 </Card>
             </div>

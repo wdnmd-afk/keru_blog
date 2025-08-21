@@ -29,242 +29,214 @@ const FundamentalsDetail: React.FC = () => {
     }
 
     return (
-        <div className={styles.topic_detail_container}>
-            {/* 返回按钮 */}
-            <div className={styles.back_section}>
-                <Button
-                    type="text"
-                    icon={<ArrowLeftOutlined />}
+        <div className={styles.container}>
+            <div className={styles.header}>
+                <Button 
+                    icon={<ArrowLeftOutlined />} 
                     onClick={handleBack}
                     className={styles.back_button}
                 >
-                    返回Docker技术卡片
+                    返回Docker
                 </Button>
+                <h1><CloudOutlined /> Docker 基础</h1>
+                <p>掌握Docker容器化技术的基础概念和核心操作</p>
             </div>
 
-            {/* 页面头部 */}
-            <div className={styles.detail_header}>
-                <div className={styles.topic_icon}>
-                    <CloudOutlined />
-                </div>
-                <div className={styles.topic_info}>
-                    <h1>Docker 基础概念</h1>
-                    <p>容器化技术的核心概念与基本操作</p>
-                    <div className={styles.topic_tags}>
-                        <Tag color="blue">Docker</Tag>
-                        <Tag color="green">容器化</Tag>
-                        <Tag color="orange">基础概念</Tag>
-                        <Tag color="purple">DevOps</Tag>
-                    </div>
-                </div>
-            </div>
+            <div className={styles.content}>
+                {/* 概述 */}
+                <Card title="📋 Docker 概述" className={styles.content_card}>
+                    <div className={styles.overview_section}>
+                        <h3>什么是 Docker</h3>
+                        <p>
+                            Docker 是一个开源的容器化平台，它允许开发者将应用程序及其依赖项打包到轻量级、
+                            可移植的容器中，然后可以在任何支持Docker的环境中运行。
+                        </p>
 
-            {/* 内容区域 */}
-            <div className={styles.content_sections}>
-                {/* 基础概念 */}
-                <Card title="📚 Docker 核心概念" className={styles.content_card}>
-                    <div className={styles.concept_content}>
-                        <h3>什么是Docker？</h3>
-                        <p>Docker是一个开源的容器化平台，它允许开发者将应用程序及其依赖项打包到一个轻量级、可移植的容器中，然后可以在任何支持Docker的环境中运行。</p>
-
-                        <h3>核心组件</h3>
-                        <div className={styles.components_grid}>
-                            <div className={styles.component_item}>
-                                <h4>🖼️ 镜像 (Image)</h4>
-                                <p>只读的模板，包含运行应用所需的代码、运行时、库、环境变量和配置文件</p>
-                            </div>
-
-                            <div className={styles.component_item}>
-                                <h4>📦 容器 (Container)</h4>
-                                <p>镜像的运行实例，是一个轻量级、可移植的执行环境</p>
-                            </div>
-
-                            <div className={styles.component_item}>
-                                <h4>📋 Dockerfile</h4>
-                                <p>文本文件，包含构建镜像的指令和配置</p>
-                            </div>
-
-                            <div className={styles.component_item}>
-                                <h4>🏪 仓库 (Registry)</h4>
-                                <p>存储和分发镜像的服务，如Docker Hub、私有仓库</p>
-                            </div>
+                        <h3>核心概念</h3>
+                        <div className={styles.concepts}>
+                            <Tag color="blue">镜像 (Image)</Tag>
+                            <Tag color="green">容器 (Container)</Tag>
+                            <Tag color="orange">仓库 (Registry)</Tag>
+                            <Tag color="red">Dockerfile</Tag>
+                            <Tag color="purple">数据卷 (Volume)</Tag>
+                            <Tag color="cyan">网络 (Network)</Tag>
                         </div>
+
+                        <h3>Docker 优势</h3>
+                        <ul>
+                            <li><strong>环境一致性</strong>：开发、测试、生产环境完全一致</li>
+                            <li><strong>快速部署</strong>：秒级启动，快速扩缩容</li>
+                            <li><strong>资源高效</strong>：比虚拟机更轻量，资源利用率更高</li>
+                            <li><strong>易于管理</strong>：统一的容器管理方式</li>
+                            <li><strong>微服务支持</strong>：天然支持微服务架构</li>
+                        </ul>
                     </div>
                 </Card>
 
-                {/* 基本命令 */}
-                <Card title="⚡ 基本命令" className={styles.content_card}>
+                {/* 安装配置 */}
+                <Card title="🚀 Docker 安装" className={styles.content_card}>
+                    <div className={styles.installation_section}>
+                        <h3>各平台安装方法</h3>
+                        {codeData.dockerInstallation && (
+                            <CodeHighlight
+                                code={codeData.dockerInstallation.code}
+                                language={codeData.dockerInstallation.language}
+                                title={codeData.dockerInstallation.title}
+                            />
+                        )}
+                    </div>
+                </Card>
+
+                {/* 基础命令 */}
+                <Card title="⚡ 基础命令" className={styles.content_card}>
                     <div className={styles.commands_section}>
-                        <h3>镜像操作</h3>
-                        <div className={styles.code_block}>
-                            <pre>
-{`# 拉取镜像
-docker pull nginx:latest
-
-# 查看本地镜像
-docker images
-
-# 删除镜像
-docker rmi nginx:latest
-
-# 构建镜像
-docker build -t myapp:1.0 .
-
-# 推送镜像到仓库
-docker push myapp:1.0`}
-                            </pre>
-                        </div>
-
-                        <h3>容器操作</h3>
-                        <div className={styles.code_block}>
-                            <pre>
-{`# 运行容器
-docker run -d --name mynginx -p 8080:80 nginx
-
-# 查看运行中的容器
-docker ps
-
-# 查看所有容器（包括停止的）
-docker ps -a
-
-# 停止容器
-docker stop mynginx
-
-# 启动容器
-docker start mynginx
-
-# 重启容器
-docker restart mynginx
-
-# 删除容器
-docker rm mynginx
-
-# 进入容器
-docker exec -it mynginx bash
-
-# 查看容器日志
-docker logs mynginx`}
-                            </pre>
-                        </div>
+                        <h3>Docker 基础操作</h3>
+                        {codeData.basicCommands && (
+                            <CodeHighlight
+                                code={codeData.basicCommands.code}
+                                language={codeData.basicCommands.language}
+                                title={codeData.basicCommands.title}
+                            />
+                        )}
                     </div>
                 </Card>
 
-                {/* 实践示例 */}
-                <Card title="🛠️ 实践示例" className={styles.content_card}>
-                    <div className={styles.example_section}>
-                        <h3>1. 运行一个简单的Web服务器</h3>
-                        <div className={styles.code_block}>
-                            <pre>
-{`# 运行Nginx服务器
-docker run -d \\
-  --name my-nginx \\
-  -p 8080:80 \\
-  -v /path/to/html:/usr/share/nginx/html \\
-  nginx:latest
+                {/* Dockerfile */}
+                <Card title="📄 Dockerfile 基础" className={styles.content_card}>
+                    <div className={styles.dockerfile_section}>
+                        <h3>Dockerfile 编写</h3>
+                        {codeData.dockerfileBasics && (
+                            <CodeHighlight
+                                code={codeData.dockerfileBasics.code}
+                                language={codeData.dockerfileBasics.language}
+                                title={codeData.dockerfileBasics.title}
+                            />
+                        )}
+                    </div>
+                </Card>
 
-# 访问 http://localhost:8080 查看效果`}
-                            </pre>
-                        </div>
+                {/* 容器生命周期 */}
+                <Card title="🔄 容器生命周期" className={styles.content_card}>
+                    <div className={styles.lifecycle_section}>
+                        <h3>容器状态管理</h3>
+                        {codeData.containerLifecycle && (
+                            <CodeHighlight
+                                code={codeData.containerLifecycle.code}
+                                language={codeData.containerLifecycle.language}
+                                title={codeData.containerLifecycle.title}
+                            />
+                        )}
+                    </div>
+                </Card>
 
-                        <h3>2. 运行数据库</h3>
-                        <div className={styles.code_block}>
-                            <pre>
-{`# 运行MySQL数据库
-docker run -d \\
-  --name mysql-db \\
-  -e MYSQL_ROOT_PASSWORD=mypassword \\
-  -e MYSQL_DATABASE=myapp \\
-  -p 3306:3306 \\
-  -v mysql-data:/var/lib/mysql \\
-  mysql:8.0
+                {/* 数据卷管理 */}
+                <Card title="💾 数据卷管理" className={styles.content_card}>
+                    <div className={styles.volume_section}>
+                        <h3>数据持久化</h3>
+                        {codeData.volumeManagement && (
+                            <CodeHighlight
+                                code={codeData.volumeManagement.code}
+                                language={codeData.volumeManagement.language}
+                                title={codeData.volumeManagement.title}
+                            />
+                        )}
+                    </div>
+                </Card>
 
-# 连接到数据库
-docker exec -it mysql-db mysql -u root -p`}
-                            </pre>
-                        </div>
+                {/* 网络基础 */}
+                <Card title="🌐 网络基础" className={styles.content_card}>
+                    <div className={styles.network_section}>
+                        <h3>容器网络配置</h3>
+                        {codeData.networkBasics && (
+                            <CodeHighlight
+                                code={codeData.networkBasics.code}
+                                language={codeData.networkBasics.language}
+                                title={codeData.networkBasics.title}
+                            />
+                        )}
+                    </div>
+                </Card>
 
-                        <h3>3. 创建简单的Node.js应用</h3>
-                        <div className={styles.code_block}>
-                            <pre>
-{`# Dockerfile
-FROM node:16-alpine
+                {/* 镜像优化 */}
+                <Card title="🎯 镜像优化" className={styles.content_card}>
+                    <div className={styles.optimization_section}>
+                        <h3>构建高效镜像</h3>
+                        {codeData.imageOptimization && (
+                            <CodeHighlight
+                                code={codeData.imageOptimization.code}
+                                language={codeData.imageOptimization.language}
+                                title={codeData.imageOptimization.title}
+                            />
+                        )}
+                    </div>
+                </Card>
 
-WORKDIR /app
-
-COPY package*.json ./
-RUN npm install
-
-COPY . .
-
-EXPOSE 3000
-
-CMD ["npm", "start"]
-
-# 构建和运行
-docker build -t my-node-app .
-docker run -d --name node-app -p 3000:3000 my-node-app`}
-                            </pre>
-                        </div>
+                {/* 容器监控 */}
+                <Card title="📊 容器监控" className={styles.content_card}>
+                    <div className={styles.monitoring_section}>
+                        <h3>监控和调试</h3>
+                        {codeData.containerMonitoring && (
+                            <CodeHighlight
+                                code={codeData.containerMonitoring.code}
+                                language={codeData.containerMonitoring.language}
+                                title={codeData.containerMonitoring.title}
+                            />
+                        )}
                     </div>
                 </Card>
 
                 {/* 最佳实践 */}
-                <Card title="✅ 最佳实践" className={styles.content_card}>
+                <Card title="💡 最佳实践" className={styles.content_card}>
                     <div className={styles.best_practices}>
-                        <div className={styles.practice_item}>
-                            <CheckCircleOutlined className={styles.practice_icon} />
-                            <div>
-                                <h4>1. 使用官方镜像</h4>
-                                <p>优先使用官方维护的镜像，它们经过安全审查和优化</p>
-                            </div>
-                        </div>
+                        <Alert
+                            message="Docker 使用建议"
+                            description={
+                                <ul>
+                                    <li>使用官方镜像作为基础镜像</li>
+                                    <li>保持镜像尽可能小，使用Alpine版本</li>
+                                    <li>利用多阶段构建优化镜像大小</li>
+                                    <li>合理使用.dockerignore文件</li>
+                                    <li>不要在容器中存储数据，使用数据卷</li>
+                                    <li>为容器设置资源限制</li>
+                                </ul>
+                            }
+                            type="info"
+                            showIcon
+                        />
 
-                        <div className={styles.practice_item}>
-                            <CheckCircleOutlined className={styles.practice_icon} />
-                            <div>
-                                <h4>2. 保持镜像轻量</h4>
-                                <p>使用Alpine Linux等轻量级基础镜像，减少镜像大小</p>
-                            </div>
-                        </div>
+                        <Divider />
 
-                        <div className={styles.practice_item}>
-                            <CheckCircleOutlined className={styles.practice_icon} />
-                            <div>
-                                <h4>3. 合理使用缓存</h4>
-                                <p>优化Dockerfile层级结构，充分利用Docker的构建缓存</p>
-                            </div>
-                        </div>
+                        <Alert
+                            message="安全建议"
+                            description={
+                                <ul>
+                                    <li><strong>用户权限</strong>：避免使用root用户运行容器</li>
+                                    <li><strong>镜像安全</strong>：定期更新基础镜像</li>
+                                    <li><strong>网络隔离</strong>：使用自定义网络隔离容器</li>
+                                    <li><strong>敏感数据</strong>：使用secrets管理敏感信息</li>
+                                    <li><strong>镜像扫描</strong>：定期扫描镜像漏洞</li>
+                                </ul>
+                            }
+                            type="warning"
+                            showIcon
+                        />
 
-                        <div className={styles.practice_item}>
-                            <CheckCircleOutlined className={styles.practice_icon} />
-                            <div>
-                                <h4>4. 数据持久化</h4>
-                                <p>使用数据卷(Volume)来持久化重要数据，避免数据丢失</p>
-                            </div>
-                        </div>
+                        <Divider />
 
-                        <div className={styles.practice_item}>
-                            <CheckCircleOutlined className={styles.practice_icon} />
-                            <div>
-                                <h4>5. 安全考虑</h4>
-                                <p>不要在镜像中包含敏感信息，使用环境变量传递配置</p>
-                            </div>
-                        </div>
-
-                        <div className={styles.practice_item}>
-                            <CheckCircleOutlined className={styles.practice_icon} />
-                            <div>
-                                <h4>6. 健康检查</h4>
-                                <p>为容器添加健康检查，确保应用正常运行</p>
-                                <div className={styles.code_block}>
-                                    <pre>
-{`# 在Dockerfile中添加健康检查
-HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \\
-  CMD curl -f http://localhost:3000/health || exit 1`}
-                                    </pre>
-                                </div>
-                            </div>
-                        </div>
+                        <Alert
+                            message="性能优化"
+                            description={
+                                <ul>
+                                    <li><strong>层缓存</strong>：合理安排Dockerfile指令顺序</li>
+                                    <li><strong>并行构建</strong>：使用BuildKit加速构建</li>
+                                    <li><strong>资源限制</strong>：设置合适的CPU和内存限制</li>
+                                    <li><strong>健康检查</strong>：配置容器健康检查</li>
+                                    <li><strong>日志管理</strong>：配置合适的日志驱动</li>
+                                </ul>
+                            }
+                            type="success"
+                            showIcon
+                        />
                     </div>
                 </Card>
             </div>

@@ -1,28 +1,39 @@
 import React from 'react'
 import { Card, Tag, Alert, Divider, Button } from 'antd'
 import { useNavigate } from 'react-router-dom'
-import { 
-    ArrowLeftOutlined, 
-    ThunderboltOutlined, 
+import {
+    ArrowLeftOutlined,
+    ThunderboltOutlined,
     WarningOutlined,
     CheckCircleOutlined,
     BugOutlined
 } from '@ant-design/icons'
+import CodeHighlight from '@/components/CodeHighlight'
+import { useCodeData } from '@/hooks/useCodeData'
 import styles from '@/styles/topicDetail.module.scss'
 
 const GenericsDetail: React.FC = () => {
     const navigate = useNavigate()
-    
+    const { codeData, loading, error } = useCodeData('TypeScript', 'generics')
+
     const handleBack = () => {
         navigate('/technology/typescript')
     }
-    
+
+    if (loading) {
+        return <div className={styles.loading}>加载中...</div>
+    }
+
+    if (error) {
+        return <div className={styles.error}>加载失败: {error}</div>
+    }
+
     return (
         <div className={styles.topic_detail_container}>
             {/* 返回按钮 */}
             <div className={styles.back_section}>
-                <Button 
-                    type="text" 
+                <Button
+                    type="text"
                     icon={<ArrowLeftOutlined />}
                     onClick={handleBack}
                     className={styles.back_button}
@@ -30,7 +41,7 @@ const GenericsDetail: React.FC = () => {
                     返回TypeScript技术卡片
                 </Button>
             </div>
-            
+
             {/* 页面头部 */}
             <div className={styles.detail_header}>
                 <div className={styles.topic_icon}>
@@ -47,7 +58,7 @@ const GenericsDetail: React.FC = () => {
                     </div>
                 </div>
             </div>
-            
+
             {/* 内容区域 */}
             <div className={styles.content_sections}>
                 {/* 泛型基础 */}
@@ -55,218 +66,70 @@ const GenericsDetail: React.FC = () => {
                     <div className={styles.concept_content}>
                         <h3>什么是泛型？</h3>
                         <p>泛型允许我们在定义函数、接口或类的时候，不预先指定具体的类型，而在使用的时候再指定类型的一种特性。它提供了一种创建可重用组件的方法，这些组件可以支持多种类型的数据。</p>
-                        
+
                         <h3>基本语法</h3>
-                        <div className={styles.code_block}>
-                            <pre>
-{`// 泛型函数
-function identity<T>(arg: T): T {
-    return arg
-}
-
-// 使用泛型函数
-let output1 = identity<string>("hello")    // 显式指定类型
-let output2 = identity("hello")            // 类型推断
-let output3 = identity<number>(42)
-let output4 = identity(42)
-
-// 泛型箭头函数
-const identity2 = <T>(arg: T): T => arg
-
-// 多个泛型参数
-function pair<T, U>(first: T, second: U): [T, U] {
-    return [first, second]
-}
-
-let result = pair<string, number>("hello", 42)  // [string, number]
-let result2 = pair("world", true)               // [string, boolean]`}
-                            </pre>
-                        </div>
+                        {codeData.basicGenerics && (
+                            <CodeHighlight
+                                code={codeData.basicGenerics.code}
+                                language={codeData.basicGenerics.language}
+                                title={codeData.basicGenerics.title}
+                            />
+                        )}
                     </div>
                 </Card>
-                
+
                 {/* 泛型约束 */}
                 <Card title="🔗 泛型约束" className={styles.content_card}>
                     <div className={styles.usage_grid}>
                         <div className={styles.usage_item}>
                             <h4>1. extends 约束</h4>
                             <div className={styles.code_block}>
-                                <pre>
-{`// 基本约束
-interface Lengthwise {
-    length: number
-}
-
-function loggingIdentity<T extends Lengthwise>(arg: T): T {
-    console.log(arg.length)  // 现在我们知道arg有length属性
-    return arg
-}
-
-loggingIdentity("hello")        // ✅ string有length属性
-loggingIdentity([1, 2, 3])      // ✅ array有length属性
-loggingIdentity({ length: 10 }) // ✅ 对象有length属性
-// loggingIdentity(3)           // ❌ number没有length属性
-
-// 约束泛型参数
-function getProperty<T, K extends keyof T>(obj: T, key: K): T[K] {
-    return obj[key]
-}
-
-let person = { name: "John", age: 30, city: "New York" }
-let name = getProperty(person, "name")     // string
-let age = getProperty(person, "age")       // number
-// let invalid = getProperty(person, "salary") // ❌ 'salary'不存在于person中`}
-                                </pre>
+                                {codeData.genericConstraints && (
+                                    <CodeHighlight
+                                        code={codeData.genericConstraints.code}
+                                        language={codeData.genericConstraints.language}
+                                        title={codeData.genericConstraints.title}
+                                    />
+                                )}
                             </div>
                         </div>
-                        
+
                         <div className={styles.usage_item}>
                             <h4>2. 条件约束</h4>
-                            <div className={styles.code_block}>
-                                <pre>
-{`// 条件类型约束
-type NonNullable<T> = T extends null | undefined ? never : T
-
-type Example1 = NonNullable<string | null>      // string
-type Example2 = NonNullable<number | undefined> // number
-
-// 提取函数返回类型
-type ReturnType<T> = T extends (...args: any[]) => infer R ? R : never
-
-type FuncReturn = ReturnType<() => string>              // string
-type FuncReturn2 = ReturnType<(x: number) => boolean>   // boolean
-
-// 提取数组元素类型
-type ArrayElement<T> = T extends (infer U)[] ? U : never
-
-type StringArray = ArrayElement<string[]>  // string
-type NumberArray = ArrayElement<number[]>  // number
-
-// 复杂条件约束
-type DeepReadonly<T> = {
-    readonly [P in keyof T]: T[P] extends object ? DeepReadonly<T[P]> : T[P]
-}`}
-                                </pre>
-                            </div>
+                            {codeData.conditionalTypes && (
+                                <CodeHighlight
+                                    code={codeData.conditionalTypes.code}
+                                    language={codeData.conditionalTypes.language}
+                                    title={codeData.conditionalTypes.title}
+                                />
+                            )}
                         </div>
                     </div>
                 </Card>
-                
+
                 {/* 泛型接口与类 */}
                 <Card title="🏗️ 泛型接口与类" className={styles.content_card}>
                     <div className={styles.interface_section}>
                         <h3>泛型接口</h3>
-                        <div className={styles.code_block}>
-                            <pre>
-{`// 泛型接口定义
-interface GenericIdentityFn<T> {
-    (arg: T): T
-}
+                        {codeData.genericInterfaces && (
+                            <CodeHighlight
+                                code={codeData.genericInterfaces.code}
+                                language={codeData.genericInterfaces.language}
+                                title={codeData.genericInterfaces.title}
+                            />
+                        )}
 
-function identity<T>(arg: T): T {
-    return arg
-}
-
-let myIdentity: GenericIdentityFn<number> = identity
-
-// 泛型接口的实际应用
-interface Repository<T> {
-    findById(id: string): Promise<T | null>
-    findAll(): Promise<T[]>
-    create(entity: Omit<T, 'id'>): Promise<T>
-    update(id: string, entity: Partial<T>): Promise<T>
-    delete(id: string): Promise<void>
-}
-
-interface User {
-    id: string
-    name: string
-    email: string
-}
-
-class UserRepository implements Repository<User> {
-    async findById(id: string): Promise<User | null> {
-        // 实现查找逻辑
-        return null
-    }
-    
-    async findAll(): Promise<User[]> {
-        // 实现查找所有逻辑
-        return []
-    }
-    
-    async create(userData: Omit<User, 'id'>): Promise<User> {
-        // 实现创建逻辑
-        return { id: '1', ...userData }
-    }
-    
-    async update(id: string, userData: Partial<User>): Promise<User> {
-        // 实现更新逻辑
-        return { id, name: '', email: '', ...userData }
-    }
-    
-    async delete(id: string): Promise<void> {
-        // 实现删除逻辑
-    }
-}`}
-                            </pre>
-                        </div>
-                        
                         <h3>泛型类</h3>
-                        <div className={styles.code_block}>
-                            <pre>
-{`// 泛型类定义
-class GenericNumber<T> {
-    zeroValue: T
-    add: (x: T, y: T) => T
-    
-    constructor(zeroValue: T, addFn: (x: T, y: T) => T) {
-        this.zeroValue = zeroValue
-        this.add = addFn
-    }
-}
-
-let myGenericNumber = new GenericNumber<number>(0, (x, y) => x + y)
-let myGenericString = new GenericNumber<string>("", (x, y) => x + y)
-
-// 实际应用：数据结构
-class Stack<T> {
-    private items: T[] = []
-    
-    push(item: T): void {
-        this.items.push(item)
-    }
-    
-    pop(): T | undefined {
-        return this.items.pop()
-    }
-    
-    peek(): T | undefined {
-        return this.items[this.items.length - 1]
-    }
-    
-    isEmpty(): boolean {
-        return this.items.length === 0
-    }
-    
-    size(): number {
-        return this.items.length
-    }
-}
-
-const numberStack = new Stack<number>()
-numberStack.push(1)
-numberStack.push(2)
-console.log(numberStack.pop()) // 2
-
-const stringStack = new Stack<string>()
-stringStack.push("hello")
-stringStack.push("world")`}
-                            </pre>
-                        </div>
+                        {codeData.genericClasses && (
+                            <CodeHighlight
+                                code={codeData.genericClasses.code}
+                                language={codeData.genericClasses.language}
+                                title={codeData.genericClasses.title}
+                            />
+                        )}
                     </div>
                 </Card>
-                
+
                 {/* 高级泛型模式 */}
                 <Card title="🚀 高级泛型模式" className={styles.content_card}>
                     <div className={styles.advanced_section}>
@@ -306,7 +169,7 @@ class Person {
 const person = createInstanceWithArgs(Person, "John", 30)  // Person类型`}
                             </pre>
                         </div>
-                        
+
                         <h3>2. 泛型装饰器模式</h3>
                         <div className={styles.code_block}>
                             <pre>
@@ -342,7 +205,7 @@ class Calculator {
 }`}
                             </pre>
                         </div>
-                        
+
                         <h3>3. 泛型Builder模式</h3>
                         <div className={styles.code_block}>
                             <pre>
@@ -406,43 +269,19 @@ console.log(query)
                         </div>
                     </div>
                 </Card>
-                
+
                 {/* 实际应用场景 */}
                 <Card title="💡 实际应用场景" className={styles.content_card}>
                     <div className={styles.application_section}>
                         <h3>1. API响应类型</h3>
-                        <div className={styles.code_block}>
-                            <pre>
-{`// 通用API响应类型
-interface ApiResponse<T> {
-    success: boolean
-    data: T
-    message?: string
-    errors?: string[]
-}
+                        {codeData.utilityTypes && (
+                            <CodeHighlight
+                                code={codeData.utilityTypes.code}
+                                language={codeData.utilityTypes.language}
+                                title={codeData.utilityTypes.title}
+                            />
+                        )}
 
-interface PaginatedResponse<T> extends ApiResponse<T[]> {
-    pagination: {
-        page: number
-        limit: number
-        total: number
-        totalPages: number
-    }
-}
-
-// 使用示例
-async function fetchUsers(): Promise<PaginatedResponse<User>> {
-    const response = await fetch('/api/users')
-    return response.json()
-}
-
-async function fetchUser(id: string): Promise<ApiResponse<User>> {
-    const response = await fetch(\`/api/users/\${id}\`)
-    return response.json()
-}`}
-                            </pre>
-                        </div>
-                        
                         <h3>2. 状态管理</h3>
                         <div className={styles.code_block}>
                             <pre>
@@ -485,7 +324,7 @@ function useAsyncState<T>(): [AsyncState<T>, AsyncStateUpdater<T>] {
                         </div>
                     </div>
                 </Card>
-                
+
                 {/* 最佳实践 */}
                 <Card title="✅ 泛型最佳实践" className={styles.content_card}>
                     <div className={styles.best_practices}>
@@ -515,7 +354,7 @@ function mapArray<TInput, TOutput>(
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div className={styles.practice_item}>
                             <CheckCircleOutlined className={styles.practice_icon} />
                             <div>
@@ -541,7 +380,7 @@ function combineArrays<T>(arr1: T[], arr2: T[]): T[] {
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div className={styles.practice_item}>
                             <CheckCircleOutlined className={styles.practice_icon} />
                             <div>
