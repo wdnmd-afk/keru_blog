@@ -14,7 +14,7 @@ import styles from '@/styles/topicDetail.module.scss'
 
 const GenericsDetail: React.FC = () => {
     const navigate = useNavigate()
-    const { codeData, loading, error } = useCodeData('TypeScript', 'generics')
+    const { codeData, loading, error } = useCodeData('TypeScript', 'genericsDetail')
 
     const handleBack = () => {
         navigate('/technology/typescript')
@@ -134,139 +134,31 @@ const GenericsDetail: React.FC = () => {
                 <Card title="🚀 高级泛型模式" className={styles.content_card}>
                     <div className={styles.advanced_section}>
                         <h3>1. 泛型工厂模式</h3>
-                        <div className={styles.code_block}>
-                            <pre>
-{`// 泛型工厂函数
-function createInstance<T>(constructor: new () => T): T {
-    return new constructor()
-}
-
-class Dog {
-    name = "Dog"
-    bark() { console.log("Woof!") }
-}
-
-class Cat {
-    name = "Cat"
-    meow() { console.log("Meow!") }
-}
-
-const dog = createInstance(Dog)  // Dog类型
-const cat = createInstance(Cat)  // Cat类型
-
-// 带参数的泛型工厂
-function createInstanceWithArgs<T, A extends any[]>(
-    constructor: new (...args: A) => T,
-    ...args: A
-): T {
-    return new constructor(...args)
-}
-
-class Person {
-    constructor(public name: string, public age: number) {}
-}
-
-const person = createInstanceWithArgs(Person, "John", 30)  // Person类型`}
-                            </pre>
-                        </div>
+                        {codeData.genericFactory && (
+                            <CodeHighlight
+                                code={codeData.genericFactory.code}
+                                language={codeData.genericFactory.language}
+                                title={codeData.genericFactory.title}
+                            />
+                        )}
 
                         <h3>2. 泛型装饰器模式</h3>
-                        <div className={styles.code_block}>
-                            <pre>
-{`// 泛型装饰器
-function Memoize<T extends (...args: any[]) => any>(
-    target: any,
-    propertyKey: string,
-    descriptor: TypedPropertyDescriptor<T>
-): TypedPropertyDescriptor<T> {
-    const originalMethod = descriptor.value!
-    const cache = new Map()
-    
-    descriptor.value = ((...args: Parameters<T>) => {
-        const key = JSON.stringify(args)
-        if (cache.has(key)) {
-            return cache.get(key)
-        }
-        
-        const result = originalMethod.apply(this, args)
-        cache.set(key, result)
-        return result
-    }) as T
-    
-    return descriptor
-}
-
-class Calculator {
-    @Memoize
-    fibonacci(n: number): number {
-        if (n <= 1) return n
-        return this.fibonacci(n - 1) + this.fibonacci(n - 2)
-    }
-}`}
-                            </pre>
-                        </div>
+                        {codeData.genericDecorator && (
+                            <CodeHighlight
+                                code={codeData.genericDecorator.code}
+                                language={codeData.genericDecorator.language}
+                                title={codeData.genericDecorator.title}
+                            />
+                        )}
 
                         <h3>3. 泛型Builder模式</h3>
-                        <div className={styles.code_block}>
-                            <pre>
-{`// 泛型Builder
-class QueryBuilder<T> {
-    private conditions: string[] = []
-    private orderBy: string[] = []
-    private limitValue?: number
-    
-    where(condition: keyof T, operator: string, value: any): this {
-        this.conditions.push(\`\${String(condition)} \${operator} '\${value}'\`)
-        return this
-    }
-    
-    orderByField(field: keyof T, direction: 'ASC' | 'DESC' = 'ASC'): this {
-        this.orderBy.push(\`\${String(field)} \${direction}\`)
-        return this
-    }
-    
-    limit(count: number): this {
-        this.limitValue = count
-        return this
-    }
-    
-    build(): string {
-        let query = "SELECT * FROM table"
-        
-        if (this.conditions.length > 0) {
-            query += \` WHERE \${this.conditions.join(' AND ')}\`
-        }
-        
-        if (this.orderBy.length > 0) {
-            query += \` ORDER BY \${this.orderBy.join(', ')}\`
-        }
-        
-        if (this.limitValue) {
-            query += \` LIMIT \${this.limitValue}\`
-        }
-        
-        return query
-    }
-}
-
-interface User {
-    id: number
-    name: string
-    email: string
-    age: number
-}
-
-const query = new QueryBuilder<User>()
-    .where('age', '>', 18)
-    .where('name', 'LIKE', 'John%')
-    .orderByField('name', 'ASC')
-    .limit(10)
-    .build()
-
-console.log(query)
-// SELECT * FROM table WHERE age > '18' AND name LIKE 'John%' ORDER BY name ASC LIMIT 10`}
-                            </pre>
-                        </div>
+                        {codeData.genericBuilder && (
+                            <CodeHighlight
+                                code={codeData.genericBuilder.code}
+                                language={codeData.genericBuilder.language}
+                                title={codeData.genericBuilder.title}
+                            />
+                        )}
                     </div>
                 </Card>
 
@@ -283,45 +175,13 @@ console.log(query)
                         )}
 
                         <h3>2. 状态管理</h3>
-                        <div className={styles.code_block}>
-                            <pre>
-{`// 泛型状态管理
-interface AsyncState<T> {
-    data: T | null
-    loading: boolean
-    error: string | null
-}
-
-function createAsyncState<T>(): AsyncState<T> {
-    return {
-        data: null,
-        loading: false,
-        error: null
-    }
-}
-
-// 状态更新函数
-type AsyncStateUpdater<T> = {
-    setLoading: () => void
-    setData: (data: T) => void
-    setError: (error: string) => void
-    reset: () => void
-}
-
-function useAsyncState<T>(): [AsyncState<T>, AsyncStateUpdater<T>] {
-    const [state, setState] = useState<AsyncState<T>>(createAsyncState<T>())
-    
-    const updater: AsyncStateUpdater<T> = {
-        setLoading: () => setState(prev => ({ ...prev, loading: true, error: null })),
-        setData: (data: T) => setState({ data, loading: false, error: null }),
-        setError: (error: string) => setState(prev => ({ ...prev, loading: false, error })),
-        reset: () => setState(createAsyncState<T>())
-    }
-    
-    return [state, updater]
-}`}
-                            </pre>
-                        </div>
+                        {codeData.stateManagement && (
+                            <CodeHighlight
+                                code={codeData.stateManagement.code}
+                                language={codeData.stateManagement.language}
+                                title={codeData.stateManagement.title}
+                            />
+                        )}
                     </div>
                 </Card>
 
@@ -333,25 +193,13 @@ function useAsyncState<T>(): [AsyncState<T>, AsyncStateUpdater<T>] {
                             <div>
                                 <h4>1. 合理命名泛型参数</h4>
                                 <p>使用有意义的泛型参数名称</p>
-                                <div className={styles.code_block}>
-                                    <pre>
-{`// ❌ 不好的命名
-function process<T, U, V>(a: T, b: U): V { ... }
-
-// ✅ 好的命名
-function mapArray<TInput, TOutput>(
-    array: TInput[], 
-    mapper: (item: TInput) => TOutput
-): TOutput[] { ... }
-
-// 常用约定
-// T - Type（类型）
-// K - Key（键）
-// V - Value（值）
-// E - Element（元素）
-// R - Return（返回值）`}
-                                    </pre>
-                                </div>
+                                {codeData.namingConventions && (
+                                    <CodeHighlight
+                                        code={codeData.namingConventions.code}
+                                        language={codeData.namingConventions.language}
+                                        title={codeData.namingConventions.title}
+                                    />
+                                )}
                             </div>
                         </div>
 
@@ -360,24 +208,13 @@ function mapArray<TInput, TOutput>(
                             <div>
                                 <h4>2. 避免过度泛型化</h4>
                                 <p>只在需要类型复用时使用泛型</p>
-                                <div className={styles.code_block}>
-                                    <pre>
-{`// ❌ 过度泛型化
-function addNumbers<T extends number>(a: T, b: T): T {
-    return (a + b) as T
-}
-
-// ✅ 简单直接
-function addNumbers(a: number, b: number): number {
-    return a + b
-}
-
-// ✅ 合理使用泛型
-function combineArrays<T>(arr1: T[], arr2: T[]): T[] {
-    return [...arr1, ...arr2]
-}`}
-                                    </pre>
-                                </div>
+                                {codeData.avoidOverGenerics && (
+                                    <CodeHighlight
+                                        code={codeData.avoidOverGenerics.code}
+                                        language={codeData.avoidOverGenerics.language}
+                                        title={codeData.avoidOverGenerics.title}
+                                    />
+                                )}
                             </div>
                         </div>
 
@@ -386,19 +223,13 @@ function combineArrays<T>(arr1: T[], arr2: T[]): T[] {
                             <div>
                                 <h4>3. 提供默认类型参数</h4>
                                 <p>为泛型参数提供合理的默认值</p>
-                                <div className={styles.code_block}>
-                                    <pre>
-{`// 提供默认类型
-interface EventEmitter<T = any> {
-    on(event: string, listener: (data: T) => void): void
-    emit(event: string, data: T): void
-}
-
-// 使用时可以省略类型参数
-const emitter = new EventEmitter()  // EventEmitter<any>
-const typedEmitter = new EventEmitter<User>()  // EventEmitter<User>`}
-                                    </pre>
-                                </div>
+                                {codeData.defaultTypeParameters && (
+                                    <CodeHighlight
+                                        code={codeData.defaultTypeParameters.code}
+                                        language={codeData.defaultTypeParameters.language}
+                                        title={codeData.defaultTypeParameters.title}
+                                    />
+                                )}
                             </div>
                         </div>
                     </div>

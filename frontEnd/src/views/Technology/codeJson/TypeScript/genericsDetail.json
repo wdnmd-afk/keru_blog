@@ -1,0 +1,37 @@
+{
+  "genericFactory": {
+    "title": "泛型工厂模式",
+    "language": "typescript",
+    "code": "// 泛型工厂函数\nfunction createInstance<T>(constructor: new () => T): T {\n    return new constructor()\n}\n\nclass Dog {\n    name = \"Dog\"\n    bark() { console.log(\"Woof!\") }\n}\n\nclass Cat {\n    name = \"Cat\"\n    meow() { console.log(\"Meow!\") }\n}\n\nconst dog = createInstance(Dog)  // Dog类型\nconst cat = createInstance(Cat)  // Cat类型\n\n// 带参数的泛型工厂\nfunction createInstanceWithArgs<T, A extends any[]>(\n    constructor: new (...args: A) => T,\n    ...args: A\n): T {\n    return new constructor(...args)\n}\n\nclass Person {\n    constructor(public name: string, public age: number) {}\n}\n\nconst person = createInstanceWithArgs(Person, \"John\", 30)  // Person类型"
+  },
+  "genericDecorator": {
+    "title": "泛型装饰器模式",
+    "language": "typescript",
+    "code": "// 泛型装饰器\nfunction Memoize<T extends (...args: any[]) => any>(\n    target: any,\n    propertyKey: string,\n    descriptor: TypedPropertyDescriptor<T>\n): TypedPropertyDescriptor<T> {\n    const originalMethod = descriptor.value!\n    const cache = new Map()\n    \n    descriptor.value = ((...args: Parameters<T>) => {\n        const key = JSON.stringify(args)\n        if (cache.has(key)) {\n            return cache.get(key)\n        }\n        \n        const result = originalMethod.apply(this, args)\n        cache.set(key, result)\n        return result\n    }) as T\n    \n    return descriptor\n}\n\nclass Calculator {\n    @Memoize\n    fibonacci(n: number): number {\n        if (n <= 1) return n\n        return this.fibonacci(n - 1) + this.fibonacci(n - 2)\n    }\n}"
+  },
+  "genericBuilder": {
+    "title": "泛型Builder模式",
+    "language": "typescript",
+    "code": "// 泛型Builder\nclass QueryBuilder<T> {\n    private conditions: string[] = []\n    private orderBy: string[] = []\n    private limitValue?: number\n    \n    where(condition: keyof T, operator: string, value: any): this {\n        this.conditions.push(`${String(condition)} ${operator} '${value}'`)\n        return this\n    }\n    \n    orderByAsc(field: keyof T): this {\n        this.orderBy.push(`${String(field)} ASC`)\n        return this\n    }\n    \n    orderByDesc(field: keyof T): this {\n        this.orderBy.push(`${String(field)} DESC`)\n        return this\n    }\n    \n    limit(count: number): this {\n        this.limitValue = count\n        return this\n    }\n    \n    build(): string {\n        let query = 'SELECT * FROM table'\n        \n        if (this.conditions.length > 0) {\n            query += ` WHERE ${this.conditions.join(' AND ')}`\n        }\n        \n        if (this.orderBy.length > 0) {\n            query += ` ORDER BY ${this.orderBy.join(', ')}`\n        }\n        \n        if (this.limitValue) {\n            query += ` LIMIT ${this.limitValue}`\n        }\n        \n        return query\n    }\n}\n\ninterface User {\n    id: number\n    name: string\n    age: number\n}\n\nconst query = new QueryBuilder<User>()\n    .where('age', '>', 18)\n    .where('name', 'LIKE', 'John%')\n    .orderByAsc('name')\n    .limit(10)\n    .build()\n\nconsole.log(query)\n// SELECT * FROM table WHERE age > '18' AND name LIKE 'John%' ORDER BY name ASC LIMIT 10"
+  },
+  "stateManagement": {
+    "title": "泛型状态管理",
+    "language": "typescript",
+    "code": "// 泛型状态管理\ninterface AsyncState<T> {\n    data: T | null\n    loading: boolean\n    error: string | null\n}\n\ninterface AsyncStateUpdater<T> {\n    setLoading: () => void\n    setData: (data: T) => void\n    setError: (error: string) => void\n    reset: () => void\n}\n\nfunction createAsyncState<T>(): AsyncState<T> {\n    return {\n        data: null,\n        loading: false,\n        error: null\n    }\n}\n\nfunction useAsyncState<T>(): [AsyncState<T>, AsyncStateUpdater<T>] {\n    const [state, setState] = useState<AsyncState<T>>(createAsyncState<T>())\n    \n    const updater: AsyncStateUpdater<T> = {\n        setLoading: () => setState(prev => ({ ...prev, loading: true, error: null })),\n        setData: (data: T) => setState({ data, loading: false, error: null }),\n        setError: (error: string) => setState(prev => ({ ...prev, loading: false, error })),\n        reset: () => setState(createAsyncState<T>())\n    }\n    \n    return [state, updater]\n}"
+  },
+  "namingConventions": {
+    "title": "泛型命名规范",
+    "language": "typescript",
+    "code": "// ❌ 不好的命名\nfunction process<T, U, V>(a: T, b: U): V { ... }\n\n// ✅ 好的命名\nfunction transformData<TInput, TOutput, TContext>(\n    input: TInput, \n    context: TContext\n): TOutput { ... }\n\n// 常用泛型参数命名约定：\n// T - Type（类型）\n// K - Key（键）\n// V - Value（值）\n// E - Element（元素）\n// R - Return（返回值）"
+  },
+  "avoidOverGenerics": {
+    "title": "避免过度泛型化",
+    "language": "typescript",
+    "code": "// ❌ 过度泛型化\nfunction addNumbers<T extends number>(a: T, b: T): T {\n    return (a + b) as T  // 不必要的泛型\n}\n\n// ✅ 简单直接\nfunction addNumbers(a: number, b: number): number {\n    return a + b\n}\n\n// ✅ 合理使用泛型\nfunction combineArrays<T>(arr1: T[], arr2: T[]): T[] {\n    return [...arr1, ...arr2]\n}"
+  },
+  "defaultTypeParameters": {
+    "title": "提供默认类型参数",
+    "language": "typescript",
+    "code": "// 提供默认类型\ninterface EventEmitter<T = any> {\n    emit(event: string, data: T): void\n    on(event: string, handler: (data: T) => void): void\n}\n\nconst emitter = new EventEmitter()  // EventEmitter<any>\nconst typedEmitter = new EventEmitter<User>()  // EventEmitter<User>"
+  }
+}
