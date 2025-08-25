@@ -205,7 +205,7 @@
 *   2025-08-20 17:30
     *   步骤: 完成自动化脚本创建
     *   修改:
-        - 创建了完整的自动化脚本 migrate-code-highlight.js
+        - 创建了完整的自动化脚本 update.js
         - 创建了测试脚本 test.js
         - 创建了使用说明文档 README.md
         - 创建了运行脚本 run.bat 和 run.sh

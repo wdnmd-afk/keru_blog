@@ -18,7 +18,7 @@ if "%1"=="--test" (
 )
 
 echo 开始迁移: %1
-node migrate-code-highlight.js %1
+node update.js %1
 
 echo.
 echo 迁移完成！

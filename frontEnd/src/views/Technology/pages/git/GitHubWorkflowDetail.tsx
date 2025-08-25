@@ -1,28 +1,39 @@
 import React from 'react'
 import { Card, Tag, Alert, Divider, Button } from 'antd'
 import { useNavigate } from 'react-router-dom'
-import { 
-    ArrowLeftOutlined, 
-    GithubOutlined, 
+import {
+    ArrowLeftOutlined,
+    GithubOutlined,
     WarningOutlined,
     CheckCircleOutlined,
-    BugOutlined
+    BugOutlined,
 } from '@ant-design/icons'
+import { useCodeData } from '@/hooks/useCodeData'
+import CodeHighlight from '@/components/CodeHighlight'
 import styles from '@/styles/topicDetail.module.scss'
 
 const GitHubWorkflowDetail: React.FC = () => {
     const navigate = useNavigate()
-    
+    const { codeData, loading, error } = useCodeData('Git', 'githubWorkflow')
+
     const handleBack = () => {
         navigate('/technology/git')
     }
-    
+
+    if (loading) {
+        return <div className={styles.loading}>加载中...</div>
+    }
+
+    if (error) {
+        return <div className={styles.error}>加载失败: {error}</div>
+    }
+
     return (
         <div className={styles.topic_detail_container}>
             {/* 返回按钮 */}
             <div className={styles.back_section}>
-                <Button 
-                    type="text" 
+                <Button
+                    type="text"
                     icon={<ArrowLeftOutlined />}
                     onClick={handleBack}
                     className={styles.back_button}
@@ -30,7 +41,7 @@ const GitHubWorkflowDetail: React.FC = () => {
                     返回Git & GitHub技术卡片
                 </Button>
             </div>
-            
+
             {/* 页面头部 */}
             <div className={styles.detail_header}>
                 <div className={styles.topic_icon}>
@@ -47,15 +58,18 @@ const GitHubWorkflowDetail: React.FC = () => {
                     </div>
                 </div>
             </div>
-            
+
             {/* 内容区域 */}
             <div className={styles.content_sections}>
                 {/* GitHub工作流概述 */}
                 <Card title="🔄 GitHub 工作流概述" className={styles.content_card}>
                     <div className={styles.concept_content}>
                         <h3>GitHub Flow 核心理念</h3>
-                        <p>GitHub Flow是一个轻量级的、基于分支的工作流，特别适合持续部署的项目。它简单易懂，专注于快速迭代和持续集成。</p>
-                        
+                        <p>
+                            GitHub
+                            Flow是一个轻量级的、基于分支的工作流，特别适合持续部署的项目。它简单易懂，专注于快速迭代和持续集成。
+                        </p>
+
                         <h3>工作流步骤</h3>
                         <div className={styles.workflow_steps}>
                             <div className={styles.step_item}>
@@ -65,7 +79,7 @@ const GitHubWorkflowDetail: React.FC = () => {
                                     <p>从main分支创建功能分支</p>
                                 </div>
                             </div>
-                            
+
                             <div className={styles.step_item}>
                                 <div className={styles.step_number}>2</div>
                                 <div className={styles.step_content}>
@@ -73,7 +87,7 @@ const GitHubWorkflowDetail: React.FC = () => {
                                     <p>在分支上进行开发并提交代码</p>
                                 </div>
                             </div>
-                            
+
                             <div className={styles.step_item}>
                                 <div className={styles.step_number}>3</div>
                                 <div className={styles.step_content}>
@@ -81,7 +95,7 @@ const GitHubWorkflowDetail: React.FC = () => {
                                     <p>开启Pull Request进行讨论</p>
                                 </div>
                             </div>
-                            
+
                             <div className={styles.step_item}>
                                 <div className={styles.step_number}>4</div>
                                 <div className={styles.step_content}>
@@ -89,7 +103,7 @@ const GitHubWorkflowDetail: React.FC = () => {
                                     <p>团队成员审查和讨论代码</p>
                                 </div>
                             </div>
-                            
+
                             <div className={styles.step_item}>
                                 <div className={styles.step_number}>5</div>
                                 <div className={styles.step_content}>
@@ -97,7 +111,7 @@ const GitHubWorkflowDetail: React.FC = () => {
                                     <p>在测试环境验证功能</p>
                                 </div>
                             </div>
-                            
+
                             <div className={styles.step_item}>
                                 <div className={styles.step_number}>6</div>
                                 <div className={styles.step_content}>
@@ -108,174 +122,65 @@ const GitHubWorkflowDetail: React.FC = () => {
                         </div>
                     </div>
                 </Card>
-                
+
                 {/* Pull Request详解 */}
                 <Card title="🔀 Pull Request 详解" className={styles.content_card}>
                     <div className={styles.usage_grid}>
                         <div className={styles.usage_item}>
                             <h4>1. 创建Pull Request</h4>
-                            <div className={styles.code_block}>
-                                <pre>
-{`# 1. 创建并切换到功能分支
-git checkout -b feature/user-profile
-
-# 2. 进行开发工作
-# 编辑文件...
-git add .
-git commit -m "Add user profile page"
-
-# 3. 推送分支到GitHub
-git push origin feature/user-profile
-
-# 4. 在GitHub上创建Pull Request
-# - 访问仓库页面
-# - 点击 "Compare & pull request"
-# - 填写PR标题和描述
-# - 选择审查者和标签
-# - 点击 "Create pull request"`}
-                                </pre>
-                            </div>
+                            {codeData?.createPullRequest && (
+                                <CodeHighlight
+                                    code={codeData.createPullRequest.code}
+                                    language={codeData.createPullRequest.language}
+                                    title={codeData.createPullRequest.title}
+                                />
+                            )}
                         </div>
-                        
+
                         <div className={styles.usage_item}>
                             <h4>2. PR模板和规范</h4>
-                            <div className={styles.code_block}>
-                                <pre>
-{`<!-- .github/pull_request_template.md -->
-## 变更描述
-简要描述此PR的变更内容
-
-## 变更类型
-- [ ] 新功能
-- [ ] Bug修复
-- [ ] 文档更新
-- [ ] 重构
-- [ ] 性能优化
-- [ ] 其他
-
-## 测试
-- [ ] 单元测试通过
-- [ ] 集成测试通过
-- [ ] 手动测试完成
-
-## 检查清单
-- [ ] 代码遵循项目规范
-- [ ] 已添加必要的测试
-- [ ] 文档已更新
-- [ ] 无破坏性变更
-
-## 相关Issue
-Closes #123
-
-## 截图（如适用）
-![screenshot](url)
-
-## 额外说明
-其他需要说明的内容`}
-                                </pre>
-                            </div>
+                            {codeData?.prTemplate && (
+                                <CodeHighlight
+                                    code={codeData.prTemplate.code}
+                                    language={codeData.prTemplate.language}
+                                    title={codeData.prTemplate.title}
+                                />
+                            )}
                         </div>
-                        
+
                         <div className={styles.usage_item}>
                             <h4>3. PR状态管理</h4>
-                            <div className={styles.code_block}>
-                                <pre>
-{`# PR状态标签
-draft: 草稿状态，开发中
-ready for review: 准备审查
-in review: 审查中
-changes requested: 需要修改
-approved: 已批准
-merged: 已合并
-
-# 使用GitHub CLI管理PR
-gh pr create --title "Add user authentication" --body "Implements login/logout functionality"
-
-# 查看PR列表
-gh pr list
-
-# 查看PR详情
-gh pr view 123
-
-# 审查PR
-gh pr review 123 --approve
-gh pr review 123 --request-changes --body "Please fix the security issue"
-
-# 合并PR
-gh pr merge 123 --squash
-gh pr merge 123 --merge
-gh pr merge 123 --rebase`}
-                                </pre>
-                            </div>
+                            {codeData?.prStatusManagement && (
+                                <CodeHighlight
+                                    code={codeData.prStatusManagement.code}
+                                    language={codeData.prStatusManagement.language}
+                                    title={codeData.prStatusManagement.title}
+                                />
+                            )}
                         </div>
                     </div>
                 </Card>
-                
+
                 {/* 代码审查 */}
                 <Card title="👀 代码审查最佳实践" className={styles.content_card}>
                     <div className={styles.review_section}>
                         <h3>审查者指南</h3>
-                        <div className={styles.code_block}>
-                            <pre>
-{`# 代码审查检查点
-
-## 功能性
-- 代码是否实现了预期功能？
-- 是否有边界情况未处理？
-- 错误处理是否完善？
-
-## 代码质量
-- 代码是否清晰易读？
-- 是否遵循项目编码规范？
-- 是否有重复代码？
-
-## 性能
-- 是否有性能问题？
-- 数据库查询是否优化？
-- 是否有内存泄漏风险？
-
-## 安全性
-- 是否有安全漏洞？
-- 输入验证是否充分？
-- 敏感信息是否暴露？
-
-## 测试
-- 测试覆盖率是否足够？
-- 测试用例是否合理？
-- 是否有集成测试？`}
-                            </pre>
-                        </div>
+                        {codeData?.codeReviewChecklist && (
+                            <CodeHighlight
+                                code={codeData.codeReviewChecklist.code}
+                                language={codeData.codeReviewChecklist.language}
+                                title={codeData.codeReviewChecklist.title}
+                            />
+                        )}
 
                         <h3>审查评论技巧</h3>
-                        <div className={styles.code_block}>
-                            <pre>
-{`# 建设性评论示例
-
-## 好的评论
-✅ "考虑使用 Map 而不是 Object 来提高查找性能"
-✅ "这里可能需要添加空值检查，防止运行时错误"
-✅ "建议提取这个逻辑到单独的函数中，提高可读性"
-
-## 避免的评论
-❌ "这段代码很糟糕"
-❌ "为什么要这样写？"
-❌ "重写这部分"
-
-## 评论模板
-# 问题类型标记
-[CRITICAL] 必须修复的严重问题
-[SUGGESTION] 改进建议
-[QUESTION] 需要澄清的问题
-[NITPICK] 小的改进点
-
-# 示例
-[SUGGESTION] 考虑使用 const 而不是 let，因为这个变量不会被重新赋值
-
-[QUESTION] 这个函数的时间复杂度是多少？对于大数据集是否会有性能问题？
-
-[CRITICAL] 这里存在SQL注入风险，需要使用参数化查询`}
-                            </pre>
-                        </div>
+                        {codeData?.reviewCommentTips && (
+                            <CodeHighlight
+                                code={codeData.reviewCommentTips.code}
+                                language={codeData.reviewCommentTips.language}
+                                title={codeData.reviewCommentTips.title}
+                            />
+                        )}
                     </div>
                 </Card>
 
@@ -283,35 +188,13 @@ gh pr merge 123 --rebase`}
                 <Card title="🛡️ 分支保护与自动化" className={styles.content_card}>
                     <div className={styles.protection_section}>
                         <h3>分支保护规则</h3>
-                        <div className={styles.code_block}>
-                            <pre>
-{`# 在GitHub仓库设置中配置分支保护规则
-
-## 基本保护
-- ✅ Require pull request reviews before merging
-  - Required number of reviewers: 2
-  - Dismiss stale reviews when new commits are pushed
-  - Require review from code owners
-
-- ✅ Require status checks to pass before merging
-  - Require branches to be up to date before merging
-  - Status checks: CI/CD, Tests, Linting
-
-- ✅ Require conversation resolution before merging
-
-- ✅ Require signed commits
-
-## 高级保护
-- ✅ Restrict pushes that create files
-- ✅ Restrict pushes that delete files
-- ✅ Allow force pushes (仅管理员)
-- ✅ Allow deletions (仅管理员)
-
-## 规则适用范围
-- Branch name pattern: main, master, release/*
-- Include administrators: 是否对管理员也生效`}
-                            </pre>
-                        </div>
+                        {codeData?.branchProtectionRules && (
+                            <CodeHighlight
+                                code={codeData.branchProtectionRules.code}
+                                language={codeData.branchProtectionRules.language}
+                                title={codeData.branchProtectionRules.title}
+                            />
+                        )}
                     </div>
                 </Card>
 

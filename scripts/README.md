@@ -20,23 +20,23 @@
 
 ```bash
 # 处理 nodejs 目录下的所有文件
-node scripts/migrate-code-highlight.js --nodejs
+node scripts/update.js --nodejs
 
 # 处理 git 目录下的所有文件
-node scripts/migrate-code-highlight.js --git
+node scripts/update.js --git
 
 # 处理 docker 目录下的所有文件
-node scripts/migrate-code-highlight.js --docker
+node scripts/update.js --docker
 ```
 
 ### 2. 处理特定文件
 
 ```bash
 # 处理 nodejs 目录下的特定文件
-node scripts/migrate-code-highlight.js --nodejs/ExpressDetail.tsx
+node scripts/update.js --nodejs/ExpressDetail.tsx
 
 # 处理 git 目录下的特定文件
-node scripts/migrate-code-highlight.js --git/GitHooksDetail.tsx
+node scripts/update.js --git/GitHooksDetail.tsx
 ```
 
 ## 工作流程
@@ -72,7 +72,7 @@ node scripts/migrate-code-highlight.js --git/GitHooksDetail.tsx
 
 ```
 scripts/
-├── migrate-code-highlight.js  # 主脚本
+├── update.js  # 主脚本
 ├── README.md                  # 使用说明
 ├── test.js                    # 测试脚本
 └── backups/                   # 备份目录
