@@ -298,15 +298,24 @@ docker run -d -p 54321:3000 myapp`}
 
                 {/* 生产环境建议 */}
                 <Card title="🚀 生产环境部署建议" className={styles.content_card}>
-                    <div className={styles.production_tips}>
+                    <div className="f-ic">
                         <Alert
                             message="网络架构设计"
+                            className={'h-50 flex-1'}
                             description={
                                 <ul>
-                                    <li><strong>分层网络</strong>：前端、应用、数据库分层隔离</li>
-                                    <li><strong>负载均衡</strong>：使用Nginx或HAProxy进行流量分发</li>
-                                    <li><strong>服务网格</strong>：考虑使用Istio等服务网格解决方案</li>
-                                    <li><strong>监控告警</strong>：部署网络监控和性能告警系统</li>
+                                    <li>
+                                        <strong>分层网络</strong>：前端、应用、数据库分层隔离
+                                    </li>
+                                    <li>
+                                        <strong>负载均衡</strong>：使用Nginx或HAProxy进行流量分发
+                                    </li>
+                                    <li>
+                                        <strong>服务网格</strong>：考虑使用Istio等服务网格解决方案
+                                    </li>
+                                    <li>
+                                        <strong>监控告警</strong>：部署网络监控和性能告警系统
+                                    </li>
                                 </ul>
                             }
                             type="info"
@@ -315,13 +324,24 @@ docker run -d -p 54321:3000 myapp`}
 
                         <Alert
                             message="安全加固措施"
+                            className={'h-50 flex-1 mx-5'}
                             description={
                                 <ul>
-                                    <li><strong>网络隔离</strong>：使用内部网络隔离敏感服务</li>
-                                    <li><strong>TLS加密</strong>：所有外部通信使用HTTPS/TLS</li>
-                                    <li><strong>访问控制</strong>：实施严格的防火墙规则</li>
-                                    <li><strong>安全扫描</strong>：定期进行网络安全漏洞扫描</li>
-                                    <li><strong>日志审计</strong>：记录和分析网络访问日志</li>
+                                    <li>
+                                        <strong>网络隔离</strong>：使用内部网络隔离敏感服务
+                                    </li>
+                                    <li>
+                                        <strong>TLS加密</strong>：所有外部通信使用HTTPS/TLS
+                                    </li>
+                                    <li>
+                                        <strong>访问控制</strong>：实施严格的防火墙规则
+                                    </li>
+                                    <li>
+                                        <strong>安全扫描</strong>：定期进行网络安全漏洞扫描
+                                    </li>
+                                    <li>
+                                        <strong>日志审计</strong>：记录和分析网络访问日志
+                                    </li>
                                 </ul>
                             }
                             type="warning"
@@ -330,13 +350,24 @@ docker run -d -p 54321:3000 myapp`}
 
                         <Alert
                             message="性能优化策略"
+                            className={'h-50 flex-1'}
                             description={
                                 <ul>
-                                    <li><strong>网络驱动</strong>：根据场景选择最优网络驱动</li>
-                                    <li><strong>连接池</strong>：配置合适的数据库连接池大小</li>
-                                    <li><strong>缓存策略</strong>：使用Redis等缓存减少网络请求</li>
-                                    <li><strong>CDN加速</strong>：静态资源使用CDN分发</li>
-                                    <li><strong>压缩传输</strong>：启用gzip等压缩算法</li>
+                                    <li>
+                                        <strong>网络驱动</strong>：根据场景选择最优网络驱动
+                                    </li>
+                                    <li>
+                                        <strong>连接池</strong>：配置合适的数据库连接池大小
+                                    </li>
+                                    <li>
+                                        <strong>缓存策略</strong>：使用Redis等缓存减少网络请求
+                                    </li>
+                                    <li>
+                                        <strong>CDN加速</strong>：静态资源使用CDN分发
+                                    </li>
+                                    <li>
+                                        <strong>压缩传输</strong>：启用gzip等压缩算法
+                                    </li>
                                 </ul>
                             }
                             type="success"
