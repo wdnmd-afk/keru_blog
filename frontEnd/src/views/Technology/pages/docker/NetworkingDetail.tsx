@@ -195,36 +195,14 @@ const NetworkingDetail: React.FC = () => {
                             <div>
                                 <h4>1. 网络隔离原则</h4>
                                 <p>为不同的应用层级创建独立的网络，实现安全隔离和访问控制</p>
-                                <CodeHighlight
-                                    code={`# ✅ 好的设计 - 分层网络隔离
-# 前端网络
-docker network create frontend-network
-
-# 后端网络
-docker network create backend-network
-
-# 数据库网络（内部）
-docker network create --internal database-network
-
-# 前端服务只连接前端网络
-docker run -d --name nginx --network frontend-network nginx
-
-# 应用服务连接前端和后端网络
-docker run -d --name app --network backend-network myapp
-docker network connect frontend-network app
-
-# 数据库只连接内部网络
-docker run -d --name db --network database-network postgres
-docker network connect backend-network db
-
-# ❌ 不好的设计 - 所有服务在同一网络
-docker run -d --name nginx nginx
-docker run -d --name app myapp
-docker run -d --name db postgres
-# 所有服务都在默认bridge网络，缺乏隔离`}
-                                    language="bash"
-                                    title="网络隔离设计示例"
-                                />
+                                {/* 使用 JSON 中的代码数据替换硬编码代码块，确保可维护性 */}
+                                {codeData.bestPracticeNetworkIsolation && (
+                                    <CodeHighlight
+                                        code={codeData.bestPracticeNetworkIsolation.code}
+                                        language={codeData.bestPracticeNetworkIsolation.language}
+                                        title={codeData.bestPracticeNetworkIsolation.title}
+                                    />
+                                )}
                             </div>
                         </div>
 
@@ -233,28 +211,14 @@ docker run -d --name db postgres
                             <div>
                                 <h4>2. 服务发现与命名</h4>
                                 <p>使用有意义的容器名称和网络别名，便于服务发现和维护</p>
-                                <CodeHighlight
-                                    code={`# ✅ 推荐 - 清晰的命名和别名
-docker run -d \\
-  --name user-service \\
-  --network app-network \\
-  --network-alias users \\
-  user-service:latest
-
-docker run -d \\
-  --name order-service \\
-  --network app-network \\
-  --network-alias orders \\
-  -e USER_SERVICE_URL=http://users:3000 \\
-  order-service:latest
-
-# ❌ 不推荐 - 模糊的命名
-docker run -d --name app1 service:latest
-docker run -d --name app2 service:latest
-# 难以识别服务功能和依赖关系`}
-                                    language="bash"
-                                    title="服务命名最佳实践"
-                                />
+                                {/* 动态读取：服务命名最佳实践 */}
+                                {codeData.bestPracticeServiceNaming && (
+                                    <CodeHighlight
+                                        code={codeData.bestPracticeServiceNaming.code}
+                                        language={codeData.bestPracticeServiceNaming.language}
+                                        title={codeData.bestPracticeServiceNaming.title}
+                                    />
+                                )}
                             </div>
                         </div>
 
@@ -263,34 +227,14 @@ docker run -d --name app2 service:latest
                             <div>
                                 <h4>3. 端口管理策略</h4>
                                 <p>合理规划端口映射，避免端口冲突，提供清晰的服务访问方式</p>
-                                <CodeHighlight
-                                    code={`# ✅ 好的端口管理
-# 使用标准端口映射
-docker run -d -p 80:80 --name web nginx
-docker run -d -p 443:443 --name web-ssl nginx
-
-# 为不同环境使用不同端口段
-# 开发环境: 8000-8099
-docker run -d -p 8080:80 --name dev-web nginx
-
-# 测试环境: 8100-8199
-docker run -d -p 8180:80 --name test-web nginx
-
-# 生产环境: 80, 443
-docker run -d -p 80:80 -p 443:443 --name prod-web nginx
-
-# 内部服务不暴露端口
-docker run -d --name internal-service \\
-  --network backend-network \\
-  internal-service:latest
-
-# ❌ 避免的做法
-# 随意的端口映射
-docker run -d -p 12345:80 nginx
-docker run -d -p 54321:3000 myapp`}
-                                    language="bash"
-                                    title="端口管理策略"
-                                />
+                                {/* 动态读取：端口管理策略 */}
+                                {codeData.bestPracticePortManagement && (
+                                    <CodeHighlight
+                                        code={codeData.bestPracticePortManagement.code}
+                                        language={codeData.bestPracticePortManagement.language}
+                                        title={codeData.bestPracticePortManagement.title}
+                                    />
+                                )}
                             </div>
                         </div>
                     </div>

@@ -33,5 +33,20 @@
     "title": "网络性能优化",
     "language": "bash",
     "code": "# 1. 网络驱动优化\n# 使用高性能网络驱动\ndocker network create \\\n  --driver bridge \\\n  --opt com.docker.network.driver.mtu=9000 \\\n  high-perf-network\n\n# 2. 容器网络配置优化\n# 调整网络缓冲区\ndocker run -d \\\n  --name optimized-app \\\n  --sysctl net.core.rmem_max=134217728 \\\n  --sysctl net.core.wmem_max=134217728 \\\n  --sysctl net.ipv4.tcp_rmem=\"4096 65536 134217728\" \\\n  --sysctl net.ipv4.tcp_wmem=\"4096 65536 134217728\" \\\n  myapp:latest\n\n# 3. 连接池配置\n# 数据库连接池优化\ndocker run -d \\\n  --name database \\\n  -e POSTGRES_MAX_CONNECTIONS=200 \\\n  -e POSTGRES_SHARED_BUFFERS=256MB \\\n  postgres:13\n\n# 应用连接池配置\ndocker run -d \\\n  --name app \\\n  -e DB_POOL_SIZE=20 \\\n  -e DB_POOL_TIMEOUT=30000 \\\n  myapp:latest\n\n# 4. 负载均衡\n# Nginx负载均衡\ndocker run -d \\\n  --name nginx-lb \\\n  -p 80:80 \\\n  -v $(pwd)/nginx-lb.conf:/etc/nginx/nginx.conf \\\n  nginx\n\n# HAProxy负载均衡\ndocker run -d \\\n  --name haproxy-lb \\\n  -p 80:80 \\\n  -v $(pwd)/haproxy.cfg:/usr/local/etc/haproxy/haproxy.cfg \\\n  haproxy\n\n# 5. 缓存策略\n# Redis缓存\ndocker run -d \\\n  --name redis-cache \\\n  --memory=1g \\\n  -p 6379:6379 \\\n  redis:alpine redis-server --maxmemory 1gb --maxmemory-policy allkeys-lru\n\n# CDN配置\ndocker run -d \\\n  --name cdn-cache \\\n  -p 8080:80 \\\n  -v $(pwd)/static:/usr/share/nginx/html \\\n  nginx\n\n# 6. 监控和指标\n# 网络性能监控\ndocker run -d \\\n  --name netdata \\\n  -p 19999:19999 \\\n  --cap-add SYS_PTRACE \\\n  -v /proc:/host/proc:ro \\\n  -v /sys:/host/sys:ro \\\n  netdata/netdata\n\n# Prometheus监控\ndocker run -d \\\n  --name prometheus \\\n  -p 9090:9090 \\\n  -v $(pwd)/prometheus.yml:/etc/prometheus/prometheus.yml \\\n  prom/prometheus"
+  },
+  "bestPracticeNetworkIsolation": {
+    "title": "网络隔离设计示例",
+    "language": "bash",
+    "code": "# ✅ 好的设计 - 分层网络隔离\n# 前端网络\ndocker network create frontend-network\n\n# 后端网络\ndocker network create backend-network\n\n# 数据库网络（内部）\ndocker network create --internal database-network\n\n# 前端服务只连接前端网络\ndocker run -d --name nginx --network frontend-network nginx\n\n# 应用服务连接前端和后端网络\ndocker run -d --name app --network backend-network myapp\ndocker network connect frontend-network app\n\n# 数据库只连接内部网络\ndocker run -d --name db --network database-network postgres\ndocker network connect backend-network db\n\n# ❌ 不好的设计 - 所有服务在同一网络\ndocker run -d --name nginx nginx\ndocker run -d --name app myapp\ndocker run -d --name db postgres\n# 所有服务都在默认bridge网络，缺乏隔离"
+  },
+  "bestPracticeServiceNaming": {
+    "title": "服务命名最佳实践",
+    "language": "bash",
+    "code": "# ✅ 推荐 - 清晰的命名和别名\ndocker run -d \\\n  --name user-service \\\n  --network app-network \\\n  --network-alias users \\\n  user-service:latest\n\n docker run -d \\\n  --name order-service \\\n  --network app-network \\\n  --network-alias orders \\\n  -e USER_SERVICE_URL=http://users:3000 \\\n  order-service:latest\n\n# ❌ 不推荐 - 模糊的命名\ndocker run -d --name app1 service:latest\ndocker run -d --name app2 service:latest\n# 难以识别服务功能和依赖关系"
+  },
+  "bestPracticePortManagement": {
+    "title": "端口管理策略",
+    "language": "bash",
+    "code": "# ✅ 好的端口管理\n# 使用标准端口映射\ndocker run -d -p 80:80 --name web nginx\ndocker run -d -p 443:443 --name web-ssl nginx\n\n# 为不同环境使用不同端口段\n# 开发环境: 8000-8099\ndocker run -d -p 8080:80 --name dev-web nginx\n\n# 测试环境: 8100-8199\ndocker run -d -p 8180:80 --name test-web nginx\n\n# 生产环境: 80, 443\ndocker run -d -p 80:80 -p 443:443 --name prod-web nginx\n\n# 内部服务不暴露端口\ndocker run -d --name internal-service \\\n  --network backend-network \\\n  internal-service:latest\n\n# ❌ 避免的做法\n# 随意的端口映射\ndocker run -d -p 12345:80 nginx\ndocker run -d -p 54321:3000 myapp"
   }
 }

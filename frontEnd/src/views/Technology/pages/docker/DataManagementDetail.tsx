@@ -1,8 +1,8 @@
 import CodeHighlight from '@/components/CodeHighlight'
 import { useCodeData } from '@/hooks/useCodeData'
-import styles from '@/styles/dataManagementDetail.module.scss'
+import styles from '@/styles/topicDetail.module.scss'
 import { ArrowLeftOutlined, DatabaseOutlined } from '@ant-design/icons'
-import { Alert, Button, Card, Divider, Tag } from 'antd'
+import { Alert, Button, Card, Spin, Tag } from 'antd'
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
@@ -15,33 +15,60 @@ const DataManagementDetail: React.FC = () => {
     }
 
     if (loading) {
-        return <div className={styles.loading}>加载中...</div>
+        return (
+            <div className={styles.topic_detail_container}>
+                <div style={{ textAlign: 'center', padding: '50px' }}>
+                    <Spin size="large" />
+                    <p style={{ marginTop: '16px', color: '#ffffff' }}>加载代码数据中...</p>
+                </div>
+            </div>
+        )
     }
 
     if (error) {
-        return <div className={styles.error}>加载失败: {error}</div>
+        return (
+            <div className={styles.topic_detail_container}>
+                <Alert message="加载失败" description={error} type="error" showIcon />
+            </div>
+        )
     }
 
     return (
-        <div className={styles.container}>
-            <div className={styles.header}>
+        <div className={styles.topic_detail_container}>
+            {/* 返回按钮 */}
+            <div className={styles.back_section}>
                 <Button
+                    type="text"
                     icon={<ArrowLeftOutlined />}
                     onClick={handleBack}
                     className={styles.back_button}
                 >
-                    返回Docker
+                    返回Docker技术卡片
                 </Button>
-                <h1>
-                    <DatabaseOutlined /> Docker 数据管理
-                </h1>
-                <p>掌握Docker容器数据持久化和管理策略</p>
             </div>
 
-            <div className={styles.content}>
+            {/* 页面头部 */}
+            <div className={styles.detail_header}>
+                <div className={styles.topic_icon}>
+                    <DatabaseOutlined />
+                </div>
+                <div className={styles.topic_info}>
+                    <h1>Docker 数据管理</h1>
+                    <p>掌握Docker容器数据持久化和管理策略，实现数据安全与高效存储</p>
+                    <div className={styles.topic_tags}>
+                        <Tag color="blue">数据卷 (Volumes)</Tag>
+                        <Tag color="green">绑定挂载 (Bind Mounts)</Tag>
+                        <Tag color="orange">数据备份</Tag>
+                        <Tag color="purple">数据安全</Tag>
+                    </div>
+                </div>
+            </div>
+
+            {/* 内容区域 */}
+            <div className={styles.content_sections}>
                 {/* 概述 */}
                 <Card title="📋 数据管理概述" className={styles.content_card}>
-                    <div className={styles.overview_section}>
+                    <div className={styles.concept_content}>
                         <h3>为什么需要数据管理</h3>
                         <p>
                             容器是无状态的，当容器删除时，容器内的数据也会丢失。
@@ -49,7 +76,7 @@ const DataManagementDetail: React.FC = () => {
                         </p>
 
                         <h3>数据存储类型</h3>
-                        <div className={styles.storage_types}>
+                        <div className={styles.network_types}>
                             <Tag color="blue">Volumes (数据卷)</Tag>
                             <Tag color="green">Bind Mounts (绑定挂载)</Tag>
                             <Tag color="orange">tmpfs Mounts (临时文件系统)</Tag>
@@ -70,135 +97,153 @@ const DataManagementDetail: React.FC = () => {
                     </div>
                 </Card>
 
-                {/* Volumes 数据卷 */}
-                <Card title="📦 Volumes 数据卷" className={styles.content_card}>
-                    <div className={styles.volumes_section}>
-                        <h3>基本Volume操作</h3>
-                        {codeData.volumeBasics && (
-                            <CodeHighlight
-                                code={codeData.volumeBasics.code}
-                                language={codeData.volumeBasics.language}
-                                title={codeData.volumeBasics.title}
-                            />
-                        )}
+                {/* 基础数据管理 */}
+                <Card title="📦 基础数据管理" className={styles.content_card}>
+                    <div className={styles.usage_grid}>
+                        <div className={styles.usage_item}>
+                            <h4>1. Volumes 数据卷基础</h4>
+                            {codeData.volumeBasics && (
+                                <CodeHighlight
+                                    code={codeData.volumeBasics.code}
+                                    language={codeData.volumeBasics.language}
+                                    title={codeData.volumeBasics.title}
+                                />
+                            )}
+                        </div>
 
-                        <h3>Volume高级配置</h3>
-                        {codeData.volumeAdvanced && (
-                            <CodeHighlight
-                                code={codeData.volumeAdvanced.code}
-                                language={codeData.volumeAdvanced.language}
-                                title={codeData.volumeAdvanced.title}
-                            />
-                        )}
-                    </div>
-                </Card>
+                        <div className={styles.usage_item}>
+                            <h4>2. Bind Mounts 绑定挂载</h4>
+                            {codeData.bindMountsBasics && (
+                                <CodeHighlight
+                                    code={codeData.bindMountsBasics.code}
+                                    language={codeData.bindMountsBasics.language}
+                                    title={codeData.bindMountsBasics.title}
+                                />
+                            )}
+                        </div>
 
-                {/* Bind Mounts */}
-                <Card title="🔗 Bind Mounts 绑定挂载" className={styles.content_card}>
-                    <div className={styles.bind_mounts_section}>
-                        <h3>基本绑定挂载</h3>
-                        {codeData.bindMountsBasics && (
-                            <CodeHighlight
-                                code={codeData.bindMountsBasics.code}
-                                language={codeData.bindMountsBasics.language}
-                                title={codeData.bindMountsBasics.title}
-                            />
-                        )}
-
-                        <h3>开发环境配置</h3>
-                        {codeData.developmentSetup && (
-                            <CodeHighlight
-                                code={codeData.developmentSetup.code}
-                                language={codeData.developmentSetup.language}
-                                title={codeData.developmentSetup.title}
-                            />
-                        )}
+                        <div className={styles.usage_item}>
+                            <h4>3. Volume 高级配置</h4>
+                            {codeData.volumeAdvanced && (
+                                <CodeHighlight
+                                    code={codeData.volumeAdvanced.code}
+                                    language={codeData.volumeAdvanced.language}
+                                    title={codeData.volumeAdvanced.title}
+                                />
+                            )}
+                        </div>
                     </div>
                 </Card>
 
                 {/* 数据备份与恢复 */}
                 <Card title="💾 数据备份与恢复" className={styles.content_card}>
-                    <div className={styles.backup_section}>
-                        <h3>Volume备份策略</h3>
-                        {codeData.backupStrategies && (
-                            <CodeHighlight
-                                code={codeData.backupStrategies.code}
-                                language={codeData.backupStrategies.language}
-                                title={codeData.backupStrategies.title}
-                            />
-                        )}
+                    <div className={styles.usage_grid}>
+                        <div className={styles.usage_item}>
+                            <h4>4. 数据备份策略</h4>
+                            {codeData.backupStrategies && (
+                                <CodeHighlight
+                                    code={codeData.backupStrategies.code}
+                                    language={codeData.backupStrategies.language}
+                                    title={codeData.backupStrategies.title}
+                                />
+                            )}
+                        </div>
 
-                        <h3>数据迁移</h3>
-                        {codeData.dataMigration && (
-                            <CodeHighlight
-                                code={codeData.dataMigration.code}
-                                language={codeData.dataMigration.language}
-                                title={codeData.dataMigration.title}
-                            />
-                        )}
+                        <div className={styles.usage_item}>
+                            <h4>5. 数据迁移</h4>
+                            {codeData.dataMigration && (
+                                <CodeHighlight
+                                    code={codeData.dataMigration.code}
+                                    language={codeData.dataMigration.language}
+                                    title={codeData.dataMigration.title}
+                                />
+                            )}
+                        </div>
+
+                        <div className={styles.usage_item}>
+                            <h4>6. 开发环境配置</h4>
+                            {codeData.developmentSetup && (
+                                <CodeHighlight
+                                    code={codeData.developmentSetup.code}
+                                    language={codeData.developmentSetup.language}
+                                    title={codeData.developmentSetup.title}
+                                />
+                            )}
+                        </div>
                     </div>
                 </Card>
 
                 {/* 数据库容器化 */}
                 <Card title="🗄️ 数据库容器化" className={styles.content_card}>
-                    <div className={styles.database_section}>
-                        <h3>MySQL容器化</h3>
-                        {codeData.mysqlContainerization && (
-                            <CodeHighlight
-                                code={codeData.mysqlContainerization.code}
-                                language={codeData.mysqlContainerization.language}
-                                title={codeData.mysqlContainerization.title}
-                            />
-                        )}
+                    <div className={styles.usage_grid}>
+                        <div className={styles.usage_item}>
+                            <h4>7. MySQL 容器化</h4>
+                            {codeData.mysqlContainerization && (
+                                <CodeHighlight
+                                    code={codeData.mysqlContainerization.code}
+                                    language={codeData.mysqlContainerization.language}
+                                    title={codeData.mysqlContainerization.title}
+                                />
+                            )}
+                        </div>
 
-                        <h3>PostgreSQL容器化</h3>
-                        {codeData.postgresqlContainerization && (
-                            <CodeHighlight
-                                code={codeData.postgresqlContainerization.code}
-                                language={codeData.postgresqlContainerization.language}
-                                title={codeData.postgresqlContainerization.title}
-                            />
-                        )}
+                        <div className={styles.usage_item}>
+                            <h4>8. PostgreSQL 容器化</h4>
+                            {codeData.postgresqlContainerization && (
+                                <CodeHighlight
+                                    code={codeData.postgresqlContainerization.code}
+                                    language={codeData.postgresqlContainerization.language}
+                                    title={codeData.postgresqlContainerization.title}
+                                />
+                            )}
+                        </div>
 
-                        <h3>Redis容器化</h3>
-                        {codeData.redisContainerization && (
-                            <CodeHighlight
-                                code={codeData.redisContainerization.code}
-                                language={codeData.redisContainerization.language}
-                                title={codeData.redisContainerization.title}
-                            />
-                        )}
+                        <div className={styles.usage_item}>
+                            <h4>9. Redis 容器化</h4>
+                            {codeData.redisContainerization && (
+                                <CodeHighlight
+                                    code={codeData.redisContainerization.code}
+                                    language={codeData.redisContainerization.language}
+                                    title={codeData.redisContainerization.title}
+                                />
+                            )}
+                        </div>
                     </div>
                 </Card>
 
-                {/* 数据安全 */}
-                <Card title="🔒 数据安全" className={styles.content_card}>
-                    <div className={styles.security_section}>
-                        <h3>访问控制</h3>
-                        {codeData.accessControl && (
-                            <CodeHighlight
-                                code={codeData.accessControl.code}
-                                language={codeData.accessControl.language}
-                                title={codeData.accessControl.title}
-                            />
-                        )}
+                {/* 数据安全与监控 */}
+                <Card title="🔒 数据安全与监控" className={styles.content_card}>
+                    <div className={styles.usage_grid}>
+                        <div className={styles.usage_item}>
+                            <h4>10. 访问控制</h4>
+                            {codeData.accessControl && (
+                                <CodeHighlight
+                                    code={codeData.accessControl.code}
+                                    language={codeData.accessControl.language}
+                                    title={codeData.accessControl.title}
+                                />
+                            )}
+                        </div>
 
-                        <h3>数据加密</h3>
-                        {codeData.dataEncryption && (
-                            <CodeHighlight
-                                code={codeData.dataEncryption.code}
-                                language={codeData.dataEncryption.language}
-                                title={codeData.dataEncryption.title}
-                            />
-                        )}
+                        <div className={styles.usage_item}>
+                            <h4>11. 数据加密</h4>
+                            {codeData.dataEncryption && (
+                                <CodeHighlight
+                                    code={codeData.dataEncryption.code}
+                                    language={codeData.dataEncryption.language}
+                                    title={codeData.dataEncryption.title}
+                                />
+                            )}
+                        </div>
                     </div>
                 </Card>
 
                 {/* 最佳实践 */}
                 <Card title="💡 最佳实践" className={styles.content_card}>
-                    <div className={styles.best_practices}>
+                    <div className="f-ic">
                         <Alert
                             message="数据管理建议"
+                            className={'h-50 flex-1'}
                             description={
                                 <ul>
                                     <li>生产环境优先使用Volumes而非Bind Mounts</li>
@@ -213,10 +258,9 @@ const DataManagementDetail: React.FC = () => {
                             showIcon
                         />
 
-                        <Divider />
-
                         <Alert
                             message="数据库容器化建议"
+                            className={'h-50 flex-1 mx-5'}
                             description={
                                 <ul>
                                     <li>
@@ -240,10 +284,9 @@ const DataManagementDetail: React.FC = () => {
                             showIcon
                         />
 
-                        <Divider />
-
                         <Alert
                             message="安全注意事项"
+                            className={'h-50 flex-1'}
                             description={
                                 <ul>
                                     <li>
