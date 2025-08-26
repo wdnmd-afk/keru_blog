@@ -1,7 +1,12 @@
-import React, { useState, useEffect } from 'react'
-import { Button, Tooltip } from 'antd'
-import { ArrowUpOutlined, MessageOutlined, SettingOutlined, QuestionCircleOutlined } from '@ant-design/icons'
 import style from '@/styles/floatingActions.module.scss'
+import {
+    ArrowUpOutlined,
+    MessageOutlined,
+    QuestionCircleOutlined,
+    SettingOutlined,
+} from '@ant-design/icons'
+import { Button, Tooltip } from 'antd'
+import React, { useEffect, useState } from 'react'
 
 const FloatingActions: React.FC = () => {
     const [showBackToTop, setShowBackToTop] = useState(false)
@@ -19,7 +24,7 @@ const FloatingActions: React.FC = () => {
     const scrollToTop = () => {
         window.scrollTo({
             top: 0,
-            behavior: 'smooth'
+            behavior: 'smooth',
         })
     }
 
@@ -49,7 +54,7 @@ const FloatingActions: React.FC = () => {
                         onClick={handleHelp}
                     />
                 </Tooltip>
-                
+
                 <Tooltip title="Settings" placement="left">
                     <Button
                         type="text"
@@ -58,7 +63,7 @@ const FloatingActions: React.FC = () => {
                         onClick={handleSettings}
                     />
                 </Tooltip>
-                
+
                 <Tooltip title="Feedback" placement="left">
                     <Button
                         type="text"
@@ -67,7 +72,7 @@ const FloatingActions: React.FC = () => {
                         onClick={handleFeedback}
                     />
                 </Tooltip>
-                
+
                 {showBackToTop && (
                     <Tooltip title="Back to Top" placement="left">
                         <Button

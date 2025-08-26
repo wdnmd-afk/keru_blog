@@ -1,21 +1,15 @@
-import React from 'react'
-import { Card, Tag, Alert, Divider, Button } from 'antd'
-import { useNavigate } from 'react-router-dom'
-import { 
-    ArrowLeftOutlined, 
-    CodeOutlined, 
-    WarningOutlined,
-    CheckCircleOutlined,
-    BugOutlined
-} from '@ant-design/icons'
 import CodeHighlight from '@/components/CodeHighlight'
 import { useCodeData } from '@/hooks/useCodeData'
 import styles from '@/styles/topicDetail.module.scss'
+import { ArrowLeftOutlined, CheckCircleOutlined, CodeOutlined } from '@ant-design/icons'
+import { Button, Card, Tag } from 'antd'
+import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const ReactTypeScriptDetail: React.FC = () => {
     const navigate = useNavigate()
     const { codeData, loading, error } = useCodeData('TypeScript', 'reactTypeScriptDetail')
-    
+
     const handleBack = () => {
         navigate('/technology/typescript')
     }
@@ -27,13 +21,13 @@ const ReactTypeScriptDetail: React.FC = () => {
     if (error) {
         return <div className={styles.error}>加载失败: {error}</div>
     }
-    
+
     return (
         <div className={styles.topic_detail_container}>
             {/* 返回按钮 */}
             <div className={styles.back_section}>
-                <Button 
-                    type="text" 
+                <Button
+                    type="text"
                     icon={<ArrowLeftOutlined />}
                     onClick={handleBack}
                     className={styles.back_button}
@@ -41,7 +35,7 @@ const ReactTypeScriptDetail: React.FC = () => {
                     返回TypeScript技术卡片
                 </Button>
             </div>
-            
+
             {/* 页面头部 */}
             <div className={styles.detail_header}>
                 <div className={styles.topic_icon}>
@@ -58,38 +52,40 @@ const ReactTypeScriptDetail: React.FC = () => {
                     </div>
                 </div>
             </div>
-            
+
             {/* 内容区域 */}
             <div className={styles.content_sections}>
                 {/* React TypeScript基础 */}
                 <Card title="⚛️ React TypeScript 基础" className={styles.content_card}>
                     <div className={styles.concept_content}>
                         <h3>为什么使用React + TypeScript？</h3>
-                        <p>TypeScript为React开发提供了强大的类型安全保障，能够在编译时发现错误，提供更好的开发体验和代码维护性。</p>
-                        
+                        <p>
+                            TypeScript为React开发提供了强大的类型安全保障，能够在编译时发现错误，提供更好的开发体验和代码维护性。
+                        </p>
+
                         <h3>核心优势</h3>
                         <div className={styles.concepts_grid}>
                             <div className={styles.concept_item}>
                                 <h4>🛡️ 类型安全</h4>
                                 <p>编译时错误检查，减少运行时错误</p>
                             </div>
-                            
+
                             <div className={styles.concept_item}>
                                 <h4>🔍 智能提示</h4>
                                 <p>IDE提供更好的自动完成和重构支持</p>
                             </div>
-                            
+
                             <div className={styles.concept_item}>
                                 <h4>📚 自文档化</h4>
                                 <p>类型定义即文档，提高代码可读性</p>
                             </div>
-                            
+
                             <div className={styles.concept_item}>
                                 <h4>🔧 重构友好</h4>
                                 <p>安全的重构操作，减少破坏性变更</p>
                             </div>
                         </div>
-                        
+
                         <h3>项目配置</h3>
                         {codeData.projectSetup && (
                             <CodeHighlight
@@ -100,7 +96,7 @@ const ReactTypeScriptDetail: React.FC = () => {
                         )}
                     </div>
                 </Card>
-                
+
                 {/* 组件类型定义 */}
                 <Card title="🧩 组件类型定义" className={styles.content_card}>
                     <div className={styles.usage_grid}>
@@ -114,7 +110,7 @@ const ReactTypeScriptDetail: React.FC = () => {
                                 />
                             )}
                         </div>
-                        
+
                         <div className={styles.usage_item}>
                             <h4>2. Props类型进阶</h4>
                             {codeData.advancedProps && (
@@ -125,7 +121,7 @@ const ReactTypeScriptDetail: React.FC = () => {
                                 />
                             )}
                         </div>
-                        
+
                         <div className={styles.usage_item}>
                             <h4>3. 类组件类型</h4>
                             {codeData.classComponents && (
@@ -138,7 +134,7 @@ const ReactTypeScriptDetail: React.FC = () => {
                         </div>
                     </div>
                 </Card>
-                
+
                 {/* Hooks类型 */}
                 <Card title="🎣 Hooks 类型定义" className={styles.content_card}>
                     <div className={styles.hooks_section}>
@@ -150,7 +146,7 @@ const ReactTypeScriptDetail: React.FC = () => {
                                 title={codeData.basicHooks.title}
                             />
                         )}
-                        
+
                         <h3>自定义Hooks类型</h3>
                         {codeData.customHooks && (
                             <CodeHighlight
@@ -161,7 +157,7 @@ const ReactTypeScriptDetail: React.FC = () => {
                         )}
                     </div>
                 </Card>
-                
+
                 {/* 事件处理类型 */}
                 <Card title="🎯 事件处理类型" className={styles.content_card}>
                     <div className={styles.events_section}>
@@ -173,7 +169,7 @@ const ReactTypeScriptDetail: React.FC = () => {
                                 title={codeData.eventTypes.title}
                             />
                         )}
-                        
+
                         <h3>自定义事件类型</h3>
                         {codeData.customEvents && (
                             <CodeHighlight
@@ -184,7 +180,7 @@ const ReactTypeScriptDetail: React.FC = () => {
                         )}
                     </div>
                 </Card>
-                
+
                 {/* 最佳实践 */}
                 <Card title="✅ React TypeScript 最佳实践" className={styles.content_card}>
                     <div className={styles.best_practices}>
@@ -201,7 +197,7 @@ const ReactTypeScriptDetail: React.FC = () => {
                                 </ul>
                             </div>
                         </div>
-                        
+
                         <div className={styles.practice_item}>
                             <CheckCircleOutlined className={styles.practice_icon} />
                             <div>
@@ -215,7 +211,7 @@ const ReactTypeScriptDetail: React.FC = () => {
                                 </ul>
                             </div>
                         </div>
-                        
+
                         <div className={styles.practice_item}>
                             <CheckCircleOutlined className={styles.practice_icon} />
                             <div>
@@ -229,7 +225,7 @@ const ReactTypeScriptDetail: React.FC = () => {
                                 </ul>
                             </div>
                         </div>
-                        
+
                         <div className={styles.practice_item}>
                             <CheckCircleOutlined className={styles.practice_icon} />
                             <div>

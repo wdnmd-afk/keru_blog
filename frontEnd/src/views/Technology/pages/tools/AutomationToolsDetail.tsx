@@ -1,21 +1,15 @@
-import React from 'react'
-import { Card, Tag, Alert, Divider, Button } from 'antd'
-import { useNavigate } from 'react-router-dom'
-import { 
-    ArrowLeftOutlined, 
-    RobotOutlined, 
-    WarningOutlined,
-    CheckCircleOutlined,
-    ToolOutlined
-} from '@ant-design/icons'
 import CodeHighlight from '@/components/CodeHighlight'
 import { useCodeData } from '@/hooks/useCodeData'
 import styles from '@/styles/topicDetail.module.scss'
+import { ArrowLeftOutlined, RobotOutlined } from '@ant-design/icons'
+import { Alert, Button, Card, Divider, Tag } from 'antd'
+import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const AutomationToolsDetail: React.FC = () => {
     const navigate = useNavigate()
     const { codeData, loading, error } = useCodeData('Tools', 'automation-tools')
-    
+
     const handleBack = () => {
         navigate('/technology/tools')
     }
@@ -31,14 +25,16 @@ const AutomationToolsDetail: React.FC = () => {
     return (
         <div className={styles.container}>
             <div className={styles.header}>
-                <Button 
-                    icon={<ArrowLeftOutlined />} 
+                <Button
+                    icon={<ArrowLeftOutlined />}
                     onClick={handleBack}
                     className={styles.back_button}
                 >
                     返回工具
                 </Button>
-                <h1><RobotOutlined /> 自动化工具</h1>
+                <h1>
+                    <RobotOutlined /> 自动化工具
+                </h1>
                 <p>提升开发效率的自动化工具和脚本</p>
             </div>
 
@@ -64,11 +60,21 @@ const AutomationToolsDetail: React.FC = () => {
 
                         <h3>自动化的好处</h3>
                         <ul>
-                            <li><strong>提升效率</strong>：减少手动操作，节省时间</li>
-                            <li><strong>减少错误</strong>：避免人为操作失误</li>
-                            <li><strong>标准化流程</strong>：确保操作的一致性</li>
-                            <li><strong>持续集成</strong>：支持CI/CD流程</li>
-                            <li><strong>团队协作</strong>：统一开发和部署流程</li>
+                            <li>
+                                <strong>提升效率</strong>：减少手动操作，节省时间
+                            </li>
+                            <li>
+                                <strong>减少错误</strong>：避免人为操作失误
+                            </li>
+                            <li>
+                                <strong>标准化流程</strong>：确保操作的一致性
+                            </li>
+                            <li>
+                                <strong>持续集成</strong>：支持CI/CD流程
+                            </li>
+                            <li>
+                                <strong>团队协作</strong>：统一开发和部署流程
+                            </li>
                         </ul>
                     </div>
                 </Card>
@@ -84,7 +90,7 @@ const AutomationToolsDetail: React.FC = () => {
                                 title={codeData.npmScripts.title}
                             />
                         )}
-                        
+
                         <h3>Gulp 任务自动化</h3>
                         {codeData.gulpAutomation && (
                             <CodeHighlight
@@ -93,7 +99,7 @@ const AutomationToolsDetail: React.FC = () => {
                                 title={codeData.gulpAutomation.title}
                             />
                         )}
-                        
+
                         <h3>自定义构建脚本</h3>
                         {codeData.customBuildScript && (
                             <CodeHighlight
@@ -116,7 +122,7 @@ const AutomationToolsDetail: React.FC = () => {
                                 title={codeData.plopCodeGenerator.title}
                             />
                         )}
-                        
+
                         <h3>自定义代码生成脚本</h3>
                         {codeData.customCodeGenerator && (
                             <CodeHighlight
@@ -170,11 +176,21 @@ const AutomationToolsDetail: React.FC = () => {
                             message="常见问题解决"
                             description={
                                 <ul>
-                                    <li><strong>脚本执行失败</strong>：检查依赖和权限设置</li>
-                                    <li><strong>跨平台兼容性</strong>：使用跨平台的工具和命令</li>
-                                    <li><strong>性能问题</strong>：优化任务执行顺序和并行度</li>
-                                    <li><strong>错误处理</strong>：添加适当的错误处理和日志</li>
-                                    <li><strong>版本兼容</strong>：确保工具版本的兼容性</li>
+                                    <li>
+                                        <strong>脚本执行失败</strong>：检查依赖和权限设置
+                                    </li>
+                                    <li>
+                                        <strong>跨平台兼容性</strong>：使用跨平台的工具和命令
+                                    </li>
+                                    <li>
+                                        <strong>性能问题</strong>：优化任务执行顺序和并行度
+                                    </li>
+                                    <li>
+                                        <strong>错误处理</strong>：添加适当的错误处理和日志
+                                    </li>
+                                    <li>
+                                        <strong>版本兼容</strong>：确保工具版本的兼容性
+                                    </li>
                                 </ul>
                             }
                             type="warning"

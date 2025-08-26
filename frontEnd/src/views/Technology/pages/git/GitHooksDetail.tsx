@@ -1,16 +1,10 @@
-import React from 'react'
-import { Card, Tag, Alert, Divider, Button } from 'antd'
-import { useNavigate } from 'react-router-dom'
-import {
-    ArrowLeftOutlined,
-    ApiOutlined,
-    WarningOutlined,
-    CheckCircleOutlined,
-    BugOutlined
-} from '@ant-design/icons'
 import CodeHighlight from '@/components/CodeHighlight'
 import { useCodeData } from '@/hooks/useCodeData'
 import styles from '@/styles/topicDetail.module.scss'
+import { ApiOutlined, ArrowLeftOutlined, CheckCircleOutlined } from '@ant-design/icons'
+import { Alert, Button, Card, Tag } from 'antd'
+import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const GitHooksDetail: React.FC = () => {
     const navigate = useNavigate()
@@ -65,7 +59,10 @@ const GitHooksDetail: React.FC = () => {
                 <Card title="🎣 Git Hooks 概述" className={styles.content_card}>
                     <div className={styles.concept_content}>
                         <h3>什么是Git Hooks？</h3>
-                        <p>Git Hooks是Git在特定事件发生时自动执行的脚本。它们允许你在Git工作流的关键点插入自定义逻辑，实现代码质量检查、自动化部署等功能。</p>
+                        <p>
+                            Git
+                            Hooks是Git在特定事件发生时自动执行的脚本。它们允许你在Git工作流的关键点插入自定义逻辑，实现代码质量检查、自动化部署等功能。
+                        </p>
 
                         <h3>Hook类型分类</h3>
                         <div className={styles.concepts_grid}>

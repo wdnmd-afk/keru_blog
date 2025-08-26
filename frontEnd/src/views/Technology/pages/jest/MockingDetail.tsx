@@ -1,16 +1,10 @@
-import React from 'react'
-import { Card, Tag, Alert, Divider, Button } from 'antd'
-import { useNavigate } from 'react-router-dom'
-import {
-    ArrowLeftOutlined,
-    ExperimentOutlined,
-    WarningOutlined,
-    CheckCircleOutlined,
-    BugOutlined
-} from '@ant-design/icons'
 import CodeHighlight from '@/components/CodeHighlight'
 import { useCodeData } from '@/hooks/useCodeData'
 import styles from '@/styles/topicDetail.module.scss'
+import { ArrowLeftOutlined, ExperimentOutlined } from '@ant-design/icons'
+import { Alert, Button, Card, Divider, Tag } from 'antd'
+import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const MockingDetail: React.FC = () => {
     const navigate = useNavigate()
@@ -81,11 +75,21 @@ const MockingDetail: React.FC = () => {
 
                         <h3>Mock 的作用</h3>
                         <ul>
-                            <li><strong>依赖隔离</strong>：隔离外部依赖，专注测试目标代码</li>
-                            <li><strong>行为控制</strong>：控制依赖项的返回值和行为</li>
-                            <li><strong>交互验证</strong>：验证函数调用次数和参数</li>
-                            <li><strong>性能提升</strong>：避免真实的网络请求或数据库操作</li>
-                            <li><strong>边界测试</strong>：模拟错误情况和边界条件</li>
+                            <li>
+                                <strong>依赖隔离</strong>：隔离外部依赖，专注测试目标代码
+                            </li>
+                            <li>
+                                <strong>行为控制</strong>：控制依赖项的返回值和行为
+                            </li>
+                            <li>
+                                <strong>交互验证</strong>：验证函数调用次数和参数
+                            </li>
+                            <li>
+                                <strong>性能提升</strong>：避免真实的网络请求或数据库操作
+                            </li>
+                            <li>
+                                <strong>边界测试</strong>：模拟错误情况和边界条件
+                            </li>
                         </ul>
                     </div>
                 </Card>
@@ -101,7 +105,7 @@ const MockingDetail: React.FC = () => {
                                 title={codeData.basicFunctionMock.title}
                             />
                         )}
-                        
+
                         <h3>Mock 返回值</h3>
                         {codeData.mockReturnValues && (
                             <CodeHighlight
@@ -124,7 +128,7 @@ const MockingDetail: React.FC = () => {
                                 title={codeData.moduleMock.title}
                             />
                         )}
-                        
+
                         <h3>部分模块 Mock</h3>
                         {codeData.partialModuleMock && (
                             <CodeHighlight
@@ -147,7 +151,7 @@ const MockingDetail: React.FC = () => {
                                 title={codeData.objectSpy.title}
                             />
                         )}
-                        
+
                         <h3>全局函数 Spy</h3>
                         {codeData.globalSpy && (
                             <CodeHighlight
@@ -170,7 +174,7 @@ const MockingDetail: React.FC = () => {
                                 title={codeData.customMockImplementation.title}
                             />
                         )}
-                        
+
                         <h3>异步 Mock</h3>
                         {codeData.asyncMock && (
                             <CodeHighlight
@@ -193,7 +197,7 @@ const MockingDetail: React.FC = () => {
                                 title={codeData.callVerification.title}
                             />
                         )}
-                        
+
                         <h3>高级验证</h3>
                         {codeData.advancedVerification && (
                             <CodeHighlight
@@ -230,11 +234,21 @@ const MockingDetail: React.FC = () => {
                             message="Mock 策略选择"
                             description={
                                 <ul>
-                                    <li><strong>函数 Mock</strong>：测试单个函数的行为</li>
-                                    <li><strong>模块 Mock</strong>：隔离整个模块的依赖</li>
-                                    <li><strong>部分 Mock</strong>：只 Mock 模块的部分功能</li>
-                                    <li><strong>Spy</strong>：监视真实函数的调用情况</li>
-                                    <li><strong>手动 Mock</strong>：创建自定义的 Mock 实现</li>
+                                    <li>
+                                        <strong>函数 Mock</strong>：测试单个函数的行为
+                                    </li>
+                                    <li>
+                                        <strong>模块 Mock</strong>：隔离整个模块的依赖
+                                    </li>
+                                    <li>
+                                        <strong>部分 Mock</strong>：只 Mock 模块的部分功能
+                                    </li>
+                                    <li>
+                                        <strong>Spy</strong>：监视真实函数的调用情况
+                                    </li>
+                                    <li>
+                                        <strong>手动 Mock</strong>：创建自定义的 Mock 实现
+                                    </li>
                                 </ul>
                             }
                             type="success"
@@ -247,11 +261,21 @@ const MockingDetail: React.FC = () => {
                             message="常见陷阱避免"
                             description={
                                 <ul>
-                                    <li><strong>过度 Mock</strong>：避免 Mock 所有依赖项</li>
-                                    <li><strong>Mock 泄露</strong>：确保测试间 Mock 状态隔离</li>
-                                    <li><strong>实现耦合</strong>：避免 Mock 与实现细节耦合</li>
-                                    <li><strong>验证过度</strong>：只验证重要的交互行为</li>
-                                    <li><strong>Mock 复杂化</strong>：保持 Mock 简单易懂</li>
+                                    <li>
+                                        <strong>过度 Mock</strong>：避免 Mock 所有依赖项
+                                    </li>
+                                    <li>
+                                        <strong>Mock 泄露</strong>：确保测试间 Mock 状态隔离
+                                    </li>
+                                    <li>
+                                        <strong>实现耦合</strong>：避免 Mock 与实现细节耦合
+                                    </li>
+                                    <li>
+                                        <strong>验证过度</strong>：只验证重要的交互行为
+                                    </li>
+                                    <li>
+                                        <strong>Mock 复杂化</strong>：保持 Mock 简单易懂
+                                    </li>
                                 </ul>
                             }
                             type="warning"

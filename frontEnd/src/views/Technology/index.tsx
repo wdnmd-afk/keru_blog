@@ -1,20 +1,19 @@
-import React from 'react'
-import { Card, Row, Col, Tag, Button, Tabs, Timeline, Progress } from 'antd'
-import { useNavigate } from 'react-router-dom'
+import styles from '@/styles/technology.module.scss'
 import {
-    CodeOutlined,
-    RocketOutlined,
+    BugOutlined,
     BulbOutlined,
-    TrophyOutlined,
+    CloudOutlined,
+    CodeOutlined,
+    DatabaseOutlined,
     GithubOutlined,
     LinkOutlined,
-    DatabaseOutlined,
-    ApiOutlined,
-    CloudOutlined,
+    RocketOutlined,
     ToolOutlined,
-    BugOutlined
+    TrophyOutlined,
 } from '@ant-design/icons'
-import styles from '@/styles/technology.module.scss'
+import { Button, Card, Col, Progress, Row, Tabs, Tag, Timeline } from 'antd'
+import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 // 技术栈数据
 const techStack = [
@@ -24,7 +23,7 @@ const techStack = [
         color: '#61dafb',
         icon: <CodeOutlined />,
         route: 'react',
-        description: 'React生态系统与最佳实践'
+        description: 'React生态系统与最佳实践',
     },
     {
         name: 'TypeScript',
@@ -32,7 +31,7 @@ const techStack = [
         color: '#3178c6',
         icon: <CodeOutlined />,
         route: 'typescript',
-        description: 'TypeScript类型系统与进阶'
+        description: 'TypeScript类型系统与进阶',
     },
     {
         name: 'Node.js',
@@ -40,7 +39,7 @@ const techStack = [
         color: '#339933',
         icon: <DatabaseOutlined />,
         route: 'nodejs',
-        description: 'Node.js后端开发技术'
+        description: 'Node.js后端开发技术',
     },
     {
         name: 'Vue.js',
@@ -48,7 +47,7 @@ const techStack = [
         color: '#4fc08d',
         icon: <CodeOutlined />,
         route: 'vue',
-        description: 'Vue.js框架深度解析'
+        description: 'Vue.js框架深度解析',
     },
 
     {
@@ -57,7 +56,7 @@ const techStack = [
         color: '#2496ed',
         icon: <CloudOutlined />,
         route: 'docker',
-        description: 'Docker容器化技术'
+        description: 'Docker容器化技术',
     },
     {
         name: '开发工具',
@@ -65,7 +64,7 @@ const techStack = [
         color: '#ff6b6b',
         icon: <ToolOutlined />,
         route: 'tools',
-        description: '开发工具与效率提升'
+        description: '开发工具与效率提升',
     },
     {
         name: 'Git & GitHub',
@@ -73,7 +72,7 @@ const techStack = [
         color: '#f1502f',
         icon: <GithubOutlined />,
         route: 'git',
-        description: '版本控制与团队协作'
+        description: '版本控制与团队协作',
     },
     {
         name: 'Jest',
@@ -81,8 +80,8 @@ const techStack = [
         color: '#c21325',
         icon: <BugOutlined />,
         route: 'jest',
-        description: 'Jest测试框架与最佳实践'
-    }
+        description: 'Jest测试框架与最佳实践',
+    },
 ]
 
 // 项目数据
@@ -95,7 +94,7 @@ const projects = [
         status: '进行中',
         progress: 75,
         github: 'https://github.com/example/blog',
-        demo: 'https://blog.example.com'
+        demo: 'https://blog.example.com',
     },
     {
         id: 2,
@@ -105,7 +104,7 @@ const projects = [
         status: '已完成',
         progress: 100,
         github: 'https://github.com/example/file-manager',
-        demo: 'https://files.example.com'
+        demo: 'https://files.example.com',
     },
     {
         id: 3,
@@ -115,8 +114,8 @@ const projects = [
         status: '计划中',
         progress: 20,
         github: '',
-        demo: ''
-    }
+        demo: '',
+    },
 ]
 
 // 学习时间线
@@ -125,26 +124,26 @@ const learningTimeline = [
         time: '2024年',
         title: '深入学习微前端架构',
         description: '研究qiankun、single-spa等微前端解决方案',
-        status: 'processing'
+        status: 'processing',
     },
     {
         time: '2023年',
         title: '掌握云原生技术',
         description: '学习Docker、Kubernetes、CI/CD等技术',
-        status: 'finish'
+        status: 'finish',
     },
     {
         time: '2022年',
         title: '全栈开发能力提升',
         description: '深入学习Node.js、数据库设计、系统架构',
-        status: 'finish'
+        status: 'finish',
     },
     {
         time: '2021年',
         title: '前端框架精通',
         description: '深入学习React、Vue.js生态系统',
-        status: 'finish'
-    }
+        status: 'finish',
+    },
 ]
 
 const Technology: React.FC = () => {
@@ -169,7 +168,7 @@ const Technology: React.FC = () => {
                 <div className={styles.tech_stack_section}>
                     <h2>技术能力</h2>
                     <Row gutter={[24, 24]}>
-                        {techStack.map(tech => (
+                        {techStack.map((tech) => (
                             <Col xs={24} sm={12} lg={8} key={tech.name}>
                                 <Card
                                     className={styles.skill_card}
@@ -177,7 +176,10 @@ const Technology: React.FC = () => {
                                     onClick={() => handleTechClick(tech.route)}
                                 >
                                     <div className={styles.skill_header}>
-                                        <div className={styles.skill_icon} style={{ color: tech.color }}>
+                                        <div
+                                            className={styles.skill_icon}
+                                            style={{ color: tech.color }}
+                                        >
                                             {tech.icon}
                                         </div>
                                         <div className={styles.skill_info}>
@@ -190,15 +192,13 @@ const Technology: React.FC = () => {
                                         strokeColor={tech.color}
                                         showInfo={false}
                                     />
-                                    <div className={styles.skill_level}>
-                                        熟练度: {tech.level}%
-                                    </div>
+                                    <div className={styles.skill_level}>熟练度: {tech.level}%</div>
                                 </Card>
                             </Col>
                         ))}
                     </Row>
                 </div>
-            )
+            ),
         },
         {
             key: '2',
@@ -212,7 +212,7 @@ const Technology: React.FC = () => {
                 <div className={styles.projects_section}>
                     <h2>项目展示</h2>
                     <Row gutter={[24, 24]}>
-                        {projects.map(project => (
+                        {projects.map((project) => (
                             <Col xs={24} lg={12} key={project.id}>
                                 <Card
                                     className={styles.project_card}
@@ -236,7 +236,7 @@ const Technology: React.FC = () => {
                                             >
                                                 演示
                                             </Button>
-                                        )
+                                        ),
                                     ].filter(Boolean)}
                                 >
                                     <Card.Meta
@@ -245,8 +245,11 @@ const Technology: React.FC = () => {
                                                 {project.title}
                                                 <Tag
                                                     color={
-                                                        project.status === '已完成' ? 'green' :
-                                                        project.status === '进行中' ? 'blue' : 'orange'
+                                                        project.status === '已完成'
+                                                            ? 'green'
+                                                            : project.status === '进行中'
+                                                              ? 'blue'
+                                                              : 'orange'
                                                     }
                                                 >
                                                     {project.status}
@@ -257,7 +260,7 @@ const Technology: React.FC = () => {
                                             <div className={styles.project_info}>
                                                 <p>{project.description}</p>
                                                 <div className={styles.tech_tags}>
-                                                    {project.tech.map(tech => (
+                                                    {project.tech.map((tech) => (
                                                         <Tag key={tech} color="blue">
                                                             {tech}
                                                         </Tag>
@@ -279,7 +282,7 @@ const Technology: React.FC = () => {
                         ))}
                     </Row>
                 </div>
-            )
+            ),
         },
         {
             key: '3',
@@ -307,8 +310,8 @@ const Technology: React.FC = () => {
                         ))}
                     </Timeline>
                 </div>
-            )
-        }
+            ),
+        },
     ]
 
     return (

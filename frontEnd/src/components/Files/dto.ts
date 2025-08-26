@@ -8,4 +8,4 @@ interface ViewerComponentProps {
     fileInfo?: FileInfo
 }
 
-export type { ViewerComponentProps, FileInfo }
+export type { FileInfo, ViewerComponentProps }

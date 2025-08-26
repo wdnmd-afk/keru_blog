@@ -1,7 +1,7 @@
-import { useCallback, useState } from 'react'
 import { FileApi } from '@/api'
 import { message } from 'antd'
 import { UploadFile } from 'antd/es/upload/interface'
+import { useCallback, useState } from 'react'
 
 interface UploadOptions {
     chunkSize?: number // 切片大小，默认 1M

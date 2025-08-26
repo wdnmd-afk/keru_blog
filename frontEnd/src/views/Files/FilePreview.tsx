@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import { FileApi } from '@/api'
 import EmptyContainer from '@/components/EmptyContainer.tsx'
 import KTable from '@/components/KTable.tsx'
-import { FileApi } from '@/api'
-import { Button, Input } from 'antd'
 import { MessageBox } from '@/utils'
+import { Button, Input } from 'antd'
+import React, { useEffect, useState } from 'react'
 import FileViewerContainer from './components/FileViewerContainer'
 
 interface IProps {

@@ -1,16 +1,10 @@
-import React from 'react'
-import { Card, Tag, Alert, Divider, Button } from 'antd'
-import { useNavigate } from 'react-router-dom'
-import {
-    ArrowLeftOutlined,
-    CloudOutlined,
-    WarningOutlined,
-    CheckCircleOutlined,
-    ThunderboltOutlined
-} from '@ant-design/icons'
 import CodeHighlight from '@/components/CodeHighlight'
 import { useCodeData } from '@/hooks/useCodeData'
 import styles from '@/styles/topicDetail.module.scss'
+import { ArrowLeftOutlined, ThunderboltOutlined } from '@ant-design/icons'
+import { Alert, Button, Card, Divider, Tag } from 'antd'
+import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const PerformanceOptimizationDetail: React.FC = () => {
     const navigate = useNavigate()
@@ -31,14 +25,16 @@ const PerformanceOptimizationDetail: React.FC = () => {
     return (
         <div className={styles.container}>
             <div className={styles.header}>
-                <Button 
-                    icon={<ArrowLeftOutlined />} 
+                <Button
+                    icon={<ArrowLeftOutlined />}
                     onClick={handleBack}
                     className={styles.back_button}
                 >
                     返回Docker
                 </Button>
-                <h1><ThunderboltOutlined /> Docker 性能优化</h1>
+                <h1>
+                    <ThunderboltOutlined /> Docker 性能优化
+                </h1>
                 <p>掌握Docker容器性能优化技术和最佳实践</p>
             </div>
 
@@ -64,11 +60,21 @@ const PerformanceOptimizationDetail: React.FC = () => {
 
                         <h3>性能指标</h3>
                         <ul>
-                            <li><strong>启动时间</strong>：容器启动到可用的时间</li>
-                            <li><strong>资源利用率</strong>：CPU、内存、磁盘使用效率</li>
-                            <li><strong>网络延迟</strong>：网络通信的响应时间</li>
-                            <li><strong>吞吐量</strong>：单位时间内处理的请求数</li>
-                            <li><strong>扩缩容速度</strong>：弹性伸缩的响应时间</li>
+                            <li>
+                                <strong>启动时间</strong>：容器启动到可用的时间
+                            </li>
+                            <li>
+                                <strong>资源利用率</strong>：CPU、内存、磁盘使用效率
+                            </li>
+                            <li>
+                                <strong>网络延迟</strong>：网络通信的响应时间
+                            </li>
+                            <li>
+                                <strong>吞吐量</strong>：单位时间内处理的请求数
+                            </li>
+                            <li>
+                                <strong>扩缩容速度</strong>：弹性伸缩的响应时间
+                            </li>
                         </ul>
                     </div>
                 </Card>
@@ -84,7 +90,7 @@ const PerformanceOptimizationDetail: React.FC = () => {
                                 title={codeData.imageSizeOptimization.title}
                             />
                         )}
-                        
+
                         <h3>层缓存优化</h3>
                         {codeData.layerCacheOptimization && (
                             <CodeHighlight
@@ -93,7 +99,7 @@ const PerformanceOptimizationDetail: React.FC = () => {
                                 title={codeData.layerCacheOptimization.title}
                             />
                         )}
-                        
+
                         <h3>多阶段构建</h3>
                         {codeData.multistageBuilds && (
                             <CodeHighlight
@@ -116,7 +122,7 @@ const PerformanceOptimizationDetail: React.FC = () => {
                                 title={codeData.cpuOptimization.title}
                             />
                         )}
-                        
+
                         <h3>内存优化</h3>
                         {codeData.memoryOptimization && (
                             <CodeHighlight
@@ -125,7 +131,7 @@ const PerformanceOptimizationDetail: React.FC = () => {
                                 title={codeData.memoryOptimization.title}
                             />
                         )}
-                        
+
                         <h3>磁盘I/O优化</h3>
                         {codeData.diskIOOptimization && (
                             <CodeHighlight
@@ -148,7 +154,7 @@ const PerformanceOptimizationDetail: React.FC = () => {
                                 title={codeData.networkModeOptimization.title}
                             />
                         )}
-                        
+
                         <h3>负载均衡优化</h3>
                         {codeData.loadBalancingOptimization && (
                             <CodeHighlight
@@ -171,7 +177,7 @@ const PerformanceOptimizationDetail: React.FC = () => {
                                 title={codeData.storageDriverOptimization.title}
                             />
                         )}
-                        
+
                         <h3>卷性能优化</h3>
                         {codeData.volumePerformanceOptimization && (
                             <CodeHighlight
@@ -194,7 +200,7 @@ const PerformanceOptimizationDetail: React.FC = () => {
                                 title={codeData.performanceMonitoring.title}
                             />
                         )}
-                        
+
                         <h3>性能分析与调优</h3>
                         {codeData.performanceAnalysis && (
                             <CodeHighlight
@@ -203,7 +209,7 @@ const PerformanceOptimizationDetail: React.FC = () => {
                                 title={codeData.performanceAnalysis.title}
                             />
                         )}
-                        
+
                         <h3>自动化调优</h3>
                         {codeData.automatedTuning && (
                             <CodeHighlight
@@ -240,11 +246,21 @@ const PerformanceOptimizationDetail: React.FC = () => {
                             message="资源管理建议"
                             description={
                                 <ul>
-                                    <li><strong>CPU限制</strong>：设置合适的CPU限制和预留</li>
-                                    <li><strong>内存管理</strong>：避免内存泄漏和OOM</li>
-                                    <li><strong>磁盘I/O</strong>：使用SSD和优化存储驱动</li>
-                                    <li><strong>资源监控</strong>：实时监控资源使用情况</li>
-                                    <li><strong>弹性伸缩</strong>：根据负载自动调整资源</li>
+                                    <li>
+                                        <strong>CPU限制</strong>：设置合适的CPU限制和预留
+                                    </li>
+                                    <li>
+                                        <strong>内存管理</strong>：避免内存泄漏和OOM
+                                    </li>
+                                    <li>
+                                        <strong>磁盘I/O</strong>：使用SSD和优化存储驱动
+                                    </li>
+                                    <li>
+                                        <strong>资源监控</strong>：实时监控资源使用情况
+                                    </li>
+                                    <li>
+                                        <strong>弹性伸缩</strong>：根据负载自动调整资源
+                                    </li>
                                 </ul>
                             }
                             type="success"
@@ -257,11 +273,21 @@ const PerformanceOptimizationDetail: React.FC = () => {
                             message="网络与存储优化"
                             description={
                                 <ul>
-                                    <li><strong>网络模式</strong>：根据场景选择合适的网络模式</li>
-                                    <li><strong>负载均衡</strong>：使用高效的负载均衡策略</li>
-                                    <li><strong>存储驱动</strong>：选择性能最佳的存储驱动</li>
-                                    <li><strong>缓存策略</strong>：合理使用缓存减少I/O</li>
-                                    <li><strong>连接池</strong>：使用连接池减少连接开销</li>
+                                    <li>
+                                        <strong>网络模式</strong>：根据场景选择合适的网络模式
+                                    </li>
+                                    <li>
+                                        <strong>负载均衡</strong>：使用高效的负载均衡策略
+                                    </li>
+                                    <li>
+                                        <strong>存储驱动</strong>：选择性能最佳的存储驱动
+                                    </li>
+                                    <li>
+                                        <strong>缓存策略</strong>：合理使用缓存减少I/O
+                                    </li>
+                                    <li>
+                                        <strong>连接池</strong>：使用连接池减少连接开销
+                                    </li>
                                 </ul>
                             }
                             type="warning"

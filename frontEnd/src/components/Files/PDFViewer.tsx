@@ -1,13 +1,13 @@
 // components/FileViewer/viewers/PDFViewer.tsx
+import SvgIcon from '@/components/SvgIcon.tsx'
+import styles from '@/styles/files.module.scss'
+import { Input, Tooltip, message } from 'antd'
+import React, { useEffect, useMemo, useState } from 'react'
 import { Document, Page, pdfjs } from 'react-pdf'
-import React, { KeyboardEvent, useEffect, useMemo, useState } from 'react'
+import 'react-pdf/dist/Page/AnnotationLayer.css'
+import 'react-pdf/dist/Page/TextLayer.css'
 import { ViewerComponentProps } from './dto.ts'
 pdfjs.GlobalWorkerOptions.workerSrc = `http://localhost:3000/static/JS/pdf.worker.min.js`
-import 'react-pdf/dist/Page/TextLayer.css'
-import 'react-pdf/dist/Page/AnnotationLayer.css'
-import styles from '@/styles/files.module.scss'
-import { Tooltip, Input, message } from 'antd'
-import SvgIcon from '@/components/SvgIcon.tsx'
 
 interface IPageSelect {
     page: number

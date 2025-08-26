@@ -1,10 +1,10 @@
-import React from 'react'
-import { Card, Tag, Button, Alert } from 'antd'
-import { useNavigate } from 'react-router-dom'
-import { ArrowLeftOutlined, DatabaseOutlined, InfoCircleOutlined } from '@ant-design/icons'
 import CodeHighlight from '@/components/CodeHighlight'
 import { useCodeData } from '@/hooks/useCodeData'
 import styles from '@/styles/topicDetail.module.scss'
+import { ArrowLeftOutlined, DatabaseOutlined, InfoCircleOutlined } from '@ant-design/icons'
+import { Alert, Button, Card, Tag } from 'antd'
+import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const VuexPiniaDetail: React.FC = () => {
     const navigate = useNavigate()

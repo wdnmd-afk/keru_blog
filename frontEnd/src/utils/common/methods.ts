@@ -29,4 +29,4 @@ const deepClone = (list: any, map = new WeakMap()) => {
         return list
     }
 }
-export { getRandomNumber, deepClone }
+export { deepClone, getRandomNumber }

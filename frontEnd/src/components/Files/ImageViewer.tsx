@@ -1,6 +1,6 @@
-import { ViewerComponentProps } from './dto.ts'
 import Toolbar, { FunctionProps } from '@/components/Files/Toolbar.tsx'
-import React, { useState, useRef } from 'react'
+import React, { useRef, useState } from 'react'
+import { ViewerComponentProps } from './dto.ts'
 
 interface ImageViewerProps extends ViewerComponentProps {}
 

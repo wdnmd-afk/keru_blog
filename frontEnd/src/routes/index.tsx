@@ -14,11 +14,11 @@
  * - AppRoutes: 主路由组件，处理路由渲染和权限验证
  */
 
-import React, { lazy } from 'react'
-import { BrowserRouter as Router, Navigate, Route, Routes } from 'react-router-dom'
 import { useGlobalStore } from '@/store'
 import { BrowserLocalStorage } from '@/utils'
 import Layout from '@/views/systemPages/Layout.tsx'
+import React, { lazy } from 'react'
+import { Navigate, Route, BrowserRouter as Router, Routes } from 'react-router-dom'
 
 /**
  * 懒加载组件配置
@@ -32,18 +32,18 @@ import Layout from '@/views/systemPages/Layout.tsx'
  */
 const LazyComponents = {
     // ==================== 系统页面 ====================
-    Home: lazy(() => import('@/views/systemPages/Home.tsx')),           // 首页 - 技术博客展示
-    NotFound: lazy(() => import('@/views/systemPages/NotFound.tsx')),   // 404错误页面
-    Login: lazy(() => import('@/views/systemPages/Login.tsx')),         // 登录/注册页面
+    Home: lazy(() => import('@/views/systemPages/Home.tsx')), // 首页 - 技术博客展示
+    NotFound: lazy(() => import('@/views/systemPages/NotFound.tsx')), // 404错误页面
+    Login: lazy(() => import('@/views/systemPages/Login.tsx')), // 登录/注册页面
 
     // ==================== 功能模块 ====================
-    Books: lazy(() => import('@/views/Books/index.tsx')),               // 书籍推荐模块 - 技术书籍展示和推荐
-    Technology: lazy(() => import('@/views/Technology/index.tsx')),     // 技术栈展示模块 - 技能、项目、学习历程
-    Files: lazy(() => import('@/views/Files/index.tsx')),               // 文件管理模块 - 文件上传、预览、管理
+    Books: lazy(() => import('@/views/Books/index.tsx')), // 书籍推荐模块 - 技术书籍展示和推荐
+    Technology: lazy(() => import('@/views/Technology/index.tsx')), // 技术栈展示模块 - 技能、项目、学习历程
+    Files: lazy(() => import('@/views/Files/index.tsx')), // 文件管理模块 - 文件上传、预览、管理
 
     // ==================== Technology子模块 ====================
     TechnologyLayout: lazy(() => import('@/views/Technology/TechnologyLayout.tsx')), // Technology子路由布局
-    ReactDetail: lazy(() => import('@/views/Technology/pages/ReactDetail.tsx')),     // React技术详解
+    ReactDetail: lazy(() => import('@/views/Technology/pages/ReactDetail.tsx')), // React技术详解
 }
 
 /**
@@ -56,12 +56,12 @@ const publicRoutes = [
     {
         path: '/login',
         component: <LazyComponents.Login />,
-        description: '登录/注册页面'
+        description: '登录/注册页面',
     },
     {
         path: '*',
         component: <LazyComponents.NotFound />,
-        description: '404错误页面 - 处理所有未匹配的路由'
+        description: '404错误页面 - 处理所有未匹配的路由',
     },
 ]
 
@@ -76,32 +76,32 @@ const privateRoutes = [
     {
         path: '/',
         component: <LazyComponents.Home />,
-        description: '首页 - 技术博客和文章展示'
+        description: '首页 - 技术博客和文章展示',
     },
     {
         path: '/books',
         component: <LazyComponents.Books />,
-        description: '书籍推荐 - 技术书籍展示和推荐'
+        description: '书籍推荐 - 技术书籍展示和推荐',
     },
     {
         path: '/technology',
         component: <LazyComponents.Technology />,
-        description: '技术栈 - 个人技能、项目经验、学习历程展示'
+        description: '技术栈 - 个人技能、项目经验、学习历程展示',
     },
     {
         path: '/technology/:tech',
         component: <LazyComponents.TechnologyLayout />,
-        description: '技术详解 - 具体技术的深度解析'
+        description: '技术详解 - 具体技术的深度解析',
     },
     {
         path: '/technology/:tech/:topic',
         component: <LazyComponents.TechnologyLayout />,
-        description: '技术主题详解 - 具体技术主题的深度解析'
+        description: '技术主题详解 - 具体技术主题的深度解析',
     },
     {
         path: '/files',
         component: <LazyComponents.Files />,
-        description: '文件管理 - 文件上传、预览、管理功能'
+        description: '文件管理 - 文件上传、预览、管理功能',
     },
 ]
 

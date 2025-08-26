@@ -1,4 +1,3 @@
-import type { ProxyOptions } from 'vite'
 type ProxyType = 'dev' | 'prod'
 interface ProxyConfig {
     /** 匹配代理的前缀，接口地址匹配到此前缀将代理的target地址 */

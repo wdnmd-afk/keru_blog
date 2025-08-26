@@ -1,10 +1,10 @@
-import React from 'react'
-import { Card, Tag, Button } from 'antd'
-import { useNavigate } from 'react-router-dom'
-import { ArrowLeftOutlined, BugOutlined } from '@ant-design/icons'
 import CodeHighlight from '@/components/CodeHighlight'
 import { useCodeData } from '@/hooks/useCodeData'
 import styles from '@/styles/topicDetail.module.scss'
+import { ArrowLeftOutlined, BugOutlined } from '@ant-design/icons'
+import { Button, Card, Tag } from 'antd'
+import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const TestingDetail: React.FC = () => {
     const navigate = useNavigate()
@@ -116,11 +116,21 @@ const TestingDetail: React.FC = () => {
                     <div className={styles.best_practices}>
                         <h3>测试原则</h3>
                         <ul>
-                            <li><strong>测试用户行为，而非实现细节</strong> - 关注用户如何与组件交互</li>
-                            <li><strong>保持测试简单明了</strong> - 每个测试只验证一个功能点</li>
-                            <li><strong>使用有意义的测试描述</strong> - 测试名称应该清楚说明测试内容</li>
-                            <li><strong>模拟外部依赖</strong> - 隔离被测试的组件</li>
-                            <li><strong>避免测试实现细节</strong> - 专注于组件的输入输出</li>
+                            <li>
+                                <strong>测试用户行为，而非实现细节</strong> - 关注用户如何与组件交互
+                            </li>
+                            <li>
+                                <strong>保持测试简单明了</strong> - 每个测试只验证一个功能点
+                            </li>
+                            <li>
+                                <strong>使用有意义的测试描述</strong> - 测试名称应该清楚说明测试内容
+                            </li>
+                            <li>
+                                <strong>模拟外部依赖</strong> - 隔离被测试的组件
+                            </li>
+                            <li>
+                                <strong>避免测试实现细节</strong> - 专注于组件的输入输出
+                            </li>
                         </ul>
 
                         <h3>常见测试场景</h3>

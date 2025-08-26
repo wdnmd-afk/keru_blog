@@ -1,16 +1,10 @@
-import React from 'react'
-import { Card, Tag, Alert, Divider, Button } from 'antd'
-import { useNavigate } from 'react-router-dom'
-import {
-    ArrowLeftOutlined,
-    CheckCircleOutlined,
-    WarningOutlined,
-    BulbOutlined,
-    BugOutlined
-} from '@ant-design/icons'
 import CodeHighlight from '@/components/CodeHighlight'
 import { useCodeData } from '@/hooks/useCodeData'
 import styles from '@/styles/topicDetail.module.scss'
+import { ArrowLeftOutlined, CheckCircleOutlined } from '@ant-design/icons'
+import { Alert, Button, Card, Divider, Tag } from 'antd'
+import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const BestPracticesDetail: React.FC = () => {
     const navigate = useNavigate()
@@ -82,11 +76,21 @@ const BestPracticesDetail: React.FC = () => {
 
                         <h3>实践价值</h3>
                         <ul>
-                            <li><strong>代码质量</strong>：提升测试代码的质量和可读性</li>
-                            <li><strong>开发效率</strong>：减少调试时间，加快开发速度</li>
-                            <li><strong>维护成本</strong>：降低测试维护的复杂度</li>
-                            <li><strong>团队协作</strong>：统一的标准和规范</li>
-                            <li><strong>持续集成</strong>：稳定可靠的自动化测试</li>
+                            <li>
+                                <strong>代码质量</strong>：提升测试代码的质量和可读性
+                            </li>
+                            <li>
+                                <strong>开发效率</strong>：减少调试时间，加快开发速度
+                            </li>
+                            <li>
+                                <strong>维护成本</strong>：降低测试维护的复杂度
+                            </li>
+                            <li>
+                                <strong>团队协作</strong>：统一的标准和规范
+                            </li>
+                            <li>
+                                <strong>持续集成</strong>：稳定可靠的自动化测试
+                            </li>
                         </ul>
                     </div>
                 </Card>
@@ -102,7 +106,7 @@ const BestPracticesDetail: React.FC = () => {
                                 title={codeData.aaaPattern.title}
                             />
                         )}
-                        
+
                         <h3>测试组织</h3>
                         {codeData.testOrganization && (
                             <CodeHighlight
@@ -125,7 +129,7 @@ const BestPracticesDetail: React.FC = () => {
                                 title={codeData.testNaming.title}
                             />
                         )}
-                        
+
                         <h3>变量命名</h3>
                         {codeData.variableNaming && (
                             <CodeHighlight
@@ -148,7 +152,7 @@ const BestPracticesDetail: React.FC = () => {
                                 title={codeData.testPyramid.title}
                             />
                         )}
-                        
+
                         <h3>测试分类</h3>
                         {codeData.testCategories && (
                             <CodeHighlight
@@ -171,7 +175,7 @@ const BestPracticesDetail: React.FC = () => {
                                 title={codeData.performanceOptimization.title}
                             />
                         )}
-                        
+
                         <h3>并行测试</h3>
                         {codeData.parallelTesting && (
                             <CodeHighlight
@@ -194,7 +198,7 @@ const BestPracticesDetail: React.FC = () => {
                                 title={codeData.codeReview.title}
                             />
                         )}
-                        
+
                         <h3>测试文档</h3>
                         {codeData.testDocumentation && (
                             <CodeHighlight
@@ -245,11 +249,21 @@ const BestPracticesDetail: React.FC = () => {
                             message="团队协作建议"
                             description={
                                 <ul>
-                                    <li><strong>统一标准</strong>：制定团队统一的测试规范</li>
-                                    <li><strong>代码审查</strong>：将测试代码纳入代码审查</li>
-                                    <li><strong>知识分享</strong>：定期分享测试经验和技巧</li>
-                                    <li><strong>工具统一</strong>：使用统一的测试工具和配置</li>
-                                    <li><strong>持续改进</strong>：不断优化测试流程和质量</li>
+                                    <li>
+                                        <strong>统一标准</strong>：制定团队统一的测试规范
+                                    </li>
+                                    <li>
+                                        <strong>代码审查</strong>：将测试代码纳入代码审查
+                                    </li>
+                                    <li>
+                                        <strong>知识分享</strong>：定期分享测试经验和技巧
+                                    </li>
+                                    <li>
+                                        <strong>工具统一</strong>：使用统一的测试工具和配置
+                                    </li>
+                                    <li>
+                                        <strong>持续改进</strong>：不断优化测试流程和质量
+                                    </li>
                                 </ul>
                             }
                             type="success"
@@ -262,11 +276,21 @@ const BestPracticesDetail: React.FC = () => {
                             message="常见问题避免"
                             description={
                                 <ul>
-                                    <li><strong>过度测试</strong>：避免测试实现细节</li>
-                                    <li><strong>脆弱测试</strong>：减少对外部依赖的耦合</li>
-                                    <li><strong>重复测试</strong>：避免重复测试相同的逻辑</li>
-                                    <li><strong>忽视维护</strong>：定期更新和重构测试代码</li>
-                                    <li><strong>缺乏文档</strong>：为复杂测试提供必要的文档</li>
+                                    <li>
+                                        <strong>过度测试</strong>：避免测试实现细节
+                                    </li>
+                                    <li>
+                                        <strong>脆弱测试</strong>：减少对外部依赖的耦合
+                                    </li>
+                                    <li>
+                                        <strong>重复测试</strong>：避免重复测试相同的逻辑
+                                    </li>
+                                    <li>
+                                        <strong>忽视维护</strong>：定期更新和重构测试代码
+                                    </li>
+                                    <li>
+                                        <strong>缺乏文档</strong>：为复杂测试提供必要的文档
+                                    </li>
                                 </ul>
                             }
                             type="warning"

@@ -1,21 +1,20 @@
-import React from 'react'
-import { Card, Tag, Avatar, Button, Statistic } from 'antd'
+import lyf2Image from '@/assets/images/bg.png'
+import bookImage from '@/assets/images/book.png'
+import logoImage from '@/assets/images/k.jpg'
+import lyfImage from '@/assets/images/lyf.png'
+import technologyImage from '@/assets/images/technology.png'
+import style from '@/styles/home.module.scss'
 import {
+    BookOutlined,
+    CodeOutlined,
     EyeOutlined,
+    FileTextOutlined,
     LikeOutlined,
     MessageOutlined,
     ShareAltOutlined,
-    BookOutlined,
-    CodeOutlined,
-    FileTextOutlined,
     UserOutlined,
 } from '@ant-design/icons'
-import style from '@/styles/home.module.scss'
-import bookImage from '@/assets/images/book.png'
-import technologyImage from '@/assets/images/technology.png'
-import lyfImage from '@/assets/images/lyf.png'
-import lyf2Image from '@/assets/images/bg.png'
-import logoImage from '@/assets/images/k.jpg'
+import { Avatar, Button, Card, Statistic, Tag } from 'antd'
 
 const { Meta } = Card
 

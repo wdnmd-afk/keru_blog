@@ -1,21 +1,15 @@
-import React from 'react'
-import { Card, Tag, Alert, Divider, Button } from 'antd'
-import { useNavigate } from 'react-router-dom'
-import { 
-    ArrowLeftOutlined, 
-    CheckCircleOutlined, 
-    WarningOutlined,
-    BugOutlined,
-    FormatPainterOutlined
-} from '@ant-design/icons'
 import CodeHighlight from '@/components/CodeHighlight'
 import { useCodeData } from '@/hooks/useCodeData'
 import styles from '@/styles/topicDetail.module.scss'
+import { ArrowLeftOutlined, CheckCircleOutlined } from '@ant-design/icons'
+import { Alert, Button, Card, Divider, Tag } from 'antd'
+import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const ESLintPrettierDetail: React.FC = () => {
     const navigate = useNavigate()
     const { codeData, loading, error } = useCodeData('Tools', 'eslint-prettier')
-    
+
     const handleBack = () => {
         navigate('/technology/tools')
     }
@@ -31,14 +25,16 @@ const ESLintPrettierDetail: React.FC = () => {
     return (
         <div className={styles.container}>
             <div className={styles.header}>
-                <Button 
-                    icon={<ArrowLeftOutlined />} 
+                <Button
+                    icon={<ArrowLeftOutlined />}
                     onClick={handleBack}
                     className={styles.back_button}
                 >
                     返回工具
                 </Button>
-                <h1><CheckCircleOutlined /> ESLint & Prettier</h1>
+                <h1>
+                    <CheckCircleOutlined /> ESLint & Prettier
+                </h1>
                 <p>代码质量检查和格式化工具，提升代码规范性和一致性</p>
             </div>
 
@@ -80,7 +76,7 @@ const ESLintPrettierDetail: React.FC = () => {
                                 title={codeData.eslintInstallation.title}
                             />
                         )}
-                        
+
                         <h3>基础配置</h3>
                         {codeData.eslintBasicConfig && (
                             <CodeHighlight
@@ -103,7 +99,7 @@ const ESLintPrettierDetail: React.FC = () => {
                                 title={codeData.eslintReactConfig.title}
                             />
                         )}
-                        
+
                         <h3>Vue 项目配置</h3>
                         {codeData.eslintVueConfig && (
                             <CodeHighlight
@@ -126,7 +122,7 @@ const ESLintPrettierDetail: React.FC = () => {
                                 title={codeData.prettierInstallation.title}
                             />
                         )}
-                        
+
                         <h3>配置选项</h3>
                         {codeData.prettierConfig && (
                             <CodeHighlight
@@ -149,7 +145,7 @@ const ESLintPrettierDetail: React.FC = () => {
                                 title={codeData.eslintPrettierIntegration.title}
                             />
                         )}
-                        
+
                         <h3>编辑器集成</h3>
                         {codeData.editorIntegration && (
                             <CodeHighlight
@@ -158,7 +154,7 @@ const ESLintPrettierDetail: React.FC = () => {
                                 title={codeData.editorIntegration.title}
                             />
                         )}
-                        
+
                         <h3>Git Hooks 集成</h3>
                         {codeData.gitHooksIntegration && (
                             <CodeHighlight
@@ -181,7 +177,7 @@ const ESLintPrettierDetail: React.FC = () => {
                                 title={codeData.customRules.title}
                             />
                         )}
-                        
+
                         <h3>项目特定配置</h3>
                         {codeData.projectSpecificConfig && (
                             <CodeHighlight
@@ -235,10 +231,19 @@ const ESLintPrettierDetail: React.FC = () => {
                             message="常见问题解决"
                             description={
                                 <ul>
-                                    <li><strong>规则冲突</strong>：使用 eslint-config-prettier 解决</li>
-                                    <li><strong>性能问题</strong>：配置 .eslintignore 排除大文件</li>
-                                    <li><strong>编辑器不生效</strong>：检查插件安装和配置</li>
-                                    <li><strong>Git Hooks 失败</strong>：检查 husky 和 lint-staged 配置</li>
+                                    <li>
+                                        <strong>规则冲突</strong>：使用 eslint-config-prettier 解决
+                                    </li>
+                                    <li>
+                                        <strong>性能问题</strong>：配置 .eslintignore 排除大文件
+                                    </li>
+                                    <li>
+                                        <strong>编辑器不生效</strong>：检查插件安装和配置
+                                    </li>
+                                    <li>
+                                        <strong>Git Hooks 失败</strong>：检查 husky 和 lint-staged
+                                        配置
+                                    </li>
                                 </ul>
                             }
                             type="warning"

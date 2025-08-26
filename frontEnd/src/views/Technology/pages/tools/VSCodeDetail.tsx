@@ -1,21 +1,15 @@
-import React from 'react'
-import { Card, Tag, Alert, Divider, Button } from 'antd'
-import { useNavigate } from 'react-router-dom'
-import { 
-    ArrowLeftOutlined, 
-    CodeOutlined, 
-    WarningOutlined,
-    CheckCircleOutlined,
-    SettingOutlined
-} from '@ant-design/icons'
 import CodeHighlight from '@/components/CodeHighlight'
 import { useCodeData } from '@/hooks/useCodeData'
 import styles from '@/styles/topicDetail.module.scss'
+import { ArrowLeftOutlined, CodeOutlined } from '@ant-design/icons'
+import { Alert, Button, Card, Divider } from 'antd'
+import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const VSCodeDetail: React.FC = () => {
     const navigate = useNavigate()
     const { codeData, loading, error } = useCodeData('Tools', 'vscode')
-    
+
     const handleBack = () => {
         navigate('/technology/tools')
     }
@@ -31,14 +25,16 @@ const VSCodeDetail: React.FC = () => {
     return (
         <div className={styles.container}>
             <div className={styles.header}>
-                <Button 
-                    icon={<ArrowLeftOutlined />} 
+                <Button
+                    icon={<ArrowLeftOutlined />}
                     onClick={handleBack}
                     className={styles.back_button}
                 >
                     返回工具
                 </Button>
-                <h1><CodeOutlined /> Visual Studio Code</h1>
+                <h1>
+                    <CodeOutlined /> Visual Studio Code
+                </h1>
                 <p>掌握VSCode的高级功能和配置，提升开发效率</p>
             </div>
 
@@ -54,12 +50,24 @@ const VSCodeDetail: React.FC = () => {
 
                         <h3>主要特性</h3>
                         <ul>
-                            <li><strong>智能代码补全</strong>：IntelliSense 提供智能的代码建议</li>
-                            <li><strong>内置调试器</strong>：支持多种语言的调试功能</li>
-                            <li><strong>Git 集成</strong>：内置版本控制功能</li>
-                            <li><strong>丰富的扩展</strong>：庞大的扩展市场</li>
-                            <li><strong>多平台支持</strong>：Windows、macOS、Linux</li>
-                            <li><strong>高度可定制</strong>：主题、快捷键、设置等</li>
+                            <li>
+                                <strong>智能代码补全</strong>：IntelliSense 提供智能的代码建议
+                            </li>
+                            <li>
+                                <strong>内置调试器</strong>：支持多种语言的调试功能
+                            </li>
+                            <li>
+                                <strong>Git 集成</strong>：内置版本控制功能
+                            </li>
+                            <li>
+                                <strong>丰富的扩展</strong>：庞大的扩展市场
+                            </li>
+                            <li>
+                                <strong>多平台支持</strong>：Windows、macOS、Linux
+                            </li>
+                            <li>
+                                <strong>高度可定制</strong>：主题、快捷键、设置等
+                            </li>
                         </ul>
                     </div>
                 </Card>
@@ -75,7 +83,7 @@ const VSCodeDetail: React.FC = () => {
                                 title={codeData.userSettings.title}
                             />
                         )}
-                        
+
                         <h3>工作区设置</h3>
                         {codeData.workspaceSettings && (
                             <CodeHighlight
@@ -112,7 +120,7 @@ const VSCodeDetail: React.FC = () => {
                                 title={codeData.snippets.title}
                             />
                         )}
-                        
+
                         <h3>代码片段变量</h3>
                         {codeData.snippetVariables && (
                             <CodeHighlight
@@ -177,12 +185,24 @@ const VSCodeDetail: React.FC = () => {
                             message="推荐扩展"
                             description={
                                 <ul>
-                                    <li><strong>Prettier</strong>：代码格式化</li>
-                                    <li><strong>ESLint</strong>：代码质量检查</li>
-                                    <li><strong>GitLens</strong>：增强Git功能</li>
-                                    <li><strong>Auto Rename Tag</strong>：自动重命名标签</li>
-                                    <li><strong>Bracket Pair Colorizer</strong>：括号配对着色</li>
-                                    <li><strong>Live Server</strong>：本地开发服务器</li>
+                                    <li>
+                                        <strong>Prettier</strong>：代码格式化
+                                    </li>
+                                    <li>
+                                        <strong>ESLint</strong>：代码质量检查
+                                    </li>
+                                    <li>
+                                        <strong>GitLens</strong>：增强Git功能
+                                    </li>
+                                    <li>
+                                        <strong>Auto Rename Tag</strong>：自动重命名标签
+                                    </li>
+                                    <li>
+                                        <strong>Bracket Pair Colorizer</strong>：括号配对着色
+                                    </li>
+                                    <li>
+                                        <strong>Live Server</strong>：本地开发服务器
+                                    </li>
                                 </ul>
                             }
                             type="success"

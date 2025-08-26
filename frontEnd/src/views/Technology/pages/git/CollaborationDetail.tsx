@@ -1,16 +1,10 @@
-import React from 'react'
-import { Card, Tag, Alert, Divider, Button } from 'antd'
-import { useNavigate } from 'react-router-dom'
-import {
-    ArrowLeftOutlined,
-    TeamOutlined,
-    WarningOutlined,
-    CheckCircleOutlined,
-    BugOutlined
-} from '@ant-design/icons'
 import CodeHighlight from '@/components/CodeHighlight'
 import { useCodeData } from '@/hooks/useCodeData'
 import styles from '@/styles/topicDetail.module.scss'
+import { ArrowLeftOutlined, CheckCircleOutlined, TeamOutlined } from '@ant-design/icons'
+import { Button, Card, Tag } from 'antd'
+import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const CollaborationDetail: React.FC = () => {
     const navigate = useNavigate()
@@ -65,7 +59,9 @@ const CollaborationDetail: React.FC = () => {
                 <Card title="👥 团队协作概述" className={styles.content_card}>
                     <div className={styles.concept_content}>
                         <h3>为什么需要团队协作规范？</h3>
-                        <p>在多人开发项目中，统一的协作规范能够避免代码冲突、提高开发效率、保证代码质量，并确保项目的可维护性。</p>
+                        <p>
+                            在多人开发项目中，统一的协作规范能够避免代码冲突、提高开发效率、保证代码质量，并确保项目的可维护性。
+                        </p>
 
                         <h3>协作核心要素</h3>
                         <div className={styles.concepts_grid}>

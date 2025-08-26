@@ -1,4 +1,5 @@
-import { CustomError, ResultData, ResultEnum } from './httpEnum'
+import { BrowserLocalStorage, MessageBox } from '@/utils'
+import { message } from 'antd'
 import axios, {
     AxiosError,
     AxiosInstance,
@@ -6,8 +7,7 @@ import axios, {
     AxiosResponse,
     InternalAxiosRequestConfig,
 } from 'axios'
-import { message } from 'antd'
-import { BrowserLocalStorage, MessageBox } from '@/utils'
+import { CustomError, ResultData, ResultEnum } from './httpEnum'
 
 const config = {
     // 默认地址请求地址，可在 .env.** 文件中修改

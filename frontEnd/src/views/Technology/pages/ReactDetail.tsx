@@ -1,17 +1,17 @@
-import React from 'react'
-import { Card, Tag, Row, Col } from 'antd'
-import { useNavigate } from 'react-router-dom'
-import {
-    CodeOutlined,
-    RocketOutlined,
-    BugOutlined,
-    ThunderboltOutlined,
-    ApiOutlined,
-    ToolOutlined,
-    DatabaseOutlined,
-    SafetyOutlined
-} from '@ant-design/icons'
 import styles from '@/styles/reactDetail.module.scss'
+import {
+    ApiOutlined,
+    BugOutlined,
+    CodeOutlined,
+    DatabaseOutlined,
+    RocketOutlined,
+    SafetyOutlined,
+    ThunderboltOutlined,
+    ToolOutlined,
+} from '@ant-design/icons'
+import { Card, Col, Row, Tag } from 'antd'
+import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 // React技术卡片数据
 const reactTopics = [
@@ -22,7 +22,7 @@ const reactTopics = [
         icon: <RocketOutlined />,
         color: '#1890ff',
         difficulty: '中等',
-        category: 'Hooks'
+        category: 'Hooks',
     },
     {
         id: 'usecallback',
@@ -31,7 +31,7 @@ const reactTopics = [
         icon: <ThunderboltOutlined />,
         color: '#52c41a',
         difficulty: '中等',
-        category: 'Hooks'
+        category: 'Hooks',
     },
     {
         id: 'usememo',
@@ -40,7 +40,7 @@ const reactTopics = [
         icon: <DatabaseOutlined />,
         color: '#fa8c16',
         difficulty: '中等',
-        category: 'Hooks'
+        category: 'Hooks',
     },
     {
         id: 'usecontext',
@@ -49,7 +49,7 @@ const reactTopics = [
         icon: <ApiOutlined />,
         color: '#722ed1',
         difficulty: '简单',
-        category: 'Hooks'
+        category: 'Hooks',
     },
     {
         id: 'custom-hooks',
@@ -58,7 +58,7 @@ const reactTopics = [
         icon: <ToolOutlined />,
         color: '#eb2f96',
         difficulty: '高级',
-        category: 'Hooks'
+        category: 'Hooks',
     },
     {
         id: 'performance',
@@ -67,7 +67,7 @@ const reactTopics = [
         icon: <ThunderboltOutlined />,
         color: '#f5222d',
         difficulty: '高级',
-        category: '性能优化'
+        category: '性能优化',
     },
     {
         id: 'error-boundary',
@@ -76,7 +76,7 @@ const reactTopics = [
         icon: <SafetyOutlined />,
         color: '#fa541c',
         difficulty: '中等',
-        category: '错误处理'
+        category: '错误处理',
     },
     {
         id: 'testing',
@@ -85,8 +85,8 @@ const reactTopics = [
         icon: <BugOutlined />,
         color: '#13c2c2',
         difficulty: '中等',
-        category: '测试'
-    }
+        category: '测试',
+    },
 ]
 
 const ReactDetail: React.FC = () => {
@@ -98,10 +98,14 @@ const ReactDetail: React.FC = () => {
 
     const getDifficultyColor = (difficulty: string) => {
         switch (difficulty) {
-            case '简单': return 'green'
-            case '中等': return 'orange'
-            case '高级': return 'red'
-            default: return 'blue'
+            case '简单':
+                return 'green'
+            case '中等':
+                return 'orange'
+            case '高级':
+                return 'red'
+            default:
+                return 'blue'
         }
     }
 
@@ -125,7 +129,7 @@ const ReactDetail: React.FC = () => {
 
             <div className={styles.topics_grid}>
                 <Row gutter={[24, 24]}>
-                    {reactTopics.map(topic => (
+                    {reactTopics.map((topic) => (
                         <Col xs={24} sm={12} lg={8} xl={6} key={topic.id}>
                             <Card
                                 hoverable

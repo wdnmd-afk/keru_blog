@@ -1,16 +1,10 @@
-import React from 'react'
-import { Card, Tag, Alert, Divider, Button } from 'antd'
-import { useNavigate } from 'react-router-dom'
-import {
-    ArrowLeftOutlined,
-    CloudOutlined,
-    WarningOutlined,
-    CheckCircleOutlined,
-    BugOutlined
-} from '@ant-design/icons'
 import CodeHighlight from '@/components/CodeHighlight'
 import { useCodeData } from '@/hooks/useCodeData'
 import styles from '@/styles/topicDetail.module.scss'
+import { ArrowLeftOutlined, CloudOutlined } from '@ant-design/icons'
+import { Alert, Button, Card, Divider, Tag } from 'antd'
+import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const FundamentalsDetail: React.FC = () => {
     const navigate = useNavigate()
@@ -31,14 +25,16 @@ const FundamentalsDetail: React.FC = () => {
     return (
         <div className={styles.container}>
             <div className={styles.header}>
-                <Button 
-                    icon={<ArrowLeftOutlined />} 
+                <Button
+                    icon={<ArrowLeftOutlined />}
                     onClick={handleBack}
                     className={styles.back_button}
                 >
                     返回Docker
                 </Button>
-                <h1><CloudOutlined /> Docker 基础</h1>
+                <h1>
+                    <CloudOutlined /> Docker 基础
+                </h1>
                 <p>掌握Docker容器化技术的基础概念和核心操作</p>
             </div>
 
@@ -48,7 +44,8 @@ const FundamentalsDetail: React.FC = () => {
                     <div className={styles.overview_section}>
                         <h3>什么是 Docker</h3>
                         <p>
-                            Docker 是一个开源的容器化平台，它允许开发者将应用程序及其依赖项打包到轻量级、
+                            Docker
+                            是一个开源的容器化平台，它允许开发者将应用程序及其依赖项打包到轻量级、
                             可移植的容器中，然后可以在任何支持Docker的环境中运行。
                         </p>
 
@@ -64,11 +61,21 @@ const FundamentalsDetail: React.FC = () => {
 
                         <h3>Docker 优势</h3>
                         <ul>
-                            <li><strong>环境一致性</strong>：开发、测试、生产环境完全一致</li>
-                            <li><strong>快速部署</strong>：秒级启动，快速扩缩容</li>
-                            <li><strong>资源高效</strong>：比虚拟机更轻量，资源利用率更高</li>
-                            <li><strong>易于管理</strong>：统一的容器管理方式</li>
-                            <li><strong>微服务支持</strong>：天然支持微服务架构</li>
+                            <li>
+                                <strong>环境一致性</strong>：开发、测试、生产环境完全一致
+                            </li>
+                            <li>
+                                <strong>快速部署</strong>：秒级启动，快速扩缩容
+                            </li>
+                            <li>
+                                <strong>资源高效</strong>：比虚拟机更轻量，资源利用率更高
+                            </li>
+                            <li>
+                                <strong>易于管理</strong>：统一的容器管理方式
+                            </li>
+                            <li>
+                                <strong>微服务支持</strong>：天然支持微服务架构
+                            </li>
                         </ul>
                     </div>
                 </Card>
@@ -210,11 +217,21 @@ const FundamentalsDetail: React.FC = () => {
                             message="安全建议"
                             description={
                                 <ul>
-                                    <li><strong>用户权限</strong>：避免使用root用户运行容器</li>
-                                    <li><strong>镜像安全</strong>：定期更新基础镜像</li>
-                                    <li><strong>网络隔离</strong>：使用自定义网络隔离容器</li>
-                                    <li><strong>敏感数据</strong>：使用secrets管理敏感信息</li>
-                                    <li><strong>镜像扫描</strong>：定期扫描镜像漏洞</li>
+                                    <li>
+                                        <strong>用户权限</strong>：避免使用root用户运行容器
+                                    </li>
+                                    <li>
+                                        <strong>镜像安全</strong>：定期更新基础镜像
+                                    </li>
+                                    <li>
+                                        <strong>网络隔离</strong>：使用自定义网络隔离容器
+                                    </li>
+                                    <li>
+                                        <strong>敏感数据</strong>：使用secrets管理敏感信息
+                                    </li>
+                                    <li>
+                                        <strong>镜像扫描</strong>：定期扫描镜像漏洞
+                                    </li>
                                 </ul>
                             }
                             type="warning"
@@ -227,11 +244,21 @@ const FundamentalsDetail: React.FC = () => {
                             message="性能优化"
                             description={
                                 <ul>
-                                    <li><strong>层缓存</strong>：合理安排Dockerfile指令顺序</li>
-                                    <li><strong>并行构建</strong>：使用BuildKit加速构建</li>
-                                    <li><strong>资源限制</strong>：设置合适的CPU和内存限制</li>
-                                    <li><strong>健康检查</strong>：配置容器健康检查</li>
-                                    <li><strong>日志管理</strong>：配置合适的日志驱动</li>
+                                    <li>
+                                        <strong>层缓存</strong>：合理安排Dockerfile指令顺序
+                                    </li>
+                                    <li>
+                                        <strong>并行构建</strong>：使用BuildKit加速构建
+                                    </li>
+                                    <li>
+                                        <strong>资源限制</strong>：设置合适的CPU和内存限制
+                                    </li>
+                                    <li>
+                                        <strong>健康检查</strong>：配置容器健康检查
+                                    </li>
+                                    <li>
+                                        <strong>日志管理</strong>：配置合适的日志驱动
+                                    </li>
                                 </ul>
                             }
                             type="success"

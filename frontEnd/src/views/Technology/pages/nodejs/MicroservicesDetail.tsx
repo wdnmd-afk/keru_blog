@@ -1,21 +1,15 @@
-import React from 'react'
-import { Card, Tag, Alert, Divider, Button } from 'antd'
-import { useNavigate } from 'react-router-dom'
-import { 
-    ArrowLeftOutlined, 
-    ClusterOutlined, 
-    WarningOutlined,
-    CheckCircleOutlined,
-    BugOutlined
-} from '@ant-design/icons'
 import CodeHighlight from '@/components/CodeHighlight'
 import { useCodeData } from '@/hooks/useCodeData'
 import styles from '@/styles/topicDetail.module.scss'
+import { ArrowLeftOutlined, ClusterOutlined } from '@ant-design/icons'
+import { Alert, Button, Card, Divider } from 'antd'
+import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const MicroservicesDetail: React.FC = () => {
     const navigate = useNavigate()
     const { codeData, loading, error } = useCodeData('NodeJS', 'microservices')
-    
+
     const handleBack = () => {
         navigate('/technology/nodejs')
     }
@@ -31,14 +25,16 @@ const MicroservicesDetail: React.FC = () => {
     return (
         <div className={styles.container}>
             <div className={styles.header}>
-                <Button 
-                    icon={<ArrowLeftOutlined />} 
+                <Button
+                    icon={<ArrowLeftOutlined />}
                     onClick={handleBack}
                     className={styles.back_button}
                 >
                     返回NodeJS
                 </Button>
-                <h1><ClusterOutlined /> Node.js 微服务架构</h1>
+                <h1>
+                    <ClusterOutlined /> Node.js 微服务架构
+                </h1>
                 <p>学习如何使用Node.js构建可扩展的微服务架构</p>
             </div>
 
@@ -55,19 +51,37 @@ const MicroservicesDetail: React.FC = () => {
 
                         <h3>微服务的优势</h3>
                         <ul>
-                            <li><strong>技术多样性</strong>：每个服务可以使用不同的技术栈</li>
-                            <li><strong>独立部署</strong>：服务可以独立开发、测试和部署</li>
-                            <li><strong>故障隔离</strong>：单个服务的故障不会影响整个系统</li>
-                            <li><strong>团队自治</strong>：小团队可以独立负责特定服务</li>
-                            <li><strong>可扩展性</strong>：可以根据需要独立扩展特定服务</li>
+                            <li>
+                                <strong>技术多样性</strong>：每个服务可以使用不同的技术栈
+                            </li>
+                            <li>
+                                <strong>独立部署</strong>：服务可以独立开发、测试和部署
+                            </li>
+                            <li>
+                                <strong>故障隔离</strong>：单个服务的故障不会影响整个系统
+                            </li>
+                            <li>
+                                <strong>团队自治</strong>：小团队可以独立负责特定服务
+                            </li>
+                            <li>
+                                <strong>可扩展性</strong>：可以根据需要独立扩展特定服务
+                            </li>
                         </ul>
 
                         <h3>微服务的挑战</h3>
                         <ul>
-                            <li><strong>分布式复杂性</strong>：网络延迟、故障处理、数据一致性</li>
-                            <li><strong>运维复杂性</strong>：需要更复杂的部署和监控</li>
-                            <li><strong>数据管理</strong>：分布式事务和数据一致性</li>
-                            <li><strong>服务治理</strong>：服务发现、负载均衡、配置管理</li>
+                            <li>
+                                <strong>分布式复杂性</strong>：网络延迟、故障处理、数据一致性
+                            </li>
+                            <li>
+                                <strong>运维复杂性</strong>：需要更复杂的部署和监控
+                            </li>
+                            <li>
+                                <strong>数据管理</strong>：分布式事务和数据一致性
+                            </li>
+                            <li>
+                                <strong>服务治理</strong>：服务发现、负载均衡、配置管理
+                            </li>
                         </ul>
                     </div>
                 </Card>
@@ -76,7 +90,7 @@ const MicroservicesDetail: React.FC = () => {
                 <Card title="🏗️ 架构设计" className={styles.content_card}>
                     <div className={styles.architecture_section}>
                         <h3>服务拆分策略</h3>
-                        
+
                         <div className={styles.usage_item}>
                             <h4>1. 按业务领域拆分</h4>
                             {codeData.basicArchitecture && (
@@ -123,14 +137,14 @@ const MicroservicesDetail: React.FC = () => {
                                 title={codeData.apiGateway.title}
                             />
                         )}
-                        
+
                         <h3>服务发现与负载均衡</h3>
                         <div className={styles.code_block}>
                             <div>服务发现与负载均衡代码示例</div>
                         </div>
                     </div>
                 </Card>
-                
+
                 {/* 监控与日志 */}
                 <Card title="📊 监控与日志" className={styles.content_card}>
                     <div className={styles.monitoring_section}>
@@ -138,7 +152,7 @@ const MicroservicesDetail: React.FC = () => {
                         <div className={styles.code_block}>
                             <div>分布式链路追踪代码示例</div>
                         </div>
-                        
+
                         <h3>健康检查与指标收集</h3>
                         <div className={styles.code_block}>
                             <div>健康检查与指标收集代码示例</div>

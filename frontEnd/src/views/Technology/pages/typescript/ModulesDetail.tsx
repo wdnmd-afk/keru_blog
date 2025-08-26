@@ -1,21 +1,15 @@
-import React from 'react'
-import { Card, Tag, Alert, Divider, Button } from 'antd'
-import { useNavigate } from 'react-router-dom'
-import { 
-    ArrowLeftOutlined, 
-    AppstoreOutlined, 
-    WarningOutlined,
-    CheckCircleOutlined,
-    BugOutlined
-} from '@ant-design/icons'
 import CodeHighlight from '@/components/CodeHighlight'
 import { useCodeData } from '@/hooks/useCodeData'
 import styles from '@/styles/topicDetail.module.scss'
+import { AppstoreOutlined, ArrowLeftOutlined, CheckCircleOutlined } from '@ant-design/icons'
+import { Alert, Button, Card, Tag } from 'antd'
+import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const ModulesDetail: React.FC = () => {
     const navigate = useNavigate()
     const { codeData, loading, error } = useCodeData('TypeScript', 'modulesDetail')
-    
+
     const handleBack = () => {
         navigate('/technology/typescript')
     }
@@ -27,13 +21,13 @@ const ModulesDetail: React.FC = () => {
     if (error) {
         return <div className={styles.error}>加载失败: {error}</div>
     }
-    
+
     return (
         <div className={styles.topic_detail_container}>
             {/* 返回按钮 */}
             <div className={styles.back_section}>
-                <Button 
-                    type="text" 
+                <Button
+                    type="text"
                     icon={<ArrowLeftOutlined />}
                     onClick={handleBack}
                     className={styles.back_button}
@@ -41,7 +35,7 @@ const ModulesDetail: React.FC = () => {
                     返回TypeScript技术卡片
                 </Button>
             </div>
-            
+
             {/* 页面头部 */}
             <div className={styles.detail_header}>
                 <div className={styles.topic_icon}>
@@ -58,20 +52,24 @@ const ModulesDetail: React.FC = () => {
                     </div>
                 </div>
             </div>
-            
+
             {/* 内容区域 */}
             <div className={styles.content_sections}>
                 {/* 模块基础 */}
                 <Card title="📦 TypeScript 模块基础" className={styles.content_card}>
                     <div className={styles.concept_content}>
                         <h3>什么是模块？</h3>
-                        <p>模块是包含代码的文件，可以导出变量、函数、类、接口等，供其他模块使用。TypeScript支持ES6模块语法，同时兼容CommonJS和AMD等模块系统。</p>
-                        
+                        <p>
+                            模块是包含代码的文件，可以导出变量、函数、类、接口等，供其他模块使用。TypeScript支持ES6模块语法，同时兼容CommonJS和AMD等模块系统。
+                        </p>
+
                         <h3>模块系统对比</h3>
                         <div className={styles.comparison_grid}>
                             <div className={styles.comparison_item}>
                                 <h4>📄 ES Modules (ESM)</h4>
-                                <p><strong>现代标准</strong>：ES6+的官方模块系统</p>
+                                <p>
+                                    <strong>现代标准</strong>：ES6+的官方模块系统
+                                </p>
                                 <div className={styles.pros_cons}>
                                     <div className={styles.pros}>
                                         <h5>✅ 优势</h5>
@@ -84,10 +82,12 @@ const ModulesDetail: React.FC = () => {
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <div className={styles.comparison_item}>
                                 <h4>📋 CommonJS</h4>
-                                <p><strong>Node.js标准</strong>：服务端JavaScript模块系统</p>
+                                <p>
+                                    <strong>Node.js标准</strong>：服务端JavaScript模块系统
+                                </p>
                                 <div className={styles.pros_cons}>
                                     <div className={styles.pros}>
                                         <h5>✅ 优势</h5>
@@ -108,7 +108,7 @@ const ModulesDetail: React.FC = () => {
                                 </div>
                             </div>
                         </div>
-                        
+
                         <Alert
                             message="推荐使用ES Modules"
                             description="在新项目中推荐使用ES Modules，它是JavaScript的官方标准，具有更好的性能和工具支持。"
@@ -117,7 +117,7 @@ const ModulesDetail: React.FC = () => {
                         />
                     </div>
                 </Card>
-                
+
                 {/* ES Modules */}
                 <Card title="🎯 ES Modules 详解" className={styles.content_card}>
                     <div className={styles.usage_grid}>
@@ -131,7 +131,7 @@ const ModulesDetail: React.FC = () => {
                                 />
                             )}
                         </div>
-                        
+
                         <div className={styles.usage_item}>
                             <h4>2. 高级导出模式</h4>
                             {codeData.advancedExportPatterns && (
@@ -142,7 +142,7 @@ const ModulesDetail: React.FC = () => {
                                 />
                             )}
                         </div>
-                        
+
                         <div className={styles.usage_item}>
                             <h4>3. 动态导入</h4>
                             {codeData.dynamicImports && (
@@ -155,7 +155,7 @@ const ModulesDetail: React.FC = () => {
                         </div>
                     </div>
                 </Card>
-                
+
                 {/* 模块解析 */}
                 <Card title="🔍 模块解析策略" className={styles.content_card}>
                     <div className={styles.resolution_section}>
@@ -167,7 +167,7 @@ const ModulesDetail: React.FC = () => {
                                 title={codeData.moduleResolution.title}
                             />
                         )}
-                        
+
                         <h3>声明文件</h3>
                         {codeData.declarationFiles && (
                             <CodeHighlight
@@ -178,7 +178,7 @@ const ModulesDetail: React.FC = () => {
                         )}
                     </div>
                 </Card>
-                
+
                 {/* 命名空间 */}
                 <Card title="🏷️ 命名空间与模块" className={styles.content_card}>
                     <div className={styles.namespace_section}>
@@ -190,7 +190,7 @@ const ModulesDetail: React.FC = () => {
                                 title={codeData.namespaceBasics.title}
                             />
                         )}
-                        
+
                         <h3>模块 vs 命名空间</h3>
                         {codeData.moduleVsNamespace && (
                             <CodeHighlight
@@ -201,7 +201,7 @@ const ModulesDetail: React.FC = () => {
                         )}
                     </div>
                 </Card>
-                
+
                 {/* 最佳实践 */}
                 <Card title="✅ 模块系统最佳实践" className={styles.content_card}>
                     <div className={styles.best_practices}>
@@ -218,7 +218,7 @@ const ModulesDetail: React.FC = () => {
                                 </ul>
                             </div>
                         </div>
-                        
+
                         <div className={styles.practice_item}>
                             <CheckCircleOutlined className={styles.practice_icon} />
                             <div>
@@ -232,7 +232,7 @@ const ModulesDetail: React.FC = () => {
                                 </ul>
                             </div>
                         </div>
-                        
+
                         <div className={styles.practice_item}>
                             <CheckCircleOutlined className={styles.practice_icon} />
                             <div>
@@ -246,7 +246,7 @@ const ModulesDetail: React.FC = () => {
                                 </ul>
                             </div>
                         </div>
-                        
+
                         <div className={styles.practice_item}>
                             <CheckCircleOutlined className={styles.practice_icon} />
                             <div>

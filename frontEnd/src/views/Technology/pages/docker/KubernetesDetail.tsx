@@ -1,16 +1,10 @@
-import React from 'react'
-import { Card, Tag, Alert, Divider, Button } from 'antd'
-import { useNavigate } from 'react-router-dom'
-import {
-    ArrowLeftOutlined,
-    CloudOutlined,
-    WarningOutlined,
-    CheckCircleOutlined,
-    ClusterOutlined
-} from '@ant-design/icons'
 import CodeHighlight from '@/components/CodeHighlight'
 import { useCodeData } from '@/hooks/useCodeData'
 import styles from '@/styles/topicDetail.module.scss'
+import { ArrowLeftOutlined, ClusterOutlined } from '@ant-design/icons'
+import { Alert, Button, Card, Divider, Tag } from 'antd'
+import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const KubernetesDetail: React.FC = () => {
     const navigate = useNavigate()
@@ -31,14 +25,16 @@ const KubernetesDetail: React.FC = () => {
     return (
         <div className={styles.container}>
             <div className={styles.header}>
-                <Button 
-                    icon={<ArrowLeftOutlined />} 
+                <Button
+                    icon={<ArrowLeftOutlined />}
                     onClick={handleBack}
                     className={styles.back_button}
                 >
                     返回Docker
                 </Button>
-                <h1><ClusterOutlined /> Kubernetes 容器编排</h1>
+                <h1>
+                    <ClusterOutlined /> Kubernetes 容器编排
+                </h1>
                 <p>掌握Kubernetes容器编排和集群管理</p>
             </div>
 
@@ -64,11 +60,21 @@ const KubernetesDetail: React.FC = () => {
 
                         <h3>Kubernetes 优势</h3>
                         <ul>
-                            <li><strong>自动化部署</strong>：自动化容器的部署和管理</li>
-                            <li><strong>弹性扩缩</strong>：根据负载自动扩缩容器数量</li>
-                            <li><strong>服务发现</strong>：内置服务发现和负载均衡</li>
-                            <li><strong>自我修复</strong>：自动重启失败的容器</li>
-                            <li><strong>滚动更新</strong>：零停机时间的应用更新</li>
+                            <li>
+                                <strong>自动化部署</strong>：自动化容器的部署和管理
+                            </li>
+                            <li>
+                                <strong>弹性扩缩</strong>：根据负载自动扩缩容器数量
+                            </li>
+                            <li>
+                                <strong>服务发现</strong>：内置服务发现和负载均衡
+                            </li>
+                            <li>
+                                <strong>自我修复</strong>：自动重启失败的容器
+                            </li>
+                            <li>
+                                <strong>滚动更新</strong>：零停机时间的应用更新
+                            </li>
                         </ul>
                     </div>
                 </Card>
@@ -98,7 +104,7 @@ const KubernetesDetail: React.FC = () => {
                                 title={codeData.podBasics.title}
                             />
                         )}
-                        
+
                         <h3>多容器 Pod</h3>
                         {codeData.multiContainerPod && (
                             <CodeHighlight
@@ -107,7 +113,7 @@ const KubernetesDetail: React.FC = () => {
                                 title={codeData.multiContainerPod.title}
                             />
                         )}
-                        
+
                         <h3>Pod 生命周期</h3>
                         {codeData.podLifecycle && (
                             <CodeHighlight
@@ -130,7 +136,7 @@ const KubernetesDetail: React.FC = () => {
                                 title={codeData.deploymentBasics.title}
                             />
                         )}
-                        
+
                         <h3>滚动更新</h3>
                         {codeData.rollingUpdate && (
                             <CodeHighlight
@@ -153,7 +159,7 @@ const KubernetesDetail: React.FC = () => {
                                 title={codeData.serviceTypes.title}
                             />
                         )}
-                        
+
                         <h3>Ingress 控制器</h3>
                         {codeData.ingressController && (
                             <CodeHighlight
@@ -176,7 +182,7 @@ const KubernetesDetail: React.FC = () => {
                                 title={codeData.configMapManagement.title}
                             />
                         )}
-                        
+
                         <h3>Secret 密钥管理</h3>
                         {codeData.secretManagement && (
                             <CodeHighlight
@@ -213,7 +219,7 @@ const KubernetesDetail: React.FC = () => {
                                 title={codeData.clusterMonitoring.title}
                             />
                         )}
-                        
+
                         <h3>日志管理</h3>
                         {codeData.logManagement && (
                             <CodeHighlight
@@ -250,11 +256,21 @@ const KubernetesDetail: React.FC = () => {
                             message="安全建议"
                             description={
                                 <ul>
-                                    <li><strong>RBAC权限</strong>：配置基于角色的访问控制</li>
-                                    <li><strong>网络策略</strong>：限制Pod间的网络通信</li>
-                                    <li><strong>镜像安全</strong>：使用可信的镜像仓库</li>
-                                    <li><strong>密钥管理</strong>：使用Secret管理敏感信息</li>
-                                    <li><strong>安全上下文</strong>：配置Pod安全策略</li>
+                                    <li>
+                                        <strong>RBAC权限</strong>：配置基于角色的访问控制
+                                    </li>
+                                    <li>
+                                        <strong>网络策略</strong>：限制Pod间的网络通信
+                                    </li>
+                                    <li>
+                                        <strong>镜像安全</strong>：使用可信的镜像仓库
+                                    </li>
+                                    <li>
+                                        <strong>密钥管理</strong>：使用Secret管理敏感信息
+                                    </li>
+                                    <li>
+                                        <strong>安全上下文</strong>：配置Pod安全策略
+                                    </li>
                                 </ul>
                             }
                             type="warning"
@@ -267,11 +283,21 @@ const KubernetesDetail: React.FC = () => {
                             message="运维建议"
                             description={
                                 <ul>
-                                    <li><strong>监控告警</strong>：部署完整的监控体系</li>
-                                    <li><strong>日志收集</strong>：集中化日志管理</li>
-                                    <li><strong>备份策略</strong>：定期备份关键数据</li>
-                                    <li><strong>版本管理</strong>：使用GitOps管理配置</li>
-                                    <li><strong>灾难恢复</strong>：制定灾难恢复计划</li>
+                                    <li>
+                                        <strong>监控告警</strong>：部署完整的监控体系
+                                    </li>
+                                    <li>
+                                        <strong>日志收集</strong>：集中化日志管理
+                                    </li>
+                                    <li>
+                                        <strong>备份策略</strong>：定期备份关键数据
+                                    </li>
+                                    <li>
+                                        <strong>版本管理</strong>：使用GitOps管理配置
+                                    </li>
+                                    <li>
+                                        <strong>灾难恢复</strong>：制定灾难恢复计划
+                                    </li>
                                 </ul>
                             }
                             type="success"

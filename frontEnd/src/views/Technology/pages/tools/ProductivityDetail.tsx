@@ -1,21 +1,15 @@
-import React from 'react'
-import { Card, Tag, Alert, Divider, Button } from 'antd'
-import { useNavigate } from 'react-router-dom'
-import { 
-    ArrowLeftOutlined, 
-    RocketOutlined, 
-    WarningOutlined,
-    CheckCircleOutlined,
-    ThunderboltOutlined
-} from '@ant-design/icons'
 import CodeHighlight from '@/components/CodeHighlight'
 import { useCodeData } from '@/hooks/useCodeData'
 import styles from '@/styles/topicDetail.module.scss'
+import { ArrowLeftOutlined, RocketOutlined } from '@ant-design/icons'
+import { Alert, Button, Card, Divider, Tag } from 'antd'
+import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const ProductivityDetail: React.FC = () => {
     const navigate = useNavigate()
     const { codeData, loading, error } = useCodeData('Tools', 'productivity')
-    
+
     const handleBack = () => {
         navigate('/technology/tools')
     }
@@ -31,14 +25,16 @@ const ProductivityDetail: React.FC = () => {
     return (
         <div className={styles.container}>
             <div className={styles.header}>
-                <Button 
-                    icon={<ArrowLeftOutlined />} 
+                <Button
+                    icon={<ArrowLeftOutlined />}
                     onClick={handleBack}
                     className={styles.back_button}
                 >
                     返回工具
                 </Button>
-                <h1><RocketOutlined /> 生产力工具</h1>
+                <h1>
+                    <RocketOutlined /> 生产力工具
+                </h1>
                 <p>提升开发效率的生产力工具和自动化解决方案</p>
             </div>
 
@@ -65,11 +61,21 @@ const ProductivityDetail: React.FC = () => {
 
                         <h3>效率提升原则</h3>
                         <ul>
-                            <li><strong>自动化重复任务</strong>：减少手动操作</li>
-                            <li><strong>快速访问常用功能</strong>：减少查找时间</li>
-                            <li><strong>统一工作环境</strong>：保持一致的配置</li>
-                            <li><strong>减少上下文切换</strong>：优化工作流程</li>
-                            <li><strong>批量处理</strong>：提高处理效率</li>
+                            <li>
+                                <strong>自动化重复任务</strong>：减少手动操作
+                            </li>
+                            <li>
+                                <strong>快速访问常用功能</strong>：减少查找时间
+                            </li>
+                            <li>
+                                <strong>统一工作环境</strong>：保持一致的配置
+                            </li>
+                            <li>
+                                <strong>减少上下文切换</strong>：优化工作流程
+                            </li>
+                            <li>
+                                <strong>批量处理</strong>：提高处理效率
+                            </li>
                         </ul>
                     </div>
                 </Card>
@@ -85,7 +91,7 @@ const ProductivityDetail: React.FC = () => {
                                 title={codeData.codeSnippets.title}
                             />
                         )}
-                        
+
                         <h3>文本扩展工具</h3>
                         {codeData.textExpansion && (
                             <CodeHighlight
@@ -94,7 +100,7 @@ const ProductivityDetail: React.FC = () => {
                                 title={codeData.textExpansion.title}
                             />
                         )}
-                        
+
                         <h3>Raycast 脚本命令</h3>
                         {codeData.raycastScripts && (
                             <CodeHighlight
@@ -131,7 +137,7 @@ const ProductivityDetail: React.FC = () => {
                                 title={codeData.automationWorkflows.title}
                             />
                         )}
-                        
+
                         <h3>自定义自动化脚本</h3>
                         {codeData.customAutomation && (
                             <CodeHighlight
@@ -168,11 +174,21 @@ const ProductivityDetail: React.FC = () => {
                             message="效率提升策略"
                             description={
                                 <ul>
-                                    <li><strong>快捷键优化</strong>：为常用操作设置快捷键</li>
-                                    <li><strong>模板化</strong>：创建项目和文件模板</li>
-                                    <li><strong>批处理</strong>：批量处理相似任务</li>
-                                    <li><strong>环境同步</strong>：在不同设备间同步配置</li>
-                                    <li><strong>监控自动化</strong>：设置任务执行监控</li>
+                                    <li>
+                                        <strong>快捷键优化</strong>：为常用操作设置快捷键
+                                    </li>
+                                    <li>
+                                        <strong>模板化</strong>：创建项目和文件模板
+                                    </li>
+                                    <li>
+                                        <strong>批处理</strong>：批量处理相似任务
+                                    </li>
+                                    <li>
+                                        <strong>环境同步</strong>：在不同设备间同步配置
+                                    </li>
+                                    <li>
+                                        <strong>监控自动化</strong>：设置任务执行监控
+                                    </li>
                                 </ul>
                             }
                             type="success"
@@ -185,11 +201,21 @@ const ProductivityDetail: React.FC = () => {
                             message="工具选择建议"
                             description={
                                 <ul>
-                                    <li><strong>跨平台兼容</strong>：选择支持多平台的工具</li>
-                                    <li><strong>学习成本</strong>：平衡功能强大与易用性</li>
-                                    <li><strong>社区支持</strong>：选择有活跃社区的工具</li>
-                                    <li><strong>数据安全</strong>：注意工具的数据隐私政策</li>
-                                    <li><strong>可扩展性</strong>：选择支持插件和自定义的工具</li>
+                                    <li>
+                                        <strong>跨平台兼容</strong>：选择支持多平台的工具
+                                    </li>
+                                    <li>
+                                        <strong>学习成本</strong>：平衡功能强大与易用性
+                                    </li>
+                                    <li>
+                                        <strong>社区支持</strong>：选择有活跃社区的工具
+                                    </li>
+                                    <li>
+                                        <strong>数据安全</strong>：注意工具的数据隐私政策
+                                    </li>
+                                    <li>
+                                        <strong>可扩展性</strong>：选择支持插件和自定义的工具
+                                    </li>
                                 </ul>
                             }
                             type="warning"

@@ -1,21 +1,15 @@
-import React from 'react'
-import { Card, Tag, Alert, Divider, Button } from 'antd'
-import { useNavigate } from 'react-router-dom'
-import { 
-    ArrowLeftOutlined, 
-    BuildOutlined, 
-    WarningOutlined,
-    CheckCircleOutlined,
-    SettingOutlined
-} from '@ant-design/icons'
 import CodeHighlight from '@/components/CodeHighlight'
 import { useCodeData } from '@/hooks/useCodeData'
 import styles from '@/styles/topicDetail.module.scss'
+import { ArrowLeftOutlined, BuildOutlined } from '@ant-design/icons'
+import { Alert, Button, Card, Divider, Tag } from 'antd'
+import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const WebpackDetail: React.FC = () => {
     const navigate = useNavigate()
     const { codeData, loading, error } = useCodeData('Tools', 'webpack')
-    
+
     const handleBack = () => {
         navigate('/technology/tools')
     }
@@ -31,14 +25,16 @@ const WebpackDetail: React.FC = () => {
     return (
         <div className={styles.container}>
             <div className={styles.header}>
-                <Button 
-                    icon={<ArrowLeftOutlined />} 
+                <Button
+                    icon={<ArrowLeftOutlined />}
                     onClick={handleBack}
                     className={styles.back_button}
                 >
                     返回工具
                 </Button>
-                <h1><BuildOutlined /> Webpack 构建工具</h1>
+                <h1>
+                    <BuildOutlined /> Webpack 构建工具
+                </h1>
                 <p>学习现代前端构建工具Webpack的配置和优化技巧</p>
             </div>
 
@@ -64,11 +60,21 @@ const WebpackDetail: React.FC = () => {
 
                         <h3>主要优势</h3>
                         <ul>
-                            <li><strong>模块化</strong>：支持 ES6、CommonJS、AMD 等模块系统</li>
-                            <li><strong>代码分割</strong>：按需加载，优化性能</li>
-                            <li><strong>资源处理</strong>：统一处理各种类型的资源</li>
-                            <li><strong>开发体验</strong>：热模块替换、开发服务器</li>
-                            <li><strong>生产优化</strong>：压缩、Tree Shaking、缓存</li>
+                            <li>
+                                <strong>模块化</strong>：支持 ES6、CommonJS、AMD 等模块系统
+                            </li>
+                            <li>
+                                <strong>代码分割</strong>：按需加载，优化性能
+                            </li>
+                            <li>
+                                <strong>资源处理</strong>：统一处理各种类型的资源
+                            </li>
+                            <li>
+                                <strong>开发体验</strong>：热模块替换、开发服务器
+                            </li>
+                            <li>
+                                <strong>生产优化</strong>：压缩、Tree Shaking、缓存
+                            </li>
                         </ul>
                     </div>
                 </Card>
@@ -210,11 +216,21 @@ const WebpackDetail: React.FC = () => {
                             message="常见问题解决"
                             description={
                                 <ul>
-                                    <li><strong>构建速度慢</strong>：使用缓存、减少文件监听范围</li>
-                                    <li><strong>包体积大</strong>：代码分割、Tree Shaking、压缩</li>
-                                    <li><strong>热更新失效</strong>：检查 HMR 配置和文件路径</li>
-                                    <li><strong>内存溢出</strong>：增加 Node.js 内存限制</li>
-                                    <li><strong>路径问题</strong>：配置正确的 publicPath</li>
+                                    <li>
+                                        <strong>构建速度慢</strong>：使用缓存、减少文件监听范围
+                                    </li>
+                                    <li>
+                                        <strong>包体积大</strong>：代码分割、Tree Shaking、压缩
+                                    </li>
+                                    <li>
+                                        <strong>热更新失效</strong>：检查 HMR 配置和文件路径
+                                    </li>
+                                    <li>
+                                        <strong>内存溢出</strong>：增加 Node.js 内存限制
+                                    </li>
+                                    <li>
+                                        <strong>路径问题</strong>：配置正确的 publicPath
+                                    </li>
                                 </ul>
                             }
                             type="warning"

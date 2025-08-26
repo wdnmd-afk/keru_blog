@@ -9,7 +9,7 @@ export enum ResultEnum {
     NORMAL_ERROR = 400,
     UNAUTHORIZED = 401,
     TIMEOUT = 30000,
-    TYPE = 'success'
+    TYPE = 'success',
 }
 
 /**
@@ -20,7 +20,7 @@ export enum RequestEnum {
     POST = 'POST',
     PATCH = 'PATCH',
     PUT = 'PUT',
-    DELETE = 'DELETE'
+    DELETE = 'DELETE',
 }
 
 /**
@@ -34,7 +34,7 @@ export enum ContentTypeEnum {
     // form-data 一般配合qs
     FORM_URLENCODED = 'application/x-www-form-urlencoded;charset=UTF-8',
     // form-data 上传
-    FORM_DATA = 'multipart/form-data;charset=UTF-8'
+    FORM_DATA = 'multipart/form-data;charset=UTF-8',
 }
 
 // 请求响应参数（不包含data）

@@ -1,21 +1,15 @@
-import React from 'react'
-import { Card, Tag, Alert, Divider, Button } from 'antd'
-import { useNavigate } from 'react-router-dom'
-import { 
-    ArrowLeftOutlined, 
-    ThunderboltOutlined, 
-    WarningOutlined,
-    CheckCircleOutlined,
-    RocketOutlined
-} from '@ant-design/icons'
 import CodeHighlight from '@/components/CodeHighlight'
 import { useCodeData } from '@/hooks/useCodeData'
 import styles from '@/styles/topicDetail.module.scss'
+import { ArrowLeftOutlined, ThunderboltOutlined } from '@ant-design/icons'
+import { Alert, Button, Card, Divider, Tag } from 'antd'
+import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const ViteDetail: React.FC = () => {
     const navigate = useNavigate()
     const { codeData, loading, error } = useCodeData('Tools', 'vite')
-    
+
     const handleBack = () => {
         navigate('/technology/tools')
     }
@@ -31,14 +25,16 @@ const ViteDetail: React.FC = () => {
     return (
         <div className={styles.container}>
             <div className={styles.header}>
-                <Button 
-                    icon={<ArrowLeftOutlined />} 
+                <Button
+                    icon={<ArrowLeftOutlined />}
                     onClick={handleBack}
                     className={styles.back_button}
                 >
                     返回工具
                 </Button>
-                <h1><ThunderboltOutlined /> Vite 构建工具</h1>
+                <h1>
+                    <ThunderboltOutlined /> Vite 构建工具
+                </h1>
                 <p>下一代前端构建工具，极速的开发体验</p>
             </div>
 
@@ -64,11 +60,21 @@ const ViteDetail: React.FC = () => {
 
                         <h3>主要优势</h3>
                         <ul>
-                            <li><strong>开发速度</strong>：利用原生 ESM 实现极速启动</li>
-                            <li><strong>热更新</strong>：基于 ESM 的 HMR，更新速度不受应用大小影响</li>
-                            <li><strong>开箱即用</strong>：内置支持 TypeScript、JSX、CSS 等</li>
-                            <li><strong>插件生态</strong>：兼容 Rollup 插件，生态丰富</li>
-                            <li><strong>生产优化</strong>：基于 Rollup 的优化构建</li>
+                            <li>
+                                <strong>开发速度</strong>：利用原生 ESM 实现极速启动
+                            </li>
+                            <li>
+                                <strong>热更新</strong>：基于 ESM 的 HMR，更新速度不受应用大小影响
+                            </li>
+                            <li>
+                                <strong>开箱即用</strong>：内置支持 TypeScript、JSX、CSS 等
+                            </li>
+                            <li>
+                                <strong>插件生态</strong>：兼容 Rollup 插件，生态丰富
+                            </li>
+                            <li>
+                                <strong>生产优化</strong>：基于 Rollup 的优化构建
+                            </li>
                         </ul>
                     </div>
                 </Card>
@@ -84,7 +90,7 @@ const ViteDetail: React.FC = () => {
                                 title={codeData.quickStart.title}
                             />
                         )}
-                        
+
                         <h3>项目结构</h3>
                         {codeData.projectStructure && (
                             <CodeHighlight
@@ -93,7 +99,7 @@ const ViteDetail: React.FC = () => {
                                 title={codeData.projectStructure.title}
                             />
                         )}
-                        
+
                         <h3>基本配置</h3>
                         {codeData.basicConfig && (
                             <CodeHighlight
@@ -116,7 +122,7 @@ const ViteDetail: React.FC = () => {
                                 title={codeData.officialPlugins.title}
                             />
                         )}
-                        
+
                         <h3>社区插件</h3>
                         {codeData.communityPlugins && (
                             <CodeHighlight
@@ -139,7 +145,7 @@ const ViteDetail: React.FC = () => {
                                 title={codeData.hmrApi.title}
                             />
                         )}
-                        
+
                         <h3>环境变量</h3>
                         {codeData.environmentVariables && (
                             <CodeHighlight
@@ -162,7 +168,7 @@ const ViteDetail: React.FC = () => {
                                 title={codeData.buildOptimization.title}
                             />
                         )}
-                        
+
                         <h3>代码分割</h3>
                         {codeData.codeSplitting && (
                             <CodeHighlight
@@ -213,11 +219,21 @@ const ViteDetail: React.FC = () => {
                             message="Vite vs Webpack"
                             description={
                                 <ul>
-                                    <li><strong>开发速度</strong>：Vite 开发环境启动更快</li>
-                                    <li><strong>热更新</strong>：Vite HMR 速度不受项目大小影响</li>
-                                    <li><strong>配置复杂度</strong>：Vite 配置更简单直观</li>
-                                    <li><strong>生态成熟度</strong>：Webpack 生态更成熟</li>
-                                    <li><strong>生产构建</strong>：两者都基于成熟的打包工具</li>
+                                    <li>
+                                        <strong>开发速度</strong>：Vite 开发环境启动更快
+                                    </li>
+                                    <li>
+                                        <strong>热更新</strong>：Vite HMR 速度不受项目大小影响
+                                    </li>
+                                    <li>
+                                        <strong>配置复杂度</strong>：Vite 配置更简单直观
+                                    </li>
+                                    <li>
+                                        <strong>生态成熟度</strong>：Webpack 生态更成熟
+                                    </li>
+                                    <li>
+                                        <strong>生产构建</strong>：两者都基于成熟的打包工具
+                                    </li>
                                 </ul>
                             }
                             type="success"

@@ -11,7 +11,13 @@ interface MessageBoxProps {
 }
 
 class MessageBox {
-    static confirm({ content, confirm, cancelText = '取消', okText = '确认', centered = true }: MessageBoxProps): void {
+    static confirm({
+        content,
+        confirm,
+        cancelText = '取消',
+        okText = '确认',
+        centered = true,
+    }: MessageBoxProps): void {
         Modal.confirm({
             title: '提示',
             content: content,
@@ -19,7 +25,7 @@ class MessageBox {
             onCancel: () => {},
             cancelText,
             okText,
-            centered
+            centered,
         })
     }
 }

@@ -1,21 +1,15 @@
-import React from 'react'
-import { Card, Tag, Alert, Divider, Button } from 'antd'
-import { useNavigate } from 'react-router-dom'
-import { 
-    ArrowLeftOutlined, 
-    BugOutlined, 
-    WarningOutlined,
-    CheckCircleOutlined,
-    ExperimentOutlined
-} from '@ant-design/icons'
 import CodeHighlight from '@/components/CodeHighlight'
 import { useCodeData } from '@/hooks/useCodeData'
 import styles from '@/styles/topicDetail.module.scss'
+import { ArrowLeftOutlined, BugOutlined } from '@ant-design/icons'
+import { Alert, Button, Card, Divider, Tag } from 'antd'
+import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const TestingToolsDetail: React.FC = () => {
     const navigate = useNavigate()
     const { codeData, loading, error } = useCodeData('Tools', 'testing-tools')
-    
+
     const handleBack = () => {
         navigate('/technology/tools')
     }
@@ -31,14 +25,16 @@ const TestingToolsDetail: React.FC = () => {
     return (
         <div className={styles.container}>
             <div className={styles.header}>
-                <Button 
-                    icon={<ArrowLeftOutlined />} 
+                <Button
+                    icon={<ArrowLeftOutlined />}
                     onClick={handleBack}
                     className={styles.back_button}
                 >
                     返回工具
                 </Button>
-                <h1><BugOutlined /> 测试工具</h1>
+                <h1>
+                    <BugOutlined /> 测试工具
+                </h1>
                 <p>掌握前端测试工具和框架，确保代码质量和可靠性</p>
             </div>
 
@@ -65,10 +61,18 @@ const TestingToolsDetail: React.FC = () => {
 
                         <h3>测试金字塔</h3>
                         <ul>
-                            <li><strong>单元测试</strong>：测试独立的函数和组件</li>
-                            <li><strong>集成测试</strong>：测试模块间的交互</li>
-                            <li><strong>E2E测试</strong>：测试完整的用户流程</li>
-                            <li><strong>手动测试</strong>：探索性测试和用户体验测试</li>
+                            <li>
+                                <strong>单元测试</strong>：测试独立的函数和组件
+                            </li>
+                            <li>
+                                <strong>集成测试</strong>：测试模块间的交互
+                            </li>
+                            <li>
+                                <strong>E2E测试</strong>：测试完整的用户流程
+                            </li>
+                            <li>
+                                <strong>手动测试</strong>：探索性测试和用户体验测试
+                            </li>
                         </ul>
                     </div>
                 </Card>
@@ -84,7 +88,7 @@ const TestingToolsDetail: React.FC = () => {
                                 title={codeData.jestConfiguration.title}
                             />
                         )}
-                        
+
                         <h3>基础测试示例</h3>
                         {codeData.jestBasicTests && (
                             <CodeHighlight
@@ -93,7 +97,7 @@ const TestingToolsDetail: React.FC = () => {
                                 title={codeData.jestBasicTests.title}
                             />
                         )}
-                        
+
                         <h3>React 组件测试</h3>
                         {codeData.reactTesting && (
                             <CodeHighlight
@@ -116,7 +120,7 @@ const TestingToolsDetail: React.FC = () => {
                                 title={codeData.playwrightConfiguration.title}
                             />
                         )}
-                        
+
                         <h3>E2E 测试示例</h3>
                         {codeData.playwrightTests && (
                             <CodeHighlight
@@ -139,7 +143,7 @@ const TestingToolsDetail: React.FC = () => {
                                 title={codeData.storybookConfiguration.title}
                             />
                         )}
-                        
+
                         <h3>Story 编写</h3>
                         {codeData.storybookStories && (
                             <CodeHighlight
@@ -172,7 +176,9 @@ const TestingToolsDetail: React.FC = () => {
                             message="测试编写原则"
                             description={
                                 <ul>
-                                    <li>遵循AAA模式：Arrange（准备）、Act（执行）、Assert（断言）</li>
+                                    <li>
+                                        遵循AAA模式：Arrange（准备）、Act（执行）、Assert（断言）
+                                    </li>
                                     <li>测试应该独立、可重复、快速执行</li>
                                     <li>测试名称应该清晰描述测试场景</li>
                                     <li>优先测试核心业务逻辑和边界情况</li>
@@ -190,11 +196,21 @@ const TestingToolsDetail: React.FC = () => {
                             message="测试覆盖率建议"
                             description={
                                 <ul>
-                                    <li><strong>单元测试</strong>：核心业务逻辑达到90%以上覆盖率</li>
-                                    <li><strong>集成测试</strong>：关键用户流程100%覆盖</li>
-                                    <li><strong>E2E测试</strong>：主要业务场景覆盖</li>
-                                    <li><strong>组件测试</strong>：UI组件的各种状态和交互</li>
-                                    <li><strong>API测试</strong>：接口的正常和异常情况</li>
+                                    <li>
+                                        <strong>单元测试</strong>：核心业务逻辑达到90%以上覆盖率
+                                    </li>
+                                    <li>
+                                        <strong>集成测试</strong>：关键用户流程100%覆盖
+                                    </li>
+                                    <li>
+                                        <strong>E2E测试</strong>：主要业务场景覆盖
+                                    </li>
+                                    <li>
+                                        <strong>组件测试</strong>：UI组件的各种状态和交互
+                                    </li>
+                                    <li>
+                                        <strong>API测试</strong>：接口的正常和异常情况
+                                    </li>
                                 </ul>
                             }
                             type="success"
@@ -207,11 +223,22 @@ const TestingToolsDetail: React.FC = () => {
                             message="测试工具选择"
                             description={
                                 <ul>
-                                    <li><strong>Jest</strong>：JavaScript单元测试的首选框架</li>
-                                    <li><strong>React Testing Library</strong>：React组件测试最佳实践</li>
-                                    <li><strong>Playwright</strong>：现代化的E2E测试工具</li>
-                                    <li><strong>Storybook</strong>：组件开发和测试的利器</li>
-                                    <li><strong>MSW</strong>：API Mock的现代解决方案</li>
+                                    <li>
+                                        <strong>Jest</strong>：JavaScript单元测试的首选框架
+                                    </li>
+                                    <li>
+                                        <strong>React Testing Library</strong>
+                                        ：React组件测试最佳实践
+                                    </li>
+                                    <li>
+                                        <strong>Playwright</strong>：现代化的E2E测试工具
+                                    </li>
+                                    <li>
+                                        <strong>Storybook</strong>：组件开发和测试的利器
+                                    </li>
+                                    <li>
+                                        <strong>MSW</strong>：API Mock的现代解决方案
+                                    </li>
                                 </ul>
                             }
                             type="warning"

@@ -1,10 +1,10 @@
+import EmptyContainer from '@/components/EmptyContainer.tsx'
+import { FileInfo } from '@/components/Files/dto.ts'
+import { getFileType } from '@/enum'
 import { useState } from 'react'
 import ImageViewer from './ImageViewer'
 import PDFViewer from './PDFViewer'
 import UnsupportedViewer from './UnsupportedViewer.tsx'
-import EmptyContainer from '@/components/EmptyContainer.tsx'
-import { getFileType } from '@/enum'
-import { FileInfo } from '@/components/Files/dto.ts'
 
 interface FileViewerContainerProps {
     fileInfo: FileInfo

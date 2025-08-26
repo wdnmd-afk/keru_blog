@@ -1,10 +1,10 @@
-import React from 'react'
-import { Card, Tag, Button } from 'antd'
-import { useNavigate } from 'react-router-dom'
-import { ArrowLeftOutlined, ThunderboltOutlined } from '@ant-design/icons'
 import CodeHighlight from '@/components/CodeHighlight'
 import { useCodeData } from '@/hooks/useCodeData'
 import styles from '@/styles/topicDetail.module.scss'
+import { ArrowLeftOutlined, ThunderboltOutlined } from '@ant-design/icons'
+import { Button, Card, Tag } from 'antd'
+import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const ReactivityDetail: React.FC = () => {
     const navigate = useNavigate()
@@ -145,11 +145,21 @@ const ReactivityDetail: React.FC = () => {
                     <div className={styles.best_practices}>
                         <h3>性能优化建议</h3>
                         <ul>
-                            <li><strong>合理选择API</strong> - 基本类型用ref，对象用reactive</li>
-                            <li><strong>避免不必要的响应式</strong> - 使用markRaw标记静态数据</li>
-                            <li><strong>浅层响应式</strong> - 对于大型对象考虑使用shallowReactive</li>
-                            <li><strong>计算属性缓存</strong> - 利用computed的缓存特性优化性能</li>
-                            <li><strong>正确解构</strong> - 使用toRefs保持解构后的响应性</li>
+                            <li>
+                                <strong>合理选择API</strong> - 基本类型用ref，对象用reactive
+                            </li>
+                            <li>
+                                <strong>避免不必要的响应式</strong> - 使用markRaw标记静态数据
+                            </li>
+                            <li>
+                                <strong>浅层响应式</strong> - 对于大型对象考虑使用shallowReactive
+                            </li>
+                            <li>
+                                <strong>计算属性缓存</strong> - 利用computed的缓存特性优化性能
+                            </li>
+                            <li>
+                                <strong>正确解构</strong> - 使用toRefs保持解构后的响应性
+                            </li>
                         </ul>
 
                         {codeData.bestPractices && (

@@ -1,16 +1,10 @@
-import React from 'react'
-import { Card, Tag, Alert, Divider, Button } from 'antd'
-import { useNavigate } from 'react-router-dom'
-import {
-    ArrowLeftOutlined,
-    ThunderboltOutlined,
-    WarningOutlined,
-    CheckCircleOutlined,
-    BugOutlined
-} from '@ant-design/icons'
 import CodeHighlight from '@/components/CodeHighlight'
 import { useCodeData } from '@/hooks/useCodeData'
 import styles from '@/styles/topicDetail.module.scss'
+import { ArrowLeftOutlined, CheckCircleOutlined, ThunderboltOutlined } from '@ant-design/icons'
+import { Button, Card, Tag } from 'antd'
+import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const GenericsDetail: React.FC = () => {
     const navigate = useNavigate()
@@ -65,7 +59,9 @@ const GenericsDetail: React.FC = () => {
                 <Card title="📚 泛型基础概念" className={styles.content_card}>
                     <div className={styles.concept_content}>
                         <h3>什么是泛型？</h3>
-                        <p>泛型允许我们在定义函数、接口或类的时候，不预先指定具体的类型，而在使用的时候再指定类型的一种特性。它提供了一种创建可重用组件的方法，这些组件可以支持多种类型的数据。</p>
+                        <p>
+                            泛型允许我们在定义函数、接口或类的时候，不预先指定具体的类型，而在使用的时候再指定类型的一种特性。它提供了一种创建可重用组件的方法，这些组件可以支持多种类型的数据。
+                        </p>
 
                         <h3>基本语法</h3>
                         {codeData.basicGenerics && (

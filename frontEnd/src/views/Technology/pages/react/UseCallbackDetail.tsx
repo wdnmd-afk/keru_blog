@@ -1,17 +1,16 @@
-import React from 'react'
-import { Card, Tag, Alert, Divider, Button } from 'antd'
-import { useNavigate } from 'react-router-dom'
-import {
-    ArrowLeftOutlined,
-    ThunderboltOutlined,
-    WarningOutlined,
-    CheckCircleOutlined,
-    BugOutlined,
-    RocketOutlined,
-} from '@ant-design/icons'
 import CodeHighlight from '@/components/CodeHighlight'
 import { useCodeData } from '@/hooks/useCodeData'
 import styles from '@/styles/topicDetail.module.scss'
+import {
+    ArrowLeftOutlined,
+    BugOutlined,
+    CheckCircleOutlined,
+    ThunderboltOutlined,
+    WarningOutlined,
+} from '@ant-design/icons'
+import { Alert, Button, Card, Tag } from 'antd'
+import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const UseCallbackDetail: React.FC = () => {
     const navigate = useNavigate()
@@ -177,7 +176,9 @@ const UseCallbackDetail: React.FC = () => {
                             <CheckCircleOutlined className={styles.practice_icon} />
                             <div>
                                 <h4>1. 配合React.memo使用</h4>
-                                <p>useCallback最大的价值在于配合React.memo使用，避免子组件不必要的重新渲染</p>
+                                <p>
+                                    useCallback最大的价值在于配合React.memo使用，避免子组件不必要的重新渲染
+                                </p>
                                 {codeData.withReactMemo && (
                                     <CodeHighlight
                                         code={codeData.withReactMemo.code}
@@ -200,7 +201,9 @@ const UseCallbackDetail: React.FC = () => {
                             <CheckCircleOutlined className={styles.practice_icon} />
                             <div>
                                 <h4>3. 避免在循环中使用</h4>
-                                <p>不要在map等循环中直接使用useCallback，考虑将逻辑提取到子组件中</p>
+                                <p>
+                                    不要在map等循环中直接使用useCallback，考虑将逻辑提取到子组件中
+                                </p>
                             </div>
                         </div>
 
@@ -213,8 +216,6 @@ const UseCallbackDetail: React.FC = () => {
                         </div>
                     </div>
                 </Card>
-
-
             </div>
         </div>
     )

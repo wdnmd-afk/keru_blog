@@ -1,17 +1,17 @@
-import React from 'react'
-import { Card, Tag, Row, Col } from 'antd'
-import { useNavigate } from 'react-router-dom'
-import {
-    CloudOutlined,
-    RocketOutlined,
-    BugOutlined,
-    ThunderboltOutlined,
-    ApiOutlined,
-    ToolOutlined,
-    DatabaseOutlined,
-    SafetyOutlined
-} from '@ant-design/icons'
 import styles from '@/styles/reactDetail.module.scss'
+import {
+    ApiOutlined,
+    BugOutlined,
+    CloudOutlined,
+    DatabaseOutlined,
+    RocketOutlined,
+    SafetyOutlined,
+    ThunderboltOutlined,
+    ToolOutlined,
+} from '@ant-design/icons'
+import { Card, Col, Row, Tag } from 'antd'
+import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 // Docker技术卡片数据
 const dockerTopics = [
@@ -22,7 +22,7 @@ const dockerTopics = [
         icon: <CloudOutlined />,
         color: '#2496ed',
         difficulty: '简单',
-        category: '基础概念'
+        category: '基础概念',
     },
     {
         id: 'dockerfile',
@@ -31,7 +31,7 @@ const dockerTopics = [
         icon: <ToolOutlined />,
         color: '#0db7ed',
         difficulty: '中等',
-        category: '镜像构建'
+        category: '镜像构建',
     },
     {
         id: 'docker-compose',
@@ -40,7 +40,7 @@ const dockerTopics = [
         icon: <ApiOutlined />,
         color: '#326ce5',
         difficulty: '中等',
-        category: '容器编排'
+        category: '容器编排',
     },
     {
         id: 'networking',
@@ -49,7 +49,7 @@ const dockerTopics = [
         icon: <DatabaseOutlined />,
         color: '#ff6b6b',
         difficulty: '中等',
-        category: '网络'
+        category: '网络',
     },
     {
         id: 'volumes',
@@ -58,7 +58,7 @@ const dockerTopics = [
         icon: <SafetyOutlined />,
         color: '#27ae60',
         difficulty: '中等',
-        category: '数据存储'
+        category: '数据存储',
     },
     {
         id: 'security',
@@ -67,7 +67,7 @@ const dockerTopics = [
         icon: <BugOutlined />,
         color: '#e74c3c',
         difficulty: '高级',
-        category: '安全'
+        category: '安全',
     },
     {
         id: 'optimization',
@@ -76,7 +76,7 @@ const dockerTopics = [
         icon: <ThunderboltOutlined />,
         color: '#f39c12',
         difficulty: '高级',
-        category: '性能优化'
+        category: '性能优化',
     },
     {
         id: 'kubernetes',
@@ -85,8 +85,8 @@ const dockerTopics = [
         icon: <RocketOutlined />,
         color: '#326ce5',
         difficulty: '高级',
-        category: '容器编排'
-    }
+        category: '容器编排',
+    },
 ]
 
 const DockerDetail: React.FC = () => {
@@ -98,10 +98,14 @@ const DockerDetail: React.FC = () => {
 
     const getDifficultyColor = (difficulty: string) => {
         switch (difficulty) {
-            case '简单': return 'green'
-            case '中等': return 'orange'
-            case '高级': return 'red'
-            default: return 'blue'
+            case '简单':
+                return 'green'
+            case '中等':
+                return 'orange'
+            case '高级':
+                return 'red'
+            default:
+                return 'blue'
         }
     }
 
@@ -125,7 +129,7 @@ const DockerDetail: React.FC = () => {
 
             <div className={styles.topics_grid}>
                 <Row gutter={[24, 24]}>
-                    {dockerTopics.map(topic => (
+                    {dockerTopics.map((topic) => (
                         <Col xs={24} sm={12} lg={8} xl={6} key={topic.id}>
                             <Card
                                 hoverable
@@ -160,8 +164,6 @@ const DockerDetail: React.FC = () => {
                     ))}
                 </Row>
             </div>
-
-
         </div>
     )
 }

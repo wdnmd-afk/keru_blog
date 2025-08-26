@@ -1,7 +1,7 @@
-import React, { useEffect, useRef, useState } from 'react'
+import '@/styles/antd.scss'
 import { Pagination, PaginationProps, Table, TableProps } from 'antd'
 import { ColumnProps } from 'antd/es/table'
-import '@/styles/antd.scss'
+import React, { useEffect, useRef, useState } from 'react'
 
 interface IKTableProps extends TableProps<any> {
     // 你可以在这里扩展额外的属性，像分页、数据加载等

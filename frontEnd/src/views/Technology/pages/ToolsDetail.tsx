@@ -1,17 +1,17 @@
-import React from 'react'
-import { Card, Tag, Row, Col } from 'antd'
-import { useNavigate } from 'react-router-dom'
+import styles from '@/styles/reactDetail.module.scss'
 import {
-    ToolOutlined,
-    RocketOutlined,
-    BugOutlined,
-    ThunderboltOutlined,
     ApiOutlined,
+    BugOutlined,
     CodeOutlined,
     ConsoleSqlOutlined,
-    SafetyOutlined
+    RocketOutlined,
+    SafetyOutlined,
+    ThunderboltOutlined,
+    ToolOutlined,
 } from '@ant-design/icons'
-import styles from '@/styles/reactDetail.module.scss'
+import { Card, Col, Row, Tag } from 'antd'
+import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 // 开发工具技术卡片数据
 const toolsTopics = [
@@ -22,7 +22,7 @@ const toolsTopics = [
         icon: <CodeOutlined />,
         color: '#007acc',
         difficulty: '简单',
-        category: '代码编辑器'
+        category: '代码编辑器',
     },
     {
         id: 'webpack',
@@ -31,7 +31,7 @@ const toolsTopics = [
         icon: <ToolOutlined />,
         color: '#8dd6f9',
         difficulty: '中等',
-        category: '构建工具'
+        category: '构建工具',
     },
     {
         id: 'vite',
@@ -40,7 +40,7 @@ const toolsTopics = [
         icon: <ThunderboltOutlined />,
         color: '#646cff',
         difficulty: '中等',
-        category: '构建工具'
+        category: '构建工具',
     },
     {
         id: 'eslint-prettier',
@@ -49,7 +49,7 @@ const toolsTopics = [
         icon: <BugOutlined />,
         color: '#4b32c3',
         difficulty: '简单',
-        category: '代码质量'
+        category: '代码质量',
     },
     {
         id: 'chrome-devtools',
@@ -58,7 +58,7 @@ const toolsTopics = [
         icon: <SafetyOutlined />,
         color: '#4285f4',
         difficulty: '中等',
-        category: '调试工具'
+        category: '调试工具',
     },
     {
         id: 'postman',
@@ -67,7 +67,7 @@ const toolsTopics = [
         icon: <ApiOutlined />,
         color: '#ff6c37',
         difficulty: '简单',
-        category: 'API工具'
+        category: 'API工具',
     },
     {
         id: 'terminal',
@@ -76,7 +76,7 @@ const toolsTopics = [
         icon: <ConsoleSqlOutlined />,
         color: '#000000',
         difficulty: '中等',
-        category: '命令行'
+        category: '命令行',
     },
     {
         id: 'productivity',
@@ -85,8 +85,8 @@ const toolsTopics = [
         icon: <RocketOutlined />,
         color: '#ff6b6b',
         difficulty: '简单',
-        category: '效率提升'
-    }
+        category: '效率提升',
+    },
 ]
 
 const ToolsDetail: React.FC = () => {
@@ -98,10 +98,14 @@ const ToolsDetail: React.FC = () => {
 
     const getDifficultyColor = (difficulty: string) => {
         switch (difficulty) {
-            case '简单': return 'green'
-            case '中等': return 'orange'
-            case '高级': return 'red'
-            default: return 'blue'
+            case '简单':
+                return 'green'
+            case '中等':
+                return 'orange'
+            case '高级':
+                return 'red'
+            default:
+                return 'blue'
         }
     }
 
@@ -125,7 +129,7 @@ const ToolsDetail: React.FC = () => {
 
             <div className={styles.topics_grid}>
                 <Row gutter={[24, 24]}>
-                    {toolsTopics.map(topic => (
+                    {toolsTopics.map((topic) => (
                         <Col xs={24} sm={12} lg={8} xl={6} key={topic.id}>
                             <Card
                                 hoverable
@@ -160,8 +164,6 @@ const ToolsDetail: React.FC = () => {
                     ))}
                 </Row>
             </div>
-
-
         </div>
     )
 }

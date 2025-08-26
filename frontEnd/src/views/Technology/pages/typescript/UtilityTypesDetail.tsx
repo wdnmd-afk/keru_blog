@@ -1,16 +1,10 @@
-import React from 'react'
-import { Card, Tag, Alert, Divider, Button } from 'antd'
-import { useNavigate } from 'react-router-dom'
-import {
-    ArrowLeftOutlined,
-    ToolOutlined,
-    WarningOutlined,
-    CheckCircleOutlined,
-    BugOutlined
-} from '@ant-design/icons'
 import CodeHighlight from '@/components/CodeHighlight'
 import { useCodeData } from '@/hooks/useCodeData'
 import styles from '@/styles/topicDetail.module.scss'
+import { ArrowLeftOutlined, CheckCircleOutlined, ToolOutlined } from '@ant-design/icons'
+import { Alert, Button, Card, Tag } from 'antd'
+import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const UtilityTypesDetail: React.FC = () => {
     const navigate = useNavigate()
@@ -65,7 +59,10 @@ const UtilityTypesDetail: React.FC = () => {
                 <Card title="🛠️ 工具类型概述" className={styles.content_card}>
                     <div className={styles.concept_content}>
                         <h3>什么是工具类型？</h3>
-                        <p>工具类型（Utility Types）是TypeScript内置的一组类型操作符，用于对现有类型进行转换和操作，帮助开发者更灵活地处理类型定义。</p>
+                        <p>
+                            工具类型（Utility
+                            Types）是TypeScript内置的一组类型操作符，用于对现有类型进行转换和操作，帮助开发者更灵活地处理类型定义。
+                        </p>
 
                         <h3>常用工具类型分类</h3>
                         <div className={styles.concepts_grid}>

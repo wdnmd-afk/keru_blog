@@ -1,17 +1,16 @@
-import React from 'react'
-import { Card, Tag, Row, Col } from 'antd'
-import { useNavigate } from 'react-router-dom'
+import styles from '@/styles/reactDetail.module.scss'
 import {
     BugOutlined,
-    SettingOutlined,
-    FunctionOutlined,
-    ClockCircleOutlined,
-    PieChartOutlined,
     CheckCircleOutlined,
+    ClockCircleOutlined,
     ExperimentOutlined,
-    ThunderboltOutlined
+    FunctionOutlined,
+    PieChartOutlined,
+    SettingOutlined,
 } from '@ant-design/icons'
-import styles from '@/styles/reactDetail.module.scss'
+import { Card, Col, Row, Tag } from 'antd'
+import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 // Jest 技术卡片数据
 const jestTopics = [
@@ -22,7 +21,7 @@ const jestTopics = [
         icon: <SettingOutlined />,
         color: '#1890ff',
         difficulty: '简单',
-        category: '基础配置'
+        category: '基础配置',
     },
     {
         id: 'unit-testing',
@@ -31,7 +30,7 @@ const jestTopics = [
         icon: <FunctionOutlined />,
         color: '#52c41a',
         difficulty: '简单',
-        category: '测试编写'
+        category: '测试编写',
     },
     {
         id: 'mocking',
@@ -40,7 +39,7 @@ const jestTopics = [
         icon: <ExperimentOutlined />,
         color: '#722ed1',
         difficulty: '中等',
-        category: '高级功能'
+        category: '高级功能',
     },
     {
         id: 'async-testing',
@@ -49,7 +48,7 @@ const jestTopics = [
         icon: <ClockCircleOutlined />,
         color: '#fa8c16',
         difficulty: '中等',
-        category: '异步处理'
+        category: '异步处理',
     },
     {
         id: 'coverage',
@@ -58,7 +57,7 @@ const jestTopics = [
         icon: <PieChartOutlined />,
         color: '#13c2c2',
         difficulty: '中等',
-        category: '质量保证'
+        category: '质量保证',
     },
     {
         id: 'best-practices',
@@ -67,8 +66,8 @@ const jestTopics = [
         icon: <CheckCircleOutlined />,
         color: '#f5222d',
         difficulty: '高级',
-        category: '实践指南'
-    }
+        category: '实践指南',
+    },
 ]
 
 const JestDetail: React.FC = () => {
@@ -80,10 +79,14 @@ const JestDetail: React.FC = () => {
 
     const getDifficultyColor = (difficulty: string) => {
         switch (difficulty) {
-            case '简单': return 'green'
-            case '中等': return 'orange'
-            case '高级': return 'red'
-            default: return 'blue'
+            case '简单':
+                return 'green'
+            case '中等':
+                return 'orange'
+            case '高级':
+                return 'red'
+            default:
+                return 'blue'
         }
     }
 
@@ -107,7 +110,7 @@ const JestDetail: React.FC = () => {
 
             <div className={styles.topics_grid}>
                 <Row gutter={[24, 24]}>
-                    {jestTopics.map(topic => (
+                    {jestTopics.map((topic) => (
                         <Col xs={24} sm={12} lg={8} xl={6} key={topic.id}>
                             <Card
                                 hoverable

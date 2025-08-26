@@ -1,17 +1,17 @@
-import React from 'react'
-import { Card, Tag, Row, Col } from 'antd'
-import { useNavigate } from 'react-router-dom'
-import {
-    CodeOutlined,
-    RocketOutlined,
-    BugOutlined,
-    ThunderboltOutlined,
-    ApiOutlined,
-    ToolOutlined,
-    DatabaseOutlined,
-    SafetyOutlined
-} from '@ant-design/icons'
 import styles from '@/styles/reactDetail.module.scss'
+import {
+    ApiOutlined,
+    BugOutlined,
+    CodeOutlined,
+    DatabaseOutlined,
+    RocketOutlined,
+    SafetyOutlined,
+    ThunderboltOutlined,
+    ToolOutlined,
+} from '@ant-design/icons'
+import { Card, Col, Row, Tag } from 'antd'
+import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 // Vue.js技术卡片数据
 const vueTopics = [
@@ -22,7 +22,7 @@ const vueTopics = [
         icon: <RocketOutlined />,
         color: '#4fc08d',
         difficulty: '中等',
-        category: 'Vue 3'
+        category: 'Vue 3',
     },
     {
         id: 'reactivity',
@@ -31,7 +31,7 @@ const vueTopics = [
         icon: <ThunderboltOutlined />,
         color: '#42b883',
         difficulty: '高级',
-        category: '核心原理'
+        category: '核心原理',
     },
     {
         id: 'vue-router',
@@ -40,7 +40,7 @@ const vueTopics = [
         icon: <ApiOutlined />,
         color: '#35495e',
         difficulty: '中等',
-        category: '生态系统'
+        category: '生态系统',
     },
     {
         id: 'vuex-pinia',
@@ -49,7 +49,7 @@ const vueTopics = [
         icon: <DatabaseOutlined />,
         color: '#ff6b6b',
         difficulty: '中等',
-        category: '状态管理'
+        category: '状态管理',
     },
     {
         id: 'performance',
@@ -58,7 +58,7 @@ const vueTopics = [
         icon: <ThunderboltOutlined />,
         color: '#f39c12',
         difficulty: '高级',
-        category: '性能优化'
+        category: '性能优化',
     },
     {
         id: 'testing',
@@ -67,7 +67,7 @@ const vueTopics = [
         icon: <BugOutlined />,
         color: '#9b59b6',
         difficulty: '中等',
-        category: '测试'
+        category: '测试',
     },
     {
         id: 'ssr',
@@ -76,7 +76,7 @@ const vueTopics = [
         icon: <SafetyOutlined />,
         color: '#e74c3c',
         difficulty: '高级',
-        category: '服务端渲染'
+        category: '服务端渲染',
     },
     {
         id: 'migration',
@@ -85,8 +85,8 @@ const vueTopics = [
         icon: <ToolOutlined />,
         color: '#3498db',
         difficulty: '中等',
-        category: '迁移升级'
-    }
+        category: '迁移升级',
+    },
 ]
 
 const VueDetail: React.FC = () => {
@@ -98,10 +98,14 @@ const VueDetail: React.FC = () => {
 
     const getDifficultyColor = (difficulty: string) => {
         switch (difficulty) {
-            case '简单': return 'green'
-            case '中等': return 'orange'
-            case '高级': return 'red'
-            default: return 'blue'
+            case '简单':
+                return 'green'
+            case '中等':
+                return 'orange'
+            case '高级':
+                return 'red'
+            default:
+                return 'blue'
         }
     }
 
@@ -125,7 +129,7 @@ const VueDetail: React.FC = () => {
 
             <div className={styles.topics_grid}>
                 <Row gutter={[24, 24]}>
-                    {vueTopics.map(topic => (
+                    {vueTopics.map((topic) => (
                         <Col xs={24} sm={12} lg={8} xl={6} key={topic.id}>
                             <Card
                                 hoverable
@@ -160,8 +164,6 @@ const VueDetail: React.FC = () => {
                     ))}
                 </Row>
             </div>
-
-
         </div>
     )
 }

@@ -1,16 +1,10 @@
-import React from 'react'
-import { Card, Tag, Alert, Divider, Button } from 'antd'
-import { useNavigate } from 'react-router-dom'
-import {
-    ArrowLeftOutlined,
-    FunctionOutlined,
-    WarningOutlined,
-    CheckCircleOutlined,
-    BugOutlined
-} from '@ant-design/icons'
 import CodeHighlight from '@/components/CodeHighlight'
 import { useCodeData } from '@/hooks/useCodeData'
 import styles from '@/styles/topicDetail.module.scss'
+import { ArrowLeftOutlined, FunctionOutlined } from '@ant-design/icons'
+import { Alert, Button, Card, Divider, Tag } from 'antd'
+import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const UnitTestingDetail: React.FC = () => {
     const navigate = useNavigate()
@@ -81,11 +75,21 @@ const UnitTestingDetail: React.FC = () => {
 
                         <h3>单元测试的价值</h3>
                         <ul>
-                            <li><strong>早期发现问题</strong>：在开发阶段就发现和修复bug</li>
-                            <li><strong>重构保障</strong>：为代码重构提供安全网</li>
-                            <li><strong>文档作用</strong>：测试用例是最好的代码文档</li>
-                            <li><strong>设计改进</strong>：促进更好的代码设计</li>
-                            <li><strong>回归测试</strong>：防止新功能破坏现有功能</li>
+                            <li>
+                                <strong>早期发现问题</strong>：在开发阶段就发现和修复bug
+                            </li>
+                            <li>
+                                <strong>重构保障</strong>：为代码重构提供安全网
+                            </li>
+                            <li>
+                                <strong>文档作用</strong>：测试用例是最好的代码文档
+                            </li>
+                            <li>
+                                <strong>设计改进</strong>：促进更好的代码设计
+                            </li>
+                            <li>
+                                <strong>回归测试</strong>：防止新功能破坏现有功能
+                            </li>
                         </ul>
                     </div>
                 </Card>
@@ -101,7 +105,7 @@ const UnitTestingDetail: React.FC = () => {
                                 title={codeData.basicFunctionTesting.title}
                             />
                         )}
-                        
+
                         <h3>边界条件测试</h3>
                         {codeData.boundaryTesting && (
                             <CodeHighlight
@@ -124,7 +128,7 @@ const UnitTestingDetail: React.FC = () => {
                                 title={codeData.classTesting.title}
                             />
                         )}
-                        
+
                         <h3>状态测试</h3>
                         {codeData.stateTesting && (
                             <CodeHighlight
@@ -147,7 +151,7 @@ const UnitTestingDetail: React.FC = () => {
                                 title={codeData.exceptionTesting.title}
                             />
                         )}
-                        
+
                         <h3>错误处理测试</h3>
                         {codeData.errorHandling && (
                             <CodeHighlight
@@ -170,7 +174,7 @@ const UnitTestingDetail: React.FC = () => {
                                 title={codeData.parameterizedTesting.title}
                             />
                         )}
-                        
+
                         <h3>测试用例生成</h3>
                         {codeData.testCaseGeneration && (
                             <CodeHighlight
@@ -193,7 +197,7 @@ const UnitTestingDetail: React.FC = () => {
                                 title={codeData.testGrouping.title}
                             />
                         )}
-                        
+
                         <h3>测试生命周期</h3>
                         {codeData.testLifecycle && (
                             <CodeHighlight
@@ -212,7 +216,9 @@ const UnitTestingDetail: React.FC = () => {
                             message="测试编写原则"
                             description={
                                 <ul>
-                                    <li>遵循 AAA 模式：Arrange（准备）、Act（执行）、Assert（断言）</li>
+                                    <li>
+                                        遵循 AAA 模式：Arrange（准备）、Act（执行）、Assert（断言）
+                                    </li>
                                     <li>一个测试只验证一个行为</li>
                                     <li>测试名称要清晰描述测试场景</li>
                                     <li>测试应该独立且可重复执行</li>
@@ -230,11 +236,21 @@ const UnitTestingDetail: React.FC = () => {
                             message="测试质量保证"
                             description={
                                 <ul>
-                                    <li><strong>覆盖率目标</strong>：核心逻辑达到90%以上覆盖率</li>
-                                    <li><strong>测试数据</strong>：使用有意义的测试数据</li>
-                                    <li><strong>断言明确</strong>：使用最具体的断言方法</li>
-                                    <li><strong>失败信息</strong>：提供清晰的失败信息</li>
-                                    <li><strong>测试维护</strong>：定期更新和重构测试代码</li>
+                                    <li>
+                                        <strong>覆盖率目标</strong>：核心逻辑达到90%以上覆盖率
+                                    </li>
+                                    <li>
+                                        <strong>测试数据</strong>：使用有意义的测试数据
+                                    </li>
+                                    <li>
+                                        <strong>断言明确</strong>：使用最具体的断言方法
+                                    </li>
+                                    <li>
+                                        <strong>失败信息</strong>：提供清晰的失败信息
+                                    </li>
+                                    <li>
+                                        <strong>测试维护</strong>：定期更新和重构测试代码
+                                    </li>
                                 </ul>
                             }
                             type="success"
@@ -247,11 +263,21 @@ const UnitTestingDetail: React.FC = () => {
                             message="常见陷阱避免"
                             description={
                                 <ul>
-                                    <li><strong>避免测试实现细节</strong>：测试行为而非实现</li>
-                                    <li><strong>避免脆弱测试</strong>：减少对外部依赖的耦合</li>
-                                    <li><strong>避免重复测试</strong>：不要测试框架或库的功能</li>
-                                    <li><strong>避免复杂测试</strong>：保持测试简单易懂</li>
-                                    <li><strong>避免忽略失败</strong>：及时修复失败的测试</li>
+                                    <li>
+                                        <strong>避免测试实现细节</strong>：测试行为而非实现
+                                    </li>
+                                    <li>
+                                        <strong>避免脆弱测试</strong>：减少对外部依赖的耦合
+                                    </li>
+                                    <li>
+                                        <strong>避免重复测试</strong>：不要测试框架或库的功能
+                                    </li>
+                                    <li>
+                                        <strong>避免复杂测试</strong>：保持测试简单易懂
+                                    </li>
+                                    <li>
+                                        <strong>避免忽略失败</strong>：及时修复失败的测试
+                                    </li>
                                 </ul>
                             }
                             type="warning"

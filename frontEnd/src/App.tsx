@@ -1,6 +1,6 @@
 import AppRoutes from '@/routes/index.tsx'
-import React from 'react'
 import { ConfigProvider, ThemeConfig } from 'antd'
+import React from 'react'
 
 const App: React.FC = () => {
     const theme: Partial<ThemeConfig> = {

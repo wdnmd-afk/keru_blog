@@ -1,17 +1,17 @@
-import React from 'react'
-import { Card, Tag, Row, Col } from 'antd'
-import { useNavigate } from 'react-router-dom'
-import {
-    CodeOutlined,
-    RocketOutlined,
-    BugOutlined,
-    ThunderboltOutlined,
-    ApiOutlined,
-    ToolOutlined,
-    DatabaseOutlined,
-    SafetyOutlined
-} from '@ant-design/icons'
 import styles from '@/styles/reactDetail.module.scss'
+import {
+    ApiOutlined,
+    BugOutlined,
+    CodeOutlined,
+    DatabaseOutlined,
+    RocketOutlined,
+    SafetyOutlined,
+    ThunderboltOutlined,
+    ToolOutlined,
+} from '@ant-design/icons'
+import { Card, Col, Row, Tag } from 'antd'
+import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 // TypeScript技术卡片数据
 const typescriptTopics = [
@@ -22,7 +22,7 @@ const typescriptTopics = [
         icon: <CodeOutlined />,
         color: '#3178c6',
         difficulty: '简单',
-        category: '基础语法'
+        category: '基础语法',
     },
     {
         id: 'advanced-types',
@@ -31,7 +31,7 @@ const typescriptTopics = [
         icon: <RocketOutlined />,
         color: '#2b7489',
         difficulty: '高级',
-        category: '高级特性'
+        category: '高级特性',
     },
     {
         id: 'generics',
@@ -40,7 +40,7 @@ const typescriptTopics = [
         icon: <ThunderboltOutlined />,
         color: '#f39c12',
         difficulty: '中等',
-        category: '泛型'
+        category: '泛型',
     },
     {
         id: 'decorators',
@@ -49,7 +49,7 @@ const typescriptTopics = [
         icon: <ApiOutlined />,
         color: '#e74c3c',
         difficulty: '高级',
-        category: '装饰器'
+        category: '装饰器',
     },
     {
         id: 'modules',
@@ -58,7 +58,7 @@ const typescriptTopics = [
         icon: <DatabaseOutlined />,
         color: '#9b59b6',
         difficulty: '中等',
-        category: '模块化'
+        category: '模块化',
     },
     {
         id: 'utility-types',
@@ -67,7 +67,7 @@ const typescriptTopics = [
         icon: <ToolOutlined />,
         color: '#27ae60',
         difficulty: '中等',
-        category: '工具类型'
+        category: '工具类型',
     },
     {
         id: 'react-typescript',
@@ -76,7 +76,7 @@ const typescriptTopics = [
         icon: <SafetyOutlined />,
         color: '#61dafb',
         difficulty: '中等',
-        category: 'React集成'
+        category: 'React集成',
     },
     {
         id: 'configuration',
@@ -85,8 +85,8 @@ const typescriptTopics = [
         icon: <BugOutlined />,
         color: '#34495e',
         difficulty: '简单',
-        category: '配置'
-    }
+        category: '配置',
+    },
 ]
 
 const TypeScriptDetail: React.FC = () => {
@@ -98,10 +98,14 @@ const TypeScriptDetail: React.FC = () => {
 
     const getDifficultyColor = (difficulty: string) => {
         switch (difficulty) {
-            case '简单': return 'green'
-            case '中等': return 'orange'
-            case '高级': return 'red'
-            default: return 'blue'
+            case '简单':
+                return 'green'
+            case '中等':
+                return 'orange'
+            case '高级':
+                return 'red'
+            default:
+                return 'blue'
         }
     }
 
@@ -125,7 +129,7 @@ const TypeScriptDetail: React.FC = () => {
 
             <div className={styles.topics_grid}>
                 <Row gutter={[24, 24]}>
-                    {typescriptTopics.map(topic => (
+                    {typescriptTopics.map((topic) => (
                         <Col xs={24} sm={12} lg={8} xl={6} key={topic.id}>
                             <Card
                                 hoverable
@@ -160,8 +164,6 @@ const TypeScriptDetail: React.FC = () => {
                     ))}
                 </Row>
             </div>
-
-
         </div>
     )
 }

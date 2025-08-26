@@ -1,16 +1,10 @@
-import React from 'react'
-import { Card, Tag, Alert, Divider, Button } from 'antd'
-import { useNavigate } from 'react-router-dom'
-import {
-    ArrowLeftOutlined,
-    CloudOutlined,
-    WarningOutlined,
-    CheckCircleOutlined,
-    BugOutlined
-} from '@ant-design/icons'
 import CodeHighlight from '@/components/CodeHighlight'
 import { useCodeData } from '@/hooks/useCodeData'
 import styles from '@/styles/topicDetail.module.scss'
+import { ArrowLeftOutlined, CloudOutlined } from '@ant-design/icons'
+import { Alert, Button, Card, Divider, Tag } from 'antd'
+import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const DockerComposeDetail: React.FC = () => {
     const navigate = useNavigate()
@@ -31,14 +25,16 @@ const DockerComposeDetail: React.FC = () => {
     return (
         <div className={styles.container}>
             <div className={styles.header}>
-                <Button 
-                    icon={<ArrowLeftOutlined />} 
+                <Button
+                    icon={<ArrowLeftOutlined />}
                     onClick={handleBack}
                     className={styles.back_button}
                 >
                     返回Docker
                 </Button>
-                <h1><CloudOutlined /> Docker Compose</h1>
+                <h1>
+                    <CloudOutlined /> Docker Compose
+                </h1>
                 <p>使用Docker Compose管理多容器应用程序</p>
             </div>
 
@@ -63,10 +59,18 @@ const DockerComposeDetail: React.FC = () => {
 
                         <h3>使用场景</h3>
                         <ul>
-                            <li><strong>开发环境</strong>：快速搭建开发环境</li>
-                            <li><strong>测试环境</strong>：自动化测试环境部署</li>
-                            <li><strong>单机部署</strong>：简单的生产环境部署</li>
-                            <li><strong>微服务</strong>：管理微服务架构</li>
+                            <li>
+                                <strong>开发环境</strong>：快速搭建开发环境
+                            </li>
+                            <li>
+                                <strong>测试环境</strong>：自动化测试环境部署
+                            </li>
+                            <li>
+                                <strong>单机部署</strong>：简单的生产环境部署
+                            </li>
+                            <li>
+                                <strong>微服务</strong>：管理微服务架构
+                            </li>
                         </ul>
                     </div>
                 </Card>
@@ -166,7 +170,7 @@ const DockerComposeDetail: React.FC = () => {
                                 title={codeData.webAppExample.title}
                             />
                         )}
-                        
+
                         <h3>微服务架构示例</h3>
                         {codeData.microservicesExample && (
                             <CodeHighlight
@@ -189,7 +193,7 @@ const DockerComposeDetail: React.FC = () => {
                                 title={codeData.healthChecks.title}
                             />
                         )}
-                        
+
                         <h3>资源限制与安全配置</h3>
                         {codeData.resourceLimits && (
                             <CodeHighlight
@@ -226,11 +230,21 @@ const DockerComposeDetail: React.FC = () => {
                             message="生产环境注意事项"
                             description={
                                 <ul>
-                                    <li><strong>安全配置</strong>：使用secrets管理敏感信息</li>
-                                    <li><strong>网络隔离</strong>：创建自定义网络隔离服务</li>
-                                    <li><strong>日志管理</strong>：配置合适的日志驱动</li>
-                                    <li><strong>监控告警</strong>：集成监控和告警系统</li>
-                                    <li><strong>备份策略</strong>：制定数据备份和恢复策略</li>
+                                    <li>
+                                        <strong>安全配置</strong>：使用secrets管理敏感信息
+                                    </li>
+                                    <li>
+                                        <strong>网络隔离</strong>：创建自定义网络隔离服务
+                                    </li>
+                                    <li>
+                                        <strong>日志管理</strong>：配置合适的日志驱动
+                                    </li>
+                                    <li>
+                                        <strong>监控告警</strong>：集成监控和告警系统
+                                    </li>
+                                    <li>
+                                        <strong>备份策略</strong>：制定数据备份和恢复策略
+                                    </li>
                                 </ul>
                             }
                             type="warning"
@@ -243,11 +257,21 @@ const DockerComposeDetail: React.FC = () => {
                             message="性能优化建议"
                             description={
                                 <ul>
-                                    <li><strong>镜像优化</strong>：使用多阶段构建减小镜像大小</li>
-                                    <li><strong>缓存利用</strong>：合理利用Docker层缓存</li>
-                                    <li><strong>并行启动</strong>：优化服务启动顺序</li>
-                                    <li><strong>资源分配</strong>：根据实际需求分配资源</li>
-                                    <li><strong>网络优化</strong>：使用合适的网络驱动</li>
+                                    <li>
+                                        <strong>镜像优化</strong>：使用多阶段构建减小镜像大小
+                                    </li>
+                                    <li>
+                                        <strong>缓存利用</strong>：合理利用Docker层缓存
+                                    </li>
+                                    <li>
+                                        <strong>并行启动</strong>：优化服务启动顺序
+                                    </li>
+                                    <li>
+                                        <strong>资源分配</strong>：根据实际需求分配资源
+                                    </li>
+                                    <li>
+                                        <strong>网络优化</strong>：使用合适的网络驱动
+                                    </li>
                                 </ul>
                             }
                             type="success"

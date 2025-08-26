@@ -1,21 +1,15 @@
-import React from 'react'
-import { Card, Tag, Alert, Divider, Button } from 'antd'
-import { useNavigate } from 'react-router-dom'
-import { 
-    ArrowLeftOutlined, 
-    DatabaseOutlined, 
-    WarningOutlined,
-    CheckCircleOutlined,
-    BugOutlined
-} from '@ant-design/icons'
 import CodeHighlight from '@/components/CodeHighlight'
 import { useCodeData } from '@/hooks/useCodeData'
 import styles from '@/styles/topicDetail.module.scss'
+import { ArrowLeftOutlined, DatabaseOutlined } from '@ant-design/icons'
+import { Alert, Button, Card, Divider } from 'antd'
+import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const ModulesDetail: React.FC = () => {
     const navigate = useNavigate()
     const { codeData, loading, error } = useCodeData('NodeJS', 'modules')
-    
+
     const handleBack = () => {
         navigate('/technology/nodejs')
     }
@@ -31,14 +25,16 @@ const ModulesDetail: React.FC = () => {
     return (
         <div className={styles.container}>
             <div className={styles.header}>
-                <Button 
-                    icon={<ArrowLeftOutlined />} 
+                <Button
+                    icon={<ArrowLeftOutlined />}
                     onClick={handleBack}
                     className={styles.back_button}
                 >
                     返回NodeJS
                 </Button>
-                <h1><DatabaseOutlined /> Node.js 模块系统</h1>
+                <h1>
+                    <DatabaseOutlined /> Node.js 模块系统
+                </h1>
                 <p>深入了解Node.js的模块系统，包括CommonJS、ES Modules和包管理</p>
             </div>
 
@@ -54,11 +50,21 @@ const ModulesDetail: React.FC = () => {
 
                         <h3>模块系统的优势</h3>
                         <ul>
-                            <li><strong>代码复用</strong>：避免重复编写相同的代码</li>
-                            <li><strong>命名空间</strong>：避免全局变量污染</li>
-                            <li><strong>依赖管理</strong>：明确模块间的依赖关系</li>
-                            <li><strong>按需加载</strong>：只加载需要的功能</li>
-                            <li><strong>团队协作</strong>：便于多人协作开发</li>
+                            <li>
+                                <strong>代码复用</strong>：避免重复编写相同的代码
+                            </li>
+                            <li>
+                                <strong>命名空间</strong>：避免全局变量污染
+                            </li>
+                            <li>
+                                <strong>依赖管理</strong>：明确模块间的依赖关系
+                            </li>
+                            <li>
+                                <strong>按需加载</strong>：只加载需要的功能
+                            </li>
+                            <li>
+                                <strong>团队协作</strong>：便于多人协作开发
+                            </li>
                         </ul>
                     </div>
                 </Card>
@@ -74,7 +80,7 @@ const ModulesDetail: React.FC = () => {
                                 title={codeData.commonjsBasic.title}
                             />
                         )}
-                        
+
                         <h3>ES Modules (ESM) - 现代模块系统</h3>
                         {codeData.esModules && (
                             <CodeHighlight

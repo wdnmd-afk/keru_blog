@@ -1,17 +1,16 @@
-import React from 'react'
-import { Card, Tag, Alert, Divider, Button } from 'antd'
-import { useNavigate } from 'react-router-dom'
-import {
-    ArrowLeftOutlined,
-    DatabaseOutlined,
-    WarningOutlined,
-    CheckCircleOutlined,
-    BugOutlined,
-    RocketOutlined
-} from '@ant-design/icons'
 import CodeHighlight from '@/components/CodeHighlight'
 import { useCodeData } from '@/hooks/useCodeData'
 import styles from '@/styles/topicDetail.module.scss'
+import {
+    ArrowLeftOutlined,
+    BugOutlined,
+    CheckCircleOutlined,
+    DatabaseOutlined,
+    WarningOutlined,
+} from '@ant-design/icons'
+import { Alert, Button, Card, Tag } from 'antd'
+import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const UseMemoDetail: React.FC = () => {
     const navigate = useNavigate()
@@ -66,7 +65,9 @@ const UseMemoDetail: React.FC = () => {
                 <Card title="📚 基础概念" className={styles.content_card}>
                     <div className={styles.concept_content}>
                         <h3>什么是useMemo？</h3>
-                        <p>useMemo是React提供的一个Hook，用于缓存计算结果。它会在依赖项不变的情况下返回缓存的值，避免在每次渲染时重复执行昂贵的计算。</p>
+                        <p>
+                            useMemo是React提供的一个Hook，用于缓存计算结果。它会在依赖项不变的情况下返回缓存的值，避免在每次渲染时重复执行昂贵的计算。
+                        </p>
 
                         <h3>基本语法</h3>
                         {codeData.basicUsage && (
@@ -78,7 +79,9 @@ const UseMemoDetail: React.FC = () => {
                         )}
 
                         <h3>工作原理</h3>
-                        <p>useMemo会比较依赖数组中的值，如果依赖项没有变化，就返回上次缓存的计算结果；如果依赖项发生变化，则重新执行计算函数并缓存新的结果。</p>
+                        <p>
+                            useMemo会比较依赖数组中的值，如果依赖项没有变化，就返回上次缓存的计算结果；如果依赖项发生变化，则重新执行计算函数并缓存新的结果。
+                        </p>
                     </div>
                 </Card>
 
@@ -177,7 +180,9 @@ const UseMemoDetail: React.FC = () => {
                             <CheckCircleOutlined className={styles.practice_icon} />
                             <div>
                                 <h4>1. 只缓存昂贵计算</h4>
-                                <p>只对真正昂贵的计算使用useMemo，简单计算的缓存成本可能比计算本身更高</p>
+                                <p>
+                                    只对真正昂贵的计算使用useMemo，简单计算的缓存成本可能比计算本身更高
+                                </p>
                             </div>
                         </div>
 
@@ -185,7 +190,9 @@ const UseMemoDetail: React.FC = () => {
                             <CheckCircleOutlined className={styles.practice_icon} />
                             <div>
                                 <h4>2. 配合React.memo使用</h4>
-                                <p>useMemo常用于稳定传递给子组件的props，配合React.memo避免不必要的重新渲染</p>
+                                <p>
+                                    useMemo常用于稳定传递给子组件的props，配合React.memo避免不必要的重新渲染
+                                </p>
                             </div>
                         </div>
 
@@ -193,7 +200,10 @@ const UseMemoDetail: React.FC = () => {
                             <CheckCircleOutlined className={styles.practice_icon} />
                             <div>
                                 <h4>3. 性能测量</h4>
-                                <p>使用React DevTools Profiler测量useMemo的实际效果，确保真正提升了性能</p>
+                                <p>
+                                    使用React DevTools
+                                    Profiler测量useMemo的实际效果，确保真正提升了性能
+                                </p>
                             </div>
                         </div>
 

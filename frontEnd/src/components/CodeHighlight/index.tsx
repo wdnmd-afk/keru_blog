@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react'
-import { Button, message, Tooltip } from 'antd'
-import { CopyOutlined, CheckOutlined } from '@ant-design/icons'
+import { copyCodeToClipboard, formatCode, getCodeStats } from '@/utils/codeParser'
+import { CheckOutlined, CopyOutlined } from '@ant-design/icons'
+import { Button, Tooltip, message } from 'antd'
+import React, { useEffect, useState } from 'react'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism'
-import { copyCodeToClipboard, formatCode, getCodeStats } from '@/utils/codeParser'
 import styles from './CodeHighlight.module.scss'
 
 interface CodeHighlightProps {

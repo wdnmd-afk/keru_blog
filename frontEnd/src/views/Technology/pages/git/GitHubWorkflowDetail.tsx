@@ -1,16 +1,10 @@
-import React from 'react'
-import { Card, Tag, Alert, Divider, Button } from 'antd'
-import { useNavigate } from 'react-router-dom'
-import {
-    ArrowLeftOutlined,
-    GithubOutlined,
-    WarningOutlined,
-    CheckCircleOutlined,
-    BugOutlined,
-} from '@ant-design/icons'
-import { useCodeData } from '@/hooks/useCodeData'
 import CodeHighlight from '@/components/CodeHighlight'
+import { useCodeData } from '@/hooks/useCodeData'
 import styles from '@/styles/topicDetail.module.scss'
+import { ArrowLeftOutlined, CheckCircleOutlined, GithubOutlined } from '@ant-design/icons'
+import { Button, Card, Tag } from 'antd'
+import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const GitHubWorkflowDetail: React.FC = () => {
     const navigate = useNavigate()

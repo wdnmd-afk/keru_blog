@@ -1,17 +1,10 @@
-import React from 'react'
-import { Card, Tag, Alert, Divider, Button, Spin } from 'antd'
-import { useNavigate } from 'react-router-dom'
-import {
-    ArrowLeftOutlined,
-    ToolOutlined,
-    WarningOutlined,
-    CheckCircleOutlined,
-    BugOutlined,
-    RocketOutlined,
-} from '@ant-design/icons'
 import CodeHighlight from '@/components/CodeHighlight'
 import { useCodeData } from '@/hooks/useCodeData'
 import styles from '@/styles/topicDetail.module.scss'
+import { ArrowLeftOutlined, CheckCircleOutlined, ToolOutlined } from '@ant-design/icons'
+import { Alert, Button, Card, Spin, Tag } from 'antd'
+import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const CustomHooksDetail: React.FC = () => {
     const navigate = useNavigate()

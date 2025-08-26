@@ -1,5 +1,5 @@
-import React from 'react'
 import { Empty } from 'antd'
+import React from 'react'
 
 interface FileInfo {
     url?: string
@@ -106,11 +106,7 @@ const FileViewerContainer: React.FC<IProps> = ({ fileInfo }) => {
         return (
             <div className="flex flex-col items-center justify-center h-full">
                 <p>无法预览此文件类型</p>
-                <a
-                    href={url}
-                    download={name}
-                    className="text-blue-500 hover:text-blue-700"
-                >
+                <a href={url} download={name} className="text-blue-500 hover:text-blue-700">
                     点击下载文件
                 </a>
             </div>

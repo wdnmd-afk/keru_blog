@@ -1,16 +1,10 @@
-import React from 'react'
-import { Card, Tag, Alert, Divider, Button } from 'antd'
-import { useNavigate } from 'react-router-dom'
-import {
-    ArrowLeftOutlined,
-    ApiOutlined,
-    WarningOutlined,
-    CheckCircleOutlined,
-    BugOutlined
-} from '@ant-design/icons'
 import CodeHighlight from '@/components/CodeHighlight'
 import { useCodeData } from '@/hooks/useCodeData'
 import styles from '@/styles/topicDetail.module.scss'
+import { ApiOutlined, ArrowLeftOutlined, CheckCircleOutlined } from '@ant-design/icons'
+import { Button, Card, Tag } from 'antd'
+import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const ExpressDetail: React.FC = () => {
     const navigate = useNavigate()
@@ -65,7 +59,9 @@ const ExpressDetail: React.FC = () => {
                 <Card title="🚀 Express.js 基础入门" className={styles.content_card}>
                     <div className={styles.concept_content}>
                         <h3>什么是Express.js？</h3>
-                        <p>Express.js是一个基于Node.js平台的极简、灵活的Web应用开发框架，它提供了一系列强大的特性，用于开发Web和移动应用。Express提供了薄薄的一层基本的Web应用功能，而不会掩盖你熟悉和喜爱的Node.js特性。</p>
+                        <p>
+                            Express.js是一个基于Node.js平台的极简、灵活的Web应用开发框架，它提供了一系列强大的特性，用于开发Web和移动应用。Express提供了薄薄的一层基本的Web应用功能，而不会掩盖你熟悉和喜爱的Node.js特性。
+                        </p>
 
                         <h3>快速开始</h3>
                         {codeData.basicSetup && (

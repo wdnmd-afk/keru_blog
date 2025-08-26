@@ -1,13 +1,10 @@
-import React from 'react'
-import { Card, Tag, Alert, Divider, Button } from 'antd'
-import { useNavigate } from 'react-router-dom'
-import {
-    ArrowLeftOutlined,
-    RocketOutlined
-} from '@ant-design/icons'
 import CodeHighlight from '@/components/CodeHighlight'
 import { useCodeData } from '@/hooks/useCodeData'
 import styles from '@/styles/topicDetail.module.scss'
+import { ArrowLeftOutlined, RocketOutlined } from '@ant-design/icons'
+import { Button, Card, Tag } from 'antd'
+import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const CompositionAPIDetail: React.FC = () => {
     const navigate = useNavigate()
@@ -62,7 +59,10 @@ const CompositionAPIDetail: React.FC = () => {
                 <Card title="📚 Composition API 基础" className={styles.content_card}>
                     <div className={styles.concept_content}>
                         <h3>什么是Composition API？</h3>
-                        <p>Composition API是Vue 3引入的一套新的API，它提供了一种更灵活的方式来组织组件逻辑。通过组合函数的方式，可以更好地复用逻辑，提高代码的可维护性。</p>
+                        <p>
+                            Composition API是Vue
+                            3引入的一套新的API，它提供了一种更灵活的方式来组织组件逻辑。通过组合函数的方式，可以更好地复用逻辑，提高代码的可维护性。
+                        </p>
 
                         <h3>基本语法</h3>
                         {codeData.basicUsage && (
@@ -112,10 +112,6 @@ const CompositionAPIDetail: React.FC = () => {
                         </div>
                     </div>
                 </Card>
-
-
-
-
             </div>
         </div>
     )

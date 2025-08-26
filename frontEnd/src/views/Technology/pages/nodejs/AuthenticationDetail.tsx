@@ -1,16 +1,10 @@
-import React from 'react'
-import { Card, Tag, Alert, Divider, Button } from 'antd'
-import { useNavigate } from 'react-router-dom'
-import {
-    ArrowLeftOutlined,
-    SafetyOutlined,
-    WarningOutlined,
-    CheckCircleOutlined,
-    BugOutlined,
-} from '@ant-design/icons'
-import styles from '@/styles/topicDetail.module.scss'
 import CodeHighlight from '@/components/CodeHighlight'
 import { useCodeData } from '@/hooks/useCodeData'
+import styles from '@/styles/topicDetail.module.scss'
+import { ArrowLeftOutlined, CheckCircleOutlined, SafetyOutlined } from '@ant-design/icons'
+import { Alert, Button, Card, Tag } from 'antd'
+import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const AuthenticationDetail: React.FC = () => {
     const navigate = useNavigate()

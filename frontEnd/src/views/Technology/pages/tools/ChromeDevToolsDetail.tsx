@@ -1,21 +1,15 @@
-import React from 'react'
-import { Card, Tag, Alert, Divider, Button } from 'antd'
-import { useNavigate } from 'react-router-dom'
-import { 
-    ArrowLeftOutlined, 
-    ChromeOutlined, 
-    WarningOutlined,
-    CheckCircleOutlined,
-    BugOutlined
-} from '@ant-design/icons'
 import CodeHighlight from '@/components/CodeHighlight'
 import { useCodeData } from '@/hooks/useCodeData'
 import styles from '@/styles/topicDetail.module.scss'
+import { ArrowLeftOutlined, ChromeOutlined } from '@ant-design/icons'
+import { Alert, Button, Card, Divider, Tag } from 'antd'
+import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const ChromeDevToolsDetail: React.FC = () => {
     const navigate = useNavigate()
     const { codeData, loading, error } = useCodeData('Tools', 'chrome-devtools')
-    
+
     const handleBack = () => {
         navigate('/technology/tools')
     }
@@ -31,14 +25,16 @@ const ChromeDevToolsDetail: React.FC = () => {
     return (
         <div className={styles.container}>
             <div className={styles.header}>
-                <Button 
-                    icon={<ArrowLeftOutlined />} 
+                <Button
+                    icon={<ArrowLeftOutlined />}
                     onClick={handleBack}
                     className={styles.back_button}
                 >
                     返回工具
                 </Button>
-                <h1><ChromeOutlined /> Chrome DevTools</h1>
+                <h1>
+                    <ChromeOutlined /> Chrome DevTools
+                </h1>
                 <p>掌握Chrome开发者工具，提升前端调试和性能优化能力</p>
             </div>
 
@@ -86,7 +82,7 @@ const ChromeDevToolsDetail: React.FC = () => {
                                 title={codeData.elementsPanel.title}
                             />
                         )}
-                        
+
                         <h3>CSS样式调试</h3>
                         {codeData.stylesDebugging && (
                             <CodeHighlight
@@ -95,7 +91,7 @@ const ChromeDevToolsDetail: React.FC = () => {
                                 title={codeData.stylesDebugging.title}
                             />
                         )}
-                        
+
                         <h3>响应式设计调试</h3>
                         {codeData.responsiveDesign && (
                             <CodeHighlight
@@ -118,7 +114,7 @@ const ChromeDevToolsDetail: React.FC = () => {
                                 title={codeData.consoleAPI.title}
                             />
                         )}
-                        
+
                         <h3>Console实用工具</h3>
                         {codeData.consoleUtilities && (
                             <CodeHighlight
@@ -141,7 +137,7 @@ const ChromeDevToolsDetail: React.FC = () => {
                                 title={codeData.breakpointDebugging.title}
                             />
                         )}
-                        
+
                         <h3>变量监视与作用域</h3>
                         {codeData.variableWatching && (
                             <CodeHighlight
@@ -164,7 +160,7 @@ const ChromeDevToolsDetail: React.FC = () => {
                                 title={codeData.networkAnalysis.title}
                             />
                         )}
-                        
+
                         <h3>性能优化分析</h3>
                         {codeData.performanceOptimization && (
                             <CodeHighlight
@@ -232,11 +228,21 @@ const ChromeDevToolsDetail: React.FC = () => {
                             message="性能优化建议"
                             description={
                                 <ul>
-                                    <li><strong>减少HTTP请求</strong>：合并资源文件</li>
-                                    <li><strong>启用压缩</strong>：Gzip/Brotli压缩</li>
-                                    <li><strong>优化图片</strong>：使用现代图片格式</li>
-                                    <li><strong>代码分割</strong>：按需加载资源</li>
-                                    <li><strong>缓存策略</strong>：合理设置缓存头</li>
+                                    <li>
+                                        <strong>减少HTTP请求</strong>：合并资源文件
+                                    </li>
+                                    <li>
+                                        <strong>启用压缩</strong>：Gzip/Brotli压缩
+                                    </li>
+                                    <li>
+                                        <strong>优化图片</strong>：使用现代图片格式
+                                    </li>
+                                    <li>
+                                        <strong>代码分割</strong>：按需加载资源
+                                    </li>
+                                    <li>
+                                        <strong>缓存策略</strong>：合理设置缓存头
+                                    </li>
                                 </ul>
                             }
                             type="warning"

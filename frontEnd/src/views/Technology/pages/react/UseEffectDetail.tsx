@@ -1,13 +1,10 @@
-import React from 'react'
-import { Card, Tag, Alert, Divider, Button } from 'antd'
-import { useNavigate } from 'react-router-dom'
-import {
-    ArrowLeftOutlined,
-    RocketOutlined
-} from '@ant-design/icons'
 import CodeHighlight from '@/components/CodeHighlight'
 import { useCodeData } from '@/hooks/useCodeData'
 import styles from '@/styles/topicDetail.module.scss'
+import { ArrowLeftOutlined, RocketOutlined } from '@ant-design/icons'
+import { Button, Card, Tag } from 'antd'
+import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const UseEffectDetail: React.FC = () => {
     const navigate = useNavigate()
@@ -24,13 +21,13 @@ const UseEffectDetail: React.FC = () => {
     if (error) {
         return <div className={styles.error}>加载失败: {error}</div>
     }
-    
+
     return (
         <div className={styles.topic_detail_container}>
             {/* 返回按钮 */}
             <div className={styles.back_section}>
-                <Button 
-                    type="text" 
+                <Button
+                    type="text"
                     icon={<ArrowLeftOutlined />}
                     onClick={handleBack}
                     className={styles.back_button}
@@ -38,7 +35,7 @@ const UseEffectDetail: React.FC = () => {
                     返回React技术卡片
                 </Button>
             </div>
-            
+
             {/* 页面头部 */}
             <div className={styles.detail_header}>
                 <div className={styles.topic_icon}>
@@ -55,15 +52,18 @@ const UseEffectDetail: React.FC = () => {
                     </div>
                 </div>
             </div>
-            
+
             {/* 内容区域 */}
             <div className={styles.content_sections}>
                 {/* 基础概念 */}
                 <Card title="📚 基础概念" className={styles.content_card}>
                     <div className={styles.concept_content}>
                         <h3>什么是useEffect？</h3>
-                        <p>useEffect是React Hooks中用于处理副作用的Hook，它可以让你在函数组件中执行副作用操作，相当于类组件中的componentDidMount、componentDidUpdate和componentWillUnmount的组合。</p>
-                        
+                        <p>
+                            useEffect是React
+                            Hooks中用于处理副作用的Hook，它可以让你在函数组件中执行副作用操作，相当于类组件中的componentDidMount、componentDidUpdate和componentWillUnmount的组合。
+                        </p>
+
                         <h3>基本语法</h3>
                         {codeData.basicUsage && (
                             <CodeHighlight
@@ -74,7 +74,7 @@ const UseEffectDetail: React.FC = () => {
                         )}
                     </div>
                 </Card>
-                
+
                 {/* 常见用法 */}
                 <Card title="🔧 常见用法" className={styles.content_card}>
                     <div className={styles.usage_grid}>
@@ -88,7 +88,7 @@ const UseEffectDetail: React.FC = () => {
                                 />
                             )}
                         </div>
-                        
+
                         <div className={styles.usage_item}>
                             <h4>2. 数据获取</h4>
                             {codeData.dataFetching && (
@@ -112,8 +112,6 @@ const UseEffectDetail: React.FC = () => {
                         </div>
                     </div>
                 </Card>
-                
-
             </div>
         </div>
     )

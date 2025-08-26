@@ -1,13 +1,10 @@
-import React from 'react'
-import { Card, Tag, Alert, Divider, Button } from 'antd'
-import { useNavigate } from 'react-router-dom'
-import {
-    ArrowLeftOutlined,
-    ApiOutlined
-} from '@ant-design/icons'
 import CodeHighlight from '@/components/CodeHighlight'
 import { useCodeData } from '@/hooks/useCodeData'
 import styles from '@/styles/topicDetail.module.scss'
+import { ApiOutlined, ArrowLeftOutlined } from '@ant-design/icons'
+import { Button, Card, Tag } from 'antd'
+import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const UseContextDetail: React.FC = () => {
     const navigate = useNavigate()
@@ -24,13 +21,13 @@ const UseContextDetail: React.FC = () => {
     if (error) {
         return <div className={styles.error}>加载失败: {error}</div>
     }
-    
+
     return (
         <div className={styles.topic_detail_container}>
             {/* 返回按钮 */}
             <div className={styles.back_section}>
-                <Button 
-                    type="text" 
+                <Button
+                    type="text"
                     icon={<ArrowLeftOutlined />}
                     onClick={handleBack}
                     className={styles.back_button}
@@ -38,7 +35,7 @@ const UseContextDetail: React.FC = () => {
                     返回React技术卡片
                 </Button>
             </div>
-            
+
             {/* 页面头部 */}
             <div className={styles.detail_header}>
                 <div className={styles.topic_icon}>
@@ -55,15 +52,18 @@ const UseContextDetail: React.FC = () => {
                     </div>
                 </div>
             </div>
-            
+
             {/* 内容区域 */}
             <div className={styles.content_sections}>
                 {/* 基础概念 */}
                 <Card title="📚 基础概念" className={styles.content_card}>
                     <div className={styles.concept_content}>
                         <h3>什么是useContext？</h3>
-                        <p>useContext是React提供的一个Hook，用于在函数组件中消费Context。它可以让你在组件树中跨层级传递数据，避免通过props逐层传递的问题（props drilling）。</p>
-                        
+                        <p>
+                            useContext是React提供的一个Hook，用于在函数组件中消费Context。它可以让你在组件树中跨层级传递数据，避免通过props逐层传递的问题（props
+                            drilling）。
+                        </p>
+
                         <h3>基本语法</h3>
                         {codeData.basicUsage && (
                             <CodeHighlight
@@ -72,12 +72,14 @@ const UseContextDetail: React.FC = () => {
                                 title={codeData.basicUsage.title}
                             />
                         )}
-                        
+
                         <h3>工作原理</h3>
-                        <p>useContext会查找组件树中最近的Provider，并返回其value。当Provider的value发生变化时，所有使用该Context的组件都会重新渲染。</p>
+                        <p>
+                            useContext会查找组件树中最近的Provider，并返回其value。当Provider的value发生变化时，所有使用该Context的组件都会重新渲染。
+                        </p>
                     </div>
                 </Card>
-                
+
                 {/* 使用场景 */}
                 <Card title="🎯 核心使用场景" className={styles.content_card}>
                     <div className={styles.usage_grid}>
@@ -91,7 +93,7 @@ const UseContextDetail: React.FC = () => {
                                 />
                             )}
                         </div>
-                        
+
                         <div className={styles.usage_item}>
                             <h4>2. 性能优化技巧</h4>
                             {codeData.performanceOptimization && (
@@ -115,7 +117,6 @@ const UseContextDetail: React.FC = () => {
                         </div>
                     </div>
                 </Card>
-
             </div>
         </div>
     )

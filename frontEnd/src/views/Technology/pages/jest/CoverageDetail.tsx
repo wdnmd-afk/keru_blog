@@ -1,16 +1,10 @@
-import React from 'react'
-import { Card, Tag, Alert, Divider, Button } from 'antd'
-import { useNavigate } from 'react-router-dom'
-import {
-    ArrowLeftOutlined,
-    PieChartOutlined,
-    WarningOutlined,
-    CheckCircleOutlined,
-    BugOutlined
-} from '@ant-design/icons'
 import CodeHighlight from '@/components/CodeHighlight'
 import { useCodeData } from '@/hooks/useCodeData'
 import styles from '@/styles/topicDetail.module.scss'
+import { ArrowLeftOutlined, PieChartOutlined } from '@ant-design/icons'
+import { Alert, Button, Card, Divider, Tag } from 'antd'
+import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const CoverageDetail: React.FC = () => {
     const navigate = useNavigate()
@@ -79,11 +73,21 @@ const CoverageDetail: React.FC = () => {
 
                         <h3>覆盖率的价值</h3>
                         <ul>
-                            <li><strong>质量评估</strong>：评估测试的完整性和质量</li>
-                            <li><strong>风险识别</strong>：发现未测试的代码路径</li>
-                            <li><strong>重构保障</strong>：为代码重构提供信心</li>
-                            <li><strong>团队协作</strong>：统一的质量标准</li>
-                            <li><strong>持续改进</strong>：指导测试策略优化</li>
+                            <li>
+                                <strong>质量评估</strong>：评估测试的完整性和质量
+                            </li>
+                            <li>
+                                <strong>风险识别</strong>：发现未测试的代码路径
+                            </li>
+                            <li>
+                                <strong>重构保障</strong>：为代码重构提供信心
+                            </li>
+                            <li>
+                                <strong>团队协作</strong>：统一的质量标准
+                            </li>
+                            <li>
+                                <strong>持续改进</strong>：指导测试策略优化
+                            </li>
                         </ul>
                     </div>
                 </Card>
@@ -99,7 +103,7 @@ const CoverageDetail: React.FC = () => {
                                 title={codeData.basicCoverageConfig.title}
                             />
                         )}
-                        
+
                         <h3>高级配置</h3>
                         {codeData.advancedCoverageConfig && (
                             <CodeHighlight
@@ -122,7 +126,7 @@ const CoverageDetail: React.FC = () => {
                                 title={codeData.coverageThresholds.title}
                             />
                         )}
-                        
+
                         <h3>分目录阈值</h3>
                         {codeData.directoryThresholds && (
                             <CodeHighlight
@@ -145,7 +149,7 @@ const CoverageDetail: React.FC = () => {
                                 title={codeData.reportFormats.title}
                             />
                         )}
-                        
+
                         <h3>自定义报告</h3>
                         {codeData.customReports && (
                             <CodeHighlight
@@ -168,7 +172,7 @@ const CoverageDetail: React.FC = () => {
                                 title={codeData.improveCoverage.title}
                             />
                         )}
-                        
+
                         <h3>覆盖率分析</h3>
                         {codeData.coverageAnalysis && (
                             <CodeHighlight
@@ -191,7 +195,7 @@ const CoverageDetail: React.FC = () => {
                                 title={codeData.githubActions.title}
                             />
                         )}
-                        
+
                         <h3>覆盖率徽章</h3>
                         {codeData.coverageBadges && (
                             <CodeHighlight
@@ -228,11 +232,21 @@ const CoverageDetail: React.FC = () => {
                             message="覆盖率质量保证"
                             description={
                                 <ul>
-                                    <li><strong>质量优于数量</strong>：关注测试质量而非覆盖率数字</li>
-                                    <li><strong>边界测试</strong>：重点测试边界条件和异常情况</li>
-                                    <li><strong>业务逻辑</strong>：优先覆盖核心业务逻辑</li>
-                                    <li><strong>代码审查</strong>：结合代码审查评估测试质量</li>
-                                    <li><strong>定期评估</strong>：定期评估和调整覆盖率目标</li>
+                                    <li>
+                                        <strong>质量优于数量</strong>：关注测试质量而非覆盖率数字
+                                    </li>
+                                    <li>
+                                        <strong>边界测试</strong>：重点测试边界条件和异常情况
+                                    </li>
+                                    <li>
+                                        <strong>业务逻辑</strong>：优先覆盖核心业务逻辑
+                                    </li>
+                                    <li>
+                                        <strong>代码审查</strong>：结合代码审查评估测试质量
+                                    </li>
+                                    <li>
+                                        <strong>定期评估</strong>：定期评估和调整覆盖率目标
+                                    </li>
                                 </ul>
                             }
                             type="success"
@@ -245,11 +259,21 @@ const CoverageDetail: React.FC = () => {
                             message="常见误区避免"
                             description={
                                 <ul>
-                                    <li><strong>盲目追求100%</strong>：不是所有代码都需要测试</li>
-                                    <li><strong>忽视测试质量</strong>：高覆盖率不等于高质量测试</li>
-                                    <li><strong>测试实现细节</strong>：应该测试行为而非实现</li>
-                                    <li><strong>覆盖率造假</strong>：避免为了覆盖率而写无意义测试</li>
-                                    <li><strong>忽视维护成本</strong>：考虑测试的维护成本</li>
+                                    <li>
+                                        <strong>盲目追求100%</strong>：不是所有代码都需要测试
+                                    </li>
+                                    <li>
+                                        <strong>忽视测试质量</strong>：高覆盖率不等于高质量测试
+                                    </li>
+                                    <li>
+                                        <strong>测试实现细节</strong>：应该测试行为而非实现
+                                    </li>
+                                    <li>
+                                        <strong>覆盖率造假</strong>：避免为了覆盖率而写无意义测试
+                                    </li>
+                                    <li>
+                                        <strong>忽视维护成本</strong>：考虑测试的维护成本
+                                    </li>
                                 </ul>
                             }
                             type="warning"

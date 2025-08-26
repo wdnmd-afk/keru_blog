@@ -1,91 +1,87 @@
-import React from 'react'
-import { useNavigate, useLocation, useParams } from 'react-router-dom'
-import { Menu } from 'antd'
 import {
     ArrowLeftOutlined,
+    BugOutlined,
+    CloudOutlined,
     CodeOutlined,
     DatabaseOutlined,
-    ApiOutlined,
-    CloudOutlined,
-    ToolOutlined,
     GithubOutlined,
-    BugOutlined
+    ToolOutlined,
 } from '@ant-design/icons'
-import ReactDetail from './pages/ReactDetail'
-import UseEffectDetail from './pages/react/UseEffectDetail'
-import UseCallbackDetail from './pages/react/UseCallbackDetail'
-import UseMemoDetail from './pages/react/UseMemoDetail'
-import UseContextDetail from './pages/react/UseContextDetail'
-import CustomHooksDetail from './pages/react/CustomHooksDetail'
-import PerformanceDetail from './pages/react/PerformanceDetail'
-import ErrorBoundaryDetail from './pages/react/ErrorBoundaryDetail'
-import ReactTestingDetail from './pages/react/TestingDetail'
-import VueDetail from './pages/VueDetail'
-import TypeScriptDetail from './pages/TypeScriptDetail'
+import { Menu } from 'antd'
+import React from 'react'
+import { useLocation, useNavigate, useParams } from 'react-router-dom'
 import NodeJSDetail from './pages/NodeJSDetail'
+import ReactDetail from './pages/ReactDetail'
+import TypeScriptDetail from './pages/TypeScriptDetail'
+import VueDetail from './pages/VueDetail'
+import CustomHooksDetail from './pages/react/CustomHooksDetail'
+import ErrorBoundaryDetail from './pages/react/ErrorBoundaryDetail'
+import PerformanceDetail from './pages/react/PerformanceDetail'
+import ReactTestingDetail from './pages/react/TestingDetail'
+import UseCallbackDetail from './pages/react/UseCallbackDetail'
+import UseContextDetail from './pages/react/UseContextDetail'
+import UseEffectDetail from './pages/react/UseEffectDetail'
+import UseMemoDetail from './pages/react/UseMemoDetail'
 
 import DockerDetail from './pages/DockerDetail'
-import ToolsDetail from './pages/ToolsDetail'
 import GitDetail from './pages/GitDetail'
 import JestDetail from './pages/JestDetail'
-import CompositionAPIDetail from './pages/vue/CompositionAPIDetail'
-import AdvancedTypesDetail from './pages/typescript/AdvancedTypesDetail'
-import EventLoopDetail from './pages/nodejs/EventLoopDetail'
+import ToolsDetail from './pages/ToolsDetail'
 import DockerFundamentalsDetail from './pages/docker/FundamentalsDetail'
-import ReactivityDetail from './pages/vue/ReactivityDetail'
-import BasicTypesDetail from './pages/typescript/BasicTypesDetail'
-import NodeModulesDetail from './pages/nodejs/ModulesDetail'
-import WebFrameworksDetail from './pages/python/WebFrameworksDetail'
 import GitBasicsDetail from './pages/git/GitBasicsDetail'
+import EventLoopDetail from './pages/nodejs/EventLoopDetail'
+import NodeModulesDetail from './pages/nodejs/ModulesDetail'
 import VSCodeDetail from './pages/tools/VSCodeDetail'
-import GenericsDetail from './pages/typescript/GenericsDetail'
-import DecoratorsDetail from './pages/typescript/DecoratorsDetail'
-import TSModulesDetail from './pages/typescript/ModulesDetail'
-import UtilityTypesDetail from './pages/typescript/UtilityTypesDetail'
-import ReactTypeScriptDetail from './pages/typescript/ReactTypeScriptDetail'
+import AdvancedTypesDetail from './pages/typescript/AdvancedTypesDetail'
+import BasicTypesDetail from './pages/typescript/BasicTypesDetail'
 import ConfigurationDetail from './pages/typescript/ConfigurationDetail'
+import DecoratorsDetail from './pages/typescript/DecoratorsDetail'
+import GenericsDetail from './pages/typescript/GenericsDetail'
+import TSModulesDetail from './pages/typescript/ModulesDetail'
+import ReactTypeScriptDetail from './pages/typescript/ReactTypeScriptDetail'
+import UtilityTypesDetail from './pages/typescript/UtilityTypesDetail'
+import CompositionAPIDetail from './pages/vue/CompositionAPIDetail'
+import ReactivityDetail from './pages/vue/ReactivityDetail'
 
-import DockerComposeDetail from './pages/docker/DockerComposeDetail'
-import NetworkingDetail from './pages/docker/NetworkingDetail'
-import DataManagementDetail from './pages/docker/DataManagementDetail'
-import SecurityDetail from './pages/docker/SecurityDetail'
-import KubernetesDetail from './pages/docker/KubernetesDetail'
-import PerformanceOptimizationDetail from './pages/docker/PerformanceOptimizationDetail'
-import VueRouterDetail from './pages/vue/VueRouterDetail'
-import ExpressDetail from './pages/nodejs/ExpressDetail'
-import DatabaseDetail from './pages/nodejs/DatabaseDetail'
-import AuthenticationDetail from './pages/nodejs/AuthenticationDetail'
-import NodeTestingDetail from './pages/nodejs/TestingDetail'
-import MicroservicesDetail from './pages/nodejs/MicroservicesDetail'
-import WebpackDetail from './pages/tools/WebpackDetail'
-import GitHubActionsDetail from './pages/git/GitHubActionsDetail'
-import BranchingDetail from './pages/git/BranchingDetail'
-import GitHubWorkflowDetail from './pages/git/GitHubWorkflowDetail'
-import AdvancedTechniquesDetail from './pages/git/AdvancedTechniquesDetail'
-import TestingToolsDetail from './pages/tools/TestingToolsDetail'
-import GitHooksDetail from './pages/git/GitHooksDetail'
-import CollaborationDetail from './pages/git/CollaborationDetail'
-import PerformanceToolsDetail from './pages/tools/PerformanceToolsDetail'
-import AutomationToolsDetail from './pages/tools/AutomationToolsDetail'
-import PostmanDetail from './pages/tools/PostmanDetail'
-import TerminalDetail from './pages/tools/TerminalDetail'
-import ProductivityDetail from './pages/tools/ProductivityDetail'
-import SecurityBestPracticesDetail from './pages/git/SecurityBestPracticesDetail'
-import VuexPiniaDetail from './pages/vue/VuexPiniaDetail'
-import VuePerformanceDetail from './pages/vue/PerformanceDetail'
-import VueTestingDetail from './pages/vue/TestingDetail'
-import SSRDetail from './pages/vue/SSRDetail'
-import MigrationDetail from './pages/vue/MigrationDetail'
-import ChromeDevToolsDetail from './pages/tools/ChromeDevToolsDetail'
-import ViteDetail from './pages/tools/ViteDetail'
-import ESLintPrettierDetail from './pages/tools/ESLintPrettierDetail'
-import JestBasicsDetail from './pages/jest/JestBasicsDetail'
-import UnitTestingDetail from './pages/jest/UnitTestingDetail'
-import MockingDetail from './pages/jest/MockingDetail'
-import AsyncTestingDetail from './pages/jest/AsyncTestingDetail'
-import CoverageDetail from './pages/jest/CoverageDetail'
-import BestPracticesDetail from './pages/jest/BestPracticesDetail'
 import styles from '@/styles/technologyLayout.module.scss'
+import DataManagementDetail from './pages/docker/DataManagementDetail'
+import DockerComposeDetail from './pages/docker/DockerComposeDetail'
+import DockerfileDetail from './pages/docker/DockerfileDetail'
+import KubernetesDetail from './pages/docker/KubernetesDetail'
+import NetworkingDetail from './pages/docker/NetworkingDetail'
+import PerformanceOptimizationDetail from './pages/docker/PerformanceOptimizationDetail'
+import SecurityDetail from './pages/docker/SecurityDetail'
+import AdvancedTechniquesDetail from './pages/git/AdvancedTechniquesDetail'
+import BranchingDetail from './pages/git/BranchingDetail'
+import CollaborationDetail from './pages/git/CollaborationDetail'
+import GitHooksDetail from './pages/git/GitHooksDetail'
+import GitHubActionsDetail from './pages/git/GitHubActionsDetail'
+import GitHubWorkflowDetail from './pages/git/GitHubWorkflowDetail'
+import SecurityBestPracticesDetail from './pages/git/SecurityBestPracticesDetail'
+import AsyncTestingDetail from './pages/jest/AsyncTestingDetail'
+import BestPracticesDetail from './pages/jest/BestPracticesDetail'
+import CoverageDetail from './pages/jest/CoverageDetail'
+import JestBasicsDetail from './pages/jest/JestBasicsDetail'
+import MockingDetail from './pages/jest/MockingDetail'
+import UnitTestingDetail from './pages/jest/UnitTestingDetail'
+import AuthenticationDetail from './pages/nodejs/AuthenticationDetail'
+import DatabaseDetail from './pages/nodejs/DatabaseDetail'
+import ExpressDetail from './pages/nodejs/ExpressDetail'
+import MicroservicesDetail from './pages/nodejs/MicroservicesDetail'
+import NodeTestingDetail from './pages/nodejs/TestingDetail'
+import ChromeDevToolsDetail from './pages/tools/ChromeDevToolsDetail'
+import ESLintPrettierDetail from './pages/tools/ESLintPrettierDetail'
+import PostmanDetail from './pages/tools/PostmanDetail'
+import ProductivityDetail from './pages/tools/ProductivityDetail'
+import TerminalDetail from './pages/tools/TerminalDetail'
+import ViteDetail from './pages/tools/ViteDetail'
+import WebpackDetail from './pages/tools/WebpackDetail'
+import MigrationDetail from './pages/vue/MigrationDetail'
+import VuePerformanceDetail from './pages/vue/PerformanceDetail'
+import SSRDetail from './pages/vue/SSRDetail'
+import VueTestingDetail from './pages/vue/TestingDetail'
+import VueRouterDetail from './pages/vue/VueRouterDetail'
+import VuexPiniaDetail from './pages/vue/VuexPiniaDetail'
 
 // 技术栈菜单配置
 const techMenuItems = [
@@ -93,51 +89,51 @@ const techMenuItems = [
         key: 'react',
         label: 'React',
         icon: <CodeOutlined />,
-        description: 'React生态系统与最佳实践'
+        description: 'React生态系统与最佳实践',
     },
     {
         key: 'vue',
         label: 'Vue.js',
         icon: <CodeOutlined />,
-        description: 'Vue.js框架深度解析'
+        description: 'Vue.js框架深度解析',
     },
     {
         key: 'typescript',
         label: 'TypeScript',
         icon: <CodeOutlined />,
-        description: 'TypeScript类型系统与进阶'
+        description: 'TypeScript类型系统与进阶',
     },
     {
         key: 'nodejs',
         label: 'Node.js',
         icon: <DatabaseOutlined />,
-        description: 'Node.js后端开发技术'
+        description: 'Node.js后端开发技术',
     },
 
     {
         key: 'docker',
         label: 'Docker',
         icon: <CloudOutlined />,
-        description: 'Docker容器化技术'
+        description: 'Docker容器化技术',
     },
     {
         key: 'tools',
         label: '开发工具',
         icon: <ToolOutlined />,
-        description: '开发工具与效率提升'
+        description: '开发工具与效率提升',
     },
     {
         key: 'git',
         label: 'Git & GitHub',
         icon: <GithubOutlined />,
-        description: '版本控制与团队协作'
+        description: '版本控制与团队协作',
     },
     {
         key: 'jest',
         label: 'Jest',
         icon: <BugOutlined />,
-        description: 'Jest测试框架与最佳实践'
-    }
+        description: 'Jest测试框架与最佳实践',
+    },
 ]
 
 const TechnologyLayout: React.FC = () => {
@@ -257,8 +253,6 @@ const TechnologyLayout: React.FC = () => {
             }
         }
 
-
-
         // Docker子路由处理
         if (currentPath.includes('/technology/docker/')) {
             const subTopic = currentPath.split('/').pop()
@@ -266,7 +260,7 @@ const TechnologyLayout: React.FC = () => {
                 case 'fundamentals':
                     return <DockerFundamentalsDetail />
                 case 'dockerfile':
-                    return <div className={styles.coming_soon}>Dockerfile详解页面开发中...</div>
+                    return <DockerfileDetail />
                 case 'docker-compose':
                     return <DockerComposeDetail />
                 case 'networking':
@@ -283,8 +277,6 @@ const TechnologyLayout: React.FC = () => {
                     return <DockerDetail />
             }
         }
-
-
 
         // Git & GitHub子路由处理
         if (currentPath.includes('/technology/git/')) {
@@ -380,27 +372,24 @@ const TechnologyLayout: React.FC = () => {
                 return <div className={styles.coming_soon}>请选择一个技术栈查看详解</div>
         }
     }
-    
+
     return (
         <div className={styles.tech_layout_container}>
             {/* 左侧菜单 */}
             <div className={styles.tech_sidebar}>
                 <div className={styles.sidebar_header}>
-                    <div 
-                        className={styles.back_button}
-                        onClick={handleBackToMain}
-                    >
+                    <div className={styles.back_button} onClick={handleBackToMain}>
                         <ArrowLeftOutlined />
                         <span>返回技术栈</span>
                     </div>
                     <h3>技术详解</h3>
                 </div>
-                
+
                 <Menu
                     mode="vertical"
                     selectedKeys={[tech || '']}
                     className={styles.tech_menu}
-                    items={techMenuItems.map(item => ({
+                    items={techMenuItems.map((item) => ({
                         key: item.key,
                         icon: item.icon,
                         label: (
@@ -409,15 +398,13 @@ const TechnologyLayout: React.FC = () => {
                                 <span className={styles.menu_desc}>{item.description}</span>
                             </div>
                         ),
-                        onClick: () => handleMenuClick(item.key)
+                        onClick: () => handleMenuClick(item.key),
                     }))}
                 />
             </div>
 
             {/* 右侧内容区域 */}
-            <div className={styles.tech_content_area}>
-                {renderTechContent()}
-            </div>
+            <div className={styles.tech_content_area}>{renderTechContent()}</div>
         </div>
     )
 }

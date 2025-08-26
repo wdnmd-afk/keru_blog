@@ -1,16 +1,10 @@
-import React from 'react'
-import { Card, Tag, Alert, Divider, Button } from 'antd'
-import { useNavigate } from 'react-router-dom'
-import {
-    ArrowLeftOutlined,
-    ClockCircleOutlined,
-    WarningOutlined,
-    CheckCircleOutlined,
-    BugOutlined
-} from '@ant-design/icons'
 import CodeHighlight from '@/components/CodeHighlight'
 import { useCodeData } from '@/hooks/useCodeData'
 import styles from '@/styles/topicDetail.module.scss'
+import { ArrowLeftOutlined, ClockCircleOutlined } from '@ant-design/icons'
+import { Alert, Button, Card, Divider, Tag } from 'antd'
+import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const AsyncTestingDetail: React.FC = () => {
     const navigate = useNavigate()
@@ -81,11 +75,21 @@ const AsyncTestingDetail: React.FC = () => {
 
                         <h3>常见异步场景</h3>
                         <ul>
-                            <li><strong>API 请求</strong>：HTTP请求和响应处理</li>
-                            <li><strong>数据库操作</strong>：数据查询和更新</li>
-                            <li><strong>文件操作</strong>：文件读写和处理</li>
-                            <li><strong>定时器</strong>：setTimeout和setInterval</li>
-                            <li><strong>事件处理</strong>：DOM事件和自定义事件</li>
+                            <li>
+                                <strong>API 请求</strong>：HTTP请求和响应处理
+                            </li>
+                            <li>
+                                <strong>数据库操作</strong>：数据查询和更新
+                            </li>
+                            <li>
+                                <strong>文件操作</strong>：文件读写和处理
+                            </li>
+                            <li>
+                                <strong>定时器</strong>：setTimeout和setInterval
+                            </li>
+                            <li>
+                                <strong>事件处理</strong>：DOM事件和自定义事件
+                            </li>
                         </ul>
                     </div>
                 </Card>
@@ -101,7 +105,7 @@ const AsyncTestingDetail: React.FC = () => {
                                 title={codeData.basicPromiseTesting.title}
                             />
                         )}
-                        
+
                         <h3>Promise 错误处理</h3>
                         {codeData.promiseErrorHandling && (
                             <CodeHighlight
@@ -124,7 +128,7 @@ const AsyncTestingDetail: React.FC = () => {
                                 title={codeData.asyncAwaitBasics.title}
                             />
                         )}
-                        
+
                         <h3>并发异步测试</h3>
                         {codeData.concurrentAsyncTesting && (
                             <CodeHighlight
@@ -147,7 +151,7 @@ const AsyncTestingDetail: React.FC = () => {
                                 title={codeData.fakeTimers.title}
                             />
                         )}
-                        
+
                         <h3>定时器高级用法</h3>
                         {codeData.advancedTimers && (
                             <CodeHighlight
@@ -170,7 +174,7 @@ const AsyncTestingDetail: React.FC = () => {
                                 title={codeData.httpRequestTesting.title}
                             />
                         )}
-                        
+
                         <h3>API 错误处理测试</h3>
                         {codeData.apiErrorTesting && (
                             <CodeHighlight
@@ -221,11 +225,22 @@ const AsyncTestingDetail: React.FC = () => {
                             message="性能优化建议"
                             description={
                                 <ul>
-                                    <li><strong>并行测试</strong>：使用 Promise.all 并行执行独立测试</li>
-                                    <li><strong>假定时器</strong>：使用 jest.useFakeTimers() 加速测试</li>
-                                    <li><strong>Mock 网络</strong>：避免真实的网络请求</li>
-                                    <li><strong>超时控制</strong>：设置合理的测试超时时间</li>
-                                    <li><strong>资源清理</strong>：及时清理异步资源</li>
+                                    <li>
+                                        <strong>并行测试</strong>：使用 Promise.all 并行执行独立测试
+                                    </li>
+                                    <li>
+                                        <strong>假定时器</strong>：使用 jest.useFakeTimers()
+                                        加速测试
+                                    </li>
+                                    <li>
+                                        <strong>Mock 网络</strong>：避免真实的网络请求
+                                    </li>
+                                    <li>
+                                        <strong>超时控制</strong>：设置合理的测试超时时间
+                                    </li>
+                                    <li>
+                                        <strong>资源清理</strong>：及时清理异步资源
+                                    </li>
                                 </ul>
                             }
                             type="success"
@@ -238,11 +253,21 @@ const AsyncTestingDetail: React.FC = () => {
                             message="常见陷阱避免"
                             description={
                                 <ul>
-                                    <li><strong>忘记等待</strong>：确保所有异步操作都被正确等待</li>
-                                    <li><strong>竞态条件</strong>：避免测试间的异步操作相互影响</li>
-                                    <li><strong>内存泄漏</strong>：清理未完成的异步操作</li>
-                                    <li><strong>假阳性</strong>：确保异步断言真正被执行</li>
-                                    <li><strong>超时设置</strong>：避免过长或过短的超时时间</li>
+                                    <li>
+                                        <strong>忘记等待</strong>：确保所有异步操作都被正确等待
+                                    </li>
+                                    <li>
+                                        <strong>竞态条件</strong>：避免测试间的异步操作相互影响
+                                    </li>
+                                    <li>
+                                        <strong>内存泄漏</strong>：清理未完成的异步操作
+                                    </li>
+                                    <li>
+                                        <strong>假阳性</strong>：确保异步断言真正被执行
+                                    </li>
+                                    <li>
+                                        <strong>超时设置</strong>：避免过长或过短的超时时间
+                                    </li>
                                 </ul>
                             }
                             type="warning"

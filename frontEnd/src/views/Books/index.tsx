@@ -1,7 +1,7 @@
-import React from 'react'
-import { Card, Row, Col, Tag, Button, Input, Select } from 'antd'
-import { BookOutlined, SearchOutlined, FilterOutlined } from '@ant-design/icons'
 import styles from '@/styles/books.module.scss'
+import { BookOutlined, FilterOutlined, SearchOutlined } from '@ant-design/icons'
+import { Button, Card, Col, Input, Row, Select, Tag } from 'antd'
+import React from 'react'
 
 const { Search } = Input
 const { Option } = Select
@@ -18,7 +18,7 @@ const booksData = [
         rating: 4.8,
         tags: ['JavaScript', '前端', '编程'],
         publishYear: 2020,
-        pages: 896
+        pages: 896,
     },
     {
         id: 2,
@@ -30,7 +30,7 @@ const booksData = [
         rating: 4.7,
         tags: ['React', '前端', '源码'],
         publishYear: 2021,
-        pages: 432
+        pages: 432,
     },
     {
         id: 3,
@@ -42,7 +42,7 @@ const booksData = [
         rating: 4.6,
         tags: ['Node.js', '后端', '实战'],
         publishYear: 2019,
-        pages: 528
+        pages: 528,
     },
     // 可以添加更多书籍数据
 ]
@@ -68,14 +68,15 @@ const Books: React.FC = () => {
         let filtered = booksData
 
         if (search) {
-            filtered = filtered.filter(book =>
-                book.title.toLowerCase().includes(search.toLowerCase()) ||
-                book.author.toLowerCase().includes(search.toLowerCase())
+            filtered = filtered.filter(
+                (book) =>
+                    book.title.toLowerCase().includes(search.toLowerCase()) ||
+                    book.author.toLowerCase().includes(search.toLowerCase())
             )
         }
 
         if (category !== 'all') {
-            filtered = filtered.filter(book => book.category === category)
+            filtered = filtered.filter((book) => book.category === category)
         }
 
         setFilteredBooks(filtered)
@@ -90,7 +91,7 @@ const Books: React.FC = () => {
                         <h1>技术书籍推荐</h1>
                         <p>精选优质技术书籍，助力技术成长</p>
                     </div>
-                    
+
                     <div className={styles.search_section}>
                         <Search
                             placeholder="搜索书籍或作者"
@@ -100,7 +101,7 @@ const Books: React.FC = () => {
                             onSearch={handleSearch}
                             className={styles.search_input}
                         />
-                        
+
                         <Select
                             value={selectedCategory}
                             onChange={handleCategoryChange}
@@ -109,7 +110,7 @@ const Books: React.FC = () => {
                             suffixIcon={<FilterOutlined />}
                         >
                             <Option value="all">全部分类</Option>
-                            {categories.slice(1).map(category => (
+                            {categories.slice(1).map((category) => (
                                 <Option key={category} value={category}>
                                     {category}
                                 </Option>
@@ -121,7 +122,7 @@ const Books: React.FC = () => {
 
             <div className={styles.books_content}>
                 <Row gutter={[24, 24]}>
-                    {filteredBooks.map(book => (
+                    {filteredBooks.map((book) => (
                         <Col xs={24} sm={12} lg={8} xl={6} key={book.id}>
                             <Card
                                 hoverable
@@ -134,17 +135,19 @@ const Books: React.FC = () => {
                                     </div>
                                 }
                                 actions={[
-                                    <Button type="text" key="preview">预览</Button>,
-                                    <Button type="text" key="download">下载</Button>,
-                                    <Button type="text" key="favorite">收藏</Button>,
+                                    <Button type="text" key="preview">
+                                        预览
+                                    </Button>,
+                                    <Button type="text" key="download">
+                                        下载
+                                    </Button>,
+                                    <Button type="text" key="favorite">
+                                        收藏
+                                    </Button>,
                                 ]}
                             >
                                 <Card.Meta
-                                    title={
-                                        <div className={styles.book_title}>
-                                            {book.title}
-                                        </div>
-                                    }
+                                    title={<div className={styles.book_title}>{book.title}</div>}
                                     description={
                                         <div className={styles.book_info}>
                                             <p className={styles.author}>作者：{book.author}</p>
@@ -155,7 +158,7 @@ const Books: React.FC = () => {
                                                 <span>{book.publishYear}年</span>
                                             </div>
                                             <div className={styles.tags}>
-                                                {book.tags.map(tag => (
+                                                {book.tags.map((tag) => (
                                                     <Tag key={tag} color="blue" size="small">
                                                         {tag}
                                                     </Tag>

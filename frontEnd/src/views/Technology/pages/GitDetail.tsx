@@ -1,17 +1,17 @@
-import React from 'react'
-import { Card, Tag, Row, Col } from 'antd'
-import { useNavigate } from 'react-router-dom'
+import styles from '@/styles/reactDetail.module.scss'
 import {
+    ApiOutlined,
+    BugOutlined,
+    DatabaseOutlined,
     GithubOutlined,
     RocketOutlined,
-    BugOutlined,
+    SafetyOutlined,
     ThunderboltOutlined,
-    ApiOutlined,
     ToolOutlined,
-    DatabaseOutlined,
-    SafetyOutlined
 } from '@ant-design/icons'
-import styles from '@/styles/reactDetail.module.scss'
+import { Card, Col, Row, Tag } from 'antd'
+import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 // Git & GitHub技术卡片数据
 const gitTopics = [
@@ -22,7 +22,7 @@ const gitTopics = [
         icon: <GithubOutlined />,
         color: '#f1502f',
         difficulty: '简单',
-        category: '基础操作'
+        category: '基础操作',
     },
     {
         id: 'branching',
@@ -31,7 +31,7 @@ const gitTopics = [
         icon: <ToolOutlined />,
         color: '#24292e',
         difficulty: '中等',
-        category: '分支管理'
+        category: '分支管理',
     },
     {
         id: 'github-workflow',
@@ -40,7 +40,7 @@ const gitTopics = [
         icon: <RocketOutlined />,
         color: '#0366d6',
         difficulty: '中等',
-        category: '协作流程'
+        category: '协作流程',
     },
     {
         id: 'github-actions',
@@ -49,7 +49,7 @@ const gitTopics = [
         icon: <ThunderboltOutlined />,
         color: '#2088ff',
         difficulty: '高级',
-        category: 'CI/CD'
+        category: 'CI/CD',
     },
     {
         id: 'advanced-git',
@@ -58,7 +58,7 @@ const gitTopics = [
         icon: <ApiOutlined />,
         color: '#6f42c1',
         difficulty: '高级',
-        category: '高级操作'
+        category: '高级操作',
     },
     {
         id: 'git-hooks',
@@ -67,7 +67,7 @@ const gitTopics = [
         icon: <BugOutlined />,
         color: '#28a745',
         difficulty: '中等',
-        category: '自动化'
+        category: '自动化',
     },
     {
         id: 'collaboration',
@@ -76,7 +76,7 @@ const gitTopics = [
         icon: <DatabaseOutlined />,
         color: '#fd7e14',
         difficulty: '中等',
-        category: '团队协作'
+        category: '团队协作',
     },
     {
         id: 'security',
@@ -85,8 +85,8 @@ const gitTopics = [
         icon: <SafetyOutlined />,
         color: '#dc3545',
         difficulty: '中等',
-        category: '安全'
-    }
+        category: '安全',
+    },
 ]
 
 const GitDetail: React.FC = () => {
@@ -98,10 +98,14 @@ const GitDetail: React.FC = () => {
 
     const getDifficultyColor = (difficulty: string) => {
         switch (difficulty) {
-            case '简单': return 'green'
-            case '中等': return 'orange'
-            case '高级': return 'red'
-            default: return 'blue'
+            case '简单':
+                return 'green'
+            case '中等':
+                return 'orange'
+            case '高级':
+                return 'red'
+            default:
+                return 'blue'
         }
     }
 
@@ -125,7 +129,7 @@ const GitDetail: React.FC = () => {
 
             <div className={styles.topics_grid}>
                 <Row gutter={[24, 24]}>
-                    {gitTopics.map(topic => (
+                    {gitTopics.map((topic) => (
                         <Col xs={24} sm={12} lg={8} xl={6} key={topic.id}>
                             <Card
                                 hoverable
@@ -160,8 +164,6 @@ const GitDetail: React.FC = () => {
                     ))}
                 </Row>
             </div>
-
-
         </div>
     )
 }

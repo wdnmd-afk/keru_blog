@@ -1,21 +1,15 @@
-import React from 'react'
-import { Card, Tag, Alert, Divider, Button } from 'antd'
-import { useNavigate } from 'react-router-dom'
-import { 
-    ArrowLeftOutlined, 
-    BugOutlined, 
-    WarningOutlined,
-    CheckCircleOutlined,
-    ExperimentOutlined
-} from '@ant-design/icons'
 import CodeHighlight from '@/components/CodeHighlight'
 import { useCodeData } from '@/hooks/useCodeData'
 import styles from '@/styles/topicDetail.module.scss'
+import { ArrowLeftOutlined, ExperimentOutlined } from '@ant-design/icons'
+import { Alert, Button, Card, Divider, Tag } from 'antd'
+import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const TestingDetail: React.FC = () => {
     const navigate = useNavigate()
     const { codeData, loading, error } = useCodeData('NodeJS', 'testing')
-    
+
     const handleBack = () => {
         navigate('/technology/nodejs')
     }
@@ -31,14 +25,16 @@ const TestingDetail: React.FC = () => {
     return (
         <div className={styles.container}>
             <div className={styles.header}>
-                <Button 
-                    icon={<ArrowLeftOutlined />} 
+                <Button
+                    icon={<ArrowLeftOutlined />}
                     onClick={handleBack}
                     className={styles.back_button}
                 >
                     返回NodeJS
                 </Button>
-                <h1><ExperimentOutlined /> Node.js 测试</h1>
+                <h1>
+                    <ExperimentOutlined /> Node.js 测试
+                </h1>
                 <p>学习Node.js应用的单元测试、集成测试和测试驱动开发</p>
             </div>
 
@@ -63,11 +59,21 @@ const TestingDetail: React.FC = () => {
 
                         <h3>测试的好处</h3>
                         <ul>
-                            <li><strong>提高代码质量</strong>：及早发现和修复bug</li>
-                            <li><strong>增强信心</strong>：确保代码按预期工作</li>
-                            <li><strong>便于重构</strong>：安全地修改和优化代码</li>
-                            <li><strong>文档作用</strong>：测试用例说明代码的预期行为</li>
-                            <li><strong>团队协作</strong>：确保团队成员对功能的理解一致</li>
+                            <li>
+                                <strong>提高代码质量</strong>：及早发现和修复bug
+                            </li>
+                            <li>
+                                <strong>增强信心</strong>：确保代码按预期工作
+                            </li>
+                            <li>
+                                <strong>便于重构</strong>：安全地修改和优化代码
+                            </li>
+                            <li>
+                                <strong>文档作用</strong>：测试用例说明代码的预期行为
+                            </li>
+                            <li>
+                                <strong>团队协作</strong>：确保团队成员对功能的理解一致
+                            </li>
                         </ul>
                     </div>
                 </Card>
@@ -149,7 +155,9 @@ const TestingDetail: React.FC = () => {
                             message="测试编写原则"
                             description={
                                 <ul>
-                                    <li>遵循AAA模式：Arrange（准备）、Act（执行）、Assert（断言）</li>
+                                    <li>
+                                        遵循AAA模式：Arrange（准备）、Act（执行）、Assert（断言）
+                                    </li>
                                     <li>测试应该独立且可重复</li>
                                     <li>使用描述性的测试名称</li>
                                     <li>一个测试只验证一个功能点</li>

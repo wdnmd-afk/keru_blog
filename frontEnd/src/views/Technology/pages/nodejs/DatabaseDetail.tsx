@@ -1,16 +1,10 @@
-import React from 'react'
-import { Card, Tag, Alert, Divider, Button } from 'antd'
-import { useNavigate } from 'react-router-dom'
-import {
-    ArrowLeftOutlined,
-    DatabaseOutlined,
-    WarningOutlined,
-    CheckCircleOutlined,
-    BugOutlined
-} from '@ant-design/icons'
 import CodeHighlight from '@/components/CodeHighlight'
 import { useCodeData } from '@/hooks/useCodeData'
 import styles from '@/styles/topicDetail.module.scss'
+import { ArrowLeftOutlined, DatabaseOutlined } from '@ant-design/icons'
+import { Alert, Button, Card, Divider, Tag } from 'antd'
+import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const DatabaseDetail: React.FC = () => {
     const navigate = useNavigate()
@@ -31,14 +25,16 @@ const DatabaseDetail: React.FC = () => {
     return (
         <div className={styles.container}>
             <div className={styles.header}>
-                <Button 
-                    icon={<ArrowLeftOutlined />} 
+                <Button
+                    icon={<ArrowLeftOutlined />}
                     onClick={handleBack}
                     className={styles.back_button}
                 >
                     返回NodeJS
                 </Button>
-                <h1><DatabaseOutlined /> Node.js 数据库操作</h1>
+                <h1>
+                    <DatabaseOutlined /> Node.js 数据库操作
+                </h1>
                 <p>学习Node.js中各种数据库的连接和操作方法</p>
             </div>
 
@@ -57,11 +53,21 @@ const DatabaseDetail: React.FC = () => {
 
                         <h3>选择数据库的考虑因素</h3>
                         <ul>
-                            <li><strong>数据结构</strong>：关系型 vs 非关系型</li>
-                            <li><strong>扩展性</strong>：水平扩展 vs 垂直扩展</li>
-                            <li><strong>一致性</strong>：ACID vs BASE</li>
-                            <li><strong>性能要求</strong>：读写比例、并发量</li>
-                            <li><strong>开发复杂度</strong>：学习成本、维护成本</li>
+                            <li>
+                                <strong>数据结构</strong>：关系型 vs 非关系型
+                            </li>
+                            <li>
+                                <strong>扩展性</strong>：水平扩展 vs 垂直扩展
+                            </li>
+                            <li>
+                                <strong>一致性</strong>：ACID vs BASE
+                            </li>
+                            <li>
+                                <strong>性能要求</strong>：读写比例、并发量
+                            </li>
+                            <li>
+                                <strong>开发复杂度</strong>：学习成本、维护成本
+                            </li>
                         </ul>
                     </div>
                 </Card>
@@ -70,7 +76,7 @@ const DatabaseDetail: React.FC = () => {
                 <Card title="🐬 MySQL 数据库" className={styles.content_card}>
                     <div className={styles.mysql_section}>
                         <h3>MySQL连接与操作</h3>
-                        
+
                         <div className={styles.usage_item}>
                             <h4>1. 原生驱动使用</h4>
                             {codeData.mysqlNative && (

@@ -23,16 +23,16 @@ const useGlobalStore = create<GlobalStore>((set, get) => ({
     getUser() {
         return get().user
     },
-    setUserInfo: data => {
+    setUserInfo: (data) => {
         const user = { ...get().user, ...data }
         set(() => ({ user }))
-    }
+    },
 }))
 //将Action抛出
 const useGlobalStoreAction = () => {
     return useGlobalStore(
-        useShallow(state => ({
-            setUserInfo: state.setUserInfo
+        useShallow((state) => ({
+            setUserInfo: state.setUserInfo,
         }))
     )
 }

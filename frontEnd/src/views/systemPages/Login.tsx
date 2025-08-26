@@ -1,19 +1,19 @@
-import React, { useState } from 'react'
 import style from '@/styles/login.module.scss'
-import { Button, Checkbox, Form, Input, message, Tabs } from 'antd'
 import {
+    EyeInvisibleOutlined,
+    EyeOutlined,
     LockOutlined,
     MailOutlined,
     UserOutlined,
-    EyeOutlined,
-    EyeInvisibleOutlined,
 } from '@ant-design/icons'
+import { Button, Checkbox, Form, Input, Tabs, message } from 'antd'
+import React, { useState } from 'react'
 // import useStores from "@/hooks/useStores.ts";
-import { useGlobalStoreAction } from '@/store'
 import { LoginApi } from '@/api'
-import { BrowserLocalStorage, getRandomNumber } from '@/utils'
-import backgroundImage from '@/assets/images/login.png'
 import logoImage from '@/assets/images/k.jpg'
+import backgroundImage from '@/assets/images/login.png'
+import { useGlobalStoreAction } from '@/store'
+import { BrowserLocalStorage, getRandomNumber } from '@/utils'
 import { useNavigate } from 'react-router-dom'
 
 type FieldType = {

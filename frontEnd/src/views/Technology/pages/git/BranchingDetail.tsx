@@ -1,16 +1,10 @@
-import React from 'react'
-import { Card, Tag, Alert, Divider, Button } from 'antd'
-import { useNavigate } from 'react-router-dom'
-import {
-    ArrowLeftOutlined,
-    BranchesOutlined,
-    WarningOutlined,
-    CheckCircleOutlined,
-    BugOutlined
-} from '@ant-design/icons'
 import CodeHighlight from '@/components/CodeHighlight'
 import { useCodeData } from '@/hooks/useCodeData'
 import styles from '@/styles/topicDetail.module.scss'
+import { ArrowLeftOutlined, BranchesOutlined, CheckCircleOutlined } from '@ant-design/icons'
+import { Button, Card, Tag } from 'antd'
+import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const BranchingDetail: React.FC = () => {
     const navigate = useNavigate()
@@ -65,7 +59,9 @@ const BranchingDetail: React.FC = () => {
                 <Card title="🌳 Git 分支基础" className={styles.content_card}>
                     <div className={styles.concept_content}>
                         <h3>什么是Git分支？</h3>
-                        <p>Git分支是指向特定提交的可移动指针。分支让你可以在不影响主代码的情况下开发新功能、修复bug或进行实验。</p>
+                        <p>
+                            Git分支是指向特定提交的可移动指针。分支让你可以在不影响主代码的情况下开发新功能、修复bug或进行实验。
+                        </p>
 
                         <h3>分支的优势</h3>
                         <div className={styles.concepts_grid}>
@@ -217,10 +213,21 @@ const BranchingDetail: React.FC = () => {
                                 <h4>1. 分支命名规范</h4>
                                 <p>使用清晰的分支命名约定</p>
                                 <ul>
-                                    <li><strong>功能分支</strong>：feature/user-login, feature/payment-system</li>
-                                    <li><strong>修复分支</strong>：bugfix/login-error, hotfix/critical-security</li>
-                                    <li><strong>发布分支</strong>：release/v1.2.0, release/2024-01</li>
-                                    <li><strong>实验分支</strong>：experiment/new-ui, poc/microservices</li>
+                                    <li>
+                                        <strong>功能分支</strong>：feature/user-login,
+                                        feature/payment-system
+                                    </li>
+                                    <li>
+                                        <strong>修复分支</strong>：bugfix/login-error,
+                                        hotfix/critical-security
+                                    </li>
+                                    <li>
+                                        <strong>发布分支</strong>：release/v1.2.0, release/2024-01
+                                    </li>
+                                    <li>
+                                        <strong>实验分支</strong>：experiment/new-ui,
+                                        poc/microservices
+                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -245,9 +252,15 @@ const BranchingDetail: React.FC = () => {
                                 <h4>3. 合并策略选择</h4>
                                 <p>根据项目需求选择合适的合并方式</p>
                                 <ul>
-                                    <li><strong>功能分支</strong>：使用squash merge保持历史清洁</li>
-                                    <li><strong>发布分支</strong>：使用merge commit记录发布点</li>
-                                    <li><strong>热修复</strong>：使用fast-forward merge快速部署</li>
+                                    <li>
+                                        <strong>功能分支</strong>：使用squash merge保持历史清洁
+                                    </li>
+                                    <li>
+                                        <strong>发布分支</strong>：使用merge commit记录发布点
+                                    </li>
+                                    <li>
+                                        <strong>热修复</strong>：使用fast-forward merge快速部署
+                                    </li>
                                     <li>避免在公共分支上使用rebase</li>
                                 </ul>
                             </div>

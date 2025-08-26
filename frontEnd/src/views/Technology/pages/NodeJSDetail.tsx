@@ -1,17 +1,16 @@
-import React from 'react'
-import { Card, Tag, Row, Col } from 'antd'
-import { useNavigate } from 'react-router-dom'
+import styles from '@/styles/reactDetail.module.scss'
 import {
+    ApiOutlined,
+    BugOutlined,
+    CloudOutlined,
     DatabaseOutlined,
     RocketOutlined,
-    BugOutlined,
+    SafetyOutlined,
     ThunderboltOutlined,
-    ApiOutlined,
-    ToolOutlined,
-    CloudOutlined,
-    SafetyOutlined
 } from '@ant-design/icons'
-import styles from '@/styles/reactDetail.module.scss'
+import { Card, Col, Row, Tag } from 'antd'
+import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 // Node.js技术卡片数据
 const nodejsTopics = [
@@ -22,7 +21,7 @@ const nodejsTopics = [
         icon: <RocketOutlined />,
         color: '#339933',
         difficulty: '高级',
-        category: '核心原理'
+        category: '核心原理',
     },
     {
         id: 'modules',
@@ -31,7 +30,7 @@ const nodejsTopics = [
         icon: <DatabaseOutlined />,
         color: '#68217a',
         difficulty: '中等',
-        category: '模块化'
+        category: '模块化',
     },
     {
         id: 'express',
@@ -40,7 +39,7 @@ const nodejsTopics = [
         icon: <ApiOutlined />,
         color: '#000000',
         difficulty: '中等',
-        category: 'Web框架'
+        category: 'Web框架',
     },
     {
         id: 'database',
@@ -49,7 +48,7 @@ const nodejsTopics = [
         icon: <DatabaseOutlined />,
         color: '#4db33d',
         difficulty: '中等',
-        category: '数据库'
+        category: '数据库',
     },
     {
         id: 'authentication',
@@ -58,7 +57,7 @@ const nodejsTopics = [
         icon: <SafetyOutlined />,
         color: '#ff6b6b',
         difficulty: '中等',
-        category: '安全'
+        category: '安全',
     },
     {
         id: 'testing',
@@ -67,7 +66,7 @@ const nodejsTopics = [
         icon: <BugOutlined />,
         color: '#9b59b6',
         difficulty: '中等',
-        category: '测试'
+        category: '测试',
     },
     {
         id: 'performance',
@@ -76,7 +75,7 @@ const nodejsTopics = [
         icon: <ThunderboltOutlined />,
         color: '#f39c12',
         difficulty: '高级',
-        category: '性能优化'
+        category: '性能优化',
     },
     {
         id: 'microservices',
@@ -85,8 +84,8 @@ const nodejsTopics = [
         icon: <CloudOutlined />,
         color: '#3498db',
         difficulty: '高级',
-        category: '架构设计'
-    }
+        category: '架构设计',
+    },
 ]
 
 const NodeJSDetail: React.FC = () => {
@@ -98,10 +97,14 @@ const NodeJSDetail: React.FC = () => {
 
     const getDifficultyColor = (difficulty: string) => {
         switch (difficulty) {
-            case '简单': return 'green'
-            case '中等': return 'orange'
-            case '高级': return 'red'
-            default: return 'blue'
+            case '简单':
+                return 'green'
+            case '中等':
+                return 'orange'
+            case '高级':
+                return 'red'
+            default:
+                return 'blue'
         }
     }
 
@@ -125,7 +128,7 @@ const NodeJSDetail: React.FC = () => {
 
             <div className={styles.topics_grid}>
                 <Row gutter={[24, 24]}>
-                    {nodejsTopics.map(topic => (
+                    {nodejsTopics.map((topic) => (
                         <Col xs={24} sm={12} lg={8} xl={6} key={topic.id}>
                             <Card
                                 hoverable
@@ -160,8 +163,6 @@ const NodeJSDetail: React.FC = () => {
                     ))}
                 </Row>
             </div>
-
-
         </div>
     )
 }

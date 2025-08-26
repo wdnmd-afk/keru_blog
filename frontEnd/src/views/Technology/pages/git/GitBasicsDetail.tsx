@@ -1,16 +1,10 @@
-import React from 'react'
-import { Card, Tag, Alert, Divider, Button } from 'antd'
-import { useNavigate } from 'react-router-dom'
-import {
-    ArrowLeftOutlined,
-    GithubOutlined,
-    WarningOutlined,
-    CheckCircleOutlined,
-    BugOutlined
-} from '@ant-design/icons'
 import CodeHighlight from '@/components/CodeHighlight'
 import { useCodeData } from '@/hooks/useCodeData'
 import styles from '@/styles/topicDetail.module.scss'
+import { ArrowLeftOutlined, CheckCircleOutlined, GithubOutlined } from '@ant-design/icons'
+import { Button, Card, Tag } from 'antd'
+import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const GitBasicsDetail: React.FC = () => {
     const navigate = useNavigate()
@@ -251,11 +245,21 @@ const GitBasicsDetail: React.FC = () => {
                                 <h4>3. 分支命名规范</h4>
                                 <p>使用有意义的分支名称，便于团队协作</p>
                                 <ul>
-                                    <li><strong>feature/</strong>：新功能分支</li>
-                                    <li><strong>bugfix/</strong>：bug修复分支</li>
-                                    <li><strong>hotfix/</strong>：紧急修复分支</li>
-                                    <li><strong>release/</strong>：发布分支</li>
-                                    <li><strong>chore/</strong>：杂务分支</li>
+                                    <li>
+                                        <strong>feature/</strong>：新功能分支
+                                    </li>
+                                    <li>
+                                        <strong>bugfix/</strong>：bug修复分支
+                                    </li>
+                                    <li>
+                                        <strong>hotfix/</strong>：紧急修复分支
+                                    </li>
+                                    <li>
+                                        <strong>release/</strong>：发布分支
+                                    </li>
+                                    <li>
+                                        <strong>chore/</strong>：杂务分支
+                                    </li>
                                 </ul>
                             </div>
                         </div>

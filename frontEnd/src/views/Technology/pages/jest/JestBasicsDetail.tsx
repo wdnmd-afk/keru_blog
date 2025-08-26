@@ -1,16 +1,10 @@
-import React from 'react'
-import { Card, Tag, Alert, Divider, Button } from 'antd'
-import { useNavigate } from 'react-router-dom'
-import {
-    ArrowLeftOutlined,
-    SettingOutlined,
-    WarningOutlined,
-    CheckCircleOutlined,
-    BugOutlined
-} from '@ant-design/icons'
 import CodeHighlight from '@/components/CodeHighlight'
 import { useCodeData } from '@/hooks/useCodeData'
 import styles from '@/styles/topicDetail.module.scss'
+import { ArrowLeftOutlined, SettingOutlined } from '@ant-design/icons'
+import { Alert, Button, Card, Divider, Tag } from 'antd'
+import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const JestBasicsDetail: React.FC = () => {
     const navigate = useNavigate()
@@ -82,11 +76,21 @@ const JestBasicsDetail: React.FC = () => {
 
                         <h3>Jest 优势</h3>
                         <ul>
-                            <li><strong>开箱即用</strong>：无需复杂配置即可开始测试</li>
-                            <li><strong>功能全面</strong>：内置断言、Mock、覆盖率等功能</li>
-                            <li><strong>性能优秀</strong>：并行执行测试，速度快</li>
-                            <li><strong>生态丰富</strong>：与主流框架深度集成</li>
-                            <li><strong>开发体验</strong>：友好的错误信息和调试支持</li>
+                            <li>
+                                <strong>开箱即用</strong>：无需复杂配置即可开始测试
+                            </li>
+                            <li>
+                                <strong>功能全面</strong>：内置断言、Mock、覆盖率等功能
+                            </li>
+                            <li>
+                                <strong>性能优秀</strong>：并行执行测试，速度快
+                            </li>
+                            <li>
+                                <strong>生态丰富</strong>：与主流框架深度集成
+                            </li>
+                            <li>
+                                <strong>开发体验</strong>：友好的错误信息和调试支持
+                            </li>
                         </ul>
                     </div>
                 </Card>
@@ -102,7 +106,7 @@ const JestBasicsDetail: React.FC = () => {
                                 title={codeData.installation.title}
                             />
                         )}
-                        
+
                         <h3>基础配置文件</h3>
                         {codeData.basicConfiguration && (
                             <CodeHighlight
@@ -111,7 +115,7 @@ const JestBasicsDetail: React.FC = () => {
                                 title={codeData.basicConfiguration.title}
                             />
                         )}
-                        
+
                         <h3>TypeScript 配置</h3>
                         {codeData.typescriptConfiguration && (
                             <CodeHighlight
@@ -134,7 +138,7 @@ const JestBasicsDetail: React.FC = () => {
                                 title={codeData.testStructure.title}
                             />
                         )}
-                        
+
                         <h3>常用匹配器</h3>
                         {codeData.commonMatchers && (
                             <CodeHighlight
@@ -157,7 +161,7 @@ const JestBasicsDetail: React.FC = () => {
                                 title={codeData.testCommands.title}
                             />
                         )}
-                        
+
                         <h3>监视模式</h3>
                         {codeData.watchMode && (
                             <CodeHighlight
@@ -208,11 +212,21 @@ const JestBasicsDetail: React.FC = () => {
                             message="测试文件组织"
                             description={
                                 <ul>
-                                    <li><strong>命名规范</strong>：使用 .test.js 或 .spec.js 后缀</li>
-                                    <li><strong>目录结构</strong>：测试文件与源文件保持对应关系</li>
-                                    <li><strong>分组测试</strong>：使用 describe 对相关测试进行分组</li>
-                                    <li><strong>测试描述</strong>：使用清晰的测试描述</li>
-                                    <li><strong>测试隔离</strong>：确保测试之间相互独立</li>
+                                    <li>
+                                        <strong>命名规范</strong>：使用 .test.js 或 .spec.js 后缀
+                                    </li>
+                                    <li>
+                                        <strong>目录结构</strong>：测试文件与源文件保持对应关系
+                                    </li>
+                                    <li>
+                                        <strong>分组测试</strong>：使用 describe 对相关测试进行分组
+                                    </li>
+                                    <li>
+                                        <strong>测试描述</strong>：使用清晰的测试描述
+                                    </li>
+                                    <li>
+                                        <strong>测试隔离</strong>：确保测试之间相互独立
+                                    </li>
                                 </ul>
                             }
                             type="success"
@@ -225,11 +239,21 @@ const JestBasicsDetail: React.FC = () => {
                             message="性能优化建议"
                             description={
                                 <ul>
-                                    <li><strong>并行执行</strong>：利用 Jest 的并行测试能力</li>
-                                    <li><strong>测试缓存</strong>：启用测试结果缓存</li>
-                                    <li><strong>选择性运行</strong>：使用模式匹配运行特定测试</li>
-                                    <li><strong>资源清理</strong>：及时清理测试资源</li>
-                                    <li><strong>Mock 优化</strong>：合理使用 Mock 减少依赖</li>
+                                    <li>
+                                        <strong>并行执行</strong>：利用 Jest 的并行测试能力
+                                    </li>
+                                    <li>
+                                        <strong>测试缓存</strong>：启用测试结果缓存
+                                    </li>
+                                    <li>
+                                        <strong>选择性运行</strong>：使用模式匹配运行特定测试
+                                    </li>
+                                    <li>
+                                        <strong>资源清理</strong>：及时清理测试资源
+                                    </li>
+                                    <li>
+                                        <strong>Mock 优化</strong>：合理使用 Mock 减少依赖
+                                    </li>
                                 </ul>
                             }
                             type="warning"

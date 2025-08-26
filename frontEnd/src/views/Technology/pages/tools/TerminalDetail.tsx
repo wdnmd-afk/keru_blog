@@ -1,21 +1,15 @@
-import React from 'react'
-import { Card, Tag, Alert, Divider, Button } from 'antd'
-import { useNavigate } from 'react-router-dom'
-import {
-    ArrowLeftOutlined,
-    CodeOutlined,
-    WarningOutlined,
-    CheckCircleOutlined,
-    ConsoleSqlOutlined
-} from '@ant-design/icons'
 import CodeHighlight from '@/components/CodeHighlight'
 import { useCodeData } from '@/hooks/useCodeData'
 import styles from '@/styles/topicDetail.module.scss'
+import { ArrowLeftOutlined, ConsoleSqlOutlined } from '@ant-design/icons'
+import { Alert, Button, Card, Divider, Tag } from 'antd'
+import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const TerminalDetail: React.FC = () => {
     const navigate = useNavigate()
     const { codeData, loading, error } = useCodeData('Tools', 'terminal')
-    
+
     const handleBack = () => {
         navigate('/technology/tools')
     }
@@ -31,14 +25,16 @@ const TerminalDetail: React.FC = () => {
     return (
         <div className={styles.container}>
             <div className={styles.header}>
-                <Button 
-                    icon={<ArrowLeftOutlined />} 
+                <Button
+                    icon={<ArrowLeftOutlined />}
                     onClick={handleBack}
                     className={styles.back_button}
                 >
                     返回工具
                 </Button>
-                <h1><ConsoleSqlOutlined /> 终端工具</h1>
+                <h1>
+                    <ConsoleSqlOutlined /> 终端工具
+                </h1>
                 <p>掌握现代终端工具和Shell配置，提升命令行使用效率</p>
             </div>
 
@@ -63,11 +59,21 @@ const TerminalDetail: React.FC = () => {
 
                         <h3>优化目标</h3>
                         <ul>
-                            <li><strong>提升效率</strong>：快速执行常用命令</li>
-                            <li><strong>美化界面</strong>：更好的视觉体验</li>
-                            <li><strong>智能提示</strong>：自动补全和建议</li>
-                            <li><strong>历史管理</strong>：快速查找历史命令</li>
-                            <li><strong>多任务处理</strong>：会话管理和分屏</li>
+                            <li>
+                                <strong>提升效率</strong>：快速执行常用命令
+                            </li>
+                            <li>
+                                <strong>美化界面</strong>：更好的视觉体验
+                            </li>
+                            <li>
+                                <strong>智能提示</strong>：自动补全和建议
+                            </li>
+                            <li>
+                                <strong>历史管理</strong>：快速查找历史命令
+                            </li>
+                            <li>
+                                <strong>多任务处理</strong>：会话管理和分屏
+                            </li>
                         </ul>
                     </div>
                 </Card>
@@ -83,7 +89,7 @@ const TerminalDetail: React.FC = () => {
                                 title={codeData.zshConfiguration.title}
                             />
                         )}
-                        
+
                         <h3>PowerShell 配置</h3>
                         {codeData.powershellConfiguration && (
                             <CodeHighlight
@@ -92,7 +98,7 @@ const TerminalDetail: React.FC = () => {
                                 title={codeData.powershellConfiguration.title}
                             />
                         )}
-                        
+
                         <h3>终端主题配置</h3>
                         {codeData.terminalThemes && (
                             <CodeHighlight
@@ -115,7 +121,7 @@ const TerminalDetail: React.FC = () => {
                                 title={codeData.modernCliTools.title}
                             />
                         )}
-                        
+
                         <h3>开发专用工具</h3>
                         {codeData.developmentTools && (
                             <CodeHighlight
@@ -166,11 +172,21 @@ const TerminalDetail: React.FC = () => {
                             message="效率提升技巧"
                             description={
                                 <ul>
-                                    <li><strong>历史搜索</strong>：使用Ctrl+R快速搜索历史命令</li>
-                                    <li><strong>目录跳转</strong>：使用z、autojump等工具快速跳转</li>
-                                    <li><strong>批量操作</strong>：使用通配符和管道处理多个文件</li>
-                                    <li><strong>会话管理</strong>：使用tmux或screen管理多个会话</li>
-                                    <li><strong>自动化脚本</strong>：将重复任务写成脚本</li>
+                                    <li>
+                                        <strong>历史搜索</strong>：使用Ctrl+R快速搜索历史命令
+                                    </li>
+                                    <li>
+                                        <strong>目录跳转</strong>：使用z、autojump等工具快速跳转
+                                    </li>
+                                    <li>
+                                        <strong>批量操作</strong>：使用通配符和管道处理多个文件
+                                    </li>
+                                    <li>
+                                        <strong>会话管理</strong>：使用tmux或screen管理多个会话
+                                    </li>
+                                    <li>
+                                        <strong>自动化脚本</strong>：将重复任务写成脚本
+                                    </li>
                                 </ul>
                             }
                             type="success"
@@ -183,11 +199,21 @@ const TerminalDetail: React.FC = () => {
                             message="安全注意事项"
                             description={
                                 <ul>
-                                    <li><strong>权限管理</strong>：避免不必要的sudo操作</li>
-                                    <li><strong>脚本安全</strong>：检查脚本来源和内容</li>
-                                    <li><strong>敏感信息</strong>：不要在历史记录中保存密码</li>
-                                    <li><strong>网络安全</strong>：使用SSH密钥而非密码</li>
-                                    <li><strong>定期更新</strong>：保持工具和系统更新</li>
+                                    <li>
+                                        <strong>权限管理</strong>：避免不必要的sudo操作
+                                    </li>
+                                    <li>
+                                        <strong>脚本安全</strong>：检查脚本来源和内容
+                                    </li>
+                                    <li>
+                                        <strong>敏感信息</strong>：不要在历史记录中保存密码
+                                    </li>
+                                    <li>
+                                        <strong>网络安全</strong>：使用SSH密钥而非密码
+                                    </li>
+                                    <li>
+                                        <strong>定期更新</strong>：保持工具和系统更新
+                                    </li>
                                 </ul>
                             }
                             type="warning"

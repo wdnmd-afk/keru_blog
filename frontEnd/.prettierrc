@@ -2,7 +2,8 @@
   "trailingComma": "es5",
   "tabWidth": 4,
   "singleQuote": true,
-  "jsxBracketSameLine": false,
+  "bracketSameLine": false,
   "printWidth": 100,
-  "semi": false
+  "semi": false,
+  "plugins": ["prettier-plugin-organize-imports"]
 }

@@ -1,11 +1,11 @@
-import React, { useState } from 'react'
+import FloatingActions from '@/components/FloatingActions.tsx'
+import SvgIcon from '@/components/SvgIcon.tsx'
 import style from '@/styles/layout.module.scss'
-import { useLocation, useNavigate } from 'react-router-dom'
 import { BrowserLocalStorage } from '@/utils'
 import type { MenuProps } from 'antd'
 import { Dropdown } from 'antd'
-import SvgIcon from '@/components/SvgIcon.tsx'
-import FloatingActions from '@/components/FloatingActions.tsx'
+import React, { useState } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom'
 
 interface MenuItem {
     name: string

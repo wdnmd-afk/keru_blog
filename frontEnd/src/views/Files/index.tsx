@@ -1,8 +1,8 @@
-import React from 'react'
-import { Tabs, TabsProps } from 'antd'
 import styles from '@/styles/files.module.scss'
-import Upload from './Upload'
+import { Tabs, TabsProps } from 'antd'
+import React from 'react'
 import FilePreview from './FilePreview'
+import Upload from './Upload'
 
 const Files: React.FC = () => {
     const [changeKey, setChangeKey] = React.useState(1)

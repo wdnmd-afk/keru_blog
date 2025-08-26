@@ -1,21 +1,15 @@
-import React from 'react'
-import { Card, Tag, Alert, Divider, Button } from 'antd'
-import { useNavigate } from 'react-router-dom'
-import { 
-    ArrowLeftOutlined, 
-    ApiOutlined, 
-    WarningOutlined,
-    CheckCircleOutlined,
-    SendOutlined
-} from '@ant-design/icons'
 import CodeHighlight from '@/components/CodeHighlight'
 import { useCodeData } from '@/hooks/useCodeData'
 import styles from '@/styles/topicDetail.module.scss'
+import { ApiOutlined, ArrowLeftOutlined } from '@ant-design/icons'
+import { Alert, Button, Card, Divider, Tag } from 'antd'
+import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const PostmanDetail: React.FC = () => {
     const navigate = useNavigate()
     const { codeData, loading, error } = useCodeData('Tools', 'postman')
-    
+
     const handleBack = () => {
         navigate('/technology/tools')
     }
@@ -31,14 +25,16 @@ const PostmanDetail: React.FC = () => {
     return (
         <div className={styles.container}>
             <div className={styles.header}>
-                <Button 
-                    icon={<ArrowLeftOutlined />} 
+                <Button
+                    icon={<ArrowLeftOutlined />}
                     onClick={handleBack}
                     className={styles.back_button}
                 >
                     返回工具
                 </Button>
-                <h1><ApiOutlined /> Postman API测试</h1>
+                <h1>
+                    <ApiOutlined /> Postman API测试
+                </h1>
                 <p>掌握Postman API测试工具，提升接口开发和测试效率</p>
             </div>
 
@@ -49,8 +45,7 @@ const PostmanDetail: React.FC = () => {
                         <h3>什么是 Postman</h3>
                         <p>
                             Postman 是一个功能强大的API开发和测试平台，
-                            提供了完整的API生命周期管理工具，
-                            从设计、测试到文档生成和监控。
+                            提供了完整的API生命周期管理工具， 从设计、测试到文档生成和监控。
                         </p>
 
                         <h3>主要功能</h3>
@@ -65,11 +60,21 @@ const PostmanDetail: React.FC = () => {
 
                         <h3>使用场景</h3>
                         <ul>
-                            <li><strong>API开发</strong>：快速测试和调试API接口</li>
-                            <li><strong>自动化测试</strong>：编写和执行API测试套件</li>
-                            <li><strong>文档生成</strong>：自动生成API文档</li>
-                            <li><strong>团队协作</strong>：共享API集合和环境配置</li>
-                            <li><strong>监控</strong>：定期检查API可用性和性能</li>
+                            <li>
+                                <strong>API开发</strong>：快速测试和调试API接口
+                            </li>
+                            <li>
+                                <strong>自动化测试</strong>：编写和执行API测试套件
+                            </li>
+                            <li>
+                                <strong>文档生成</strong>：自动生成API文档
+                            </li>
+                            <li>
+                                <strong>团队协作</strong>：共享API集合和环境配置
+                            </li>
+                            <li>
+                                <strong>监控</strong>：定期检查API可用性和性能
+                            </li>
                         </ul>
                     </div>
                 </Card>
@@ -85,7 +90,7 @@ const PostmanDetail: React.FC = () => {
                                 title={codeData.basicRequests.title}
                             />
                         )}
-                        
+
                         <h3>环境变量管理</h3>
                         {codeData.environmentVariables && (
                             <CodeHighlight
@@ -94,7 +99,7 @@ const PostmanDetail: React.FC = () => {
                                 title={codeData.environmentVariables.title}
                             />
                         )}
-                        
+
                         <h3>测试脚本编写</h3>
                         {codeData.testScripts && (
                             <CodeHighlight
@@ -117,7 +122,7 @@ const PostmanDetail: React.FC = () => {
                                 title={codeData.collectionRunner.title}
                             />
                         )}
-                        
+
                         <h3>Mock服务器</h3>
                         {codeData.mockServer && (
                             <CodeHighlight
@@ -126,7 +131,7 @@ const PostmanDetail: React.FC = () => {
                                 title={codeData.mockServer.title}
                             />
                         )}
-                        
+
                         <h3>API文档生成</h3>
                         {codeData.apiDocumentation && (
                             <CodeHighlight
@@ -149,7 +154,7 @@ const PostmanDetail: React.FC = () => {
                                 title={codeData.newmanCLI.title}
                             />
                         )}
-                        
+
                         <h3>自定义Newman脚本</h3>
                         {codeData.customNewmanScript && (
                             <CodeHighlight
@@ -186,11 +191,21 @@ const PostmanDetail: React.FC = () => {
                             message="测试策略建议"
                             description={
                                 <ul>
-                                    <li><strong>功能测试</strong>：验证API功能正确性</li>
-                                    <li><strong>边界测试</strong>：测试参数边界值</li>
-                                    <li><strong>异常测试</strong>：测试错误处理机制</li>
-                                    <li><strong>性能测试</strong>：检查响应时间</li>
-                                    <li><strong>安全测试</strong>：验证认证和授权</li>
+                                    <li>
+                                        <strong>功能测试</strong>：验证API功能正确性
+                                    </li>
+                                    <li>
+                                        <strong>边界测试</strong>：测试参数边界值
+                                    </li>
+                                    <li>
+                                        <strong>异常测试</strong>：测试错误处理机制
+                                    </li>
+                                    <li>
+                                        <strong>性能测试</strong>：检查响应时间
+                                    </li>
+                                    <li>
+                                        <strong>安全测试</strong>：验证认证和授权
+                                    </li>
                                 </ul>
                             }
                             type="success"
@@ -203,11 +218,21 @@ const PostmanDetail: React.FC = () => {
                             message="团队协作建议"
                             description={
                                 <ul>
-                                    <li><strong>统一规范</strong>：制定API命名和测试规范</li>
-                                    <li><strong>版本管理</strong>：使用Git管理Collection</li>
-                                    <li><strong>权限控制</strong>：合理分配团队权限</li>
-                                    <li><strong>文档维护</strong>：及时更新API文档</li>
-                                    <li><strong>监控告警</strong>：设置API监控和告警</li>
+                                    <li>
+                                        <strong>统一规范</strong>：制定API命名和测试规范
+                                    </li>
+                                    <li>
+                                        <strong>版本管理</strong>：使用Git管理Collection
+                                    </li>
+                                    <li>
+                                        <strong>权限控制</strong>：合理分配团队权限
+                                    </li>
+                                    <li>
+                                        <strong>文档维护</strong>：及时更新API文档
+                                    </li>
+                                    <li>
+                                        <strong>监控告警</strong>：设置API监控和告警
+                                    </li>
                                 </ul>
                             }
                             type="warning"

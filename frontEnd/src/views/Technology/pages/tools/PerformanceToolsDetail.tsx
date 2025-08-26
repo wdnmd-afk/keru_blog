@@ -1,21 +1,15 @@
-import React from 'react'
-import { Card, Tag, Alert, Divider, Button } from 'antd'
-import { useNavigate } from 'react-router-dom'
-import { 
-    ArrowLeftOutlined, 
-    DashboardOutlined, 
-    WarningOutlined,
-    CheckCircleOutlined,
-    ThunderboltOutlined
-} from '@ant-design/icons'
 import CodeHighlight from '@/components/CodeHighlight'
 import { useCodeData } from '@/hooks/useCodeData'
 import styles from '@/styles/topicDetail.module.scss'
+import { ArrowLeftOutlined, DashboardOutlined } from '@ant-design/icons'
+import { Alert, Button, Card, Divider, Tag } from 'antd'
+import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 const PerformanceToolsDetail: React.FC = () => {
     const navigate = useNavigate()
     const { codeData, loading, error } = useCodeData('Tools', 'performance-tools')
-    
+
     const handleBack = () => {
         navigate('/technology/tools')
     }
@@ -31,14 +25,16 @@ const PerformanceToolsDetail: React.FC = () => {
     return (
         <div className={styles.container}>
             <div className={styles.header}>
-                <Button 
-                    icon={<ArrowLeftOutlined />} 
+                <Button
+                    icon={<ArrowLeftOutlined />}
                     onClick={handleBack}
                     className={styles.back_button}
                 >
                     返回工具
                 </Button>
-                <h1><DashboardOutlined /> 性能优化工具</h1>
+                <h1>
+                    <DashboardOutlined /> 性能优化工具
+                </h1>
                 <p>掌握前端性能分析和优化工具，提升应用性能</p>
             </div>
 
@@ -64,11 +60,21 @@ const PerformanceToolsDetail: React.FC = () => {
 
                         <h3>关键性能指标</h3>
                         <ul>
-                            <li><strong>FCP</strong>：首次内容绘制时间</li>
-                            <li><strong>LCP</strong>：最大内容绘制时间</li>
-                            <li><strong>FID</strong>：首次输入延迟</li>
-                            <li><strong>CLS</strong>：累积布局偏移</li>
-                            <li><strong>TTFB</strong>：首字节时间</li>
+                            <li>
+                                <strong>FCP</strong>：首次内容绘制时间
+                            </li>
+                            <li>
+                                <strong>LCP</strong>：最大内容绘制时间
+                            </li>
+                            <li>
+                                <strong>FID</strong>：首次输入延迟
+                            </li>
+                            <li>
+                                <strong>CLS</strong>：累积布局偏移
+                            </li>
+                            <li>
+                                <strong>TTFB</strong>：首字节时间
+                            </li>
                         </ul>
                     </div>
                 </Card>
@@ -84,7 +90,7 @@ const PerformanceToolsDetail: React.FC = () => {
                                 title={codeData.chromePerformance.title}
                             />
                         )}
-                        
+
                         <h3>Memory面板内存分析</h3>
                         {codeData.memoryAnalysis && (
                             <CodeHighlight
@@ -93,7 +99,7 @@ const PerformanceToolsDetail: React.FC = () => {
                                 title={codeData.memoryAnalysis.title}
                             />
                         )}
-                        
+
                         <h3>Network面板网络优化</h3>
                         {codeData.networkOptimization && (
                             <CodeHighlight
@@ -116,7 +122,7 @@ const PerformanceToolsDetail: React.FC = () => {
                                 title={codeData.lighthouseAudit.title}
                             />
                         )}
-                        
+
                         <h3>Core Web Vitals优化</h3>
                         {codeData.coreWebVitals && (
                             <CodeHighlight
@@ -167,11 +173,21 @@ const PerformanceToolsDetail: React.FC = () => {
                             message="性能优化策略"
                             description={
                                 <ul>
-                                    <li><strong>资源优化</strong>：压缩、合并、懒加载</li>
-                                    <li><strong>缓存策略</strong>：浏览器缓存、CDN缓存</li>
-                                    <li><strong>代码分割</strong>：按需加载，减少初始包大小</li>
-                                    <li><strong>图片优化</strong>：现代格式、响应式图片</li>
-                                    <li><strong>服务端优化</strong>：SSR、预渲染、HTTP/2</li>
+                                    <li>
+                                        <strong>资源优化</strong>：压缩、合并、懒加载
+                                    </li>
+                                    <li>
+                                        <strong>缓存策略</strong>：浏览器缓存、CDN缓存
+                                    </li>
+                                    <li>
+                                        <strong>代码分割</strong>：按需加载，减少初始包大小
+                                    </li>
+                                    <li>
+                                        <strong>图片优化</strong>：现代格式、响应式图片
+                                    </li>
+                                    <li>
+                                        <strong>服务端优化</strong>：SSR、预渲染、HTTP/2
+                                    </li>
                                 </ul>
                             }
                             type="success"
@@ -184,11 +200,21 @@ const PerformanceToolsDetail: React.FC = () => {
                             message="常见性能问题"
                             description={
                                 <ul>
-                                    <li><strong>JavaScript阻塞</strong>：长任务影响交互性</li>
-                                    <li><strong>资源阻塞</strong>：CSS/JS阻塞渲染</li>
-                                    <li><strong>内存泄漏</strong>：未清理的引用导致内存增长</li>
-                                    <li><strong>布局抖动</strong>：频繁的重排重绘</li>
-                                    <li><strong>网络延迟</strong>：资源加载时间过长</li>
+                                    <li>
+                                        <strong>JavaScript阻塞</strong>：长任务影响交互性
+                                    </li>
+                                    <li>
+                                        <strong>资源阻塞</strong>：CSS/JS阻塞渲染
+                                    </li>
+                                    <li>
+                                        <strong>内存泄漏</strong>：未清理的引用导致内存增长
+                                    </li>
+                                    <li>
+                                        <strong>布局抖动</strong>：频繁的重排重绘
+                                    </li>
+                                    <li>
+                                        <strong>网络延迟</strong>：资源加载时间过长
+                                    </li>
                                 </ul>
                             }
                             type="warning"
