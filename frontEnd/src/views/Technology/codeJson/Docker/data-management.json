@@ -28,5 +28,30 @@
     "title": "存储性能优化",
     "language": "bash",
     "code": "# 1. 卷性能监控\n# 监控卷使用情况\ndocker system df -v\n\n# 查看卷详细信息\ndocker volume inspect my-volume\n\n# 监控容器存储性能\ndocker stats --format \"table {{.Container}}\\t{{.CPUPerc}}\\t{{.MemUsage}}\\t{{.BlockIO}}\"\n\n# 2. 存储驱动优化\n# 查看当前存储驱动\ndocker info | grep \"Storage Driver\"\n\n# 配置存储驱动（daemon.json）\n# {\n#   \"storage-driver\": \"overlay2\",\n#   \"storage-opts\": [\n#     \"overlay2.override_kernel_check=true\"\n#   ]\n# }\n\n# 3. 卷类型选择优化\n# 本地卷（最快）\ndocker volume create --driver local fast-volume\n\n# NFS 卷（网络共享）\ndocker volume create \\\n  --driver local \\\n  --opt type=nfs \\\n  --opt o=addr=192.168.1.100,rw \\\n  --opt device=:/shared/data \\\n  nfs-volume\n\n# 4. 缓存策略优化\n# 使用 tmpfs 提高临时文件性能\ndocker run -d \\\n  --name cache-app \\\n  --tmpfs /tmp:rw,noexec,nosuid,size=1g \\\n  --tmpfs /var/cache:rw,size=512m \\\n  myapp:latest\n\n# 5. 数据库存储优化\n# PostgreSQL 性能优化\ndocker run -d \\\n  --name postgres-optimized \\\n  -e POSTGRES_DB=myapp \\\n  -e POSTGRES_USER=postgres \\\n  -e POSTGRES_PASSWORD=password \\\n  -v postgres-data:/var/lib/postgresql/data \\\n  -v postgres-logs:/var/log/postgresql \\\n  --shm-size=256m \\\n  postgres:13 \\\n  -c shared_buffers=256MB \\\n  -c effective_cache_size=1GB \\\n  -c maintenance_work_mem=64MB \\\n  -c checkpoint_completion_target=0.9 \\\n  -c wal_buffers=16MB\n\n# 6. 文件系统优化\n# 使用 bind mount 优化\ndocker run -d \\\n  --name optimized-app \\\n  -v /opt/app-data:/app/data:rw,Z \\\n  -v /opt/app-logs:/app/logs:rw,Z \\\n  --mount type=bind,source=/opt/config,target=/app/config,readonly \\\n  myapp:latest\n\n# 7. 容器层优化\n# 减少层数的 Dockerfile\nFROM alpine:latest\nRUN apk add --no-cache \\\n    python3 \\\n    python3-dev \\\n    py3-pip \\\n    && pip3 install --no-cache-dir flask \\\n    && rm -rf /var/cache/apk/*\n\n# 8. 清理和维护\n# 清理未使用的卷\ndocker volume prune -f\n\n# 清理未使用的镜像\ndocker image prune -a -f\n\n# 清理构建缓存\ndocker builder prune -a -f\n\n# 9. 性能测试脚本\n#!/bin/bash\n# storage-benchmark.sh\n\nset -e\n\nVOLUME_NAME=\"test-volume\"\nTEST_SIZE=\"1G\"\n\necho \"Creating test volume...\"\ndocker volume create $VOLUME_NAME\n\necho \"Running write performance test...\"\ntime docker run --rm \\\n  -v $VOLUME_NAME:/test \\\n  alpine:latest \\\n  dd if=/dev/zero of=/test/testfile bs=1M count=1024\n\necho \"Running read performance test...\"\ntime docker run --rm \\\n  -v $VOLUME_NAME:/test \\\n  alpine:latest \\\n  dd if=/test/testfile of=/dev/null bs=1M\n\necho \"Cleaning up...\"\ndocker volume rm $VOLUME_NAME\n\necho \"Performance test completed\""
+  },
+  "bindMountsBasics": {
+    "title": "绑定挂载基础",
+    "language": "bash",
+    "code": "# 绑定挂载示例\ndocker run -d --name example -v /host/path:/container/path busybox"
+  },
+  "volumeAdvanced": {
+    "title": "卷高级用法",
+    "language": "bash",
+    "code": "# 高级卷创建示例\ndocker volume create --driver local --opt type=tmpfs --opt device=tmpfs --opt o=size=100m,uid=1000 advanced-volume"
+  },
+  "backupStrategies": {
+    "title": "备份策略",
+    "language": "bash",
+    "code": "# 备份策略示例\n# 每日备份\ncronjob for daily backup: docker run --rm -v data:/backup ubuntu tar czf backup.tar.gz /data"
+  },
+  "volumePlugins": {
+    "title": "卷插件",
+    "language": "bash",
+    "code": "# 卷插件示例\ndocker plugin install rexray/ebs:latest --grant-all-permissions\ndocker volume create --driver rexray/ebs ebs-volume"
+  },
+  "encryptedVolumes": {
+    "title": "加密卷",
+    "language": "bash",
+    "code": "# 加密卷示例\ndocker volume create --driver local --opt type=ext4 --opt device=/dev/xvdf --opt o=encrypt encrypted-volume"
   }
 }

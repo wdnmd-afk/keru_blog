@@ -2,7 +2,7 @@ import CodeHighlight from '@/components/CodeHighlight'
 import { useCodeData } from '@/hooks/useCodeData'
 import styles from '@/styles/topicDetail.module.scss'
 import { ArrowLeftOutlined, RocketOutlined } from '@ant-design/icons'
-import { Alert, Button, Card, Divider, Tag } from 'antd'
+import { Alert, Button, Card, Spin, Tag } from 'antd'
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
@@ -15,33 +15,60 @@ const ProductivityDetail: React.FC = () => {
     }
 
     if (loading) {
-        return <div className={styles.loading}>加载中...</div>
+        return (
+            <div className={styles.topic_detail_container}>
+                <div style={{ textAlign: 'center', padding: '50px' }}>
+                    <Spin size="large" />
+                    <p style={{ marginTop: '16px', color: '#ffffff' }}>加载代码数据中...</p>
+                </div>
+            </div>
+        )
     }
 
     if (error) {
-        return <div className={styles.error}>加载失败: {error}</div>
+        return (
+            <div className={styles.topic_detail_container}>
+                <Alert message="加载失败" description={error} type="error" showIcon />
+            </div>
+        )
     }
 
     return (
-        <div className={styles.container}>
-            <div className={styles.header}>
+        <div className={styles.topic_detail_container}>
+            {/* 返回按钮 */}
+            <div className={styles.back_section}>
                 <Button
+                    type="text"
                     icon={<ArrowLeftOutlined />}
                     onClick={handleBack}
                     className={styles.back_button}
                 >
-                    返回工具
+                    返回工具技术卡片
                 </Button>
-                <h1>
-                    <RocketOutlined /> 生产力工具
-                </h1>
-                <p>提升开发效率的生产力工具和自动化解决方案</p>
             </div>
 
-            <div className={styles.content}>
+            {/* 页面头部 */}
+            <div className={styles.detail_header}>
+                <div className={styles.topic_icon}>
+                    <RocketOutlined />
+                </div>
+                <div className={styles.topic_info}>
+                    <h1>生产力工具</h1>
+                    <p>提升开发效率的生产力工具和自动化解决方案，优化工作流程</p>
+                    <div className={styles.topic_tags}>
+                        <Tag color="blue">代码片段</Tag>
+                        <Tag color="green">文本扩展</Tag>
+                        <Tag color="orange">窗口管理</Tag>
+                        <Tag color="purple">自动化脚本</Tag>
+                    </div>
+                </div>
+            </div>
+
+            {/* 内容区域 */}
+            <div className={styles.content_sections}>
                 {/* 概述 */}
                 <Card title="📋 生产力工具概述" className={styles.content_card}>
-                    <div className={styles.overview_section}>
+                    <div className={styles.concept_content}>
                         <h3>什么是生产力工具</h3>
                         <p>
                             生产力工具是帮助开发者提升工作效率、减少重复劳动、
@@ -50,7 +77,7 @@ const ProductivityDetail: React.FC = () => {
                         </p>
 
                         <h3>工具分类</h3>
-                        <div className={styles.tool_categories}>
+                        <div className={styles.network_types}>
                             <Tag color="blue">代码片段</Tag>
                             <Tag color="green">文本扩展</Tag>
                             <Tag color="orange">窗口管理</Tag>
@@ -82,78 +109,86 @@ const ProductivityDetail: React.FC = () => {
 
                 {/* 代码片段管理 */}
                 <Card title="📝 代码片段管理" className={styles.content_card}>
-                    <div className={styles.snippets_section}>
-                        <h3>VS Code 代码片段</h3>
-                        {codeData.codeSnippets && (
-                            <CodeHighlight
-                                code={codeData.codeSnippets.code}
-                                language={codeData.codeSnippets.language}
-                                title={codeData.codeSnippets.title}
-                            />
-                        )}
+                    <div className={styles.usage_grid}>
+                        <div className={styles.usage_item}>
+                            <h4>1. VS Code 代码片段</h4>
+                            {codeData.codeSnippets && (
+                                <CodeHighlight
+                                    code={codeData.codeSnippets.code}
+                                    language={codeData.codeSnippets.language}
+                                    title={codeData.codeSnippets.title}
+                                />
+                            )}
+                        </div>
 
-                        <h3>文本扩展工具</h3>
-                        {codeData.textExpansion && (
-                            <CodeHighlight
-                                code={codeData.textExpansion.code}
-                                language={codeData.textExpansion.language}
-                                title={codeData.textExpansion.title}
-                            />
-                        )}
+                        <div className={styles.usage_item}>
+                            <h4>2. 文本扩展工具</h4>
+                            {codeData.textExpansion && (
+                                <CodeHighlight
+                                    code={codeData.textExpansion.code}
+                                    language={codeData.textExpansion.language}
+                                    title={codeData.textExpansion.title}
+                                />
+                            )}
+                        </div>
 
-                        <h3>Raycast 脚本命令</h3>
-                        {codeData.raycastScripts && (
-                            <CodeHighlight
-                                code={codeData.raycastScripts.code}
-                                language={codeData.raycastScripts.language}
-                                title={codeData.raycastScripts.title}
-                            />
-                        )}
-                    </div>
-                </Card>
-
-                {/* 窗口管理 */}
-                <Card title="🪟 窗口管理工具" className={styles.content_card}>
-                    <div className={styles.window_section}>
-                        <h3>窗口管理配置</h3>
-                        {codeData.windowManagement && (
-                            <CodeHighlight
-                                code={codeData.windowManagement.code}
-                                language={codeData.windowManagement.language}
-                                title={codeData.windowManagement.title}
-                            />
-                        )}
+                        <div className={styles.usage_item}>
+                            <h4>3. Raycast 脚本命令</h4>
+                            {codeData.raycastScripts && (
+                                <CodeHighlight
+                                    code={codeData.raycastScripts.code}
+                                    language={codeData.raycastScripts.language}
+                                    title={codeData.raycastScripts.title}
+                                />
+                            )}
+                        </div>
                     </div>
                 </Card>
 
                 {/* 自动化工具 */}
                 <Card title="🤖 自动化工具" className={styles.content_card}>
-                    <div className={styles.automation_section}>
-                        <h3>自动化工作流</h3>
-                        {codeData.automationWorkflows && (
-                            <CodeHighlight
-                                code={codeData.automationWorkflows.code}
-                                language={codeData.automationWorkflows.language}
-                                title={codeData.automationWorkflows.title}
-                            />
-                        )}
+                    <div className={styles.usage_grid}>
+                        <div className={styles.usage_item}>
+                            <h4>4. 窗口管理配置</h4>
+                            {codeData.windowManagement && (
+                                <CodeHighlight
+                                    code={codeData.windowManagement.code}
+                                    language={codeData.windowManagement.language}
+                                    title={codeData.windowManagement.title}
+                                />
+                            )}
+                        </div>
 
-                        <h3>自定义自动化脚本</h3>
-                        {codeData.customAutomation && (
-                            <CodeHighlight
-                                code={codeData.customAutomation.code}
-                                language={codeData.customAutomation.language}
-                                title={codeData.customAutomation.title}
-                            />
-                        )}
+                        <div className={styles.usage_item}>
+                            <h4>5. 自动化工作流</h4>
+                            {codeData.automationWorkflows && (
+                                <CodeHighlight
+                                    code={codeData.automationWorkflows.code}
+                                    language={codeData.automationWorkflows.language}
+                                    title={codeData.automationWorkflows.title}
+                                />
+                            )}
+                        </div>
+
+                        <div className={styles.usage_item}>
+                            <h4>6. 自定义自动化脚本</h4>
+                            {codeData.customAutomation && (
+                                <CodeHighlight
+                                    code={codeData.customAutomation.code}
+                                    language={codeData.customAutomation.language}
+                                    title={codeData.customAutomation.title}
+                                />
+                            )}
+                        </div>
                     </div>
                 </Card>
 
                 {/* 最佳实践 */}
                 <Card title="💡 最佳实践" className={styles.content_card}>
-                    <div className={styles.best_practices}>
+                    <div className="f-ic">
                         <Alert
                             message="生产力工具使用建议"
+                            className={'h-50 flex-1'}
                             description={
                                 <ul>
                                     <li>从小处着手，逐步建立自动化工作流</li>
@@ -168,10 +203,9 @@ const ProductivityDetail: React.FC = () => {
                             showIcon
                         />
 
-                        <Divider />
-
                         <Alert
                             message="效率提升策略"
+                            className={'h-50 flex-1 mx-5'}
                             description={
                                 <ul>
                                     <li>
@@ -195,10 +229,9 @@ const ProductivityDetail: React.FC = () => {
                             showIcon
                         />
 
-                        <Divider />
-
                         <Alert
                             message="工具选择建议"
+                            className={'h-50 flex-1'}
                             description={
                                 <ul>
                                     <li>

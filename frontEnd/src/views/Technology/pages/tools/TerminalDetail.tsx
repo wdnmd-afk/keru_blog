@@ -2,7 +2,7 @@ import CodeHighlight from '@/components/CodeHighlight'
 import { useCodeData } from '@/hooks/useCodeData'
 import styles from '@/styles/topicDetail.module.scss'
 import { ArrowLeftOutlined, ConsoleSqlOutlined } from '@ant-design/icons'
-import { Alert, Button, Card, Divider, Tag } from 'antd'
+import { Alert, Button, Card, Spin, Tag } from 'antd'
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
@@ -15,33 +15,60 @@ const TerminalDetail: React.FC = () => {
     }
 
     if (loading) {
-        return <div className={styles.loading}>加载中...</div>
+        return (
+            <div className={styles.topic_detail_container}>
+                <div style={{ textAlign: 'center', padding: '50px' }}>
+                    <Spin size="large" />
+                    <p style={{ marginTop: '16px', color: '#ffffff' }}>加载代码数据中...</p>
+                </div>
+            </div>
+        )
     }
 
     if (error) {
-        return <div className={styles.error}>加载失败: {error}</div>
+        return (
+            <div className={styles.topic_detail_container}>
+                <Alert message="加载失败" description={error} type="error" showIcon />
+            </div>
+        )
     }
 
     return (
-        <div className={styles.container}>
-            <div className={styles.header}>
+        <div className={styles.topic_detail_container}>
+            {/* 返回按钮 */}
+            <div className={styles.back_section}>
                 <Button
+                    type="text"
                     icon={<ArrowLeftOutlined />}
                     onClick={handleBack}
                     className={styles.back_button}
                 >
-                    返回工具
+                    返回工具技术卡片
                 </Button>
-                <h1>
-                    <ConsoleSqlOutlined /> 终端工具
-                </h1>
-                <p>掌握现代终端工具和Shell配置，提升命令行使用效率</p>
             </div>
 
-            <div className={styles.content}>
+            {/* 页面头部 */}
+            <div className={styles.detail_header}>
+                <div className={styles.topic_icon}>
+                    <ConsoleSqlOutlined />
+                </div>
+                <div className={styles.topic_info}>
+                    <h1>终端工具</h1>
+                    <p>掌握现代终端工具和Shell配置，提升命令行使用效率和开发体验</p>
+                    <div className={styles.topic_tags}>
+                        <Tag color="blue">Shell配置</Tag>
+                        <Tag color="green">现代CLI工具</Tag>
+                        <Tag color="orange">终端主题</Tag>
+                        <Tag color="purple">自动化脚本</Tag>
+                    </div>
+                </div>
+            </div>
+
+            {/* 内容区域 */}
+            <div className={styles.content_sections}>
                 {/* 概述 */}
                 <Card title="📋 终端工具概述" className={styles.content_card}>
-                    <div className={styles.overview_section}>
+                    <div className={styles.concept_content}>
                         <h3>为什么要优化终端</h3>
                         <p>
                             终端是开发者最重要的工具之一。一个配置良好的终端环境
@@ -49,7 +76,7 @@ const TerminalDetail: React.FC = () => {
                         </p>
 
                         <h3>终端工具分类</h3>
-                        <div className={styles.tool_categories}>
+                        <div className={styles.network_types}>
                             <Tag color="blue">Shell配置</Tag>
                             <Tag color="green">现代CLI工具</Tag>
                             <Tag color="orange">终端主题</Tag>
@@ -80,78 +107,86 @@ const TerminalDetail: React.FC = () => {
 
                 {/* Shell配置 */}
                 <Card title="🐚 Shell 配置优化" className={styles.content_card}>
-                    <div className={styles.shell_config}>
-                        <h3>Zsh + Oh My Zsh 配置</h3>
-                        {codeData.zshConfiguration && (
-                            <CodeHighlight
-                                code={codeData.zshConfiguration.code}
-                                language={codeData.zshConfiguration.language}
-                                title={codeData.zshConfiguration.title}
-                            />
-                        )}
+                    <div className={styles.usage_grid}>
+                        <div className={styles.usage_item}>
+                            <h4>1. Zsh + Oh My Zsh 配置</h4>
+                            {codeData.zshConfiguration && (
+                                <CodeHighlight
+                                    code={codeData.zshConfiguration.code}
+                                    language={codeData.zshConfiguration.language}
+                                    title={codeData.zshConfiguration.title}
+                                />
+                            )}
+                        </div>
 
-                        <h3>PowerShell 配置</h3>
-                        {codeData.powershellConfiguration && (
-                            <CodeHighlight
-                                code={codeData.powershellConfiguration.code}
-                                language={codeData.powershellConfiguration.language}
-                                title={codeData.powershellConfiguration.title}
-                            />
-                        )}
+                        <div className={styles.usage_item}>
+                            <h4>2. PowerShell 配置</h4>
+                            {codeData.powershellConfiguration && (
+                                <CodeHighlight
+                                    code={codeData.powershellConfiguration.code}
+                                    language={codeData.powershellConfiguration.language}
+                                    title={codeData.powershellConfiguration.title}
+                                />
+                            )}
+                        </div>
 
-                        <h3>终端主题配置</h3>
-                        {codeData.terminalThemes && (
-                            <CodeHighlight
-                                code={codeData.terminalThemes.code}
-                                language={codeData.terminalThemes.language}
-                                title={codeData.terminalThemes.title}
-                            />
-                        )}
+                        <div className={styles.usage_item}>
+                            <h4>3. 终端主题配置</h4>
+                            {codeData.terminalThemes && (
+                                <CodeHighlight
+                                    code={codeData.terminalThemes.code}
+                                    language={codeData.terminalThemes.language}
+                                    title={codeData.terminalThemes.title}
+                                />
+                            )}
+                        </div>
                     </div>
                 </Card>
 
                 {/* 现代CLI工具 */}
                 <Card title="🛠️ 现代化CLI工具" className={styles.content_card}>
-                    <div className={styles.cli_tools}>
-                        <h3>文件和系统工具</h3>
-                        {codeData.modernCliTools && (
-                            <CodeHighlight
-                                code={codeData.modernCliTools.code}
-                                language={codeData.modernCliTools.language}
-                                title={codeData.modernCliTools.title}
-                            />
-                        )}
+                    <div className={styles.usage_grid}>
+                        <div className={styles.usage_item}>
+                            <h4>4. 文件和系统工具</h4>
+                            {codeData.modernCliTools && (
+                                <CodeHighlight
+                                    code={codeData.modernCliTools.code}
+                                    language={codeData.modernCliTools.language}
+                                    title={codeData.modernCliTools.title}
+                                />
+                            )}
+                        </div>
 
-                        <h3>开发专用工具</h3>
-                        {codeData.developmentTools && (
-                            <CodeHighlight
-                                code={codeData.developmentTools.code}
-                                language={codeData.developmentTools.language}
-                                title={codeData.developmentTools.title}
-                            />
-                        )}
-                    </div>
-                </Card>
+                        <div className={styles.usage_item}>
+                            <h4>5. 开发专用工具</h4>
+                            {codeData.developmentTools && (
+                                <CodeHighlight
+                                    code={codeData.developmentTools.code}
+                                    language={codeData.developmentTools.language}
+                                    title={codeData.developmentTools.title}
+                                />
+                            )}
+                        </div>
 
-                {/* Shell脚本 */}
-                <Card title="📜 Shell 脚本实战" className={styles.content_card}>
-                    <div className={styles.scripts_section}>
-                        <h3>实用脚本示例</h3>
-                        {codeData.shellScripts && (
-                            <CodeHighlight
-                                code={codeData.shellScripts.code}
-                                language={codeData.shellScripts.language}
-                                title={codeData.shellScripts.title}
-                            />
-                        )}
+                        <div className={styles.usage_item}>
+                            <h4>6. Shell 脚本实战</h4>
+                            {codeData.shellScripts && (
+                                <CodeHighlight
+                                    code={codeData.shellScripts.code}
+                                    language={codeData.shellScripts.language}
+                                    title={codeData.shellScripts.title}
+                                />
+                            )}
+                        </div>
                     </div>
                 </Card>
 
                 {/* 最佳实践 */}
                 <Card title="💡 最佳实践" className={styles.content_card}>
-                    <div className={styles.best_practices}>
+                    <div className="f-ic">
                         <Alert
                             message="终端配置建议"
+                            className={'h-50 flex-1'}
                             description={
                                 <ul>
                                     <li>选择合适的Shell（Zsh、Fish、PowerShell）</li>
@@ -166,10 +201,9 @@ const TerminalDetail: React.FC = () => {
                             showIcon
                         />
 
-                        <Divider />
-
                         <Alert
                             message="效率提升技巧"
+                            className={'h-50 flex-1 mx-5'}
                             description={
                                 <ul>
                                     <li>
@@ -193,10 +227,9 @@ const TerminalDetail: React.FC = () => {
                             showIcon
                         />
 
-                        <Divider />
-
                         <Alert
                             message="安全注意事项"
+                            className={'h-50 flex-1'}
                             description={
                                 <ul>
                                     <li>
