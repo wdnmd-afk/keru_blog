@@ -264,3 +264,66 @@
         height: calc(100% - 150px);
     }
 }
+
+// 新增样式：加载状态
+.loading_container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    background: var(--card-bg);
+    border-radius: 20px;
+    margin: 20px;
+    border: 1px solid rgba(62, 92, 122, 0.3);
+    
+    .loading_spinner {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        font-size: 16px;
+        color: var(--text-primary);
+        
+        &::before {
+            content: '';
+            width: 20px;
+            height: 20px;
+            border: 2px solid rgba(62, 92, 122, 0.3);
+            border-left: 2px solid var(--highlight-blue);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+    }
+}
+
+// 新增样式：404错误
+.not_found_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    text-align: center;
+    background: var(--card-bg);
+    border-radius: 20px;
+    margin: 20px;
+    border: 1px solid rgba(62, 92, 122, 0.3);
+    
+    h2 {
+        margin: 0 0 12px 0;
+        font-size: 20px;
+        color: #ff4d4f;
+        font-weight: 600;
+    }
+    
+    p {
+        margin: 0;
+        font-size: 14px;
+        color: var(--text-secondary);
+    }
+}
+
+// 动画定义
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
