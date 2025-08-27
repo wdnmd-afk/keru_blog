@@ -1,0 +1,197 @@
+/**
+ * 技术栈面包屑导航样式
+ * 
+ * 设计原则：
+ * 1. 与项目整体风格保持一致
+ * 2. 支持深色主题变量
+ * 3. 响应式设计
+ * 4. 良好的交互反馈
+ */
+
+.tech_breadcrumb_container {
+    padding: 16px 0;
+    margin-bottom: 20px;
+    border-bottom: 1px solid rgba(62, 92, 122, 0.2);
+    background: transparent;
+
+    @media (max-width: 768px) {
+        padding: 12px 0;
+        margin-bottom: 16px;
+    }
+
+    @media (max-width: 480px) {
+        padding: 8px 0;
+        margin-bottom: 12px;
+    }
+}
+
+.tech_breadcrumb {
+    // 覆盖 Ant Design 默认样式
+    :global(.ant-breadcrumb-link) {
+        color: var(--text-secondary);
+        transition: all 0.3s ease;
+        
+        &:hover {
+            color: var(--text-primary);
+        }
+    }
+
+    :global(.ant-breadcrumb-separator) {
+        color: var(--text-secondary);
+        opacity: 0.6;
+        margin: 0 8px;
+    }
+
+    // 最后一项样式（当前页面）
+    :global(.ant-breadcrumb > span:last-child) {
+        .breadcrumb_item {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+    }
+}
+
+.breadcrumb_item {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 8px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    font-size: 14px;
+    color: var(--text-secondary);
+
+    &.clickable {
+        cursor: pointer;
+        
+        &:hover {
+            background: rgba(62, 92, 122, 0.1);
+            color: var(--text-primary);
+            transform: translateY(-1px);
+            
+            .breadcrumb_icon {
+                color: var(--highlight-blue);
+            }
+        }
+
+        &:active {
+            transform: translateY(0);
+        }
+    }
+
+    &.current {
+        color: var(--text-primary);
+        font-weight: 600;
+        background: rgba(62, 92, 122, 0.15);
+        
+        .breadcrumb_icon {
+            color: var(--highlight-blue);
+        }
+    }
+
+    @media (max-width: 768px) {
+        font-size: 13px;
+        padding: 3px 6px;
+        gap: 4px;
+    }
+
+    @media (max-width: 480px) {
+        font-size: 12px;
+        padding: 2px 4px;
+        gap: 3px;
+    }
+}
+
+.breadcrumb_icon {
+    display: inline-flex;
+    align-items: center;
+    color: var(--text-secondary);
+    transition: color 0.3s ease;
+    font-size: 14px;
+
+    @media (max-width: 768px) {
+        font-size: 13px;
+    }
+
+    @media (max-width: 480px) {
+        font-size: 12px;
+        
+        // 在小屏幕上可能隐藏图标以节省空间
+        &:not(.keep-on-mobile) {
+            display: none;
+        }
+    }
+}
+
+.breadcrumb_text {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 120px;
+
+    @media (max-width: 768px) {
+        max-width: 100px;
+    }
+
+    @media (max-width: 480px) {
+        max-width: 80px;
+    }
+}
+
+// 简化模式特殊样式
+.tech_breadcrumb_container.simple {
+    padding: 12px 0;
+    margin-bottom: 16px;
+    border-bottom: none;
+
+    .breadcrumb_item {
+        font-size: 13px;
+        padding: 3px 6px;
+    }
+
+    @media (max-width: 768px) {
+        padding: 8px 0;
+        margin-bottom: 12px;
+    }
+}
+
+// 动画效果
+@keyframes fadeInSlide {
+    from {
+        opacity: 0;
+        transform: translateX(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.tech_breadcrumb_container {
+    animation: fadeInSlide 0.3s ease-out;
+}
+
+// 主题适配
+.tech_breadcrumb_container {
+    // 浅色主题
+    @media (prefers-color-scheme: light) {
+        --breadcrumb-bg-hover: rgba(24, 144, 255, 0.08);
+        --breadcrumb-bg-current: rgba(24, 144, 255, 0.12);
+    }
+
+    // 深色主题
+    @media (prefers-color-scheme: dark) {
+        --breadcrumb-bg-hover: rgba(177, 213, 253, 0.08);
+        --breadcrumb-bg-current: rgba(177, 213, 253, 0.12);
+    }
+
+    .breadcrumb_item {
+        &.clickable:hover {
+            background: var(--breadcrumb-bg-hover, rgba(62, 92, 122, 0.1));
+        }
+
+        &.current {
+            background: var(--breadcrumb-bg-current, rgba(62, 92, 122, 0.15));
+        }
+    }
+}

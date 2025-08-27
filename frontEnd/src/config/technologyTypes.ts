@@ -1,6 +1,28 @@
 import React from 'react'
 
 /**
+ * 面包屑导航项接口
+ */
+export interface BreadcrumbItem {
+    /** 显示标题 */
+    title: string
+    /** 路由路径（可选，为空则不可点击） */
+    path?: string
+    /** 图标（可选） */
+    icon?: React.ReactNode
+}
+
+/**
+ * 面包屑导航配置接口
+ */
+export interface BreadcrumbConfig {
+    /** 面包屑项列表 */
+    items: BreadcrumbItem[]
+    /** 分隔符（可选，默认使用 Ant Design 的默认分隔符） */
+    separator?: React.ReactNode
+}
+
+/**
  * 技术栈菜单项接口
  */
 export interface TechMenuItem {

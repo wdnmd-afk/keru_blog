@@ -4,6 +4,7 @@ import React, { Suspense } from 'react'
 import { useLocation, useNavigate, useParams } from 'react-router-dom'
 import { techMenuItems } from '@/config/technologyRoutes'
 import { parseRoute } from '@/utils/routeUtils'
+import TechBreadcrumb from '@/components/TechBreadcrumb'
 import styles from '@/styles/technologyLayout.module.scss'
 
 // 加载中组件
@@ -82,7 +83,13 @@ const TechnologyLayout: React.FC = () => {
 
             {/* 右侧内容区域 */}
             <div className={styles.tech_content_area}>
-                {renderTechContent()}
+                {/* 面包屑导航 */}
+                <TechBreadcrumb simple />
+                
+                {/* 技术详解内容 */}
+                <div className={styles.tech_content_wrapper}>
+                    {renderTechContent()}
+                </div>
             </div>
         </div>
     )

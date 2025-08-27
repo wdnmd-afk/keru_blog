@@ -1,5 +1,7 @@
-import type { RouteParseResult } from '@/config/technologyTypes'
+import type { RouteParseResult, BreadcrumbItem, BreadcrumbConfig } from '@/config/technologyTypes'
 import { technologyRoutes } from '@/config/technologyRoutes'
+import { HomeOutlined, CodeOutlined } from '@ant-design/icons'
+import React from 'react'
 
 /**
  * 解析当前路径并返回对应的技术栈和组件信息
@@ -107,4 +109,93 @@ export const isValidRoute = (tech: string, subTopic?: string): boolean => {
     if (!subTopic) return true
     
     return Boolean(routeConfig.subRoutes[subTopic])
+}
+
+/**
+ * 生成面包屑导航配置
+ * 
+ * @param pathname 当前路径
+ * @returns 面包屑导航配置
+ */
+export const generateBreadcrumb = (pathname: string): BreadcrumbConfig => {
+    const routeResult = parseRoute(pathname)
+    const items: BreadcrumbItem[] = []
+
+    // 首页
+    items.push({
+        title: '首页',
+        path: '/',
+        icon: React.createElement(HomeOutlined)
+    })
+
+    // 技术栈主页
+    items.push({
+        title: '技术栈',
+        path: '/technology',
+        icon: React.createElement(CodeOutlined)
+    })
+
+    // 当前技术栈
+    if (routeResult.tech) {
+        const techDisplayName = getTechDisplayName(routeResult.tech)
+        items.push({
+            title: techDisplayName,
+            path: `/technology/${routeResult.tech}`,
+        })
+
+        // 子主题
+        if (routeResult.subTopic) {
+            const subTopicDisplayName = getSubTopicDisplayName(routeResult.tech, routeResult.subTopic)
+            items.push({
+                title: subTopicDisplayName,
+                // 当前页面不提供链接
+            })
+        }
+    }
+
+    return { items }
+}
+
+/**
+ * 生成简化版面包屑导航（仅包含当前技术栈和子主题）
+ * 
+ * @param pathname 当前路径
+ * @returns 简化版面包屑导航配置
+ */
+export const generateSimpleBreadcrumb = (pathname: string): BreadcrumbConfig => {
+    const routeResult = parseRoute(pathname)
+    const items: BreadcrumbItem[] = []
+
+    // 技术栈主页
+    items.push({
+        title: '技术栈',
+        path: '/technology',
+        icon: React.createElement(CodeOutlined)
+    })
+
+    // 当前技术栈
+    if (routeResult.tech) {
+        const techDisplayName = getTechDisplayName(routeResult.tech)
+        
+        if (routeResult.subTopic) {
+            // 如果有子主题，技术栈页面可以点击
+            items.push({
+                title: techDisplayName,
+                path: `/technology/${routeResult.tech}`,
+            })
+            
+            // 子主题（当前页面）
+            const subTopicDisplayName = getSubTopicDisplayName(routeResult.tech, routeResult.subTopic)
+            items.push({
+                title: subTopicDisplayName,
+            })
+        } else {
+            // 如果没有子主题，技术栈页面为当前页面
+            items.push({
+                title: techDisplayName,
+            })
+        }
+    }
+
+    return { items }
 }

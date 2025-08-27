@@ -1,6 +1,6 @@
 import CodeHighlight from '@/components/CodeHighlight'
 import { useCodeData } from '@/hooks/useCodeData'
-import styles from '@/styles/dockerfileDetail.module.scss'
+import styles from '@/styles/topicDetail.module.scss'
 import {
     ArrowLeftOutlined,
     CheckCircleOutlined,
