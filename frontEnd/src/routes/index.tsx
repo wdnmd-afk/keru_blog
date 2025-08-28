@@ -32,7 +32,7 @@ import { Navigate, Route, BrowserRouter as Router, Routes } from 'react-router-d
  */
 const LazyComponents = {
     // ==================== 系统页面 ====================
-    Home: lazy(() => import('@/views/systemPages/Home.tsx')), // 首页 - 技术博客展示
+    Home: lazy(() => import('@/views/Home/index.tsx')), // 首页 - 技术博客展示
     NotFound: lazy(() => import('@/views/systemPages/NotFound.tsx')), // 404错误页面
     Login: lazy(() => import('@/views/systemPages/Login.tsx')), // 登录/注册页面
 

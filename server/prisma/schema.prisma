@@ -19,6 +19,7 @@ model User {
   random     Int          @default(dbgenerated("10"))
   UserDetail UserDetail[]
   files      File[]
+  todos      Todo[]
 }
 
 model UserDetail {
@@ -46,3 +47,71 @@ model File {
   uploader     User     @relation(fields: [uploaderId], references: [id])
   uploaderId   String
 }
+
+
+model Technology {
+  id          String   @id @unique
+  name        String
+  description String?
+  type        String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Topic {
+  id           String   @id @unique
+  title        String
+  content      String   @db.Text
+  technologyId String
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model Book {
+  id          String   @id @unique
+  title       String
+  author      String
+  description String?
+  coverImage  String?
+  filePath    String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model BookPage {
+  id        String @id @unique
+  bookId    String
+  pageNumber Int
+  content   String @db.Text
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model CodeSnippet {
+  id           String   @id @unique
+  title        String
+  code         String   @db.Text
+  language     String
+  description  String?
+  technologyId String
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model Todo {
+  id        String   @id @unique
+  content   String
+  completed Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  user      User     @relation(fields: [userId], references: [id])
+  userId    String
+  type      TodoType @default(RECENT)
+}
+
+enum TodoType {
+  RECENT
+  LONG_TERM
+  STUDY_PLAN
+}
+

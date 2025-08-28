@@ -1,8 +1,8 @@
 import 'reflect-metadata'
 import { InversifyExpressServer } from 'inversify-express-utils'
 import { Container } from 'inversify'
-import { Base, File, User } from '@/router/controller'
-import { BaseService, FileService, UserService } from '@/router/service'
+import { Base, File, User, TodoController } from '@/router/controller'
+import { BaseService, FileService, UserService, TodoService } from '@/router/service'
 import express from 'express'
 import { PrismaClient } from '@prisma/client'
 import { PrismaDB } from '@/db'
@@ -34,6 +34,12 @@ container.bind(BaseService).to(BaseService)
  */
 container.bind(File).to(File)
 container.bind(FileService).to(FileService)
+
+/**
+ * todo模块
+ */
+container.bind(TodoController).to(TodoController)
+container.bind(TodoService).to(TodoService)
 /**
  *  封装PrismaClient
  */
