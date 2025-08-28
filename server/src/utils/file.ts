@@ -31,18 +31,37 @@ const createUploadedList = async (fileHash: string) => {
         : []
 }
 // 把文件切片写成总的一个文件流
-const pipeStream = (path: string, writeStream: Blob) => {
+const pipeStream = (path: string, writeStream: fse.WriteStream) => {
     return new Promise((resolve, reject) => {
         // 创建可读流
-        const readStream = fse.createReadStream(path).on('error', (err) => {
-            // 如果在读取过程中发生错误，拒绝 Promise
+        const readStream = fse.createReadStream(path)
+        
+        readStream.on('error', (err) => {
+            console.error('读取文件切片时发生错误:', err)
+            writeStream.destroy() // 销毁写入流
             reject(err)
         })
-        // 在一个指定位置写入文件流
-        readStream.pipe(writeStream).on('finish', () => {
+        
+        writeStream.on('error', (err) => {
+            console.error('写入文件时发生错误:', err)
+            readStream.destroy() // 销毁读取流
+            reject(err)
+        })
+        
+        // 在指定位置写入文件流
+        readStream.pipe(writeStream)
+        
+        writeStream.on('finish', () => {
             // 写入完成后，删除原切片文件
-            fse.unlinkSync(path)
-            resolve(1)
+            try {
+                if (fse.existsSync(path)) {
+                    fse.unlinkSync(path)
+                }
+                resolve(1)
+            } catch (err) {
+                console.error('删除切片文件时发生错误:', err)
+                resolve(1) // 即使删除失败也认为合并成功
+            }
         })
     })
 }
