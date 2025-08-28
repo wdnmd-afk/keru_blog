@@ -15,7 +15,7 @@ export class BaseService {
         return this.PrismaDB.prisma.user.findMany();
     }
 
-    public async createUserDetail(userDetail: UserDetailDto) {
+    public async createUserDetail(userDetail: UserDetailDto, authUserId: string) {
         // 将传入的 userDetail 转换为 UserDetailDto 实例
         const userDto = plainToClass(UserDetailDto, userDetail);
 
@@ -29,13 +29,16 @@ export class BaseService {
             };
         }
 
+        // Security: Ensure the userId from the token is used, not from the body.
+        userDto.userId = authUserId;
+
         try {
             // 生成唯一的 BigInt ID
-            userDetail.id = generateUniqueBigIntId() + '';
+            userDto.id = generateUniqueBigIntId() + '';
 
             // 创建 UserDetail 记录
             await this.PrismaDB.prisma.userDetail.create({
-                data: userDetail,
+                data: userDto,
             });
 
             return {

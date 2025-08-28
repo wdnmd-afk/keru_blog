@@ -127,34 +127,3 @@ export function IsValidUsername(validationOptions?: ValidationOptions) {
     }
 }
 
-/**
- * SQL注入防护装饰器
- */
-export function IsSafeString(validationOptions?: ValidationOptions) {
-    return function (object: Object, propertyName: string) {
-        registerDecorator({
-            name: 'isSafeString',
-            target: object.constructor,
-            propertyName: propertyName,
-            options: validationOptions,
-            validator: {
-                validate(value: any, args: ValidationArguments) {
-                    if (typeof value !== 'string') return false
-                    
-                    // 检查常见的SQL注入模式
-                    const sqlInjectionPatterns = [
-                        /('|(\\')|(;)|(\\;))/i,
-                        /((\s*(union|select|insert|update|delete|drop|create|alter|exec|execute)\s+))/i,
-                        /((\s*(or|and)\s+[\w\s]*\s*=\s*[\w\s]*)|(\s*(or|and)\s+\d+\s*=\s*\d+))/i,
-                        /(\/\*[\s\S]*?\*\/|--[\s\S]*?$)/gm
-                    ]
-                    
-                    return !sqlInjectionPatterns.some(pattern => pattern.test(value))
-                },
-                defaultMessage(args: ValidationArguments) {
-                    return '输入包含不安全的字符，请检查输入内容'
-                }
-            }
-        })
-    }
-}

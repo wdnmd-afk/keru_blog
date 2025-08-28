@@ -27,8 +27,7 @@ export class FileService {
 
     // ... 其他现有方法 ...
 
-    public async mergeFile(req: { body: FileMergeDto }) {
-        const fileData: FileMergeDto = req.body
+    public async mergeFile(fileData: FileMergeDto, userId: string) {
         const { chunkSize, fileHash, fileName } = fileData
         // 提取文件后缀名
         const ext = extractExt(fileName)
@@ -60,40 +59,27 @@ export class FileService {
                 })
                 promiseList.push(pipeStream(chunkPath, writeStream))
             }
-            const usr = await getJwt(req)
             // 使用 Promise.all 等待所有 Promise 完成
             // (相当于等待所有的切片已写入完成且删除了所有的切片文件)
-            Promise.all(promiseList)
-                .then(async () => {
-                    console.log('所有文件切片已成功处理并删除')
-                    // 递归删除缓存切片目录及其内容 (注意，如果删除不存在的内容会报错)
-                    if (fse.pathExistsSync(chunkCache)) {
-                        fse.remove(chunkCache)
+            await Promise.all(promiseList)
+            
+            // 递归删除缓存切片目录及其内容 (注意，如果删除不存在的内容会报错)
+            if (fse.pathExistsSync(chunkCache)) {
+                fse.remove(chunkCache)
 
-                        await this.PrismaDB.prisma.file.create({
-                            data: {
-                                filename: fileName,
-                                path: `/static/${pathType}/${fileName}`,
-                                id: generateUniqueBigIntId(true) as string,
-                                mimeType: ext,
-                                size: totalSize,
-                                uploader: {
-                                    connect: { id: usr.id },
-                                },
-                            },
-                        })
-
-                        // 合并成功，返回 Promise.resolve
-                        return Promise.resolve()
-                    } else {
-
-                        return Promise.reject(Result.error(400, `${chunkCache} 不存在，不能删除`))
-                    }
+                await this.PrismaDB.prisma.file.create({
+                    data: {
+                        filename: fileName,
+                        path: `/static/${pathType}/${fileName}`,
+                        id: generateUniqueBigIntId(true) as string,
+                        mimeType: ext,
+                        size: totalSize,
+                        uploader: {
+                            connect: { id: userId },
+                        },
+                    },
                 })
-                .catch((err) => {
-                    console.error('文件处理过程中发生错误：', err)
-                    return Result.error(400, `文件处理过程中发生错误：${err}`)
-                })
+            }
         } catch (err) {
             console.log(err, '合并切片函数失败')
             return Result.error(400, `合并切片函数失败:${err}`)
@@ -101,9 +87,8 @@ export class FileService {
         return Result.success({ fileName })
     }
 
-    public async uploadSingle(req: any) {
+    public async uploadSingle(file: Express.Multer.File, userId: string) {
         try {
-            const { file } = req;
             const fileName = file.originalname;
 
             // 提取文件后缀名并获取类型
@@ -115,9 +100,6 @@ export class FileService {
             if (!fse.existsSync(UPLOAD_DIR)) {
                 await fse.mkdirs(UPLOAD_DIR);
             }
-
-            // 获取当前用户信息
-            const usr = await getJwt(req);
 
             // 生成完整的文件路径（直接使用文件名，无需编码）
             const filePath = path.resolve(UPLOAD_DIR, fileName);
@@ -137,7 +119,7 @@ export class FileService {
                     mimeType: ext,
                     size: file.size,
                     uploader: {
-                        connect: { id: usr.id },
+                        connect: { id: userId },
                     },
                 },
             });
@@ -237,20 +219,30 @@ export class FileService {
             },
         )
     }
-    public async deleteFile(id:string) {
-       const data = await this.PrismaDB.prisma.file.findUnique({
-           where:{id}
-        })
-       if(!data){
-           return Result.error(400,'文件记录不存在')
-       }
-       const tempPath = data.path.substring(1)
-        const UPLOAD_DIR = path.resolve(process.cwd(), `${tempPath}`)
-        await this.PrismaDB.prisma.file.delete({where: { id } })
+    public async deleteFile(id: string, userId: string) {
+        const data = await this.PrismaDB.prisma.file.findUnique({
+            where: { id }
+        });
+
+        if (!data) {
+            return Result.error(404, '文件记录不存在');
+        }
+
+        // Authorization check
+        if (data.uploaderId !== userId) {
+            return Result.error(403, '无权限删除此文件');
+        }
+
+        const tempPath = data.path.substring(1);
+        const UPLOAD_DIR = path.resolve(process.cwd(), `${tempPath}`);
+        
+        await this.PrismaDB.prisma.file.delete({ where: { id } });
+        
         const exists = await fse.pathExists(UPLOAD_DIR);
         if (exists) {
             await fse.remove(UPLOAD_DIR);
         }
-        return  Result.success('删除成功')
+        
+        return Result.success('删除成功');
     }
 }

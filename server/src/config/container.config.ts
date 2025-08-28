@@ -1,16 +1,19 @@
 // container.config.ts
-import { Container } from 'inversify'
-import { PrismaClient } from '@prisma/client'
+import { Container } from 'inversify';
+import { PrismaClient } from '@prisma/client';
 
 // 导入控制器
-import { Base, File, User, TodoController } from '@/router/controller'
+import { BaseController, FileController, User, TodoController } from '@/router/controller';
 
 // 导入服务
-import { BaseService, FileService, UserService, TodoService } from '@/router/service'
+import { BaseService, FileService, UserService, TodoService } from '@/router/service';
+
+// 导入中间件
+import { AuthMiddleware } from '@/middleware/auth';
 
 // 导入其他依赖
-import { PrismaDB } from '@/db'
-import { JWT } from '@/jwt'
+import { PrismaDB } from '@/db';
+import { JWT } from '@/jwt';
 
 // 定义服务标识符常量，避免魔法字符串
 export const TYPES = {
@@ -30,7 +33,7 @@ export const TYPES = {
     PrismaClient: Symbol.for('PrismaClient'),
     PrismaDB: Symbol.for('PrismaDB'),
     JWT: Symbol.for('JWT'),
-} as const
+} as const;
 
 /**
  * 创建并配置依赖注入容器
@@ -39,50 +42,60 @@ export function createContainer(): Container {
     const container = new Container({
         defaultScope: 'Singleton', // 默认使用单例模式
         skipBaseClassChecks: true
-    })
+    });
+
+    // 注册中间件
+    registerMiddleware(container);
 
     // 注册控制器
-    registerControllers(container)
+    registerControllers(container);
     
     // 注册服务
-    registerServices(container)
+    registerServices(container);
     
     // 注册基础设施
-    registerInfrastructure(container)
+    registerInfrastructure(container);
 
-    return container
+    return container;
+}
+
+/**
+ * 注册所有中间件
+ */
+function registerMiddleware(container: Container): void {
+    container.bind<AuthMiddleware>(AuthMiddleware).toSelf();
 }
 
 /**
  * 注册所有控制器
  */
 function registerControllers(container: Container): void {
-    container.bind(TYPES.UserController).to(User)
-    container.bind(TYPES.BaseController).to(Base) 
-    container.bind(TYPES.FileController).to(File)
-    container.bind(TYPES.TodoController).to(TodoController)
+    container.bind(TYPES.UserController).to(User);
+    container.bind(TYPES.BaseController).to(BaseController); 
+    container.bind(TYPES.FileController).to(FileController);
+    container.bind(TYPES.TodoController).to(TodoController);
     
     // 为了兼容现有代码，保留原有的绑定方式
-    container.bind(User).to(User)
-    container.bind(Base).to(Base)
-    container.bind(File).to(File)
-    container.bind(TodoController).to(TodoController)
+    container.bind(User).to(User);
+    container.bind(BaseController).to(BaseController);
+    container.bind(FileController).to(FileController);
+    container.bind(TodoController).to(TodoController);
 }
 
 /**
  * 注册所有服务
  */
 function registerServices(container: Container): void {
-    container.bind(TYPES.UserService).to(UserService)
-    container.bind(TYPES.BaseService).to(BaseService)
-    container.bind(TYPES.FileService).to(FileService)
-    container.bind(TYPES.TodoService).to(TodoService)
+    container.bind(TYPES.UserService).to(UserService);
+    container.bind(TYPES.BaseService).to(BaseService);
+    container.bind(TYPES.FileService).to(FileService);
+    container.bind(TYPES.TodoService).to(TodoService);
     
     // 为了兼容现有代码，保留原有的绑定方式
-    container.bind(UserService).to(UserService)
-    container.bind(BaseService).to(BaseService)
-    container.bind(FileService).to(FileService)
-    container.bind(TodoService).to(TodoService)
+    container.bind(UserService).to(UserService);
+    container.bind(BaseService).to(BaseService);
+    container.bind(FileService).to(FileService);
+    container.bind(TodoService).to(TodoService);
 }
 
 /**
@@ -90,18 +103,18 @@ function registerServices(container: Container): void {
  */
 function registerInfrastructure(container: Container): void {
     // 数据库相关
-    container.bind<PrismaClient>(TYPES.PrismaClient).toConstantValue(createPrismaClient())
-    container.bind(TYPES.PrismaDB).to(PrismaDB)
-    container.bind(PrismaDB).to(PrismaDB)
+    container.bind<PrismaClient>(TYPES.PrismaClient).toConstantValue(createPrismaClient());
+    container.bind(TYPES.PrismaDB).to(PrismaDB);
+    container.bind(PrismaDB).to(PrismaDB);
     
     // 为了兼容现有代码中的PrismaClient工厂模式
-    container.bind<PrismaClient>('PrismaClient').toFactory(() => {
-        return () => container.get<PrismaClient>(TYPES.PrismaClient)
-    })
+    container.bind<() => PrismaClient>('PrismaClient').toFactory(() => {
+        return () => container.get<PrismaClient>(TYPES.PrismaClient);
+    });
     
     // JWT服务
-    container.bind(TYPES.JWT).to(JWT)
-    container.bind(JWT).to(JWT)
+    container.bind(TYPES.JWT).to(JWT);
+    container.bind(JWT).to(JWT);
 }
 
 /**
@@ -111,12 +124,9 @@ function createPrismaClient(): PrismaClient {
     const prisma = new PrismaClient({
         log: process.env.NODE_ENV === 'development' ? ['query', 'info', 'warn', 'error'] : ['error'],
         errorFormat: 'pretty',
-    })
+    });
 
-    // Prisma 5.0+ 不再支持 beforeExit 钩子，改为直接在 process 上监听
-    // 这里我们不添加钩子，在 closeContainer 函数中处理断开连接
-
-    return prisma
+    return prisma;
 }
 
 /**
@@ -124,10 +134,10 @@ function createPrismaClient(): PrismaClient {
  */
 export async function closeContainer(container: Container): Promise<void> {
     try {
-        const prisma = container.get<PrismaClient>(TYPES.PrismaClient)
-        await prisma.$disconnect()
-        console.log('Database disconnected successfully')
+        const prisma = container.get<PrismaClient>(TYPES.PrismaClient);
+        await prisma.$disconnect();
+        console.log('Database disconnected successfully');
     } catch (error) {
-        console.error('Error during container cleanup:', error)
+        console.error('Error during container cleanup:', error);
     }
 }
