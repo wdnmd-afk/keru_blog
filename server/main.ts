@@ -1,78 +1,140 @@
 import 'reflect-metadata'
 import { InversifyExpressServer } from 'inversify-express-utils'
-import { Container } from 'inversify'
-import { Base, File, User, TodoController } from '@/router/controller'
-import { BaseService, FileService, UserService, TodoService } from '@/router/service'
 import express from 'express'
-import { PrismaClient } from '@prisma/client'
-import { PrismaDB } from '@/db'
-import { JWT } from '@/jwt'
 import path from 'path'
 import cors from 'cors'
-import { AuthenticationErrorHandler, errorHandlingMiddleware, responseHandler } from '@/middleware'
-// 加载环境变量 少了无法直接读取到.env文件
-import dotenv from 'dotenv'
 import process from 'node:process'
 
-dotenv.config()
+// 导入配置模块
+import { createContainer, closeContainer } from '@/config/container.config'
+import { createAppConfig, validateConfig, printConfigSummary, AppConfig } from '@/config/app.config'
 
-const container = new Container()
-/**
- * user模块
- */
-container.bind(User).to(User)
-container.bind(UserService).to(UserService)
+// 导入中间件
+import { AuthenticationErrorHandler, errorHandlingMiddleware, responseHandler, requestIdMiddleware } from '@/middleware'
 
-/**
- * base模块
- */
-container.bind(Base).to(Base)
-container.bind(BaseService).to(BaseService)
+// 导入JWT
+import { JWT } from '@/jwt'
 
 /**
- * file模块
+ * 应用启动函数
  */
-container.bind(File).to(File)
-container.bind(FileService).to(FileService)
-
-/**
- * todo模块
- */
-container.bind(TodoController).to(TodoController)
-container.bind(TodoService).to(TodoService)
-/**
- *  封装PrismaClient
- */
-container.bind<PrismaClient>('PrismaClient').toFactory(() => {
-    return () => {
-        return new PrismaClient()
+async function bootstrap() {
+    try {
+        console.log('🚀 Starting Keru Blog Server...')
+        
+        // 1. 创建和验证配置
+        const config = createAppConfig()
+        validateConfig(config)
+        printConfigSummary(config)
+        
+        // 2. 创建依赖注入容器
+        const container = createContainer()
+        
+        // 3. 设置应用服务器
+        const server = new InversifyExpressServer(container)
+        
+        // 4. 配置中间件
+        server.setConfig((app) => {
+            setupMiddleware(app, config, container)
+        })
+        
+        // 5. 构建应用
+        const app = server.build()
+        
+        // 6. 启动服务器
+        const serverInstance = app.listen(config.server.port, () => {
+            console.log(`🌟 Server is listening on port ${config.server.port}`)
+            console.log(`🌐 Environment: ${config.server.env}`)
+            console.log(`📡 Server URL: http://${config.server.host}:${config.server.port}`)
+            console.log('✅ Server started successfully!')
+        })
+        
+        // 7. 设置优雅关闭
+        setupGracefulShutdown(serverInstance, container)
+        
+    } catch (error) {
+        console.error('❌ Failed to start server:', error)
+        process.exit(1)
     }
-})
-container.bind(PrismaDB).to(PrismaDB)
+}
+
 /**
- * jwt模块
+ * 设置中间件
  */
-container.bind(JWT).to(JWT) //主要代码
-const server = new InversifyExpressServer(container)
-server.setConfig((app) => {
-    app.use(express.json())
-    app.use(cors()); // 启用所有域名的 CORS
-    //passport-jwt自我校验
+function setupMiddleware(app: express.Application, config: AppConfig, container: any) {
+    // 请求ID中间件（必须在所有其他中间件之前）
+    app.use(requestIdMiddleware)
+    
+    // 基础中间件
+    app.use(express.json({ limit: '50mb' }))
+    app.use(express.urlencoded({ extended: true, limit: '50mb' }))
+    
+    // CORS配置
+    app.use(cors({
+        origin: config.cors.origin,
+        credentials: config.cors.credentials,
+        methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+        allowedHeaders: ['Content-Type', 'Authorization']
+    }))
+    
+    // JWT初始化
     app.use(container.get(JWT).init())
-    //token错误校验
+    
+    // 认证错误处理
     app.use(AuthenticationErrorHandler)
-    //常规错误中间件
+    
+    // 通用错误处理
     app.use(errorHandlingMiddleware())
-    //响应请求中间件
+    
+    // 响应处理中间件
     app.use(responseHandler)
+    
     // 静态文件托管
-    // 假设你要托管的静态文件位于 'public' 文件夹
-    app.use('/static',express.static(path.resolve(process.cwd(), 'static')))
-})
-const app = server.build()
+    app.use('/static', express.static(path.resolve(process.cwd(), config.upload.uploadDir)))
+    
+    console.log('⚙️  Middleware setup completed')
+}
 
+/**
+ * 设置优雅关闭
+ */
+function setupGracefulShutdown(server: any, container: any) {
+    const shutdown = async (signal: string) => {
+        console.log(`\n🔄 Received ${signal}, starting graceful shutdown...`)
+        
+        // 关闭HTTP服务器
+        server.close(async () => {
+            console.log('🔒 HTTP server closed')
+            
+            // 关闭容器和数据库连接
+            await closeContainer(container)
+            
+            console.log('✨ Graceful shutdown completed')
+            process.exit(0)
+        })
+        
+        // 强制退出超时
+        setTimeout(() => {
+            console.error('⏰ Shutdown timeout, forcing exit')
+            process.exit(1)
+        }, 10000) // 10秒超时
+    }
+    
+    // 监听退出信号
+    process.on('SIGTERM', () => shutdown('SIGTERM'))
+    process.on('SIGINT', () => shutdown('SIGINT'))
+    
+    // 捕获未处理的异常
+    process.on('uncaughtException', (error) => {
+        console.error('💥 Uncaught Exception:', error)
+        shutdown('UNCAUGHT_EXCEPTION')
+    })
+    
+    process.on('unhandledRejection', (reason, promise) => {
+        console.error('💥 Unhandled Rejection at:', promise, 'reason:', reason)
+        shutdown('UNHANDLED_REJECTION')
+    })
+}
 
-
-app.listen(5566, () => {
-    console.log('Listening on port 5566')
-})
+// 启动应用
+bootstrap()

@@ -37,7 +37,8 @@ const handleError = (errors: any[], callBack: Function) => {
 }
 //获取JWT信息
 const getJwt = (req:any)=>{
-    const secret = 'keru$%^&*()asdsd'
+    // 使用环境变量中的JWT密钥，保持与主 JWT 类一致
+    const secret = process.env.JWT_SECRET || 'fallback-secret-key'
     const token = req.headers.authorization?.split(' ')[1]
     if (!token) return null
 

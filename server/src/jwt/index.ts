@@ -8,7 +8,9 @@ import { AuthenticationError } from './AuthenticationError'
 
 @injectable()
 export class JWT {
-    private secret: string = 'keru$%^&*()asdsd'
+    // 从环境变量获取JWT密钥，提高安全性
+    private secret: string = process.env.JWT_SECRET || 'fallback-secret-key'
+    private expiresIn: string = process.env.JWT_EXPIRES_IN || '1d'
     private jwtOptions: Strategy.StrategyOptions = {
         jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
         secretOrKey: this.secret,
@@ -17,7 +19,20 @@ export class JWT {
     private tokenHashKey: string = 'user_tokens' // Redis中存储token的哈希键
 
     constructor() {
-        this.redisClient = new Redis() // 默认连接到本地的Redis实例
+        // 检查必要的环境变量
+        if (!process.env.JWT_SECRET) {
+            console.warn('警告: JWT_SECRET 环境变量未设置，使用默认值！')
+        }
+        
+        // 初始化Redis连接
+        this.redisClient = new Redis({
+            host: process.env.REDIS_HOST || 'localhost',
+            port: parseInt(process.env.REDIS_PORT || '6379'),
+            password: process.env.REDIS_PASSWORD || undefined,
+            retryDelayOnFailover: 100,
+            maxRetriesPerRequest: 3,
+        })
+        
         this.strategy()
         this.addUserToRequest = this.addUserToRequest.bind(this)
     }
@@ -30,7 +45,8 @@ export class JWT {
             id: string | Buffer;
         }, done: (err: Error | null, user?: any) => any) => {
             try {
-                const token = await this.redisClient.hget(this.tokenHashKey, payload.id)
+                // 使用新的Redis存储结构获取token
+                const token = await this.redisClient.get(`token:${payload.id}`)
                 if (!token) {
                     return done(new AuthenticationError('Token not valid or expired'), false)
                 }
@@ -86,13 +102,13 @@ export class JWT {
      * @returns The generated JWT.
      */
     public async createToken(data: any): Promise<string> {
-        const options: SignOptions = { expiresIn: '1d' } // 设置token过期时间为1天
+        const options: SignOptions = { expiresIn: this.expiresIn } // 使用环境变量配置的过期时间
         const token = jsonwebtoken.sign(data, this.secret, options)
         const uid = data.id
-        // 使用哈希结构存储token，字段为uid，值为token
-        await this.redisClient.hset(this.tokenHashKey, uid, token)
-        // 设置过期时间为1天
-        await this.redisClient.expire(this.tokenHashKey, 86400)
+        
+        // 优化：为每个token设置独立过期时间，而不是整个哈希
+        const expiresInSeconds = this.expiresIn === '1d' ? 86400 : 3600 // 1天 or 1小时
+        await this.redisClient.setex(`token:${uid}`, expiresInSeconds, token)
 
         return token
     }

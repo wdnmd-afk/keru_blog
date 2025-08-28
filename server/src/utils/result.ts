@@ -1,17 +1,22 @@
 // result.ts
+// 为了向后兼容，这个文件保留原有的Result类
+// 新项目建议使用 @/common/response.ts 中的 ApiResponse 类
+
 export class Result<T> {
     public code: number;
     public message: string;
     public data?: T;
+    public success?: boolean;
 
     private constructor(code: number, message: string, data?: T) {
         this.code = code;
         this.message = message;
         this.data = data;
+        this.success = code === 200;
     }
 
-    public static success<T>(data: T): Result<T> {
-        return new Result<T>(200, '操作成功', data);
+    public static success<T>(data: T, message?: string): Result<T> {
+        return new Result<T>(200, message || '操作成功', data);
     }
 
     public static error(code: number, message: string): Result<null> {

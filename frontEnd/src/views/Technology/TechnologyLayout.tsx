@@ -1,11 +1,11 @@
+import TechBreadcrumb from '@/components/TechBreadcrumb'
+import { techMenuItems } from '@/config/technologyRoutes'
+import styles from '@/styles/technologyLayout.module.scss'
+import { parseRoute } from '@/utils/routeUtils'
 import { ArrowLeftOutlined } from '@ant-design/icons'
 import { Menu } from 'antd'
 import React, { Suspense } from 'react'
 import { useLocation, useNavigate, useParams } from 'react-router-dom'
-import { techMenuItems } from '@/config/technologyRoutes'
-import { parseRoute } from '@/utils/routeUtils'
-import TechBreadcrumb from '@/components/TechBreadcrumb'
-import styles from '@/styles/technologyLayout.module.scss'
 
 // 加载中组件
 const Loading: React.FC = () => (
@@ -38,7 +38,7 @@ const TechnologyLayout: React.FC = () => {
     // 根据路由参数渲染对应的技术详解组件
     const renderTechContent = () => {
         const routeResult = parseRoute(location.pathname)
-        
+
         if (!routeResult.component) {
             return <NotFoundTech />
         }
@@ -85,11 +85,9 @@ const TechnologyLayout: React.FC = () => {
             <div className={styles.tech_content_area}>
                 {/* 面包屑导航 */}
                 <TechBreadcrumb simple />
-                
+
                 {/* 技术详解内容 */}
-                <div className={styles.tech_content_wrapper}>
-                    {renderTechContent()}
-                </div>
+                <div className={styles.tech_content_wrapper}>{renderTechContent()}</div>
             </div>
         </div>
     )
