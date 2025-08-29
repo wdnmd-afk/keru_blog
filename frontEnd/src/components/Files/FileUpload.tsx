@@ -194,10 +194,10 @@ const FileUpload: React.FC<FileUploadProps> = ({
             title: '上传进度',
             key: 'progress',
             width: '20%',
-            render: (value: any, record: UploadFileItem, index: number) => {
+            render: (_: unknown, record: UploadFileItem, index: number) => {
                 // 确保record存在并且percent有默认值，避免undefined错误
                 if (!record) {
-                    console.warn('Record is undefined in progress render function:', { value, record, index });
+                    console.warn('Record is undefined in progress render function:', { _, record, index });
                     return <span>-</span>;
                 }
                 
@@ -227,10 +227,10 @@ const FileUpload: React.FC<FileUploadProps> = ({
             title: '操作',
             key: 'action',
             width: '10%',
-            render: (value: any, record: UploadFileItem, index: number) => {
+            render: (_: unknown, record: UploadFileItem, index: number) => {
                 // 确保record存在，避免undefined错误
                 if (!record) {
-                    console.warn('Record is undefined in action render function:', { value, record, index });
+                    console.warn('Record is undefined in action render function:', { _, record, index });
                     return <span>-</span>;
                 }
                 

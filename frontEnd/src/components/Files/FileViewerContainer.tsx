@@ -1,10 +1,13 @@
 import EmptyContainer from '@/components/EmptyContainer.tsx'
-import type { FileInfo } from '@/types/files'
+import type { FileInfo, ViewerComponentProps } from '@/types/files'
 import { getFileType } from '@/enum'
-import { useState } from 'react'
+import React, { useState, Suspense } from 'react'
+import { Spin } from 'antd'
 import ImageViewer from './ImageViewer'
-import PDFViewer from './PDFViewer'
 import UnsupportedViewer from './UnsupportedViewer.tsx'
+
+// 使用 React.lazy 实现 PDFViewer 的代码分割
+const PDFViewer = React.lazy(() => import('./PDFViewer'))
 
 /**
  * 文件预览容器组件Props
@@ -28,7 +31,18 @@ export default function FileViewerContainer({ fileInfo }: FileViewerContainerPro
             case 'IMAGE':
                 return ImageViewer
             case 'PDF':
-                return PDFViewer
+                // 返回一个包装组件，内部使用 Suspense 加载 PDFViewer
+                return (props: ViewerComponentProps) => (
+                    <Suspense 
+                        fallback={
+                            <div className="flex items-center justify-center h-full">
+                                <Spin size="large" tip="加载 PDF 预览组件中..." />
+                            </div>
+                        }
+                    >
+                        <PDFViewer {...props} />
+                    </Suspense>
+                )
             /*case 'video':
                 return VideoViewer
             case 'audio':

@@ -7,7 +7,24 @@ import { Document, Page, pdfjs } from 'react-pdf'
 import 'react-pdf/dist/Page/AnnotationLayer.css'
 import 'react-pdf/dist/Page/TextLayer.css'
 import { ViewerComponentProps } from './dto.ts'
-pdfjs.GlobalWorkerOptions.workerSrc = `http://localhost:3000/static/JS/pdf.worker.min.js`
+// 使用环境变量或相对路径，支持生产环境
+// 优先使用环境变量，如果没有则使用相对路径
+const getPDFWorkerSrc = () => {
+  const envWorkerUrl = import.meta.env.VITE_PDF_WORKER_URL
+  if (envWorkerUrl) {
+    return envWorkerUrl
+  }
+  
+  // 生产环境使用CDN或相对路径
+  if (import.meta.env.PROD) {
+    return '/static/JS/pdf.worker.min.js'
+  }
+  
+  // 开发环境使用localhost
+  return 'http://localhost:3000/static/JS/pdf.worker.min.js'
+}
+
+pdfjs.GlobalWorkerOptions.workerSrc = getPDFWorkerSrc()
 
 interface IPageSelect {
     page: number

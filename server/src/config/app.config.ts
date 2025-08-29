@@ -79,7 +79,11 @@ export function createAppConfig(): AppConfig {
             uploadDir: process.env.UPLOAD_DIR || 'static'
         },
         cors: {
-            origin: process.env.CORS_ORIGIN?.split(',') || ['http://localhost:3000'],
+            origin: process.env.CORS_ORIGIN?.split(',') || [
+                'http://localhost:3000',
+                'http://localhost:9394',  // 前端开发端口
+                'http://127.0.0.1:9394'
+            ],
             credentials: true
         },
         rateLimit: {

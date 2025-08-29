@@ -1,5 +1,5 @@
-import { Empty } from 'antd'
-import React from 'react'
+import { Empty, Spin } from 'antd'
+import React, { useState } from 'react'
 
 interface FileInfo {
     url?: string
@@ -8,10 +8,21 @@ interface FileInfo {
 }
 
 interface IProps {
-    fileInfo: FileInfo
+    fileInfo: FileInfo | null  // 允许null值
 }
 
 const FileViewerContainer: React.FC<IProps> = ({ fileInfo }) => {
+    const [pdfLoading, setPdfLoading] = useState(false)
+    
+    // 处理null值的情况
+    if (!fileInfo) {
+        return (
+            <div className="flex items-center justify-center h-full">
+                <Empty description="请选择文件进行预览" />
+            </div>
+        )
+    }
+    
     const { url, name, mimeType } = fileInfo
 
     if (!url || !name) {
@@ -43,15 +54,24 @@ const FileViewerContainer: React.FC<IProps> = ({ fileInfo }) => {
         // PDF预览
         if (mimeType === 'application/pdf') {
             return (
-                <iframe
-                    src={url}
-                    title={name}
-                    style={{
-                        width: '100%',
-                        height: '100%',
-                        border: 'none',
-                    }}
-                />
+                <div className="relative w-full h-full">
+                    {pdfLoading && (
+                        <div className="absolute inset-0 flex items-center justify-center bg-white bg-opacity-75 z-10">
+                            <Spin size="large" tip="加载 PDF 文件中..." />
+                        </div>
+                    )}
+                    <iframe
+                        src={url}
+                        title={name}
+                        style={{
+                            width: '100%',
+                            height: '100%',
+                            border: 'none',
+                        }}
+                        onLoad={() => setPdfLoading(false)}
+                        onLoadStart={() => setPdfLoading(true)}
+                    />
+                </div>
             )
         }
 

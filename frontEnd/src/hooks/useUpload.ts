@@ -1,5 +1,4 @@
 import { FileApi } from '@/api'
-import { message } from 'antd'
 import { UploadFile } from 'antd/es/upload/interface'
 import { useCallback, useState } from 'react'
 
@@ -25,12 +24,16 @@ export interface FileChunkProp {
     fileName: string // 文件名
     fileSize: number // 文件大小
     allChunkList: ChunkProp[] // 所有请求的数据
-    whileRequests: any[] // 正在请求中的请求个数,目前是要永远都保存请求个数为6
+    whileRequests: ChunkProp[] // 正在请求中的请求个数,目前是要永远都保存请求个数为6
     finishNumber: number // 请求完成的个数
     errNumber: number // 报错的个数,默认是0个,超多3个就是直接上传中断
     percentage: number // 单个文件上传进度条
     cancel: null | (() => void) // 用于取消切片上传接口
     id: number | string
+    // 新增状态信息
+    error?: string // 错误信息
+    startTime?: number // 开始时间
+    endTime?: number // 结束时间
 }
 
 interface ChunkProp {
@@ -38,7 +41,7 @@ interface ChunkProp {
     fileSize: number // 总文件size
     fileName: string // 总文件name
     index: number
-    chunkFile: any // 切片文件本身
+    chunkFile: File // 切片文件本身
     chunkHash: string // 单个切片hash,以 - 连接
     chunkSize: number | undefined // 切片文件大小
     chunkNumber: number // 切片个数
@@ -48,8 +51,24 @@ interface ChunkProp {
 
 interface UploadProgress {
     percentage: number
-    status: 'pending' | 'uploading' | 'success' | 'error'
+    status: 'pending' | 'uploading' | 'success' | 'error' | 'merging'
     fileName: string
+    uploadedSize: number // 已上传字节数
+    totalSize: number // 总字节数
+    speed: number // 上传速度 (bytes/s)
+    remainingTime: number // 预计剩余时间 (seconds)
+    error?: string // 错误信息
+}
+
+// 新增：上传事件类型
+export interface UploadEvents {
+    onProgress?: (progress: UploadProgress) => void
+    onSuccess?: (fileName: string, fileHash: string) => void
+    onError?: (error: string, fileName: string) => void
+    onStart?: (fileName: string) => void
+    onComplete?: (fileName: string, success: boolean) => void
+    onMergeStart?: (fileName: string) => void
+    onMergeComplete?: (fileName: string) => void
 }
 
 // 默认配置
@@ -59,14 +78,21 @@ const DEFAULT_OPTIONS: UploadOptions = {
     baseUrl: '/api/upload',
 }
 
-export const useUpload = (options?: UploadOptions) => {
+export const useUpload = (options?: UploadOptions, events?: UploadEvents) => {
     const [uploadProgress, setUploadProgress] = useState<UploadProgress>({
         percentage: 0,
         status: 'pending',
         fileName: '',
+        uploadedSize: 0,
+        totalSize: 0,
+        speed: 0,
+        remainingTime: 0,
     })
-    const [messageApi] = message.useMessage()
     const [uploadFileList, setUploadFileList] = useState<FileChunkProp[]>([])
+    const [isUploading, setIsUploading] = useState(false)
+    const [isMerging, setIsMerging] = useState(false)
+    const [errors, setErrors] = useState<string[]>([])
+    
     //设置单次请求最大并发数
     const [maxRequest, setMaxRequest] = useState<number>(6)
 
@@ -127,20 +153,47 @@ export const useUpload = (options?: UploadOptions) => {
     // 调取合并接口处理所有切片
     const handleMerge = async (taskArrItem: FileChunkProp) => {
         const { fileName, fileHash } = taskArrItem
-        const res = await FileApi.mergeChunk({
-            chunkSize: DEFAULT_OPTIONS.chunkSize!,
-            fileName,
-            fileHash,
-        }).catch(() => {
+        
+        try {
+            setIsMerging(true)
+            events?.onMergeStart?.(fileName)
+            
+            // 更新进度状态
+            setUploadProgress(prev => ({
+                ...prev,
+                status: 'merging'
+            }))
+            
+            const res = await FileApi.mergeChunk({
+                chunkSize: DEFAULT_OPTIONS.chunkSize!,
+                fileName,
+                fileHash,
+            })
+            
+            // 如果合并成功则标识该文件已经上传完成
+            finishTask(taskArrItem)
+            // 最后赋值文件切片上传完成个数为0
+            taskArrItem.finishNumber = 0
+            taskArrItem.endTime = Date.now()
+            
+            events?.onMergeComplete?.(fileName)
+            events?.onSuccess?.(fileName, fileHash)
+            events?.onComplete?.(fileName, true)
+            
+        } catch (error) {
             // 否则暂停上传该文件
             pauseUpload(taskArrItem, true)
-            console.log('文件合并失败！')
-        })
-        //  如果合并成功则标识该文件已经上传完成
-        finishTask(taskArrItem)
-        // 最后赋值文件切片上传完成个数为0
-        taskArrItem.finishNumber = 0
-        messageApi.success(fileName + '文件上传成功！')
+            const errorMessage = '文件合并失败！'
+            taskArrItem.error = errorMessage
+            
+            console.error(errorMessage, error)
+            setErrors(prev => [...prev, errorMessage])
+            events?.onError?.(errorMessage, fileName)
+            events?.onComplete?.(fileName, false)
+            
+        } finally {
+            setIsMerging(false)
+        }
     }
     // 单个文件上传
     const uploadSingleFile = (taskArrItem: FileChunkProp) => {
@@ -250,132 +303,271 @@ export const useUpload = (options?: UploadOptions) => {
         // 4是上传完成
         item.state = 4
     }
-    const uploadComplete = async (file: File) => {
-        console.log(file, 'ffff')
-        //单独把小于1m的文件上传
+    // 小文件上传函数（优化后）
+    const _uploadSmallFile = async (file: File, uploadTask: FileChunkProp) => {
+        console.log(file, '小文件上传')
+        
         const fd = new FormData()
         fd.append('file', file)
         // 直接使用原始文件名，让后端处理编码问题
         fd.append('fileName', file.name)
         console.log('小文件上传 - 文件名:', file.name)
-        const res = await FileApi.uploadFileSingle(fd)
+        
+        uploadTask.state = UploadState.Uploading
+        
+        // 触发进度事件
+        const progressInfo: UploadProgress = {
+            percentage: 0,
+            status: 'uploading',
+            fileName: file.name,
+            uploadedSize: 0,
+            totalSize: file.size,
+            speed: 0,
+            remainingTime: 0,
+        }
+        events?.onProgress?.(progressInfo)
+        
+        try {
+            const res = await FileApi.uploadFileSingle(fd)
+            
+            // 上传成功
+            uploadTask.endTime = Date.now()
+            finishTask(uploadTask)
+            
+            // 触发成功事件
+            events?.onSuccess?.(file.name, uploadTask.fileHash || 'unknown')
+            events?.onComplete?.(file.name, true)
+            
+            // 更新最终进度
+            const finalProgress: UploadProgress = {
+                percentage: 100,
+                status: 'success',
+                fileName: file.name,
+                uploadedSize: file.size,
+                totalSize: file.size,
+                speed: 0,
+                remainingTime: 0,
+            }
+            events?.onProgress?.(finalProgress)
+            
+            return res
+        } catch (error) {
+            uploadTask.state = UploadState.Failed
+            uploadTask.error = error instanceof Error ? error.message : '小文件上传失败'
+            
+            const errorProgress: UploadProgress = {
+                percentage: 0,
+                status: 'error',
+                fileName: file.name,
+                uploadedSize: 0,
+                totalSize: file.size,
+                speed: 0,
+                remainingTime: 0,
+                error: uploadTask.error,
+            }
+            events?.onProgress?.(errorProgress)
+            events?.onError?.(uploadTask.error, file.name)
+            events?.onComplete?.(file.name, false)
+            
+            throw error
+        }
     }
-    // 主上传函数
+    
+    // 大文件切片上传函数（优化后）
+    const _uploadChunkedFile = async (file: File, uploadTask: FileChunkProp) => {
+        const chunkSize = options?.chunkSize || DEFAULT_OPTIONS.chunkSize!
+        
+        try {
+            // 生成文件hash
+            const { fileHash, fileChunkList } = await useWorker(file)
+            
+            // 解析完成开始上传文件
+            let baseName = ''
+            const lastIndex = file.name.lastIndexOf('.')
+            if (lastIndex === -1) {
+                baseName = file.name
+            } else {
+                baseName = file.name.slice(0, lastIndex)
+            }
+            
+            uploadTask.fileHash = `${fileHash}${baseName}`
+            uploadTask.state = UploadState.Uploading
+            
+            // 检查文件是否已经存在
+            const { data } = await FileApi.checkFile({
+                fileHash: `${fileHash}${baseName}`,
+                fileName: file.name,
+            })
+            
+            const { shouldUpload, uploadedList } = data
+            if (!shouldUpload) {
+                // 文件已存在，实现秒传
+                uploadTask.endTime = Date.now()
+                finishTask(uploadTask)
+                console.log('文件已存在，实现秒传')
+                
+                events?.onSuccess?.(file.name, uploadTask.fileHash)
+                events?.onComplete?.(file.name, true)
+                
+                const successProgress: UploadProgress = {
+                    percentage: 100,
+                    status: 'success',
+                    fileName: file.name,
+                    uploadedSize: file.size,
+                    totalSize: file.size,
+                    speed: 0,
+                    remainingTime: 0,
+                }
+                events?.onProgress?.(successProgress)
+                return
+            }
+            
+            // 分解chunk列表
+            uploadTask.allChunkList = fileChunkList.map((item, index) => ({
+                fileHash: `${fileHash}${baseName}`,
+                fileSize: file.size || 0,
+                fileName: file.name,
+                index: index,
+                chunkFile: item.chunkFile,
+                chunkHash: `${fileHash}-${index}`,
+                chunkSize: chunkSize,
+                chunkNumber: fileChunkList.length,
+                finish: false,
+            }))
+            
+            // 如果已存在部分文件切片，则要过滤掉已经上传的切片
+            if (uploadedList.length > 0) {
+                uploadTask.allChunkList = uploadTask.allChunkList.filter(
+                    (item) => !uploadedList.includes(item.chunkHash)
+                )
+                
+                if (!uploadTask.allChunkList.length) {
+                    // 所有切片都已上传，直接合并
+                    await handleMerge(uploadTask)
+                    return
+                } else {
+                    // 更新切片数量
+                    uploadTask.allChunkList = uploadTask.allChunkList.map((item) => ({
+                        ...item,
+                        chunkNumber: uploadTask.allChunkList.length,
+                    }))
+                }
+            }
+            
+            // 逐步对单个文件进行切片上传
+            uploadSingleFile(uploadTask)
+            
+        } catch (error) {
+            uploadTask.state = UploadState.Failed
+            uploadTask.error = error instanceof Error ? error.message : '大文件上传失败'
+            
+            events?.onError?.(uploadTask.error, file.name)
+            events?.onComplete?.(file.name, false)
+            
+            throw error
+        }
+    }
+    // 主上传函数（重构后简化）
     const handleUpload = useCallback(
         async (files: UploadFile[]) => {
-            for await (const [index, file] of files.entries()) {
-                const chunkSize = options?.chunkSize || DEFAULT_OPTIONS.chunkSize
-                const uploadTask: FileChunkProp = {
-                    id: generateRandomId() + index, // 因为forEach是同步，所以需要用指定id作为唯一标识
-                    state: 0, // 0是什么都不做,1文件处理中,2是上传中,3是暂停,4是上传完成,5上传中断，6是上传失败
-                    fileHash: '',
-                    fileName: file.name,
-                    fileSize: file.size!,
-                    allChunkList: [], // 所有请求的数据
-                    whileRequests: [], // 正在请求中的请求个数,目前是要永远都保存请求个数为6
-                    finishNumber: 0, //请求完成的个数
-                    errNumber: 0, // 报错的个数,默认是0个,超多3个就是直接上传中断
-                    percentage: 0, // 单个文件上传进度条
-                    cancel: null, // 用于取消切片上传接口
-                }
-                setUploadFileList([...uploadFileList, uploadTask])
-
-                // 切片上传
-                try {
+            setIsUploading(true)
+            setErrors([]) // 清空之前的错误
+            
+            try {
+                for await (const [index, file] of files.entries()) {
+                    const chunkSize = options?.chunkSize || DEFAULT_OPTIONS.chunkSize!
+                    
+                    // 创建上传任务
+                    const uploadTask: FileChunkProp = {
+                        id: generateRandomId() + index,
+                        state: UploadState.Processing,
+                        fileHash: '',
+                        fileName: file.name,
+                        fileSize: file.size!,
+                        allChunkList: [],
+                        whileRequests: [],
+                        finishNumber: 0,
+                        errNumber: 0,
+                        percentage: 0,
+                        cancel: null,
+                        startTime: Date.now(),
+                    }
+                    
+                    setUploadFileList(prev => [...prev, uploadTask])
+                    
+                    // 触发开始事件
+                    events?.onStart?.(file.name)
+                    
+                    // 更新进度状态
                     setUploadProgress({
                         percentage: 0,
                         status: 'uploading',
                         fileName: file.name,
+                        uploadedSize: 0,
+                        totalSize: file.size!,
+                        speed: 0,
+                        remainingTime: 0,
                     })
-
-                    if (file.size! <= chunkSize!) {
-                        // 小文件直接上传
-                        console.log(file, 'size <= chunkSize')
-                        uploadTask.state = 2
-
-                        await uploadComplete(file.originFileObj as File)
-                    } else {
-                        // 大文件切片上传
-                        // eslint-disable-next-line react-hooks/rules-of-hooks
-                        const { fileHash, fileChunkList } = await useWorker(file.originFileObj as Blob)
-                        // 解析完成开始上传文件
-                        let baseName = ''
-                        // 查找'.'在fileName中最后出现的位置
-                        const lastIndex = file.name.lastIndexOf('.')
-                        // 如果'.'不存在，则返回整个文件名
-                        if (lastIndex === -1) {
-                            baseName = file.name
+                    
+                    try {
+                        // 根据文件大小选择上传策略
+                        if (file.size! <= chunkSize) {
+                            // 小文件直接上传
+                            await _uploadSmallFile(file.originFileObj as File, uploadTask)
+                        } else {
+                            // 大文件切片上传
+                            await _uploadChunkedFile(file.originFileObj as File, uploadTask)
                         }
-                        // 否则，返回从fileName开始到'.'前一个字符的子串作为文件名（不包含'.'）
-                        baseName = file.name.slice(0, lastIndex)
-                        // 这里要注意！可能同一个文件，是复制出来的，出现文件名不同但是内容相同，导致获取到的hash值也是相同的
-                        // 所以文件hash要特殊处理
-                        uploadTask.fileHash = `${fileHash}${baseName}`
-                        uploadTask.state = 2
-                        // 检查文件是否已经存在
-                        //fetch（check）
-                        const { data, code } = await FileApi.checkFile({
-                            fileHash: `${fileHash}${baseName}`,
-                            fileName: file.name,
-                        })
-                        const { shouldUpload, uploadedList } = data
-                        if (!shouldUpload) {
-                            finishTask(uploadTask)
-                            console.log('文件已存在，实现秒传')
-                            return false
-                        }
-                        //分解chunk列表
-                        uploadTask.allChunkList = fileChunkList.map((item, index) => {
-                            return {
-                                fileHash: `${fileHash}${baseName}`,
-                                fileSize: file.size || 0, // 使用默认值 0
-                                fileName: file.name,
-                                index: index,
-                                chunkFile: item.chunkFile,
-                                chunkHash: `${fileHash}-${index}`,
-                                chunkSize: chunkSize,
-                                chunkNumber: fileChunkList.length,
-                                finish: false,
-                            }
-                        })
-                        // 如果已存在部分文件切片，则要过滤调已经上传的切片
-                        if (uploadedList.length > 0) {
-                            // 过滤掉已经上传过的切片
-                            uploadTask.allChunkList = uploadTask.allChunkList.filter(
-                                (item) => !uploadedList.includes(item.chunkHash)
-                            )
-                            console.log(uploadTask.allChunkList, '当前还需要上传的切片')
-                            // 如果存在需要上传的，但是又为空，可能是因为还没合并，
-                            if (!uploadTask.allChunkList.length) {
-                                // 所以需要调用合并接口
-                                await handleMerge(uploadTask)
-                                return false
-                            } else {
-                                // 同时要注意处理切片数量
-                                uploadTask.allChunkList = uploadTask.allChunkList.map((item) => {
-                                    return {
-                                        ...item,
-                                        chunkNumber: uploadTask.allChunkList.length,
-                                    }
-                                })
-                            }
-                        }
-
-                        // 逐步对单个文件进行切片上传
-                        uploadSingleFile(uploadTask)
+                    } catch (error) {
+                        const errorMessage = error instanceof Error ? error.message : '上传失败'
+                        uploadTask.state = UploadState.Failed
+                        uploadTask.error = errorMessage
+                        
+                        setErrors(prev => [...prev, errorMessage])
+                        events?.onError?.(errorMessage, file.name)
+                        events?.onComplete?.(file.name, false)
+                        
+                        console.error(`文件 ${file.name} 上传失败:`, error)
                     }
-                } catch (error) {
-                    setUploadProgress((prev) => ({ ...prev, status: 'error' }))
-                    throw error
                 }
+            } finally {
+                setIsUploading(false)
             }
         },
-        [options]
+        [options, events, uploadFileList]
     )
 
     return {
+        // 主要方法
         upload: handleUpload,
+        
+        // 状态信息
         uploadProgress,
         uploadFileList,
+        isUploading,
+        isMerging,
+        errors,
+        
+        // 统计信息
+        totalFiles: uploadFileList.length,
+        completedFiles: uploadFileList.filter(f => f.state === UploadState.Finished).length,
+        failedFiles: uploadFileList.filter(f => f.state === UploadState.Failed).length,
+        
+        // 工具方法
+        pauseUpload,
+        finishTask,
+        
+        // 清理方法
+        clearErrors: () => setErrors([]),
+        clearUploadList: () => setUploadFileList([]),
+        resetProgress: () => setUploadProgress({
+            percentage: 0,
+            status: 'pending',
+            fileName: '',
+            uploadedSize: 0,
+            totalSize: 0,
+            speed: 0,
+            remainingTime: 0,
+        })
     }
 }

@@ -8,9 +8,9 @@ import Upload from './Upload'
 /**
  * Files 主组件
  * 文件管理系统的主入口，提供文件上传和预览功能
+ * 使用全局状态管理，无需changeKey机制
  */
 const Files: React.FC = () => {
-    const [changeKey, setChangeKey] = React.useState(1)
     const [activeKey, setActiveKey] = React.useState('1')
     /**
      * 处理Tab切换
@@ -18,10 +18,7 @@ const Files: React.FC = () => {
      */
     const handleChange = (key: string) => {
         setActiveKey(key)
-        // 切换到文件列表时触发刷新
-        if (key === '2') {
-            setChangeKey(prev => prev + 1)
-        }
+        // 全局状态管理会自动同步数据，无需手动触发刷新
     }
 
     /**
@@ -69,7 +66,7 @@ const Files: React.FC = () => {
                     onError={handleError}
                     showDetails={process.env.NODE_ENV === 'development'}
                 >
-                    <FilePreview changeKey={changeKey} />
+                    <FilePreview />
                 </FilesErrorBoundary>
             ),
         },

@@ -83,7 +83,7 @@ const FileList: React.FC<FileListProps> = ({
             title: '操作',
             key: 'action',
             width: '10%',
-            render: (record: FileItem) => (
+            render: (_: unknown, record: FileItem) => (
                 <Button
                     type="text"
                     danger

@@ -1,88 +1,67 @@
-import { FileApi } from '@/api'
 import FileList from '@/components/Files/FileList'
 import FileSearch from '@/components/Files/FileSearch'
 import type { FileItem, FileQuery } from '@/types/files'
-import { MessageBox } from '@/utils'
-import React, { useEffect, useState } from 'react'
+import { useFileStore } from '@/store/fileStore'
+import React, { useEffect } from 'react'
 import FileViewerContainer from './components/FileViewerContainer'
 
 /**
  * 文件预览页面组件Props
  */
 interface IProps {
-    /** 变化键值，用于触发刷新 */
-    changeKey: number
+    /** 变化键值，用于触发刷新（即将被移除） */
+    changeKey?: number
 }
 
 /**
  * 文件预览页面组件
- * 提供文件搜索、列表展示和预览功能
+ * 使用全局状态管理，提供文件搜索、列表展示和预览功能
  */
 const FilePreview: React.FC<IProps> = ({ changeKey }) => {
-    // 状态管理
-    const [fileList, setFileList] = useState<FileItem[]>([])
-    const [currentFileInfo, setCurrentFileInfo] = useState<any>({})
-    const [total, setTotal] = useState(0)
-    const [loading, setLoading] = useState(false)
-    const [query, setQuery] = useState<FileQuery>({
-        page: 1,
-        pageSize: 10,
-        fileName: '',
-        userName: '',
-    })
-
-    /**
-     * 初始化文件列表
-     */
-    const init = async () => {
-        try {
-            setLoading(true)
-            const { data } = await FileApi.queryFileList(query)
-            setFileList(data.fileList)
-            setTotal(data.total)
-        } catch (error) {
-            console.error('Failed to fetch file list:', error)
-            setFileList([])
-            setTotal(0)
-        } finally {
-            setLoading(false)
-        }
-    }
+    // 使用全局状态管理
+    const {
+        fileList,
+        total,
+        loading,
+        error,
+        query,
+        selectedFile,
+        currentFileInfo,
+        fetchFileList,
+        updateQuery,
+        selectFile,
+        deleteFile
+    } = useFileStore()
 
     /**
      * 处理行点击事件
      * @param file 点击的文件项
      */
     const handleRowClick = (file: FileItem) => {
-        setCurrentFileInfo({
-            url: `http://localhost:3000/static/files/${file.filename}`,
-            name: file.filename,
-            mimeType: file.mimeType,
-            size: file.size,
-            id: file.id,
-        })
+        selectFile(file)
     }
 
     /**
      * 处理文件删除
      * @param file 要删除的文件
      */
-    const handleDelete = (file: FileItem) => {
-        MessageBox.confirm({
-            confirm: async () => {
-                try {
-                    await FileApi.deleteFile({ id: file.id })
-                    await init() // 刷新列表
-                    // 如果删除的是当前预览的文件，清空预览
-                    if (currentFileInfo.id === file.id) {
-                        setCurrentFileInfo({})
-                    }
-                } catch (error) {
-                    console.error('Failed to delete file:', error)
-                }
-            },
-            content: `确定要删除文件 "${file.filename}" 吗？`,
-        })
+    const handleDelete = async (file: FileItem) => {
+        // 参数验证
+        if (!file) {
+            console.error('Delete file failed: file is undefined')
+            return
+        }
+        
+        if (!file.id) {
+            console.error('Delete file failed: file.id is undefined', file)
+            return
+        }
+        
+        try {
+            await deleteFile(file.id)
+        } catch (error) {
+            console.error('Failed to delete file:', error)
+        }
     }
 
     /**
@@ -90,7 +69,8 @@ const FilePreview: React.FC<IProps> = ({ changeKey }) => {
      * @param searchQuery 搜索条件
      */
     const handleSearch = (searchQuery: FileQuery) => {
-        setQuery(searchQuery)
+        // 更新查询参数会自动触发数据获取
+        updateQuery(searchQuery)
     }
 
     /**
@@ -99,13 +79,20 @@ const FilePreview: React.FC<IProps> = ({ changeKey }) => {
      * @param pageSize 每页大小
      */
     const handlePageChange = (page: number, pageSize: number) => {
-        setQuery(prev => ({ ...prev, page, pageSize }))
+        updateQuery({ page, pageSize })
     }
 
-    // 副作用钩子
+    // 组件初始化时获取文件列表
     useEffect(() => {
-        init()
-    }, [changeKey, query.page, query.pageSize, query.fileName, query.userName])
+        fetchFileList()
+    }, [])
+
+    // 兼容旧的changeKey机制（在后续优化中会被移除）
+    useEffect(() => {
+        if (changeKey && changeKey > 1) {
+            fetchFileList()
+        }
+    }, [changeKey])
 
     return (
         <div className="flex h-full gap-5">
@@ -128,10 +115,12 @@ const FilePreview: React.FC<IProps> = ({ changeKey }) => {
                         current={query.page}
                         pageSize={query.pageSize}
                         loading={loading}
-                        selectedFile={currentFileInfo.id ? fileList.find(f => f.id === currentFileInfo.id) : undefined}
+                        error={error || undefined}
+                        selectedFile={selectedFile || undefined}
                         onRowClick={handleRowClick}
                         onDelete={handleDelete}
                         onPageChange={handlePageChange}
+                        onRetry={() => fetchFileList()}
                     />
                 </div>
             </div>
