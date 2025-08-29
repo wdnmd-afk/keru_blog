@@ -127,3 +127,48 @@ export function IsValidUsername(validationOptions?: ValidationOptions) {
     }
 }
 
+/**
+ * 安全字符串验证装饰器
+ * 防止SQL注入、XSS等安全问题
+ */
+export function IsSafeString(validationOptions?: ValidationOptions) {
+    return function (object: Object, propertyName: string) {
+        registerDecorator({
+            name: 'isSafeString',
+            target: object.constructor,
+            propertyName: propertyName,
+            options: validationOptions,
+            validator: {
+                validate(value: any, args: ValidationArguments) {
+                    if (typeof value !== 'string') return false
+                    
+                    // 检查SQL注入关键词
+                    const sqlKeywords = [
+                        'select', 'insert', 'update', 'delete', 'drop', 
+                        'create', 'alter', 'exec', 'execute', 'union',
+                        'script', 'javascript', 'vbscript'
+                    ]
+                    
+                    const lowerValue = value.toLowerCase()
+                    
+                    // 检查是否包含SQL关键词
+                    for (const keyword of sqlKeywords) {
+                        if (lowerValue.includes(keyword)) return false
+                    }
+                    
+                    // 检查危险字符
+                    const dangerousChars = ['<', '>', '"', "'", '&', ';', '(', ')', '--', '/*', '*/']
+                    for (const char of dangerousChars) {
+                        if (value.includes(char)) return false
+                    }
+                    
+                    return true
+                },
+                defaultMessage(args: ValidationArguments) {
+                    return '字符串包含不安全字符或可疑内容'
+                }
+            }
+        })
+    }
+}
+
