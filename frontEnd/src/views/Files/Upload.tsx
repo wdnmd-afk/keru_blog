@@ -1,115 +1,122 @@
-import EmptyContainer from '@/components/EmptyContainer.tsx'
-import KTable from '@/components/KTable.tsx'
+import FileUpload from '@/components/Files/FileUpload'
+import type { UploadFileItem } from '@/types/files'
 import { useUpload } from '@/hooks/useUpload.ts'
-import { InboxOutlined } from '@ant-design/icons'
-import { Button, message, Upload, UploadProps } from 'antd'
-import { UploadFile } from 'antd/es/upload/interface'
+import { message } from 'antd'
 import React, { useState } from 'react'
 
-const { Dragger } = Upload
-
+/**
+ * 文件上传页面组件
+ * 提供文件上传功能
+ */
 const UploadTab: React.FC = () => {
-    const [fileList, setFileList] = useState<UploadFile[]>([])
+    const [fileList, setFileList] = useState<UploadFileItem[]>([])
     const [uploading, setUploading] = useState(false)
     const { upload } = useUpload()
-    const handleUpload = async () => {
-        if (fileList.length === 0) return message.error('请选择文件')
-        await upload(fileList)
-        message.success('上传成功')
-        setFileList([])
+    /**
+     * 处理文件列表变化
+     * @param newFileList 新的文件列表
+     */
+    const handleFileListChange = (newFileList: UploadFileItem[]) => {
+        setFileList(newFileList)
     }
 
-    const props: UploadProps = {
-        onRemove: (file: UploadFile) => {
-            setFileList(fileList.filter((item: any) => item.uid !== file.uid))
-        },
-        beforeUpload: (file) => {
-            if (file.size === 0) return false
-            setFileList([file, ...fileList])
-            return false
-        },
-        multiple: true,
-        showUploadList: false,
-        style: { height: '100%' },
+    /**
+     * 处理文件上传
+     * @param uploadFiles 要上传的文件列表
+     */
+    const handleUpload = async (uploadFiles: UploadFileItem[]) => {
+        try {
+            setUploading(true)
+            
+            // 更新文件状态为上传中
+            setFileList(prevFileList => {
+                return prevFileList.map(file => {
+                    if (uploadFiles.some(uf => uf.uid === file.uid)) {
+                        return { 
+                            ...file, 
+                            status: 'uploading' as const, 
+                            percent: 0,
+                            error: undefined // 清除之前的错误信息
+                        }
+                    }
+                    return file
+                })
+            })
+            
+            // 转换为 UploadFile 格式
+            const antdFileList = uploadFiles.map(file => ({
+                uid: file.uid,
+                name: file.name,
+                size: file.size,
+                type: file.type,
+                originFileObj: file.originFileObj as any, // 临时转换类型
+            }))
+            
+            await upload(antdFileList)
+            
+            // 更新文件状态为成功
+            setFileList(prevFileList => {
+                return prevFileList.map(file => {
+                    if (uploadFiles.some(uf => uf.uid === file.uid)) {
+                        return { 
+                            ...file, 
+                            status: 'success' as const, 
+                            percent: 100,
+                            error: undefined
+                        }
+                    }
+                    return file
+                })
+            })
+            
+            message.success('上传成功')
+            
+            // 延迟清空文件列表，让用户看到成功状态
+            setTimeout(() => {
+                setFileList([])
+            }, 2000)
+            
+        } catch (error) {
+            console.error('Upload failed:', error)
+            
+            // 更新文件状态为失败
+            setFileList(prevFileList => {
+                return prevFileList.map(file => {
+                    if (uploadFiles.some(uf => uf.uid === file.uid)) {
+                        return { 
+                            ...file, 
+                            status: 'error' as const, 
+                            error: '上传失败',
+                            percent: 0 // 重置进度
+                        }
+                    }
+                    return file
+                })
+            })
+            
+            message.error('上传失败，请重试')
+        } finally {
+            setUploading(false)
+        }
     }
 
-    const column = [
-        {
-            title: '文件名称',
-            key: 'name',
-        },
-        {
-            title: '文件大小',
-            key: 'size',
-            render: (file: any) => {
-                const size = file.size
-                if (size < 1024) return `${size} B`
-                if (size < 1024 * 1024) return `${(size / 1024).toFixed(2)} KB`
-                return `${(size / (1024 * 1024)).toFixed(2)} MB`
-            },
-        },
-        {
-            title: '文件类型',
-            key: 'type',
-        },
-        {
-            title: '操作',
-            render: (file: any) => (
-                <Button
-                    onClick={() => {
-                        setFileList(fileList.filter((item: any) => item.uid !== file.uid))
-                    }}
-                    type={'text'}
-                >
-                    删除
-                </Button>
-            ),
-        },
-    ]
+    /**
+     * 处理文件移除
+     * @param file 要移除的文件
+     */
+    const handleRemove = (file: UploadFileItem) => {
+        console.log('File removed:', file.name)
+    }
 
     return (
-        <div flex h-full>
-            <div flex-1 w-0 h-full flex-col>
-                <div className={'boxTitle'}>拖拽/点击上传区域</div>
-                <div flex-1 h-0 mt-5>
-                    <Dragger {...props}>
-                        <p className="ant-upload-drag-icon">
-                            <InboxOutlined />
-                        </p>
-                        <p className="ant-upload-text font-bold text-[18px]">
-                            点击上传或者拖拽文件到此区域上传！！！
-                        </p>
-                    </Dragger>
-                </div>
-            </div>
-            <div flex-1 w-0 ml-5 flex-col>
-                <div className={'boxTitle flex '}>
-                    <div>待上传文件列表</div>
-                </div>
-                <div flex-1 h-0 mt-5 flex-col>
-                    <EmptyContainer flex-1 flag={fileList.length}>
-                        <KTable
-                            w-0
-                            columns={column}
-                            dataSource={fileList}
-                            rowKey={'uid'}
-                            total={0}
-                            pageSize={0}
-                        ></KTable>
-                    </EmptyContainer>
-                </div>
-                <div>
-                    <Button
-                        type="primary"
-                        onClick={handleUpload}
-                        loading={uploading}
-                        variant={'outlined'}
-                        w-full
-                    >
-                        {uploading ? '上传中' : '开始上传'}
-                    </Button>
-                </div>
-            </div>
+        <div className="h-full">
+            <FileUpload
+                fileList={fileList}
+                uploading={uploading}
+                onFileListChange={handleFileListChange}
+                onUpload={handleUpload}
+                onRemove={handleRemove}
+            />
         </div>
     )
 }

@@ -25,10 +25,53 @@ export class FileService {
     ) {
     }
 
+    /**
+     * 修复中文文件名编码问题
+     * @param fileName 原始文件名
+     * @returns 修复后的文件名
+     */
+    private fixFileName(fileName: string): string {
+        if (!fileName) return fileName;
+        
+        try {
+            // 方法1：尝试从Latin-1解码为UTF-8
+            const utf8Decoded = Buffer.from(fileName, 'latin1').toString('utf8');
+            if (utf8Decoded !== fileName && /[\u4e00-\u9fa5]/.test(utf8Decoded)) {
+                console.log(`文件名编码修复: ${fileName} -> ${utf8Decoded}`);
+                return utf8Decoded;
+            }
+            
+            // 方法2：尝试URL解码
+            if (fileName.includes('%')) {
+                const urlDecoded = decodeURIComponent(fileName);
+                if (urlDecoded !== fileName && /[\u4e00-\u9fa5]/.test(urlDecoded)) {
+                    console.log(`文件名URL解码修复: ${fileName} -> ${urlDecoded}`);
+                    return urlDecoded;
+                }
+            }
+            
+            // 方法3：尝试从ISO-8859-1解码
+            if (fileName.includes('\ufffd') || /[\x80-\xff]/.test(fileName)) {
+                const isoDecoded = Buffer.from(fileName, 'binary').toString('utf8');
+                if (isoDecoded !== fileName && /[\u4e00-\u9fa5]/.test(isoDecoded)) {
+                    console.log(`文件名ISO解码修复: ${fileName} -> ${isoDecoded}`);
+                    return isoDecoded;
+                }
+            }
+            
+        } catch (error) {
+            console.warn(`文件名编码修复失败: ${fileName}`, error);
+        }
+        
+        return fileName;
+    }
+
     // ... 其他现有方法 ...
 
     public async mergeFile(fileData: FileMergeDto, userId: string) {
-        const { chunkSize, fileHash, fileName } = fileData
+        const { chunkSize, fileHash } = fileData
+        // 修复中文文件名编码问题
+        const fileName = this.fixFileName(fileData.fileName)
         // 提取文件后缀名
         const ext = extractExt(fileName)
         const pathType = getFileType(ext)
@@ -150,7 +193,8 @@ export class FileService {
 
     public async uploadSingle(file: Express.Multer.File, userId: string) {
         try {
-            const fileName = file.originalname;
+            // 修复中文文件名编码问题
+            const fileName = this.fixFileName(file.originalname);
 
             // 提取文件后缀名并获取类型
             const ext = extractExt(fileName);
@@ -196,7 +240,9 @@ export class FileService {
 
     public async uploadFile(fileData: { chunkFile: Express.Multer.File } & FileChunkDto) {
         // 文件hash ，切片hash ，文件名
-        const { fileHash, chunkHash, fileName, chunkFile } = fileData
+        const { fileHash, chunkHash, chunkFile } = fileData
+        // 修复中文文件名编码问题
+        const fileName = this.fixFileName(fileData.fileName)
         // 创建一个临时文件目录用于 临时存储所有文件切片
         const chunkCache = getChunkDir(fileHash)
         // 检查 chunkDir临时文件目录 是否存在，如果不存在则创建它。

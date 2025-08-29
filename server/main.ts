@@ -65,9 +65,15 @@ function setupMiddleware(app: express.Application, config: AppConfig, container:
     // 请求ID中间件（必须在所有其他中间件之前）
     app.use(requestIdMiddleware)
     
-    // 基础中间件
+    // 基础中间件 - 添加中文编码支持
     app.use(express.json({ limit: '50mb' }))
-    app.use(express.urlencoded({ extended: true, limit: '50mb' }))
+    app.use(express.urlencoded({ 
+        extended: true, 
+        limit: '50mb',
+        // 修复中文文件名编码问题
+        parameterLimit: 50000,
+        type: 'application/x-www-form-urlencoded'
+    }))
     
     // CORS配置
     app.use(cors({

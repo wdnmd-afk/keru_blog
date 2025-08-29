@@ -1,9 +1,18 @@
 import Toolbar, { FunctionProps } from '@/components/Files/Toolbar.tsx'
+import type { ViewerComponentProps } from '@/types/files'
 import React, { useRef, useState } from 'react'
-import { ViewerComponentProps } from './dto.ts'
 
+/**
+ * 图片预览组件Props
+ */
 interface ImageViewerProps extends ViewerComponentProps {}
 
+/**
+ * 图片预览组件
+ * 提供图片的缩放、旋转、拖拽等功能
+ * @param url 图片URL
+ * @param fileInfo 文件信息
+ */
 function ImageViewer({ url, fileInfo }: ImageViewerProps) {
     const [scale, setScale] = useState(1)
     const [rotate, setRotate] = useState(0)

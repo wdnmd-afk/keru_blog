@@ -1,11 +1,7 @@
-interface FileInfo {
-    url: string
-    name: string
-    mimeType: string
-}
-interface ViewerComponentProps {
-    url: string
-    fileInfo?: FileInfo
-}
+/**
+ * Files 组件类型定义
+ * @deprecated 请使用 @/types/files 中的统一类型定义
+ */
 
-export type { FileInfo, ViewerComponentProps }
+// 从统一类型文件中导入
+ export { FileInfo, ViewerComponentProps } from '@/types/files'

@@ -1,15 +1,24 @@
 import EmptyContainer from '@/components/EmptyContainer.tsx'
-import { FileInfo } from '@/components/Files/dto.ts'
+import type { FileInfo } from '@/types/files'
 import { getFileType } from '@/enum'
 import { useState } from 'react'
 import ImageViewer from './ImageViewer'
 import PDFViewer from './PDFViewer'
 import UnsupportedViewer from './UnsupportedViewer.tsx'
 
+/**
+ * 文件预览容器组件Props
+ */
 interface FileViewerContainerProps {
+    /** 文件信息 */
     fileInfo: FileInfo
 }
 
+/**
+ * 文件预览容器组件
+ * 根据文件类型动态加载相应的预览组件
+ * @param fileInfo 文件信息
+ */
 export default function FileViewerContainer({ fileInfo }: FileViewerContainerProps) {
     const [isFullscreen, setIsFullscreen] = useState(false)
     const [currentTime, setCurrentTime] = useState(0) // 适用于音视频

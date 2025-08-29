@@ -255,7 +255,9 @@ export const useUpload = (options?: UploadOptions) => {
         //单独把小于1m的文件上传
         const fd = new FormData()
         fd.append('file', file)
+        // 直接使用原始文件名，让后端处理编码问题
         fd.append('fileName', file.name)
+        console.log('小文件上传 - 文件名:', file.name)
         const res = await FileApi.uploadFileSingle(fd)
     }
     // 主上传函数
@@ -291,11 +293,11 @@ export const useUpload = (options?: UploadOptions) => {
                         console.log(file, 'size <= chunkSize')
                         uploadTask.state = 2
 
-                        await uploadComplete(file)
+                        await uploadComplete(file.originFileObj as File)
                     } else {
                         // 大文件切片上传
                         // eslint-disable-next-line react-hooks/rules-of-hooks
-                        const { fileHash, fileChunkList } = await useWorker(file)
+                        const { fileHash, fileChunkList } = await useWorker(file.originFileObj as Blob)
                         // 解析完成开始上传文件
                         let baseName = ''
                         // 查找'.'在fileName中最后出现的位置
@@ -326,7 +328,7 @@ export const useUpload = (options?: UploadOptions) => {
                         uploadTask.allChunkList = fileChunkList.map((item, index) => {
                             return {
                                 fileHash: `${fileHash}${baseName}`,
-                                fileSize: file.size,
+                                fileSize: file.size || 0, // 使用默认值 0
                                 fileName: file.name,
                                 index: index,
                                 chunkFile: item.chunkFile,
