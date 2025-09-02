@@ -4,15 +4,16 @@ import { inject } from 'inversify'
 import { Request, Response } from 'express'
 import { JWT } from '@/jwt'
 import { validationMiddleware, rateLimitMiddleware } from '@/middleware'
-import { UserDto, LoginDto } from './user.dto'
+import { AuthMiddleware } from '@/middleware/auth'
+import { UserDto, LoginDto, ResetPasswordDto } from './user.dto'
 
 const { middleware } = new JWT()
 
-@controller('/user')
+@controller('/user', AuthMiddleware)
 export class User {
     constructor(@inject(UserService) private readonly UserService: UserService) {}
 
-    @PostMapping('/index', middleware()) // 主要代码
+    @PostMapping('/index') // 主要代码
     public async getIndex(_req: Request, res: Response) {
         let result = await this.UserService.getList()
         res.send(result)
@@ -35,6 +36,16 @@ export class User {
     )
     public async login(req: Request, res: customResponse) {
         const result = await this.UserService.login(req.body)
+        res.sendResponse(result)
+    }
+
+    // 重置密码接口
+    @PostMapping('/resetPassword',
+        rateLimitMiddleware(5, 15 * 60 * 1000), // 15分钟内最多5次重置密码请求
+        validationMiddleware(ResetPasswordDto)
+    )
+    public async resetPassword(req: Request, res: customResponse) {
+        const result = await this.UserService.resetPassword(req.body)
         res.sendResponse(result)
     }
 }

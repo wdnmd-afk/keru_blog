@@ -3,10 +3,19 @@ import { NextFunction, Request, Response } from 'express';
 import { injectable } from 'inversify';
 import jsonwebtoken from 'jsonwebtoken';
 import { ApiResponse } from '@/common';
-
+import {isWhiteListPath} from "@/config/whitelist"
+ 
 @injectable()
 export class AuthMiddleware extends BaseMiddleware {
+    
+
     public handler(req: Request, res: Response, next: NextFunction): void {
+        // 检查当前路由是否在白名单中
+        if (isWhiteListPath(req.path)) {
+            return next()
+        }
+      
+
         const token = req.headers.authorization?.split(' ')[1];
 
         if (!token) {

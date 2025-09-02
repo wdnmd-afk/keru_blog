@@ -2,7 +2,7 @@ import { inject, injectable } from 'inversify'
 import { handleError, hashString, Result } from '@/utils'
 import { PrismaDB } from '@/db'
 import * as crypto from 'crypto'
-import { LoginDto, UserDto } from './user.dto'
+import { LoginDto, UserDto, ResetPasswordDto } from './user.dto'
 import { plainToClass } from 'class-transformer'
 import { validate } from 'class-validator'
 import { JWT } from '@/jwt'
@@ -106,6 +106,48 @@ export class UserService {
             return Result.error(500, '登录失败，请重试')
         }
     }
+    
+    //重置密码接口
+    public async resetPassword(resetData: ResetPasswordDto) {
+        try {
+            const { name, email, newPassword } = resetData
+            
+            // 根据用户名和邮箱查找用户（必须两者都匹配）
+            const user = await this.PrismaDB.prisma.user.findFirst({
+                where: {
+                    AND: [
+                        { name },
+                        { email }
+                    ]
+                }
+            })
+            
+            if (!user) {
+                return Result.error(400, '用户名或邮箱不匹配，请检查后重试')
+            }
+            
+            // 生成新的随机数和加密新密码
+            const newRandom = crypto.randomInt(100000, 999999)
+            const hashedNewPassword = hashString(newPassword, newRandom)
+            
+            // 更新用户密码和随机数
+            await this.PrismaDB.prisma.user.update({
+                where: {
+                    id: user.id
+                },
+                data: {
+                    password: hashedNewPassword,
+                    random: newRandom
+                }
+            })
+            
+            return Result.success('密码重置成功')
+        } catch (error) {
+            console.error('重置密码错误:', error)
+            return Result.error(500, '重置密码失败，请重试')
+        }
+    }
+    
     private generateRandomLongId(): string {
         return crypto.randomInt(1, 92233775807) + ''; // 生成一个随机的long类型ID
     }

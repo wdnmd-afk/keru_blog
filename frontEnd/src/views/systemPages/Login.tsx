@@ -7,7 +7,7 @@ import {
     UserOutlined,
 } from '@ant-design/icons'
 import { Button, Checkbox, Form, Input, Tabs, message } from 'antd'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 // import useStores from "@/hooks/useStores.ts";
 import { LoginApi } from '@/api'
 import logoImage from '@/assets/images/k.jpg'
@@ -15,6 +15,7 @@ import backgroundImage from '@/assets/images/login.png'
 import { useGlobalStoreAction } from '@/store'
 import { BrowserLocalStorage, getRandomNumber } from '@/utils'
 import { useNavigate } from 'react-router-dom'
+import ResetPassword from './ResetPassword'
 
 type FieldType = {
     name?: string
@@ -30,6 +31,20 @@ const Login: React.FC = () => {
     const { setUserInfo } = useGlobalStoreAction()
     const [showPassword, setShowPassword] = useState(false)
     const [loading, setLoading] = useState(false)
+    const [showResetPassword, setShowResetPassword] = useState(false)
+    const [form] = Form.useForm()
+    
+    // 组件加载时检查本地存储的登录信息
+    useEffect(() => {
+        const savedLoginInfo = BrowserLocalStorage.get('savedLoginInfo')
+        if (savedLoginInfo && savedLoginInfo.remember) {
+            form.setFieldsValue({
+                name: savedLoginInfo.name,
+                password: savedLoginInfo.password,
+                remember: true
+            })
+        }
+    }, [])
     const onFinish = async (params: FieldType) => {
         setLoading(true)
         try {
@@ -41,6 +56,21 @@ const Login: React.FC = () => {
                 data.token = 'Bearer ' + data.token
                 setUserInfo(data)
                 BrowserLocalStorage.set('userInfo', data)
+                
+                // 处理记住密码功能
+                if (params.remember) {
+                    // 保存登录信息到本地存储
+                    const loginInfo = {
+                        name: params.name,
+                        password: params.password,
+                        remember: true
+                    }
+                    BrowserLocalStorage.set('savedLoginInfo', loginInfo)
+                } else {
+                    // 清除保存的登录信息
+                    BrowserLocalStorage.remove('savedLoginInfo')
+                }
+                
                 messageApi.success('登录成功')
                 navigate('/')
                 reset()
@@ -70,10 +100,18 @@ const Login: React.FC = () => {
             setLoading(false)
         }
     }
-
-    const [form] = Form.useForm()
     const reset = () => {
         form.resetFields()
+    }
+    
+    // 处理忘记密码点击事件
+    const handleForgotPassword = () => {
+        setShowResetPassword(true)
+    }
+    
+    // 返回登录界面
+    const handleBackToLogin = () => {
+        setShowResetPassword(false)
     }
     const loginForm = (
         <div className={style.formContainer}>
@@ -128,7 +166,14 @@ const Login: React.FC = () => {
                     <Form.Item name="remember" valuePropName="checked" style={{ margin: 0 }}>
                         <Checkbox>记住密码</Checkbox>
                     </Form.Item>
-                    <a href="#" className={style.forgotPassword}>
+                    <a 
+                        href="#" 
+                        className={style.forgotPassword}
+                        onClick={(e) => {
+                            e.preventDefault()
+                            handleForgotPassword()
+                        }}
+                    >
                         忘记密码?
                     </a>
                 </div>
@@ -271,23 +316,27 @@ const Login: React.FC = () => {
             </div>
             <div className={style.formSection}>
                 <div className={style.loginCard}>
-                    <Tabs
-                        defaultActiveKey="login"
-                        destroyInactiveTabPane={true}
-                        className={style.customTabs}
-                        items={[
-                            {
-                                label: '登录',
-                                key: 'login',
-                                children: loginForm,
-                            },
-                            {
-                                label: '注册',
-                                key: 'register',
-                                children: registerForm,
-                            },
-                        ]}
-                    />
+                    {showResetPassword ? (
+                        <ResetPassword onBack={handleBackToLogin} />
+                    ) : (
+                        <Tabs
+                            defaultActiveKey="login"
+                            destroyInactiveTabPane={true}
+                            className={style.customTabs}
+                            items={[
+                                {
+                                    label: '登录',
+                                    key: 'login',
+                                    children: loginForm,
+                                },
+                                {
+                                    label: '注册',
+                                    key: 'register',
+                                    children: registerForm,
+                                },
+                            ]}
+                        />
+                    )}
                 </div>
             </div>
         </div>

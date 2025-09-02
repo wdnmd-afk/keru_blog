@@ -3,6 +3,8 @@ import { NextFunction, Request, Response } from 'express'
 import passport from 'passport'
 import { BusinessException, ApiResponse } from '@/common'
 import { v4 as uuidv4 } from 'uuid'
+import { isWhiteListPath } from '@/config/whitelist'
+import { log } from 'console'
 
 // 扩展Request类型添加requestId
 declare global {
@@ -104,13 +106,8 @@ function responseHandler(req: Request, res: Response, next: NextFunction): void 
 const AuthenticationErrorHandler = (req: Request, res: Response, next: NextFunction) => {
     passport.authenticate('jwt', { session: false }, (err, user) => {
         const requestId = req.requestId
-        
-        // 定义不需要身份验证的路径
-        const openPaths = ['/login', '/register', '/static', '/health']
-        
-        // 检查是否为公开路径
-        const isOpenPath = openPaths.some(path => req.path.includes(path))
-        if (isOpenPath) {
+
+        if (isWhiteListPath(req.path)) {
             return next()
         }
         

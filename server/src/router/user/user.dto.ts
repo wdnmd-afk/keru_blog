@@ -43,3 +43,20 @@ export class LoginDto {
     @Transform(password => password.value.trim())
     password: string;
 }
+
+export class ResetPasswordDto {
+    @IsNotEmpty({ message: '用户名必填' })
+    @Transform(name => name.value.trim())
+    name: string;
+
+    @IsNotEmpty({ message: '邮箱必填' })
+    @IsEmail({}, { message: '邮箱格式不正确' })
+    @Transform(email => email.value.trim().toLowerCase()) // 邮箱转为小写
+    email: string;
+
+    @IsNotEmpty({ message: '新密码必填' })
+    @MinLength(6, { message: '密码至少6位' })
+    @IsStrongPassword({ message: '密码强度不够' })
+    @Transform(password => password.value.trim())
+    newPassword: string;
+}
