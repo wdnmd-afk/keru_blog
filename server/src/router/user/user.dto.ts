@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsEmail, ValidateIf, MinLength, MaxLength } from 'class-validator';
+import { IsNotEmpty, IsEmail, ValidateIf, MinLength, MaxLength, IsOptional } from 'class-validator';
 import { Transform } from 'class-transformer';
 import { IsStrongPassword, IsValidUsername } from '@/common/validation.decorators';
 
@@ -42,6 +42,9 @@ export class LoginDto {
     @MaxLength(50, { message: '密码不能超过50位' })
     @Transform(password => password.value.trim())
     password: string;
+
+    @IsOptional()
+    remember: boolean;
 }
 
 export class ResetPasswordDto {

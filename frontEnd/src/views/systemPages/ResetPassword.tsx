@@ -1,6 +1,6 @@
 import { LoginApi } from '@/api'
 import style from '@/styles/login.module.scss'
-import { ArrowLeftOutlined, LockOutlined, MailOutlined, UserOutlined } from '@ant-design/icons'
+import { ArrowLeftOutlined, EyeInvisibleOutlined, EyeOutlined, LockOutlined, MailOutlined, UserOutlined } from '@ant-design/icons'
 import { Button, Form, Input, message } from 'antd'
 import React, { useState } from 'react'
 
@@ -19,6 +19,8 @@ const ResetPassword: React.FC<ResetPasswordProps> = ({ onBack }) => {
     const [messageApi, contextHolder] = message.useMessage()
     const [form] = Form.useForm()
     const [loading, setLoading] = useState(false)
+    const [showPassword, setShowPassword] = useState(false)
+    const [showConfirmPassword, setShowConfirmPassword] = useState(false)
 
     // 重置密码
     const resetPassword = async (values: ResetFormType) => {
@@ -54,7 +56,7 @@ const ResetPassword: React.FC<ResetPasswordProps> = ({ onBack }) => {
             >
                 <div className={style.inputWrapper}>
                     <UserOutlined className={style.inputIcon} />
-                    <Input size="large" placeholder="请输入用户名" className={style.customInput} />
+                    <Input size="large" placeholder="请输入用户名" className={style.customInput} autoComplete="off" />
                 </div>
             </Form.Item>
 
@@ -72,6 +74,7 @@ const ResetPassword: React.FC<ResetPasswordProps> = ({ onBack }) => {
                         size="large"
                         placeholder="请输入邮箱地址"
                         className={style.customInput}
+                        autoComplete="off"
                     />
                 </div>
             </Form.Item>
@@ -86,10 +89,18 @@ const ResetPassword: React.FC<ResetPasswordProps> = ({ onBack }) => {
             >
                 <div className={style.inputWrapper}>
                     <LockOutlined className={style.inputIcon} />
-                    <Input.Password
-                        size="large"
+                    <Input
+                        type={showPassword ? 'text' : 'password'}
                         placeholder="请输入新密码"
+                        size="large"
                         className={style.customInput}
+                        autoComplete="new-password"
+                    />
+                    <Button
+                        type="text"
+                        icon={showPassword ? <EyeInvisibleOutlined /> : <EyeOutlined />}
+                        onClick={() => setShowPassword(!showPassword)}
+                        className={style.togglePassword}
                     />
                 </div>
             </Form.Item>
@@ -112,10 +123,18 @@ const ResetPassword: React.FC<ResetPasswordProps> = ({ onBack }) => {
             >
                 <div className={style.inputWrapper}>
                     <LockOutlined className={style.inputIcon} />
-                    <Input.Password
-                        size="large"
+                    <Input
+                        type={showConfirmPassword ? 'text' : 'password'}
                         placeholder="请确认新密码"
+                        size="large"
                         className={style.customInput}
+                        autoComplete="new-password"
+                    />
+                    <Button
+                        type="text"
+                        icon={showConfirmPassword ? <EyeInvisibleOutlined /> : <EyeOutlined />}
+                        onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                        className={style.togglePassword}
                     />
                 </div>
             </Form.Item>

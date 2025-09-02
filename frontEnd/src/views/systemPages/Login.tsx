@@ -217,6 +217,7 @@ const Login: React.FC = () => {
                             size="large"
                             placeholder="请输入用户名"
                             className={style.customInput}
+                            autoComplete="off"
                         />
                     </div>
                 </Form.Item>
@@ -234,6 +235,7 @@ const Login: React.FC = () => {
                             size="large"
                             placeholder="请输入邮箱"
                             className={style.customInput}
+                            autoComplete="off"
                         />
                     </div>
                 </Form.Item>
@@ -252,6 +254,7 @@ const Login: React.FC = () => {
                             placeholder="请输入密码"
                             size="large"
                             className={style.customInput}
+                            autoComplete="new-password"
                         />
                         <Button
                             type="text"
@@ -284,6 +287,7 @@ const Login: React.FC = () => {
                             placeholder="请确认密码"
                             size="large"
                             className={style.customInput}
+                            autoComplete="new-password"
                         />
                     </div>
                 </Form.Item>
