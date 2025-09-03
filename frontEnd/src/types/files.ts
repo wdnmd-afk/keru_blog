@@ -83,9 +83,9 @@ export enum UploadStatus {
 }
 
 /**
- * 上传状态类型联合
+ * 上传状态类型联合 - 扩展支持断点续传
  */
-export type UploadStatusType = 'pending' | 'uploading' | 'success' | 'error' | 'paused'
+export type UploadStatusType = 'pending' | 'uploading' | 'success' | 'error' | 'paused' | 'cancelled' | 'failed'
 
 /**
  * 上传进度信息
@@ -102,7 +102,7 @@ export interface UploadProgress {
 }
 
 /**
- * 文件上传项接口
+ * 文件上传项接口 - 扩展支持断点续传
  */
 export interface UploadFileItem {
   /** 文件唯一标识 */
@@ -121,6 +121,21 @@ export interface UploadFileItem {
   percent?: number
   /** 错误信息 */
   error?: string
+  /** 断点续传相关信息 */
+  resumeData?: {
+    /** 文件哈希值 */
+    fileHash: string
+    /** 已上传的分片索引 */
+    uploadedChunks: number[]
+    /** 总分片数 */
+    totalChunks: number
+    /** 分片大小 */
+    chunkSize: number
+    /** 最后上传时间 */
+    lastUploadTime: number
+    /** 是否可以续传 */
+    canResume: boolean
+  }
 }
 
 // ==================== 预览相关类型 ====================
@@ -254,7 +269,7 @@ export interface FileSearchProps {
 }
 
 /**
- * 文件上传组件Props
+ * 文件上传组件Props - 扩展支持断点续传
  */
 export interface FileUploadProps {
   /** 上传的文件列表 */
@@ -267,6 +282,26 @@ export interface FileUploadProps {
   onUpload: (fileList: UploadFileItem[]) => Promise<void>
   /** 移除文件回调 */
   onRemove?: (file: UploadFileItem) => void
+  /** 断点续传操作回调 */
+  onResumeActions?: {
+    /** 暂停文件上传 */
+    onPause?: (file: UploadFileItem) => void
+    /** 继续文件上传 */
+    onResume?: (file: UploadFileItem) => void
+    /** 重试文件上传 */
+    onRetry?: (file: UploadFileItem) => void
+    /** 取消文件上传 */
+    onCancel?: (file: UploadFileItem) => void
+  }
+  /** 批量操作回调 */
+  onBatchActions?: {
+    /** 暂停所有上传 */
+    onPauseAll?: () => void
+    /** 继续所有上传 */
+    onResumeAll?: () => void
+    /** 取消所有上传 */
+    onCancelAll?: () => void
+  }
 }
 
 /**

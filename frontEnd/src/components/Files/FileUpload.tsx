@@ -3,8 +3,9 @@ import UploadProgress from '@/components/Files/UploadProgress'
 import CustomProgress from '@/components/Files/CustomProgress'
 import KTable from '@/components/KTable.tsx'
 import type { FileUploadProps, UploadFileItem, UploadStatusType } from '@/types/files'
-import { InboxOutlined } from '@ant-design/icons'
-import { Button, Upload, UploadProps, message } from 'antd'
+import { InboxOutlined, PlayCircleOutlined, PauseCircleOutlined, ReloadOutlined, StopOutlined } from '@ant-design/icons'
+import { Button, Upload, UploadProps, message, Space, Tooltip } from 'antd'
+import { UPLOAD_CONFIG, UploadUtils } from '@/config/upload'
 import { UploadFile } from 'antd/es/upload/interface'
 import React from 'react'
 
@@ -20,6 +21,8 @@ const FileUpload: React.FC<FileUploadProps> = ({
     onFileListChange,
     onUpload,
     onRemove,
+    onResumeActions,
+    onBatchActions,
 }) => {
     // 移除调试日志，减少控制台输出
     /**
@@ -43,11 +46,14 @@ const FileUpload: React.FC<FileUploadProps> = ({
             case 'success':
                 return '#52c41a'
             case 'error':
+            case 'failed':
                 return '#ff4d4f'
             case 'uploading':
                 return '#1890ff'
             case 'paused':
                 return '#faad14'
+            case 'cancelled':
+                return '#8c8c8c'
             default:
                 return '#d9d9d9'
         }
@@ -63,11 +69,14 @@ const FileUpload: React.FC<FileUploadProps> = ({
             case 'success':
                 return '上传成功'
             case 'error':
+            case 'failed':
                 return '上传失败'
             case 'uploading':
                 return '上传中'
             case 'paused':
                 return '已暂停'
+            case 'cancelled':
+                return '已取消'
             case 'pending':
                 return '等待上传'
             default:
@@ -94,10 +103,9 @@ const FileUpload: React.FC<FileUploadProps> = ({
                 return false
             }
 
-            // 检查文件大小（限制500MB）
-            const maxSize = 500 * 1024 * 1024
-            if (file.size && file.size > maxSize) {
-                message.error(`文件 ${file.name} 超过500MB限制`)
+            // 检查文件大小（使用配置文件中的限制）
+            if (file.size && UploadUtils.isFileSizeExceeded(file.size)) {
+                message.error(`文件 ${file.name} ${UploadUtils.getFileSizeErrorMessage()}`)
                 return false
             }
 
@@ -149,6 +157,81 @@ const FileUpload: React.FC<FileUploadProps> = ({
         const newFileList = fileList.filter((item) => item.uid !== file.uid)
         onFileListChange(newFileList)
         onRemove?.(file)
+    }
+
+    /**
+     * 渲染文件操作按钮
+     * @param file 文件项
+     * @returns 操作按钮组件
+     */
+    const renderActionButtons = (file: UploadFileItem) => {
+        const { status } = file
+
+        return (
+            <Space size="small">
+                {/* 暂停按钮 - 仅在上传中时显示 */}
+                {status === 'uploading' && (
+                    <Tooltip title="暂停上传">
+                        <Button
+                            type="text"
+                            size="small"
+                            icon={<PauseCircleOutlined />}
+                            onClick={() => onResumeActions?.onPause?.(file)}
+                        />
+                    </Tooltip>
+                )}
+
+                {/* 继续按钮 - 仅在暂停时显示 */}
+                {status === 'paused' && (
+                    <Tooltip title="继续上传">
+                        <Button
+                            type="text"
+                            size="small"
+                            icon={<PlayCircleOutlined />}
+                            onClick={() => onResumeActions?.onResume?.(file)}
+                        />
+                    </Tooltip>
+                )}
+
+                {/* 重试按钮 - 仅在失败时显示 */}
+                {(status === 'error' || status === 'failed') && (
+                    <Tooltip title="重试上传">
+                        <Button
+                            type="text"
+                            size="small"
+                            icon={<ReloadOutlined />}
+                            onClick={() => onResumeActions?.onRetry?.(file)}
+                        />
+                    </Tooltip>
+                )}
+
+                {/* 取消按钮 - 在待上传、上传中、暂停时显示 */}
+                {['pending', 'uploading', 'paused'].includes(status || '') && (
+                    <Tooltip title="取消上传">
+                        <Button
+                            type="text"
+                            size="small"
+                            icon={<StopOutlined />}
+                            onClick={() => onResumeActions?.onCancel?.(file)}
+                        />
+                    </Tooltip>
+                )}
+
+                {/* 删除记录按钮 - 在完成、失败、取消时显示 */}
+                {['success', 'error', 'failed', 'cancelled'].includes(status || '') && (
+                    <Tooltip title="删除记录">
+                        <Button
+                            type="text"
+                            size="small"
+                            danger
+                            onClick={() => handleRemove(file)}
+                        >
+                            删除记录
+                        </Button>
+                    </Tooltip>
+                )}
+            </Space>
+        )
     }
 
     /**
@@ -208,8 +291,35 @@ const FileUpload: React.FC<FileUploadProps> = ({
             title: '文件类型',
             key: 'type',
             dataIndex: 'type',
-            width: '15%',
+            width: '12%',
             ellipsis: true,
+        },
+        {
+            title: '状态',
+            key: 'status',
+            width: '12%',
+            render: (_: unknown, record: UploadFileItem) => {
+                if (!record) return <span>-</span>
+
+                const status = record.status || 'pending'
+                const statusColor = getStatusColor(status)
+                const statusText = getStatusText(status)
+
+                return (
+                    <div className="flex items-center space-x-2">
+                        <div
+                            className="w-2 h-2 rounded-full"
+                            style={{ backgroundColor: statusColor }}
+                        />
+                        <span
+                            className="text-sm font-medium"
+                            style={{ color: statusColor }}
+                        >
+                            {statusText}
+                        </span>
+                    </div>
+                )
+            },
         },
         {
             title: '上传进度',
@@ -261,7 +371,7 @@ const FileUpload: React.FC<FileUploadProps> = ({
         {
             title: '操作',
             key: 'action',
-            width: '10%',
+            width: '15%',
             render: (_: unknown, record: UploadFileItem, index: number) => {
                 // 确保record存在，避免undefined错误
                 if (!record) {
@@ -273,17 +383,7 @@ const FileUpload: React.FC<FileUploadProps> = ({
                     return <span>-</span>
                 }
 
-                const status = record.status || 'pending'
-                return (
-                    <Button
-                        type="text"
-                        size="small"
-                        onClick={() => handleRemove(record)}
-                        disabled={uploading && status === 'uploading'}
-                    >
-                        删除
-                    </Button>
-                )
+                return renderActionButtons(record)
             },
         },
     ]
@@ -335,6 +435,48 @@ const FileUpload: React.FC<FileUploadProps> = ({
                         />
                     </EmptyContainer>
                 </div>
+
+                {/* 批量操作按钮 */}
+                {onBatchActions && fileList.length > 0 && (
+                    <div className="mt-4 mb-2">
+                        <Space size="small">
+                            <Button
+                                size="small"
+                                icon={<PauseCircleOutlined />}
+                                onClick={onBatchActions.onPauseAll}
+                                disabled={!fileList.some(f => f.status === 'uploading')}
+                            >
+                                全部暂停
+                            </Button>
+                            <Button
+                                size="small"
+                                icon={<PlayCircleOutlined />}
+                                onClick={onBatchActions.onResumeAll}
+                                disabled={!fileList.some(f => f.status === 'paused')}
+                            >
+                                全部继续
+                            </Button>
+                            <Button
+                                size="small"
+                                icon={<StopOutlined />}
+                                onClick={onBatchActions.onCancelAll}
+                                disabled={!fileList.some(f => ['pending', 'uploading', 'paused'].includes(f.status || ''))}
+                            >
+                                全部取消
+                            </Button>
+                            <Button
+                                size="small"
+                                danger
+                                onClick={() => {
+                                    // 清空所有文件记录
+                                    onFileListChange([])
+                                }}
+                            >
+                                清空记录
+                            </Button>
+                        </Space>
+                    </div>
+                )}
 
                 {/* 上传按钮 */}
                 <div className="mt-4">

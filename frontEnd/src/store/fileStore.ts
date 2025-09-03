@@ -236,7 +236,17 @@ export const useFileStore = create<FileStore>()(
         set((state) => {
           const fileIndex = state.uploadFileList.findIndex(file => file.uid === uid)
           if (fileIndex !== -1) {
+            const oldStatus = state.uploadFileList[fileIndex].status
             Object.assign(state.uploadFileList[fileIndex], status)
+            console.log('=== 文件状态更新 ===', {
+              uid,
+              fileName: state.uploadFileList[fileIndex].name,
+              oldStatus,
+              newStatus: status.status,
+              fileListLength: state.uploadFileList.length
+            })
+          } else {
+            console.warn('未找到要更新的文件:', uid)
           }
         })
       },

@@ -80,7 +80,7 @@ export class FileChunkDto {
 
   @IsNotEmpty({ message: "文件大小不能为空" })
   @IsNumber({}, { message: "文件大小必须是数字" })
-  @IsFileSizeValid(500, { message: "文件大小不能超过500MB" }) // 500MB 限制
+  @IsFileSizeValid(1024, { message: "文件大小不能超过1GB" }) // 1GB 限制
   fileSize: number; // 总文件size
 
   @IsNotEmpty({ message: "文件名不能为空" })

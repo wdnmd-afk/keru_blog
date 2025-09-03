@@ -77,10 +77,24 @@ class RequestHttp {
             async (error: CustomError) => {
                 const { response } = error
                 // tryHideFullScreenLoading();
+
+                // 修复：检查response是否存在，避免解构undefined
+                if (!response) {
+                    // 请求被取消或网络错误，没有response
+                    console.log('请求被取消或网络错误:', error.message)
+                    return Promise.reject(error)
+                }
+
                 // 请求超时 && 网络错误单独判断，没有 response
                 const { data } = response
-                // token 过期，直接退出
 
+                // 检查data是否存在
+                if (!data) {
+                    console.log('响应数据为空')
+                    return Promise.reject(error)
+                }
+
+                // token 过期，直接退出
                 switch (data.code) {
                     case ResultEnum.UNAUTHORIZED:
                         MessageBox.confirm({
@@ -121,7 +135,8 @@ class RequestHttp {
             headers: {
                 'Content-Type': 'multipart/form-data',
             },
-            signal: this.signal,
+            // 合并传入的配置，允许覆盖signal
+            ..._object,
         })
     }
 

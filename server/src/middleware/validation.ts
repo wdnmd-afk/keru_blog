@@ -79,6 +79,8 @@ export function requireBody(req: Request, res: Response, next: NextFunction) {
   next();
 }
 
+import { UPLOAD_CONFIG, UploadUtils } from '../config/upload';
+
 /**
  * 文件上传验证中间件
  */
@@ -93,12 +95,11 @@ export function validateFileUpload(
     return res.status(400).json(Result.validationError("没有上传文件"));
   }
 
-  // 文件大小限制（500MB）
-  const maxSize = 500 * 1024 * 1024;
-  if (file.size > maxSize) {
+  // 使用配置文件中的文件大小限制
+  if (UploadUtils.isFileSizeExceeded(file.size)) {
     return res
       .status(400)
-      .json(Result.validationError("文件大小不能超过500MB"));
+      .json(Result.validationError(UploadUtils.getFileSizeErrorMessage()));
   }
 
   // 文件类型白名单检查
