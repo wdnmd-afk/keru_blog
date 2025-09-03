@@ -30,6 +30,15 @@ const UploadTab: React.FC = () => {
         
         onProgress: (progress) => {
             console.log(`上传进度: ${progress.fileName} - ${progress.percentage}%`)
+            
+            // 根据文件名找到对应的文件项并更新进度
+            const targetFile = uploadFileList.find(file => file.name === progress.fileName)
+            if (targetFile) {
+                updateUploadFileStatus(targetFile.uid, {
+                    percent: progress.percentage,
+                    status: 'uploading' as const
+                })
+            }
         },
         
         onSuccess: (fileName: string, fileHash: string) => {
@@ -54,7 +63,7 @@ const UploadTab: React.FC = () => {
         onMergeComplete: (fileName: string) => {
             console.log(`文件合并完成: ${fileName}`)
         }
-    }), [refreshFileList])
+    }), [refreshFileList, uploadFileList, updateUploadFileStatus])
     
     const { 
         upload, 

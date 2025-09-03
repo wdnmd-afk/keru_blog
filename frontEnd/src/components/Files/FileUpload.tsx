@@ -2,7 +2,7 @@ import EmptyContainer from '@/components/EmptyContainer.tsx'
 import KTable from '@/components/KTable.tsx'
 import type { FileUploadProps, UploadFileItem, UploadStatusType } from '@/types/files'
 import { InboxOutlined } from '@ant-design/icons'
-import { Button, message, Progress, Upload, UploadProps } from 'antd'
+import { Button, Progress, Upload, UploadProps, message } from 'antd'
 import { UploadFile } from 'antd/es/upload/interface'
 import React from 'react'
 
@@ -17,7 +17,7 @@ const FileUpload: React.FC<FileUploadProps> = ({
     uploading = false,
     onFileListChange,
     onUpload,
-    onRemove
+    onRemove,
 }) => {
     /**
      * 格式化文件大小
@@ -37,11 +37,16 @@ const FileUpload: React.FC<FileUploadProps> = ({
      */
     const getStatusColor = (status?: UploadStatusType): string => {
         switch (status) {
-            case 'success': return '#52c41a'
-            case 'error': return '#ff4d4f'
-            case 'uploading': return '#1890ff'
-            case 'paused': return '#faad14'
-            default: return '#d9d9d9'
+            case 'success':
+                return '#52c41a'
+            case 'error':
+                return '#ff4d4f'
+            case 'uploading':
+                return '#1890ff'
+            case 'paused':
+                return '#faad14'
+            default:
+                return '#d9d9d9'
         }
     }
 
@@ -52,12 +57,18 @@ const FileUpload: React.FC<FileUploadProps> = ({
      */
     const getStatusText = (status?: UploadStatusType): string => {
         switch (status) {
-            case 'success': return '上传成功'
-            case 'error': return '上传失败'
-            case 'uploading': return '上传中'
-            case 'paused': return '已暂停'
-            case 'pending': return '等待上传'
-            default: return '等待上传'
+            case 'success':
+                return '上传成功'
+            case 'error':
+                return '上传失败'
+            case 'uploading':
+                return '上传中'
+            case 'paused':
+                return '已暂停'
+            case 'pending':
+                return '等待上传'
+            default:
+                return '等待上传'
         }
     }
 
@@ -76,10 +87,10 @@ const FileUpload: React.FC<FileUploadProps> = ({
                 return false
             }
 
-            // 检查文件大小（限制100MB）
-            const maxSize = 100 * 1024 * 1024
+            // 检查文件大小（限制500MB）
+            const maxSize = 500 * 1024 * 1024
             if (file.size && file.size > maxSize) {
-                message.error(`文件 ${file.name} 超过100MB限制`)
+                message.error(`文件 ${file.name} 超过500MB限制`)
                 return false
             }
 
@@ -90,10 +101,10 @@ const FileUpload: React.FC<FileUploadProps> = ({
             }
 
             // 检查是否重复
-            const isDuplicate = fileList.some(item => 
-                item.name === file.name && item.size === file.size
+            const isDuplicate = fileList.some(
+                (item) => item.name === file.name && item.size === file.size
             )
-            
+
             if (isDuplicate) {
                 message.warning(`文件 ${file.name} 已存在`)
                 return false
@@ -125,7 +136,7 @@ const FileUpload: React.FC<FileUploadProps> = ({
      * @param file 要移除的文件
      */
     const handleRemove = (file: UploadFileItem) => {
-        const newFileList = fileList.filter(item => item.uid !== file.uid)
+        const newFileList = fileList.filter((item) => item.uid !== file.uid)
         onFileListChange(newFileList)
         onRemove?.(file)
     }
@@ -139,10 +150,10 @@ const FileUpload: React.FC<FileUploadProps> = ({
             return
         }
 
-        const pendingFiles = fileList.filter(file => {
-            const status = file.status || 'pending';
-            return status === 'pending' || status === 'error';
-        });
+        const pendingFiles = fileList.filter((file) => {
+            const status = file.status || 'pending'
+            return status === 'pending' || status === 'error'
+        })
 
         if (pendingFiles.length === 0) {
             message.info('没有需要上传的文件')
@@ -179,8 +190,8 @@ const FileUpload: React.FC<FileUploadProps> = ({
             width: '15%',
             render: (size: number, record: UploadFileItem, index: number) => {
                 // 确保 size 是数字类型
-                const fileSize = typeof size === 'number' ? size : (record?.size || 0);
-                return formatFileSize(fileSize);
+                const fileSize = typeof size === 'number' ? size : record?.size || 0
+                return formatFileSize(fileSize)
             },
         },
         {
@@ -197,13 +208,17 @@ const FileUpload: React.FC<FileUploadProps> = ({
             render: (_: unknown, record: UploadFileItem, index: number) => {
                 // 确保record存在并且percent有默认值，避免undefined错误
                 if (!record) {
-                    console.warn('Record is undefined in progress render function:', { _, record, index });
-                    return <span>-</span>;
+                    console.warn('Record is undefined in progress render function:', {
+                        _,
+                        record,
+                        index,
+                    })
+                    return <span>-</span>
                 }
-                
-                const percent = record.percent ?? 0;
-                const status = record.status || 'pending';
-                
+
+                const percent = record.percent ?? 0
+                const status = record.status || 'pending'
+
                 return (
                     <div className="flex items-center gap-2">
                         <Progress
@@ -213,10 +228,7 @@ const FileUpload: React.FC<FileUploadProps> = ({
                             showInfo={false}
                             strokeColor={getStatusColor(status)}
                         />
-                        <span 
-                            className="text-xs"
-                            style={{ color: getStatusColor(status) }}
-                        >
+                        <span className="text-xs" style={{ color: getStatusColor(status) }}>
                             {getStatusText(status)}
                         </span>
                     </div>
@@ -230,11 +242,15 @@ const FileUpload: React.FC<FileUploadProps> = ({
             render: (_: unknown, record: UploadFileItem, index: number) => {
                 // 确保record存在，避免undefined错误
                 if (!record) {
-                    console.warn('Record is undefined in action render function:', { _, record, index });
-                    return <span>-</span>;
+                    console.warn('Record is undefined in action render function:', {
+                        _,
+                        record,
+                        index,
+                    })
+                    return <span>-</span>
                 }
-                
-                const status = record.status || 'pending';
+
+                const status = record.status || 'pending'
                 return (
                     <Button
                         type="text"
@@ -262,9 +278,7 @@ const FileUpload: React.FC<FileUploadProps> = ({
                         <p className="ant-upload-text font-bold text-lg">
                             点击上传或者拖拽文件到此区域上传！
                         </p>
-                        <p className="ant-upload-hint">
-                            支持单个或批量上传，文件大小限制100MB
-                        </p>
+                        <p className="ant-upload-hint">支持单个或批量上传，文件大小限制500MB</p>
                     </Dragger>
                 </div>
             </div>
@@ -274,19 +288,17 @@ const FileUpload: React.FC<FileUploadProps> = ({
                 <div className="boxTitle flex justify-between items-center">
                     <span>待上传文件列表</span>
                     <div className="flex gap-2">
-                        <Button 
-                            size="small" 
+                        <Button
+                            size="small"
                             onClick={handleClear}
                             disabled={fileList.length === 0 || uploading}
                         >
                             清空
                         </Button>
-                        <span className="text-sm text-gray-500">
-                            共 {fileList.length} 个文件
-                        </span>
+                        <span className="text-sm text-gray-500">共 {fileList.length} 个文件</span>
                     </div>
                 </div>
-                
+
                 <div className="flex-1 h-0 mt-5 flex flex-col">
                     <EmptyContainer flag={fileList.length > 0}>
                         <KTable

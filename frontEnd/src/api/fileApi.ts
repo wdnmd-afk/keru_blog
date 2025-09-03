@@ -47,25 +47,31 @@ class FileApi {
     /**
      * 上传文件（切片）
      * @param params FormData格式的文件数据
-     * @param onCancel 取消上传的回调函数
+     * @param options 上传选项，包括进度回调和取消信号
      */
     public static async uploadFile(
-        params: FormData, 
-        onCancel?: (cancelFn: () => void) => void
-    ): Promise<any> {
-        // 如果提供了 onCancel 回调，则传递取消函数
-        if (typeof onCancel === 'function') {
-            onCancel(() => Http.controller.abort())
+        params: FormData,
+        options?: {
+            onUploadProgress?: (progressEvent: any) => void
+            signal?: AbortSignal
         }
-        return await Http.postFile('/file/upload', params)
+    ): Promise<any> {
+        return await Http.postFile('/file/upload', params, options)
     }
 
     /**
      * 单文件上传
      * @param params FormData格式的文件数据
+     * @param options 上传选项，包括进度回调和取消信号
      */
-    public static async uploadFileSingle(params: FormData): Promise<any> {
-        return await Http.postFile('/file/uploadSingle', params)
+    public static async uploadFileSingle(
+        params: FormData, 
+        options?: {
+            onUploadProgress?: (progressEvent: any) => void
+            signal?: AbortSignal
+        }
+    ): Promise<any> {
+        return await Http.postFile('/file/uploadSingle', params, options)
     }
 
     /**

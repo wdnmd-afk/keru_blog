@@ -1,6 +1,6 @@
 import { FileApi } from '@/api'
 import { UploadFile } from 'antd/es/upload/interface'
-import { useCallback, useState } from 'react'
+import { useCallback, useState, useRef, useEffect } from 'react'
 
 interface UploadOptions {
     chunkSize?: number // 切片大小，默认 1M
@@ -28,7 +28,7 @@ export interface FileChunkProp {
     finishNumber: number // 请求完成的个数
     errNumber: number // 报错的个数,默认是0个,超多3个就是直接上传中断
     percentage: number // 单个文件上传进度条
-    cancel: null | (() => void) // 用于取消切片上传接口
+    controller?: AbortController // 用于取消整个文件上传任务
     id: number | string
     // 新增状态信息
     error?: string // 错误信息
@@ -46,7 +46,8 @@ interface ChunkProp {
     chunkSize: number | undefined // 切片文件大小
     chunkNumber: number // 切片个数
     finish: boolean // 切片是否已经完成
-    cancel?: null | (() => void)
+    loaded?: number // 当前分片已上传字节数
+    controller?: AbortController // 用于取消单个分片上传接口
 }
 
 interface UploadProgress {
@@ -95,6 +96,10 @@ export const useUpload = (options?: UploadOptions, events?: UploadEvents) => {
     
     //设置单次请求最大并发数
     const [maxRequest, setMaxRequest] = useState<number>(6)
+    
+    // 定时器相关状态管理
+    const progressTimerRef = useRef<NodeJS.Timeout | null>(null)
+    const currentTaskRef = useRef<FileChunkProp | null>(null)
 
     // 生成文件 hash（web-worker）
     const useWorker = (file: Blob): Promise<{ fileHash: string; fileChunkList: ChunkProp[] }> => {
@@ -117,6 +122,40 @@ export const useUpload = (options?: UploadOptions, events?: UploadEvents) => {
         return Math.floor(Math.random() * 1000000000000)
     }
 
+    // 启动进度定时器 - 每1秒更新一次进度
+    const startProgressTimer = (taskArrItem: FileChunkProp) => {
+        // 如果已经有定时器在运行，先清除
+        if (progressTimerRef.current) {
+            clearInterval(progressTimerRef.current)
+        }
+        
+        // 保存当前任务引用
+        currentTaskRef.current = taskArrItem
+        
+        // 启动新的定时器，每1秒更新一次进度
+        progressTimerRef.current = setInterval(() => {
+            if (currentTaskRef.current && currentTaskRef.current.state === UploadState.Uploading) {
+                updateProgress(currentTaskRef.current)
+            }
+        }, 1000)
+    }
+
+    // 停止进度定时器
+    const stopProgressTimer = () => {
+        if (progressTimerRef.current) {
+            clearInterval(progressTimerRef.current)
+            progressTimerRef.current = null
+        }
+        currentTaskRef.current = null
+    }
+
+    // 组件卸载时清理定时器
+    useEffect(() => {
+        return () => {
+            stopProgressTimer()
+        }
+    }, [])
+
     // 暂停上传（是暂停剩下未上传的）
     const pauseUpload = (taskArrItem: FileChunkProp, elsePause = true) => {
         // elsePause为true就是主动暂停，为false就是请求中断
@@ -130,24 +169,49 @@ export const useUpload = (options?: UploadOptions, events?: UploadEvents) => {
             }
         }
         taskArrItem.errNumber = 0
+        
+        // 停止进度定时器
+        stopProgressTimer()
 
         // 取消还在请求中的所有接口
         if (taskArrItem.whileRequests.length > 0) {
             for (const itemB of taskArrItem.whileRequests) {
-                itemB.cancel ? itemB.cancel() : ''
+                itemB.controller?.abort()
             }
         }
-        // // 所有剩下的请求都触发取消请求
-        // for (const itemB of item.allChunkList) {
-        //   //  如果cancel是函数则触发取消函数
-        //   itemB.cancel ? itemB.cancel() : ''
-        // }
     }
-    const updateProgress = (chunk: ChunkProp, taskArrItem: FileChunkProp) => {
-        // 即使是超时请求也是会频繁的返回上传进度的,所以只能写成完成一片就添加它所占百分之多少,否则会造成误会
-        taskArrItem.percentage = Number(
-            ((taskArrItem.finishNumber / chunk.chunkNumber) * 100).toFixed(2)
-        )
+    
+    const updateProgress = (taskArrItem: FileChunkProp) => {
+        const totalSize = taskArrItem.fileSize
+        
+        // 计算已完成分片的总大小
+        const completedChunksSize = taskArrItem.finishNumber * (options?.chunkSize || DEFAULT_OPTIONS.chunkSize!)
+        
+        // 计算正在上传分片的已上传大小
+        const uploadingSize = taskArrItem.whileRequests.reduce((acc, chunk) => acc + (chunk.loaded || 0), 0)
+        
+        // 总的已上传大小 = 已完成分片大小 + 正在上传分片的已上传大小
+        const totalUploadedSize = completedChunksSize + uploadingSize
+
+        if (totalSize > 0) {
+            // 确保进度不超过100%
+            const calculatedPercentage = (totalUploadedSize / totalSize) * 100
+            taskArrItem.percentage = Number(Math.min(calculatedPercentage, 100).toFixed(2))
+        } else {
+            taskArrItem.percentage = 0
+        }
+
+        // 更新更详细的进度状态
+        const progress: UploadProgress = {
+            percentage: taskArrItem.percentage,
+            status: 'uploading',
+            fileName: taskArrItem.fileName,
+            uploadedSize: totalUploadedSize,
+            totalSize,
+            speed: 0, // Speed and remaining time can be calculated in a separate effect
+            remainingTime: 0,
+        }
+        events?.onProgress?.(progress)
     }
 
     // 调取合并接口处理所有切片
@@ -247,46 +311,51 @@ export const useUpload = (options?: UploadOptions, events?: UploadEvents) => {
             fd.append('chunkHash', chunkHash)
             fd.append('chunkSize', String(chunkSize))
             fd.append('chunkNumber', String(chunkNumber))
+
+            const controller = new AbortController()
+            chunk.controller = controller
+
             try {
-                const res = await FileApi.uploadFile(fd, (onCancelFunc) => {
-                    // 在调用接口的同时，相当于同时调用了传入的这个函数，又能同时拿到返回的取消方法去赋值
-                    chunk.cancel = onCancelFunc
+                await FileApi.uploadFile(fd, {
+                    signal: controller.signal,
+                    onUploadProgress: (e: any) => {
+                        chunk.loaded = e.loaded
+                        updateProgress(taskArrItem)
+                    },
                 })
-                // 先判断是不是处于暂停还是取消状态
-                // 你的状态都已经变成暂停或者中断了,就什么都不要再做了,及时停止
+
                 if (taskArrItem.state === 3 || taskArrItem.state === 5) {
-                    return false
+                    return
                 }
-                // 单个文件上传失败次数大于0则要减少一个
+                
                 taskArrItem.errNumber > 0 ? taskArrItem.errNumber-- : 0
-                // 单个文件切片上传成功数+1
                 taskArrItem.finishNumber++
-                // 单个切片上传完成
                 chunk.finish = true
-                // 更新进度条(还没做)
-                updateProgress(chunk, taskArrItem)
-                // 上传成功了就删掉请求中数组中的那一片请求
+                chunk.loaded = chunk.chunkSize
+                updateProgress(taskArrItem)
+
                 taskArrItem.whileRequests = taskArrItem.whileRequests.filter(
                     (item) => item.chunkFile !== chunk.chunkFile
                 )
 
-                // 如果单个文件最终成功数等于切片个数
                 if (taskArrItem.finishNumber === chunkNumber) {
-                    // 全部上传完切片后就开始合并切片
                     await handleMerge(taskArrItem)
                 } else {
-                    // 如果还没完全上传完，则继续上传
                     uploadSingleFile(taskArrItem)
                 }
-            } catch (e) {
+            } catch (e: any) {
+                if (e.name === 'AbortError' || controller.signal.aborted) {
+                    console.log(`Chunk ${chunk.index} for ${fileName} was aborted.`)
+                    return
+                }
+
                 taskArrItem.errNumber++
-                // 超过3次之后直接上传中断
                 if (taskArrItem.errNumber > 3) {
                     console.log('切片上传失败超过三次了')
-                    pauseUpload(taskArrItem, false) // 上传中断
+                    pauseUpload(taskArrItem, false)
                 } else {
                     console.log('切片上传失败还没超过3次')
-                    await uploadChunk(chunk) // 失败了一片,继续当前分片请求
+                    await uploadChunk(chunk)
                 }
             }
         }
@@ -302,6 +371,21 @@ export const useUpload = (options?: UploadOptions, events?: UploadEvents) => {
         item.percentage = 100
         // 4是上传完成
         item.state = 4
+        
+        // 立即触发100%进度回调，确保UI显示完成状态
+        const finalProgress: UploadProgress = {
+            percentage: 100,
+            status: 'success',
+            fileName: item.fileName,
+            uploadedSize: item.fileSize,
+            totalSize: item.fileSize,
+            speed: 0,
+            remainingTime: 0,
+        }
+        events?.onProgress?.(finalProgress)
+        
+        // 停止进度定时器
+        stopProgressTimer()
     }
     // 小文件上传函数（优化后）
     const _uploadSmallFile = async (file: File, uploadTask: FileChunkProp) => {
@@ -314,6 +398,9 @@ export const useUpload = (options?: UploadOptions, events?: UploadEvents) => {
         console.log('小文件上传 - 文件名:', file.name)
         
         uploadTask.state = UploadState.Uploading
+        
+        // 启动进度定时器
+        startProgressTimer(uploadTask)
         
         // 触发进度事件
         const progressInfo: UploadProgress = {
@@ -328,32 +415,38 @@ export const useUpload = (options?: UploadOptions, events?: UploadEvents) => {
         events?.onProgress?.(progressInfo)
         
         try {
-            const res = await FileApi.uploadFileSingle(fd)
+            // 添加上传进度监听
+            const res = await FileApi.uploadFileSingle(fd, {
+                onUploadProgress: (progressEvent) => {
+                    if (progressEvent.total) {
+                        const percentage = Math.round((progressEvent.loaded / progressEvent.total) * 100)
+                        const progressInfo: UploadProgress = {
+                            percentage,
+                            status: 'uploading',
+                            fileName: file.name,
+                            uploadedSize: progressEvent.loaded,
+                            totalSize: progressEvent.total,
+                            speed: 0, // 可以后续计算速度
+                            remainingTime: 0, // 可以后续计算剩余时间
+                        }
+                        events?.onProgress?.(progressInfo)
+                    }
+                }
+            })
             
             // 上传成功
             uploadTask.endTime = Date.now()
-            finishTask(uploadTask)
+            finishTask(uploadTask) // finishTask内部已经处理了进度回调和定时器停止
             
             // 触发成功事件
             events?.onSuccess?.(file.name, uploadTask.fileHash || 'unknown')
             events?.onComplete?.(file.name, true)
             
-            // 更新最终进度
-            const finalProgress: UploadProgress = {
-                percentage: 100,
-                status: 'success',
-                fileName: file.name,
-                uploadedSize: file.size,
-                totalSize: file.size,
-                speed: 0,
-                remainingTime: 0,
-            }
-            events?.onProgress?.(finalProgress)
-            
             return res
         } catch (error) {
             uploadTask.state = UploadState.Failed
             uploadTask.error = error instanceof Error ? error.message : '小文件上传失败'
+            stopProgressTimer() // 停止进度定时器
             
             const errorProgress: UploadProgress = {
                 percentage: 0,
@@ -393,6 +486,9 @@ export const useUpload = (options?: UploadOptions, events?: UploadEvents) => {
             uploadTask.fileHash = `${fileHash}${baseName}`
             uploadTask.state = UploadState.Uploading
             
+            // 启动进度定时器
+            startProgressTimer(uploadTask)
+            
             // 检查文件是否已经存在
             const { data } = await FileApi.checkFile({
                 fileHash: `${fileHash}${baseName}`,
@@ -403,22 +499,11 @@ export const useUpload = (options?: UploadOptions, events?: UploadEvents) => {
             if (!shouldUpload) {
                 // 文件已存在，实现秒传
                 uploadTask.endTime = Date.now()
-                finishTask(uploadTask)
+                finishTask(uploadTask) // finishTask内部已经处理了进度回调和定时器停止
                 console.log('文件已存在，实现秒传')
                 
                 events?.onSuccess?.(file.name, uploadTask.fileHash)
                 events?.onComplete?.(file.name, true)
-                
-                const successProgress: UploadProgress = {
-                    percentage: 100,
-                    status: 'success',
-                    fileName: file.name,
-                    uploadedSize: file.size,
-                    totalSize: file.size,
-                    speed: 0,
-                    remainingTime: 0,
-                }
-                events?.onProgress?.(successProgress)
                 return
             }
             
@@ -433,6 +518,7 @@ export const useUpload = (options?: UploadOptions, events?: UploadEvents) => {
                 chunkSize: chunkSize,
                 chunkNumber: fileChunkList.length,
                 finish: false,
+                loaded: 0, // Initialize loaded
             }))
             
             // 如果已存在部分文件切片，则要过滤掉已经上传的切片
@@ -489,7 +575,6 @@ export const useUpload = (options?: UploadOptions, events?: UploadEvents) => {
                         finishNumber: 0,
                         errNumber: 0,
                         percentage: 0,
-                        cancel: null,
                         startTime: Date.now(),
                     }
                     
@@ -522,6 +607,7 @@ export const useUpload = (options?: UploadOptions, events?: UploadEvents) => {
                         const errorMessage = error instanceof Error ? error.message : '上传失败'
                         uploadTask.state = UploadState.Failed
                         uploadTask.error = errorMessage
+                        stopProgressTimer() // 停止进度定时器
                         
                         setErrors(prev => [...prev, errorMessage])
                         events?.onError?.(errorMessage, file.name)

@@ -63,7 +63,7 @@ export function createAppConfig(): AppConfig {
             url: process.env.DATABASE_URL || 'mysql://root:123456@localhost:3306/test'
         },
         upload: {
-            maxFileSize: 100 * 1024 * 1024, // 100MB
+            maxFileSize: 500 * 1024 * 1024, // 500MB
             allowedTypes: [
                 // 图片类型
                 'jpg', 'jpeg', 'png', 'gif', 'webp', 'bmp', 'svg',
