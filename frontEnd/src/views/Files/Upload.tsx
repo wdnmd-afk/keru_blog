@@ -3,24 +3,40 @@ import type { UploadFileItem } from '@/types/files'
 import { useUpload, type UploadEvents } from '@/hooks/useUpload.ts'
 import { useFileStore } from '@/store/fileStore'
 import { message } from 'antd'
-import React, { useEffect, useMemo } from 'react'
+import React, { useEffect, useMemo, useRef, useCallback, useState } from 'react'
 
 /**
  * 文件上传页面组件
  * 使用全局状态管理和优化后的useUpload Hook
  */
 const UploadTab: React.FC = () => {
+    // 移除强制渲染机制，避免状态更新循环
+
+    // 使用ref跟踪最新的uploadFileList状态
+    const uploadFileListRef = useRef<UploadFileItem[]>([])
+
     // 使用全局状态管理
-    const { 
-        uploadFileList, 
+    const {
+        uploadFileList,
         uploading,
         setUploadFileList,
+        addUploadFile,
         setUploading,
         updateUploadFileStatus,
         removeUploadFile,
         clearUploadList,
         refreshFileList // 关键：上传成功后刷新文件列表
     } = useFileStore()
+
+    // 同步uploadFileList到ref
+    useEffect(() => {
+        uploadFileListRef.current = uploadFileList
+    }, [uploadFileList])
+
+    // 移除强制渲染机制，避免无限循环
+    const enhancedUpdateUploadFileStatus = useCallback((uid: string, status: Partial<UploadFileItem>) => {
+        updateUploadFileStatus(uid, status)
+    }, [updateUploadFileStatus])
     
     // 定义上传事件回调
     const uploadEvents: UploadEvents = useMemo(() => ({
@@ -29,12 +45,11 @@ const UploadTab: React.FC = () => {
         },
         
         onProgress: (progress) => {
-            console.log(`上传进度: ${progress.fileName} - ${progress.percentage}%`)
-            
             // 根据文件名找到对应的文件项并更新进度
             const targetFile = uploadFileList.find(file => file.name === progress.fileName)
+
             if (targetFile) {
-                updateUploadFileStatus(targetFile.uid, {
+                enhancedUpdateUploadFileStatus(targetFile.uid, {
                     percent: progress.percentage,
                     status: 'uploading' as const
                 })
@@ -63,7 +78,7 @@ const UploadTab: React.FC = () => {
         onMergeComplete: (fileName: string) => {
             console.log(`文件合并完成: ${fileName}`)
         }
-    }), [refreshFileList, uploadFileList, updateUploadFileStatus])
+    }), [refreshFileList, uploadFileList, enhancedUpdateUploadFileStatus])
     
     const { 
         upload, 
@@ -75,10 +90,22 @@ const UploadTab: React.FC = () => {
     
     /**
      * 处理文件列表变化
-     * @param newFileList 新的文件列表
+     * @param newFileListOrUpdater 新的文件列表或更新函数
      */
-    const handleFileListChange = (newFileList: UploadFileItem[]) => {
-        setUploadFileList(newFileList)
+    const handleFileListChange = (newFileListOrUpdater: UploadFileItem[] | ((prev: UploadFileItem[]) => UploadFileItem[])) => {
+        if (typeof newFileListOrUpdater === 'function') {
+            // 关键修复：使用ref中的最新状态进行函数式更新
+            const latestFileList = uploadFileListRef.current
+            const updatedList = newFileListOrUpdater(latestFileList)
+            setUploadFileList(updatedList)
+            // 立即更新ref
+            uploadFileListRef.current = updatedList
+        } else {
+            // 直接更新
+            setUploadFileList(newFileListOrUpdater)
+            // 立即更新ref
+            uploadFileListRef.current = newFileListOrUpdater
+        }
     }
 
     /**
@@ -92,7 +119,7 @@ const UploadTab: React.FC = () => {
             
             // 更新文件状态为上传中
             uploadFiles.forEach(uploadFile => {
-                updateUploadFileStatus(uploadFile.uid, {
+                enhancedUpdateUploadFileStatus(uploadFile.uid, {
                     status: 'uploading' as const,
                     percent: 0,
                     error: undefined
@@ -122,7 +149,7 @@ const UploadTab: React.FC = () => {
             
             // 更新文件状态为失败
             uploadFiles.forEach(uploadFile => {
-                updateUploadFileStatus(uploadFile.uid, {
+                enhancedUpdateUploadFileStatus(uploadFile.uid, {
                     status: 'error' as const,
                     error: '上传失败',
                     percent: 0

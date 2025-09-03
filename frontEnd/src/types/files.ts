@@ -262,7 +262,7 @@ export interface FileUploadProps {
   /** 上传状态 */
   uploading?: boolean
   /** 文件列表变化回调 */
-  onFileListChange: (fileList: UploadFileItem[]) => void
+  onFileListChange: (fileListOrUpdater: UploadFileItem[] | ((prev: UploadFileItem[]) => UploadFileItem[])) => void
   /** 上传回调 */
   onUpload: (fileList: UploadFileItem[]) => Promise<void>
   /** 移除文件回调 */

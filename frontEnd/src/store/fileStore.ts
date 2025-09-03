@@ -16,12 +16,12 @@ const getFilePreviewUrl = (filename: string): string => {
   if (baseUrl) {
     return `${baseUrl}/static/files/${filename}`
   }
-  
+
   // 生产环境使用当前域名
   if (import.meta.env.PROD) {
     return `/static/files/${filename}`
   }
-  
+
   // 开发环境默认配置
   return `http://localhost:3000/static/files/${filename}`
 }
@@ -39,17 +39,17 @@ export interface FileState {
   loading: boolean
   /** 错误信息 */
   error: string | null
-  
+
   // === 查询相关状态 ===
   /** 查询参数 */
   query: FileQuery
-  
+
   // === 上传相关状态 ===
   /** 上传文件列表 */
   uploadFileList: UploadFileItem[]
   /** 上传状态 */
   uploading: boolean
-  
+
   // === 预览相关状态 ===
   /** 当前选中的文件 */
   selectedFile: FileItem | null
@@ -68,13 +68,13 @@ export interface FileActions {
   refreshFileList: () => Promise<void>
   /** 删除文件 */
   deleteFile: (id: string) => Promise<void>
-  
+
   // === 查询操作 ===
   /** 更新查询参数 */
   updateQuery: (query: Partial<FileQuery>) => void
   /** 重置查询参数 */
   resetQuery: () => void
-  
+
   // === 上传操作 ===
   /** 设置上传文件列表 */
   setUploadFileList: (fileList: UploadFileItem[]) => void
@@ -88,13 +88,13 @@ export interface FileActions {
   clearUploadList: () => void
   /** 设置上传状态 */
   setUploading: (uploading: boolean) => void
-  
+
   // === 预览操作 ===
   /** 选择文件 */
   selectFile: (file: FileItem | null) => void
   /** 设置预览文件信息 */
   setCurrentFileInfo: (fileInfo: FileInfo | null) => void
-  
+
   // === 通用操作 ===
   /** 设置加载状态 */
   setLoading: (loading: boolean) => void
@@ -138,7 +138,7 @@ export const useFileStore = create<FileStore>()(
   devtools(
     immer((set, get) => ({
       ...initialState,
-      
+
       // === 文件列表操作 ===
       fetchFileList: async (queryParams?: Partial<FileQuery>) => {
         try {
@@ -149,9 +149,9 @@ export const useFileStore = create<FileStore>()(
               Object.assign(state.query, queryParams)
             }
           })
-          
+
           const { data } = await FileApi.queryFileList(get().query)
-          
+
           set((state) => {
             state.fileList = data.fileList
             state.total = data.total
@@ -167,18 +167,18 @@ export const useFileStore = create<FileStore>()(
           })
         }
       },
-      
+
       refreshFileList: async () => {
         return get().fetchFileList()
       },
-      
+
       deleteFile: async (id: string) => {
         try {
           await FileApi.deleteFile({ id })
-          
+
           // 删除成功后刷新列表
           await get().refreshFileList()
-          
+
           // 如果删除的是当前选中的文件，清空选择
           const { selectedFile, currentFileInfo } = get()
           if (selectedFile?.id === id || currentFileInfo?.id === id) {
@@ -187,7 +187,7 @@ export const useFileStore = create<FileStore>()(
               state.currentFileInfo = null
             })
           }
-          
+
           message.success('文件删除成功')
         } catch (error) {
           console.error('Failed to delete file:', error)
@@ -195,43 +195,43 @@ export const useFileStore = create<FileStore>()(
           throw error
         }
       },
-      
+
       // === 查询操作 ===
       updateQuery: (queryParams: Partial<FileQuery>) => {
         set((state) => {
           Object.assign(state.query, queryParams)
         })
-        
+
         // 自动触发查询（防抖在组件层面处理）
         get().fetchFileList()
       },
-      
+
       resetQuery: () => {
         set((state) => {
           state.query = { ...defaultQuery }
         })
         get().fetchFileList()
       },
-      
+
       // === 上传操作 ===
       setUploadFileList: (fileList: UploadFileItem[]) => {
         set((state) => {
           state.uploadFileList = fileList
         })
       },
-      
+
       addUploadFile: (file: UploadFileItem) => {
         set((state) => {
           state.uploadFileList.push(file)
         })
       },
-      
+
       removeUploadFile: (uid: string) => {
         set((state) => {
           state.uploadFileList = state.uploadFileList.filter(file => file.uid !== uid)
         })
       },
-      
+
       updateUploadFileStatus: (uid: string, status: Partial<UploadFileItem>) => {
         set((state) => {
           const fileIndex = state.uploadFileList.findIndex(file => file.uid === uid)
@@ -240,19 +240,19 @@ export const useFileStore = create<FileStore>()(
           }
         })
       },
-      
+
       clearUploadList: () => {
         set((state) => {
           state.uploadFileList = []
         })
       },
-      
+
       setUploading: (uploading: boolean) => {
         set((state) => {
           state.uploading = uploading
         })
       },
-      
+
       // === 预览操作 ===
       selectFile: (file: FileItem | null) => {
         set((state) => {
@@ -270,26 +270,26 @@ export const useFileStore = create<FileStore>()(
           }
         })
       },
-      
+
       setCurrentFileInfo: (fileInfo: FileInfo | null) => {
         set((state) => {
           state.currentFileInfo = fileInfo
         })
       },
-      
+
       // === 通用操作 ===
       setLoading: (loading: boolean) => {
         set((state) => {
           state.loading = loading
         })
       },
-      
+
       setError: (error: string | null) => {
         set((state) => {
           state.error = error
         })
       },
-      
+
       reset: () => {
         set((state) => {
           Object.assign(state, initialState)
@@ -312,18 +312,18 @@ export const fileSelectors = {
   total: (state: FileStore) => state.total,
   loading: (state: FileStore) => state.loading,
   error: (state: FileStore) => state.error,
-  
+
   // 查询相关
   query: (state: FileStore) => state.query,
-  
+
   // 上传相关
   uploadFileList: (state: FileStore) => state.uploadFileList,
   uploading: (state: FileStore) => state.uploading,
-  
+
   // 预览相关
   selectedFile: (state: FileStore) => state.selectedFile,
   currentFileInfo: (state: FileStore) => state.currentFileInfo,
-  
+
   // 组合状态
   fileListData: (state: FileStore) => ({
     fileList: state.fileList,
@@ -332,12 +332,12 @@ export const fileSelectors = {
     error: state.error,
     query: state.query,
   }),
-  
+
   uploadData: (state: FileStore) => ({
     fileList: state.uploadFileList,
     uploading: state.uploading,
   }),
-  
+
   previewData: (state: FileStore) => ({
     selectedFile: state.selectedFile,
     currentFileInfo: state.currentFileInfo,

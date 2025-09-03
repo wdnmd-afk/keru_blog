@@ -1,8 +1,10 @@
 import EmptyContainer from '@/components/EmptyContainer.tsx'
+import UploadProgress from '@/components/Files/UploadProgress'
+import CustomProgress from '@/components/Files/CustomProgress'
 import KTable from '@/components/KTable.tsx'
 import type { FileUploadProps, UploadFileItem, UploadStatusType } from '@/types/files'
 import { InboxOutlined } from '@ant-design/icons'
-import { Button, Progress, Upload, UploadProps, message } from 'antd'
+import { Button, Upload, UploadProps, message } from 'antd'
 import { UploadFile } from 'antd/es/upload/interface'
 import React from 'react'
 
@@ -19,6 +21,7 @@ const FileUpload: React.FC<FileUploadProps> = ({
     onUpload,
     onRemove,
 }) => {
+    // 移除调试日志，减少控制台输出
     /**
      * 格式化文件大小
      * @param size 文件大小（字节）
@@ -79,7 +82,11 @@ const FileUpload: React.FC<FileUploadProps> = ({
         name: 'file',
         multiple: true,
         showUploadList: false,
-        beforeUpload: (file: UploadFile) => {
+        customRequest: () => {
+            // 阻止默认上传行为
+        },
+        beforeUpload: (file: UploadFile, uploadFileList: UploadFile[]) => {
+
             // 检查文件对象的完整性
             if (!file || !file.name) {
                 console.error('Invalid file object:', file)
@@ -100,17 +107,17 @@ const FileUpload: React.FC<FileUploadProps> = ({
                 return false
             }
 
-            // 检查是否重复
-            const isDuplicate = fileList.some(
+            // 检查是否重复（在当前文件列表中）
+            const isDuplicateInCurrent = fileList.some(
                 (item) => item.name === file.name && item.size === file.size
             )
 
-            if (isDuplicate) {
+            if (isDuplicateInCurrent) {
                 message.warning(`文件 ${file.name} 已存在`)
                 return false
             }
 
-            // 添加到文件列表
+            // 创建新文件对象
             const newFile: UploadFileItem = {
                 uid: `${Date.now()}-${Math.random()}`,
                 name: file.name,
@@ -118,12 +125,15 @@ const FileUpload: React.FC<FileUploadProps> = ({
                 type: file.type || '',
                 originFileObj: file as unknown as File,
                 status: 'pending' as UploadStatusType,
-                percent: 0, // 确保有默认值
-                error: undefined, // 明确设置为 undefined
+                percent: 0,
+                error: undefined,
             }
 
-            console.log('Adding new file:', newFile) // 添加调试日志
-            onFileListChange([...fileList, newFile])
+            // 关键修复：使用函数式更新确保获取最新状态
+            onFileListChange((prevList: UploadFileItem[]) => {
+                return [...prevList, newFile]
+            })
+
             return false // 阻止自动上传
         },
         onDrop: (e) => {
@@ -216,20 +226,33 @@ const FileUpload: React.FC<FileUploadProps> = ({
                     return <span>-</span>
                 }
 
-                const percent = record.percent ?? 0
+                // 确保percent是数字类型，处理可能的类型错误
+                const rawPercent = record.percent
+                const percent = typeof rawPercent === 'number' ? rawPercent : 0
                 const status = record.status || 'pending'
+
+                // 确保进度值在有效范围内，与UploadProgress组件内部逻辑保持一致
+                const validPercent =
+                    typeof percent === 'number' && !isNaN(percent) && isFinite(percent)
+                        ? Math.max(0, Math.min(100, percent))
+                        : 0
+
+                // 移除详细日志，减少控制台输出
 
                 return (
                     <div className="flex items-center gap-2">
-                        <Progress
-                            percent={percent}
-                            size="small"
-                            status={status === 'error' ? 'exception' : 'normal'}
-                            showInfo={false}
+                        {/* 使用自定义进度条，确保视觉渲染正确 */}
+                        <CustomProgress
+                            percent={validPercent}
+                            status={status as 'pending' | 'uploading' | 'success' | 'error'}
                             strokeColor={getStatusColor(status)}
+                            uid={record.uid}
                         />
-                        <span className="text-xs" style={{ color: getStatusColor(status) }}>
-                            {getStatusText(status)}
+                        <span
+                            className="text-xs font-medium"
+                            style={{ color: getStatusColor(status) }}
+                        >
+                            {getStatusText(status)} ({validPercent}%)
                         </span>
                     </div>
                 )
