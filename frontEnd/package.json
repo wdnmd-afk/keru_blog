@@ -20,6 +20,7 @@
     "ts-check:regex": "node scripts/regex-test.js",
     "ts-check:quick": "node scripts/quick-regex-test.js",
     "ts-check:verify": "node scripts/verify-fix.js",
+    "ts-check:final": "node scripts/final-ts-check.js",
     "ts-manage": "node scripts/ts-error-manager.js",
     "ts-stats": "node scripts/ts-error-manager.js stats",
     "ts-clean": "node scripts/ts-error-manager.js clean"

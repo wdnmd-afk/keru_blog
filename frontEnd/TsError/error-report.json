@@ -1,42 +1,15 @@
 {
-  "timestamp": "2025-09-05T08:32:56.592Z",
-  "errorCount": 29,
+  "timestamp": "2025-09-05T08:59:16.415Z",
+  "errorCount": 26,
   "errors": [
     {
       "file": "src/build/proxy.ts",
-      "line": "34",
-      "column": "13",
+      "line": "32",
+      "column": "31",
       "type": "error",
-      "code": "TS2322",
-      "message": "Type '{ [x: string]: { target: string; changeOrigin: boolean; rewrite: (path: any) => any; }; }' is not assignable to type 'Record<string, string | ProxyConfig>'.",
-      "fullLine": "src/build/proxy.ts(34,13): error TS2322: Type '{ [x: string]: { target: string; changeOrigin: boolean; rewrite: (path: any) => any; }; }' is not assignable to type 'Record<string, string | ProxyConfig>'.\r"
-    },
-    {
-      "file": "src/build/proxy.ts",
-      "line": "35",
-      "column": "23",
-      "type": "error",
-      "code": "TS7006",
-      "message": "Parameter 'path' implicitly has an 'any' type.",
-      "fullLine": "src/build/proxy.ts(35,23): error TS7006: Parameter 'path' implicitly has an 'any' type.\r"
-    },
-    {
-      "file": "src/components/Files/dto.ts",
-      "line": "7",
-      "column": "11",
-      "type": "error",
-      "code": "TS1205",
-      "message": "Re-exporting a type when 'isolatedModules' is enabled requires using 'export type'.",
-      "fullLine": "src/components/Files/dto.ts(7,11): error TS1205: Re-exporting a type when 'isolatedModules' is enabled requires using 'export type'.\r"
-    },
-    {
-      "file": "src/components/Files/dto.ts",
-      "line": "7",
-      "column": "21",
-      "type": "error",
-      "code": "TS1205",
-      "message": "Re-exporting a type when 'isolatedModules' is enabled requires using 'export type'.",
-      "fullLine": "src/components/Files/dto.ts(7,21): error TS1205: Re-exporting a type when 'isolatedModules' is enabled requires using 'export type'.\r"
+      "code": "TS2352",
+      "message": "Conversion of type '{ target: string; changeOrigin: boolean; rewrite: (path: string) => string; }' to type 'ProxyConfig' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first.",
+      "fullLine": "src/build/proxy.ts(32,31): error TS2352: Conversion of type '{ target: string; changeOrigin: boolean; rewrite: (path: string) => string; }' to type 'ProxyConfig' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first.\r"
     },
     {
       "file": "src/config/upload.ts",

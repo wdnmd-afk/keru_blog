@@ -4,4 +4,4 @@
  */
 
 // 从统一类型文件中导入
- export { FileInfo, ViewerComponentProps } from '@/types/files'
+export type { FileInfo, ViewerComponentProps } from '@/types/files'
