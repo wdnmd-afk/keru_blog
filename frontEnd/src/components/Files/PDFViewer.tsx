@@ -14,14 +14,14 @@ const getPDFWorkerSrc = () => {
   if (envWorkerUrl) {
     return envWorkerUrl
   }
-  
+
   // 生产环境使用CDN或相对路径
   if (import.meta.env.PROD) {
     return '/static/JS/pdf.worker.min.js'
   }
-  
+
   // 开发环境使用localhost
-  return 'http://localhost:3000/static/JS/pdf.worker.min.js'
+  return 'http://localhost:2130/static/JS/pdf.worker.min.js'
 }
 
 pdfjs.GlobalWorkerOptions.workerSrc = getPDFWorkerSrc()

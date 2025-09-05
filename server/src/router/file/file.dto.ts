@@ -10,6 +10,7 @@ import {
 } from "class-validator";
 import { PageDto } from "@/common/dto";
 import { IsFileType, IsFileSizeValid } from "@/common/validation.decorators";
+import { UPLOAD_CONFIG } from "@/config/upload";
 
 // 定义允许的文件类型
 const ALLOWED_FILE_TYPES = [

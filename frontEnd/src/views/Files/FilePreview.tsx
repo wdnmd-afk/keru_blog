@@ -2,8 +2,9 @@ import FileList from '@/components/Files/FileList'
 import FileSearch from '@/components/Files/FileSearch'
 import type { FileItem, FileQuery } from '@/types/files'
 import { useFileStore } from '@/store/fileStore'
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import FileViewerContainer from './components/FileViewerContainer'
+import FilePreviewModal from './components/FilePreviewModal'
 
 /**
  * 文件预览页面组件Props
@@ -33,12 +34,46 @@ const FilePreview: React.FC<IProps> = ({ changeKey }) => {
         deleteFile
     } = useFileStore()
 
+    // 预览模态框状态
+    const [previewModalVisible, setPreviewModalVisible] = useState(false)
+    const [previewFileInfo, setPreviewFileInfo] = useState<{
+        url: string
+        name: string
+        mimeType?: string
+        size?: number
+    } | null>(null)
+
     /**
      * 处理行点击事件
      * @param file 点击的文件项
      */
     const handleRowClick = (file: FileItem) => {
         selectFile(file)
+    }
+
+    /**
+     * 处理文件预览（模态框方式）
+     * @param file 要预览的文件
+     */
+    const handleFilePreview = (file: FileItem) => {
+        // 构建文件预览信息
+        const fileInfo = {
+            url: file.url || '',
+            name: file.name || '',
+            mimeType: file.mimeType,
+            size: file.size
+        }
+
+        setPreviewFileInfo(fileInfo)
+        setPreviewModalVisible(true)
+    }
+
+    /**
+     * 关闭预览模态框
+     */
+    const handleClosePreviewModal = () => {
+        setPreviewModalVisible(false)
+        setPreviewFileInfo(null)
     }
 
     /**
@@ -118,6 +153,7 @@ const FilePreview: React.FC<IProps> = ({ changeKey }) => {
                         error={error || undefined}
                         selectedFile={selectedFile || undefined}
                         onRowClick={handleRowClick}
+                        onFileSelect={handleFilePreview}
                         onDelete={handleDelete}
                         onPageChange={handlePageChange}
                         onRetry={() => fetchFileList()}
@@ -132,6 +168,13 @@ const FilePreview: React.FC<IProps> = ({ changeKey }) => {
                     <FileViewerContainer fileInfo={currentFileInfo} />
                 </div>
             </div>
+
+            {/* 文件预览模态框 */}
+            <FilePreviewModal
+                visible={previewModalVisible}
+                onClose={handleClosePreviewModal}
+                fileInfo={previewFileInfo}
+            />
         </div>
     )
 }

@@ -246,6 +246,8 @@ export interface FileListProps {
   selectedFile?: FileItem
   /** 行点击回调 */
   onRowClick?: (file: FileItem) => void
+  /** 文件选择回调（用于预览） */
+  onFileSelect?: (file: FileItem) => void
   /** 删除回调 */
   onDelete?: (file: FileItem) => void
   /** 分页回调 */

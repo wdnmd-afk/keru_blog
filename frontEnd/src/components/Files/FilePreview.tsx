@@ -75,8 +75,8 @@ const FilePreview: React.FC<IProps> = ({ changeKey }) => {
     }, [changeKey])
     const handleRowClick = (row: any) => {
         console.log(row, 'rrr')
-        const baseUrl = 'http://localhost:3000'
-        // fetch(`http://localhost:3000${row.path}`)
+        const baseUrl = 'http://localhost:2130'
+        // fetch(`http://localhost:2130${row.path}`)
         setCurrentFileInfo({
             ...row,
             url: baseUrl + row.path,

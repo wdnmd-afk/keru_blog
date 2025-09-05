@@ -3,7 +3,8 @@ import ErrorState, { FileListError } from '@/components/Files/ErrorState'
 import LoadingState, { FileListLoading } from '@/components/Files/LoadingState'
 import KTable from '@/components/KTable.tsx'
 import type { FileListProps, FileItem } from '@/types/files'
-import { Button } from 'antd'
+import { Button, Space, Tooltip } from 'antd'
+import { EyeOutlined, DeleteOutlined } from '@ant-design/icons'
 import React from 'react'
 
 /**
@@ -18,6 +19,7 @@ const FileList: React.FC<FileListProps> = ({
     loading = false,
     selectedFile,
     onRowClick,
+    onFileSelect,
     onDelete,
     onPageChange,
     error, // 新增错误状态
@@ -82,19 +84,34 @@ const FileList: React.FC<FileListProps> = ({
         {
             title: '操作',
             key: 'action',
-            width: '10%',
+            width: '15%',
             render: (_: unknown, record: FileItem) => (
-                <Button
-                    type="text"
-                    danger
-                    size="small"
-                    onClick={(e) => {
-                        e.stopPropagation()
-                        handleDelete(record)
-                    }}
-                >
-                    删除
-                </Button>
+                <Space size="small">
+                    <Tooltip title="预览文件">
+                        <Button
+                            type="text"
+                            icon={<EyeOutlined />}
+                            size="small"
+                            onClick={(e) => {
+                                e.stopPropagation()
+                                // 触发文件选择，显示预览
+                                onFileSelect?.(record)
+                            }}
+                        />
+                    </Tooltip>
+                    <Tooltip title="删除文件">
+                        <Button
+                            type="text"
+                            danger
+                            icon={<DeleteOutlined />}
+                            size="small"
+                            onClick={(e) => {
+                                e.stopPropagation()
+                                handleDelete(record)
+                            }}
+                        />
+                    </Tooltip>
+                </Space>
             ),
         },
     ]
@@ -146,7 +163,7 @@ const FileList: React.FC<FileListProps> = ({
                         rowClick={handleRowClick}
                         fetchData={handlePageChange}
                         className="w-full"
-                        rowClassName={(record: FileItem) => 
+                        rowClassName={(record: FileItem) =>
                             selectedFile?.id === record.id ? 'selected-row' : ''
                         }
                     />

@@ -1,10 +1,13 @@
-import { Empty, Spin } from 'antd'
-import React, { useState } from 'react'
+import { Empty } from 'antd'
+import React from 'react'
+import FilePreview from './FilePreview'
+import { getFilePreviewType, FilePreviewType } from '@/utils/filePreview'
 
 interface FileInfo {
     url?: string
     name?: string
     mimeType?: string
+    size?: number
 }
 
 interface IProps {
@@ -12,8 +15,6 @@ interface IProps {
 }
 
 const FileViewerContainer: React.FC<IProps> = ({ fileInfo }) => {
-    const [pdfLoading, setPdfLoading] = useState(false)
-    
     // 处理null值的情况
     if (!fileInfo) {
         return (
@@ -22,8 +23,8 @@ const FileViewerContainer: React.FC<IProps> = ({ fileInfo }) => {
             </div>
         )
     }
-    
-    const { url, name, mimeType } = fileInfo
+
+    const { url, name, mimeType, size } = fileInfo
 
     if (!url || !name) {
         return (
@@ -33,119 +34,68 @@ const FileViewerContainer: React.FC<IProps> = ({ fileInfo }) => {
         )
     }
 
-    const renderFilePreview = () => {
-        if (!mimeType) return null
+    // 获取文件预览类型
+    const previewType = getFilePreviewType(name, mimeType)
 
-        // 图片预览
-        if (mimeType.startsWith('image/')) {
-            return (
-                <img
-                    src={url}
-                    alt={name}
-                    style={{
-                        maxWidth: '100%',
-                        maxHeight: '100%',
-                        objectFit: 'contain',
-                    }}
-                />
-            )
+    // 处理加载和错误回调
+    const handleLoad = () => {
+        console.log(`文件预览加载完成: ${name}`)
+    }
+
+    const handleError = (error: string) => {
+        console.error(`文件预览失败: ${name}`, error)
+    }
+
+    // 根据文件类型显示不同的预览提示
+    const getPreviewTypeText = (type: FilePreviewType): string => {
+        const typeMap = {
+            [FilePreviewType.IMAGE]: '图片',
+            [FilePreviewType.PDF]: 'PDF文档',
+            [FilePreviewType.VIDEO]: '视频',
+            [FilePreviewType.AUDIO]: '音频',
+            [FilePreviewType.TEXT]: '文本',
+            [FilePreviewType.MARKDOWN]: 'Markdown',
+            [FilePreviewType.CODE]: '代码',
+            [FilePreviewType.OFFICE]: 'Office文档',
+            [FilePreviewType.ARCHIVE]: '压缩文件',
+            [FilePreviewType.UNKNOWN]: '未知类型'
         }
-
-        // PDF预览
-        if (mimeType === 'application/pdf') {
-            return (
-                <div className="relative w-full h-full">
-                    {pdfLoading && (
-                        <div className="absolute inset-0 flex items-center justify-center bg-white bg-opacity-75 z-10">
-                            <Spin size="large" tip="加载 PDF 文件中..." />
-                        </div>
-                    )}
-                    <iframe
-                        src={url}
-                        title={name}
-                        style={{
-                            width: '100%',
-                            height: '100%',
-                            border: 'none',
-                        }}
-                        onLoad={() => setPdfLoading(false)}
-                        onLoadStart={() => setPdfLoading(true)}
-                    />
-                </div>
-            )
-        }
-
-        // 视频预览
-        if (mimeType.startsWith('video/')) {
-            return (
-                <video
-                    src={url}
-                    controls
-                    style={{
-                        maxWidth: '100%',
-                        maxHeight: '100%',
-                    }}
-                >
-                    您的浏览器不支持视频播放
-                </video>
-            )
-        }
-
-        // 音频预览
-        if (mimeType.startsWith('audio/')) {
-            return (
-                <audio
-                    src={url}
-                    controls
-                    style={{
-                        width: '100%',
-                    }}
-                >
-                    您的浏览器不支持音频播放
-                </audio>
-            )
-        }
-
-        // 文本文件预览
-        if (mimeType.startsWith('text/') || mimeType === 'application/json') {
-            return (
-                <iframe
-                    src={url}
-                    title={name}
-                    style={{
-                        width: '100%',
-                        height: '100%',
-                        border: '1px solid #d9d9d9',
-                        borderRadius: '6px',
-                    }}
-                />
-            )
-        }
-
-        // 其他文件类型显示下载链接
-        return (
-            <div className="flex flex-col items-center justify-center h-full">
-                <p>无法预览此文件类型</p>
-                <a href={url} download={name} className="text-blue-500 hover:text-blue-700">
-                    点击下载文件
-                </a>
-            </div>
-        )
+        return typeMap[type] || '未知类型'
     }
 
     return (
-        <div className="w-full h-full flex flex-col">
-            <div className="p-4 border-b">
-                <h3 className="text-lg font-medium truncate" title={name}>
-                    {name}
-                </h3>
-                <p className="text-sm text-gray-500">{mimeType}</p>
-            </div>
-            <div className="flex-1 p-4 overflow-auto">
-                <div className="w-full h-full flex items-center justify-center">
-                    {renderFilePreview()}
-                </div>
-            </div>
+        <div className="w-full h-full bg-white">
+            <FilePreview
+                src={url}
+                fileName={name}
+                mimeType={mimeType}
+                fileSize={size}
+                showToolbar={true}
+                maxWidth="100%"
+                maxHeight="100%"
+                onLoad={handleLoad}
+                onError={handleError}
+                previewConfig={{
+                    image: {
+                        showToolbar: true
+                    },
+                    pdf: {
+                        initialScale: 1
+                    },
+                    video: {
+                        autoPlay: false,
+                        loop: false,
+                        muted: false
+                    },
+                    text: {
+                        encoding: 'utf-8',
+                        showLineNumbers: true
+                    },
+                    markdown: {
+                        showSourceToggle: true
+                    }
+                }}
+            />
         </div>
     )
 }

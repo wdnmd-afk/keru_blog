@@ -79,7 +79,7 @@ export function requireBody(req: Request, res: Response, next: NextFunction) {
   next();
 }
 
-import { UPLOAD_CONFIG, UploadUtils } from '../config/upload';
+import { UPLOAD_CONFIG, UploadUtils } from '@/config/upload';
 
 /**
  * 文件上传验证中间件

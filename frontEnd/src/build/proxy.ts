@@ -16,7 +16,7 @@ const proxyConfigMappings: Record<ProxyType, ProxyConfig> = {
     // 生产环境调用的接口
     prod: {
         prefix: '/prod-api',
-        target: 'http://127.0.0.1:3000',
+        target: 'http://127.0.0.1:2130',
     },
 }
 

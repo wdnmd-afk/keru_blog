@@ -10,6 +10,7 @@ import {
     pipeStream,
     Result,
 } from '@/utils'
+import { UPLOAD_CONFIG, UploadUtils } from '@/config/upload'
 import * as path from 'path'
 import * as process from 'node:process'
 import fse from 'fs-extra'
@@ -32,7 +33,7 @@ export class FileService {
      */
     private fixFileName(fileName: string): string {
         if (!fileName) return fileName;
-        
+
         try {
             // 方法1：尝试从Latin-1解码为UTF-8
             const utf8Decoded = Buffer.from(fileName, 'latin1').toString('utf8');
@@ -40,7 +41,7 @@ export class FileService {
                 console.log(`文件名编码修复: ${fileName} -> ${utf8Decoded}`);
                 return utf8Decoded;
             }
-            
+
             // 方法2：尝试URL解码
             if (fileName.includes('%')) {
                 const urlDecoded = decodeURIComponent(fileName);
@@ -49,7 +50,7 @@ export class FileService {
                     return urlDecoded;
                 }
             }
-            
+
             // 方法3：尝试从ISO-8859-1解码
             if (fileName.includes('\ufffd') || /[\x80-\xff]/.test(fileName)) {
                 const isoDecoded = Buffer.from(fileName, 'binary').toString('utf8');
@@ -58,11 +59,11 @@ export class FileService {
                     return isoDecoded;
                 }
             }
-            
+
         } catch (error) {
             console.warn(`文件名编码修复失败: ${fileName}`, error);
         }
-        
+
         return fileName;
     }
 
@@ -84,19 +85,19 @@ export class FileService {
         try {
             // target/chunkCache_fileHash值
             const chunkCache = getChunkDir(fileHash)
-            
+
             // 检查切片目录是否存在
             if (!fse.existsSync(chunkCache)) {
                 throw new Error(`切片目录不存在: ${chunkCache}`)
             }
-            
+
             // 读取 临时所有切片目录 chunkCache 下的所有文件和子目录，并返回这些文件和子目录的名称。
             const chunkPaths = await fse.readdir(chunkCache)
-            
+
             if (chunkPaths.length === 0) {
                 throw new Error('没有找到任何切片文件')
             }
-            
+
             // 根据切片下标进行排序
             // 切片名称格式: chunkCache_fileHash-index
             chunkPaths.sort((a, b) => {
@@ -116,48 +117,48 @@ export class FileService {
                     const index = parseInt(indexStr, 10)
                     return isNaN(index) ? 0 : index
                 }
-                
+
                 const indexA = getIndexFromChunkName(a)
                 const indexB = getIndexFromChunkName(b)
                 return indexA - indexB
             })
-            
+
             console.log(`开始合并文件 ${fileName}, 切片数量: ${chunkPaths.length}`)
-            
+
             let totalSize = 0
-            
+
             // 先删除目标文件（如果存在）
             if (fse.existsSync(filePath)) {
                 await fse.remove(filePath)
             }
-            
+
             // 使用顺序合并而不是并行合并，确保文件顺序正确
             for (let index = 0; index < chunkPaths.length; index++) {
                 const chunkPath = path.resolve(chunkCache, chunkPaths[index])
-                
+
                 // 检查切片文件是否存在
                 if (!fse.existsSync(chunkPath)) {
                     throw new Error(`切片文件不存在: ${chunkPath}`)
                 }
-                
+
                 const stats = await fse.stat(chunkPath)
                 totalSize += stats.size
-                
+
                 // 读取切片内容并追加到目标文件
                 const chunkData = await fse.readFile(chunkPath)
                 await fse.appendFile(filePath, chunkData)
-                
+
                 console.log(`合并切片 ${index + 1}/${chunkPaths.length}: ${chunkPaths[index]}`)
             }
-            
+
             // 验证合并后的文件大小
             const finalStats = await fse.stat(filePath)
             if (finalStats.size !== totalSize) {
                 throw new Error(`文件合并失败，大小不匹配。期望: ${totalSize}, 实际: ${finalStats.size}`)
             }
-            
+
             console.log(`文件合并成功: ${fileName}, 最终大小: ${finalStats.size} 字节`)
-            
+
             // 删除所有切片文件
             for (const chunkName of chunkPaths) {
                 const chunkPath = path.resolve(chunkCache, chunkName)
@@ -165,12 +166,12 @@ export class FileService {
                     await fse.remove(chunkPath)
                 }
             }
-            
+
             // 递归删除缓存切片目录及其内容
             if (fse.pathExistsSync(chunkCache)) {
                 await fse.remove(chunkCache)
             }
-            
+
             // 保存文件元数据到数据库
             await this.PrismaDB.prisma.file.create({
                 data: {
@@ -342,14 +343,14 @@ export class FileService {
 
         const tempPath = data.path.substring(1);
         const UPLOAD_DIR = path.resolve(process.cwd(), `${tempPath}`);
-        
+
         await this.PrismaDB.prisma.file.delete({ where: { id } });
-        
+
         const exists = await fse.pathExists(UPLOAD_DIR);
         if (exists) {
             await fse.remove(UPLOAD_DIR);
         }
-        
+
         return Result.success('删除成功');
     }
 }

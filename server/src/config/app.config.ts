@@ -1,5 +1,6 @@
 // app.config.ts
 import dotenv from 'dotenv'
+import { UPLOAD_CONFIG } from './upload'
 
 // 加载环境变量
 dotenv.config()
@@ -63,7 +64,7 @@ export function createAppConfig(): AppConfig {
             url: process.env.DATABASE_URL || 'mysql://root:123456@localhost:3306/test'
         },
         upload: {
-            maxFileSize: 1 * 1024 * 1024 * 1024, // 1GB
+            maxFileSize: UPLOAD_CONFIG.FILE_SIZE.MAX_SIZE,
             allowedTypes: [
                 // 图片类型
                 'jpg', 'jpeg', 'png', 'gif', 'webp', 'bmp', 'svg',
@@ -76,7 +77,7 @@ export function createAppConfig(): AppConfig {
                 // 压缩文件
                 'zip', 'rar', '7z', 'tar', 'gz'
             ],
-            uploadDir: process.env.UPLOAD_DIR || 'static'
+            uploadDir: process.env.UPLOAD_DIR || UPLOAD_CONFIG.STORAGE.FINAL_DIR
         },
         cors: {
             origin: process.env.CORS_ORIGIN?.split(',') || [
