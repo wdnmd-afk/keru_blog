@@ -1,11 +1,15 @@
 import EmptyContainer from '@/components/EmptyContainer.tsx'
-import UploadProgress from '@/components/Files/UploadProgress'
-import CustomProgress from '@/components/Files/CustomProgress'
 import KTable from '@/components/KTable.tsx'
+import { UploadUtils } from '@/config/upload'
 import type { FileUploadProps, UploadFileItem, UploadStatusType } from '@/types/files'
-import { InboxOutlined, PlayCircleOutlined, PauseCircleOutlined, ReloadOutlined, StopOutlined } from '@ant-design/icons'
-import { Button, Upload, UploadProps, message, Space, Tooltip } from 'antd'
-import { UPLOAD_CONFIG, UploadUtils } from '@/config/upload'
+import {
+    InboxOutlined,
+    PauseCircleOutlined,
+    PlayCircleOutlined,
+    ReloadOutlined,
+    StopOutlined,
+} from '@ant-design/icons'
+import { Button, Space, Tooltip, Upload, UploadProps, message } from 'antd'
 import { UploadFile } from 'antd/es/upload/interface'
 import React from 'react'
 
@@ -95,7 +99,6 @@ const FileUpload: React.FC<FileUploadProps> = ({
             // 阻止默认上传行为
         },
         beforeUpload: (file: UploadFile, uploadFileList: UploadFile[]) => {
-
             // 检查文件对象的完整性
             if (!file || !file.name) {
                 console.error('Invalid file object:', file)
@@ -220,12 +223,7 @@ const FileUpload: React.FC<FileUploadProps> = ({
                 {/* 删除记录按钮 - 在完成、失败、取消时显示 */}
                 {['success', 'error', 'failed', 'cancelled'].includes(status || '') && (
                     <Tooltip title="删除记录">
-                        <Button
-                            type="text"
-                            size="small"
-                            danger
-                            onClick={() => handleRemove(file)}
-                        >
+                        <Button type="text" size="small" danger onClick={() => handleRemove(file)}>
                             删除记录
                         </Button>
                     </Tooltip>
@@ -311,10 +309,7 @@ const FileUpload: React.FC<FileUploadProps> = ({
                             className="w-2 h-2 rounded-full"
                             style={{ backgroundColor: statusColor }}
                         />
-                        <span
-                            className="text-sm font-medium"
-                            style={{ color: statusColor }}
-                        >
+                        <span className="text-sm font-medium" style={{ color: statusColor }}>
                             {statusText}
                         </span>
                     </div>
@@ -408,16 +403,9 @@ const FileUpload: React.FC<FileUploadProps> = ({
 
             {/* 文件列表区域 */}
             <div className="flex-1 h-full ml-5 flex flex-col w-0">
-                <div className="boxTitle flex justify-between items-center">
-                    <span>待上传文件列表</span>
-                    <div className="flex gap-2">
-                        <Button
-                            size="small"
-                            onClick={handleClear}
-                            disabled={fileList.length === 0 || uploading}
-                        >
-                            清空
-                        </Button>
+                <div className="boxTitle flex items-center">
+                    <div>待上传文件列表</div>
+                    <div className="flex gap-2 flex-1 justify-end">
                         <span className="text-sm text-gray-500">共 {fileList.length} 个文件</span>
                     </div>
                 </div>
@@ -444,7 +432,7 @@ const FileUpload: React.FC<FileUploadProps> = ({
                                 size="small"
                                 icon={<PauseCircleOutlined />}
                                 onClick={onBatchActions.onPauseAll}
-                                disabled={!fileList.some(f => f.status === 'uploading')}
+                                disabled={!fileList.some((f) => f.status === 'uploading')}
                             >
                                 全部暂停
                             </Button>
@@ -452,7 +440,7 @@ const FileUpload: React.FC<FileUploadProps> = ({
                                 size="small"
                                 icon={<PlayCircleOutlined />}
                                 onClick={onBatchActions.onResumeAll}
-                                disabled={!fileList.some(f => f.status === 'paused')}
+                                disabled={!fileList.some((f) => f.status === 'paused')}
                             >
                                 全部继续
                             </Button>
@@ -460,7 +448,11 @@ const FileUpload: React.FC<FileUploadProps> = ({
                                 size="small"
                                 icon={<StopOutlined />}
                                 onClick={onBatchActions.onCancelAll}
-                                disabled={!fileList.some(f => ['pending', 'uploading', 'paused'].includes(f.status || ''))}
+                                disabled={
+                                    !fileList.some((f) =>
+                                        ['pending', 'uploading', 'paused'].includes(f.status || '')
+                                    )
+                                }
                             >
                                 全部取消
                             </Button>

@@ -74,9 +74,7 @@ const UploadTab: React.FC = () => {
                 </div>
             </div>
             <div flex-1 w-0 ml-5 flex-col>
-                <div className={'boxTitle flex '}>
-                    <div>待上传文件列表</div>
-                </div>
+                <div className={'boxTitle'}>待上传文件列表</div>
                 <div flex-1 h-0 mt-5 flex-col>
                     <EmptyContainer flex-1 flag={fileList.length}>
                         <KTable
