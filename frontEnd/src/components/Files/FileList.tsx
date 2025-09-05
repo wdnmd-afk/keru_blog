@@ -1,10 +1,8 @@
 import EmptyContainer from '@/components/EmptyContainer.tsx'
-import ErrorState, { FileListError } from '@/components/Files/ErrorState'
-import LoadingState, { FileListLoading } from '@/components/Files/LoadingState'
 import KTable from '@/components/KTable.tsx'
-import type { FileListProps, FileItem } from '@/types/files'
+import type { FileItem, FileListProps } from '@/types/files'
+import { DeleteOutlined, EyeOutlined } from '@ant-design/icons'
 import { Button, Space, Tooltip } from 'antd'
-import { EyeOutlined, DeleteOutlined } from '@ant-design/icons'
 import React from 'react'
 
 /**

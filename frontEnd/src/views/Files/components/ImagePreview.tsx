@@ -13,6 +13,7 @@ import {
 } from '@ant-design/icons'
 import { Alert, Button, Image, Space, Spin, Tooltip } from 'antd'
 import React, { useCallback, useEffect, useRef, useState } from 'react'
+import { createIncludeComparator } from '@/utils/memoComparator'
 
 export interface ImagePreviewProps {
     /** 图片URL */
@@ -106,8 +107,6 @@ const ImagePreview: React.FC<ImagePreviewProps> = ({
     const handleZoomOut = useCallback(() => {
         setScale((prev) => Math.max(prev - 0.2, MIN_SCALE))
     }, [])
-
-
 
     /**
      * 向左旋转
@@ -377,7 +376,6 @@ const ImagePreview: React.FC<ImagePreviewProps> = ({
                     maxHeight,
                     cursor: isDragging ? 'grabbing' : 'grab',
                 }}
-
                 onMouseDown={handleMouseDown}
                 onMouseMove={handleMouseMove}
                 onMouseUp={handleMouseUp}
@@ -435,4 +433,11 @@ const ImagePreview: React.FC<ImagePreviewProps> = ({
     )
 }
 
-export default ImagePreview
+// 使用React.memo优化ImagePreview组件
+export default React.memo(ImagePreview, createIncludeComparator<ImagePreviewProps>([
+    'src',
+    'fileName',
+    'fileSize',
+    'maxHeight',
+    'maxWidth'
+]))

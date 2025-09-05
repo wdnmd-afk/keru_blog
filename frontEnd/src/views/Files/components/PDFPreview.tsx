@@ -17,6 +17,7 @@ import {
 } from '@ant-design/icons'
 import { Alert, Button, InputNumber, Space, Spin, Tooltip, message } from 'antd'
 import React, { useCallback, useEffect, useRef, useState } from 'react'
+import { createIncludeComparator } from '@/utils/memoComparator'
 import { Document, Page, pdfjs } from 'react-pdf'
 import 'react-pdf/dist/esm/Page/AnnotationLayer.css'
 import 'react-pdf/dist/esm/Page/TextLayer.css'
@@ -721,4 +722,10 @@ const PDFPreview: React.FC<PDFPreviewProps> = ({
     )
 }
 
-export default PDFPreview
+// 使用React.memo优化PDFPreview组件
+export default React.memo(PDFPreview, createIncludeComparator<PDFPreviewProps>([
+    'src',
+    'fileName',
+    'fileSize',
+    'maxHeight'
+]))

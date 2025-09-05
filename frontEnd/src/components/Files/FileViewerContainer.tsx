@@ -1,8 +1,9 @@
 import EmptyContainer from '@/components/EmptyContainer.tsx'
-import type { FileInfo, ViewerComponentProps } from '@/types/files'
 import { getFileType } from '@/enum'
-import React, { useState, Suspense } from 'react'
+import type { FileInfo, ViewerComponentProps } from '@/types/files'
 import { Spin } from 'antd'
+import React, { Suspense, useState } from 'react'
+import { createIncludeComparator } from '@/utils/memoComparator'
 import ImageViewer from './ImageViewer'
 import UnsupportedViewer from './UnsupportedViewer.tsx'
 
@@ -22,7 +23,7 @@ interface FileViewerContainerProps {
  * 根据文件类型动态加载相应的预览组件
  * @param fileInfo 文件信息
  */
-export default function FileViewerContainer({ fileInfo }: FileViewerContainerProps) {
+function FileViewerContainer({ fileInfo }: FileViewerContainerProps) {
     const [isFullscreen, setIsFullscreen] = useState(false)
     const [currentTime, setCurrentTime] = useState(0) // 适用于音视频
     const type = getFileType(fileInfo.mimeType)
@@ -33,7 +34,7 @@ export default function FileViewerContainer({ fileInfo }: FileViewerContainerPro
             case 'PDF':
                 // 返回一个包装组件，内部使用 Suspense 加载 PDFViewer
                 return (props: ViewerComponentProps) => (
-                    <Suspense 
+                    <Suspense
                         fallback={
                             <div className="flex items-center justify-center h-full">
                                 <Spin size="large" tip="加载 PDF 预览组件中..." />
@@ -75,3 +76,13 @@ export default function FileViewerContainer({ fileInfo }: FileViewerContainerPro
         </div>
     )
 }
+
+// 使用React.memo优化组件，只有当fileInfo发生变化时才重新渲染
+export default React.memo(FileViewerContainer, createIncludeComparator<FileViewerContainerProps>([
+    'fileInfo'
+], false, {
+    // 自定义比较fileInfo对象
+    fileInfo: (prev, next) => {
+        return prev?.id === next?.id && prev?.url === next?.url
+    }
+}))

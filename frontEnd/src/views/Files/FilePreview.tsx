@@ -1,10 +1,10 @@
 import FileList from '@/components/Files/FileList'
 import FileSearch from '@/components/Files/FileSearch'
-import type { FileItem, FileQuery } from '@/types/files'
 import { useFileStore } from '@/store/fileStore'
+import type { FileItem, FileQuery } from '@/types/files'
 import React, { useEffect, useState } from 'react'
-import FileViewerContainer from './components/FileViewerContainer'
 import FilePreviewModal from './components/FilePreviewModal'
+import FileViewerContainer from './components/FileViewerContainer'
 
 /**
  * 文件预览页面组件Props
@@ -31,7 +31,7 @@ const FilePreview: React.FC<IProps> = ({ changeKey }) => {
         fetchFileList,
         updateQuery,
         selectFile,
-        deleteFile
+        deleteFile,
     } = useFileStore()
 
     // 预览模态框状态
@@ -61,7 +61,7 @@ const FilePreview: React.FC<IProps> = ({ changeKey }) => {
             url: file.url || '',
             name: file.name || '',
             mimeType: file.mimeType,
-            size: file.size
+            size: file.size,
         }
 
         setPreviewFileInfo(fileInfo)
@@ -86,12 +86,12 @@ const FilePreview: React.FC<IProps> = ({ changeKey }) => {
             console.error('Delete file failed: file is undefined')
             return
         }
-        
+
         if (!file.id) {
             console.error('Delete file failed: file.id is undefined', file)
             return
         }
-        
+
         try {
             await deleteFile(file.id)
         } catch (error) {
@@ -134,14 +134,10 @@ const FilePreview: React.FC<IProps> = ({ changeKey }) => {
             {/* 左侧：文件搜索和列表 */}
             <div className="flex-1 h-full flex flex-col w-0">
                 <div className="boxTitle">文件列表</div>
-                
+
                 {/* 搜索区域 */}
-                <FileSearch
-                    value={query}
-                    onSearch={handleSearch}
-                    loading={loading}
-                />
-                
+                <FileSearch value={query} onSearch={handleSearch} loading={loading} />
+
                 {/* 文件列表 */}
                 <div className="flex-1 h-0">
                     <FileList
@@ -160,7 +156,7 @@ const FilePreview: React.FC<IProps> = ({ changeKey }) => {
                     />
                 </div>
             </div>
-            
+
             {/* 右侧：文件预览 */}
             <div className="flex-1 h-full flex flex-col">
                 <div className="boxTitle">文件预览</div>

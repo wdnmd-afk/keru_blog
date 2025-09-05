@@ -1,4 +1,5 @@
 import EmptyContainer from '@/components/EmptyContainer.tsx'
+import CustomProgress from '@/components/Files/CustomProgress.tsx'
 import KTable from '@/components/KTable.tsx'
 import { UploadUtils } from '@/config/upload'
 import type { FileUploadProps, UploadFileItem, UploadStatusType } from '@/types/files'

@@ -1,6 +1,7 @@
 import Toolbar, { FunctionProps } from '@/components/Files/Toolbar.tsx'
 import type { ViewerComponentProps } from '@/types/files'
 import React, { useRef, useState } from 'react'
+import { createIncludeComparator } from '@/utils/memoComparator'
 
 /**
  * 图片预览组件Props
@@ -326,4 +327,8 @@ function ImageViewer({ url, fileInfo }: ImageViewerProps) {
 }
 }
 
-export default ImageViewer
+// 使用React.memo优化ImageViewer组件
+export default React.memo(ImageViewer, createIncludeComparator<ImageViewerProps>([
+    'url',
+    'fileInfo'
+]))

@@ -117,7 +117,7 @@ export type FileStore = FileState & FileActions
 // 默认查询参数
 const defaultQuery: FileQuery = {
     page: 1,
-    pageSize: 10,
+    pageSize: 25,
     fileName: '',
     userName: '',
 }
@@ -141,7 +141,7 @@ const initialState: FileState = {
  */
 export const useFileStore = create<FileStore>()(
     devtools(
-        immer((set, get) => ({
+        immer<FileStore>((set, get) => ({
             ...initialState,
 
             // === 文件列表操作 ===

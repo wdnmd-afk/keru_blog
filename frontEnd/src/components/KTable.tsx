@@ -2,6 +2,7 @@ import '@/styles/antd.scss'
 import { Pagination, PaginationProps, Table, TableProps } from 'antd'
 import { ColumnProps } from 'antd/es/table'
 import React, { useEffect, useRef, useState } from 'react'
+import { createExcludeComparator } from '@/utils/memoComparator'
 
 interface IKTableProps extends TableProps<any> {
     // 你可以在这里扩展额外的属性，像分页、数据加载等
@@ -25,7 +26,7 @@ const KTable = React.forwardRef<any, IKTableProps>(
             stripe = true,
             size = 'middle',
             total = 0,
-            pageSize = 10,
+            pageSize = 50,
             rowKey = 'id',
             dataSource,
             columns,
@@ -37,7 +38,7 @@ const KTable = React.forwardRef<any, IKTableProps>(
     ) => {
         const [currentPage, setCurrentPage] = useState(1) // 当前页码
         const [selectedRowKeys, setSelectedRowKeys] = useState<React.Key[]>([]) // 当前选中的行
-        const defaultColumns = columns?.map((item) => {
+        const defaultColumns = columns?.map((item, index) => {
             const {
                 width = 100,
                 key,
@@ -45,7 +46,11 @@ const KTable = React.forwardRef<any, IKTableProps>(
                 ellipsis = { showTitle: true },
                 dataIndex = key as string,
             } = item
-            return { width, align, dataIndex, key, ellipsis, ...item }
+
+            // 确保每个列都有唯一的key，避免React key重复警告
+            const uniqueKey = key || dataIndex || `column-${index}`
+
+            return { width, align, dataIndex, key: uniqueKey, ellipsis, ...item }
         })
 
         // 处理分页变化
@@ -182,7 +187,7 @@ const KTable = React.forwardRef<any, IKTableProps>(
                         current={currentPage}
                         onChange={handlePageChange}
                         showSizeChanger
-                        pageSizeOptions={[10, 20, 50, 100]}
+                        pageSizeOptions={['10', '20', '50', '100']}
                         showQuickJumper
                     />
                 </div>
@@ -191,4 +196,8 @@ const KTable = React.forwardRef<any, IKTableProps>(
     }
 )
 
-export default KTable
+// 使用React.memo优化KTable组件，忽略函数类型的props
+export default React.memo(KTable, createExcludeComparator<IKTableProps>([
+    'fetchData',
+    'rowClick'
+]))

@@ -12,12 +12,7 @@ interface UploadProgressProps {
  * 文件上传进度条组件
  * 专门处理进度条的实时更新和视觉渲染问题
  */
-const UploadProgress: React.FC<UploadProgressProps> = ({
-    percent,
-    status,
-    strokeColor,
-    uid
-}) => {
+const UploadProgress: React.FC<UploadProgressProps> = ({ percent, status, strokeColor, uid }) => {
     const progressRef = useRef<HTMLDivElement>(null)
     const lastPercentRef = useRef<number>(0)
 
@@ -41,7 +36,7 @@ const UploadProgress: React.FC<UploadProgressProps> = ({
                 '.ant-progress-bg',
                 '.ant-progress-inner .ant-progress-bg',
                 '[role="progressbar"] .ant-progress-bg',
-                '.ant-progress-line .ant-progress-bg'
+                '.ant-progress-line .ant-progress-bg',
             ]
 
             let progressBar: Element | null = null
@@ -63,18 +58,22 @@ const UploadProgress: React.FC<UploadProgressProps> = ({
                 progressElement.style.setProperty('transition', 'width 0.3s ease', 'important')
 
                 // 额外设置transform作为备选方案
-                progressElement.style.setProperty('transform', `scaleX(${validPercent / 100})`, 'important')
+                progressElement.style.setProperty(
+                    'transform',
+                    `scaleX(${validPercent / 100})`,
+                    'important'
+                )
                 progressElement.style.setProperty('transform-origin', 'left', 'important')
 
                 console.log(`强制更新Progress DOM: ${uid} - ${widthValue}`, {
                     element: progressElement,
                     computedWidth: getComputedStyle(progressElement).width,
-                    styleWidth: progressElement.style.width
+                    styleWidth: progressElement.style.width,
                 })
             } else {
                 console.warn(`未找到进度条DOM元素: ${uid}`, {
                     container: progressRef.current,
-                    innerHTML: progressRef.current.innerHTML
+                    innerHTML: progressRef.current.innerHTML,
                 })
             }
 
@@ -89,7 +88,7 @@ const UploadProgress: React.FC<UploadProgressProps> = ({
         backgroundColor: '#f0f0f0',
         borderRadius: '3px',
         overflow: 'hidden',
-        position: 'relative'
+        position: 'relative',
     }
 
     const customProgressBarStyle: React.CSSProperties = {
@@ -97,16 +96,13 @@ const UploadProgress: React.FC<UploadProgressProps> = ({
         height: '100%',
         backgroundColor: strokeColor,
         transition: 'width 0.3s ease',
-        borderRadius: '3px'
+        borderRadius: '3px',
     }
 
     return (
         <div style={{ width: '100px', minWidth: '100px' }}>
             {/* 使用双重进度条：Antd + 自定义，确保至少一个能正常工作 */}
-            <div
-                ref={progressRef}
-                style={{ position: 'relative' }}
-            >
+            <div ref={progressRef} style={{ position: 'relative' }}>
                 {/* Antd Progress组件 */}
                 <Progress
                     percent={validPercent}
@@ -127,7 +123,7 @@ const UploadProgress: React.FC<UploadProgressProps> = ({
                         left: '0',
                         transform: 'translateY(-50%)',
                         opacity: 0.8, // 半透明，不完全覆盖Antd组件
-                        pointerEvents: 'none'
+                        pointerEvents: 'none',
                     }}
                 >
                     <div style={customProgressBarStyle} />

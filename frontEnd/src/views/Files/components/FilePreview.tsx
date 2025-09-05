@@ -17,6 +17,7 @@ import React, { useMemo } from 'react'
 // 动态导入预览器组件
 import ImagePreview from './ImagePreview'
 import MarkdownPreview from './MarkdownPreview'
+import EnhancedMarkdownPreview from './EnhancedMarkdownPreview'
 import PDFPreview from './PDFPreview'
 import TextPreview from './TextPreview'
 import VideoPreview from './VideoPreview'
@@ -135,7 +136,19 @@ const FilePreview: React.FC<FilePreviewProps> = ({
                 return <TextPreview {...commonProps} {...previewConfig.text} />
 
             case FilePreviewType.MARKDOWN:
-                return <MarkdownPreview {...commonProps} {...previewConfig.markdown} />
+                return (
+                    <EnhancedMarkdownPreview
+                        src={src}
+                        fileName={fileName}
+                        fileSize={fileSize}
+                        maxHeight={maxHeight}
+                        showToolbar={true}
+                        showSourceToggle={true}
+                        defaultTheme="light"
+                        onError={(error) => console.error('Markdown加载失败:', error)}
+                        onLoad={(content) => console.log('Markdown加载成功，长度:', content.length)}
+                    />
+                )
 
             case FilePreviewType.AUDIO:
                 return (
