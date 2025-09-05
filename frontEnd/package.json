@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "type": "module",
   "scripts": {
     "dev": "vite --host",
     "build:dev": " vite build --mode development",
@@ -10,7 +11,18 @@
     "build:pro": " vite build --mode production",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "prepare": "cd ../../&& husky frontEnd/blog_react/.husky && husky"
+    "prepare": "cd ../../&& husky frontEnd/blog_react/.husky && husky",
+    "ts-check": "node scripts/ts-error-checker.js",
+    "ts-check:ci": "node scripts/ts-error-checker.js --ci",
+    "ts-check:test": "node scripts/test-ts-checker.js",
+    "ts-check:simple": "node scripts/simple-test.js",
+    "ts-check:direct": "node scripts/direct-ts-check.js",
+    "ts-check:regex": "node scripts/regex-test.js",
+    "ts-check:quick": "node scripts/quick-regex-test.js",
+    "ts-check:verify": "node scripts/verify-fix.js",
+    "ts-manage": "node scripts/ts-error-manager.js",
+    "ts-stats": "node scripts/ts-error-manager.js stats",
+    "ts-clean": "node scripts/ts-error-manager.js clean"
   },
   "dependencies": {
     "@ant-design/icons": "^5.4.0",

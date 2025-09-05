@@ -1,0 +1,267 @@
+{
+  "timestamp": "2025-09-05T08:32:56.592Z",
+  "errorCount": 29,
+  "errors": [
+    {
+      "file": "src/build/proxy.ts",
+      "line": "34",
+      "column": "13",
+      "type": "error",
+      "code": "TS2322",
+      "message": "Type '{ [x: string]: { target: string; changeOrigin: boolean; rewrite: (path: any) => any; }; }' is not assignable to type 'Record<string, string | ProxyConfig>'.",
+      "fullLine": "src/build/proxy.ts(34,13): error TS2322: Type '{ [x: string]: { target: string; changeOrigin: boolean; rewrite: (path: any) => any; }; }' is not assignable to type 'Record<string, string | ProxyConfig>'.\r"
+    },
+    {
+      "file": "src/build/proxy.ts",
+      "line": "35",
+      "column": "23",
+      "type": "error",
+      "code": "TS7006",
+      "message": "Parameter 'path' implicitly has an 'any' type.",
+      "fullLine": "src/build/proxy.ts(35,23): error TS7006: Parameter 'path' implicitly has an 'any' type.\r"
+    },
+    {
+      "file": "src/components/Files/dto.ts",
+      "line": "7",
+      "column": "11",
+      "type": "error",
+      "code": "TS1205",
+      "message": "Re-exporting a type when 'isolatedModules' is enabled requires using 'export type'.",
+      "fullLine": "src/components/Files/dto.ts(7,11): error TS1205: Re-exporting a type when 'isolatedModules' is enabled requires using 'export type'.\r"
+    },
+    {
+      "file": "src/components/Files/dto.ts",
+      "line": "7",
+      "column": "21",
+      "type": "error",
+      "code": "TS1205",
+      "message": "Re-exporting a type when 'isolatedModules' is enabled requires using 'export type'.",
+      "fullLine": "src/components/Files/dto.ts(7,21): error TS1205: Re-exporting a type when 'isolatedModules' is enabled requires using 'export type'.\r"
+    },
+    {
+      "file": "src/config/upload.ts",
+      "line": "176",
+      "column": "49",
+      "type": "error",
+      "code": "TS2345",
+      "message": "Argument of type 'string' is not assignable to parameter of type '\"text/plain\" | \"application/octet-stream\" | \"image/jpeg\" | \"image/jpg\" | \"image/png\" | \"image/gif\" | \"image/bmp\" | \"image/webp\" | \"image/svg+xml\" | \"application/pdf\" | \"application/msword\" | ... 22 more ... | \"application/x-msdownload\"'.",
+      "fullLine": "src/config/upload.ts(176,49): error TS2345: Argument of type 'string' is not assignable to parameter of type '\"text/plain\" | \"application/octet-stream\" | \"image/jpeg\" | \"image/jpg\" | \"image/png\" | \"image/gif\" | \"image/bmp\" | \"image/webp\" | \"image/svg+xml\" | \"application/pdf\" | \"application/msword\" | ... 22 more ... | \"application/x-msdownload\"'.\r"
+    },
+    {
+      "file": "src/enum/index.ts",
+      "line": "67",
+      "column": "30",
+      "type": "error",
+      "code": "TS2339",
+      "message": "Property 'splpnpmit' does not exist on type 'string'.",
+      "fullLine": "src/enum/index.ts(67,30): error TS2339: Property 'splpnpmit' does not exist on type 'string'.\r"
+    },
+    {
+      "file": "src/hooks/useUpload.ts",
+      "line": "289",
+      "column": "82",
+      "type": "error",
+      "code": "TS18048",
+      "message": "'chunk.chunkSize' is possibly 'undefined'.",
+      "fullLine": "src/hooks/useUpload.ts(289,82): error TS18048: 'chunk.chunkSize' is possibly 'undefined'.\r"
+    },
+    {
+      "file": "src/hooks/useUpload.ts",
+      "line": "484",
+      "column": "21",
+      "type": "error",
+      "code": "TS2345",
+      "message": "Argument of type '{ signal: AbortSignal; timeout: number; onUploadProgress: (e: any) => void; }' is not assignable to parameter of type '{ onUploadProgress?: ((progressEvent: any) => void) | undefined; signal?: AbortSignal | undefined; }'.",
+      "fullLine": "src/hooks/useUpload.ts(484,21): error TS2345: Argument of type '{ signal: AbortSignal; timeout: number; onUploadProgress: (e: any) => void; }' is not assignable to parameter of type '{ onUploadProgress?: ((progressEvent: any) => void) | undefined; signal?: AbortSignal | undefined; }'.\r"
+    },
+    {
+      "file": "src/hooks/useUpload.ts",
+      "line": "492",
+      "column": "21",
+      "type": "error",
+      "code": "TS2367",
+      "message": "This comparison appears to be unintentional because the types 'UploadState.Uploading' and 'UploadState.Paused' have no overlap.",
+      "fullLine": "src/hooks/useUpload.ts(492,21): error TS2367: This comparison appears to be unintentional because the types 'UploadState.Uploading' and 'UploadState.Paused' have no overlap.\r"
+    },
+    {
+      "file": "src/hooks/useUpload.ts",
+      "line": "492",
+      "column": "65",
+      "type": "error",
+      "code": "TS2367",
+      "message": "This comparison appears to be unintentional because the types 'UploadState.Uploading' and 'UploadState.Interrupted' have no overlap.",
+      "fullLine": "src/hooks/useUpload.ts(492,65): error TS2367: This comparison appears to be unintentional because the types 'UploadState.Uploading' and 'UploadState.Interrupted' have no overlap.\r"
+    },
+    {
+      "file": "src/hooks/useUpload.ts",
+      "line": "651",
+      "column": "17",
+      "type": "error",
+      "code": "TS2345",
+      "message": "Argument of type '{ timeout: number; onUploadProgress: (progressEvent: any) => void; }' is not assignable to parameter of type '{ onUploadProgress?: ((progressEvent: any) => void) | undefined; signal?: AbortSignal | undefined; }'.",
+      "fullLine": "src/hooks/useUpload.ts(651,17): error TS2345: Argument of type '{ timeout: number; onUploadProgress: (progressEvent: any) => void; }' is not assignable to parameter of type '{ onUploadProgress?: ((progressEvent: any) => void) | undefined; signal?: AbortSignal | undefined; }'.\r"
+    },
+    {
+      "file": "src/hooks/useUpload.ts",
+      "line": "906",
+      "column": "26",
+      "type": "error",
+      "code": "TS2367",
+      "message": "This comparison appears to be unintentional because the types 'UploadState.Uploading' and 'UploadState.Paused' have no overlap.",
+      "fullLine": "src/hooks/useUpload.ts(906,26): error TS2367: This comparison appears to be unintentional because the types 'UploadState.Uploading' and 'UploadState.Paused' have no overlap.\r"
+    },
+    {
+      "file": "src/hooks/useUpload.ts",
+      "line": "975",
+      "column": "38",
+      "type": "error",
+      "code": "TS18048",
+      "message": "'chunk.loaded' is possibly 'undefined'.",
+      "fullLine": "src/hooks/useUpload.ts(975,38): error TS18048: 'chunk.loaded' is possibly 'undefined'.\r"
+    },
+    {
+      "file": "src/utils/common/methods.ts",
+      "line": "1",
+      "column": "26",
+      "type": "error",
+      "code": "TS7006",
+      "message": "Parameter 'min' implicitly has an 'any' type.",
+      "fullLine": "src/utils/common/methods.ts(1,26): error TS7006: Parameter 'min' implicitly has an 'any' type.\r"
+    },
+    {
+      "file": "src/utils/common/methods.ts",
+      "line": "1",
+      "column": "31",
+      "type": "error",
+      "code": "TS7006",
+      "message": "Parameter 'max' implicitly has an 'any' type.",
+      "fullLine": "src/utils/common/methods.ts(1,31): error TS7006: Parameter 'max' implicitly has an 'any' type.\r"
+    },
+    {
+      "file": "src/utils/common/methods.ts",
+      "line": "23",
+      "column": "17",
+      "type": "error",
+      "code": "TS7053",
+      "message": "Element implicitly has an 'any' type because expression of type 'string' can't be used to index type '{}'.",
+      "fullLine": "src/utils/common/methods.ts(23,17): error TS7053: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type '{}'.\r"
+    },
+    {
+      "file": "src/utils/filePreview.ts",
+      "line": "166",
+      "column": "49",
+      "type": "error",
+      "code": "TS2345",
+      "message": "Argument of type 'string' is not assignable to parameter of type 'never'.",
+      "fullLine": "src/utils/filePreview.ts(166,49): error TS2345: Argument of type 'string' is not assignable to parameter of type 'never'.\r"
+    },
+    {
+      "file": "src/utils/filePreview.ts",
+      "line": "171",
+      "column": "47",
+      "type": "error",
+      "code": "TS2345",
+      "message": "Argument of type 'string' is not assignable to parameter of type 'never'.",
+      "fullLine": "src/utils/filePreview.ts(171,47): error TS2345: Argument of type 'string' is not assignable to parameter of type 'never'.\r"
+    },
+    {
+      "file": "src/views/Books/index.tsx",
+      "line": "162",
+      "column": "81",
+      "type": "error",
+      "code": "TS2322",
+      "message": "Type '{ children: string; key: string; color: \"blue\"; size: string; }' is not assignable to type 'IntrinsicAttributes & TagProps & RefAttributes<HTMLSpanElement>'.",
+      "fullLine": "src/views/Books/index.tsx(162,81): error TS2322: Type '{ children: string; key: string; color: \"blue\"; size: string; }' is not assignable to type 'IntrinsicAttributes & TagProps & RefAttributes<HTMLSpanElement>'.\r"
+    },
+    {
+      "file": "src/views/Files/components/FilePreview.tsx",
+      "line": "127",
+      "column": "25",
+      "type": "error",
+      "code": "TS2322",
+      "message": "Type '{ showToolbar: boolean; src: string; fileName: string; fileSize: number | undefined; maxWidth: string | number; maxHeight: string | number; onError: ((error: string) => void) | undefined; onLoad: (() => void) | undefined; }' is not assignable to type 'ImagePreviewProps'.",
+      "fullLine": "src/views/Files/components/FilePreview.tsx(127,25): error TS2322: Type '{ showToolbar: boolean; src: string; fileName: string; fileSize: number | undefined; maxWidth: string | number; maxHeight: string | number; onError: ((error: string) => void) | undefined; onLoad: (() => void) | undefined; }' is not assignable to type 'ImagePreviewProps'.\r"
+    },
+    {
+      "file": "src/views/Files/components/ImagePreview.tsx",
+      "line": "254",
+      "column": "28",
+      "type": "error",
+      "code": "TS2339",
+      "message": "Property 'previewImage' does not exist on type 'FC<GroupConsumerProps>'.",
+      "fullLine": "src/views/Files/components/ImagePreview.tsx(254,28): error TS2339: Property 'previewImage' does not exist on type 'FC<GroupConsumerProps>'.\r"
+    },
+    {
+      "file": "src/views/Files/components/ImagePreview.tsx",
+      "line": "406",
+      "column": "21",
+      "type": "error",
+      "code": "TS2322",
+      "message": "Type '(event: Event) => void' is not assignable to type 'ReactEventHandler<HTMLImageElement>'.",
+      "fullLine": "src/views/Files/components/ImagePreview.tsx(406,21): error TS2322: Type '(event: Event) => void' is not assignable to type 'ReactEventHandler<HTMLImageElement>'.\r"
+    },
+    {
+      "file": "src/views/Files/components/ImagePreview.tsx",
+      "line": "407",
+      "column": "21",
+      "type": "error",
+      "code": "TS2322",
+      "message": "Type '(event: Event) => void' is not assignable to type 'ReactEventHandler<HTMLImageElement>'.",
+      "fullLine": "src/views/Files/components/ImagePreview.tsx(407,21): error TS2322: Type '(event: Event) => void' is not assignable to type 'ReactEventHandler<HTMLImageElement>'.\r"
+    },
+    {
+      "file": "src/views/Files/components/PDFPreview.tsx",
+      "line": "695",
+      "column": "25",
+      "type": "error",
+      "code": "TS2322",
+      "message": "Type '{ pageNumber: number; scale: number; onLoadSuccess: (page: any) => void; onLoadError: (error: Error) => void; onRenderTextLayerError: (error: Error) => void; loading: Element; renderTextLayer: true; renderAnnotationLayer: true; className: string; style: { ...; }; }' is not assignable to type 'IntrinsicAttributes & { _className?: string | undefined; _enableRegisterUnregisterPage?: boolean | undefined; canvasBackground?: string | undefined; canvasRef?: Ref<...> | undefined; ... 36 more ...; width?: number | undefined; } & EventProps<...>'.",
+      "fullLine": "src/views/Files/components/PDFPreview.tsx(695,25): error TS2322: Type '{ pageNumber: number; scale: number; onLoadSuccess: (page: any) => void; onLoadError: (error: Error) => void; onRenderTextLayerError: (error: Error) => void; loading: Element; renderTextLayer: true; renderAnnotationLayer: true; className: string; style: { ...; }; }' is not assignable to type 'IntrinsicAttributes & { _className?: string | undefined; _enableRegisterUnregisterPage?: boolean | undefined; canvasBackground?: string | undefined; canvasRef?: Ref<...> | undefined; ... 36 more ...; width?: number | undefined; } & EventProps<...>'.\r"
+    },
+    {
+      "file": "src/views/Files/FilePreview.tsx",
+      "line": "61",
+      "column": "23",
+      "type": "error",
+      "code": "TS2339",
+      "message": "Property 'url' does not exist on type 'FileItem'.",
+      "fullLine": "src/views/Files/FilePreview.tsx(61,23): error TS2339: Property 'url' does not exist on type 'FileItem'.\r"
+    },
+    {
+      "file": "src/views/Files/FilePreview.tsx",
+      "line": "62",
+      "column": "24",
+      "type": "error",
+      "code": "TS2339",
+      "message": "Property 'name' does not exist on type 'FileItem'.",
+      "fullLine": "src/views/Files/FilePreview.tsx(62,24): error TS2339: Property 'name' does not exist on type 'FileItem'.\r"
+    },
+    {
+      "file": "src/views/Home/components/Content.tsx",
+      "line": "195",
+      "column": "77",
+      "type": "error",
+      "code": "TS2322",
+      "message": "Type '{ children: string; key: string; color: string; size: string; }' is not assignable to type 'IntrinsicAttributes & TagProps & RefAttributes<HTMLSpanElement>'.",
+      "fullLine": "src/views/Home/components/Content.tsx(195,77): error TS2322: Type '{ children: string; key: string; color: string; size: string; }' is not assignable to type 'IntrinsicAttributes & TagProps & RefAttributes<HTMLSpanElement>'.\r"
+    },
+    {
+      "file": "src/views/index.tsx",
+      "line": "2",
+      "column": "8",
+      "type": "error",
+      "code": "TS1192",
+      "message": "Module '\"E:/github/keru_blog/frontEnd/src/views/systemPages/Home\"' has no default export.",
+      "fullLine": "src/views/index.tsx(2,8): error TS1192: Module '\"E:/github/keru_blog/frontEnd/src/views/systemPages/Home\"' has no default export.\r"
+    },
+    {
+      "file": "src/views/index.tsx",
+      "line": "4",
+      "column": "22",
+      "type": "error",
+      "code": "TS2322",
+      "message": "Type 'Promise<typeof import(\"E:/github/keru_blog/frontEnd/src/views/systemPages/Home\")>' is not assignable to type 'Promise<{ default: ComponentType<any>; }>'.",
+      "fullLine": "src/views/index.tsx(4,22): error TS2322: Type 'Promise<typeof import(\"E:/github/keru_blog/frontEnd/src/views/systemPages/Home\")>' is not assignable to type 'Promise<{ default: ComponentType<any>; }>'.\r"
+    }
+  ]
+}
