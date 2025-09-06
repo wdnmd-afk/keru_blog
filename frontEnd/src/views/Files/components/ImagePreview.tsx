@@ -3,6 +3,7 @@
  * 支持jpg, png, gif, webp等格式的图片预览
  */
 
+import { createIncludeComparator } from '@/utils/memoComparator'
 import {
     DownloadOutlined,
     FullscreenOutlined,
@@ -11,9 +12,8 @@ import {
     ZoomInOutlined,
     ZoomOutOutlined,
 } from '@ant-design/icons'
-import { Alert, Button, Image, Space, Spin, Tooltip } from 'antd'
+import { Alert, Button, Space, Spin, Tooltip } from 'antd'
 import React, { useCallback, useEffect, useRef, useState } from 'react'
-import { createIncludeComparator } from '@/utils/memoComparator'
 
 export interface ImagePreviewProps {
     /** 图片URL */
@@ -29,9 +29,9 @@ export interface ImagePreviewProps {
     /** 最大高度 */
     maxHeight?: number | string
     /** 加载失败回调 */
-    onError?: (error: Event) => void
+    onError?: (error: string) => void
     /** 加载成功回调 */
-    onLoad?: (event: Event) => void
+    onLoad?: () => void
 }
 
 const ImagePreview: React.FC<ImagePreviewProps> = ({
@@ -65,7 +65,7 @@ const ImagePreview: React.FC<ImagePreviewProps> = ({
      * 处理图片加载成功
      */
     const handleLoad = useCallback(
-        (event: Event) => {
+        (event: React.SyntheticEvent<HTMLImageElement>) => {
             console.log('Image loaded')
             setLoading(false)
             setError(null)
@@ -77,7 +77,7 @@ const ImagePreview: React.FC<ImagePreviewProps> = ({
                 setImageSize({ width: naturalWidth, height: naturalHeight })
             }
 
-            onLoad?.(event)
+            onLoad?.()
         },
         [onLoad]
     )
@@ -86,10 +86,11 @@ const ImagePreview: React.FC<ImagePreviewProps> = ({
      * 处理图片加载失败
      */
     const handleError = useCallback(
-        (event: Event) => {
+        (event: React.SyntheticEvent<HTMLImageElement>) => {
             setLoading(false)
-            setError('图片加载失败')
-            onError?.(event)
+            const errorMessage = '图片加载失败'
+            setError(errorMessage)
+            onError?.(errorMessage)
         },
         [onError]
     )
@@ -246,16 +247,17 @@ const ImagePreview: React.FC<ImagePreviewProps> = ({
      * 全屏预览
      */
     const handleFullscreen = useCallback(() => {
-        // 使用Antd的Image组件的预览功能
-        const img = new window.Image()
-        img.src = src
-
-        // 创建预览
-        Image.PreviewGroup.previewImage({
-            src,
-            alt: fileName,
-        })
-    }, [src, fileName])
+        // 使用浏览器原生全屏API或新窗口打开
+        if (document.fullscreenEnabled) {
+            const container = containerRef.current
+            if (container) {
+                container.requestFullscreen?.()
+            }
+        } else {
+            // 在新窗口中打开图片
+            window.open(src, '_blank')
+        }
+    }, [src])
 
     /**
      * 格式化文件大小
@@ -434,10 +436,13 @@ const ImagePreview: React.FC<ImagePreviewProps> = ({
 }
 
 // 使用React.memo优化ImagePreview组件
-export default React.memo(ImagePreview, createIncludeComparator<ImagePreviewProps>([
-    'src',
-    'fileName',
-    'fileSize',
-    'maxHeight',
-    'maxWidth'
-]))
+export default React.memo(
+    ImagePreview,
+    createIncludeComparator<ImagePreviewProps>([
+        'src',
+        'fileName',
+        'fileSize',
+        'maxHeight',
+        'maxWidth',
+    ])
+)

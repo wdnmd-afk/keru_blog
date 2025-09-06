@@ -64,7 +64,7 @@ const FileType: IFileType = {
 const getFileType = (data: string, isFileName = false): TFileType => {
     let fileExtension = data
     if (isFileName) {
-        fileExtension = data.splpnpmit('.').pop()!.toLowerCase()
+        fileExtension = data.split('.').pop()!.toLowerCase()
     }
     console.log(data, 'dddd')
     for (const key in FileType) {

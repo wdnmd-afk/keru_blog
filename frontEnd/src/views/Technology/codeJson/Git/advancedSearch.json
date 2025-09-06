@@ -1,27 +1,27 @@
 {
-  "contentSearch": {
-    "title": "内容搜索",
-    "language": "bash",
-    "code": "# 在工作目录中搜索\ngit grep \"search_term\"\ngit grep -n \"search_term\"  # 显示行号\ngit grep -i \"search_term\"  # 忽略大小写\ngit grep -w \"search_term\"  # 匹配整个单词\n\n# 在特定提交中搜索\ngit grep \"search_term\" HEAD~3\n\n# 搜索多个模式\ngit grep -e \"pattern1\" -e \"pattern2\"\n\n# 搜索并显示上下文\ngit grep -A 3 -B 3 \"search_term\"\n\n# 搜索文件名\ngit ls-files | grep \"pattern\"\n\n# 查找删除的文件\ngit log --diff-filter=D --summary | grep delete\n\n# 查找大文件\ngit rev-list --objects --all | \\\n  git cat-file --batch-check='%(objecttype) %(objectname) %(objectsize) %(rest)' | \\\n  sed -n 's/^blob //p' | \\\n  sort --numeric-sort --key=2 | \\\n  tail -10"
-  },
-  "commitRecovery": {
-    "title": "提交恢复",
-    "language": "bash",
-    "code": "# 查看引用日志\ngit reflog\ngit reflog show HEAD\ngit reflog show main\n\n# 恢复删除的提交\ngit reset --hard HEAD@{2}\ngit cherry-pick <lost-commit-hash>\n\n# 恢复删除的分支\ngit branch recovered-branch <commit-hash>\n\n# 查看悬空对象\ngit fsck --lost-found\ngit fsck --unreachable\n\n# 恢复悬空提交\ngit show <dangling-commit-hash>\ngit cherry-pick <dangling-commit-hash>\n\n# 恢复删除的文件\ngit checkout HEAD~1 -- path/to/deleted/file\ngit show HEAD~1:path/to/file > recovered-file\n\n# 从暂存区恢复文件\ngit checkout -- path/to/file\ngit restore path/to/file"
-  },
-  "historyModification": {
-    "title": "历史修改",
-    "language": "bash",
-    "code": "# 修改历史提交\ngit rebase -i HEAD~3\n# 选择edit，然后修改文件\ngit add .\ngit commit --amend\ngit rebase --continue\n\n# 删除敏感信息\ngit filter-branch --force --index-filter \\\n  'git rm --cached --ignore-unmatch path/to/sensitive/file' \\\n  --prune-empty --tag-name-filter cat -- --all\n\n# 使用git-filter-repo（推荐）\npip install git-filter-repo\ngit filter-repo --path path/to/keep --force\ngit filter-repo --invert-paths --path path/to/remove --force\n\n# 修改作者信息\ngit filter-branch --env-filter '\nif [ \"$GIT_COMMITTER_EMAIL\" = \"old@email.com\" ]\nthen\n    export GIT_COMMITTER_NAME=\"New Name\"\n    export GIT_COMMITTER_EMAIL=\"new@email.com\"\nfi\nif [ \"$GIT_AUTHOR_EMAIL\" = \"old@email.com\" ]\nthen\n    export GIT_AUTHOR_NAME=\"New Name\"\n    export GIT_AUTHOR_EMAIL=\"new@email.com\"\nfi\n' --tag-name-filter cat -- --branches --tags"
-  },
-  "repositoryOptimization": {
-    "title": "仓库优化",
-    "language": "bash",
-    "code": "# 垃圾回收\ngit gc\ngit gc --aggressive  # 更彻底的清理\n\n# 清理未跟踪的文件\ngit clean -f  # 删除未跟踪的文件\ngit clean -fd  # 删除未跟踪的文件和目录\ngit clean -n  # 预览要删除的文件\n\n# 压缩仓库\ngit repack -ad\n\n# 验证仓库完整性\ngit fsck\n\n# 查看仓库大小\ngit count-objects -vH\n\n# 查找大文件\ngit rev-list --objects --all | \\\n  git cat-file --batch-check='%(objecttype) %(objectname) %(objectsize) %(rest)' | \\\n  awk '/^blob/ {print substr($0,6)}' | \\\n  sort --numeric-sort --key=2 | \\\n  tail -10\n\n# 配置优化\ngit config --global core.preloadindex true\ngit config --global core.fscache true\ngit config --global gc.auto 256"
-  },
-  "largeFileHandling": {
-    "title": "大文件处理",
-    "language": "bash",
-    "code": "# Git LFS (Large File Storage)\ngit lfs install\n\n# 跟踪大文件类型\ngit lfs track \"*.psd\"\ngit lfs track \"*.zip\"\ngit lfs track \"*.mp4\"\n\n# 查看LFS文件\ngit lfs ls-files\n\n# 拉取LFS文件\ngit lfs pull\n\n# 推送LFS文件\ngit lfs push origin main\n\n# .gitattributes示例\n*.psd filter=lfs diff=lfs merge=lfs -text\n*.zip filter=lfs diff=lfs merge=lfs -text\n*.mp4 filter=lfs diff=lfs merge=lfs -text\n\n# 迁移现有大文件到LFS\ngit lfs migrate import --include=\"*.psd\"\n\n# 浅克隆\ngit clone --depth 1 <repository-url>\ngit clone --shallow-since=\"2023-01-01\" <repository-url>\n\n# 部分克隆\ngit clone --filter=blob:none <repository-url>\ngit clone --filter=tree:0 <repository-url>"
-  }
+    "contentSearch": {
+        "title": "内容搜索",
+        "language": "bash",
+        "code": "# 在工作目录中搜索\ngit grep \"search_term\"\ngit grep -n \"search_term\"  # 显示行号\ngit grep -i \"search_term\"  # 忽略大小写\ngit grep -w \"search_term\"  # 匹配整个单词\n\n# 在特定提交中搜索\ngit grep \"search_term\" HEAD~3\n\n# 搜索多个模式\ngit grep -e \"pattern1\" -e \"pattern2\"\n\n# 搜索并显示上下文\ngit grep -A 3 -B 3 \"search_term\"\n\n# 搜索文件名\ngit ls-files | grep \"pattern\"\n\n# 查找删除的文件\ngit log --diff-filter=D --summary | grep delete\n\n# 查找大文件\ngit rev-list --objects --all | \\\n  git cat-file --batch-check='%(objecttype) %(objectname) %(objectsize) %(rest)' | \\\n  sed -n 's/^blob //p' | \\\n  sort --numeric-sort --key=2 | \\\n  tail -10"
+    },
+    "commitRecovery": {
+        "title": "提交恢复",
+        "language": "bash",
+        "code": "# 查看引用日志\ngit reflog\ngit reflog show HEAD\ngit reflog show main\n\n# 恢复删除的提交\ngit reset --hard HEAD@{2}\ngit cherry-pick <lost-commit-hash>\n\n# 恢复删除的分支\ngit branch recovered-branch <commit-hash>\n\n# 查看悬空对象\ngit fsck --lost-found\ngit fsck --unreachable\n\n# 恢复悬空提交\ngit show <dangling-commit-hash>\ngit cherry-pick <dangling-commit-hash>\n\n# 恢复删除的文件\ngit checkout HEAD~1 -- path/to/deleted/file\ngit show HEAD~1:path/to/file > recovered-file\n\n# 从暂存区恢复文件\ngit checkout -- path/to/file\ngit restore path/to/file"
+    },
+    "historyModification": {
+        "title": "历史修改",
+        "language": "bash",
+        "code": "# 修改历史提交\ngit rebase -i HEAD~3\n# 选择edit，然后修改文件\ngit add .\ngit commit --amend\ngit rebase --continue\n\n# 删除敏感信息\ngit filter-branch --force --index-filter \\\n  'git rm --cached --ignore-unmatch path/to/sensitive/file' \\\n  --prune-empty --tag-name-filter cat -- --all\n\n# 使用git-filter-repo（推荐）\npip install git-filter-repo\ngit filter-repo --path path/to/keep --force\ngit filter-repo --invert-paths --path path/to/remove --force\n\n# 修改作者信息\ngit filter-branch --env-filter '\nif [ \"$GIT_COMMITTER_EMAIL\" = \"old@email.com\" ]\nthen\n    export GIT_COMMITTER_NAME=\"New Name\"\n    export GIT_COMMITTER_EMAIL=\"new@email.com\"\nfi\nif [ \"$GIT_AUTHOR_EMAIL\" = \"old@email.com\" ]\nthen\n    export GIT_AUTHOR_NAME=\"New Name\"\n    export GIT_AUTHOR_EMAIL=\"new@email.com\"\nfi\n' --tag-name-filter cat -- --branches --tags"
+    },
+    "repositoryOptimization": {
+        "title": "仓库优化",
+        "language": "bash",
+        "code": "# 垃圾回收\ngit gc\ngit gc --aggressive  # 更彻底的清理\n\n# 清理未跟踪的文件\ngit clean -f  # 删除未跟踪的文件\ngit clean -fd  # 删除未跟踪的文件和目录\ngit clean -n  # 预览要删除的文件\n\n# 压缩仓库\ngit repack -ad\n\n# 验证仓库完整性\ngit fsck\n\n# 查看仓库大小\ngit count-objects -vH\n\n# 查找大文件\ngit rev-list --objects --all | \\\n  git cat-file --batch-check='%(objecttype) %(objectname) %(objectsize) %(rest)' | \\\n  awk '/^blob/ {print substr($0,6)}' | \\\n  sort --numeric-sort --key=2 | \\\n  tail -10\n\n# 配置优化\ngit config --global core.preloadindex true\ngit config --global core.fscache true\ngit config --global gc.auto 256"
+    },
+    "largeFileHandling": {
+        "title": "大文件处理",
+        "language": "bash",
+        "code": "# Git LFS (Large File Storage)\ngit lfs install\n\n# 跟踪大文件类型\ngit lfs track \"*.psd\"\ngit lfs track \"*.zip\"\ngit lfs track \"*.mp4\"\n\n# 查看LFS文件\ngit lfs ls-files\n\n# 拉取LFS文件\ngit lfs pull\n\n# 推送LFS文件\ngit lfs push origin main\n\n# .gitattributes示例\n*.psd filter=lfs diff=lfs merge=lfs -text\n*.zip filter=lfs diff=lfs merge=lfs -text\n*.mp4 filter=lfs diff=lfs merge=lfs -text\n\n# 迁移现有大文件到LFS\ngit lfs migrate import --include=\"*.psd\"\n\n# 浅克隆\ngit clone --depth 1 <repository-url>\ngit clone --shallow-since=\"2023-01-01\" <repository-url>\n\n# 部分克隆\ngit clone --filter=blob:none <repository-url>\ngit clone --filter=tree:0 <repository-url>"
+    }
 }

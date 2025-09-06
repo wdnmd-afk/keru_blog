@@ -1,64 +1,64 @@
 .file_container {
-  height: 100%;
-  display: flex;
-
-  :global {
-    .ant-tabs-content {
-      height: 100%;
-    }
-
-    .ant-tabs-tabpane {
-      height: 100%;
-    }
-  }
-
-  > div {
-    flex: 1;
     height: 100%;
-    padding: 12px;
-    background-color: #f8f8f8;
-  }
+    display: flex;
+
+    :global {
+        .ant-tabs-content {
+            height: 100%;
+        }
+
+        .ant-tabs-tabpane {
+            height: 100%;
+        }
+    }
+
+    > div {
+        flex: 1;
+        height: 100%;
+        padding: 12px;
+        background-color: #f8f8f8;
+    }
 }
 
 .pageContainer {
-  box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 4px 0px;
-  width:max-content;
-  max-width:100%;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 4px 0px;
+    width: max-content;
+    max-width: 100%;
 }
-.pageTool{
-  position: absolute;
-  top: 15px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: linear-gradient(to bottom right,#e0f7fa, #ffffff);
-  color: #212377;
-  padding: 8px 15px;
-  border-radius: 15px;
-  display: flex;
-  align-items: center;
-  span{
-    margin:0 15px;
-    cursor: pointer;
-  }
-  i{
-    padding: 5px;
-    margin:0 5px;
-    &:hover{
-      background: #333;
+.pageTool {
+    position: absolute;
+    top: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(to bottom right, #e0f7fa, #ffffff);
+    color: #212377;
+    padding: 8px 15px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    span {
+        margin: 0 15px;
+        cursor: pointer;
     }
-  }
-  input{
-    display: inline-block;
-    width: 50px;
-    text-align: center;
-    margin-right: 10px;
-    height: 24px;
-  }
-  input::-webkit-outer-spin-button,
-  input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-  }
-  input[type="number"]{
-    -moz-appearance: textfield;
-  }
+    i {
+        padding: 5px;
+        margin: 0 5px;
+        &:hover {
+            background: #333;
+        }
+    }
+    input {
+        display: inline-block;
+        width: 50px;
+        text-align: center;
+        margin-right: 10px;
+        height: 24px;
+    }
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+    }
+    input[type='number'] {
+        -moz-appearance: textfield;
+    }
 }

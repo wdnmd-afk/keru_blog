@@ -1,57 +1,57 @@
 {
-  "basicWorkflow": {
-    "title": "基本工作流文件",
-    "language": "yaml",
-    "code": "# .github/workflows/ci.yml\nname: CI\n\n# 触发条件\non:\n  push:\n    branches: [ main, develop ]\n  pull_request:\n    branches: [ main ]\n\n# 作业定义\njobs:\n  test:\n    runs-on: ubuntu-latest\n    \n    steps:\n    - name: 检出代码\n      uses: actions/checkout@v3\n    \n    - name: 设置Node.js\n      uses: actions/setup-node@v3\n      with:\n        node-version: '16'\n        cache: 'npm'\n    \n    - name: 安装依赖\n      run: npm ci\n    \n    - name: 运行测试\n      run: npm test\n    \n    - name: 运行构建\n      run: npm run build"
-  },
-  "pushEvents": {
-    "title": "推送事件",
-    "language": "yaml",
-    "code": "# 推送到特定分支\non:\n  push:\n    branches:\n      - main\n      - develop\n      - 'release/*'\n\n# 推送到特定路径\non:\n  push:\n    paths:\n      - 'src/**'\n      - 'package.json'\n      - '.github/workflows/**'\n\n# 忽略特定路径\non:\n  push:\n    paths-ignore:\n      - 'docs/**'\n      - '*.md'"
-  },
-  "pullRequestEvents": {
-    "title": "Pull Request事件",
-    "language": "yaml",
-    "code": "# PR事件\non:\n  pull_request:\n    branches: [ main ]\n    types: [opened, synchronize, reopened]\n\n# PR目标事件\non:\n  pull_request_target:\n    branches: [ main ]\n    types: [opened, synchronize]\n\n# PR审查事件\non:\n  pull_request_review:\n    types: [submitted]"
-  },
-  "scheduleEvents": {
-    "title": "定时和手动触发",
-    "language": "yaml",
-    "code": "# 定时触发 (cron)\non:\n  schedule:\n    - cron: '0 2 * * *'  # 每天凌晨2点\n    - cron: '0 0 * * 0'  # 每周日午夜\n\n# 手动触发\non:\n  workflow_dispatch:\n    inputs:\n      environment:\n        description: '部署环境'\n        required: true\n        default: 'staging'\n        type: choice\n        options:\n          - staging\n          - production\n      version:\n        description: '版本号'\n        required: false\n        type: string\n\n# 发布事件\non:\n  release:\n    types: [published]\n\n# 多个事件\non: [push, pull_request, workflow_dispatch]"
-  },
-  "jobsConfiguration": {
-    "title": "基本作业配置",
-    "language": "yaml",
-    "code": "jobs:\n  # 基本作业\n  build:\n    runs-on: ubuntu-latest\n    \n    steps:\n      - uses: actions/checkout@v3\n      - run: npm ci\n      - run: npm run build\n  \n  # 矩阵策略\n  test:\n    runs-on: ubuntu-latest\n    strategy:\n      matrix:\n        node-version: [14, 16, 18]\n        os: [ubuntu-latest, windows-latest, macos-latest]\n    \n    steps:\n      - uses: actions/checkout@v3\n      - uses: actions/setup-node@v3\n        with:\n          node-version: ${{ matrix.node-version }}\n      - run: npm test\n  \n  # 条件执行\n  deploy:\n    runs-on: ubuntu-latest\n    needs: [build, test]\n    if: github.ref == 'refs/heads/main'\n    \n    steps:\n      - run: echo \"部署到生产环境\"\n  \n  # 并行作业\n  lint:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v3\n      - run: npm run lint\n  \n  security:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v3\n      - run: npm audit"
-  },
-  "environmentVariables": {
-    "title": "环境变量和密钥",
-    "language": "yaml",
-    "code": "jobs:\n  deploy:\n    runs-on: ubuntu-latest\n    \n    # 作业级环境变量\n    env:\n      NODE_ENV: production\n      API_URL: https://api.example.com\n    \n    steps:\n      - uses: actions/checkout@v3\n      \n      # 使用密钥\n      - name: 部署到服务器\n        env:\n          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}\n          SERVER_HOST: ${{ secrets.SERVER_HOST }}\n          DATABASE_URL: ${{ secrets.DATABASE_URL }}\n        run: |\n          echo \"部署到 $SERVER_HOST\"\n          echo \"数据库: $DATABASE_URL\"\n      \n      # 条件执行\n      - name: 发送通知\n        if: success()\n        run: echo \"部署成功\"\n      \n      - name: 错误处理\n        if: failure()\n        run: echo \"部署失败\"\n\n# 工作流级环境变量\nenv:\n  GLOBAL_VAR: value\n\n# 在GitHub仓库设置中配置Secrets:\n# Settings > Secrets and variables > Actions\n# - SSH_PRIVATE_KEY\n# - SERVER_HOST\n# - DATABASE_URL"
-  },
-  "officialActions": {
-    "title": "官方Actions",
-    "language": "yaml",
-    "code": "steps:\n  # 检出代码\n  - name: 检出代码\n    uses: actions/checkout@v3\n    with:\n      fetch-depth: 0  # 获取完整历史\n      token: ${{ secrets.GITHUB_TOKEN }}\n  \n  # 设置Node.js环境\n  - name: 设置Node.js\n    uses: actions/setup-node@v3\n    with:\n      node-version: '18'\n      cache: 'npm'\n      registry-url: 'https://registry.npmjs.org'\n  \n  # 缓存依赖\n  - name: 缓存依赖\n    uses: actions/cache@v3\n    with:\n      path: ~/.npm\n      key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}\n      restore-keys: |\n        ${{ runner.os }}-node-\n  \n  # 上传构建产物\n  - name: 上传构建产物\n    uses: actions/upload-artifact@v3\n    with:\n      name: build-files\n      path: dist/\n      retention-days: 30\n  \n  # 下载构建产物\n  - name: 下载构建产物\n    uses: actions/download-artifact@v3\n    with:\n      name: build-files\n      path: dist/"
-  },
-  "thirdPartyActions": {
-    "title": "第三方Actions",
-    "language": "yaml",
-    "code": "steps:\n  # 代码覆盖率报告\n  - name: 上传覆盖率到Codecov\n    uses: codecov/codecov-action@v3\n    with:\n      token: ${{ secrets.CODECOV_TOKEN }}\n      file: ./coverage/lcov.info\n      flags: unittests\n      name: codecov-umbrella\n  \n  # Slack通知\n  - name: Slack通知\n    uses: 8398a7/action-slack@v3\n    with:\n      status: ${{ job.status }}\n      channel: '#ci-cd'\n      webhook_url: ${{ secrets.SLACK_WEBHOOK }}\n    if: always()\n  \n  # Docker构建和推送\n  - name: Docker构建和推送\n    uses: docker/build-push-action@v4\n    with:\n      context: .\n      push: true\n      tags: myapp:latest\n  \n  # 语义化版本发布\n  - name: 语义化发布\n    uses: cycjimmy/semantic-release-action@v3\n    with:\n      semantic_version: 19\n    env:\n      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}\n      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}"
-  },
-  "frontendCICD": {
-    "title": "前端项目CI/CD",
-    "language": "yaml",
-    "code": "# .github/workflows/frontend.yml\nname: Frontend CI/CD\n\non:\n  push:\n    branches: [main, develop]\n  pull_request:\n    branches: [main]\n\njobs:\n  test:\n    runs-on: ubuntu-latest\n    \n    steps:\n      - uses: actions/checkout@v3\n      \n      - name: 设置Node.js\n        uses: actions/setup-node@v3\n        with:\n          node-version: '18'\n          cache: 'npm'\n      \n      - name: 安装依赖\n        run: npm ci\n      \n      - name: 代码检查\n        run: npm run lint\n      \n      - name: 类型检查\n        run: npm run type-check\n      \n      - name: 单元测试\n        run: npm run test:unit\n      \n      - name: E2E测试\n        run: npm run test:e2e\n      \n      - name: 构建项目\n        run: npm run build\n      \n      - name: 上传构建产物\n        uses: actions/upload-artifact@v3\n        with:\n          name: dist\n          path: dist/\n\n  deploy:\n    needs: test\n    runs-on: ubuntu-latest\n    if: github.ref == 'refs/heads/main'\n    \n    steps:\n      - name: 下载构建产物\n        uses: actions/download-artifact@v3\n        with:\n          name: dist\n          path: dist/\n      \n      - name: 部署到S3\n        env:\n          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}\n          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}\n        run: |\n          aws s3 sync dist/ s3://my-website-bucket --delete\n          aws cloudfront create-invalidation --distribution-id ${{ secrets.CLOUDFRONT_ID }} --paths \"/*\""
-  },
-  "releaseWorkflow": {
-    "title": "自动化发布流程",
-    "language": "yaml",
-    "code": "# .github/workflows/release.yml\nname: Release\n\non:\n  push:\n    tags:\n      - 'v*'\n\njobs:\n  build:\n    runs-on: ubuntu-latest\n    \n    steps:\n      - uses: actions/checkout@v3\n      \n      - name: 设置Node.js\n        uses: actions/setup-node@v3\n        with:\n          node-version: '18'\n          cache: 'npm'\n      \n      - name: 安装依赖\n        run: npm ci\n      \n      - name: 运行测试\n        run: npm test\n      \n      - name: 构建项目\n        run: npm run build\n      \n      - name: 创建GitHub Release\n        uses: actions/create-release@v1\n        env:\n          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}\n        with:\n          tag_name: ${{ github.ref }}\n          release_name: Release ${{ github.ref }}\n          draft: false\n          prerelease: false\n      \n      - name: 构建Docker镜像\n        run: |\n          docker build -t myapp:${{ github.ref_name }} .\n          docker tag myapp:${{ github.ref_name }} myapp:latest\n      \n      - name: 推送Docker镜像\n        run: |\n          echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin\n          docker push myapp:${{ github.ref_name }}\n          docker push myapp:latest"
-  },
-  "performanceOptimization": {
-    "title": "性能优化",
-    "language": "yaml",
-    "code": "# 使用缓存\n- name: 缓存依赖\n  uses: actions/cache@v3\n  with:\n    path: ~/.npm\n    key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}\n    restore-keys: |\n      ${{ runner.os }}-node-\n\n# 并行执行\njobs:\n  test:\n    strategy:\n      matrix:\n        os: [ubuntu-latest, windows-latest]\n    runs-on: ${{ matrix.os }}\n\n# 条件执行\n- name: 部署\n  if: github.ref == 'refs/heads/main' && github.event_name == 'push'"
-  }
+    "basicWorkflow": {
+        "title": "基本工作流文件",
+        "language": "yaml",
+        "code": "# .github/workflows/ci.yml\nname: CI\n\n# 触发条件\non:\n  push:\n    branches: [ main, develop ]\n  pull_request:\n    branches: [ main ]\n\n# 作业定义\njobs:\n  test:\n    runs-on: ubuntu-latest\n    \n    steps:\n    - name: 检出代码\n      uses: actions/checkout@v3\n    \n    - name: 设置Node.js\n      uses: actions/setup-node@v3\n      with:\n        node-version: '16'\n        cache: 'npm'\n    \n    - name: 安装依赖\n      run: npm ci\n    \n    - name: 运行测试\n      run: npm test\n    \n    - name: 运行构建\n      run: npm run build"
+    },
+    "pushEvents": {
+        "title": "推送事件",
+        "language": "yaml",
+        "code": "# 推送到特定分支\non:\n  push:\n    branches:\n      - main\n      - develop\n      - 'release/*'\n\n# 推送到特定路径\non:\n  push:\n    paths:\n      - 'src/**'\n      - 'package.json'\n      - '.github/workflows/**'\n\n# 忽略特定路径\non:\n  push:\n    paths-ignore:\n      - 'docs/**'\n      - '*.md'"
+    },
+    "pullRequestEvents": {
+        "title": "Pull Request事件",
+        "language": "yaml",
+        "code": "# PR事件\non:\n  pull_request:\n    branches: [ main ]\n    types: [opened, synchronize, reopened]\n\n# PR目标事件\non:\n  pull_request_target:\n    branches: [ main ]\n    types: [opened, synchronize]\n\n# PR审查事件\non:\n  pull_request_review:\n    types: [submitted]"
+    },
+    "scheduleEvents": {
+        "title": "定时和手动触发",
+        "language": "yaml",
+        "code": "# 定时触发 (cron)\non:\n  schedule:\n    - cron: '0 2 * * *'  # 每天凌晨2点\n    - cron: '0 0 * * 0'  # 每周日午夜\n\n# 手动触发\non:\n  workflow_dispatch:\n    inputs:\n      environment:\n        description: '部署环境'\n        required: true\n        default: 'staging'\n        type: choice\n        options:\n          - staging\n          - production\n      version:\n        description: '版本号'\n        required: false\n        type: string\n\n# 发布事件\non:\n  release:\n    types: [published]\n\n# 多个事件\non: [push, pull_request, workflow_dispatch]"
+    },
+    "jobsConfiguration": {
+        "title": "基本作业配置",
+        "language": "yaml",
+        "code": "jobs:\n  # 基本作业\n  build:\n    runs-on: ubuntu-latest\n    \n    steps:\n      - uses: actions/checkout@v3\n      - run: npm ci\n      - run: npm run build\n  \n  # 矩阵策略\n  test:\n    runs-on: ubuntu-latest\n    strategy:\n      matrix:\n        node-version: [14, 16, 18]\n        os: [ubuntu-latest, windows-latest, macos-latest]\n    \n    steps:\n      - uses: actions/checkout@v3\n      - uses: actions/setup-node@v3\n        with:\n          node-version: ${{ matrix.node-version }}\n      - run: npm test\n  \n  # 条件执行\n  deploy:\n    runs-on: ubuntu-latest\n    needs: [build, test]\n    if: github.ref == 'refs/heads/main'\n    \n    steps:\n      - run: echo \"部署到生产环境\"\n  \n  # 并行作业\n  lint:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v3\n      - run: npm run lint\n  \n  security:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v3\n      - run: npm audit"
+    },
+    "environmentVariables": {
+        "title": "环境变量和密钥",
+        "language": "yaml",
+        "code": "jobs:\n  deploy:\n    runs-on: ubuntu-latest\n    \n    # 作业级环境变量\n    env:\n      NODE_ENV: production\n      API_URL: https://api.example.com\n    \n    steps:\n      - uses: actions/checkout@v3\n      \n      # 使用密钥\n      - name: 部署到服务器\n        env:\n          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}\n          SERVER_HOST: ${{ secrets.SERVER_HOST }}\n          DATABASE_URL: ${{ secrets.DATABASE_URL }}\n        run: |\n          echo \"部署到 $SERVER_HOST\"\n          echo \"数据库: $DATABASE_URL\"\n      \n      # 条件执行\n      - name: 发送通知\n        if: success()\n        run: echo \"部署成功\"\n      \n      - name: 错误处理\n        if: failure()\n        run: echo \"部署失败\"\n\n# 工作流级环境变量\nenv:\n  GLOBAL_VAR: value\n\n# 在GitHub仓库设置中配置Secrets:\n# Settings > Secrets and variables > Actions\n# - SSH_PRIVATE_KEY\n# - SERVER_HOST\n# - DATABASE_URL"
+    },
+    "officialActions": {
+        "title": "官方Actions",
+        "language": "yaml",
+        "code": "steps:\n  # 检出代码\n  - name: 检出代码\n    uses: actions/checkout@v3\n    with:\n      fetch-depth: 0  # 获取完整历史\n      token: ${{ secrets.GITHUB_TOKEN }}\n  \n  # 设置Node.js环境\n  - name: 设置Node.js\n    uses: actions/setup-node@v3\n    with:\n      node-version: '18'\n      cache: 'npm'\n      registry-url: 'https://registry.npmjs.org'\n  \n  # 缓存依赖\n  - name: 缓存依赖\n    uses: actions/cache@v3\n    with:\n      path: ~/.npm\n      key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}\n      restore-keys: |\n        ${{ runner.os }}-node-\n  \n  # 上传构建产物\n  - name: 上传构建产物\n    uses: actions/upload-artifact@v3\n    with:\n      name: build-files\n      path: dist/\n      retention-days: 30\n  \n  # 下载构建产物\n  - name: 下载构建产物\n    uses: actions/download-artifact@v3\n    with:\n      name: build-files\n      path: dist/"
+    },
+    "thirdPartyActions": {
+        "title": "第三方Actions",
+        "language": "yaml",
+        "code": "steps:\n  # 代码覆盖率报告\n  - name: 上传覆盖率到Codecov\n    uses: codecov/codecov-action@v3\n    with:\n      token: ${{ secrets.CODECOV_TOKEN }}\n      file: ./coverage/lcov.info\n      flags: unittests\n      name: codecov-umbrella\n  \n  # Slack通知\n  - name: Slack通知\n    uses: 8398a7/action-slack@v3\n    with:\n      status: ${{ job.status }}\n      channel: '#ci-cd'\n      webhook_url: ${{ secrets.SLACK_WEBHOOK }}\n    if: always()\n  \n  # Docker构建和推送\n  - name: Docker构建和推送\n    uses: docker/build-push-action@v4\n    with:\n      context: .\n      push: true\n      tags: myapp:latest\n  \n  # 语义化版本发布\n  - name: 语义化发布\n    uses: cycjimmy/semantic-release-action@v3\n    with:\n      semantic_version: 19\n    env:\n      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}\n      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}"
+    },
+    "frontendCICD": {
+        "title": "前端项目CI/CD",
+        "language": "yaml",
+        "code": "# .github/workflows/frontend.yml\nname: Frontend CI/CD\n\non:\n  push:\n    branches: [main, develop]\n  pull_request:\n    branches: [main]\n\njobs:\n  test:\n    runs-on: ubuntu-latest\n    \n    steps:\n      - uses: actions/checkout@v3\n      \n      - name: 设置Node.js\n        uses: actions/setup-node@v3\n        with:\n          node-version: '18'\n          cache: 'npm'\n      \n      - name: 安装依赖\n        run: npm ci\n      \n      - name: 代码检查\n        run: npm run lint\n      \n      - name: 类型检查\n        run: npm run type-check\n      \n      - name: 单元测试\n        run: npm run test:unit\n      \n      - name: E2E测试\n        run: npm run test:e2e\n      \n      - name: 构建项目\n        run: npm run build\n      \n      - name: 上传构建产物\n        uses: actions/upload-artifact@v3\n        with:\n          name: dist\n          path: dist/\n\n  deploy:\n    needs: test\n    runs-on: ubuntu-latest\n    if: github.ref == 'refs/heads/main'\n    \n    steps:\n      - name: 下载构建产物\n        uses: actions/download-artifact@v3\n        with:\n          name: dist\n          path: dist/\n      \n      - name: 部署到S3\n        env:\n          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}\n          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}\n        run: |\n          aws s3 sync dist/ s3://my-website-bucket --delete\n          aws cloudfront create-invalidation --distribution-id ${{ secrets.CLOUDFRONT_ID }} --paths \"/*\""
+    },
+    "releaseWorkflow": {
+        "title": "自动化发布流程",
+        "language": "yaml",
+        "code": "# .github/workflows/release.yml\nname: Release\n\non:\n  push:\n    tags:\n      - 'v*'\n\njobs:\n  build:\n    runs-on: ubuntu-latest\n    \n    steps:\n      - uses: actions/checkout@v3\n      \n      - name: 设置Node.js\n        uses: actions/setup-node@v3\n        with:\n          node-version: '18'\n          cache: 'npm'\n      \n      - name: 安装依赖\n        run: npm ci\n      \n      - name: 运行测试\n        run: npm test\n      \n      - name: 构建项目\n        run: npm run build\n      \n      - name: 创建GitHub Release\n        uses: actions/create-release@v1\n        env:\n          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}\n        with:\n          tag_name: ${{ github.ref }}\n          release_name: Release ${{ github.ref }}\n          draft: false\n          prerelease: false\n      \n      - name: 构建Docker镜像\n        run: |\n          docker build -t myapp:${{ github.ref_name }} .\n          docker tag myapp:${{ github.ref_name }} myapp:latest\n      \n      - name: 推送Docker镜像\n        run: |\n          echo ${{ secrets.DOCKER_PASSWORD }} | docker login -u ${{ secrets.DOCKER_USERNAME }} --password-stdin\n          docker push myapp:${{ github.ref_name }}\n          docker push myapp:latest"
+    },
+    "performanceOptimization": {
+        "title": "性能优化",
+        "language": "yaml",
+        "code": "# 使用缓存\n- name: 缓存依赖\n  uses: actions/cache@v3\n  with:\n    path: ~/.npm\n    key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}\n    restore-keys: |\n      ${{ runner.os }}-node-\n\n# 并行执行\njobs:\n  test:\n    strategy:\n      matrix:\n        os: [ubuntu-latest, windows-latest]\n    runs-on: ${{ matrix.os }}\n\n# 条件执行\n- name: 部署\n  if: github.ref == 'refs/heads/main' && github.event_name == 'push'"
+    }
 }

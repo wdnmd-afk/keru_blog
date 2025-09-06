@@ -20,7 +20,7 @@ class LoginApi {
     public static async login(params: LoginProp) {
         return await Http.post('/user/login', params)
     }
-    
+
     // 重置密码 - 通过用户名和邮箱验证
     public static async resetPassword(params: ResetPasswordProp) {
         return await Http.post('/user/resetPassword', params)

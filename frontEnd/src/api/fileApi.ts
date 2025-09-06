@@ -1,11 +1,5 @@
+import type { DeleteFileParams, FileQuery, MergeParams, UploadParams } from '@/types/files'
 import { Http } from '@/utils'
-import type {
-    UploadParams,
-    MergeParams,
-    FileQuery,
-    DeleteFileParams,
-    FileListResponse
-} from '@/types/files'
 
 /**
  * 文件API类
@@ -65,7 +59,7 @@ class FileApi {
      * @param options 上传选项，包括进度回调和取消信号
      */
     public static async uploadFileSingle(
-        params: FormData, 
+        params: FormData,
         options?: {
             onUploadProgress?: (progressEvent: any) => void
             signal?: AbortSignal

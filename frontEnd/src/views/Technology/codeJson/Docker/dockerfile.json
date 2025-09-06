@@ -1,42 +1,42 @@
 {
-  "dockerfileBasics": {
-    "title": "Dockerfile 基础指令",
-    "language": "dockerfile",
-    "code": "# 基础镜像\nFROM node:18-alpine\n\n# 设置工作目录\nWORKDIR /app\n\n# 复制 package.json 和 package-lock.json\nCOPY package*.json ./\n\n# 安装依赖\nRUN npm ci --only=production\n\n# 复制应用代码\nCOPY . .\n\n# 暴露端口\nEXPOSE 3000\n\n# 设置用户\nUSER node\n\n# 启动命令\nCMD [\"npm\", \"start\"]"
-  },
-  "multistageBuilds": {
-    "title": "多阶段构建优化",
-    "language": "dockerfile",
-    "code": "# 构建阶段\nFROM node:18-alpine AS builder\nWORKDIR /app\nCOPY package*.json ./\nRUN npm ci\nCOPY . .\nRUN npm run build\n\n# 生产阶段\nFROM nginx:alpine AS production\n\n# 复制构建产物\nCOPY --from=builder /app/dist /usr/share/nginx/html\n\n# 复制 nginx 配置\nCOPY nginx.conf /etc/nginx/nginx.conf\n\n# 暴露端口\nEXPOSE 80\n\n# 启动 nginx\nCMD [\"nginx\", \"-g\", \"daemon off;\"]"
-  },
-  "securityBestPractices": {
-    "title": "安全最佳实践",
-    "language": "dockerfile",
-    "code": "# 使用官方基础镜像\nFROM node:18-alpine\n\n# 创建非 root 用户\nRUN addgroup -g 1001 -S nodejs\nRUN adduser -S nextjs -u 1001\n\n# 设置工作目录\nWORKDIR /app\n\n# 复制并安装依赖（利用缓存层）\nCOPY package*.json ./\nRUN npm ci --only=production && npm cache clean --force\n\n# 复制应用代码\nCOPY --chown=nextjs:nodejs . .\n\n# 设置正确的权限\nRUN chmod -R 755 /app\n\n# 切换到非 root 用户\nUSER nextjs\n\n# 暴露端口\nEXPOSE 3000\n\n# 健康检查\nHEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \\\n  CMD curl -f http://localhost:3000/health || exit 1\n\n# 启动命令\nCMD [\"npm\", \"start\"]"
-  },
-  "layerOptimization": {
-    "title": "镜像层优化",
-    "language": "dockerfile",
-    "code": "# ❌ 不好的做法 - 每个 RUN 创建一个层\nFROM ubuntu:20.04\nRUN apt-get update\nRUN apt-get install -y curl\nRUN apt-get install -y git\nRUN apt-get install -y vim\nRUN rm -rf /var/lib/apt/lists/*\n\n# ✅ 好的做法 - 合并 RUN 指令\nFROM ubuntu:20.04\nRUN apt-get update && \\\n    apt-get install -y \\\n        curl \\\n        git \\\n        vim && \\\n    rm -rf /var/lib/apt/lists/* && \\\n    apt-get clean\n\n# ✅ 更好的做法 - 使用 .dockerignore\n# .dockerignore 文件内容:\n# node_modules\n# npm-debug.log\n# .git\n# .DS_Store\n# *.md\n# tests/\n\n# 复制时排除不必要的文件\nCOPY . ."
-  },
-  "environmentVariables": {
-    "title": "环境变量配置",
-    "language": "dockerfile",
-    "code": "FROM node:18-alpine\n\n# 设置环境变量\nENV NODE_ENV=production\nENV PORT=3000\nENV LOG_LEVEL=info\n\n# 使用 ARG 进行构建时配置\nARG BUILD_VERSION\nARG API_URL\n\n# 将 ARG 转换为 ENV（运行时可用）\nENV BUILD_VERSION=$BUILD_VERSION\nENV API_URL=$API_URL\n\nWORKDIR /app\n\n# 复制 package.json\nCOPY package*.json ./\n\n# 根据环境安装依赖\nRUN if [ \"$NODE_ENV\" = \"production\" ] ; then npm ci --only=production ; \\\n    else npm install ; fi\n\nCOPY . .\n\n# 构建应用（如果需要）\nRUN if [ \"$NODE_ENV\" = \"production\" ] ; then npm run build ; fi\n\nEXPOSE $PORT\n\nCMD [\"npm\", \"start\"]"
-  },
-  "dockerignoreExample": {
-    "title": ".dockerignore 文件示例",
-    "language": "gitignore",
-    "code": "# 依赖目录\nnode_modules\nnpm-debug.log*\nyarn-debug.log*\nyarn-error.log*\n\n# 构建输出\ndist\nbuild\n.next\n\n# 环境文件\n.env\n.env.local\n.env.*.local\n\n# 版本控制\n.git\n.gitignore\n\n# IDE 文件\n.vscode\n.idea\n*.swp\n*.swo\n\n# 操作系统文件\n.DS_Store\nThumbs.db\n\n# 日志文件\nlogs\n*.log\n\n# 测试文件\ntests\n__tests__\n*.test.js\n*.spec.js\ncoverage\n\n# 文档文件\n*.md\nREADME*\nCHANGELOG*\nLICENSE*\n\n# 临时文件\ntmp\ntemp\n*.tmp"
-  },
-  "healthchecks": {
-    "title": "健康检查配置",
-    "language": "dockerfile",
-    "code": "FROM node:18-alpine\n\n# 安装 curl 用于健康检查\nRUN apk add --no-cache curl\n\nWORKDIR /app\nCOPY package*.json ./\nRUN npm ci --only=production\nCOPY . .\n\nEXPOSE 3000\n\n# 基础健康检查\nHEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \\\n  CMD curl -f http://localhost:3000/health || exit 1\n\n# 更复杂的健康检查\nHEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \\\n  CMD curl -f http://localhost:3000/health && \\\n      curl -f http://localhost:3000/api/status || exit 1\n\n# 自定义健康检查脚本\nCOPY healthcheck.sh /usr/local/bin/\nRUN chmod +x /usr/local/bin/healthcheck.sh\nHEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \\\n  CMD /usr/local/bin/healthcheck.sh\n\nCMD [\"npm\", \"start\"]"
-  },
-  "languageSpecificExamples": {
-    "title": "不同语言的 Dockerfile 示例",
-    "language": "dockerfile",
-    "code": "# Python 应用\nFROM python:3.11-slim\nWORKDIR /app\nCOPY requirements.txt .\nRUN pip install --no-cache-dir -r requirements.txt\nCOPY . .\nEXPOSE 8000\nCMD [\"python\", \"app.py\"]\n\n# Java 应用\nFROM openjdk:17-jre-slim\nWORKDIR /app\nCOPY target/app.jar app.jar\nEXPOSE 8080\nCMD [\"java\", \"-jar\", \"app.jar\"]\n\n# Go 应用（多阶段构建）\nFROM golang:1.21-alpine AS builder\nWORKDIR /app\nCOPY go.mod go.sum ./\nRUN go mod download\nCOPY . .\nRUN CGO_ENABLED=0 GOOS=linux go build -o main .\n\nFROM alpine:latest\nRUN apk --no-cache add ca-certificates\nWORKDIR /root/\nCOPY --from=builder /app/main .\nEXPOSE 8080\nCMD [\"./main\"]\n\n# .NET 应用\nFROM mcr.microsoft.com/dotnet/aspnet:7.0 AS base\nWORKDIR /app\nEXPOSE 80\n\nFROM mcr.microsoft.com/dotnet/sdk:7.0 AS build\nWORKDIR /src\nCOPY [\"MyApp.csproj\", \".\"]\nRUN dotnet restore \"MyApp.csproj\"\nCOPY . .\nRUN dotnet build \"MyApp.csproj\" -c Release -o /app/build\n\nFROM build AS publish\nRUN dotnet publish \"MyApp.csproj\" -c Release -o /app/publish\n\nFROM base AS final\nWORKDIR /app\nCOPY --from=publish /app/publish .\nENTRYPOINT [\"dotnet\", \"MyApp.dll\"]"
-  }
+    "dockerfileBasics": {
+        "title": "Dockerfile 基础指令",
+        "language": "dockerfile",
+        "code": "# 基础镜像\nFROM node:18-alpine\n\n# 设置工作目录\nWORKDIR /app\n\n# 复制 package.json 和 package-lock.json\nCOPY package*.json ./\n\n# 安装依赖\nRUN npm ci --only=production\n\n# 复制应用代码\nCOPY . .\n\n# 暴露端口\nEXPOSE 3000\n\n# 设置用户\nUSER node\n\n# 启动命令\nCMD [\"npm\", \"start\"]"
+    },
+    "multistageBuilds": {
+        "title": "多阶段构建优化",
+        "language": "dockerfile",
+        "code": "# 构建阶段\nFROM node:18-alpine AS builder\nWORKDIR /app\nCOPY package*.json ./\nRUN npm ci\nCOPY . .\nRUN npm run build\n\n# 生产阶段\nFROM nginx:alpine AS production\n\n# 复制构建产物\nCOPY --from=builder /app/dist /usr/share/nginx/html\n\n# 复制 nginx 配置\nCOPY nginx.conf /etc/nginx/nginx.conf\n\n# 暴露端口\nEXPOSE 80\n\n# 启动 nginx\nCMD [\"nginx\", \"-g\", \"daemon off;\"]"
+    },
+    "securityBestPractices": {
+        "title": "安全最佳实践",
+        "language": "dockerfile",
+        "code": "# 使用官方基础镜像\nFROM node:18-alpine\n\n# 创建非 root 用户\nRUN addgroup -g 1001 -S nodejs\nRUN adduser -S nextjs -u 1001\n\n# 设置工作目录\nWORKDIR /app\n\n# 复制并安装依赖（利用缓存层）\nCOPY package*.json ./\nRUN npm ci --only=production && npm cache clean --force\n\n# 复制应用代码\nCOPY --chown=nextjs:nodejs . .\n\n# 设置正确的权限\nRUN chmod -R 755 /app\n\n# 切换到非 root 用户\nUSER nextjs\n\n# 暴露端口\nEXPOSE 3000\n\n# 健康检查\nHEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \\\n  CMD curl -f http://localhost:3000/health || exit 1\n\n# 启动命令\nCMD [\"npm\", \"start\"]"
+    },
+    "layerOptimization": {
+        "title": "镜像层优化",
+        "language": "dockerfile",
+        "code": "# ❌ 不好的做法 - 每个 RUN 创建一个层\nFROM ubuntu:20.04\nRUN apt-get update\nRUN apt-get install -y curl\nRUN apt-get install -y git\nRUN apt-get install -y vim\nRUN rm -rf /var/lib/apt/lists/*\n\n# ✅ 好的做法 - 合并 RUN 指令\nFROM ubuntu:20.04\nRUN apt-get update && \\\n    apt-get install -y \\\n        curl \\\n        git \\\n        vim && \\\n    rm -rf /var/lib/apt/lists/* && \\\n    apt-get clean\n\n# ✅ 更好的做法 - 使用 .dockerignore\n# .dockerignore 文件内容:\n# node_modules\n# npm-debug.log\n# .git\n# .DS_Store\n# *.md\n# tests/\n\n# 复制时排除不必要的文件\nCOPY . ."
+    },
+    "environmentVariables": {
+        "title": "环境变量配置",
+        "language": "dockerfile",
+        "code": "FROM node:18-alpine\n\n# 设置环境变量\nENV NODE_ENV=production\nENV PORT=3000\nENV LOG_LEVEL=info\n\n# 使用 ARG 进行构建时配置\nARG BUILD_VERSION\nARG API_URL\n\n# 将 ARG 转换为 ENV（运行时可用）\nENV BUILD_VERSION=$BUILD_VERSION\nENV API_URL=$API_URL\n\nWORKDIR /app\n\n# 复制 package.json\nCOPY package*.json ./\n\n# 根据环境安装依赖\nRUN if [ \"$NODE_ENV\" = \"production\" ] ; then npm ci --only=production ; \\\n    else npm install ; fi\n\nCOPY . .\n\n# 构建应用（如果需要）\nRUN if [ \"$NODE_ENV\" = \"production\" ] ; then npm run build ; fi\n\nEXPOSE $PORT\n\nCMD [\"npm\", \"start\"]"
+    },
+    "dockerignoreExample": {
+        "title": ".dockerignore 文件示例",
+        "language": "gitignore",
+        "code": "# 依赖目录\nnode_modules\nnpm-debug.log*\nyarn-debug.log*\nyarn-error.log*\n\n# 构建输出\ndist\nbuild\n.next\n\n# 环境文件\n.env\n.env.local\n.env.*.local\n\n# 版本控制\n.git\n.gitignore\n\n# IDE 文件\n.vscode\n.idea\n*.swp\n*.swo\n\n# 操作系统文件\n.DS_Store\nThumbs.db\n\n# 日志文件\nlogs\n*.log\n\n# 测试文件\ntests\n__tests__\n*.test.js\n*.spec.js\ncoverage\n\n# 文档文件\n*.md\nREADME*\nCHANGELOG*\nLICENSE*\n\n# 临时文件\ntmp\ntemp\n*.tmp"
+    },
+    "healthchecks": {
+        "title": "健康检查配置",
+        "language": "dockerfile",
+        "code": "FROM node:18-alpine\n\n# 安装 curl 用于健康检查\nRUN apk add --no-cache curl\n\nWORKDIR /app\nCOPY package*.json ./\nRUN npm ci --only=production\nCOPY . .\n\nEXPOSE 3000\n\n# 基础健康检查\nHEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \\\n  CMD curl -f http://localhost:3000/health || exit 1\n\n# 更复杂的健康检查\nHEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \\\n  CMD curl -f http://localhost:3000/health && \\\n      curl -f http://localhost:3000/api/status || exit 1\n\n# 自定义健康检查脚本\nCOPY healthcheck.sh /usr/local/bin/\nRUN chmod +x /usr/local/bin/healthcheck.sh\nHEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \\\n  CMD /usr/local/bin/healthcheck.sh\n\nCMD [\"npm\", \"start\"]"
+    },
+    "languageSpecificExamples": {
+        "title": "不同语言的 Dockerfile 示例",
+        "language": "dockerfile",
+        "code": "# Python 应用\nFROM python:3.11-slim\nWORKDIR /app\nCOPY requirements.txt .\nRUN pip install --no-cache-dir -r requirements.txt\nCOPY . .\nEXPOSE 8000\nCMD [\"python\", \"app.py\"]\n\n# Java 应用\nFROM openjdk:17-jre-slim\nWORKDIR /app\nCOPY target/app.jar app.jar\nEXPOSE 8080\nCMD [\"java\", \"-jar\", \"app.jar\"]\n\n# Go 应用（多阶段构建）\nFROM golang:1.21-alpine AS builder\nWORKDIR /app\nCOPY go.mod go.sum ./\nRUN go mod download\nCOPY . .\nRUN CGO_ENABLED=0 GOOS=linux go build -o main .\n\nFROM alpine:latest\nRUN apk --no-cache add ca-certificates\nWORKDIR /root/\nCOPY --from=builder /app/main .\nEXPOSE 8080\nCMD [\"./main\"]\n\n# .NET 应用\nFROM mcr.microsoft.com/dotnet/aspnet:7.0 AS base\nWORKDIR /app\nEXPOSE 80\n\nFROM mcr.microsoft.com/dotnet/sdk:7.0 AS build\nWORKDIR /src\nCOPY [\"MyApp.csproj\", \".\"]\nRUN dotnet restore \"MyApp.csproj\"\nCOPY . .\nRUN dotnet build \"MyApp.csproj\" -c Release -o /app/build\n\nFROM build AS publish\nRUN dotnet publish \"MyApp.csproj\" -c Release -o /app/publish\n\nFROM base AS final\nWORKDIR /app\nCOPY --from=publish /app/publish .\nENTRYPOINT [\"dotnet\", \"MyApp.dll\"]"
+    }
 }

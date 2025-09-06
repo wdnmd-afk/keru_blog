@@ -139,7 +139,7 @@ const initialState: FileState = {
  * 文件状态管理 Store
  * 使用 Zustand + Immer 实现不可变状态管理
  */
-export const useFileStore = create<FileStore>()(
+export const useFileStore: () => FileStore = create<FileStore>()(
     devtools(
         immer<FileStore>((set, get) => ({
             ...initialState,

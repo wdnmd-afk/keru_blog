@@ -17,7 +17,7 @@
 // 页面头部区域
 .header {
     margin-bottom: 35px; // 增加头部与内容的间距
-    
+
     .back_button {
         margin-bottom: 20px; // 返回按钮与标题的间距
         color: var(--text-primary);
@@ -159,7 +159,7 @@
     // 指令类型标签区域
     .instruction_types {
         margin: 20px 0 25px 0; // 增加上下间距
-        
+
         :global(.ant-tag) {
             margin: 0 8px 8px 0; // 增加标签间距
             padding: 6px 12px;
@@ -284,7 +284,8 @@
 }
 
 // 加载和错误状态
-.loading, .error {
+.loading,
+.error {
     display: flex;
     align-items: center;
     justify-content: center;

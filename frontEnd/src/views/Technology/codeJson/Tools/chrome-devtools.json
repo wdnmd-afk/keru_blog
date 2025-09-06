@@ -1,57 +1,57 @@
 {
-  "shortcuts": {
-    "title": "Chrome DevTools 快捷键",
-    "language": "text",
-    "code": "# 打开DevTools\nF12 或 Ctrl+Shift+I (Windows/Linux)\nCmd+Option+I (Mac)\n\n# 快速切换面板\nCtrl+[ / Ctrl+] - 切换面板\nCtrl+Shift+D - 切换到设备模式\nCtrl+Shift+C - 选择元素\n\n# 调试快捷键\nF8 - 继续执行\nF10 - 单步执行\nF11 - 步入函数\nShift+F11 - 步出函数\nCtrl+Shift+F5 - 硬刷新\n\n# Console快捷键\nCtrl+L - 清空控制台\nCtrl+Shift+K - 打开Console\nEsc - 在任何面板显示/隐藏Console抽屉\n\n# Elements面板\nCtrl+Shift+C - 选择元素工具\nH - 隐藏/显示选中元素\nDelete - 删除选中元素\nF2 - 编辑HTML\n\n# Sources面板\nCtrl+O - 快速打开文件\nCtrl+Shift+O - 跳转到函数\nCtrl+G - 跳转到行\nCtrl+/ - 注释/取消注释\nCtrl+D - 选择下一个相同单词"
-  },
-  "elementsPanel": {
-    "title": "Elements 面板 - DOM检查与修改",
-    "language": "javascript",
-    "code": "// 选择元素的方法\n// 1. 点击选择工具 (Ctrl+Shift+C)\n// 2. 右键页面元素 -> 检查\n// 3. 在Console中使用选择器\n$('selector') // 选择第一个匹配元素\n$$('selector') // 选择所有匹配元素\n$0 // 当前选中的元素\n$1, $2, $3, $4 // 之前选中的元素\n\n// DOM操作\n// 修改元素内容\n$0.textContent = '新内容'\n$0.innerHTML = '<span>新HTML</span>'\n\n// 添加/删除元素\n// 右键 -> Delete element\n// 右键 -> Duplicate element\n// 右键 -> Copy -> Copy element/outerHTML\n\n// 修改属性\n$0.setAttribute('class', 'new-class')\n$0.removeAttribute('disabled')\n\n// 实时编辑HTML\n// 双击元素标签名或属性\n// 按F2键编辑整个HTML块"
-  },
-  "stylesDebugging": {
-    "title": "CSS样式调试",
-    "language": "css",
-    "code": "/* Styles面板功能 */\n/* 1. 实时修改CSS属性 */\n/*    - 点击属性值直接编辑 */\n/*    - 使用上下箭头调整数值 */\n/*    - 点击颜色块打开颜色选择器 */\n\n/* 2. 查看样式来源 */\n/*    - user agent stylesheet (浏览器默认) */\n/*    - 外部样式表 */\n/*    - 内联样式 */\n/*    - 计算后的样式 */\n\n/* 3. 样式优先级 */\n/*    - 被覆盖的样式会有删除线 */\n/*    - !important 标记 */\n/*    - 特异性计算 */\n\n/* 有用的CSS调试技巧 */\n* { \n  border: 1px solid red !important; \n  /* 查看所有元素边界 */\n}\n\n/* 检查box-sizing属性 */\n.element {\n  box-sizing: border-box; /* 或 content-box */\n}\n\n/* 查看margin/padding的可视化显示 */\n/* 在Elements面板中选中元素，右侧会显示盒模型图 */\n\n/* 强制状态调试 */\n/* 右键元素 -> Force state -> :hover, :active, :focus, :visited */\n\n/* 动画调试 */\n/* Animations面板可以控制动画播放速度和暂停 */"
-  },
-  "responsiveDesign": {
-    "title": "响应式设计调试",
-    "language": "javascript",
-    "code": "// 设备模拟\n// 1. 点击设备图标 (Ctrl+Shift+M)\n// 2. 选择预设设备或自定义尺寸\n// 3. 模拟不同的DPR (Device Pixel Ratio)\n// 4. 模拟网络条件\n\n// 常用设备尺寸\nconst devices = {\n  'iPhone SE': { width: 375, height: 667, dpr: 2 },\n  'iPhone 12': { width: 390, height: 844, dpr: 3 },\n  'iPad': { width: 768, height: 1024, dpr: 2 },\n  'Desktop': { width: 1920, height: 1080, dpr: 1 }\n}\n\n// 媒体查询调试\n// 在Sources面板可以看到当前激活的媒体查询\n\n// 视口调试\n// - 查看视口尺寸信息\n// - 测试不同方向 (横屏/竖屏)\n// - 模拟触摸事件\n\n// 响应式图片调试\n// 检查srcset和sizes属性\n// 查看实际加载的图片资源\n\n// CSS Grid和Flexbox调试\n// Elements面板会显示Grid和Flex的可视化布局线\n// 点击grid或flex标记查看布局详情"
-  },
-  "consoleAPI": {
-    "title": "Console API详解",
-    "language": "javascript",
-    "code": "// 基本日志输出\nconsole.log('普通日志')\nconsole.info('信息日志')\nconsole.warn('警告日志')\nconsole.error('错误日志')\n\n// 格式化输出\nconsole.log('%c样式化文本', 'color: red; font-size: 20px;')\nconsole.log('数字: %d, 字符串: %s', 42, 'hello')\n\n// 对象输出\nconst obj = { name: 'John', age: 30 }\nconsole.log(obj) // 可展开的对象\nconsole.dir(obj) // 对象的详细信息\nconsole.table([obj, { name: 'Jane', age: 25 }]) // 表格形式\n\n// 分组输出\nconsole.group('用户信息')\nconsole.log('姓名: John')\nconsole.log('年龄: 30')\nconsole.groupEnd()\n\n// 断言\nconsole.assert(1 === 2, '1不等于2') // 只有断言失败时才输出\n\n// 时间测量\nconsole.time('操作耗时')\n// 执行一些操作\nconsole.timeEnd('操作耗时')\n\n// 计数器\nconsole.count('点击次数')\nconsole.countReset('点击次数')\n\n// 堆栈跟踪\nconsole.trace('调用堆栈')\n\n// 清空控制台\nconsole.clear()"
-  },
-  "consoleUtilities": {
-    "title": "Console实用工具",
-    "language": "javascript",
-    "code": "// 选择器快捷方式\n$('selector') // document.querySelector()\n$$('selector') // document.querySelectorAll()\n$x('//xpath') // XPath选择器\n\n// 元素引用\n$0 // 当前在Elements面板选中的元素\n$1, $2, $3, $4 // 之前选中的元素历史\n\n// 检查函数\ninspect(object) // 跳转到对象定义\ndir(object) // 显示对象的所有属性\nkeys(object) // 获取对象的所有键\nvalues(object) // 获取对象的所有值\n\n// 事件监听\nmonitorEvents(element, 'click') // 监控元素的点击事件\nmonitorEvents(window, ['resize', 'scroll']) // 监控多个事件\nunmonitorEvents(element) // 停止监控\n\n// 函数监控\nmonitor(function) // 监控函数调用\nunmonitor(function) // 停止监控\n\n// 性能分析\nprofile('性能分析') // 开始性能分析\nprofileEnd('性能分析') // 结束性能分析\n\n// 复制到剪贴板\ncopy(object) // 复制对象的JSON字符串到剪贴板\n\n// 获取事件监听器\ngetEventListeners(element) // 获取元素上的所有事件监听器"
-  },
-  "breakpointDebugging": {
-    "title": "断点调试",
-    "language": "javascript",
-    "code": "// 断点类型\n// 1. 行断点 - 点击行号设置\n// 2. 条件断点 - 右键行号设置条件\n// 3. DOM断点 - 在Elements面板右键元素设置\n// 4. XHR断点 - 在Sources面板设置网络请求断点\n// 5. 事件监听器断点 - 在Sources面板设置\n\n// 条件断点示例\n// 右键行号，输入条件表达式\n// 只有当 i > 5 时才暂停\nfor (let i = 0; i < 10; i++) {\n  // 在此行设置条件断点: i > 5\n  console.log(i)\n}\n\n// 代码中设置断点\ndebugger // 程序会在此处暂停\n\n// DOM断点类型\n// - subtree modifications (子树修改)\n// - attribute modifications (属性修改)\n// - node removal (节点删除)\n\n// XHR/Fetch断点\n// 可以设置URL模式，当匹配的请求发生时暂停\n\n// 事件断点\n// 可以在特定事件触发时暂停，如:\n// - Mouse events (click, mousedown, etc.)\n// - Keyboard events (keydown, keyup, etc.)\n// - Touch events (touchstart, touchend, etc.)\n\n// 异常断点\n// 在Sources面板可以设置:\n// - Pause on exceptions (所有异常)\n// - Pause on caught exceptions (已捕获的异常)"
-  },
-  "variableWatching": {
-    "title": "变量监视与作用域",
-    "language": "javascript",
-    "code": "// Watch面板\n// - 添加表达式监视变量值变化\n// - 支持复杂表达式: obj.prop, arr[0], func()\n\n// Scope面板\n// - Local: 当前函数作用域\n// - Closure: 闭包变量\n// - Global: 全局变量\n\n// 调试技巧\n// 1. 使用console.log()输出中间值\nfunction calculateTotal(items) {\n  let total = 0\n  for (let item of items) {\n    console.log('Processing item:', item) // 调试输出\n    total += item.price\n  }\n  console.log('Final total:', total) // 调试输出\n  return total\n}\n\n// 2. 利用条件断点减少无效暂停\n// 在循环中设置条件: i === 5\n\n// 3. 使用Watch监视关键变量\n// 添加表达式: user.isLoggedIn, cart.items.length\n\n// 4. 检查Call Stack理解执行流程\n// 点击调用栈中的函数名跳转到对应代码\n\n// 5. 在Console中执行代码测试修复方案\n// 在暂停状态下可以修改变量值测试\nuser.name = 'Test User'\ncart.items.push({ id: 1, price: 10 })\n\n// 6. 使用Step Into/Over/Out控制执行\n// Step Into (F11): 进入函数内部\n// Step Over (F10): 跳过函数调用\n// Step Out (Shift+F11): 跳出当前函数"
-  },
-  "networkAnalysis": {
-    "title": "网络请求分析",
-    "language": "javascript",
-    "code": "// Network面板功能\n// 1. 请求列表\n//    - Name: 请求的文件名\n//    - Status: HTTP状态码\n//    - Type: 资源类型 (Document, Stylesheet, Script等)\n//    - Initiator: 请求发起者\n//    - Size: 文件大小\n//    - Time: 请求耗时\n//    - Waterfall: 时间线图表\n\n// 2. 请求详情\n//    - Headers: 请求和响应头\n//    - Preview: 响应内容预览\n//    - Response: 原始响应数据\n//    - Timing: 详细时间分析\n\n// 3. 网络条件模拟\n//    - Fast 3G, Slow 3G\n//    - Offline模式\n//    - 自定义网络速度\n\n// 过滤请求\n// 按类型过滤: XHR, JS, CSS, Img, Media, Font, Doc, WS, Other\n// 按状态过滤: 2xx, 3xx, 4xx, 5xx\n// 按域名过滤: domain:example.com\n// 按大小过滤: larger-than:1000\n\n// 请求时间分析\nconst timing = {\n  'Queueing': '请求排队时间',\n  'Stalled': '请求停滞时间',\n  'DNS Lookup': 'DNS查询时间',\n  'Initial connection': '建立连接时间',\n  'SSL': 'SSL握手时间',\n  'Request sent': '发送请求时间',\n  'Waiting (TTFB)': '等待首字节时间',\n  'Content Download': '内容下载时间'\n}\n\n// 性能优化检查点\n// - 检查是否有404错误\n// - 查看资源大小是否合理\n// - 检查缓存策略\n// - 分析关键资源的加载时间\n// - 查看是否有重复请求"
-  },
-  "performanceOptimization": {
-    "title": "性能优化分析",
-    "language": "javascript",
-    "code": "// 关键指标分析\n// 1. DOMContentLoaded事件 (蓝线)\n//    - DOM解析完成时间\n//    - 通常应该在1-2秒内\n\n// 2. Load事件 (红线)\n//    - 所有资源加载完成时间\n//    - 包括图片、样式表、脚本等\n\n// 3. First Paint (FP)\n//    - 首次绘制时间\n//    - 用户看到页面内容的时间\n\n// 4. First Contentful Paint (FCP)\n//    - 首次内容绘制时间\n//    - 用户看到有意义内容的时间\n\n// 5. Largest Contentful Paint (LCP)\n//    - 最大内容绘制时间\n//    - 主要内容加载完成时间\n\n// 优化建议\n// 1. 减少HTTP请求数量\n//    - 合并CSS/JS文件\n//    - 使用CSS Sprites\n//    - 内联小图片为base64\n\n// 2. 启用压缩\n//    - Gzip/Brotli压缩\n//    - 图片压缩优化\n\n// 3. 使用CDN\n//    - 减少服务器距离\n//    - 提高资源加载速度\n\n// 4. 优化关键渲染路径\n//    - 内联关键CSS\n//    - 异步加载非关键资源\n//    - 预加载重要资源\n\n// 资源优化\n// - 压缩图片 (WebP, AVIF格式)\n// - 懒加载非关键图片\n// - 使用适当的图片尺寸\n// - 移除未使用的CSS/JS代码\n// - 代码分割和按需加载"
-  },
-  "performanceRecording": {
-    "title": "Performance 性能录制",
-    "language": "javascript",
-    "code": "// 性能录制步骤\n// 1. 打开Performance面板\n// 2. 点击录制按钮 (圆形按钮)\n// 3. 执行要分析的操作\n// 4. 点击停止录制\n// 5. 分析性能报告\n\n// 性能报告解读\n// 1. FPS图表\n//    - 显示帧率变化\n//    - 绿色条越高表示帧率越好\n//    - 红色区域表示性能问题\n\n// 2. CPU使用率\n//    - 显示CPU使用情况\n//    - 不同颜色代表不同类型的任务\n\n// 3. 网络活动\n//    - 显示网络请求时间线\n\n// 4. 主线程活动\n//    - 显示JavaScript执行详情\n//    - 可以看到函数调用堆栈\n\n// 性能问题识别\n// 1. 长任务 (Long Tasks)\n//    - 超过50ms的任务\n//    - 会阻塞主线程\n\n// 2. 布局抖动 (Layout Thrashing)\n//    - 频繁的重排重绘\n//    - 紫色区域表示布局计算\n\n// 3. 内存泄漏\n//    - 内存使用持续增长\n//    - 垃圾回收频繁\n\n// JavaScript性能优化\n// 1. 避免长时间运行的脚本\nfunction processLargeArray(arr) {\n  // 分批处理\n  const batchSize = 1000\n  let index = 0\n  \n  function processBatch() {\n    const endIndex = Math.min(index + batchSize, arr.length)\n    \n    for (let i = index; i < endIndex; i++) {\n      // 处理数组项\n      processItem(arr[i])\n    }\n    \n    index = endIndex\n    \n    if (index < arr.length) {\n      // 使用requestAnimationFrame继续处理\n      requestAnimationFrame(processBatch)\n    }\n  }\n  \n  processBatch()\n}\n\n// 2. 优化DOM操作\n// 避免频繁的DOM查询\nconst element = document.getElementById('myElement') // 缓存DOM引用\n\n// 批量DOM操作\nconst fragment = document.createDocumentFragment()\nfor (let i = 0; i < 100; i++) {\n  const div = document.createElement('div')\n  fragment.appendChild(div)\n}\ndocument.body.appendChild(fragment)\n\n// 3. 优化动画\n// 使用CSS动画而非JavaScript\n// 只对transform和opacity做动画\n// 使用will-change提示浏览器优化"
-  }
+    "shortcuts": {
+        "title": "Chrome DevTools 快捷键",
+        "language": "text",
+        "code": "# 打开DevTools\nF12 或 Ctrl+Shift+I (Windows/Linux)\nCmd+Option+I (Mac)\n\n# 快速切换面板\nCtrl+[ / Ctrl+] - 切换面板\nCtrl+Shift+D - 切换到设备模式\nCtrl+Shift+C - 选择元素\n\n# 调试快捷键\nF8 - 继续执行\nF10 - 单步执行\nF11 - 步入函数\nShift+F11 - 步出函数\nCtrl+Shift+F5 - 硬刷新\n\n# Console快捷键\nCtrl+L - 清空控制台\nCtrl+Shift+K - 打开Console\nEsc - 在任何面板显示/隐藏Console抽屉\n\n# Elements面板\nCtrl+Shift+C - 选择元素工具\nH - 隐藏/显示选中元素\nDelete - 删除选中元素\nF2 - 编辑HTML\n\n# Sources面板\nCtrl+O - 快速打开文件\nCtrl+Shift+O - 跳转到函数\nCtrl+G - 跳转到行\nCtrl+/ - 注释/取消注释\nCtrl+D - 选择下一个相同单词"
+    },
+    "elementsPanel": {
+        "title": "Elements 面板 - DOM检查与修改",
+        "language": "javascript",
+        "code": "// 选择元素的方法\n// 1. 点击选择工具 (Ctrl+Shift+C)\n// 2. 右键页面元素 -> 检查\n// 3. 在Console中使用选择器\n$('selector') // 选择第一个匹配元素\n$$('selector') // 选择所有匹配元素\n$0 // 当前选中的元素\n$1, $2, $3, $4 // 之前选中的元素\n\n// DOM操作\n// 修改元素内容\n$0.textContent = '新内容'\n$0.innerHTML = '<span>新HTML</span>'\n\n// 添加/删除元素\n// 右键 -> Delete element\n// 右键 -> Duplicate element\n// 右键 -> Copy -> Copy element/outerHTML\n\n// 修改属性\n$0.setAttribute('class', 'new-class')\n$0.removeAttribute('disabled')\n\n// 实时编辑HTML\n// 双击元素标签名或属性\n// 按F2键编辑整个HTML块"
+    },
+    "stylesDebugging": {
+        "title": "CSS样式调试",
+        "language": "css",
+        "code": "/* Styles面板功能 */\n/* 1. 实时修改CSS属性 */\n/*    - 点击属性值直接编辑 */\n/*    - 使用上下箭头调整数值 */\n/*    - 点击颜色块打开颜色选择器 */\n\n/* 2. 查看样式来源 */\n/*    - user agent stylesheet (浏览器默认) */\n/*    - 外部样式表 */\n/*    - 内联样式 */\n/*    - 计算后的样式 */\n\n/* 3. 样式优先级 */\n/*    - 被覆盖的样式会有删除线 */\n/*    - !important 标记 */\n/*    - 特异性计算 */\n\n/* 有用的CSS调试技巧 */\n* { \n  border: 1px solid red !important; \n  /* 查看所有元素边界 */\n}\n\n/* 检查box-sizing属性 */\n.element {\n  box-sizing: border-box; /* 或 content-box */\n}\n\n/* 查看margin/padding的可视化显示 */\n/* 在Elements面板中选中元素，右侧会显示盒模型图 */\n\n/* 强制状态调试 */\n/* 右键元素 -> Force state -> :hover, :active, :focus, :visited */\n\n/* 动画调试 */\n/* Animations面板可以控制动画播放速度和暂停 */"
+    },
+    "responsiveDesign": {
+        "title": "响应式设计调试",
+        "language": "javascript",
+        "code": "// 设备模拟\n// 1. 点击设备图标 (Ctrl+Shift+M)\n// 2. 选择预设设备或自定义尺寸\n// 3. 模拟不同的DPR (Device Pixel Ratio)\n// 4. 模拟网络条件\n\n// 常用设备尺寸\nconst devices = {\n  'iPhone SE': { width: 375, height: 667, dpr: 2 },\n  'iPhone 12': { width: 390, height: 844, dpr: 3 },\n  'iPad': { width: 768, height: 1024, dpr: 2 },\n  'Desktop': { width: 1920, height: 1080, dpr: 1 }\n}\n\n// 媒体查询调试\n// 在Sources面板可以看到当前激活的媒体查询\n\n// 视口调试\n// - 查看视口尺寸信息\n// - 测试不同方向 (横屏/竖屏)\n// - 模拟触摸事件\n\n// 响应式图片调试\n// 检查srcset和sizes属性\n// 查看实际加载的图片资源\n\n// CSS Grid和Flexbox调试\n// Elements面板会显示Grid和Flex的可视化布局线\n// 点击grid或flex标记查看布局详情"
+    },
+    "consoleAPI": {
+        "title": "Console API详解",
+        "language": "javascript",
+        "code": "// 基本日志输出\nconsole.log('普通日志')\nconsole.info('信息日志')\nconsole.warn('警告日志')\nconsole.error('错误日志')\n\n// 格式化输出\nconsole.log('%c样式化文本', 'color: red; font-size: 20px;')\nconsole.log('数字: %d, 字符串: %s', 42, 'hello')\n\n// 对象输出\nconst obj = { name: 'John', age: 30 }\nconsole.log(obj) // 可展开的对象\nconsole.dir(obj) // 对象的详细信息\nconsole.table([obj, { name: 'Jane', age: 25 }]) // 表格形式\n\n// 分组输出\nconsole.group('用户信息')\nconsole.log('姓名: John')\nconsole.log('年龄: 30')\nconsole.groupEnd()\n\n// 断言\nconsole.assert(1 === 2, '1不等于2') // 只有断言失败时才输出\n\n// 时间测量\nconsole.time('操作耗时')\n// 执行一些操作\nconsole.timeEnd('操作耗时')\n\n// 计数器\nconsole.count('点击次数')\nconsole.countReset('点击次数')\n\n// 堆栈跟踪\nconsole.trace('调用堆栈')\n\n// 清空控制台\nconsole.clear()"
+    },
+    "consoleUtilities": {
+        "title": "Console实用工具",
+        "language": "javascript",
+        "code": "// 选择器快捷方式\n$('selector') // document.querySelector()\n$$('selector') // document.querySelectorAll()\n$x('//xpath') // XPath选择器\n\n// 元素引用\n$0 // 当前在Elements面板选中的元素\n$1, $2, $3, $4 // 之前选中的元素历史\n\n// 检查函数\ninspect(object) // 跳转到对象定义\ndir(object) // 显示对象的所有属性\nkeys(object) // 获取对象的所有键\nvalues(object) // 获取对象的所有值\n\n// 事件监听\nmonitorEvents(element, 'click') // 监控元素的点击事件\nmonitorEvents(window, ['resize', 'scroll']) // 监控多个事件\nunmonitorEvents(element) // 停止监控\n\n// 函数监控\nmonitor(function) // 监控函数调用\nunmonitor(function) // 停止监控\n\n// 性能分析\nprofile('性能分析') // 开始性能分析\nprofileEnd('性能分析') // 结束性能分析\n\n// 复制到剪贴板\ncopy(object) // 复制对象的JSON字符串到剪贴板\n\n// 获取事件监听器\ngetEventListeners(element) // 获取元素上的所有事件监听器"
+    },
+    "breakpointDebugging": {
+        "title": "断点调试",
+        "language": "javascript",
+        "code": "// 断点类型\n// 1. 行断点 - 点击行号设置\n// 2. 条件断点 - 右键行号设置条件\n// 3. DOM断点 - 在Elements面板右键元素设置\n// 4. XHR断点 - 在Sources面板设置网络请求断点\n// 5. 事件监听器断点 - 在Sources面板设置\n\n// 条件断点示例\n// 右键行号，输入条件表达式\n// 只有当 i > 5 时才暂停\nfor (let i = 0; i < 10; i++) {\n  // 在此行设置条件断点: i > 5\n  console.log(i)\n}\n\n// 代码中设置断点\ndebugger // 程序会在此处暂停\n\n// DOM断点类型\n// - subtree modifications (子树修改)\n// - attribute modifications (属性修改)\n// - node removal (节点删除)\n\n// XHR/Fetch断点\n// 可以设置URL模式，当匹配的请求发生时暂停\n\n// 事件断点\n// 可以在特定事件触发时暂停，如:\n// - Mouse events (click, mousedown, etc.)\n// - Keyboard events (keydown, keyup, etc.)\n// - Touch events (touchstart, touchend, etc.)\n\n// 异常断点\n// 在Sources面板可以设置:\n// - Pause on exceptions (所有异常)\n// - Pause on caught exceptions (已捕获的异常)"
+    },
+    "variableWatching": {
+        "title": "变量监视与作用域",
+        "language": "javascript",
+        "code": "// Watch面板\n// - 添加表达式监视变量值变化\n// - 支持复杂表达式: obj.prop, arr[0], func()\n\n// Scope面板\n// - Local: 当前函数作用域\n// - Closure: 闭包变量\n// - Global: 全局变量\n\n// 调试技巧\n// 1. 使用console.log()输出中间值\nfunction calculateTotal(items) {\n  let total = 0\n  for (let item of items) {\n    console.log('Processing item:', item) // 调试输出\n    total += item.price\n  }\n  console.log('Final total:', total) // 调试输出\n  return total\n}\n\n// 2. 利用条件断点减少无效暂停\n// 在循环中设置条件: i === 5\n\n// 3. 使用Watch监视关键变量\n// 添加表达式: user.isLoggedIn, cart.items.length\n\n// 4. 检查Call Stack理解执行流程\n// 点击调用栈中的函数名跳转到对应代码\n\n// 5. 在Console中执行代码测试修复方案\n// 在暂停状态下可以修改变量值测试\nuser.name = 'Test User'\ncart.items.push({ id: 1, price: 10 })\n\n// 6. 使用Step Into/Over/Out控制执行\n// Step Into (F11): 进入函数内部\n// Step Over (F10): 跳过函数调用\n// Step Out (Shift+F11): 跳出当前函数"
+    },
+    "networkAnalysis": {
+        "title": "网络请求分析",
+        "language": "javascript",
+        "code": "// Network面板功能\n// 1. 请求列表\n//    - Name: 请求的文件名\n//    - Status: HTTP状态码\n//    - Type: 资源类型 (Document, Stylesheet, Script等)\n//    - Initiator: 请求发起者\n//    - Size: 文件大小\n//    - Time: 请求耗时\n//    - Waterfall: 时间线图表\n\n// 2. 请求详情\n//    - Headers: 请求和响应头\n//    - Preview: 响应内容预览\n//    - Response: 原始响应数据\n//    - Timing: 详细时间分析\n\n// 3. 网络条件模拟\n//    - Fast 3G, Slow 3G\n//    - Offline模式\n//    - 自定义网络速度\n\n// 过滤请求\n// 按类型过滤: XHR, JS, CSS, Img, Media, Font, Doc, WS, Other\n// 按状态过滤: 2xx, 3xx, 4xx, 5xx\n// 按域名过滤: domain:example.com\n// 按大小过滤: larger-than:1000\n\n// 请求时间分析\nconst timing = {\n  'Queueing': '请求排队时间',\n  'Stalled': '请求停滞时间',\n  'DNS Lookup': 'DNS查询时间',\n  'Initial connection': '建立连接时间',\n  'SSL': 'SSL握手时间',\n  'Request sent': '发送请求时间',\n  'Waiting (TTFB)': '等待首字节时间',\n  'Content Download': '内容下载时间'\n}\n\n// 性能优化检查点\n// - 检查是否有404错误\n// - 查看资源大小是否合理\n// - 检查缓存策略\n// - 分析关键资源的加载时间\n// - 查看是否有重复请求"
+    },
+    "performanceOptimization": {
+        "title": "性能优化分析",
+        "language": "javascript",
+        "code": "// 关键指标分析\n// 1. DOMContentLoaded事件 (蓝线)\n//    - DOM解析完成时间\n//    - 通常应该在1-2秒内\n\n// 2. Load事件 (红线)\n//    - 所有资源加载完成时间\n//    - 包括图片、样式表、脚本等\n\n// 3. First Paint (FP)\n//    - 首次绘制时间\n//    - 用户看到页面内容的时间\n\n// 4. First Contentful Paint (FCP)\n//    - 首次内容绘制时间\n//    - 用户看到有意义内容的时间\n\n// 5. Largest Contentful Paint (LCP)\n//    - 最大内容绘制时间\n//    - 主要内容加载完成时间\n\n// 优化建议\n// 1. 减少HTTP请求数量\n//    - 合并CSS/JS文件\n//    - 使用CSS Sprites\n//    - 内联小图片为base64\n\n// 2. 启用压缩\n//    - Gzip/Brotli压缩\n//    - 图片压缩优化\n\n// 3. 使用CDN\n//    - 减少服务器距离\n//    - 提高资源加载速度\n\n// 4. 优化关键渲染路径\n//    - 内联关键CSS\n//    - 异步加载非关键资源\n//    - 预加载重要资源\n\n// 资源优化\n// - 压缩图片 (WebP, AVIF格式)\n// - 懒加载非关键图片\n// - 使用适当的图片尺寸\n// - 移除未使用的CSS/JS代码\n// - 代码分割和按需加载"
+    },
+    "performanceRecording": {
+        "title": "Performance 性能录制",
+        "language": "javascript",
+        "code": "// 性能录制步骤\n// 1. 打开Performance面板\n// 2. 点击录制按钮 (圆形按钮)\n// 3. 执行要分析的操作\n// 4. 点击停止录制\n// 5. 分析性能报告\n\n// 性能报告解读\n// 1. FPS图表\n//    - 显示帧率变化\n//    - 绿色条越高表示帧率越好\n//    - 红色区域表示性能问题\n\n// 2. CPU使用率\n//    - 显示CPU使用情况\n//    - 不同颜色代表不同类型的任务\n\n// 3. 网络活动\n//    - 显示网络请求时间线\n\n// 4. 主线程活动\n//    - 显示JavaScript执行详情\n//    - 可以看到函数调用堆栈\n\n// 性能问题识别\n// 1. 长任务 (Long Tasks)\n//    - 超过50ms的任务\n//    - 会阻塞主线程\n\n// 2. 布局抖动 (Layout Thrashing)\n//    - 频繁的重排重绘\n//    - 紫色区域表示布局计算\n\n// 3. 内存泄漏\n//    - 内存使用持续增长\n//    - 垃圾回收频繁\n\n// JavaScript性能优化\n// 1. 避免长时间运行的脚本\nfunction processLargeArray(arr) {\n  // 分批处理\n  const batchSize = 1000\n  let index = 0\n  \n  function processBatch() {\n    const endIndex = Math.min(index + batchSize, arr.length)\n    \n    for (let i = index; i < endIndex; i++) {\n      // 处理数组项\n      processItem(arr[i])\n    }\n    \n    index = endIndex\n    \n    if (index < arr.length) {\n      // 使用requestAnimationFrame继续处理\n      requestAnimationFrame(processBatch)\n    }\n  }\n  \n  processBatch()\n}\n\n// 2. 优化DOM操作\n// 避免频繁的DOM查询\nconst element = document.getElementById('myElement') // 缓存DOM引用\n\n// 批量DOM操作\nconst fragment = document.createDocumentFragment()\nfor (let i = 0; i < 100; i++) {\n  const div = document.createElement('div')\n  fragment.appendChild(div)\n}\ndocument.body.appendChild(fragment)\n\n// 3. 优化动画\n// 使用CSS动画而非JavaScript\n// 只对transform和opacity做动画\n// 使用will-change提示浏览器优化"
+    }
 }

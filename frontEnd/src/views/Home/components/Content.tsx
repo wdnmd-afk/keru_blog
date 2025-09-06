@@ -1,5 +1,9 @@
-import React from 'react';
-import { Card, Tag, Avatar, Button } from 'antd';
+import lyf2Image from '@/assets/images/bg.png'
+import bookImage from '@/assets/images/book.png'
+import logoImage from '@/assets/images/k.jpg'
+import lyfImage from '@/assets/images/lyf.png'
+import technologyImage from '@/assets/images/technology.png'
+import style from '@/styles/home.module.scss'
 import {
     BookOutlined,
     CodeOutlined,
@@ -9,15 +13,10 @@ import {
     MessageOutlined,
     ShareAltOutlined,
     UserOutlined,
-} from '@ant-design/icons';
-import style from '@/styles/home.module.scss';
-import lyf2Image from '@/assets/images/bg.png';
-import bookImage from '@/assets/images/book.png';
-import logoImage from '@/assets/images/k.jpg';
-import lyfImage from '@/assets/images/lyf.png';
-import technologyImage from '@/assets/images/technology.png';
+} from '@ant-design/icons'
+import { Avatar, Button, Card, Tag } from 'antd'
 
-const { Meta } = Card;
+const { Meta } = Card
 
 // 模拟数据
 const cardData = [
@@ -143,21 +142,21 @@ const cardData = [
         type: 'technology',
         height: 'tall',
     },
-];
+]
 
 const HomeContent = () => {
     const getCardIcon = (type: string) => {
         switch (type) {
             case 'technology':
-                return <CodeOutlined />;
+                return <CodeOutlined />
             case 'books':
-                return <BookOutlined />;
+                return <BookOutlined />
             case 'gallery':
-                return <FileTextOutlined />;
+                return <FileTextOutlined />
             default:
-                return <UserOutlined />;
+                return <UserOutlined />
         }
-    };
+    }
 
     const getTagColor = (tag: string) => {
         const colorMap: { [key: string]: string } = {
@@ -171,9 +170,9 @@ const HomeContent = () => {
             书籍: 'magenta',
             摄影: 'lime',
             艺术: 'pink',
-        };
-        return colorMap[tag] || 'default';
-    };
+        }
+        return colorMap[tag] || 'default'
+    }
 
     return (
         <div className={style.home_card_box}>
@@ -192,7 +191,7 @@ const HomeContent = () => {
                             </div>
                             <div className={style.card_tags_overlay}>
                                 {item.tags.map((tag) => (
-                                    <Tag key={tag} color={getTagColor(tag)} size="small">
+                                    <Tag key={tag} color={getTagColor(tag)}>
                                         {tag}
                                     </Tag>
                                 ))}
@@ -224,7 +223,7 @@ const HomeContent = () => {
                 </Card>
             ))}
         </div>
-    );
-};
+    )
+}
 
-export default HomeContent;
+export default HomeContent

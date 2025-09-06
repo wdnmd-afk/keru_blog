@@ -1,47 +1,47 @@
 {
-  "primitiveTypes": {
-    "title": "TypeScript 原始类型",
-    "language": "typescript",
-    "code": "// 布尔类型\nlet isDone: boolean = false\nlet isActive: boolean = true\n\n// 数字类型\nlet decimal: number = 6\nlet hex: number = 0xf00d\nlet binary: number = 0b1010\nlet octal: number = 0o744\nlet big: bigint = 100n\n\n// 字符串类型\nlet color: string = \"blue\"\nlet fullName: string = `Bob Bobbington`\nlet age: number = 37\nlet sentence: string = `Hello, my name is ${fullName}.`\n\n// 空值类型\nlet unusable: void = undefined\nlet u: undefined = undefined\nlet n: null = null"
-  },
-  "specialTypes": {
-    "title": "特殊类型",
-    "language": "typescript",
-    "code": "// any 类型 - 任意类型（尽量避免使用）\nlet notSure: any = 4\nnotSure = \"maybe a string instead\"\nnotSure = false\n\n// unknown 类型 - 类型安全的 any\nlet userInput: unknown\nlet userName: string\n\nuserInput = 5\nuserInput = \"hello\"\n\n// 使用前需要类型检查\nif (typeof userInput === \"string\") {\n  userName = userInput // ✅ 安全\n}\n\n// never 类型 - 永不存在的值的类型\nfunction error(message: string): never {\n  throw new Error(message)\n}\n\nfunction infiniteLoop(): never {\n  while (true) {}\n}"
-  },
-  "arrayTypes": {
-    "title": "数组类型",
-    "language": "typescript",
-    "code": "// 数组类型的两种写法\nlet list1: number[] = [1, 2, 3]\nlet list2: Array<number> = [1, 2, 3]\n\n// 字符串数组\nlet fruits: string[] = [\"apple\", \"banana\", \"orange\"]\n\n// 混合类型数组\nlet mixed: (string | number)[] = [\"hello\", 42, \"world\"]\n\n// 只读数组\nlet readonlyList: ReadonlyArray<number> = [1, 2, 3]\n// readonlyList[0] = 4 // ❌ 错误：只读数组不能修改"
-  },
-  "tupleTypes": {
-    "title": "元组类型",
-    "language": "typescript",
-    "code": "// 元组类型 - 固定长度和类型的数组\nlet x: [string, number]\nx = [\"hello\", 10] // ✅ 正确\n// x = [10, \"hello\"] // ❌ 错误：类型顺序不匹配\n\n// 访问元组元素\nconsole.log(x[0].substring(1)) // ✅ string 方法\nconsole.log(x[1].toFixed(2))   // ✅ number 方法\n\n// 可选元组元素\nlet optionalTuple: [string, number?] = [\"hello\"]\n\n// 剩余元素\nlet restTuple: [string, ...number[]] = [\"hello\", 1, 2, 3]\n\n// 命名元组\nlet namedTuple: [name: string, age: number] = [\"Alice\", 30]"
-  },
-  "objectTypes": {
-    "title": "对象类型注解",
-    "language": "typescript",
-    "code": "// 对象类型注解\nlet user: {\n  name: string\n  age: number\n  email?: string  // 可选属性\n  readonly id: number  // 只读属性\n} = {\n  name: \"Alice\",\n  age: 30,\n  id: 1\n}\n\n// 索引签名\nlet scores: {\n  [subject: string]: number\n} = {\n  math: 95,\n  english: 88,\n  science: 92\n}\n\n// 方法类型\nlet calculator: {\n  add(a: number, b: number): number\n  subtract: (a: number, b: number) => number\n} = {\n  add(a, b) { return a + b },\n  subtract: (a, b) => a - b\n}"
-  },
-  "interfaceDefinition": {
-    "title": "接口定义",
-    "language": "typescript",
-    "code": "// 接口定义对象类型\ninterface User {\n  readonly id: number\n  name: string\n  age: number\n  email?: string\n  greet(): string\n}\n\n// 实现接口\nconst user: User = {\n  id: 1,\n  name: \"Alice\",\n  age: 30,\n  greet() {\n    return `Hello, I'm ${this.name}`\n  }\n}\n\n// 接口继承\ninterface Admin extends User {\n  permissions: string[]\n  isActive: boolean\n}\n\nconst admin: Admin = {\n  id: 2,\n  name: \"Bob\",\n  age: 35,\n  permissions: [\"read\", \"write\", \"delete\"],\n  isActive: true,\n  greet() {\n    return `Hello, I'm Admin ${this.name}`\n  }\n}"
-  },
-  "functionTypes": {
-    "title": "函数类型",
-    "language": "typescript",
-    "code": "// 函数声明\nfunction add(x: number, y: number): number {\n  return x + y\n}\n\n// 函数表达式\nconst multiply = function(x: number, y: number): number {\n  return x * y\n}\n\n// 箭头函数\nconst divide = (x: number, y: number): number => x / y\n\n// 可选参数\nfunction greet(name: string, greeting?: string): string {\n  return `${greeting || \"Hello\"}, ${name}!`\n}\n\n// 默认参数\nfunction createUser(name: string, age: number = 18): User {\n  return { name, age }\n}\n\n// 剩余参数\nfunction sum(...numbers: number[]): number {\n  return numbers.reduce((total, num) => total + num, 0)\n}\n\n// 函数重载\nfunction format(value: string): string\nfunction format(value: number): string\nfunction format(value: boolean): string\nfunction format(value: any): string {\n  return String(value)\n}"
-  },
-  "typeAssertion": {
-    "title": "类型断言",
-    "language": "typescript",
-    "code": "// 类型断言的两种语法\nlet someValue: unknown = \"this is a string\"\n\n// 尖括号语法\nlet strLength1: number = (<string>someValue).length\n\n// as 语法（推荐，在 JSX 中必须使用）\nlet strLength2: number = (someValue as string).length\n\n// 非空断言操作符\nfunction processUser(user?: User) {\n  // 确定 user 不为 null/undefined 时使用\n  console.log(user!.name)\n}\n\n// 常量断言\nlet colors = [\"red\", \"green\", \"blue\"] as const\n// colors 的类型是 readonly [\"red\", \"green\", \"blue\"]"
-  },
-  "unionAndIntersection": {
-    "title": "联合类型和交叉类型",
-    "language": "typescript",
-    "code": "// 联合类型\nlet id: string | number\nid = \"abc123\"  // ✅\nid = 123       // ✅\n// id = true   // ❌ 错误\n\n// 类型守卫\nfunction printId(id: string | number) {\n  if (typeof id === \"string\") {\n    console.log(id.toUpperCase()) // TypeScript 知道这里 id 是 string\n  } else {\n    console.log(id.toFixed(2))    // TypeScript 知道这里 id 是 number\n  }\n}\n\n// 交叉类型\ninterface Colorful {\n  color: string\n}\n\ninterface Circle {\n  radius: number\n}\n\ntype ColorfulCircle = Colorful & Circle\n\nconst cc: ColorfulCircle = {\n  color: \"red\",\n  radius: 42\n}"
-  }
+    "primitiveTypes": {
+        "title": "TypeScript 原始类型",
+        "language": "typescript",
+        "code": "// 布尔类型\nlet isDone: boolean = false\nlet isActive: boolean = true\n\n// 数字类型\nlet decimal: number = 6\nlet hex: number = 0xf00d\nlet binary: number = 0b1010\nlet octal: number = 0o744\nlet big: bigint = 100n\n\n// 字符串类型\nlet color: string = \"blue\"\nlet fullName: string = `Bob Bobbington`\nlet age: number = 37\nlet sentence: string = `Hello, my name is ${fullName}.`\n\n// 空值类型\nlet unusable: void = undefined\nlet u: undefined = undefined\nlet n: null = null"
+    },
+    "specialTypes": {
+        "title": "特殊类型",
+        "language": "typescript",
+        "code": "// any 类型 - 任意类型（尽量避免使用）\nlet notSure: any = 4\nnotSure = \"maybe a string instead\"\nnotSure = false\n\n// unknown 类型 - 类型安全的 any\nlet userInput: unknown\nlet userName: string\n\nuserInput = 5\nuserInput = \"hello\"\n\n// 使用前需要类型检查\nif (typeof userInput === \"string\") {\n  userName = userInput // ✅ 安全\n}\n\n// never 类型 - 永不存在的值的类型\nfunction error(message: string): never {\n  throw new Error(message)\n}\n\nfunction infiniteLoop(): never {\n  while (true) {}\n}"
+    },
+    "arrayTypes": {
+        "title": "数组类型",
+        "language": "typescript",
+        "code": "// 数组类型的两种写法\nlet list1: number[] = [1, 2, 3]\nlet list2: Array<number> = [1, 2, 3]\n\n// 字符串数组\nlet fruits: string[] = [\"apple\", \"banana\", \"orange\"]\n\n// 混合类型数组\nlet mixed: (string | number)[] = [\"hello\", 42, \"world\"]\n\n// 只读数组\nlet readonlyList: ReadonlyArray<number> = [1, 2, 3]\n// readonlyList[0] = 4 // ❌ 错误：只读数组不能修改"
+    },
+    "tupleTypes": {
+        "title": "元组类型",
+        "language": "typescript",
+        "code": "// 元组类型 - 固定长度和类型的数组\nlet x: [string, number]\nx = [\"hello\", 10] // ✅ 正确\n// x = [10, \"hello\"] // ❌ 错误：类型顺序不匹配\n\n// 访问元组元素\nconsole.log(x[0].substring(1)) // ✅ string 方法\nconsole.log(x[1].toFixed(2))   // ✅ number 方法\n\n// 可选元组元素\nlet optionalTuple: [string, number?] = [\"hello\"]\n\n// 剩余元素\nlet restTuple: [string, ...number[]] = [\"hello\", 1, 2, 3]\n\n// 命名元组\nlet namedTuple: [name: string, age: number] = [\"Alice\", 30]"
+    },
+    "objectTypes": {
+        "title": "对象类型注解",
+        "language": "typescript",
+        "code": "// 对象类型注解\nlet user: {\n  name: string\n  age: number\n  email?: string  // 可选属性\n  readonly id: number  // 只读属性\n} = {\n  name: \"Alice\",\n  age: 30,\n  id: 1\n}\n\n// 索引签名\nlet scores: {\n  [subject: string]: number\n} = {\n  math: 95,\n  english: 88,\n  science: 92\n}\n\n// 方法类型\nlet calculator: {\n  add(a: number, b: number): number\n  subtract: (a: number, b: number) => number\n} = {\n  add(a, b) { return a + b },\n  subtract: (a, b) => a - b\n}"
+    },
+    "interfaceDefinition": {
+        "title": "接口定义",
+        "language": "typescript",
+        "code": "// 接口定义对象类型\ninterface User {\n  readonly id: number\n  name: string\n  age: number\n  email?: string\n  greet(): string\n}\n\n// 实现接口\nconst user: User = {\n  id: 1,\n  name: \"Alice\",\n  age: 30,\n  greet() {\n    return `Hello, I'm ${this.name}`\n  }\n}\n\n// 接口继承\ninterface Admin extends User {\n  permissions: string[]\n  isActive: boolean\n}\n\nconst admin: Admin = {\n  id: 2,\n  name: \"Bob\",\n  age: 35,\n  permissions: [\"read\", \"write\", \"delete\"],\n  isActive: true,\n  greet() {\n    return `Hello, I'm Admin ${this.name}`\n  }\n}"
+    },
+    "functionTypes": {
+        "title": "函数类型",
+        "language": "typescript",
+        "code": "// 函数声明\nfunction add(x: number, y: number): number {\n  return x + y\n}\n\n// 函数表达式\nconst multiply = function(x: number, y: number): number {\n  return x * y\n}\n\n// 箭头函数\nconst divide = (x: number, y: number): number => x / y\n\n// 可选参数\nfunction greet(name: string, greeting?: string): string {\n  return `${greeting || \"Hello\"}, ${name}!`\n}\n\n// 默认参数\nfunction createUser(name: string, age: number = 18): User {\n  return { name, age }\n}\n\n// 剩余参数\nfunction sum(...numbers: number[]): number {\n  return numbers.reduce((total, num) => total + num, 0)\n}\n\n// 函数重载\nfunction format(value: string): string\nfunction format(value: number): string\nfunction format(value: boolean): string\nfunction format(value: any): string {\n  return String(value)\n}"
+    },
+    "typeAssertion": {
+        "title": "类型断言",
+        "language": "typescript",
+        "code": "// 类型断言的两种语法\nlet someValue: unknown = \"this is a string\"\n\n// 尖括号语法\nlet strLength1: number = (<string>someValue).length\n\n// as 语法（推荐，在 JSX 中必须使用）\nlet strLength2: number = (someValue as string).length\n\n// 非空断言操作符\nfunction processUser(user?: User) {\n  // 确定 user 不为 null/undefined 时使用\n  console.log(user!.name)\n}\n\n// 常量断言\nlet colors = [\"red\", \"green\", \"blue\"] as const\n// colors 的类型是 readonly [\"red\", \"green\", \"blue\"]"
+    },
+    "unionAndIntersection": {
+        "title": "联合类型和交叉类型",
+        "language": "typescript",
+        "code": "// 联合类型\nlet id: string | number\nid = \"abc123\"  // ✅\nid = 123       // ✅\n// id = true   // ❌ 错误\n\n// 类型守卫\nfunction printId(id: string | number) {\n  if (typeof id === \"string\") {\n    console.log(id.toUpperCase()) // TypeScript 知道这里 id 是 string\n  } else {\n    console.log(id.toFixed(2))    // TypeScript 知道这里 id 是 number\n  }\n}\n\n// 交叉类型\ninterface Colorful {\n  color: string\n}\n\ninterface Circle {\n  radius: number\n}\n\ntype ColorfulCircle = Colorful & Circle\n\nconst cc: ColorfulCircle = {\n  color: \"red\",\n  radius: 42\n}"
+    }
 }

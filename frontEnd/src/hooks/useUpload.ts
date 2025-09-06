@@ -1,8 +1,8 @@
 import { FileApi } from '@/api'
+import { UPLOAD_CONFIG } from '@/config/upload'
 import { ResumeStorage, type ResumeInfo } from '@/utils/resumeStorage'
-import { UPLOAD_CONFIG, UploadUtils } from '@/config/upload'
 import { UploadFile } from 'antd/es/upload/interface'
-import { useCallback, useState, useRef, useEffect } from 'react'
+import { useCallback, useEffect, useRef, useState } from 'react'
 
 interface UploadOptions {
     chunkSize?: number // 切片大小，默认 1M
@@ -160,9 +160,11 @@ export const useUpload = (options?: UploadOptions, events?: UploadEvents) => {
         currentTaskRef.current = taskArrItem
 
         progressTimerRef.current = setInterval(() => {
-            if (currentTaskRef.current &&
+            if (
+                currentTaskRef.current &&
                 currentTaskRef.current.state === UploadState.Uploading &&
-                currentTaskRef.current.percentage < 100) {
+                currentTaskRef.current.percentage < 100
+            ) {
                 updateProgress(currentTaskRef.current)
             } else {
                 // 自动清理无效定时器
@@ -202,7 +204,7 @@ export const useUpload = (options?: UploadOptions, events?: UploadEvents) => {
                         lastUploadTime: Date.now(),
                         chunkSize: taskArrItem.allChunkList[0]?.chunkSize || 1024 * 1024,
                         isPaused: true,
-                        pauseReason: '用户主动暂停'
+                        pauseReason: '用户主动暂停',
                     }
                 } else {
                     taskArrItem.resumeData.isPaused = true
@@ -212,17 +214,16 @@ export const useUpload = (options?: UploadOptions, events?: UploadEvents) => {
 
                 // 更新已上传分片列表
                 taskArrItem.resumeData.uploadedChunks = taskArrItem.allChunkList
-                    .filter(chunk => chunk.finish)
-                    .map(chunk => chunk.index)
+                    .filter((chunk) => chunk.finish)
+                    .map((chunk) => chunk.index)
 
                 console.log('=== 暂停状态保存 ===', {
                     fileName: taskArrItem.fileName,
                     state: taskArrItem.state,
                     isPaused: taskArrItem.resumeData.isPaused,
                     uploadedChunks: taskArrItem.resumeData.uploadedChunks.length,
-                    totalChunks: taskArrItem.resumeData.totalChunks
+                    totalChunks: taskArrItem.resumeData.totalChunks,
                 })
-
             } else {
                 taskArrItem.state = UploadState.Interrupted
             }
@@ -236,7 +237,7 @@ export const useUpload = (options?: UploadOptions, events?: UploadEvents) => {
         console.log(`=== 取消请求 ===`, {
             fileName: taskArrItem.fileName,
             whileRequestsCount: taskArrItem.whileRequests.length,
-            allChunkListCount: taskArrItem.allChunkList.length
+            allChunkListCount: taskArrItem.allChunkList.length,
         })
 
         // 取消还在请求中的所有接口
@@ -250,7 +251,7 @@ export const useUpload = (options?: UploadOptions, events?: UploadEvents) => {
         }
 
         // 同时取消所有分片的controller（防止遗漏）
-        taskArrItem.allChunkList.forEach(chunk => {
+        taskArrItem.allChunkList.forEach((chunk) => {
             if (chunk.controller && !chunk.finish) {
                 console.log(`强制取消分片${chunk.index}的请求`)
                 chunk.controller.abort()
@@ -262,7 +263,7 @@ export const useUpload = (options?: UploadOptions, events?: UploadEvents) => {
         })
 
         // 清空正在请求的列表，并重置这些分片的状态
-        taskArrItem.whileRequests.forEach(chunk => {
+        taskArrItem.whileRequests.forEach((chunk) => {
             if (!chunk.finish) {
                 console.log(`重置正在上传分片${chunk.index}的状态`)
                 chunk.loaded = 0
@@ -285,11 +286,17 @@ export const useUpload = (options?: UploadOptions, events?: UploadEvents) => {
         }
 
         // 修复进度计算逻辑 - 基于实际完成的分片
-        const completedChunks = taskArrItem.allChunkList.filter(chunk => chunk.finish)
-        const completedChunksSize = completedChunks.reduce((acc, chunk) => acc + chunk.chunkSize, 0)
+        const completedChunks = taskArrItem.allChunkList.filter((chunk) => chunk.finish)
+        const completedChunksSize = completedChunks.reduce(
+            (acc, chunk) => acc + (chunk.chunkSize || 0),
+            0
+        )
 
         // 正在上传的分片大小
-        const uploadingSize = taskArrItem.whileRequests.reduce((acc, chunk) => acc + (chunk.loaded || 0), 0)
+        const uploadingSize = taskArrItem.whileRequests.reduce(
+            (acc, chunk) => acc + (chunk.loaded || 0),
+            0
+        )
 
         // 总已上传大小
         const totalUploadedSize = completedChunksSize + uploadingSize
@@ -303,7 +310,7 @@ export const useUpload = (options?: UploadOptions, events?: UploadEvents) => {
             uploadingSize,
             totalUploadedSize,
             totalSize,
-            calculatedPercentage: (totalUploadedSize / totalSize) * 100
+            calculatedPercentage: (totalUploadedSize / totalSize) * 100,
         })
 
         // 添加进度值合理性检查
@@ -354,9 +361,9 @@ export const useUpload = (options?: UploadOptions, events?: UploadEvents) => {
             events?.onMergeStart?.(fileName)
 
             // 更新进度状态
-            setUploadProgress(prev => ({
+            setUploadProgress((prev) => ({
                 ...prev,
-                status: 'merging'
+                status: 'merging',
             }))
 
             const res = await FileApi.mergeChunk({
@@ -375,7 +382,6 @@ export const useUpload = (options?: UploadOptions, events?: UploadEvents) => {
             events?.onMergeComplete?.(fileName)
             events?.onSuccess?.(fileName, fileHash)
             events?.onComplete?.(fileName, true)
-
         } catch (error) {
             // 合并失败时确保停止定时器
             console.error(`文件合并失败: ${fileName}`, error)
@@ -386,10 +392,9 @@ export const useUpload = (options?: UploadOptions, events?: UploadEvents) => {
             const errorMessage = '文件合并失败！'
             taskArrItem.error = errorMessage
 
-            setErrors(prev => [...prev, errorMessage])
+            setErrors((prev) => [...prev, errorMessage])
             events?.onError?.(errorMessage, fileName)
             events?.onComplete?.(fileName, false)
-
         } finally {
             setIsMerging(false)
         }
@@ -398,13 +403,17 @@ export const useUpload = (options?: UploadOptions, events?: UploadEvents) => {
     const uploadSingleFile = (taskArrItem: FileChunkProp) => {
         // 关键修复：检查任务状态，如果不是上传中状态则停止
         if (taskArrItem.state !== UploadState.Uploading) {
-            console.log(`任务状态不是上传中，停止处理: ${taskArrItem.fileName}, 状态: ${taskArrItem.state}`)
+            console.log(
+                `任务状态不是上传中，停止处理: ${taskArrItem.fileName}, 状态: ${taskArrItem.state}`
+            )
             return false
         }
 
         // 检查错误次数，如果错误过多则暂停
         if (taskArrItem.errNumber > 3) {
-            console.log(`任务错误次数过多，暂停上传: ${taskArrItem.fileName}, 错误次数: ${taskArrItem.errNumber}`)
+            console.log(
+                `任务错误次数过多，暂停上传: ${taskArrItem.fileName}, 错误次数: ${taskArrItem.errNumber}`
+            )
             pauseUpload(taskArrItem, false)
             return false
         }
@@ -421,19 +430,25 @@ export const useUpload = (options?: UploadOptions, events?: UploadEvents) => {
         // 修复并发控制：降低并发数，避免服务器连接超时
         // 将最大并发数从6降低到3，提高连接稳定性
         const maxConcurrentRequests = 3
-        const concurrentPerFile = Math.max(1, Math.ceil(maxConcurrentRequests / isTaskArrIng.length))
+        const concurrentPerFile = Math.max(
+            1,
+            Math.ceil(maxConcurrentRequests / isTaskArrIng.length)
+        )
         setMaxRequest(concurrentPerFile)
 
         // 关键修复：从未完成的分片中选择要上传的分片，而不是清空allChunkList
-        const unfinishedChunks = taskArrItem.allChunkList.filter(chunk => !chunk.finish && !taskArrItem.whileRequests.some(w => w.index === chunk.index))
+        const unfinishedChunks = taskArrItem.allChunkList.filter(
+            (chunk) =>
+                !chunk.finish && !taskArrItem.whileRequests.some((w) => w.index === chunk.index)
+        )
 
         console.log('=== 选择上传分片 ===', {
             fileName: taskArrItem.fileName,
             totalChunks: taskArrItem.allChunkList.length,
-            finishedChunks: taskArrItem.allChunkList.filter(c => c.finish).length,
+            finishedChunks: taskArrItem.allChunkList.filter((c) => c.finish).length,
             unfinishedChunks: unfinishedChunks.length,
             currentWhileRequests: taskArrItem.whileRequests.length,
-            maxRequest
+            maxRequest,
         })
 
         // 从未完成的分片中选择最多maxRequest个进行上传
@@ -442,7 +457,10 @@ export const useUpload = (options?: UploadOptions, events?: UploadEvents) => {
         // 设置正在请求中的分片
         taskArrItem.whileRequests.push(...chunksToUpload)
 
-        console.log(`开始上传${chunksToUpload.length}个分片:`, chunksToUpload.map(c => c.index))
+        console.log(
+            `开始上传${chunksToUpload.length}个分片:`,
+            chunksToUpload.map((c) => c.index)
+        )
 
         // 单个分片请求（带重试机制）
         const uploadChunk = async (chunk: ChunkProp, retryCount = 0) => {
@@ -475,21 +493,27 @@ export const useUpload = (options?: UploadOptions, events?: UploadEvents) => {
             try {
                 // 在发起请求前再次检查状态
                 if (taskArrItem.state !== UploadState.Uploading) {
-                    console.log(`分片上传前状态检查失败: ${taskArrItem.fileName}, 状态: ${taskArrItem.state}`)
+                    console.log(
+                        `分片上传前状态检查失败: ${taskArrItem.fileName}, 状态: ${taskArrItem.state}`
+                    )
                     return
                 }
 
                 await FileApi.uploadFile(fd, {
                     signal: controller.signal,
-                    timeout: UPLOAD_CONFIG.TIMEOUT.CHUNK_UPLOAD,
                     onUploadProgress: (e: any) => {
                         chunk.loaded = e.loaded
                         updateProgress(taskArrItem)
                     },
                 })
 
-                // 修复状态检查：使用枚举而不是数字
-                if (taskArrItem.state === UploadState.Paused || taskArrItem.state === UploadState.Interrupted) {
+                // 检查任务是否在上传过程中被暂停或中断（异步状态变化）
+                // 使用类型断言告诉TypeScript这个比较是有意义的，因为状态可能在异步操作中被修改
+                const currentState = taskArrItem.state as UploadState
+                if (
+                    currentState === UploadState.Paused ||
+                    currentState === UploadState.Interrupted
+                ) {
                     console.log(`分片上传完成后检测到暂停/中断状态: ${taskArrItem.fileName}`)
                     return
                 }
@@ -500,9 +524,11 @@ export const useUpload = (options?: UploadOptions, events?: UploadEvents) => {
                 chunk.loaded = chunk.chunkSize // 确保loaded值正确
 
                 // 重新计算finishNumber，确保准确性
-                taskArrItem.finishNumber = taskArrItem.allChunkList.filter(c => c.finish).length
+                taskArrItem.finishNumber = taskArrItem.allChunkList.filter((c) => c.finish).length
 
-                console.log(`分片${chunk.index}上传完成，当前完成数: ${taskArrItem.finishNumber}/${taskArrItem.allChunkList.length}`)
+                console.log(
+                    `分片${chunk.index}上传完成，当前完成数: ${taskArrItem.finishNumber}/${taskArrItem.allChunkList.length}`
+                )
 
                 // 立即更新进度
                 updateProgress(taskArrItem)
@@ -519,7 +545,9 @@ export const useUpload = (options?: UploadOptions, events?: UploadEvents) => {
                     if (taskArrItem.state === UploadState.Uploading) {
                         uploadSingleFile(taskArrItem)
                     } else {
-                        console.log(`分片${chunk.index}完成，但任务状态不是上传中(${taskArrItem.state})，停止继续上传`)
+                        console.log(
+                            `分片${chunk.index}完成，但任务状态不是上传中(${taskArrItem.state})，停止继续上传`
+                        )
                     }
                 }
             } catch (e: any) {
@@ -531,24 +559,32 @@ export const useUpload = (options?: UploadOptions, events?: UploadEvents) => {
 
                 // 检查任务状态，如果已经不是上传中状态，则不处理错误
                 if (taskArrItem.state !== UploadState.Uploading) {
-                    console.log(`分片${chunk.index}上传失败，但任务已不是上传状态:`, taskArrItem.state)
+                    console.log(
+                        `分片${chunk.index}上传失败，但任务已不是上传状态:`,
+                        taskArrItem.state
+                    )
                     return
                 }
 
                 // 检查是否是网络错误
-                const isNetworkError = e.message?.includes('Network Error') ||
-                                     e.message?.includes('ERR_NETWORK') ||
-                                     e.code === 'ERR_NETWORK'
+                const isNetworkError =
+                    e.message?.includes('Network Error') ||
+                    e.message?.includes('ERR_NETWORK') ||
+                    e.code === 'ERR_NETWORK'
 
                 // 检查是否是连接超时错误
-                const isTimeoutError = e.code === 'ETIMEDOUT' ||
-                                     e.message?.includes('timeout') ||
-                                     e.message?.includes('ETIMEDOUT') ||
-                                     e.message?.includes('ERR_CONNECTION_TIMED_OUT')
+                const isTimeoutError =
+                    e.code === 'ETIMEDOUT' ||
+                    e.message?.includes('timeout') ||
+                    e.message?.includes('ETIMEDOUT') ||
+                    e.message?.includes('ERR_CONNECTION_TIMED_OUT')
 
                 // 网络错误或超时错误，进行重试
                 if ((isNetworkError || isTimeoutError) && retryCount < maxRetries) {
-                    console.warn(`分片${chunk.index}网络错误，${retryDelay}ms后进行第${retryCount + 1}次重试`, e.message)
+                    console.warn(
+                        `分片${chunk.index}网络错误，${retryDelay}ms后进行第${retryCount + 1}次重试`,
+                        e.message
+                    )
 
                     // 延迟后重试
                     setTimeout(async () => {
@@ -576,9 +612,15 @@ export const useUpload = (options?: UploadOptions, events?: UploadEvents) => {
 
                     // 通知用户连接问题
                     if (isTimeoutError || isNetworkError) {
-                        events?.onError?.(`网络连接异常，请检查网络连接后重试`, taskArrItem.fileName)
+                        events?.onError?.(
+                            `网络连接异常，请检查网络连接后重试`,
+                            taskArrItem.fileName
+                        )
                     } else {
-                        events?.onError?.(`上传失败: ${e.message || '未知错误'}`, taskArrItem.fileName)
+                        events?.onError?.(
+                            `上传失败: ${e.message || '未知错误'}`,
+                            taskArrItem.fileName
+                        )
                     }
                 } else {
                     // 非网络错误，直接重试
@@ -646,12 +688,13 @@ export const useUpload = (options?: UploadOptions, events?: UploadEvents) => {
         events?.onProgress?.(progressInfo)
 
         try {
-            // 添加上传进度监听和超时配置
+            // 添加上传进度监听
             const res = await FileApi.uploadFileSingle(fd, {
-                timeout: UPLOAD_CONFIG.TIMEOUT.SMALL_FILE_UPLOAD,
                 onUploadProgress: (progressEvent) => {
                     if (progressEvent.total && uploadTask.state === UploadState.Uploading) {
-                        const percentage = Math.round((progressEvent.loaded / progressEvent.total) * 100)
+                        const percentage = Math.round(
+                            (progressEvent.loaded / progressEvent.total) * 100
+                        )
 
                         // 更新任务进度
                         uploadTask.percentage = percentage
@@ -667,7 +710,7 @@ export const useUpload = (options?: UploadOptions, events?: UploadEvents) => {
                         }
                         events?.onProgress?.(progressInfo)
                     }
-                }
+                },
             })
 
             // 上传成功
@@ -778,7 +821,6 @@ export const useUpload = (options?: UploadOptions, events?: UploadEvents) => {
 
             // 逐步对单个文件进行切片上传
             uploadSingleFile(uploadTask)
-
         } catch (error) {
             uploadTask.state = UploadState.Failed
             uploadTask.error = error instanceof Error ? error.message : '大文件上传失败'
@@ -814,7 +856,7 @@ export const useUpload = (options?: UploadOptions, events?: UploadEvents) => {
                         startTime: Date.now(),
                     }
 
-                    setUploadFileList(prev => [...prev, uploadTask])
+                    setUploadFileList((prev) => [...prev, uploadTask])
 
                     // 触发开始事件
                     events?.onStart?.(file.name)
@@ -837,7 +879,7 @@ export const useUpload = (options?: UploadOptions, events?: UploadEvents) => {
                             fileSize: file.size,
                             chunkSize,
                             isSmallFile: file.size! <= chunkSize,
-                            strategy: file.size! <= chunkSize ? '小文件直接上传' : '大文件分片上传'
+                            strategy: file.size! <= chunkSize ? '小文件直接上传' : '大文件分片上传',
                         })
 
                         if (file.size! <= chunkSize) {
@@ -853,7 +895,7 @@ export const useUpload = (options?: UploadOptions, events?: UploadEvents) => {
                         uploadTask.error = errorMessage
                         stopProgressTimer() // 停止进度定时器
 
-                        setErrors(prev => [...prev, errorMessage])
+                        setErrors((prev) => [...prev, errorMessage])
                         events?.onError?.(errorMessage, file.name)
                         events?.onComplete?.(file.name, false)
 
@@ -873,220 +915,239 @@ export const useUpload = (options?: UploadOptions, events?: UploadEvents) => {
      * 暂停指定文件的上传
      * @param identifier 文件标识符（fileHash或fileName）
      */
-    const pauseFile = useCallback((identifier: string) => {
-        console.log('=== pauseFile被调用 ===', {
-            identifier,
-            uploadFileListLength: uploadFileList.length,
-            uploadTasks: uploadFileList.map(t => ({
-                fileName: t.fileName,
-                fileHash: t.fileHash,
-                state: t.state
-            }))
-        })
-
-        // 尝试通过fileHash查找
-        let task = uploadFileList.find(t => t.fileHash === identifier)
-
-        // 如果通过fileHash找不到，尝试通过fileName查找
-        if (!task) {
-            task = uploadFileList.find(t => t.fileName === identifier)
-            console.log('通过fileName查找任务:', task ? '找到' : '未找到')
-        }
-
-        if (task && task.state === UploadState.Uploading) {
-            console.log('找到上传中的任务，开始暂停:', task.fileName)
-
-            // 停止当前上传
-            pauseUpload(task, true)
-
-            console.log('暂停后任务状态:', {
-                fileName: task.fileName,
-                state: task.state,
-                stateEnum: UploadState.Paused,
-                isEqual: task.state === UploadState.Paused
+    const pauseFile = useCallback(
+        (identifier: string) => {
+            console.log('=== pauseFile被调用 ===', {
+                identifier,
+                uploadFileListLength: uploadFileList.length,
+                uploadTasks: uploadFileList.map((t) => ({
+                    fileName: t.fileName,
+                    fileHash: t.fileHash,
+                    state: t.state,
+                })),
             })
 
-            // 保存断点信息
-            const resumeInfo: ResumeInfo = {
-                fileHash: task.fileHash,
-                fileName: task.fileName,
-                fileSize: task.fileSize,
-                fileType: '', // 需要从原始文件获取
-                uploadedChunks: task.allChunkList.filter(chunk => chunk.finish).map(chunk => chunk.index),
-                totalChunks: task.allChunkList.length,
-                chunkSize: task.allChunkList[0]?.chunkSize || 1024 * 1024,
-                lastUploadTime: Date.now(),
-                percentage: task.percentage,
-                status: 'paused',
-                pauseReason: '用户主动暂停'
+            // 尝试通过fileHash查找
+            let task = uploadFileList.find((t) => t.fileHash === identifier)
+
+            // 如果通过fileHash找不到，尝试通过fileName查找
+            if (!task) {
+                task = uploadFileList.find((t) => t.fileName === identifier)
+                console.log('通过fileName查找任务:', task ? '找到' : '未找到')
             }
 
-            ResumeStorage.saveResumeInfo(task.fileHash, resumeInfo)
-            console.log(`文件已暂停: ${task.fileName}`)
-        } else {
-            console.warn('未找到可暂停的任务:', {
-                identifier,
-                taskFound: !!task,
-                taskState: task?.state,
-                expectedState: UploadState.Uploading
-            })
-        }
-    }, [uploadFileList, pauseUpload])
+            if (task && task.state === UploadState.Uploading) {
+                console.log('找到上传中的任务，开始暂停:', task.fileName)
+
+                // 停止当前上传
+                pauseUpload(task, true)
+
+                // 验证状态是否正确改变
+                // 使用类型断言告诉TypeScript这个比较是有意义的
+                const currentState = task.state as UploadState
+                console.log('暂停后任务状态:', {
+                    fileName: task.fileName,
+                    state: currentState,
+                    stateEnum: UploadState.Paused,
+                    isEqual: currentState === UploadState.Paused,
+                })
+
+                // 保存断点信息
+                const resumeInfo: ResumeInfo = {
+                    fileHash: task.fileHash,
+                    fileName: task.fileName,
+                    fileSize: task.fileSize,
+                    fileType: '', // 需要从原始文件获取
+                    uploadedChunks: task.allChunkList
+                        .filter((chunk) => chunk.finish)
+                        .map((chunk) => chunk.index),
+                    totalChunks: task.allChunkList.length,
+                    chunkSize: task.allChunkList[0]?.chunkSize || 1024 * 1024,
+                    lastUploadTime: Date.now(),
+                    percentage: task.percentage,
+                    status: 'paused',
+                    pauseReason: '用户主动暂停',
+                }
+
+                ResumeStorage.saveResumeInfo(task.fileHash, resumeInfo)
+                console.log(`文件已暂停: ${task.fileName}`)
+            } else {
+                console.warn('未找到可暂停的任务:', {
+                    identifier,
+                    taskFound: !!task,
+                    taskState: task?.state,
+                    expectedState: UploadState.Uploading,
+                })
+            }
+        },
+        [uploadFileList, pauseUpload]
+    )
 
     /**
      * 继续指定文件的上传
      * @param identifier 文件标识符（fileHash或fileName）
      */
-    const resumeFile = useCallback((identifier: string) => {
-        // 尝试通过fileHash查找
-        let task = uploadFileList.find(t => t.fileHash === identifier)
+    const resumeFile = useCallback(
+        (identifier: string) => {
+            // 尝试通过fileHash查找
+            let task = uploadFileList.find((t) => t.fileHash === identifier)
 
-        // 如果通过fileHash找不到，尝试通过fileName查找
-        if (!task) {
-            task = uploadFileList.find(t => t.fileName === identifier)
-        }
-
-        if (task && task.state === UploadState.Paused && task.resumeData) {
-            console.log('=== 开始继续上传 ===', {
-                fileName: task.fileName,
-                currentState: task.state,
-                hasResumeData: !!task.resumeData,
-                errNumber: task.errNumber
-            })
-
-            // 重置错误计数，给继续上传一个新的开始
-            task.errNumber = 0
-
-            // 更新任务状态
-            task.state = UploadState.Uploading
-            task.resumeData.isPaused = false
-            task.resumeData.pauseReason = undefined
-
-            // 更新本地存储状态
-            ResumeStorage.updateStatus(task.fileHash, 'uploading')
-
-            // 重新开始上传未完成的分片
-            const unfinishedChunks = task.allChunkList.filter(chunk => !chunk.finish)
-            const finishedChunks = task.allChunkList.filter(chunk => chunk.finish)
-
-            // 检查并修复分片状态不一致的问题
-            let fixedChunks = 0
-            task.allChunkList.forEach(chunk => {
-                if (!chunk.finish && chunk.loaded > 0 && !chunk.controller) {
-                    // 这个分片可能在暂停时被中断，重置其状态
-                    console.log(`修复分片${chunk.index}状态: loaded=${chunk.loaded} -> 0`)
-                    chunk.loaded = 0
-                    fixedChunks++
-                }
-            })
-
-            console.log('=== 继续上传分片状态 ===', {
-                fileName: task.fileName,
-                totalChunks: task.allChunkList.length,
-                finishedChunks: finishedChunks.length,
-                unfinishedChunks: unfinishedChunks.length,
-                fixedChunks: fixedChunks,
-                currentPercentage: task.percentage,
-                finishedChunkIndexes: finishedChunks.map(c => c.index),
-                unfinishedChunkIndexes: unfinishedChunks.map(c => c.index),
-                chunkDetails: task.allChunkList.map(c => ({
-                    index: c.index,
-                    finish: c.finish,
-                    loaded: c.loaded,
-                    hasController: !!c.controller
-                }))
-            })
-
-            if (unfinishedChunks.length > 0) {
-                // 启动进度定时器
-                startProgressTimer(task)
-
-                // 继续上传
-                uploadSingleFile(task)
-
-                console.log(`文件继续上传: ${task.fileName}, 剩余分片: ${unfinishedChunks.length}`)
-            } else {
-                // 所有分片已完成，直接合并
-                console.log('所有分片已完成，开始合并文件:', task.fileName)
-                handleMerge(task)
+            // 如果通过fileHash找不到，尝试通过fileName查找
+            if (!task) {
+                task = uploadFileList.find((t) => t.fileName === identifier)
             }
-        }
-    }, [uploadFileList])
+
+            if (task && task.state === UploadState.Paused && task.resumeData) {
+                console.log('=== 开始继续上传 ===', {
+                    fileName: task.fileName,
+                    currentState: task.state,
+                    hasResumeData: !!task.resumeData,
+                    errNumber: task.errNumber,
+                })
+
+                // 重置错误计数，给继续上传一个新的开始
+                task.errNumber = 0
+
+                // 更新任务状态
+                task.state = UploadState.Uploading
+                task.resumeData.isPaused = false
+                task.resumeData.pauseReason = undefined
+
+                // 更新本地存储状态
+                ResumeStorage.updateStatus(task.fileHash, 'uploading')
+
+                // 重新开始上传未完成的分片
+                const unfinishedChunks = task.allChunkList.filter((chunk) => !chunk.finish)
+                const finishedChunks = task.allChunkList.filter((chunk) => chunk.finish)
+
+                // 检查并修复分片状态不一致的问题
+                let fixedChunks = 0
+                task.allChunkList.forEach((chunk) => {
+                    if (!chunk.finish && (chunk.loaded || 0) > 0 && !chunk.controller) {
+                        // 这个分片可能在暂停时被中断，重置其状态
+                        console.log(`修复分片${chunk.index}状态: loaded=${chunk.loaded || 0} -> 0`)
+                        chunk.loaded = 0
+                        fixedChunks++
+                    }
+                })
+
+                console.log('=== 继续上传分片状态 ===', {
+                    fileName: task.fileName,
+                    totalChunks: task.allChunkList.length,
+                    finishedChunks: finishedChunks.length,
+                    unfinishedChunks: unfinishedChunks.length,
+                    fixedChunks: fixedChunks,
+                    currentPercentage: task.percentage,
+                    finishedChunkIndexes: finishedChunks.map((c) => c.index),
+                    unfinishedChunkIndexes: unfinishedChunks.map((c) => c.index),
+                    chunkDetails: task.allChunkList.map((c) => ({
+                        index: c.index,
+                        finish: c.finish,
+                        loaded: c.loaded,
+                        hasController: !!c.controller,
+                    })),
+                })
+
+                if (unfinishedChunks.length > 0) {
+                    // 启动进度定时器
+                    startProgressTimer(task)
+
+                    // 继续上传
+                    uploadSingleFile(task)
+
+                    console.log(
+                        `文件继续上传: ${task.fileName}, 剩余分片: ${unfinishedChunks.length}`
+                    )
+                } else {
+                    // 所有分片已完成，直接合并
+                    console.log('所有分片已完成，开始合并文件:', task.fileName)
+                    handleMerge(task)
+                }
+            }
+        },
+        [uploadFileList]
+    )
 
     /**
      * 重试指定文件的上传
      * @param identifier 文件标识符（fileHash或fileName）
      */
-    const retryFile = useCallback((identifier: string) => {
-        // 尝试通过fileHash查找
-        let task = uploadFileList.find(t => t.fileHash === identifier)
+    const retryFile = useCallback(
+        (identifier: string) => {
+            // 尝试通过fileHash查找
+            let task = uploadFileList.find((t) => t.fileHash === identifier)
 
-        // 如果通过fileHash找不到，尝试通过fileName查找
-        if (!task) {
-            task = uploadFileList.find(t => t.fileName === identifier)
-        }
+            // 如果通过fileHash找不到，尝试通过fileName查找
+            if (!task) {
+                task = uploadFileList.find((t) => t.fileName === identifier)
+            }
 
-        if (task && task.state === UploadState.Failed) {
-            // 重置任务状态
-            task.state = UploadState.Pending
-            task.errNumber = 0
-            task.percentage = 0
-            task.error = undefined
+            if (task && task.state === UploadState.Failed) {
+                // 重置任务状态
+                task.state = UploadState.Pending
+                task.errNumber = 0
+                task.percentage = 0
+                task.error = undefined
 
-            // 清除断点信息，重新开始
-            ResumeStorage.removeResumeInfo(task.fileHash)
+                // 清除断点信息，重新开始
+                ResumeStorage.removeResumeInfo(task.fileHash)
 
-            console.log(`文件重试上传: ${task.fileName}`)
-        }
-    }, [uploadFileList])
+                console.log(`文件重试上传: ${task.fileName}`)
+            }
+        },
+        [uploadFileList]
+    )
 
     /**
      * 取消指定文件的上传
      * @param identifier 文件标识符（fileHash或fileName）
      */
-    const cancelFile = useCallback((identifier: string) => {
-        // 尝试通过fileHash查找
-        let task = uploadFileList.find(t => t.fileHash === identifier)
+    const cancelFile = useCallback(
+        (identifier: string) => {
+            // 尝试通过fileHash查找
+            let task = uploadFileList.find((t) => t.fileHash === identifier)
 
-        // 如果通过fileHash找不到，尝试通过fileName查找
-        if (!task) {
-            task = uploadFileList.find(t => t.fileName === identifier)
-        }
-
-        if (task) {
-            console.log(`=== 取消文件上传 ===`, {
-                fileName: task.fileName,
-                state: task.state,
-                hasController: !!task.controller
-            })
-
-            // 停止进度定时器
-            stopProgressTimer()
-
-            // 取消上传
-            if (task.controller) {
-                task.controller.abort()
+            // 如果通过fileHash找不到，尝试通过fileName查找
+            if (!task) {
+                task = uploadFileList.find((t) => t.fileName === identifier)
             }
 
-            // 取消所有分片请求
-            task.allChunkList.forEach(chunk => {
-                if (chunk.controller) {
-                    chunk.controller.abort()
+            if (task) {
+                console.log(`=== 取消文件上传 ===`, {
+                    fileName: task.fileName,
+                    state: task.state,
+                    hasController: !!task.controller,
+                })
+
+                // 停止进度定时器
+                stopProgressTimer()
+
+                // 取消上传
+                if (task.controller) {
+                    task.controller.abort()
                 }
-            })
 
-            // 清空正在请求的列表
-            task.whileRequests = []
+                // 取消所有分片请求
+                task.allChunkList.forEach((chunk) => {
+                    if (chunk.controller) {
+                        chunk.controller.abort()
+                    }
+                })
 
-            // 更新状态
-            task.state = UploadState.Cancelled
+                // 清空正在请求的列表
+                task.whileRequests = []
 
-            // 清除断点信息
-            ResumeStorage.removeResumeInfo(task.fileHash)
+                // 更新状态
+                task.state = UploadState.Cancelled
 
-            console.log(`文件已取消: ${task.fileName}`)
-        }
-    }, [uploadFileList])
+                // 清除断点信息
+                ResumeStorage.removeResumeInfo(task.fileHash)
+
+                console.log(`文件已取消: ${task.fileName}`)
+            }
+        },
+        [uploadFileList]
+    )
 
     /**
      * 暂停所有正在上传的文件
@@ -1094,11 +1155,13 @@ export const useUpload = (options?: UploadOptions, events?: UploadEvents) => {
     const pauseAll = useCallback(() => {
         console.log('=== pauseAll被调用 ===', {
             totalTasks: uploadFileList.length,
-            uploadingTasks: uploadFileList.filter(t => t.state === UploadState.Uploading).length,
-            uploadingTaskNames: uploadFileList.filter(t => t.state === UploadState.Uploading).map(t => t.fileName)
+            uploadingTasks: uploadFileList.filter((t) => t.state === UploadState.Uploading).length,
+            uploadingTaskNames: uploadFileList
+                .filter((t) => t.state === UploadState.Uploading)
+                .map((t) => t.fileName),
         })
 
-        uploadFileList.forEach(task => {
+        uploadFileList.forEach((task) => {
             if (task.state === UploadState.Uploading) {
                 // 使用fileName作为标识符，与pauseFile函数保持一致
                 const identifier = task.fileHash || task.fileName
@@ -1112,7 +1175,7 @@ export const useUpload = (options?: UploadOptions, events?: UploadEvents) => {
      * 继续所有已暂停的文件
      */
     const resumeAll = useCallback(() => {
-        uploadFileList.forEach(task => {
+        uploadFileList.forEach((task) => {
             if (task.state === UploadState.Paused) {
                 const identifier = task.fileHash || task.fileName
                 resumeFile(identifier)
@@ -1124,7 +1187,7 @@ export const useUpload = (options?: UploadOptions, events?: UploadEvents) => {
      * 取消所有未完成的文件
      */
     const cancelAll = useCallback(() => {
-        uploadFileList.forEach(task => {
+        uploadFileList.forEach((task) => {
             if (task.state !== UploadState.Finished) {
                 const identifier = task.fileHash || task.fileName
                 cancelFile(identifier)
@@ -1145,10 +1208,10 @@ export const useUpload = (options?: UploadOptions, events?: UploadEvents) => {
 
         // 统计信息
         totalFiles: uploadFileList.length,
-        completedFiles: uploadFileList.filter(f => f.state === UploadState.Finished).length,
-        failedFiles: uploadFileList.filter(f => f.state === UploadState.Failed).length,
-        pausedFiles: uploadFileList.filter(f => f.state === UploadState.Paused).length,
-        cancelledFiles: uploadFileList.filter(f => f.state === UploadState.Cancelled).length,
+        completedFiles: uploadFileList.filter((f) => f.state === UploadState.Finished).length,
+        failedFiles: uploadFileList.filter((f) => f.state === UploadState.Failed).length,
+        pausedFiles: uploadFileList.filter((f) => f.state === UploadState.Paused).length,
+        cancelledFiles: uploadFileList.filter((f) => f.state === UploadState.Cancelled).length,
 
         // 工具方法
         pauseUpload,
@@ -1166,14 +1229,15 @@ export const useUpload = (options?: UploadOptions, events?: UploadEvents) => {
         // 清理方法
         clearErrors: () => setErrors([]),
         clearUploadList: () => setUploadFileList([]),
-        resetProgress: () => setUploadProgress({
-            percentage: 0,
-            status: 'pending',
-            fileName: '',
-            uploadedSize: 0,
-            totalSize: 0,
-            speed: 0,
-            remainingTime: 0,
-        })
+        resetProgress: () =>
+            setUploadProgress({
+                percentage: 0,
+                status: 'pending',
+                fileName: '',
+                uploadedSize: 0,
+                totalSize: 0,
+                speed: 0,
+                remainingTime: 0,
+            }),
     }
 }

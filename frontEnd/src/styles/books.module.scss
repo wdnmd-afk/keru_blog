@@ -4,7 +4,7 @@
     overflow-y: auto;
     scrollbar-width: none;
     -ms-overflow-style: none;
-    
+
     &::-webkit-scrollbar {
         display: none;
     }
@@ -15,7 +15,7 @@
     border-radius: 20px;
     padding: 30px;
     margin-bottom: 30px;
-    box-shadow: 
+    box-shadow:
         0 8px 32px rgba(0, 0, 0, 0.3),
         0 0 0 1px rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(20px);
@@ -27,7 +27,7 @@
     justify-content: space-between;
     align-items: center;
     gap: 30px;
-    
+
     @media (max-width: 768px) {
         flex-direction: column;
         gap: 20px;
@@ -38,20 +38,20 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    
+
     .title_icon {
         font-size: 2rem;
         color: var(--highlight-blue);
         margin-bottom: 10px;
     }
-    
+
     h1 {
         font-size: 2rem;
         font-weight: 700;
         color: var(--text-primary);
         margin: 0 0 8px 0;
     }
-    
+
     p {
         color: var(--text-secondary);
         font-size: 1rem;
@@ -63,7 +63,7 @@
     display: flex;
     gap: 15px;
     align-items: center;
-    
+
     @media (max-width: 768px) {
         width: 100%;
         flex-direction: column;
@@ -73,21 +73,21 @@
 
 .search_input {
     width: 300px;
-    
+
     @media (max-width: 768px) {
         width: 100%;
     }
-    
+
     :global(.ant-input) {
         background: rgba(62, 92, 122, 0.1);
         border-color: rgba(62, 92, 122, 0.3);
         color: var(--text-primary);
-        
+
         &:focus {
             background: rgba(62, 92, 122, 0.15);
             border-color: var(--highlight-blue);
         }
-        
+
         &::placeholder {
             color: var(--text-muted);
         }
@@ -96,11 +96,11 @@
 
 .category_select {
     width: 150px;
-    
+
     @media (max-width: 768px) {
         width: 100%;
     }
-    
+
     :global(.ant-select-selector) {
         background: rgba(62, 92, 122, 0.1);
         border-color: rgba(62, 92, 122, 0.3);
@@ -118,32 +118,32 @@
     border: 1px solid rgba(62, 92, 122, 0.3);
     border-radius: 16px;
     transition: all 0.3s ease;
-    
+
     &:hover {
         transform: translateY(-4px);
-        box-shadow: 
+        box-shadow:
             0 12px 40px rgba(0, 0, 0, 0.4),
             0 0 0 1px rgba(255, 255, 255, 0.1);
         border-color: var(--highlight-blue);
     }
-    
+
     :global(.ant-card-body) {
         padding: 16px;
         height: calc(100% - 200px);
         display: flex;
         flex-direction: column;
     }
-    
+
     :global(.ant-card-actions) {
         background: rgba(15, 20, 25, 0.3);
         border-top: 1px solid rgba(62, 92, 122, 0.2);
-        
+
         li {
             margin: 8px 0;
-            
+
             :global(.ant-btn) {
                 color: var(--text-secondary);
-                
+
                 &:hover {
                     color: var(--text-primary);
                 }
@@ -179,13 +179,13 @@
     flex: 1;
     display: flex;
     flex-direction: column;
-    
+
     .author {
         color: var(--text-secondary);
         font-size: 0.9rem;
         margin: 0 0 8px 0;
     }
-    
+
     .description {
         color: var(--text-secondary);
         font-size: 0.85rem;
@@ -193,26 +193,26 @@
         margin: 0 0 12px 0;
         flex: 1;
     }
-    
+
     .book_meta {
         display: flex;
         gap: 12px;
         margin-bottom: 12px;
         font-size: 0.8rem;
         color: var(--text-muted);
-        
+
         span {
             display: flex;
             align-items: center;
             gap: 2px;
         }
     }
-    
+
     .tags {
         display: flex;
         gap: 4px;
         flex-wrap: wrap;
-        
+
         :global(.ant-tag) {
             margin: 0;
             font-size: 0.7rem;

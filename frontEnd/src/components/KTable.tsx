@@ -1,8 +1,8 @@
 import '@/styles/antd.scss'
+import { createExcludeComparator } from '@/utils/memoComparator'
 import { Pagination, PaginationProps, Table, TableProps } from 'antd'
 import { ColumnProps } from 'antd/es/table'
 import React, { useEffect, useRef, useState } from 'react'
-import { createExcludeComparator } from '@/utils/memoComparator'
 
 interface IKTableProps extends TableProps<any> {
     // 你可以在这里扩展额外的属性，像分页、数据加载等
@@ -197,7 +197,4 @@ const KTable = React.forwardRef<any, IKTableProps>(
 )
 
 // 使用React.memo优化KTable组件，忽略函数类型的props
-export default React.memo(KTable, createExcludeComparator<IKTableProps>([
-    'fetchData',
-    'rowClick'
-]))
+export default React.memo(KTable, createExcludeComparator<IKTableProps>(['fetchData', 'rowClick']))

@@ -1,7 +1,7 @@
 import { lazy } from 'react'
-import Home from './systemPages/Home.tsx'
+import Home from './Home/index.tsx'
 const LazyComponents = {
-    Home: lazy(() => import('./systemPages/Home.tsx')),
+    Home: lazy(() => import('./Home/index.tsx')),
     NotFound: lazy(() => import('./systemPages/NotFound.tsx')),
 }
 

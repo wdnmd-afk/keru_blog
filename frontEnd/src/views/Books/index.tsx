@@ -159,7 +159,7 @@ const Books: React.FC = () => {
                                             </div>
                                             <div className={styles.tags}>
                                                 {book.tags.map((tag) => (
-                                                    <Tag key={tag} color="blue" size="small">
+                                                    <Tag key={tag} color="blue">
                                                         {tag}
                                                     </Tag>
                                                 ))}

@@ -14,15 +14,10 @@ interface SearchFormValues {
  * 文件搜索组件
  * 提供文件名和上传者的搜索功能，支持防抖搜索
  */
-const FileSearch: React.FC<FileSearchProps> = ({
-    value,
-    onSearch,
-    onReset,
-    loading = false
-}) => {
+const FileSearch: React.FC<FileSearchProps> = ({ value, onSearch, onReset, loading = false }) => {
     const [form] = Form.useForm()
     const debounceTimerRef = useRef<NodeJS.Timeout | null>(null)
-    
+
     // 防抖延迟时间（毫秒）
     const DEBOUNCE_DELAY = 500
 
@@ -30,33 +25,39 @@ const FileSearch: React.FC<FileSearchProps> = ({
      * 防抖搜索函数
      * @param searchParams 搜索参数
      */
-    const debouncedSearch = useCallback((searchParams: SearchFormValues) => {
-        if (debounceTimerRef.current) {
-            clearTimeout(debounceTimerRef.current)
-        }
-        
-        debounceTimerRef.current = setTimeout(() => {
-            const searchQuery = {
-                ...value,
-                fileName: searchParams.fileName?.trim() || '',
-                userName: searchParams.userName?.trim() || '',
-                page: 1, // 搜索时重置到第一页
+    const debouncedSearch = useCallback(
+        (searchParams: SearchFormValues) => {
+            if (debounceTimerRef.current) {
+                clearTimeout(debounceTimerRef.current)
             }
-            onSearch(searchQuery)
-        }, DEBOUNCE_DELAY)
-    }, [value, onSearch])
-    
+
+            debounceTimerRef.current = setTimeout(() => {
+                const searchQuery = {
+                    ...value,
+                    fileName: searchParams.fileName?.trim() || '',
+                    userName: searchParams.userName?.trim() || '',
+                    page: 1, // 搜索时重置到第一页
+                }
+                onSearch(searchQuery)
+            }, DEBOUNCE_DELAY)
+        },
+        [value, onSearch]
+    )
+
     /**
      * 处理输入框变化（实时防抖搜索）
      * @param changedValues 变化的值
      * @param allValues 所有值
      */
-    const handleValuesChange = useCallback((changedValues: Partial<SearchFormValues>, allValues: SearchFormValues) => {
-        // 只有当输入框的值发生变化时才触发防抖搜索
-        if (changedValues.fileName !== undefined || changedValues.userName !== undefined) {
-            debouncedSearch(allValues)
-        }
-    }, [debouncedSearch])
+    const handleValuesChange = useCallback(
+        (changedValues: Partial<SearchFormValues>, allValues: SearchFormValues) => {
+            // 只有当输入框的值发生变化时才触发防抖搜索
+            if (changedValues.fileName !== undefined || changedValues.userName !== undefined) {
+                debouncedSearch(allValues)
+            }
+        },
+        [debouncedSearch]
+    )
 
     /**
      * 处理搜索提交
@@ -68,7 +69,7 @@ const FileSearch: React.FC<FileSearchProps> = ({
             clearTimeout(debounceTimerRef.current)
             debounceTimerRef.current = null
         }
-        
+
         const searchQuery = {
             ...value,
             fileName: values.fileName?.trim() || '',
@@ -87,7 +88,7 @@ const FileSearch: React.FC<FileSearchProps> = ({
             clearTimeout(debounceTimerRef.current)
             debounceTimerRef.current = null
         }
-        
+
         form.resetFields()
         const resetQuery = {
             ...value,
@@ -129,11 +130,7 @@ const FileSearch: React.FC<FileSearchProps> = ({
             >
                 <Row gutter={16}>
                     <Col span={8}>
-                        <Form.Item
-                            label="文件名称"
-                            name="fileName"
-                            className="mb-2"
-                        >
+                        <Form.Item label="文件名称" name="fileName" className="mb-2">
                             <Input
                                 placeholder="请输入文件名称"
                                 allowClear
@@ -143,11 +140,7 @@ const FileSearch: React.FC<FileSearchProps> = ({
                         </Form.Item>
                     </Col>
                     <Col span={8}>
-                        <Form.Item
-                            label="上传者"
-                            name="userName"
-                            className="mb-2"
-                        >
+                        <Form.Item label="上传者" name="userName" className="mb-2">
                             <Input
                                 placeholder="请输入上传者名称"
                                 allowClear
@@ -167,11 +160,7 @@ const FileSearch: React.FC<FileSearchProps> = ({
                                 >
                                     搜索
                                 </Button>
-                                <Button
-                                    onClick={handleReset}
-                                    disabled={loading}
-                                    className="flex-1"
-                                >
+                                <Button onClick={handleReset} disabled={loading} className="flex-1">
                                     重置
                                 </Button>
                             </div>

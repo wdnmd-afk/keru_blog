@@ -58,8 +58,8 @@ const FilePreview: React.FC<IProps> = ({ changeKey }) => {
     const handleFilePreview = (file: FileItem) => {
         // 构建文件预览信息
         const fileInfo = {
-            url: file.url || '',
-            name: file.name || '',
+            url: file.path || '',
+            name: file.filename || '',
             mimeType: file.mimeType,
             size: file.size,
         }

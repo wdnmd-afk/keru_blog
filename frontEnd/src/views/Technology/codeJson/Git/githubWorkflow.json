@@ -1,32 +1,32 @@
 {
-  "createPullRequest": {
-    "title": "创建Pull Request",
-    "language": "bash",
-    "code": "# 1. 创建并切换到功能分支\ngit checkout -b feature/user-profile\n\n# 2. 进行开发工作\n# 编辑文件...\ngit add .\ngit commit -m \"Add user profile page\"\n\n# 3. 推送分支到GitHub\ngit push origin feature/user-profile\n\n# 4. 在GitHub上创建Pull Request\n# - 访问仓库页面\n# - 点击 \"Compare & pull request\"\n# - 填写PR标题和描述\n# - 选择审查者和标签\n# - 点击 \"Create pull request\""
-  },
-  "prTemplate": {
-    "title": "PR模板和规范",
-    "language": "markdown",
-    "code": "<!-- .github/pull_request_template.md -->\n## 变更描述\n简要描述此PR的变更内容\n\n## 变更类型\n- [ ] 新功能\n- [ ] Bug修复\n- [ ] 文档更新\n- [ ] 重构\n- [ ] 性能优化\n- [ ] 其他\n\n## 测试\n- [ ] 单元测试通过\n- [ ] 集成测试通过\n- [ ] 手动测试完成\n\n## 检查清单\n- [ ] 代码遵循项目规范\n- [ ] 已添加必要的测试\n- [ ] 文档已更新\n- [ ] 无破坏性变更\n\n## 相关Issue\nCloses #123\n\n## 截图（如适用）\n![screenshot](url)\n\n## 额外说明\n其他需要说明的内容"
-  },
-  "prStatusManagement": {
-    "title": "PR状态管理",
-    "language": "bash",
-    "code": "# PR状态标签\ndraft: 草稿状态，开发中\nready for review: 准备审查\nin review: 审查中\nchanges requested: 需要修改\napproved: 已批准\nmerged: 已合并\n\n# 使用GitHub CLI管理PR\ngh pr create --title \"Add user authentication\" --body \"Implements login/logout functionality\"\n\n# 查看PR列表\ngh pr list\n\n# 查看PR详情\ngh pr view 123\n\n# 审查PR\ngh pr review 123 --approve\ngh pr review 123 --request-changes --body \"Please fix the security issue\"\n\n# 合并PR\ngh pr merge 123 --squash\ngh pr merge 123 --merge\ngh pr merge 123 --rebase"
-  },
-  "codeReviewChecklist": {
-    "title": "代码审查检查点",
-    "language": "markdown",
-    "code": "# 代码审查检查点\n\n## 功能性\n- 代码是否实现了预期功能？\n- 是否有边界情况未处理？\n- 错误处理是否完善？\n\n## 代码质量\n- 代码是否清晰易读？\n- 是否遵循项目编码规范？\n- 是否有重复代码？\n\n## 性能\n- 是否有性能问题？\n- 数据库查询是否优化？\n- 是否有内存泄漏风险？\n\n## 安全性\n- 是否有安全漏洞？\n- 输入验证是否充分？\n- 敏感信息是否暴露？\n\n## 测试\n- 测试覆盖率是否足够？\n- 测试用例是否合理？\n- 是否有集成测试？"
-  },
-  "reviewCommentTips": {
-    "title": "审查评论技巧",
-    "language": "markdown",
-    "code": "# 建设性评论示例\n\n## 好的评论\n✅ \"考虑使用 Map 而不是 Object 来提高查找性能\"\n✅ \"这里可能需要添加空值检查，防止运行时错误\"\n✅ \"建议提取这个逻辑到单独的函数中，提高可读性\"\n\n## 避免的评论\n❌ \"这段代码很糟糕\"\n❌ \"为什么要这样写？\"\n❌ \"重写这部分\"\n\n## 评论模板\n# 问题类型标记\n[CRITICAL] 必须修复的严重问题\n[SUGGESTION] 改进建议\n[QUESTION] 需要澄清的问题\n[NITPICK] 小的改进点\n\n# 示例\n[SUGGESTION] 考虑使用 const 而不是 let，因为这个变量不会被重新赋值\n\n[QUESTION] 这个函数的时间复杂度是多少？对于大数据集是否会有性能问题？\n\n[CRITICAL] 这里存在SQL注入风险，需要使用参数化查询"
-  },
-  "branchProtectionRules": {
-    "title": "分支保护规则",
-    "language": "markdown",
-    "code": "# 在GitHub仓库设置中配置分支保护规则\n\n## 基本保护\n- ✅ Require pull request reviews before merging\n  - Required number of reviewers: 2\n  - Dismiss stale reviews when new commits are pushed\n  - Require review from code owners\n\n- ✅ Require status checks to pass before merging\n  - Require branches to be up to date before merging\n  - Status checks: CI/CD, Tests, Linting\n\n- ✅ Require conversation resolution before merging\n\n- ✅ Require signed commits\n\n## 高级保护\n- ✅ Restrict pushes that create files\n- ✅ Restrict pushes that delete files\n- ✅ Allow force pushes (仅管理员)\n- ✅ Allow deletions (仅管理员)\n\n## 规则适用范围\n- Branch name pattern: main, master, release/*\n- Include administrators: 是否对管理员也生效"
-  }
+    "createPullRequest": {
+        "title": "创建Pull Request",
+        "language": "bash",
+        "code": "# 1. 创建并切换到功能分支\ngit checkout -b feature/user-profile\n\n# 2. 进行开发工作\n# 编辑文件...\ngit add .\ngit commit -m \"Add user profile page\"\n\n# 3. 推送分支到GitHub\ngit push origin feature/user-profile\n\n# 4. 在GitHub上创建Pull Request\n# - 访问仓库页面\n# - 点击 \"Compare & pull request\"\n# - 填写PR标题和描述\n# - 选择审查者和标签\n# - 点击 \"Create pull request\""
+    },
+    "prTemplate": {
+        "title": "PR模板和规范",
+        "language": "markdown",
+        "code": "<!-- .github/pull_request_template.md -->\n## 变更描述\n简要描述此PR的变更内容\n\n## 变更类型\n- [ ] 新功能\n- [ ] Bug修复\n- [ ] 文档更新\n- [ ] 重构\n- [ ] 性能优化\n- [ ] 其他\n\n## 测试\n- [ ] 单元测试通过\n- [ ] 集成测试通过\n- [ ] 手动测试完成\n\n## 检查清单\n- [ ] 代码遵循项目规范\n- [ ] 已添加必要的测试\n- [ ] 文档已更新\n- [ ] 无破坏性变更\n\n## 相关Issue\nCloses #123\n\n## 截图（如适用）\n![screenshot](url)\n\n## 额外说明\n其他需要说明的内容"
+    },
+    "prStatusManagement": {
+        "title": "PR状态管理",
+        "language": "bash",
+        "code": "# PR状态标签\ndraft: 草稿状态，开发中\nready for review: 准备审查\nin review: 审查中\nchanges requested: 需要修改\napproved: 已批准\nmerged: 已合并\n\n# 使用GitHub CLI管理PR\ngh pr create --title \"Add user authentication\" --body \"Implements login/logout functionality\"\n\n# 查看PR列表\ngh pr list\n\n# 查看PR详情\ngh pr view 123\n\n# 审查PR\ngh pr review 123 --approve\ngh pr review 123 --request-changes --body \"Please fix the security issue\"\n\n# 合并PR\ngh pr merge 123 --squash\ngh pr merge 123 --merge\ngh pr merge 123 --rebase"
+    },
+    "codeReviewChecklist": {
+        "title": "代码审查检查点",
+        "language": "markdown",
+        "code": "# 代码审查检查点\n\n## 功能性\n- 代码是否实现了预期功能？\n- 是否有边界情况未处理？\n- 错误处理是否完善？\n\n## 代码质量\n- 代码是否清晰易读？\n- 是否遵循项目编码规范？\n- 是否有重复代码？\n\n## 性能\n- 是否有性能问题？\n- 数据库查询是否优化？\n- 是否有内存泄漏风险？\n\n## 安全性\n- 是否有安全漏洞？\n- 输入验证是否充分？\n- 敏感信息是否暴露？\n\n## 测试\n- 测试覆盖率是否足够？\n- 测试用例是否合理？\n- 是否有集成测试？"
+    },
+    "reviewCommentTips": {
+        "title": "审查评论技巧",
+        "language": "markdown",
+        "code": "# 建设性评论示例\n\n## 好的评论\n✅ \"考虑使用 Map 而不是 Object 来提高查找性能\"\n✅ \"这里可能需要添加空值检查，防止运行时错误\"\n✅ \"建议提取这个逻辑到单独的函数中，提高可读性\"\n\n## 避免的评论\n❌ \"这段代码很糟糕\"\n❌ \"为什么要这样写？\"\n❌ \"重写这部分\"\n\n## 评论模板\n# 问题类型标记\n[CRITICAL] 必须修复的严重问题\n[SUGGESTION] 改进建议\n[QUESTION] 需要澄清的问题\n[NITPICK] 小的改进点\n\n# 示例\n[SUGGESTION] 考虑使用 const 而不是 let，因为这个变量不会被重新赋值\n\n[QUESTION] 这个函数的时间复杂度是多少？对于大数据集是否会有性能问题？\n\n[CRITICAL] 这里存在SQL注入风险，需要使用参数化查询"
+    },
+    "branchProtectionRules": {
+        "title": "分支保护规则",
+        "language": "markdown",
+        "code": "# 在GitHub仓库设置中配置分支保护规则\n\n## 基本保护\n- ✅ Require pull request reviews before merging\n  - Required number of reviewers: 2\n  - Dismiss stale reviews when new commits are pushed\n  - Require review from code owners\n\n- ✅ Require status checks to pass before merging\n  - Require branches to be up to date before merging\n  - Status checks: CI/CD, Tests, Linting\n\n- ✅ Require conversation resolution before merging\n\n- ✅ Require signed commits\n\n## 高级保护\n- ✅ Restrict pushes that create files\n- ✅ Restrict pushes that delete files\n- ✅ Allow force pushes (仅管理员)\n- ✅ Allow deletions (仅管理员)\n\n## 规则适用范围\n- Branch name pattern: main, master, release/*\n- Include administrators: 是否对管理员也生效"
+    }
 }

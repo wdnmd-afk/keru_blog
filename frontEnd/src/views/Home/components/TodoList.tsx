@@ -1,73 +1,73 @@
-import React, { useEffect, useState, useMemo } from 'react';
-import { Button, Input, List, Checkbox, Popconfirm, Modal, Tabs, Radio, Form, Space } from 'antd';
-import { useGlobalStore, useGlobalStoreAction } from '@/store';
-import { Todo, TodoType } from '@/types/todo.d';
-import style from '@/styles/home.module.scss';
-import { DeleteOutlined, EditOutlined, PlusOutlined } from '@ant-design/icons';
+import { useGlobalStore, useGlobalStoreAction } from '@/store'
+import style from '@/styles/home.module.scss'
+import { Todo, TodoType } from '@/types/todo.d'
+import { DeleteOutlined, EditOutlined, PlusOutlined } from '@ant-design/icons'
+import { Button, Checkbox, Form, Input, List, Modal, Popconfirm, Radio, Space, Tabs } from 'antd'
+import { useEffect, useMemo, useState } from 'react'
 
-const { TabPane } = Tabs;
+const { TabPane } = Tabs
 
 const todoTypeMap = {
     [TodoType.RECENT]: '近期要做',
     [TodoType.LONG_TERM]: '长期任务',
     [TodoType.STUDY_PLAN]: '学习计划',
-};
+}
 
 const TodoList = () => {
-    const { todos } = useGlobalStore();
-    const { getTodos, addTodo, updateTodo, deleteTodo } = useGlobalStoreAction();
-    const [form] = Form.useForm();
+    const { todos } = useGlobalStore()
+    const { getTodos, addTodo, updateTodo, deleteTodo } = useGlobalStoreAction()
+    const [form] = Form.useForm()
 
-    const [isModalOpen, setIsModalOpen] = useState(false);
-    const [editingTodo, setEditingTodo] = useState<Todo | null>(null);
-    const [activeTab, setActiveTab] = useState('ALL');
+    const [isModalOpen, setIsModalOpen] = useState(false)
+    const [editingTodo, setEditingTodo] = useState<Todo | null>(null)
+    const [activeTab, setActiveTab] = useState('ALL')
 
     useEffect(() => {
-        getTodos();
-    }, []);
+        getTodos()
+    }, [])
 
     const showAddModal = () => {
-        setEditingTodo(null);
-        form.resetFields();
-        form.setFieldsValue({ type: TodoType.RECENT }); // Default type
-        setIsModalOpen(true);
-    };
+        setEditingTodo(null)
+        form.resetFields()
+        form.setFieldsValue({ type: TodoType.RECENT }) // Default type
+        setIsModalOpen(true)
+    }
 
     const showEditModal = (todo: Todo) => {
-        setEditingTodo(todo);
+        setEditingTodo(todo)
         form.setFieldsValue({
             content: todo.content,
             type: todo.type,
-        });
-        setIsModalOpen(true);
-    };
+        })
+        setIsModalOpen(true)
+    }
 
     const handleCancel = () => {
-        setIsModalOpen(false);
-    };
+        setIsModalOpen(false)
+    }
 
     const handleOk = async () => {
         try {
-            const values = await form.validateFields();
+            const values = await form.validateFields()
             if (editingTodo) {
                 // Update
-                updateTodo(editingTodo.id, { ...values });
+                updateTodo(editingTodo.id, { ...values })
             } else {
                 // Add
-                addTodo(values);
+                addTodo(values)
             }
-            setIsModalOpen(false);
+            setIsModalOpen(false)
         } catch (error) {
-            console.log('Validation Failed:', error);
+            console.log('Validation Failed:', error)
         }
-    };
+    }
 
     const filteredTodos = useMemo(() => {
         if (activeTab === 'ALL') {
-            return todos;
+            return todos
         }
-        return todos.filter((todo) => todo.type === activeTab);
-    }, [todos, activeTab]);
+        return todos.filter((todo) => todo.type === activeTab)
+    }, [todos, activeTab])
 
     return (
         <div className={style.todo_list_container}>
@@ -103,8 +103,12 @@ const TodoList = () => {
                     >
                         <Radio.Group>
                             <Radio value={TodoType.RECENT}>{todoTypeMap[TodoType.RECENT]}</Radio>
-                            <Radio value={TodoType.LONG_TERM}>{todoTypeMap[TodoType.LONG_TERM]}</Radio>
-                            <Radio value={TodoType.STUDY_PLAN}>{todoTypeMap[TodoType.STUDY_PLAN]}</Radio>
+                            <Radio value={TodoType.LONG_TERM}>
+                                {todoTypeMap[TodoType.LONG_TERM]}
+                            </Radio>
+                            <Radio value={TodoType.STUDY_PLAN}>
+                                {todoTypeMap[TodoType.STUDY_PLAN]}
+                            </Radio>
                         </Radio.Group>
                     </Form.Item>
                 </Form>
@@ -123,11 +127,12 @@ const TodoList = () => {
                     <List.Item
                         className={style.todo_item}
                         actions={[
-                            <Button type="text" icon={<EditOutlined />} onClick={() => showEditModal(item)} />,
-                            <Popconfirm
-                                title="确定删除吗？"
-                                onConfirm={() => deleteTodo(item.id)}
-                            >
+                            <Button
+                                type="text"
+                                icon={<EditOutlined />}
+                                onClick={() => showEditModal(item)}
+                            />,
+                            <Popconfirm title="确定删除吗？" onConfirm={() => deleteTodo(item.id)}>
                                 <Button type="text" icon={<DeleteOutlined />} danger />
                             </Popconfirm>,
                         ]}
@@ -146,7 +151,7 @@ const TodoList = () => {
                 locale={{ emptyText: '暂无待办事项' }}
             />
         </div>
-    );
-};
+    )
+}
 
-export default TodoList;
+export default TodoList

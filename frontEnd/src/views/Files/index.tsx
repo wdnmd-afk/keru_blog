@@ -40,13 +40,9 @@ const Files: React.FC = () => {
     const items: TabsProps['items'] = [
         {
             key: '1',
-            label: (
-                <span className="flex items-center gap-2">
-                    📁 文件上传
-                </span>
-            ),
+            label: <span className="flex items-center gap-2">📁 文件上传</span>,
             children: (
-                <FilesErrorBoundary 
+                <FilesErrorBoundary
                     onError={handleError}
                     showDetails={process.env.NODE_ENV === 'development'}
                 >
@@ -56,13 +52,9 @@ const Files: React.FC = () => {
         },
         {
             key: '2',
-            label: (
-                <span className="flex items-center gap-2">
-                    📄 文件列表
-                </span>
-            ),
+            label: <span className="flex items-center gap-2">📄 文件列表</span>,
             children: (
-                <FilesErrorBoundary 
+                <FilesErrorBoundary
                     onError={handleError}
                     showDetails={process.env.NODE_ENV === 'development'}
                 >
@@ -73,7 +65,7 @@ const Files: React.FC = () => {
     ]
 
     return (
-        <FilesErrorBoundary 
+        <FilesErrorBoundary
             onError={handleError}
             showDetails={process.env.NODE_ENV === 'development'}
         >

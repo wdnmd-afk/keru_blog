@@ -1,52 +1,52 @@
 {
-  "branchConcepts": {
-    "title": "分支概念",
-    "language": "bash",
-    "code": "# 分支是什么？\n# 分支是指向特定提交的可移动指针\n# HEAD是指向当前分支的指针\n\n# 查看分支指针\ngit log --oneline --decorate --graph --all\n\n# 查看当前分支\ngit branch                    # 列出本地分支\ngit branch -r                 # 列出远程分支\ngit branch -a                 # 列出所有分支\ngit branch -v                 # 显示分支最后一次提交\n\n# 查看分支详细信息\ngit show-branch               # 显示分支关系\ngit log --graph --pretty=format:'%h -%d %s (%cr) <%an>' --abbrev-commit"
-  },
-  "branchCreation": {
-    "title": "创建和切换分支",
-    "language": "bash",
-    "code": "# 创建分支\ngit branch feature-login      # 创建分支但不切换\ngit branch feature-login HEAD~2  # 基于特定提交创建分支\n\n# 切换分支\ngit checkout feature-login    # 切换到分支\ngit switch feature-login      # 新语法切换分支\n\n# 创建并切换分支\ngit checkout -b feature-login # 创建并切换（常用）\ngit switch -c feature-login   # 新语法创建并切换\n\n# 基于远程分支创建本地分支\ngit checkout -b local-branch origin/remote-branch\ngit switch -c local-branch origin/remote-branch\n\n# 重命名分支\ngit branch -m old-name new-name  # 重命名分支\ngit branch -M old-name new-name  # 强制重命名"
-  },
-  "branchMerging": {
-    "title": "分支合并",
-    "language": "bash",
-    "code": "# Fast-forward合并\n# 当目标分支是当前分支的直接后继时\ngit checkout main\ngit merge feature-branch      # 直接移动指针\n\n# 三方合并\n# 当两个分支有分歧时，创建合并提交\ngit merge feature-branch      # 创建合并提交\n\n# 禁用Fast-forward\ngit merge --no-ff feature-branch  # 总是创建合并提交\n\n# Squash合并\ngit merge --squash feature-branch # 将多个提交压缩为一个\ngit commit -m \"合并feature分支的所有更改\"\n\n# 查看合并状态\ngit status                    # 查看合并冲突\ngit diff                      # 查看冲突详情\n\n# 取消合并\ngit merge --abort             # 取消正在进行的合并"
-  },
-  "conflictResolution": {
-    "title": "冲突解决",
-    "language": "bash",
-    "code": "# 合并冲突示例\n# 当同一文件的同一部分被不同分支修改时会产生冲突\n\n# 冲突标记格式\n<<<<<<< HEAD\n当前分支的内容\n=======\n要合并分支的内容\n>>>>>>> feature-branch\n\n# 解决冲突步骤\n1. 编辑冲突文件，删除冲突标记，保留需要的内容\n2. git add <resolved-file>     # 标记冲突已解决\n3. git commit                  # 完成合并（或git merge --continue）\n\n# 冲突解决工具\ngit mergetool                 # 启动合并工具\ngit config --global merge.tool vimdiff  # 配置合并工具\n\n# 查看冲突历史\ngit log --merge               # 查看导致冲突的提交\ngit diff                      # 查看当前冲突\ngit diff --base               # 查看与共同祖先的差异"
-  },
-  "rebaseOperations": {
-    "title": "变基操作",
-    "language": "bash",
-    "code": "# 基本变基\ngit checkout feature-branch\ngit rebase main               # 将feature分支变基到main\n\n# 交互式变基\ngit rebase -i HEAD~3          # 交互式变基最近3次提交\ngit rebase -i main            # 交互式变基到main分支\n\n# 变基操作选项\n# pick: 使用提交\n# reword: 使用提交但修改提交信息\n# edit: 使用提交但停下来修改\n# squash: 使用提交但合并到前一个提交\n# fixup: 类似squash但丢弃提交信息\n# drop: 删除提交\n\n# 解决变基冲突\ngit rebase --continue         # 解决冲突后继续\ngit rebase --skip             # 跳过当前提交\ngit rebase --abort            # 取消变基操作\n\n# 变基到特定提交\ngit rebase --onto main feature~3 feature  # 复杂变基"
-  },
-  "branchDeletion": {
-    "title": "删除分支",
-    "language": "bash",
-    "code": "# 删除本地分支\ngit branch -d feature-branch  # 删除已合并的分支\ngit branch -D feature-branch  # 强制删除分支（未合并也删除）\n\n# 删除远程分支\ngit push origin --delete feature-branch\ngit push origin :feature-branch  # 旧语法\n\n# 清理远程分支引用\ngit remote prune origin       # 清理已删除的远程分支引用\ngit fetch --prune             # 获取更新并清理引用\n\n# 查看已合并的分支\ngit branch --merged           # 查看已合并到当前分支的分支\ngit branch --no-merged        # 查看未合并的分支\n\n# 批量删除已合并的分支\ngit branch --merged | grep -v \"\\*\\|main\\|develop\" | xargs -n 1 git branch -d"
-  },
-  "remoteBranches": {
-    "title": "远程分支管理",
-    "language": "bash",
-    "code": "# 查看远程分支\ngit branch -r                 # 查看远程分支\ngit branch -a                 # 查看所有分支\ngit ls-remote origin          # 查看远程仓库的所有引用\n\n# 推送分支到远程\ngit push origin feature-branch  # 推送分支\ngit push -u origin feature-branch  # 推送并设置上游分支\ngit push --set-upstream origin feature-branch  # 同上\n\n# 跟踪远程分支\ngit checkout -b local-branch origin/remote-branch  # 创建跟踪分支\ngit branch --set-upstream-to=origin/remote-branch local-branch  # 设置上游\n\n# 获取远程分支\ngit fetch origin              # 获取远程更新\ngit checkout -b local-branch origin/remote-branch  # 检出远程分支\n\n# 同步远程分支\ngit pull origin main          # 拉取并合并\ngit pull --rebase origin main # 拉取并变基"
-  },
-  "branchWorkflows": {
-    "title": "分支工作流",
-    "language": "bash",
-    "code": "# Git Flow 工作流\n# 主要分支：main(生产), develop(开发)\n# 辅助分支：feature, release, hotfix\n\n# 功能分支工作流\ngit checkout develop\ngit pull origin develop\ngit checkout -b feature/user-auth\n# 开发功能...\ngit add .\ngit commit -m \"feat: 添加用户认证功能\"\ngit push origin feature/user-auth\n# 创建Pull Request\n\n# 发布分支工作流\ngit checkout develop\ngit checkout -b release/1.2.0\n# 修复bug，更新版本号...\ngit checkout main\ngit merge --no-ff release/1.2.0\ngit tag -a v1.2.0 -m \"Release version 1.2.0\"\ngit checkout develop\ngit merge --no-ff release/1.2.0\n\n# 热修复工作流\ngit checkout main\ngit checkout -b hotfix/critical-bug\n# 修复bug...\ngit checkout main\ngit merge --no-ff hotfix/critical-bug\ngit tag -a v1.2.1 -m \"Hotfix version 1.2.1\"\ngit checkout develop\ngit merge --no-ff hotfix/critical-bug"
-  },
-  "branchStrategies": {
-    "title": "分支策略",
-    "language": "bash",
-    "code": "# 1. GitHub Flow（简单）\n# main分支 + feature分支\ngit checkout main\ngit pull origin main\ngit checkout -b feature/new-feature\n# 开发 -> 推送 -> Pull Request -> 合并\n\n# 2. Git Flow（复杂项目）\n# main, develop, feature, release, hotfix分支\n\n# 3. GitLab Flow（中等复杂度）\n# main分支 + environment分支\ngit checkout main\ngit checkout -b production    # 生产环境分支\ngit checkout -b staging       # 预发布环境分支\n\n# 4. 功能分支命名规范\nfeature/user-authentication   # 功能分支\nbugfix/login-error           # 修复分支\nhotfix/security-patch        # 热修复分支\nrelease/v1.2.0              # 发布分支\n\n# 5. 分支保护规则\n# - 禁止直接推送到main分支\n# - 要求Pull Request审查\n# - 要求状态检查通过\n# - 要求分支是最新的"
-  },
-  "advancedBranching": {
-    "title": "高级分支操作",
-    "language": "bash",
-    "code": "# 樱桃挑选（Cherry-pick）\ngit cherry-pick <commit-hash>  # 应用特定提交到当前分支\ngit cherry-pick -n <commit>    # 应用但不提交\ngit cherry-pick --continue     # 解决冲突后继续\ngit cherry-pick --abort        # 取消樱桃挑选\n\n# 分支比较\ngit diff main..feature-branch  # 比较两个分支\ngit log main..feature-branch   # 查看分支间的提交差异\ngit log --left-right main...feature-branch  # 显示分支分歧\n\n# 分支重命名\ngit branch -m old-name new-name  # 重命名本地分支\ngit push origin :old-name        # 删除远程旧分支\ngit push origin new-name         # 推送新分支\ngit push origin -u new-name      # 设置上游\n\n# 孤儿分支\ngit checkout --orphan gh-pages   # 创建无历史的孤儿分支\ngit rm -rf .                     # 清空工作区\n# 添加新内容...\ngit add .\ngit commit -m \"Initial commit for gh-pages\""
-  }
+    "branchConcepts": {
+        "title": "分支概念",
+        "language": "bash",
+        "code": "# 分支是什么？\n# 分支是指向特定提交的可移动指针\n# HEAD是指向当前分支的指针\n\n# 查看分支指针\ngit log --oneline --decorate --graph --all\n\n# 查看当前分支\ngit branch                    # 列出本地分支\ngit branch -r                 # 列出远程分支\ngit branch -a                 # 列出所有分支\ngit branch -v                 # 显示分支最后一次提交\n\n# 查看分支详细信息\ngit show-branch               # 显示分支关系\ngit log --graph --pretty=format:'%h -%d %s (%cr) <%an>' --abbrev-commit"
+    },
+    "branchCreation": {
+        "title": "创建和切换分支",
+        "language": "bash",
+        "code": "# 创建分支\ngit branch feature-login      # 创建分支但不切换\ngit branch feature-login HEAD~2  # 基于特定提交创建分支\n\n# 切换分支\ngit checkout feature-login    # 切换到分支\ngit switch feature-login      # 新语法切换分支\n\n# 创建并切换分支\ngit checkout -b feature-login # 创建并切换（常用）\ngit switch -c feature-login   # 新语法创建并切换\n\n# 基于远程分支创建本地分支\ngit checkout -b local-branch origin/remote-branch\ngit switch -c local-branch origin/remote-branch\n\n# 重命名分支\ngit branch -m old-name new-name  # 重命名分支\ngit branch -M old-name new-name  # 强制重命名"
+    },
+    "branchMerging": {
+        "title": "分支合并",
+        "language": "bash",
+        "code": "# Fast-forward合并\n# 当目标分支是当前分支的直接后继时\ngit checkout main\ngit merge feature-branch      # 直接移动指针\n\n# 三方合并\n# 当两个分支有分歧时，创建合并提交\ngit merge feature-branch      # 创建合并提交\n\n# 禁用Fast-forward\ngit merge --no-ff feature-branch  # 总是创建合并提交\n\n# Squash合并\ngit merge --squash feature-branch # 将多个提交压缩为一个\ngit commit -m \"合并feature分支的所有更改\"\n\n# 查看合并状态\ngit status                    # 查看合并冲突\ngit diff                      # 查看冲突详情\n\n# 取消合并\ngit merge --abort             # 取消正在进行的合并"
+    },
+    "conflictResolution": {
+        "title": "冲突解决",
+        "language": "bash",
+        "code": "# 合并冲突示例\n# 当同一文件的同一部分被不同分支修改时会产生冲突\n\n# 冲突标记格式\n<<<<<<< HEAD\n当前分支的内容\n=======\n要合并分支的内容\n>>>>>>> feature-branch\n\n# 解决冲突步骤\n1. 编辑冲突文件，删除冲突标记，保留需要的内容\n2. git add <resolved-file>     # 标记冲突已解决\n3. git commit                  # 完成合并（或git merge --continue）\n\n# 冲突解决工具\ngit mergetool                 # 启动合并工具\ngit config --global merge.tool vimdiff  # 配置合并工具\n\n# 查看冲突历史\ngit log --merge               # 查看导致冲突的提交\ngit diff                      # 查看当前冲突\ngit diff --base               # 查看与共同祖先的差异"
+    },
+    "rebaseOperations": {
+        "title": "变基操作",
+        "language": "bash",
+        "code": "# 基本变基\ngit checkout feature-branch\ngit rebase main               # 将feature分支变基到main\n\n# 交互式变基\ngit rebase -i HEAD~3          # 交互式变基最近3次提交\ngit rebase -i main            # 交互式变基到main分支\n\n# 变基操作选项\n# pick: 使用提交\n# reword: 使用提交但修改提交信息\n# edit: 使用提交但停下来修改\n# squash: 使用提交但合并到前一个提交\n# fixup: 类似squash但丢弃提交信息\n# drop: 删除提交\n\n# 解决变基冲突\ngit rebase --continue         # 解决冲突后继续\ngit rebase --skip             # 跳过当前提交\ngit rebase --abort            # 取消变基操作\n\n# 变基到特定提交\ngit rebase --onto main feature~3 feature  # 复杂变基"
+    },
+    "branchDeletion": {
+        "title": "删除分支",
+        "language": "bash",
+        "code": "# 删除本地分支\ngit branch -d feature-branch  # 删除已合并的分支\ngit branch -D feature-branch  # 强制删除分支（未合并也删除）\n\n# 删除远程分支\ngit push origin --delete feature-branch\ngit push origin :feature-branch  # 旧语法\n\n# 清理远程分支引用\ngit remote prune origin       # 清理已删除的远程分支引用\ngit fetch --prune             # 获取更新并清理引用\n\n# 查看已合并的分支\ngit branch --merged           # 查看已合并到当前分支的分支\ngit branch --no-merged        # 查看未合并的分支\n\n# 批量删除已合并的分支\ngit branch --merged | grep -v \"\\*\\|main\\|develop\" | xargs -n 1 git branch -d"
+    },
+    "remoteBranches": {
+        "title": "远程分支管理",
+        "language": "bash",
+        "code": "# 查看远程分支\ngit branch -r                 # 查看远程分支\ngit branch -a                 # 查看所有分支\ngit ls-remote origin          # 查看远程仓库的所有引用\n\n# 推送分支到远程\ngit push origin feature-branch  # 推送分支\ngit push -u origin feature-branch  # 推送并设置上游分支\ngit push --set-upstream origin feature-branch  # 同上\n\n# 跟踪远程分支\ngit checkout -b local-branch origin/remote-branch  # 创建跟踪分支\ngit branch --set-upstream-to=origin/remote-branch local-branch  # 设置上游\n\n# 获取远程分支\ngit fetch origin              # 获取远程更新\ngit checkout -b local-branch origin/remote-branch  # 检出远程分支\n\n# 同步远程分支\ngit pull origin main          # 拉取并合并\ngit pull --rebase origin main # 拉取并变基"
+    },
+    "branchWorkflows": {
+        "title": "分支工作流",
+        "language": "bash",
+        "code": "# Git Flow 工作流\n# 主要分支：main(生产), develop(开发)\n# 辅助分支：feature, release, hotfix\n\n# 功能分支工作流\ngit checkout develop\ngit pull origin develop\ngit checkout -b feature/user-auth\n# 开发功能...\ngit add .\ngit commit -m \"feat: 添加用户认证功能\"\ngit push origin feature/user-auth\n# 创建Pull Request\n\n# 发布分支工作流\ngit checkout develop\ngit checkout -b release/1.2.0\n# 修复bug，更新版本号...\ngit checkout main\ngit merge --no-ff release/1.2.0\ngit tag -a v1.2.0 -m \"Release version 1.2.0\"\ngit checkout develop\ngit merge --no-ff release/1.2.0\n\n# 热修复工作流\ngit checkout main\ngit checkout -b hotfix/critical-bug\n# 修复bug...\ngit checkout main\ngit merge --no-ff hotfix/critical-bug\ngit tag -a v1.2.1 -m \"Hotfix version 1.2.1\"\ngit checkout develop\ngit merge --no-ff hotfix/critical-bug"
+    },
+    "branchStrategies": {
+        "title": "分支策略",
+        "language": "bash",
+        "code": "# 1. GitHub Flow（简单）\n# main分支 + feature分支\ngit checkout main\ngit pull origin main\ngit checkout -b feature/new-feature\n# 开发 -> 推送 -> Pull Request -> 合并\n\n# 2. Git Flow（复杂项目）\n# main, develop, feature, release, hotfix分支\n\n# 3. GitLab Flow（中等复杂度）\n# main分支 + environment分支\ngit checkout main\ngit checkout -b production    # 生产环境分支\ngit checkout -b staging       # 预发布环境分支\n\n# 4. 功能分支命名规范\nfeature/user-authentication   # 功能分支\nbugfix/login-error           # 修复分支\nhotfix/security-patch        # 热修复分支\nrelease/v1.2.0              # 发布分支\n\n# 5. 分支保护规则\n# - 禁止直接推送到main分支\n# - 要求Pull Request审查\n# - 要求状态检查通过\n# - 要求分支是最新的"
+    },
+    "advancedBranching": {
+        "title": "高级分支操作",
+        "language": "bash",
+        "code": "# 樱桃挑选（Cherry-pick）\ngit cherry-pick <commit-hash>  # 应用特定提交到当前分支\ngit cherry-pick -n <commit>    # 应用但不提交\ngit cherry-pick --continue     # 解决冲突后继续\ngit cherry-pick --abort        # 取消樱桃挑选\n\n# 分支比较\ngit diff main..feature-branch  # 比较两个分支\ngit log main..feature-branch   # 查看分支间的提交差异\ngit log --left-right main...feature-branch  # 显示分支分歧\n\n# 分支重命名\ngit branch -m old-name new-name  # 重命名本地分支\ngit push origin :old-name        # 删除远程旧分支\ngit push origin new-name         # 推送新分支\ngit push origin -u new-name      # 设置上游\n\n# 孤儿分支\ngit checkout --orphan gh-pages   # 创建无历史的孤儿分支\ngit rm -rf .                     # 清空工作区\n# 添加新内容...\ngit add .\ngit commit -m \"Initial commit for gh-pages\""
+    }
 }

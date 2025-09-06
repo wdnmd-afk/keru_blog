@@ -11,16 +11,12 @@ interface CustomProgressProps {
  * 完全自定义的进度条组件
  * 绕过Antd Progress组件的潜在问题，确保进度显示的准确性
  */
-const CustomProgress: React.FC<CustomProgressProps> = ({
-    percent,
-    status,
-    strokeColor,
-    uid
-}) => {
+const CustomProgress: React.FC<CustomProgressProps> = ({ percent, status, strokeColor, uid }) => {
     // 确保percent是有效的数字类型
-    const validPercent = typeof percent === 'number' && !isNaN(percent) && isFinite(percent)
-        ? Math.max(0, Math.min(100, percent))
-        : 0
+    const validPercent =
+        typeof percent === 'number' && !isNaN(percent) && isFinite(percent)
+            ? Math.max(0, Math.min(100, percent))
+            : 0
 
     // 移除日志，减少控制台输出
 
@@ -45,7 +41,7 @@ const CustomProgress: React.FC<CustomProgressProps> = ({
         borderRadius: '3px',
         overflow: 'hidden',
         position: 'relative',
-        border: '1px solid #e8e8e8'
+        border: '1px solid #e8e8e8',
     }
 
     const progressBarStyle: React.CSSProperties = {
@@ -57,7 +53,7 @@ const CustomProgress: React.FC<CustomProgressProps> = ({
         position: 'relative',
         // 强制重绘，确保视觉更新
         transform: 'translateZ(0)',
-        willChange: 'width'
+        willChange: 'width',
     }
 
     return (

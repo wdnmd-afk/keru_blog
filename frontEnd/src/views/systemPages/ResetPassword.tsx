@@ -1,6 +1,13 @@
 import { LoginApi } from '@/api'
 import style from '@/styles/login.module.scss'
-import { ArrowLeftOutlined, EyeInvisibleOutlined, EyeOutlined, LockOutlined, MailOutlined, UserOutlined } from '@ant-design/icons'
+import {
+    ArrowLeftOutlined,
+    EyeInvisibleOutlined,
+    EyeOutlined,
+    LockOutlined,
+    MailOutlined,
+    UserOutlined,
+} from '@ant-design/icons'
 import { Button, Form, Input, message } from 'antd'
 import React, { useState } from 'react'
 
@@ -56,7 +63,12 @@ const ResetPassword: React.FC<ResetPasswordProps> = ({ onBack }) => {
             >
                 <div className={style.inputWrapper}>
                     <UserOutlined className={style.inputIcon} />
-                    <Input size="large" placeholder="请输入用户名" className={style.customInput} autoComplete="off" />
+                    <Input
+                        size="large"
+                        placeholder="请输入用户名"
+                        className={style.customInput}
+                        autoComplete="off"
+                    />
                 </div>
             </Form.Item>
 
@@ -158,26 +170,26 @@ const ResetPassword: React.FC<ResetPasswordProps> = ({ onBack }) => {
                 {formFields}
 
                 <Form.Item className={style.submitButton}>
-                   <div className={'f-ic'}>
-                     <Button
-                        type="text"
-                        icon={<ArrowLeftOutlined />}
-                        onClick={onBack}
-                        className={`${style.loginButton} flex-1 mr-3 bg-[#141A2A]`}
-                    >
-                        返回登录
-                    </Button>
-                    <Button
-                        size="large"
-                        type="primary"
-                        htmlType="submit"
-                        loading={loading}
-                        className={`${style.loginButton} flex-1`}
-                        block
-                    >
-                        重置密码
-                    </Button>
-                   </div>
+                    <div className={'f-ic'}>
+                        <Button
+                            type="text"
+                            icon={<ArrowLeftOutlined />}
+                            onClick={onBack}
+                            className={`${style.loginButton} flex-1 mr-3 bg-[#141A2A]`}
+                        >
+                            返回登录
+                        </Button>
+                        <Button
+                            size="large"
+                            type="primary"
+                            htmlType="submit"
+                            loading={loading}
+                            className={`${style.loginButton} flex-1`}
+                            block
+                        >
+                            重置密码
+                        </Button>
+                    </div>
                 </Form.Item>
             </Form>
         </div>

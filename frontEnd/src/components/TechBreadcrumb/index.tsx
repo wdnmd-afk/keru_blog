@@ -1,6 +1,6 @@
 /**
  * 技术栈面包屑导航组件
- * 
+ *
  * 功能说明：
  * 1. 根据当前路径自动生成面包屑导航
  * 2. 支持点击导航到上级页面
@@ -9,11 +9,11 @@
  * 5. 响应式设计支持
  */
 
-import React from 'react'
-import { Breadcrumb } from 'antd'
-import { useLocation, useNavigate } from 'react-router-dom'
-import { generateBreadcrumb, generateSimpleBreadcrumb } from '@/utils/routeUtils'
 import type { BreadcrumbConfig } from '@/config/technologyTypes'
+import { generateBreadcrumb, generateSimpleBreadcrumb } from '@/utils/routeUtils'
+import { Breadcrumb } from 'antd'
+import React from 'react'
+import { useLocation, useNavigate } from 'react-router-dom'
 import styles from './TechBreadcrumb.module.scss'
 
 interface TechBreadcrumbProps {
@@ -31,7 +31,7 @@ interface TechBreadcrumbProps {
 const TechBreadcrumb: React.FC<TechBreadcrumbProps> = ({
     simple = false,
     className = '',
-    separator
+    separator,
 }) => {
     const location = useLocation()
     const navigate = useNavigate()
@@ -67,13 +67,9 @@ const TechBreadcrumb: React.FC<TechBreadcrumbProps> = ({
                             onClick={() => handleBreadcrumbClick(item.path)}
                         >
                             {item.icon && (
-                                <span className={styles.breadcrumb_icon}>
-                                    {item.icon}
-                                </span>
+                                <span className={styles.breadcrumb_icon}>{item.icon}</span>
                             )}
-                            <span className={styles.breadcrumb_text}>
-                                {item.title}
-                            </span>
+                            <span className={styles.breadcrumb_text}>{item.title}</span>
                         </span>
                     ),
                     key: item.path || `item-${index}`,

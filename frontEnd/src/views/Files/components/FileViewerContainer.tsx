@@ -1,7 +1,7 @@
+import { FilePreviewType, getFilePreviewType } from '@/utils/filePreview'
 import { Empty } from 'antd'
 import React from 'react'
 import FilePreview from './FilePreview'
-import { getFilePreviewType, FilePreviewType } from '@/utils/filePreview'
 
 interface FileInfo {
     url?: string
@@ -11,7 +11,7 @@ interface FileInfo {
 }
 
 interface IProps {
-    fileInfo: FileInfo | null  // 允许null值
+    fileInfo: FileInfo | null // 允许null值
 }
 
 const FileViewerContainer: React.FC<IProps> = ({ fileInfo }) => {
@@ -58,7 +58,7 @@ const FileViewerContainer: React.FC<IProps> = ({ fileInfo }) => {
             [FilePreviewType.CODE]: '代码',
             [FilePreviewType.OFFICE]: 'Office文档',
             [FilePreviewType.ARCHIVE]: '压缩文件',
-            [FilePreviewType.UNKNOWN]: '未知类型'
+            [FilePreviewType.UNKNOWN]: '未知类型',
         }
         return typeMap[type] || '未知类型'
     }
@@ -77,23 +77,23 @@ const FileViewerContainer: React.FC<IProps> = ({ fileInfo }) => {
                 onError={handleError}
                 previewConfig={{
                     image: {
-                        showToolbar: true
+                        showToolbar: true,
                     },
                     pdf: {
-                        initialScale: 1
+                        initialScale: 1,
                     },
                     video: {
                         autoPlay: false,
                         loop: false,
-                        muted: false
+                        muted: false,
                     },
                     text: {
                         encoding: 'utf-8',
-                        showLineNumbers: true
+                        showLineNumbers: true,
                     },
                     markdown: {
-                        showSourceToggle: true
-                    }
+                        showSourceToggle: true,
+                    },
                 }}
             />
         </div>

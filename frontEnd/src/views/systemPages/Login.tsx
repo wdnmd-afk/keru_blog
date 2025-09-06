@@ -7,7 +7,7 @@ import {
     UserOutlined,
 } from '@ant-design/icons'
 import { Button, Checkbox, Form, Input, Tabs, message } from 'antd'
-import React, { useState, useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 // import useStores from "@/hooks/useStores.ts";
 import { LoginApi } from '@/api'
 import logoImage from '@/assets/images/k.jpg'
@@ -33,7 +33,7 @@ const Login: React.FC = () => {
     const [loading, setLoading] = useState(false)
     const [showResetPassword, setShowResetPassword] = useState(false)
     const [form] = Form.useForm()
-    
+
     // 组件加载时检查本地存储的登录信息
     useEffect(() => {
         const savedLoginInfo = BrowserLocalStorage.get('savedLoginInfo')
@@ -41,7 +41,7 @@ const Login: React.FC = () => {
             form.setFieldsValue({
                 name: savedLoginInfo.name,
                 password: savedLoginInfo.password,
-                remember: true
+                remember: true,
             })
         }
     }, [])
@@ -56,21 +56,21 @@ const Login: React.FC = () => {
                 data.token = 'Bearer ' + data.token
                 setUserInfo(data)
                 BrowserLocalStorage.set('userInfo', data)
-                
+
                 // 处理记住密码功能
                 if (params.remember) {
                     // 保存登录信息到本地存储
                     const loginInfo = {
                         name: params.name,
                         password: params.password,
-                        remember: true
+                        remember: true,
                     }
                     BrowserLocalStorage.set('savedLoginInfo', loginInfo)
                 } else {
                     // 清除保存的登录信息
                     BrowserLocalStorage.remove('savedLoginInfo')
                 }
-                
+
                 messageApi.success('登录成功')
                 navigate('/')
                 reset()
@@ -103,12 +103,12 @@ const Login: React.FC = () => {
     const reset = () => {
         form.resetFields()
     }
-    
+
     // 处理忘记密码点击事件
     const handleForgotPassword = () => {
         setShowResetPassword(true)
     }
-    
+
     // 返回登录界面
     const handleBackToLogin = () => {
         setShowResetPassword(false)
@@ -166,8 +166,8 @@ const Login: React.FC = () => {
                     <Form.Item name="remember" valuePropName="checked" style={{ margin: 0 }}>
                         <Checkbox>记住密码</Checkbox>
                     </Form.Item>
-                    <a 
-                        href="#" 
+                    <a
+                        href="#"
                         className={style.forgotPassword}
                         onClick={(e) => {
                             e.preventDefault()

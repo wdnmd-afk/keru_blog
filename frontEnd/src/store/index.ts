@@ -1,2 +1,1 @@
-export { useGlobalStore, useGlobalStoreAction } from './global';
-
+export { useGlobalStore, useGlobalStoreAction } from './global'

@@ -1,37 +1,37 @@
 {
-  "gitFlowWorkflow": {
-    "title": "Git Flow工作流",
-    "language": "bash",
-    "code": "# Git Flow 分支结构\nmain/master     # 生产分支，只包含发布版本\ndevelop         # 开发分支，集成所有功能\nfeature/*       # 功能分支，从develop分出\nrelease/*       # 发布分支，准备新版本\nhotfix/*        # 热修复分支，从main分出\n\n# 初始化Git Flow\ngit flow init\n\n# 功能开发流程\ngit flow feature start user-login    # 开始新功能\n# 开发功能...\ngit flow feature finish user-login   # 完成功能，合并到develop\n\n# 发布流程\ngit flow release start v1.2.0        # 开始发布准备\n# 修复bug，更新版本号...\ngit flow release finish v1.2.0       # 完成发布，合并到main和develop\n\n# 热修复流程\ngit flow hotfix start critical-bug   # 开始热修复\n# 修复bug...\ngit flow hotfix finish critical-bug  # 完成修复，合并到main和develop"
-  },
-  "githubFlow": {
-    "title": "GitHub Flow工作流",
-    "language": "bash",
-    "code": "# GitHub Flow - 简化的工作流\n# 只有main分支和功能分支\n\n# 1. 创建功能分支\ngit checkout main\ngit pull origin main\ngit checkout -b feature/payment-integration\n\n# 2. 开发和提交\ngit add .\ngit commit -m \"feat: 添加支付集成功能\"\ngit push origin feature/payment-integration\n\n# 3. 创建Pull Request\n# 在GitHub上创建PR，描述更改\n\n# 4. 代码审查和讨论\n# 团队成员审查代码，提出建议\n\n# 5. 部署测试（可选）\n# 在测试环境部署PR分支\n\n# 6. 合并到main\n# PR通过后合并，自动部署到生产环境\n\n# 7. 清理\ngit checkout main\ngit pull origin main\ngit branch -d feature/payment-integration"
-  },
-  "gitlabFlow": {
-    "title": "GitLab Flow工作流",
-    "language": "bash",
-    "code": "# GitLab Flow - 环境分支模式\nmain            # 主分支\npre-production  # 预生产环境分支\nproduction      # 生产环境分支\n\n# 功能开发\ngit checkout main\ngit checkout -b feature/user-dashboard\n# 开发功能...\ngit push origin feature/user-dashboard\n# 创建Merge Request到main\n\n# 部署到预生产\ngit checkout pre-production\ngit merge main\ngit push origin pre-production\n# 触发预生产环境部署\n\n# 部署到生产\ngit checkout production\ngit merge pre-production\ngit push origin production\n# 触发生产环境部署\n\n# 发布标签\ngit tag -a v1.3.0 -m \"Release version 1.3.0\"\ngit push origin v1.3.0"
-  },
-  "pullRequestTemplate": {
-    "title": "Pull Request模板",
-    "language": "markdown",
-    "code": "# PR模板 (.github/pull_request_template.md)\n## 📝 变更描述\n简要描述这个PR的目的和主要变更\n\n## 🔧 变更类型\n- [ ] 新功能 (feature)\n- [ ] 修复bug (fix)\n- [ ] 文档更新 (docs)\n- [ ] 代码重构 (refactor)\n- [ ] 性能优化 (perf)\n- [ ] 测试相关 (test)\n- [ ] 构建相关 (build)\n\n## 🧪 测试\n- [ ] 单元测试通过\n- [ ] 集成测试通过\n- [ ] 手动测试完成\n- [ ] 浏览器兼容性测试\n\n## 📋 检查清单\n- [ ] 代码遵循项目规范\n- [ ] 已添加必要的测试\n- [ ] 文档已更新\n- [ ] 无破坏性变更\n- [ ] 已考虑向后兼容性\n\n## 🔗 相关链接\n- 关联Issue: #\n- 设计文档: \n- 测试报告: \n\n## 📸 截图（如适用）\n\n## 🚀 部署说明\n特殊的部署步骤或注意事项"
-  },
-  "codeReviewGuidelines": {
-    "title": "代码审查指南",
-    "language": "bash",
-    "code": "# 审查者指南\n\n# 1. 检查代码质量\n- 代码是否清晰易读\n- 是否遵循项目编码规范\n- 是否有适当的注释\n- 是否有潜在的性能问题\n\n# 2. 功能验证\n- 功能是否按预期工作\n- 是否处理了边界情况\n- 错误处理是否完善\n- 是否有安全隐患\n\n# 3. 测试覆盖\n- 是否有足够的测试\n- 测试是否覆盖主要场景\n- 是否有回归测试\n\n# 4. 审查命令\ngit checkout pr-branch      # 检出PR分支\ngit log main..pr-branch     # 查看提交历史\ngit diff main...pr-branch   # 查看所有更改\n\n# 5. 本地测试\nnpm install                 # 安装依赖\nnpm test                    # 运行测试\nnpm run build               # 构建项目\n\n# 6. 提供反馈\n# 在GitHub/GitLab上添加评论\n# 使用建设性的语言\n# 提供具体的改进建议"
-  },
-  "conflictResolutionTeam": {
-    "title": "团队冲突解决",
-    "language": "bash",
-    "code": "# 场景1：合并时发生冲突\ngit checkout main\ngit pull origin main\ngit checkout feature-branch\ngit merge main              # 或 git rebase main\n\n# 解决冲突\n# 1. 查看冲突文件\ngit status\ngit diff\n\n# 2. 编辑冲突文件\n# 删除冲突标记，保留正确内容\n\n# 3. 标记解决\ngit add conflicted-file.txt\ngit commit -m \"resolve: 解决与main分支的合并冲突\"\n\n# 4. 推送解决结果\ngit push origin feature-branch\n\n# 场景2：多人同时修改同一文件\n# 使用三方合并工具\ngit mergetool\n\n# 场景3：大型冲突\n# 与团队成员沟通\n# 1. 暂停合并\ngit merge --abort\n# 2. 与相关开发者讨论\n# 3. 制定解决方案\n# 4. 重新执行合并"
-  },
-  "teamStandards": {
-    "title": "团队Git规范",
-    "language": "bash",
-    "code": "# 团队Git规范文档\n\n# 1. 分支命名规范\nfeature/JIRA-123-user-login     # 功能分支\nbugfix/JIRA-456-login-error     # 修复分支\nhotfix/critical-security-patch  # 热修复分支\nrelease/v1.2.0                  # 发布分支\n\n# 2. 提交信息规范\nfeat(auth): 添加用户登录功能\nfix(ui): 修复按钮样式问题\ndocs(readme): 更新安装说明\nrefactor(api): 重构用户服务\ntest(auth): 添加登录测试用例\n\n# 3. 工作流程\n# 每日同步\ngit checkout main\ngit pull origin main\n\n# 功能开发\ngit checkout -b feature/new-feature\n# 开发...\ngit add .\ngit commit -m \"feat: 实现新功能\"\ngit push origin feature/new-feature\n\n# 4. 代码审查要求\n# - 至少2人审查\n# - 所有测试必须通过\n# - 无合并冲突\n# - 遵循编码规范\n\n# 5. 合并策略\n# - 功能分支使用squash merge\n# - 发布分支使用merge commit\n# - 热修复直接合并到main"
-  }
+    "gitFlowWorkflow": {
+        "title": "Git Flow工作流",
+        "language": "bash",
+        "code": "# Git Flow 分支结构\nmain/master     # 生产分支，只包含发布版本\ndevelop         # 开发分支，集成所有功能\nfeature/*       # 功能分支，从develop分出\nrelease/*       # 发布分支，准备新版本\nhotfix/*        # 热修复分支，从main分出\n\n# 初始化Git Flow\ngit flow init\n\n# 功能开发流程\ngit flow feature start user-login    # 开始新功能\n# 开发功能...\ngit flow feature finish user-login   # 完成功能，合并到develop\n\n# 发布流程\ngit flow release start v1.2.0        # 开始发布准备\n# 修复bug，更新版本号...\ngit flow release finish v1.2.0       # 完成发布，合并到main和develop\n\n# 热修复流程\ngit flow hotfix start critical-bug   # 开始热修复\n# 修复bug...\ngit flow hotfix finish critical-bug  # 完成修复，合并到main和develop"
+    },
+    "githubFlow": {
+        "title": "GitHub Flow工作流",
+        "language": "bash",
+        "code": "# GitHub Flow - 简化的工作流\n# 只有main分支和功能分支\n\n# 1. 创建功能分支\ngit checkout main\ngit pull origin main\ngit checkout -b feature/payment-integration\n\n# 2. 开发和提交\ngit add .\ngit commit -m \"feat: 添加支付集成功能\"\ngit push origin feature/payment-integration\n\n# 3. 创建Pull Request\n# 在GitHub上创建PR，描述更改\n\n# 4. 代码审查和讨论\n# 团队成员审查代码，提出建议\n\n# 5. 部署测试（可选）\n# 在测试环境部署PR分支\n\n# 6. 合并到main\n# PR通过后合并，自动部署到生产环境\n\n# 7. 清理\ngit checkout main\ngit pull origin main\ngit branch -d feature/payment-integration"
+    },
+    "gitlabFlow": {
+        "title": "GitLab Flow工作流",
+        "language": "bash",
+        "code": "# GitLab Flow - 环境分支模式\nmain            # 主分支\npre-production  # 预生产环境分支\nproduction      # 生产环境分支\n\n# 功能开发\ngit checkout main\ngit checkout -b feature/user-dashboard\n# 开发功能...\ngit push origin feature/user-dashboard\n# 创建Merge Request到main\n\n# 部署到预生产\ngit checkout pre-production\ngit merge main\ngit push origin pre-production\n# 触发预生产环境部署\n\n# 部署到生产\ngit checkout production\ngit merge pre-production\ngit push origin production\n# 触发生产环境部署\n\n# 发布标签\ngit tag -a v1.3.0 -m \"Release version 1.3.0\"\ngit push origin v1.3.0"
+    },
+    "pullRequestTemplate": {
+        "title": "Pull Request模板",
+        "language": "markdown",
+        "code": "# PR模板 (.github/pull_request_template.md)\n## 📝 变更描述\n简要描述这个PR的目的和主要变更\n\n## 🔧 变更类型\n- [ ] 新功能 (feature)\n- [ ] 修复bug (fix)\n- [ ] 文档更新 (docs)\n- [ ] 代码重构 (refactor)\n- [ ] 性能优化 (perf)\n- [ ] 测试相关 (test)\n- [ ] 构建相关 (build)\n\n## 🧪 测试\n- [ ] 单元测试通过\n- [ ] 集成测试通过\n- [ ] 手动测试完成\n- [ ] 浏览器兼容性测试\n\n## 📋 检查清单\n- [ ] 代码遵循项目规范\n- [ ] 已添加必要的测试\n- [ ] 文档已更新\n- [ ] 无破坏性变更\n- [ ] 已考虑向后兼容性\n\n## 🔗 相关链接\n- 关联Issue: #\n- 设计文档: \n- 测试报告: \n\n## 📸 截图（如适用）\n\n## 🚀 部署说明\n特殊的部署步骤或注意事项"
+    },
+    "codeReviewGuidelines": {
+        "title": "代码审查指南",
+        "language": "bash",
+        "code": "# 审查者指南\n\n# 1. 检查代码质量\n- 代码是否清晰易读\n- 是否遵循项目编码规范\n- 是否有适当的注释\n- 是否有潜在的性能问题\n\n# 2. 功能验证\n- 功能是否按预期工作\n- 是否处理了边界情况\n- 错误处理是否完善\n- 是否有安全隐患\n\n# 3. 测试覆盖\n- 是否有足够的测试\n- 测试是否覆盖主要场景\n- 是否有回归测试\n\n# 4. 审查命令\ngit checkout pr-branch      # 检出PR分支\ngit log main..pr-branch     # 查看提交历史\ngit diff main...pr-branch   # 查看所有更改\n\n# 5. 本地测试\nnpm install                 # 安装依赖\nnpm test                    # 运行测试\nnpm run build               # 构建项目\n\n# 6. 提供反馈\n# 在GitHub/GitLab上添加评论\n# 使用建设性的语言\n# 提供具体的改进建议"
+    },
+    "conflictResolutionTeam": {
+        "title": "团队冲突解决",
+        "language": "bash",
+        "code": "# 场景1：合并时发生冲突\ngit checkout main\ngit pull origin main\ngit checkout feature-branch\ngit merge main              # 或 git rebase main\n\n# 解决冲突\n# 1. 查看冲突文件\ngit status\ngit diff\n\n# 2. 编辑冲突文件\n# 删除冲突标记，保留正确内容\n\n# 3. 标记解决\ngit add conflicted-file.txt\ngit commit -m \"resolve: 解决与main分支的合并冲突\"\n\n# 4. 推送解决结果\ngit push origin feature-branch\n\n# 场景2：多人同时修改同一文件\n# 使用三方合并工具\ngit mergetool\n\n# 场景3：大型冲突\n# 与团队成员沟通\n# 1. 暂停合并\ngit merge --abort\n# 2. 与相关开发者讨论\n# 3. 制定解决方案\n# 4. 重新执行合并"
+    },
+    "teamStandards": {
+        "title": "团队Git规范",
+        "language": "bash",
+        "code": "# 团队Git规范文档\n\n# 1. 分支命名规范\nfeature/JIRA-123-user-login     # 功能分支\nbugfix/JIRA-456-login-error     # 修复分支\nhotfix/critical-security-patch  # 热修复分支\nrelease/v1.2.0                  # 发布分支\n\n# 2. 提交信息规范\nfeat(auth): 添加用户登录功能\nfix(ui): 修复按钮样式问题\ndocs(readme): 更新安装说明\nrefactor(api): 重构用户服务\ntest(auth): 添加登录测试用例\n\n# 3. 工作流程\n# 每日同步\ngit checkout main\ngit pull origin main\n\n# 功能开发\ngit checkout -b feature/new-feature\n# 开发...\ngit add .\ngit commit -m \"feat: 实现新功能\"\ngit push origin feature/new-feature\n\n# 4. 代码审查要求\n# - 至少2人审查\n# - 所有测试必须通过\n# - 无合并冲突\n# - 遵循编码规范\n\n# 5. 合并策略\n# - 功能分支使用squash merge\n# - 发布分支使用merge commit\n# - 热修复直接合并到main"
+    }
 }

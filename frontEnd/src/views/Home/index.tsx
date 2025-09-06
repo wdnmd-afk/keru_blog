@@ -1,8 +1,7 @@
-import React from 'react';
-import HomeHeader from './components/Header';
-import TodoList from './components/TodoList';
-import HomeContent from './components/Content';
-import style from '@/styles/home.module.scss';
+import style from '@/styles/home.module.scss'
+import HomeContent from './components/Content'
+import HomeHeader from './components/Header'
+import TodoList from './components/TodoList'
 
 const Home = () => {
     return (
@@ -13,7 +12,7 @@ const Home = () => {
                 <HomeContent />
             </div>
         </div>
-    );
-};
+    )
+}
 
-export default Home;
+export default Home

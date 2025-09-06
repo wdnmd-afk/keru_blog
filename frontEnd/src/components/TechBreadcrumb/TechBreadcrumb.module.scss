@@ -30,7 +30,7 @@
     :global(.ant-breadcrumb-link) {
         color: var(--text-secondary);
         transition: all 0.3s ease;
-        
+
         &:hover {
             color: var(--text-primary);
         }
@@ -63,12 +63,12 @@
 
     &.clickable {
         cursor: pointer;
-        
+
         &:hover {
             background: rgba(62, 92, 122, 0.1);
             color: var(--text-primary);
             transform: translateY(-1px);
-            
+
             .breadcrumb_icon {
                 color: var(--highlight-blue);
             }
@@ -83,7 +83,7 @@
         color: var(--text-primary);
         font-weight: 600;
         background: rgba(62, 92, 122, 0.15);
-        
+
         .breadcrumb_icon {
             color: var(--highlight-blue);
         }
@@ -115,7 +115,7 @@
 
     @media (max-width: 480px) {
         font-size: 12px;
-        
+
         // 在小屏幕上可能隐藏图标以节省空间
         &:not(.keep-on-mobile) {
             display: none;

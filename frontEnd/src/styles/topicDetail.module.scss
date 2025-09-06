@@ -449,16 +449,24 @@
     // 确保文本内容是白色，但不影响组件背景色
     .topic_detail_container {
         // 基础文本元素
-        h1, h2, h3, h4, h5, h6 {
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
             color: var(--text-primary) !important;
         }
 
-        p, span, div {
+        p,
+        span,
+        div {
             color: var(--text-primary) !important;
         }
 
         // 列表项文字
-        ul li, ol li {
+        ul li,
+        ol li {
             color: var(--text-primary) !important;
         }
 
@@ -474,12 +482,17 @@
         }
 
         // 表格文字
-        table, td, th {
+        table,
+        td,
+        th {
             color: var(--text-primary) !important;
         }
 
         // 强调文本
-        strong, b, em, i {
+        strong,
+        b,
+        em,
+        i {
             color: var(--text-primary) !important;
         }
 
@@ -493,7 +506,8 @@
         }
 
         // 代码块保持原有颜色
-        pre, code {
+        pre,
+        code {
             color: #f8f8f2 !important;
         }
     }
@@ -543,7 +557,8 @@
     flex-direction: column;
     gap: 16px;
 
-    .pros, .cons {
+    .pros,
+    .cons {
         h5 {
             color: var(--text-primary) !important;
             font-size: 0.95rem;
@@ -591,7 +606,6 @@
 }
 
 .step_item {
-
     gap: 16px;
     padding: 16px;
     background: rgba(62, 92, 122, 0.05);
@@ -792,7 +806,30 @@
 }
 
 // 更多缺失的样式类
-.bind_section, .merge_section, .network_section, .runtime_section, .console_section, .sources_section, .performance_section, .monitoring_section, .backup_section, .security_section, .protection_section, .review_section, .issue_section, .method_section, .property_section, .application_section, .lighthouse_section, .bundle_section, .newman_section, .window_section, .automation_section, .codegen_section, .tools_section, .script_section {
+.bind_section,
+.merge_section,
+.network_section,
+.runtime_section,
+.console_section,
+.sources_section,
+.performance_section,
+.monitoring_section,
+.backup_section,
+.security_section,
+.protection_section,
+.review_section,
+.issue_section,
+.method_section,
+.property_section,
+.application_section,
+.lighthouse_section,
+.bundle_section,
+.newman_section,
+.window_section,
+.automation_section,
+.codegen_section,
+.tools_section,
+.script_section {
     h3 {
         color: var(--text-primary) !important;
         font-size: 1.2rem;
@@ -807,7 +844,8 @@
         opacity: 0.9;
     }
 
-    ul, ol {
+    ul,
+    ol {
         li {
             color: #ffffff !important;
             margin-bottom: 8px;
@@ -824,7 +862,8 @@
         margin: 20px 0 12px 0;
     }
 
-    ul, ol {
+    ul,
+    ol {
         li {
             color: #ffffff !important;
             margin-bottom: 8px;

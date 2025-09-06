@@ -1,42 +1,42 @@
 {
-  "dockerInstallation": {
-    "title": "Docker安装",
-    "language": "bash",
-    "code": "# Ubuntu/Debian安装\nsudo apt-get update\nsudo apt-get install docker.io\nsudo systemctl start docker\nsudo systemctl enable docker\n\n# CentOS/RHEL安装\nsudo yum install -y docker\nsudo systemctl start docker\nsudo systemctl enable docker\n\n# macOS安装\n# 下载Docker Desktop for Mac\n# https://www.docker.com/products/docker-desktop\n\n# Windows安装\n# 下载Docker Desktop for Windows\n# https://www.docker.com/products/docker-desktop\n\n# 验证安装\ndocker --version\ndocker run hello-world"
-  },
-  "basicCommands": {
-    "title": "Docker基础命令",
-    "language": "bash",
-    "code": "# 镜像操作\ndocker images                    # 列出本地镜像\ndocker pull nginx:latest         # 拉取镜像\ndocker rmi nginx:latest          # 删除镜像\ndocker build -t myapp:1.0 .      # 构建镜像\ndocker tag myapp:1.0 myapp:latest # 标记镜像\n\n# 容器操作\ndocker ps                        # 列出运行中的容器\ndocker ps -a                     # 列出所有容器\ndocker run -d --name web nginx   # 后台运行容器\ndocker start web                 # 启动容器\ndocker stop web                  # 停止容器\ndocker restart web               # 重启容器\ndocker rm web                    # 删除容器\n\n# 容器交互\ndocker exec -it web bash         # 进入容器\ndocker logs web                  # 查看容器日志\ndocker cp file.txt web:/app/     # 复制文件到容器\ndocker inspect web               # 查看容器详细信息"
-  },
-  "dockerfileBasics": {
-    "title": "Dockerfile基础",
-    "language": "dockerfile",
-    "code": "# 基础镜像\nFROM node:16-alpine\n\n# 设置工作目录\nWORKDIR /app\n\n# 复制package.json\nCOPY package*.json ./\n\n# 安装依赖\nRUN npm ci --only=production\n\n# 复制应用代码\nCOPY . .\n\n# 暴露端口\nEXPOSE 3000\n\n# 设置环境变量\nENV NODE_ENV=production\n\n# 创建非root用户\nRUN addgroup -g 1001 -S nodejs\nRUN adduser -S nextjs -u 1001\nUSER nextjs\n\n# 启动命令\nCMD [\"npm\", \"start\"]"
-  },
-  "containerLifecycle": {
-    "title": "容器生命周期",
-    "language": "bash",
-    "code": "# 创建并运行容器\ndocker run -d \\\n  --name myapp \\\n  -p 8080:80 \\\n  -v /host/data:/app/data \\\n  -e ENV=production \\\n  nginx:latest\n\n# 容器状态转换\n# Created -> Running -> Stopped -> Removed\n\n# 暂停和恢复容器\ndocker pause myapp    # 暂停容器\ndocker unpause myapp  # 恢复容器\n\n# 容器资源限制\ndocker run -d \\\n  --name limited-app \\\n  --memory=512m \\\n  --cpus=1.5 \\\n  --restart=unless-stopped \\\n  myapp:latest\n\n# 容器健康检查\ndocker run -d \\\n  --name healthy-app \\\n  --health-cmd=\"curl -f http://localhost/ || exit 1\" \\\n  --health-interval=30s \\\n  --health-timeout=10s \\\n  --health-retries=3 \\\n  nginx:latest"
-  },
-  "volumeManagement": {
-    "title": "数据卷管理",
-    "language": "bash",
-    "code": "# 创建数据卷\ndocker volume create mydata\n\n# 列出数据卷\ndocker volume ls\n\n# 查看数据卷详情\ndocker volume inspect mydata\n\n# 使用数据卷\ndocker run -d \\\n  --name db \\\n  -v mydata:/var/lib/mysql \\\n  mysql:8.0\n\n# 绑定挂载\ndocker run -d \\\n  --name web \\\n  -v /host/www:/usr/share/nginx/html:ro \\\n  nginx:latest\n\n# 临时文件系统\ndocker run -d \\\n  --name temp-app \\\n  --tmpfs /tmp:rw,noexec,nosuid,size=100m \\\n  myapp:latest\n\n# 备份数据卷\ndocker run --rm \\\n  -v mydata:/data \\\n  -v $(pwd):/backup \\\n  alpine tar czf /backup/backup.tar.gz -C /data .\n\n# 恢复数据卷\ndocker run --rm \\\n  -v mydata:/data \\\n  -v $(pwd):/backup \\\n  alpine tar xzf /backup/backup.tar.gz -C /data"
-  },
-  "networkBasics": {
-    "title": "网络基础",
-    "language": "bash",
-    "code": "# 列出网络\ndocker network ls\n\n# 创建自定义网络\ndocker network create mynetwork\ndocker network create --driver bridge --subnet=172.20.0.0/16 custom-net\n\n# 连接容器到网络\ndocker run -d --name web --network mynetwork nginx:latest\ndocker network connect mynetwork existing-container\n\n# 端口映射\ndocker run -d \\\n  --name web \\\n  -p 80:80 \\\n  -p 443:443 \\\n  nginx:latest\n\n# 容器间通信\ndocker run -d --name db --network mynetwork mysql:8.0\ndocker run -d --name app --network mynetwork \\\n  -e DB_HOST=db \\\n  myapp:latest\n\n# 查看网络详情\ndocker network inspect mynetwork\n\n# 断开网络连接\ndocker network disconnect mynetwork container-name\n\n# 删除网络\ndocker network rm mynetwork"
-  },
-  "imageOptimization": {
-    "title": "镜像优化",
-    "language": "dockerfile",
-    "code": "# 多阶段构建\nFROM node:16-alpine AS builder\nWORKDIR /app\nCOPY package*.json ./\nRUN npm ci\nCOPY . .\nRUN npm run build\n\n# 生产阶段\nFROM nginx:alpine\nCOPY --from=builder /app/dist /usr/share/nginx/html\nEXPOSE 80\nCMD [\"nginx\", \"-g\", \"daemon off;\"]\n\n# 优化技巧\n# 1. 使用.dockerignore\n# node_modules\n# .git\n# *.md\n# .env\n\n# 2. 合并RUN指令\nRUN apt-get update && \\\n    apt-get install -y curl && \\\n    apt-get clean && \\\n    rm -rf /var/lib/apt/lists/*\n\n# 3. 利用缓存层\nCOPY package*.json ./\nRUN npm ci\nCOPY . .\n\n# 4. 使用Alpine镜像\nFROM node:16-alpine\n# 比node:16小很多"
-  },
-  "containerMonitoring": {
-    "title": "容器监控",
-    "language": "bash",
-    "code": "# 查看容器资源使用\ndocker stats                    # 实时统计\ndocker stats --no-stream       # 单次统计\ndocker stats container-name     # 指定容器\n\n# 查看容器进程\ndocker top container-name\n\n# 查看容器日志\ndocker logs container-name\ndocker logs -f container-name   # 跟踪日志\ndocker logs --tail 100 container-name  # 最后100行\ndocker logs --since 2023-01-01 container-name  # 指定时间\n\n# 容器事件\ndocker events                   # 实时事件\ndocker events --filter container=myapp\n\n# 系统信息\ndocker system df               # 磁盘使用情况\ndocker system info             # 系统信息\ndocker system prune            # 清理未使用资源\n\n# 导出和导入\ndocker export container-name > container.tar\ndocker import container.tar myimage:latest\n\n# 镜像历史\ndocker history image-name"
-  }
+    "dockerInstallation": {
+        "title": "Docker安装",
+        "language": "bash",
+        "code": "# Ubuntu/Debian安装\nsudo apt-get update\nsudo apt-get install docker.io\nsudo systemctl start docker\nsudo systemctl enable docker\n\n# CentOS/RHEL安装\nsudo yum install -y docker\nsudo systemctl start docker\nsudo systemctl enable docker\n\n# macOS安装\n# 下载Docker Desktop for Mac\n# https://www.docker.com/products/docker-desktop\n\n# Windows安装\n# 下载Docker Desktop for Windows\n# https://www.docker.com/products/docker-desktop\n\n# 验证安装\ndocker --version\ndocker run hello-world"
+    },
+    "basicCommands": {
+        "title": "Docker基础命令",
+        "language": "bash",
+        "code": "# 镜像操作\ndocker images                    # 列出本地镜像\ndocker pull nginx:latest         # 拉取镜像\ndocker rmi nginx:latest          # 删除镜像\ndocker build -t myapp:1.0 .      # 构建镜像\ndocker tag myapp:1.0 myapp:latest # 标记镜像\n\n# 容器操作\ndocker ps                        # 列出运行中的容器\ndocker ps -a                     # 列出所有容器\ndocker run -d --name web nginx   # 后台运行容器\ndocker start web                 # 启动容器\ndocker stop web                  # 停止容器\ndocker restart web               # 重启容器\ndocker rm web                    # 删除容器\n\n# 容器交互\ndocker exec -it web bash         # 进入容器\ndocker logs web                  # 查看容器日志\ndocker cp file.txt web:/app/     # 复制文件到容器\ndocker inspect web               # 查看容器详细信息"
+    },
+    "dockerfileBasics": {
+        "title": "Dockerfile基础",
+        "language": "dockerfile",
+        "code": "# 基础镜像\nFROM node:16-alpine\n\n# 设置工作目录\nWORKDIR /app\n\n# 复制package.json\nCOPY package*.json ./\n\n# 安装依赖\nRUN npm ci --only=production\n\n# 复制应用代码\nCOPY . .\n\n# 暴露端口\nEXPOSE 3000\n\n# 设置环境变量\nENV NODE_ENV=production\n\n# 创建非root用户\nRUN addgroup -g 1001 -S nodejs\nRUN adduser -S nextjs -u 1001\nUSER nextjs\n\n# 启动命令\nCMD [\"npm\", \"start\"]"
+    },
+    "containerLifecycle": {
+        "title": "容器生命周期",
+        "language": "bash",
+        "code": "# 创建并运行容器\ndocker run -d \\\n  --name myapp \\\n  -p 8080:80 \\\n  -v /host/data:/app/data \\\n  -e ENV=production \\\n  nginx:latest\n\n# 容器状态转换\n# Created -> Running -> Stopped -> Removed\n\n# 暂停和恢复容器\ndocker pause myapp    # 暂停容器\ndocker unpause myapp  # 恢复容器\n\n# 容器资源限制\ndocker run -d \\\n  --name limited-app \\\n  --memory=512m \\\n  --cpus=1.5 \\\n  --restart=unless-stopped \\\n  myapp:latest\n\n# 容器健康检查\ndocker run -d \\\n  --name healthy-app \\\n  --health-cmd=\"curl -f http://localhost/ || exit 1\" \\\n  --health-interval=30s \\\n  --health-timeout=10s \\\n  --health-retries=3 \\\n  nginx:latest"
+    },
+    "volumeManagement": {
+        "title": "数据卷管理",
+        "language": "bash",
+        "code": "# 创建数据卷\ndocker volume create mydata\n\n# 列出数据卷\ndocker volume ls\n\n# 查看数据卷详情\ndocker volume inspect mydata\n\n# 使用数据卷\ndocker run -d \\\n  --name db \\\n  -v mydata:/var/lib/mysql \\\n  mysql:8.0\n\n# 绑定挂载\ndocker run -d \\\n  --name web \\\n  -v /host/www:/usr/share/nginx/html:ro \\\n  nginx:latest\n\n# 临时文件系统\ndocker run -d \\\n  --name temp-app \\\n  --tmpfs /tmp:rw,noexec,nosuid,size=100m \\\n  myapp:latest\n\n# 备份数据卷\ndocker run --rm \\\n  -v mydata:/data \\\n  -v $(pwd):/backup \\\n  alpine tar czf /backup/backup.tar.gz -C /data .\n\n# 恢复数据卷\ndocker run --rm \\\n  -v mydata:/data \\\n  -v $(pwd):/backup \\\n  alpine tar xzf /backup/backup.tar.gz -C /data"
+    },
+    "networkBasics": {
+        "title": "网络基础",
+        "language": "bash",
+        "code": "# 列出网络\ndocker network ls\n\n# 创建自定义网络\ndocker network create mynetwork\ndocker network create --driver bridge --subnet=172.20.0.0/16 custom-net\n\n# 连接容器到网络\ndocker run -d --name web --network mynetwork nginx:latest\ndocker network connect mynetwork existing-container\n\n# 端口映射\ndocker run -d \\\n  --name web \\\n  -p 80:80 \\\n  -p 443:443 \\\n  nginx:latest\n\n# 容器间通信\ndocker run -d --name db --network mynetwork mysql:8.0\ndocker run -d --name app --network mynetwork \\\n  -e DB_HOST=db \\\n  myapp:latest\n\n# 查看网络详情\ndocker network inspect mynetwork\n\n# 断开网络连接\ndocker network disconnect mynetwork container-name\n\n# 删除网络\ndocker network rm mynetwork"
+    },
+    "imageOptimization": {
+        "title": "镜像优化",
+        "language": "dockerfile",
+        "code": "# 多阶段构建\nFROM node:16-alpine AS builder\nWORKDIR /app\nCOPY package*.json ./\nRUN npm ci\nCOPY . .\nRUN npm run build\n\n# 生产阶段\nFROM nginx:alpine\nCOPY --from=builder /app/dist /usr/share/nginx/html\nEXPOSE 80\nCMD [\"nginx\", \"-g\", \"daemon off;\"]\n\n# 优化技巧\n# 1. 使用.dockerignore\n# node_modules\n# .git\n# *.md\n# .env\n\n# 2. 合并RUN指令\nRUN apt-get update && \\\n    apt-get install -y curl && \\\n    apt-get clean && \\\n    rm -rf /var/lib/apt/lists/*\n\n# 3. 利用缓存层\nCOPY package*.json ./\nRUN npm ci\nCOPY . .\n\n# 4. 使用Alpine镜像\nFROM node:16-alpine\n# 比node:16小很多"
+    },
+    "containerMonitoring": {
+        "title": "容器监控",
+        "language": "bash",
+        "code": "# 查看容器资源使用\ndocker stats                    # 实时统计\ndocker stats --no-stream       # 单次统计\ndocker stats container-name     # 指定容器\n\n# 查看容器进程\ndocker top container-name\n\n# 查看容器日志\ndocker logs container-name\ndocker logs -f container-name   # 跟踪日志\ndocker logs --tail 100 container-name  # 最后100行\ndocker logs --since 2023-01-01 container-name  # 指定时间\n\n# 容器事件\ndocker events                   # 实时事件\ndocker events --filter container=myapp\n\n# 系统信息\ndocker system df               # 磁盘使用情况\ndocker system info             # 系统信息\ndocker system prune            # 清理未使用资源\n\n# 导出和导入\ndocker export container-name > container.tar\ndocker import container.tar myimage:latest\n\n# 镜像历史\ndocker history image-name"
+    }
 }

@@ -72,8 +72,8 @@ const DockerfileDetail: React.FC = () => {
                     <div className={styles.concept_content}>
                         <h3>什么是 Dockerfile？</h3>
                         <p>
-                            Dockerfile 是一个文本文件，包含了构建 Docker 镜像所需的所有指令。
-                            通过 Dockerfile，我们可以自动化地创建包含应用程序及其依赖项的镜像，
+                            Dockerfile 是一个文本文件，包含了构建 Docker 镜像所需的所有指令。 通过
+                            Dockerfile，我们可以自动化地创建包含应用程序及其依赖项的镜像，
                             确保应用在任何环境中都能一致地运行。
                         </p>
 
@@ -111,15 +111,21 @@ const DockerfileDetail: React.FC = () => {
                         <div className={styles.benefits_list}>
                             <div className={styles.benefit_item}>
                                 <CheckCircleOutlined className={styles.benefit_icon} />
-                                <span><strong>镜像体积小</strong>：只包含运行时必需的文件</span>
+                                <span>
+                                    <strong>镜像体积小</strong>：只包含运行时必需的文件
+                                </span>
                             </div>
                             <div className={styles.benefit_item}>
                                 <CheckCircleOutlined className={styles.benefit_icon} />
-                                <span><strong>安全性高</strong>：不包含构建工具和源代码</span>
+                                <span>
+                                    <strong>安全性高</strong>：不包含构建工具和源代码
+                                </span>
                             </div>
                             <div className={styles.benefit_item}>
                                 <CheckCircleOutlined className={styles.benefit_icon} />
-                                <span><strong>构建效率</strong>：利用缓存层提高构建速度</span>
+                                <span>
+                                    <strong>构建效率</strong>：利用缓存层提高构建速度
+                                </span>
                             </div>
                         </div>
 
@@ -232,17 +238,18 @@ const DockerfileDetail: React.FC = () => {
                 <Card title="⚙️ 环境变量与配置" className={styles.content_card}>
                     <div className={styles.config_content}>
                         <h3>灵活的配置管理</h3>
-                        <p>
-                            合理使用 ENV 和 ARG 指令可以让镜像更加灵活，
-                            支持不同环境的配置需求。
-                        </p>
+                        <p>合理使用 ENV 和 ARG 指令可以让镜像更加灵活， 支持不同环境的配置需求。</p>
 
                         <div className={styles.config_comparison}>
                             <div className={styles.config_item}>
                                 <h4>ARG vs ENV</h4>
                                 <ul>
-                                    <li><strong>ARG</strong>：构建时变量，仅在构建过程中可用</li>
-                                    <li><strong>ENV</strong>：运行时变量，在容器运行时可用</li>
+                                    <li>
+                                        <strong>ARG</strong>：构建时变量，仅在构建过程中可用
+                                    </li>
+                                    <li>
+                                        <strong>ENV</strong>：运行时变量，在容器运行时可用
+                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -269,15 +276,21 @@ const DockerfileDetail: React.FC = () => {
                         <div className={styles.health_benefits}>
                             <div className={styles.health_item}>
                                 <CheckCircleOutlined className={styles.health_icon} />
-                                <span><strong>自动重启</strong>：检测到异常时自动重启容器</span>
+                                <span>
+                                    <strong>自动重启</strong>：检测到异常时自动重启容器
+                                </span>
                             </div>
                             <div className={styles.health_item}>
                                 <CheckCircleOutlined className={styles.health_icon} />
-                                <span><strong>负载均衡</strong>：从负载均衡器中移除不健康的实例</span>
+                                <span>
+                                    <strong>负载均衡</strong>：从负载均衡器中移除不健康的实例
+                                </span>
                             </div>
                             <div className={styles.health_item}>
                                 <CheckCircleOutlined className={styles.health_icon} />
-                                <span><strong>监控告警</strong>：集成监控系统进行告警</span>
+                                <span>
+                                    <strong>监控告警</strong>：集成监控系统进行告警
+                                </span>
                             </div>
                         </div>
 
@@ -296,8 +309,7 @@ const DockerfileDetail: React.FC = () => {
                     <div className={styles.language_examples}>
                         <h3>针对不同技术栈的优化</h3>
                         <p>
-                            不同的编程语言和框架有各自的特点，
-                            需要采用相应的 Dockerfile 编写策略。
+                            不同的编程语言和框架有各自的特点， 需要采用相应的 Dockerfile 编写策略。
                         </p>
 
                         {codeData.languageSpecificExamples && (
@@ -314,7 +326,7 @@ const DockerfileDetail: React.FC = () => {
                 <Card title="💡 设计原则与最佳实践" className={styles.content_card}>
                     <div className={styles.principles_content}>
                         <h3>Dockerfile 设计原则</h3>
-                        
+
                         <div className={styles.principles_grid}>
                             <div className={styles.principle_item}>
                                 <ToolOutlined className={styles.principle_icon} />
@@ -323,7 +335,7 @@ const DockerfileDetail: React.FC = () => {
                                     <p>每个容器应该只运行一个主要进程，遵循微服务架构原则</p>
                                 </div>
                             </div>
-                            
+
                             <div className={styles.principle_item}>
                                 <RocketOutlined className={styles.principle_icon} />
                                 <div>
@@ -331,7 +343,7 @@ const DockerfileDetail: React.FC = () => {
                                     <p>只安装必需的软件包，使用轻量级基础镜像</p>
                                 </div>
                             </div>
-                            
+
                             <div className={styles.principle_item}>
                                 <SafetyOutlined className={styles.principle_icon} />
                                 <div>
@@ -375,7 +387,8 @@ const DockerfileDetail: React.FC = () => {
                                         <strong>镜像扫描</strong>：定期扫描镜像安全漏洞
                                     </li>
                                     <li>
-                                        <strong>版本管理</strong>：使用具体的版本标签，避免使用 latest
+                                        <strong>版本管理</strong>：使用具体的版本标签，避免使用
+                                        latest
                                     </li>
                                     <li>
                                         <strong>资源限制</strong>：设置合适的 CPU 和内存限制

@@ -1,4 +1,4 @@
-function getRandomNumber(min, max) {
+function getRandomNumber(min: number, max: number): number {
     return Math.floor(Math.random() * (max - min + 1)) + min
 }
 
@@ -6,7 +6,7 @@ const deepClone = (list: any, map = new WeakMap()) => {
     //判断传进来的list是否为引用类型数据
     if (list && typeof list === 'object') {
         //通过list的constructor来指定cloneList的类型
-        const cloneList = list.constructor === Array ? [] : {}
+        const cloneList: any = list.constructor === Array ? [] : {}
         //如果是Date，RegExp类型直接返回
         if (list instanceof Date) return new Date(list)
         if (list instanceof RegExp) return new RegExp(list)

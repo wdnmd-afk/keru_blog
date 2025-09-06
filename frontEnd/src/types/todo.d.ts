@@ -5,10 +5,10 @@ export enum TodoType {
 }
 
 export interface Todo {
-    id: string;
-    content: string;
-    completed: boolean;
-    type: TodoType;
-    createdAt: string;
-    updatedAt: string;
+    id: string
+    content: string
+    completed: boolean
+    type: TodoType
+    createdAt: string
+    updatedAt: string
 }

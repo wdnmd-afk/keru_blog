@@ -1,52 +1,52 @@
 {
-  "virtualDomOptimization": {
-    "title": "虚拟DOM优化",
-    "language": "vue",
-    "code": "<!-- ❌ 避免在模板中使用复杂表达式 -->\n<template>\n  <div>\n    <p>{{ user.profile.settings.theme.toUpperCase().split('_').join(' ') }}</p>\n  </div>\n</template>\n\n<!-- ✅ 使用计算属性 -->\n<template>\n  <div>\n    <p>{{ formattedTheme }}</p>\n  </div>\n</template>\n\n<script setup>\nimport { computed } from 'vue'\n\nconst props = defineProps(['user'])\n\nconst formattedTheme = computed(() => {\n  return props.user.profile.settings.theme\n    .toUpperCase()\n    .split('_')\n    .join(' ')\n})\n</script>"
-  },
-  "vMemoOptimization": {
-    "title": "v-memo指令优化",
-    "language": "vue",
-    "code": "<!-- 使用v-memo缓存子树 -->\n<template>\n  <div v-for=\"item in list\" :key=\"item.id\" v-memo=\"[item.id, item.selected]\">\n    <p>{{ item.name }}</p>\n    <p>{{ item.description }}</p>\n    <button :class=\"{ active: item.selected }\">\n      {{ item.selected ? '已选中' : '选择' }}\n    </button>\n  </div>\n</template>\n\n<!-- v-memo只有在依赖项变化时才重新渲染 -->\n<script setup>\nimport { ref } from 'vue'\n\nconst list = ref([\n  { id: 1, name: '项目1', description: '描述1', selected: false },\n  { id: 2, name: '项目2', description: '描述2', selected: true }\n])\n</script>"
-  },
-  "conditionalRendering": {
-    "title": "条件渲染优化",
-    "language": "vue",
-    "code": "<!-- v-if vs v-show 选择 -->\n<template>\n  <!-- ✅ 频繁切换使用v-show -->\n  <div v-show=\"isVisible\">频繁显示/隐藏的内容</div>\n  \n  <!-- ✅ 条件很少改变使用v-if -->\n  <div v-if=\"userRole === 'admin'\">管理员面板</div>\n  \n  <!-- ✅ 多条件渲染优化 -->\n  <template v-if=\"loading\">\n    <div>加载中...</div>\n  </template>\n  <template v-else-if=\"error\">\n    <div>错误: {{ error.message }}</div>\n  </template>\n  <template v-else>\n    <div>{{ data }}</div>\n  </template>\n</template>"
-  },
-  "asyncComponents": {
-    "title": "异步组件与代码分割",
-    "language": "javascript",
-    "code": "// 异步组件定义\nimport { defineAsyncComponent } from 'vue'\n\n// 基本异步组件\nconst AsyncComponent = defineAsyncComponent(() => \n  import('./components/HeavyComponent.vue')\n)\n\n// 带选项的异步组件\nconst AsyncComponentWithOptions = defineAsyncComponent({\n  loader: () => import('./components/HeavyComponent.vue'),\n  loadingComponent: LoadingComponent,\n  errorComponent: ErrorComponent,\n  delay: 200,\n  timeout: 3000\n})\n\n// 路由级别的代码分割\nconst routes = [\n  {\n    path: '/dashboard',\n    component: () => import('./views/Dashboard.vue')\n  },\n  {\n    path: '/profile',\n    component: () => import('./views/Profile.vue')\n  }\n]"
-  },
-  "keepAliveOptimization": {
-    "title": "KeepAlive缓存优化",
-    "language": "vue",
-    "code": "<!-- 基本KeepAlive使用 -->\n<template>\n  <KeepAlive>\n    <component :is=\"currentComponent\" />\n  </KeepAlive>\n</template>\n\n<!-- 条件缓存 -->\n<template>\n  <KeepAlive :include=\"['ComponentA', 'ComponentB']\" :exclude=\"['ComponentC']\">\n    <component :is=\"currentComponent\" />\n  </KeepAlive>\n</template>\n\n<!-- 最大缓存数量 -->\n<template>\n  <KeepAlive :max=\"10\">\n    <component :is=\"currentComponent\" />\n  </KeepAlive>\n</template>\n\n<script setup>\nimport { ref, onActivated, onDeactivated } from 'vue'\n\n// 组件内部处理缓存状态\nonActivated(() => {\n  console.log('组件被激活')\n  // 刷新数据或重新订阅事件\n})\n\nonDeactivated(() => {\n  console.log('组件被缓存')\n  // 清理定时器或取消订阅\n})\n</script>"
-  },
-  "functionalComponents": {
-    "title": "函数式组件",
-    "language": "vue",
-    "code": "<!-- 函数式组件 - 无状态、无实例 -->\n<template functional>\n  <div class=\"list-item\" @click=\"props.onClick\">\n    <h3>{{ props.title }}</h3>\n    <p>{{ props.description }}</p>\n  </div>\n</template>\n\n<!-- 或者使用渲染函数 -->\n<script>\nexport default {\n  functional: true,\n  props: ['title', 'description', 'onClick'],\n  render(h, { props }) {\n    return h('div', {\n      class: 'list-item',\n      on: { click: props.onClick }\n    }, [\n      h('h3', props.title),\n      h('p', props.description)\n    ])\n  }\n}\n</script>\n\n<!-- Vue 3 函数式组件 -->\n<script>\nexport default (props, { emit }) => {\n  return (\n    <div class=\"list-item\" onClick={() => emit('click')}>\n      <h3>{props.title}</h3>\n      <p>{props.description}</p>\n    </div>\n  )\n}\n</script>"
-  },
-  "reactivityApiSelection": {
-    "title": "响应式API选择",
-    "language": "vue",
-    "code": "<script setup>\nimport { ref, reactive, shallowRef, shallowReactive, markRaw } from 'vue'\n\n// ✅ 基本类型使用ref\nconst count = ref(0)\nconst message = ref('hello')\n\n// ✅ 对象使用reactive\nconst user = reactive({\n  name: 'Vue',\n  age: 3\n})\n\n// ✅ 大型对象使用shallowReactive\nconst largeData = shallowReactive({\n  items: [], // 只有根级别响应式\n  metadata: {}\n})\n\n// ✅ 第三方库实例使用markRaw\nconst chart = markRaw(new Chart())\n\n// ✅ 大型数组使用shallowRef\nconst bigList = shallowRef([])\n\n// 手动触发更新\nconst updateBigList = () => {\n  bigList.value = [...bigList.value, newItem]\n}\n</script>"
-  },
-  "computedOptimization": {
-    "title": "计算属性优化",
-    "language": "vue",
-    "code": "<script setup>\nimport { ref, computed, watchEffect } from 'vue'\n\nconst items = ref([])\nconst filter = ref('')\nconst sortBy = ref('name')\n\n// ✅ 使用计算属性缓存复杂计算\nconst filteredAndSortedItems = computed(() => {\n  console.log('重新计算') // 只有依赖变化时才执行\n  \n  return items.value\n    .filter(item => item.name.includes(filter.value))\n    .sort((a, b) => a[sortBy.value].localeCompare(b[sortBy.value]))\n})\n\n// ❌ 避免在模板中直接计算\n// <div v-for=\"item in items.filter(...).sort(...)\" :key=\"item.id\">\n\n// ✅ 使用watchEffect处理副作用\nwatchEffect(() => {\n  // 自动追踪依赖\n  if (filter.value) {\n    console.log('过滤条件变化:', filter.value)\n  }\n})\n</script>"
-  },
-  "eventListenerCleanup": {
-    "title": "事件监听器清理",
-    "language": "vue",
-    "code": "<script setup>\nimport { onMounted, onUnmounted } from 'vue'\n\nlet timer = null\n\nonMounted(() => {\n  // 添加全局事件监听\n  window.addEventListener('resize', handleResize)\n  \n  // 设置定时器\n  timer = setInterval(() => {\n    console.log('定时任务')\n  }, 1000)\n  \n  // WebSocket连接\n  const ws = new WebSocket('ws://localhost:8080')\n  ws.onmessage = handleMessage\n})\n\nonUnmounted(() => {\n  // ✅ 清理事件监听器\n  window.removeEventListener('resize', handleResize)\n  \n  // ✅ 清理定时器\n  if (timer) {\n    clearInterval(timer)\n    timer = null\n  }\n  \n  // ✅ 关闭WebSocket连接\n  if (ws) {\n    ws.close()\n  }\n})\n\nconst handleResize = () => {\n  // 处理窗口大小变化\n}\n\nconst handleMessage = (event) => {\n  // 处理WebSocket消息\n}\n</script>"
-  },
-  "virtualScrolling": {
-    "title": "虚拟滚动实现",
-    "language": "vue",
-    "code": "<!-- 虚拟滚动组件示例 -->\n<template>\n  <div class=\"virtual-list\" @scroll=\"handleScroll\" ref=\"container\">\n    <div class=\"virtual-list-phantom\" :style=\"{ height: totalHeight + 'px' }\"></div>\n    <div class=\"virtual-list-content\" :style=\"{ transform: `translateY(${offset}px)` }\">\n      <div\n        v-for=\"item in visibleItems\"\n        :key=\"item.id\"\n        class=\"virtual-list-item\"\n        :style=\"{ height: itemHeight + 'px' }\"\n      >\n        {{ item.content }}\n      </div>\n    </div>\n  </div>\n</template>\n\n<script setup>\nimport { ref, computed, onMounted } from 'vue'\n\nconst props = defineProps({\n  items: Array,\n  itemHeight: { type: Number, default: 50 },\n  containerHeight: { type: Number, default: 300 }\n})\n\nconst container = ref(null)\nconst scrollTop = ref(0)\n\nconst totalHeight = computed(() => props.items.length * props.itemHeight)\nconst visibleCount = computed(() => Math.ceil(props.containerHeight / props.itemHeight))\nconst startIndex = computed(() => Math.floor(scrollTop.value / props.itemHeight))\nconst endIndex = computed(() => Math.min(startIndex.value + visibleCount.value, props.items.length))\nconst visibleItems = computed(() => props.items.slice(startIndex.value, endIndex.value))\nconst offset = computed(() => startIndex.value * props.itemHeight)\n\nconst handleScroll = (e) => {\n  scrollTop.value = e.target.scrollTop\n}\n</script>"
-  }
+    "virtualDomOptimization": {
+        "title": "虚拟DOM优化",
+        "language": "vue",
+        "code": "<!-- ❌ 避免在模板中使用复杂表达式 -->\n<template>\n  <div>\n    <p>{{ user.profile.settings.theme.toUpperCase().split('_').join(' ') }}</p>\n  </div>\n</template>\n\n<!-- ✅ 使用计算属性 -->\n<template>\n  <div>\n    <p>{{ formattedTheme }}</p>\n  </div>\n</template>\n\n<script setup>\nimport { computed } from 'vue'\n\nconst props = defineProps(['user'])\n\nconst formattedTheme = computed(() => {\n  return props.user.profile.settings.theme\n    .toUpperCase()\n    .split('_')\n    .join(' ')\n})\n</script>"
+    },
+    "vMemoOptimization": {
+        "title": "v-memo指令优化",
+        "language": "vue",
+        "code": "<!-- 使用v-memo缓存子树 -->\n<template>\n  <div v-for=\"item in list\" :key=\"item.id\" v-memo=\"[item.id, item.selected]\">\n    <p>{{ item.name }}</p>\n    <p>{{ item.description }}</p>\n    <button :class=\"{ active: item.selected }\">\n      {{ item.selected ? '已选中' : '选择' }}\n    </button>\n  </div>\n</template>\n\n<!-- v-memo只有在依赖项变化时才重新渲染 -->\n<script setup>\nimport { ref } from 'vue'\n\nconst list = ref([\n  { id: 1, name: '项目1', description: '描述1', selected: false },\n  { id: 2, name: '项目2', description: '描述2', selected: true }\n])\n</script>"
+    },
+    "conditionalRendering": {
+        "title": "条件渲染优化",
+        "language": "vue",
+        "code": "<!-- v-if vs v-show 选择 -->\n<template>\n  <!-- ✅ 频繁切换使用v-show -->\n  <div v-show=\"isVisible\">频繁显示/隐藏的内容</div>\n  \n  <!-- ✅ 条件很少改变使用v-if -->\n  <div v-if=\"userRole === 'admin'\">管理员面板</div>\n  \n  <!-- ✅ 多条件渲染优化 -->\n  <template v-if=\"loading\">\n    <div>加载中...</div>\n  </template>\n  <template v-else-if=\"error\">\n    <div>错误: {{ error.message }}</div>\n  </template>\n  <template v-else>\n    <div>{{ data }}</div>\n  </template>\n</template>"
+    },
+    "asyncComponents": {
+        "title": "异步组件与代码分割",
+        "language": "javascript",
+        "code": "// 异步组件定义\nimport { defineAsyncComponent } from 'vue'\n\n// 基本异步组件\nconst AsyncComponent = defineAsyncComponent(() => \n  import('./components/HeavyComponent.vue')\n)\n\n// 带选项的异步组件\nconst AsyncComponentWithOptions = defineAsyncComponent({\n  loader: () => import('./components/HeavyComponent.vue'),\n  loadingComponent: LoadingComponent,\n  errorComponent: ErrorComponent,\n  delay: 200,\n  timeout: 3000\n})\n\n// 路由级别的代码分割\nconst routes = [\n  {\n    path: '/dashboard',\n    component: () => import('./views/Dashboard.vue')\n  },\n  {\n    path: '/profile',\n    component: () => import('./views/Profile.vue')\n  }\n]"
+    },
+    "keepAliveOptimization": {
+        "title": "KeepAlive缓存优化",
+        "language": "vue",
+        "code": "<!-- 基本KeepAlive使用 -->\n<template>\n  <KeepAlive>\n    <component :is=\"currentComponent\" />\n  </KeepAlive>\n</template>\n\n<!-- 条件缓存 -->\n<template>\n  <KeepAlive :include=\"['ComponentA', 'ComponentB']\" :exclude=\"['ComponentC']\">\n    <component :is=\"currentComponent\" />\n  </KeepAlive>\n</template>\n\n<!-- 最大缓存数量 -->\n<template>\n  <KeepAlive :max=\"10\">\n    <component :is=\"currentComponent\" />\n  </KeepAlive>\n</template>\n\n<script setup>\nimport { ref, onActivated, onDeactivated } from 'vue'\n\n// 组件内部处理缓存状态\nonActivated(() => {\n  console.log('组件被激活')\n  // 刷新数据或重新订阅事件\n})\n\nonDeactivated(() => {\n  console.log('组件被缓存')\n  // 清理定时器或取消订阅\n})\n</script>"
+    },
+    "functionalComponents": {
+        "title": "函数式组件",
+        "language": "vue",
+        "code": "<!-- 函数式组件 - 无状态、无实例 -->\n<template functional>\n  <div class=\"list-item\" @click=\"props.onClick\">\n    <h3>{{ props.title }}</h3>\n    <p>{{ props.description }}</p>\n  </div>\n</template>\n\n<!-- 或者使用渲染函数 -->\n<script>\nexport default {\n  functional: true,\n  props: ['title', 'description', 'onClick'],\n  render(h, { props }) {\n    return h('div', {\n      class: 'list-item',\n      on: { click: props.onClick }\n    }, [\n      h('h3', props.title),\n      h('p', props.description)\n    ])\n  }\n}\n</script>\n\n<!-- Vue 3 函数式组件 -->\n<script>\nexport default (props, { emit }) => {\n  return (\n    <div class=\"list-item\" onClick={() => emit('click')}>\n      <h3>{props.title}</h3>\n      <p>{props.description}</p>\n    </div>\n  )\n}\n</script>"
+    },
+    "reactivityApiSelection": {
+        "title": "响应式API选择",
+        "language": "vue",
+        "code": "<script setup>\nimport { ref, reactive, shallowRef, shallowReactive, markRaw } from 'vue'\n\n// ✅ 基本类型使用ref\nconst count = ref(0)\nconst message = ref('hello')\n\n// ✅ 对象使用reactive\nconst user = reactive({\n  name: 'Vue',\n  age: 3\n})\n\n// ✅ 大型对象使用shallowReactive\nconst largeData = shallowReactive({\n  items: [], // 只有根级别响应式\n  metadata: {}\n})\n\n// ✅ 第三方库实例使用markRaw\nconst chart = markRaw(new Chart())\n\n// ✅ 大型数组使用shallowRef\nconst bigList = shallowRef([])\n\n// 手动触发更新\nconst updateBigList = () => {\n  bigList.value = [...bigList.value, newItem]\n}\n</script>"
+    },
+    "computedOptimization": {
+        "title": "计算属性优化",
+        "language": "vue",
+        "code": "<script setup>\nimport { ref, computed, watchEffect } from 'vue'\n\nconst items = ref([])\nconst filter = ref('')\nconst sortBy = ref('name')\n\n// ✅ 使用计算属性缓存复杂计算\nconst filteredAndSortedItems = computed(() => {\n  console.log('重新计算') // 只有依赖变化时才执行\n  \n  return items.value\n    .filter(item => item.name.includes(filter.value))\n    .sort((a, b) => a[sortBy.value].localeCompare(b[sortBy.value]))\n})\n\n// ❌ 避免在模板中直接计算\n// <div v-for=\"item in items.filter(...).sort(...)\" :key=\"item.id\">\n\n// ✅ 使用watchEffect处理副作用\nwatchEffect(() => {\n  // 自动追踪依赖\n  if (filter.value) {\n    console.log('过滤条件变化:', filter.value)\n  }\n})\n</script>"
+    },
+    "eventListenerCleanup": {
+        "title": "事件监听器清理",
+        "language": "vue",
+        "code": "<script setup>\nimport { onMounted, onUnmounted } from 'vue'\n\nlet timer = null\n\nonMounted(() => {\n  // 添加全局事件监听\n  window.addEventListener('resize', handleResize)\n  \n  // 设置定时器\n  timer = setInterval(() => {\n    console.log('定时任务')\n  }, 1000)\n  \n  // WebSocket连接\n  const ws = new WebSocket('ws://localhost:8080')\n  ws.onmessage = handleMessage\n})\n\nonUnmounted(() => {\n  // ✅ 清理事件监听器\n  window.removeEventListener('resize', handleResize)\n  \n  // ✅ 清理定时器\n  if (timer) {\n    clearInterval(timer)\n    timer = null\n  }\n  \n  // ✅ 关闭WebSocket连接\n  if (ws) {\n    ws.close()\n  }\n})\n\nconst handleResize = () => {\n  // 处理窗口大小变化\n}\n\nconst handleMessage = (event) => {\n  // 处理WebSocket消息\n}\n</script>"
+    },
+    "virtualScrolling": {
+        "title": "虚拟滚动实现",
+        "language": "vue",
+        "code": "<!-- 虚拟滚动组件示例 -->\n<template>\n  <div class=\"virtual-list\" @scroll=\"handleScroll\" ref=\"container\">\n    <div class=\"virtual-list-phantom\" :style=\"{ height: totalHeight + 'px' }\"></div>\n    <div class=\"virtual-list-content\" :style=\"{ transform: `translateY(${offset}px)` }\">\n      <div\n        v-for=\"item in visibleItems\"\n        :key=\"item.id\"\n        class=\"virtual-list-item\"\n        :style=\"{ height: itemHeight + 'px' }\"\n      >\n        {{ item.content }}\n      </div>\n    </div>\n  </div>\n</template>\n\n<script setup>\nimport { ref, computed, onMounted } from 'vue'\n\nconst props = defineProps({\n  items: Array,\n  itemHeight: { type: Number, default: 50 },\n  containerHeight: { type: Number, default: 300 }\n})\n\nconst container = ref(null)\nconst scrollTop = ref(0)\n\nconst totalHeight = computed(() => props.items.length * props.itemHeight)\nconst visibleCount = computed(() => Math.ceil(props.containerHeight / props.itemHeight))\nconst startIndex = computed(() => Math.floor(scrollTop.value / props.itemHeight))\nconst endIndex = computed(() => Math.min(startIndex.value + visibleCount.value, props.items.length))\nconst visibleItems = computed(() => props.items.slice(startIndex.value, endIndex.value))\nconst offset = computed(() => startIndex.value * props.itemHeight)\n\nconst handleScroll = (e) => {\n  scrollTop.value = e.target.scrollTop\n}\n</script>"
+    }
 }

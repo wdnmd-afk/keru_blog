@@ -3,6 +3,7 @@
  * 使用react-pdf库实现专业的PDF渲染和控制
  */
 
+import { createIncludeComparator } from '@/utils/memoComparator'
 import {
     CompressOutlined,
     DownloadOutlined,
@@ -17,7 +18,6 @@ import {
 } from '@ant-design/icons'
 import { Alert, Button, InputNumber, Space, Spin, Tooltip, message } from 'antd'
 import React, { useCallback, useEffect, useRef, useState } from 'react'
-import { createIncludeComparator } from '@/utils/memoComparator'
 import { Document, Page, pdfjs } from 'react-pdf'
 import 'react-pdf/dist/esm/Page/AnnotationLayer.css'
 import 'react-pdf/dist/esm/Page/TextLayer.css'
@@ -673,29 +673,13 @@ const PDFPreview: React.FC<PDFPreviewProps> = ({
                         pageNumber={currentPage}
                         scale={scale}
                         onLoadSuccess={handlePageLoadSuccess}
-                        onLoadError={(error) => {
+                        onLoadError={(error: Error) => {
                             console.error('页面加载失败:', error)
                             message.error(`第${currentPage}页加载失败`)
                         }}
-                        onRenderTextLayerError={(error) => {
-                            // 处理TextLayer渲染错误，避免控制台警告
-                            if (error.name !== 'AbortException') {
-                                console.warn('TextLayer渲染错误:', error)
-                            }
-                        }}
-                        loading={
-                            <div className="flex items-center justify-center p-8">
-                                <Spin />
-                                <span className="ml-2 text-gray-500">加载页面中...</span>
-                            </div>
-                        }
                         renderTextLayer={true}
                         renderAnnotationLayer={true}
                         className="mx-auto"
-                        style={{
-                            maxWidth: '100%',
-                            maxHeight: '100%',
-                        }}
                     />
                 </Document>
             </div>
@@ -723,9 +707,7 @@ const PDFPreview: React.FC<PDFPreviewProps> = ({
 }
 
 // 使用React.memo优化PDFPreview组件
-export default React.memo(PDFPreview, createIncludeComparator<PDFPreviewProps>([
-    'src',
-    'fileName',
-    'fileSize',
-    'maxHeight'
-]))
+export default React.memo(
+    PDFPreview,
+    createIncludeComparator<PDFPreviewProps>(['src', 'fileName', 'fileSize', 'maxHeight'])
+)

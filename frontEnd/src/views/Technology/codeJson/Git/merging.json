@@ -1,52 +1,52 @@
 {
-  "mergeTypes": {
-    "title": "合并类型",
-    "language": "bash",
-    "code": "# 1. Fast-forward合并（快进合并）\n# 当目标分支是当前分支的直接后继时\ngit checkout main\ngit merge feature-branch    # 直接移动指针，无合并提交\n\n# 2. 三方合并（Three-way merge）\n# 当两个分支有分歧时，Git会找到共同祖先\ngit merge feature-branch    # 创建新的合并提交\n\n# 3. 禁用Fast-forward\ngit merge --no-ff feature-branch  # 总是创建合并提交\n\n# 4. 只允许Fast-forward\ngit merge --ff-only feature-branch # 只有能快进时才合并\n\n# 查看合并类型\ngit log --graph --oneline   # 图形化查看合并历史"
-  },
-  "basicMerging": {
-    "title": "基本合并操作",
-    "language": "bash",
-    "code": "# 准备合并\ngit checkout main           # 切换到目标分支\ngit pull origin main        # 确保是最新版本\n\n# 执行合并\ngit merge feature-branch    # 合并功能分支\n\n# 查看合并结果\ngit log --oneline -10       # 查看最近10次提交\ngit show HEAD               # 查看合并提交详情\n\n# 推送合并结果\ngit push origin main        # 推送到远程仓库\n\n# 清理分支\ngit branch -d feature-branch  # 删除已合并的本地分支\ngit push origin --delete feature-branch  # 删除远程分支"
-  },
-  "conflictResolution": {
-    "title": "冲突解决",
-    "language": "bash",
-    "code": "# 当合并产生冲突时\ngit merge feature-branch\n# Auto-merging file.txt\n# CONFLICT (content): Merge conflict in file.txt\n# Automatic merge failed; fix conflicts and then commit the result.\n\n# 查看冲突状态\ngit status                  # 查看冲突文件\ngit diff                    # 查看冲突详情\n\n# 冲突标记格式\n<<<<<<< HEAD\n当前分支的内容\n=======\n要合并分支的内容\n>>>>>>> feature-branch\n\n# 解决冲突步骤\n# 1. 编辑冲突文件，删除标记，保留需要的内容\n# 2. 标记冲突已解决\ngit add conflicted-file.txt\n# 3. 完成合并\ngit commit                  # 或 git merge --continue\n\n# 取消合并\ngit merge --abort           # 回到合并前状态"
-  },
-  "mergeTools": {
-    "title": "合并工具",
-    "language": "bash",
-    "code": "# 配置合并工具\ngit config --global merge.tool vimdiff\ngit config --global merge.tool vscode\ngit config --global merge.tool meld\n\n# 启动合并工具\ngit mergetool               # 启动配置的合并工具\ngit mergetool file.txt      # 对特定文件使用合并工具\n\n# 常用合并工具配置\n# VS Code\ngit config --global merge.tool vscode\ngit config --global mergetool.vscode.cmd 'code --wait $MERGED'\n\n# Meld\ngit config --global merge.tool meld\ngit config --global mergetool.meld.path '/usr/bin/meld'\n\n# P4Merge\ngit config --global merge.tool p4merge\ngit config --global mergetool.p4merge.path '/usr/local/bin/p4merge'\n\n# 查看合并工具配置\ngit config --list | grep merge"
-  },
-  "squashMerge": {
-    "title": "压缩合并",
-    "language": "bash",
-    "code": "# Squash合并 - 将多个提交压缩为一个\ngit checkout main\ngit merge --squash feature-branch\n\n# 查看暂存的更改\ngit status                  # 所有更改都在暂存区\ngit diff --cached           # 查看暂存的更改\n\n# 创建压缩提交\ngit commit -m \"feat: 添加用户认证功能\n\n- 实现登录/注册页面\n- 添加JWT token验证\n- 集成用户权限管理\n- 添加密码加密功能\"\n\n# 推送结果\ngit push origin main\n\n# 清理功能分支\ngit branch -d feature-branch\ngit push origin --delete feature-branch\n\n# Squash合并的优点\n# - 保持主分支历史整洁\n# - 将相关更改组合在一起\n# - 便于回滚整个功能"
-  },
-  "mergeStrategies": {
-    "title": "合并策略",
-    "language": "bash",
-    "code": "# 默认合并策略\ngit merge feature-branch    # 使用recursive策略\n\n# 指定合并策略\ngit merge -s recursive feature-branch      # 递归策略（默认）\ngit merge -s resolve feature-branch        # 解析策略\ngit merge -s octopus feature-branch        # 章鱼策略（多分支）\ngit merge -s ours feature-branch           # 我们的策略\ngit merge -s subtree feature-branch        # 子树策略\n\n# 合并策略选项\ngit merge -X ours feature-branch           # 冲突时优先当前分支\ngit merge -X theirs feature-branch         # 冲突时优先合并分支\ngit merge -X ignore-space-change feature-branch  # 忽略空白变化\ngit merge -X ignore-all-space feature-branch     # 忽略所有空白\n\n# 查看可用策略\ngit merge --help            # 查看详细帮助"
-  },
-  "mergeCommitMessage": {
-    "title": "合并提交信息",
-    "language": "bash",
-    "code": "# 自定义合并提交信息\ngit merge feature-branch -m \"Merge feature: 用户认证系统\n\n合并内容：\n- 用户登录/注册功能\n- JWT token认证\n- 权限管理系统\n- 密码安全策略\n\nReviewed-by: 张三 <zhangsan@example.com>\nTested-by: 李四 <lisi@example.com>\"\n\n# 编辑合并提交信息\ngit merge feature-branch    # 会打开编辑器\n# 或者\ngit merge --no-commit feature-branch\ngit commit                  # 手动提交并编辑信息\n\n# 合并提交信息模板\n# ~/.gitmessage\nMerge branch 'feature-branch'\n\n# What was merged:\n# - \n# - \n\n# Why it was merged:\n# - \n\n# How it was tested:\n# - \n\n# 使用模板\ngit config --global commit.template ~/.gitmessage"
-  },
-  "undoMerge": {
-    "title": "撤销合并",
-    "language": "bash",
-    "code": "# 撤销未推送的合并\ngit reset --hard HEAD~1     # 硬重置到合并前（危险）\ngit reset --merge HEAD~1    # 重置合并但保留工作区更改\n\n# 撤销已推送的合并\ngit revert -m 1 HEAD        # 创建反向提交撤销合并\n# -m 1 表示保留第一个父提交（通常是main分支）\n\n# 查找合并提交\ngit log --merges            # 只显示合并提交\ngit log --oneline --graph   # 图形化显示\n\n# 撤销特定的合并提交\ngit revert -m 1 <merge-commit-hash>\n\n# 撤销合并范围\ngit revert -m 1 HEAD~3..HEAD  # 撤销最近3次合并\n\n# 交互式撤销\ngit revert -m 1 --no-commit HEAD  # 撤销但不自动提交\n# 手动编辑后提交\ngit commit -m \"Revert: 撤销用户认证功能合并\""
-  },
-  "mergeWorkflow": {
-    "title": "合并工作流",
-    "language": "bash",
-    "code": "# 标准合并工作流\n# 1. 准备阶段\ngit checkout main\ngit pull origin main        # 获取最新更改\ngit checkout feature-branch\ngit rebase main             # 可选：变基到最新main\n\n# 2. 执行合并\ngit checkout main\ngit merge --no-ff feature-branch  # 创建合并提交\n\n# 3. 验证合并\ngit log --oneline -5        # 检查提交历史\ngit diff HEAD~1             # 检查合并的更改\n\n# 4. 推送和清理\ngit push origin main        # 推送合并结果\ngit branch -d feature-branch  # 删除本地分支\ngit push origin --delete feature-branch  # 删除远程分支\n\n# Pull Request工作流\n# 1. 推送功能分支\ngit push origin feature-branch\n# 2. 在GitHub/GitLab创建PR\n# 3. 代码审查\n# 4. 合并PR（通过Web界面）\n# 5. 本地清理\ngit checkout main\ngit pull origin main\ngit branch -d feature-branch"
-  },
-  "advancedMerging": {
-    "title": "高级合并技巧",
-    "language": "bash",
-    "code": "# 部分文件合并\ngit checkout main\ngit checkout feature-branch -- specific-file.txt  # 只合并特定文件\ngit commit -m \"Merge specific file from feature branch\"\n\n# 忽略特定文件的合并\necho \"config/local.js merge=ours\" >> .gitattributes\ngit add .gitattributes\ngit commit -m \"Set merge strategy for local config\"\n\n# 子树合并\ngit subtree add --prefix=lib/external https://github.com/external/repo.git main\ngit subtree pull --prefix=lib/external https://github.com/external/repo.git main\n\n# 合并多个分支（章鱼合并）\ngit merge feature1 feature2 feature3  # 同时合并多个分支\n\n# 查看合并基础\ngit merge-base main feature-branch     # 找到共同祖先\ngit show $(git merge-base main feature-branch)  # 显示共同祖先\n\n# 模拟合并（不实际合并）\ngit merge --no-commit --no-ff feature-branch\ngit status                  # 查看合并结果\ngit merge --abort           # 取消模拟合并"
-  }
+    "mergeTypes": {
+        "title": "合并类型",
+        "language": "bash",
+        "code": "# 1. Fast-forward合并（快进合并）\n# 当目标分支是当前分支的直接后继时\ngit checkout main\ngit merge feature-branch    # 直接移动指针，无合并提交\n\n# 2. 三方合并（Three-way merge）\n# 当两个分支有分歧时，Git会找到共同祖先\ngit merge feature-branch    # 创建新的合并提交\n\n# 3. 禁用Fast-forward\ngit merge --no-ff feature-branch  # 总是创建合并提交\n\n# 4. 只允许Fast-forward\ngit merge --ff-only feature-branch # 只有能快进时才合并\n\n# 查看合并类型\ngit log --graph --oneline   # 图形化查看合并历史"
+    },
+    "basicMerging": {
+        "title": "基本合并操作",
+        "language": "bash",
+        "code": "# 准备合并\ngit checkout main           # 切换到目标分支\ngit pull origin main        # 确保是最新版本\n\n# 执行合并\ngit merge feature-branch    # 合并功能分支\n\n# 查看合并结果\ngit log --oneline -10       # 查看最近10次提交\ngit show HEAD               # 查看合并提交详情\n\n# 推送合并结果\ngit push origin main        # 推送到远程仓库\n\n# 清理分支\ngit branch -d feature-branch  # 删除已合并的本地分支\ngit push origin --delete feature-branch  # 删除远程分支"
+    },
+    "conflictResolution": {
+        "title": "冲突解决",
+        "language": "bash",
+        "code": "# 当合并产生冲突时\ngit merge feature-branch\n# Auto-merging file.txt\n# CONFLICT (content): Merge conflict in file.txt\n# Automatic merge failed; fix conflicts and then commit the result.\n\n# 查看冲突状态\ngit status                  # 查看冲突文件\ngit diff                    # 查看冲突详情\n\n# 冲突标记格式\n<<<<<<< HEAD\n当前分支的内容\n=======\n要合并分支的内容\n>>>>>>> feature-branch\n\n# 解决冲突步骤\n# 1. 编辑冲突文件，删除标记，保留需要的内容\n# 2. 标记冲突已解决\ngit add conflicted-file.txt\n# 3. 完成合并\ngit commit                  # 或 git merge --continue\n\n# 取消合并\ngit merge --abort           # 回到合并前状态"
+    },
+    "mergeTools": {
+        "title": "合并工具",
+        "language": "bash",
+        "code": "# 配置合并工具\ngit config --global merge.tool vimdiff\ngit config --global merge.tool vscode\ngit config --global merge.tool meld\n\n# 启动合并工具\ngit mergetool               # 启动配置的合并工具\ngit mergetool file.txt      # 对特定文件使用合并工具\n\n# 常用合并工具配置\n# VS Code\ngit config --global merge.tool vscode\ngit config --global mergetool.vscode.cmd 'code --wait $MERGED'\n\n# Meld\ngit config --global merge.tool meld\ngit config --global mergetool.meld.path '/usr/bin/meld'\n\n# P4Merge\ngit config --global merge.tool p4merge\ngit config --global mergetool.p4merge.path '/usr/local/bin/p4merge'\n\n# 查看合并工具配置\ngit config --list | grep merge"
+    },
+    "squashMerge": {
+        "title": "压缩合并",
+        "language": "bash",
+        "code": "# Squash合并 - 将多个提交压缩为一个\ngit checkout main\ngit merge --squash feature-branch\n\n# 查看暂存的更改\ngit status                  # 所有更改都在暂存区\ngit diff --cached           # 查看暂存的更改\n\n# 创建压缩提交\ngit commit -m \"feat: 添加用户认证功能\n\n- 实现登录/注册页面\n- 添加JWT token验证\n- 集成用户权限管理\n- 添加密码加密功能\"\n\n# 推送结果\ngit push origin main\n\n# 清理功能分支\ngit branch -d feature-branch\ngit push origin --delete feature-branch\n\n# Squash合并的优点\n# - 保持主分支历史整洁\n# - 将相关更改组合在一起\n# - 便于回滚整个功能"
+    },
+    "mergeStrategies": {
+        "title": "合并策略",
+        "language": "bash",
+        "code": "# 默认合并策略\ngit merge feature-branch    # 使用recursive策略\n\n# 指定合并策略\ngit merge -s recursive feature-branch      # 递归策略（默认）\ngit merge -s resolve feature-branch        # 解析策略\ngit merge -s octopus feature-branch        # 章鱼策略（多分支）\ngit merge -s ours feature-branch           # 我们的策略\ngit merge -s subtree feature-branch        # 子树策略\n\n# 合并策略选项\ngit merge -X ours feature-branch           # 冲突时优先当前分支\ngit merge -X theirs feature-branch         # 冲突时优先合并分支\ngit merge -X ignore-space-change feature-branch  # 忽略空白变化\ngit merge -X ignore-all-space feature-branch     # 忽略所有空白\n\n# 查看可用策略\ngit merge --help            # 查看详细帮助"
+    },
+    "mergeCommitMessage": {
+        "title": "合并提交信息",
+        "language": "bash",
+        "code": "# 自定义合并提交信息\ngit merge feature-branch -m \"Merge feature: 用户认证系统\n\n合并内容：\n- 用户登录/注册功能\n- JWT token认证\n- 权限管理系统\n- 密码安全策略\n\nReviewed-by: 张三 <zhangsan@example.com>\nTested-by: 李四 <lisi@example.com>\"\n\n# 编辑合并提交信息\ngit merge feature-branch    # 会打开编辑器\n# 或者\ngit merge --no-commit feature-branch\ngit commit                  # 手动提交并编辑信息\n\n# 合并提交信息模板\n# ~/.gitmessage\nMerge branch 'feature-branch'\n\n# What was merged:\n# - \n# - \n\n# Why it was merged:\n# - \n\n# How it was tested:\n# - \n\n# 使用模板\ngit config --global commit.template ~/.gitmessage"
+    },
+    "undoMerge": {
+        "title": "撤销合并",
+        "language": "bash",
+        "code": "# 撤销未推送的合并\ngit reset --hard HEAD~1     # 硬重置到合并前（危险）\ngit reset --merge HEAD~1    # 重置合并但保留工作区更改\n\n# 撤销已推送的合并\ngit revert -m 1 HEAD        # 创建反向提交撤销合并\n# -m 1 表示保留第一个父提交（通常是main分支）\n\n# 查找合并提交\ngit log --merges            # 只显示合并提交\ngit log --oneline --graph   # 图形化显示\n\n# 撤销特定的合并提交\ngit revert -m 1 <merge-commit-hash>\n\n# 撤销合并范围\ngit revert -m 1 HEAD~3..HEAD  # 撤销最近3次合并\n\n# 交互式撤销\ngit revert -m 1 --no-commit HEAD  # 撤销但不自动提交\n# 手动编辑后提交\ngit commit -m \"Revert: 撤销用户认证功能合并\""
+    },
+    "mergeWorkflow": {
+        "title": "合并工作流",
+        "language": "bash",
+        "code": "# 标准合并工作流\n# 1. 准备阶段\ngit checkout main\ngit pull origin main        # 获取最新更改\ngit checkout feature-branch\ngit rebase main             # 可选：变基到最新main\n\n# 2. 执行合并\ngit checkout main\ngit merge --no-ff feature-branch  # 创建合并提交\n\n# 3. 验证合并\ngit log --oneline -5        # 检查提交历史\ngit diff HEAD~1             # 检查合并的更改\n\n# 4. 推送和清理\ngit push origin main        # 推送合并结果\ngit branch -d feature-branch  # 删除本地分支\ngit push origin --delete feature-branch  # 删除远程分支\n\n# Pull Request工作流\n# 1. 推送功能分支\ngit push origin feature-branch\n# 2. 在GitHub/GitLab创建PR\n# 3. 代码审查\n# 4. 合并PR（通过Web界面）\n# 5. 本地清理\ngit checkout main\ngit pull origin main\ngit branch -d feature-branch"
+    },
+    "advancedMerging": {
+        "title": "高级合并技巧",
+        "language": "bash",
+        "code": "# 部分文件合并\ngit checkout main\ngit checkout feature-branch -- specific-file.txt  # 只合并特定文件\ngit commit -m \"Merge specific file from feature branch\"\n\n# 忽略特定文件的合并\necho \"config/local.js merge=ours\" >> .gitattributes\ngit add .gitattributes\ngit commit -m \"Set merge strategy for local config\"\n\n# 子树合并\ngit subtree add --prefix=lib/external https://github.com/external/repo.git main\ngit subtree pull --prefix=lib/external https://github.com/external/repo.git main\n\n# 合并多个分支（章鱼合并）\ngit merge feature1 feature2 feature3  # 同时合并多个分支\n\n# 查看合并基础\ngit merge-base main feature-branch     # 找到共同祖先\ngit show $(git merge-base main feature-branch)  # 显示共同祖先\n\n# 模拟合并（不实际合并）\ngit merge --no-commit --no-ff feature-branch\ngit status                  # 查看合并结果\ngit merge --abort           # 取消模拟合并"
+    }
 }
