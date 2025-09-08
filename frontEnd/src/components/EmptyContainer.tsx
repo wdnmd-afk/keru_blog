@@ -1,4 +1,5 @@
 import React, { ReactNode } from 'react'
+import { useTranslation } from 'react-i18next'
 
 interface EmptyProps {
     flag: boolean | any
@@ -6,11 +7,14 @@ interface EmptyProps {
     children: ReactNode
 }
 
-const DefaultFallback = () => (
-    <div wh-full f-c-c font-bold className={'text-[18px]'}>
-        <div>暂无数据</div>
-    </div>
-)
+const DefaultFallback = () => {
+    const { t } = useTranslation('common')
+    return (
+        <div wh-full f-c-c font-bold className={'text-[18px]'}>
+            <div>{t('messages.no_data')}</div>
+        </div>
+    )
+}
 
 const EmptyContainer: React.FC<EmptyProps> = ({ flag, fallback, children }) => {
     if (flag) {

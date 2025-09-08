@@ -1,0 +1,218 @@
+/**
+ * 右上角功能区容器组件样式
+ *
+ * 设计理念：
+ * 1. 统一的布局和间距管理
+ * 2. 与现有深蓝主题保持一致
+ * 3. 响应式设计适配
+ * 4. 良好的视觉层次和交互反馈
+ */
+
+// 引用全局色彩变量
+:root {
+    --primary-dark: #0a0e1a;
+    --primary-blue: #1a2332;
+    --accent-blue: #2d4263;
+    --highlight-blue: #3e5c7a;
+    --text-primary: #ffffff;
+    --text-secondary: #b8c5d1;
+    --text-muted: #8a9ba8;
+    --border-color: rgba(62, 92, 122, 0.3);
+    --card-bg: rgba(26, 35, 50, 0.95);
+    --shadow-dark: rgba(0, 0, 0, 0.5);
+    --gradient-primary: linear-gradient(135deg, #0a0e1a 0%, #1a2332 50%, #2d4263 100%);
+    --gradient-accent: linear-gradient(135deg, #2d4263 0%, #3e5c7a 100%);
+}
+
+.headerActions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    height: 100%;
+
+    .actionItem {
+        display: flex;
+        align-items: center;
+        height: 100%;
+        position: relative;
+    }
+
+    // 用户信息样式 - 简化版本
+    .userInfo {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 0 16px;
+        height: 60px;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        background: transparent;
+        border: none;
+        position: relative;
+        min-width: 120px;
+
+        &:hover {
+            background: rgba(62, 92, 122, 0.08);
+            transform: translateY(-1px);
+
+            .userName {
+                color: var(--text-primary);
+            }
+        }
+
+        .userName {
+            color: var(--text-secondary);
+            font-weight: 500;
+            font-size: 15px;
+            flex: 1;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            transition: color 0.2s ease;
+        }
+    }
+
+    // 尺寸变体
+    &.small {
+        gap: 8px;
+
+        .userInfo {
+            padding: 0 12px;
+            height: 48px;
+            border-radius: 6px;
+            gap: 10px;
+            min-width: 100px;
+
+            .userName {
+                font-size: 14px;
+            }
+        }
+    }
+
+    &.medium {
+        gap: 12px;
+
+        .userInfo {
+            padding: 0 16px;
+            height: 60px;
+            border-radius: 8px;
+            gap: 12px;
+            min-width: 120px;
+
+            .userName {
+                font-size: 15px;
+            }
+        }
+    }
+
+    &.large {
+        gap: 16px;
+
+        .userInfo {
+            padding: 0 20px;
+            height: 72px;
+            border-radius: 10px;
+            gap: 14px;
+            min-width: 140px;
+
+            .userName {
+                font-size: 16px;
+            }
+        }
+    }
+}
+
+// 响应式设计
+@media (max-width: 1024px) {
+    .headerActions {
+        gap: 10px;
+
+        .userInfo {
+            padding: 0 12px;
+            height: 50px;
+            border-radius: 6px;
+            gap: 10px;
+            min-width: 100px;
+
+            .userName {
+                font-size: 14px;
+            }
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .headerActions {
+        gap: 8px;
+
+        .userInfo {
+            padding: 0 10px;
+            height: 40px;
+            border-radius: 6px;
+            gap: 8px;
+            min-width: 80px;
+
+            .userName {
+                font-size: 13px;
+            }
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    .headerActions {
+        gap: 6px;
+
+        .userInfo {
+            padding: 0 8px;
+            height: 36px;
+            border-radius: 6px;
+            gap: 6px;
+            min-width: 70px;
+
+            .userName {
+                display: none; // 移动端隐藏用户名
+            }
+        }
+    }
+}
+
+// 深色主题适配（如果需要）
+@media (prefers-color-scheme: dark) {
+    .headerActions {
+        .userInfo {
+            &:hover {
+                background: rgba(62, 92, 122, 0.12);
+            }
+        }
+    }
+}
+
+// 动画效果
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.headerActions {
+    animation: slideIn 0.3s ease-out;
+
+    .actionItem {
+        &:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+        &:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+        &:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+    }
+}

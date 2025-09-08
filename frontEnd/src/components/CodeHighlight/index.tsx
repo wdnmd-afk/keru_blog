@@ -2,6 +2,7 @@ import { copyCodeToClipboard, formatCode, getCodeStats } from '@/utils/codeParse
 import { CheckOutlined, CopyOutlined } from '@ant-design/icons'
 import { Button, Tooltip, message } from 'antd'
 import React, { useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { vscDarkPlus } from 'react-syntax-highlighter/dist/esm/styles/prism'
 import styles from './CodeHighlight.module.scss'
@@ -25,6 +26,7 @@ const CodeHighlight: React.FC<CodeHighlightProps> = ({
     maxHeight = '400px',
     className,
 }) => {
+    const { t } = useTranslation('common')
     const [copied, setCopied] = useState(false)
     const [stats, setStats] = useState<any>(null)
 
@@ -38,10 +40,10 @@ const CodeHighlight: React.FC<CodeHighlightProps> = ({
         const success = await copyCodeToClipboard(code)
         if (success) {
             setCopied(true)
-            message.success('代码已复制到剪贴板')
+            message.success(t('code.copied_to_clipboard'))
             setTimeout(() => setCopied(false), 2000)
         } else {
-            message.error('复制失败，请手动复制')
+            message.error(t('code.copy_failed'))
         }
     }
 
@@ -55,15 +57,15 @@ const CodeHighlight: React.FC<CodeHighlightProps> = ({
                     {title && <span className={styles.title}>{title}</span>}
                     {showStats && stats && (
                         <div className={styles.stats}>
-                            <span>{stats.totalLines} 行</span>
-                            <span>{stats.characters} 字符</span>
+                            <span>{stats.totalLines} {t('code.lines')}</span>
+                            <span>{stats.characters} {t('code.characters')}</span>
                         </div>
                     )}
                 </div>
 
                 <div className={styles.actions}>
                     {showCopy && (
-                        <Tooltip title={copied ? '已复制' : '复制代码'}>
+                        <Tooltip title={copied ? t('code.copied') : t('code.copy_code')}>
                             <Button
                                 type="text"
                                 size="small"

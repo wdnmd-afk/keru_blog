@@ -1,10 +1,8 @@
 import FloatingActions from '@/components/FloatingActions.tsx'
-import SvgIcon from '@/components/SvgIcon.tsx'
+import HeaderActions from '@/components/HeaderActions.tsx'
 import style from '@/styles/layout.module.scss'
-import { BrowserLocalStorage } from '@/utils'
-import type { MenuProps } from 'antd'
-import { Dropdown } from 'antd'
 import React, { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { useLocation, useNavigate } from 'react-router-dom'
 
 interface MenuItem {
@@ -13,33 +11,22 @@ interface MenuItem {
 }
 
 const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-    const headerList: MenuItem[] = [
-        { name: 'Home', path: '/' },
-        { name: 'Books', path: '/books' },
-        { name: 'Files', path: '/files' },
-        { name: 'Technology', path: '/technology' },
-    ]
-
+    const { t } = useTranslation('layout')
     const navigate = useNavigate()
     const location = useLocation()
     const [activeMenu, setActiveMenu] = useState<string>(location.pathname)
+
+    // 使用国际化的导航菜单项
+    const headerList: MenuItem[] = [
+        { name: t('header.navigation.home'), path: '/' },
+        { name: t('header.navigation.books'), path: '/books' },
+        { name: t('header.navigation.files'), path: '/files' },
+        { name: t('header.navigation.technology'), path: '/technology' },
+    ]
     const handleMenuClick = (item: MenuItem) => {
         if (item.path === location.pathname) return
         navigate(item.path)
         setActiveMenu(item.path)
-    }
-    const name = BrowserLocalStorage.get('userInfo')?.name
-    const items: MenuProps['items'] = [
-        {
-            label: '退出登录',
-            key: 'exit',
-        },
-    ]
-    const onClick = ({ key }: { key: string }) => {
-        if (key === 'exit') {
-            BrowserLocalStorage.remove('userInfo')
-            navigate('/login')
-        }
     }
 
     return (
@@ -59,17 +46,13 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
                         </div>
                     ))}
                 </div>
-                <Dropdown
-                    menu={{ items, onClick }}
-                    arrow={{ pointAtCenter: true }}
-                    placement="bottom"
-                >
-                    <div className={style.header_person}>
-                        {/*<div className={style.img}></div>*/}
-                        <SvgIcon name={'react'} size={35}></SvgIcon>
-                        <div className={style.name}> {name}</div>
-                    </div>
-                </Dropdown>
+                <HeaderActions
+                    showLanguageSwitcher={true}
+                    showExternalLinks={true}
+                    showUserInfo={true}
+                    languageSwitcherShowLabel={false}
+                    size="medium"
+                />
             </div>
             <div flex-1 h-0>
                 {children}

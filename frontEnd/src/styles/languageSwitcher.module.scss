@@ -1,0 +1,195 @@
+/**
+ * 语言切换组件样式
+ *
+ * 设计理念：
+ * 1. 与现有深蓝主题保持一致
+ * 2. 支持多种尺寸规格
+ * 3. 提供良好的交互反馈
+ * 4. 响应式设计适配
+ */
+
+// 引用全局色彩变量
+:root {
+    --primary-dark: #0a0e1a;
+    --primary-blue: #1a2332;
+    --accent-blue: #2d4263;
+    --highlight-blue: #3e5c7a;
+    --text-primary: #ffffff;
+    --text-secondary: #b8c5d1;
+    --text-muted: #8a9ba8;
+    --border-color: rgba(62, 92, 122, 0.3);
+    --card-bg: rgba(26, 35, 50, 0.95);
+    --shadow-dark: rgba(0, 0, 0, 0.5);
+}
+
+.languageSwitcher {
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+
+    .switcherButton {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 12px;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        background: transparent;
+        border: none;
+        color: var(--text-secondary);
+        position: relative;
+
+        &:hover {
+            background: rgba(62, 92, 122, 0.08);
+            color: var(--text-primary);
+            transform: translateY(-1px);
+        }
+
+        &:active {
+            transform: translateY(0);
+        }
+
+        .icon {
+            font-size: 16px;
+            transition: all 0.2s ease;
+            color: inherit;
+        }
+
+        .label {
+            font-size: 14px;
+            font-weight: 500;
+            white-space: nowrap;
+            transition: all 0.2s ease;
+        }
+    }
+
+    // 尺寸变体
+    &.small {
+        .switcherButton {
+            padding: 6px 8px;
+            border-radius: 4px;
+
+            .icon {
+                font-size: 14px;
+            }
+
+            .label {
+                font-size: 12px;
+            }
+        }
+    }
+
+    &.medium {
+        .switcherButton {
+            padding: 8px 12px;
+            border-radius: 6px;
+
+            .icon {
+                font-size: 16px;
+            }
+
+            .label {
+                font-size: 14px;
+            }
+        }
+    }
+
+    &.large {
+        .switcherButton {
+            padding: 10px 14px;
+            border-radius: 8px;
+
+            .icon {
+                font-size: 18px;
+            }
+
+            .label {
+                font-size: 16px;
+            }
+        }
+    }
+}
+
+// 下拉菜单项样式
+.menuItem {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 12px;
+    min-width: 120px;
+    transition: all 0.2s ease;
+
+    .languageName {
+        font-size: 14px;
+        font-weight: 500;
+        color: rgba(0, 0, 0, 0.88); // 使用Ant Design默认的文字颜色
+    }
+
+    .checkIcon {
+        color: #1677ff; // 使用Ant Design的主色调
+        font-weight: bold;
+        font-size: 16px;
+    }
+
+    &:hover {
+        .languageName {
+            color: #1677ff; // hover时使用主色调
+        }
+    }
+}
+
+// 响应式设计
+@media (max-width: 768px) {
+    .languageSwitcher {
+        .switcherButton {
+            padding: 6px 8px;
+            border-radius: 4px;
+
+            .label {
+                display: none; // 移动端隐藏文本标签
+            }
+
+            .icon {
+                font-size: 16px;
+            }
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    .languageSwitcher {
+        .switcherButton {
+            padding: 4px 6px;
+            border-radius: 4px;
+
+            .icon {
+                font-size: 14px;
+            }
+        }
+    }
+
+    .menuItem {
+        padding: 6px 10px;
+        min-width: 100px;
+
+        .languageName {
+            font-size: 13px;
+        }
+
+        .checkIcon {
+            font-size: 14px;
+        }
+    }
+}
+
+// 深色主题适配（如果需要）
+@media (prefers-color-scheme: dark) {
+    .languageSwitcher {
+        .switcherButton {
+            &:hover {
+                background: rgba(62, 92, 122, 0.12);
+            }
+        }
+    }
+}

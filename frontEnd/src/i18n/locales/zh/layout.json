@@ -1,0 +1,49 @@
+{
+  "header": {
+    "logo": "Keru博客",
+    "navigation": {
+      "home": "首页",
+      "books": "书籍推荐",
+      "files": "文件管理",
+      "technology": "技术栈"
+    },
+    "user_menu": {
+      "profile": "个人资料",
+      "settings": "设置",
+      "logout": "退出登录"
+    },
+    "language_switcher": {
+      "title": "语言切换",
+      "chinese": "中文",
+      "english": "English"
+    },
+    "external_links": {
+      "github": "GitHub仓库",
+      "github_tooltip": "查看项目源码"
+    }
+  },
+  "footer": {
+    "copyright": "© 2024 Keru博客. 保留所有权利.",
+    "powered_by": "基于 React + TypeScript 构建",
+    "version": "版本 {{version}}"
+  },
+  "sidebar": {
+    "menu": "菜单",
+    "collapse": "收起",
+    "expand": "展开"
+  },
+  "breadcrumb": {
+    "home": "首页",
+    "current": "当前页面"
+  },
+  "theme": {
+    "light": "浅色主题",
+    "dark": "深色主题",
+    "auto": "跟随系统"
+  },
+  "search": {
+    "placeholder": "搜索内容...",
+    "no_results": "未找到相关内容",
+    "results_count": "找到 {{count}} 个结果"
+  }
+}

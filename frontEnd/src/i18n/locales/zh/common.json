@@ -1,0 +1,115 @@
+{
+  "buttons": {
+    "confirm": "确认",
+    "cancel": "取消",
+    "save": "保存",
+    "delete": "删除",
+    "edit": "编辑",
+    "add": "添加",
+    "search": "搜索",
+    "reset": "重置",
+    "submit": "提交",
+    "back": "返回",
+    "next": "下一步",
+    "previous": "上一步",
+    "close": "关闭",
+    "copy": "复制",
+    "download": "下载",
+    "upload": "上传",
+    "refresh": "刷新",
+    "loading": "加载中...",
+    "more": "更多"
+  },
+  "messages": {
+    "success": "操作成功",
+    "error": "操作失败",
+    "warning": "警告",
+    "info": "提示",
+    "confirm_delete": "确认删除此项？",
+    "no_data": "暂无数据",
+    "loading": "正在加载...",
+    "network_error": "网络错误，请稍后重试",
+    "permission_denied": "权限不足",
+    "operation_success": "操作成功",
+    "operation_failed": "操作失败",
+    "please_wait": "请稍候...",
+    "copied_to_clipboard": "已复制到剪贴板",
+    "copy_failed": "复制失败，请手动复制"
+  },
+  "validation": {
+    "required": "此字段为必填项",
+    "email_invalid": "请输入有效的邮箱地址",
+    "password_too_short": "密码长度至少6位",
+    "passwords_not_match": "两次输入的密码不一致",
+    "phone_invalid": "请输入有效的手机号码",
+    "url_invalid": "请输入有效的URL地址"
+  },
+  "time": {
+    "just_now": "刚刚",
+    "minutes_ago": "{{count}}分钟前",
+    "hours_ago": "{{count}}小时前",
+    "days_ago": "{{count}}天前",
+    "weeks_ago": "{{count}}周前",
+    "months_ago": "{{count}}个月前",
+    "years_ago": "{{count}}年前",
+    "today": "今天",
+    "yesterday": "昨天",
+    "tomorrow": "明天"
+  },
+  "file": {
+    "upload": "上传文件",
+    "download": "下载文件",
+    "delete": "删除文件",
+    "preview": "预览",
+    "size": "文件大小",
+    "type": "文件类型",
+    "name": "文件名",
+    "upload_success": "文件上传成功",
+    "upload_failed": "文件上传失败",
+    "file_too_large": "文件过大",
+    "unsupported_format": "不支持的文件格式"
+  },
+  "pagination": {
+    "total": "共 {{total}} 条",
+    "page": "第 {{current}} 页",
+    "per_page": "每页 {{size}} 条",
+    "go_to": "跳至",
+    "items_per_page": "条/页"
+  },
+  "code": {
+    "copied_to_clipboard": "代码已复制到剪贴板",
+    "copy_failed": "复制失败，请手动复制",
+    "copy_code": "复制代码",
+    "copied": "已复制",
+    "lines": "行",
+    "characters": "字符"
+  },
+  "modal": {
+    "title": "提示",
+    "confirm": "确认",
+    "cancel": "取消"
+  },
+  "upload": {
+    "pause": "暂停上传",
+    "resume": "继续上传",
+    "retry": "重试上传",
+    "cancel": "取消上传",
+    "remove_record": "删除记录",
+    "pause_all": "全部暂停",
+    "resume_all": "全部继续",
+    "cancel_all": "全部取消",
+    "clear_records": "清空记录",
+    "upload_progress": "上传进度",
+    "actions": "操作"
+  },
+  "pages": {
+    "not_found": {
+      "title": "404",
+      "subtitle": "抱歉，您访问的页面不存在。",
+      "back_home": "返回首页"
+    },
+    "home": {
+      "view_details": "查看详情"
+    }
+  }
+}

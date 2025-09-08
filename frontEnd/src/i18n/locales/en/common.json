@@ -1,0 +1,115 @@
+{
+  "buttons": {
+    "confirm": "Confirm",
+    "cancel": "Cancel",
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit",
+    "add": "Add",
+    "search": "Search",
+    "reset": "Reset",
+    "submit": "Submit",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "close": "Close",
+    "copy": "Copy",
+    "download": "Download",
+    "upload": "Upload",
+    "refresh": "Refresh",
+    "loading": "Loading...",
+    "more": "More"
+  },
+  "messages": {
+    "success": "Operation successful",
+    "error": "Operation failed",
+    "warning": "Warning",
+    "info": "Info",
+    "confirm_delete": "Are you sure you want to delete this item?",
+    "no_data": "No data available",
+    "loading": "Loading...",
+    "network_error": "Network error, please try again later",
+    "permission_denied": "Permission denied",
+    "operation_success": "Operation successful",
+    "operation_failed": "Operation failed",
+    "please_wait": "Please wait...",
+    "copied_to_clipboard": "Copied to clipboard",
+    "copy_failed": "Copy failed, please copy manually"
+  },
+  "validation": {
+    "required": "This field is required",
+    "email_invalid": "Please enter a valid email address",
+    "password_too_short": "Password must be at least 6 characters",
+    "passwords_not_match": "Passwords do not match",
+    "phone_invalid": "Please enter a valid phone number",
+    "url_invalid": "Please enter a valid URL"
+  },
+  "time": {
+    "just_now": "Just now",
+    "minutes_ago": "{{count}} minutes ago",
+    "hours_ago": "{{count}} hours ago",
+    "days_ago": "{{count}} days ago",
+    "weeks_ago": "{{count}} weeks ago",
+    "months_ago": "{{count}} months ago",
+    "years_ago": "{{count}} years ago",
+    "today": "Today",
+    "yesterday": "Yesterday",
+    "tomorrow": "Tomorrow"
+  },
+  "file": {
+    "upload": "Upload File",
+    "download": "Download File",
+    "delete": "Delete File",
+    "preview": "Preview",
+    "size": "File Size",
+    "type": "File Type",
+    "name": "File Name",
+    "upload_success": "File uploaded successfully",
+    "upload_failed": "File upload failed",
+    "file_too_large": "File is too large",
+    "unsupported_format": "Unsupported file format"
+  },
+  "pagination": {
+    "total": "Total {{total}} items",
+    "page": "Page {{current}}",
+    "per_page": "{{size}} per page",
+    "go_to": "Go to",
+    "items_per_page": "items per page"
+  },
+  "code": {
+    "copied_to_clipboard": "Code copied to clipboard",
+    "copy_failed": "Copy failed, please copy manually",
+    "copy_code": "Copy Code",
+    "copied": "Copied",
+    "lines": "lines",
+    "characters": "characters"
+  },
+  "modal": {
+    "title": "Confirm",
+    "confirm": "Confirm",
+    "cancel": "Cancel"
+  },
+  "upload": {
+    "pause": "Pause Upload",
+    "resume": "Resume Upload",
+    "retry": "Retry Upload",
+    "cancel": "Cancel Upload",
+    "remove_record": "Remove Record",
+    "pause_all": "Pause All",
+    "resume_all": "Resume All",
+    "cancel_all": "Cancel All",
+    "clear_records": "Clear Records",
+    "upload_progress": "Upload Progress",
+    "actions": "Actions"
+  },
+  "pages": {
+    "not_found": {
+      "title": "404",
+      "subtitle": "Sorry, the page you visited does not exist.",
+      "back_home": "Back Home"
+    },
+    "home": {
+      "view_details": "View Details"
+    }
+  }
+}

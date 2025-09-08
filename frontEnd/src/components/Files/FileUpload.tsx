@@ -13,6 +13,7 @@ import {
 import { Button, Space, Tooltip, Upload, UploadProps, message } from 'antd'
 import { UploadFile } from 'antd/es/upload/interface'
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 
 const { Dragger } = Upload
 
@@ -29,6 +30,7 @@ const FileUpload: React.FC<FileUploadProps> = ({
     onResumeActions,
     onBatchActions,
 }) => {
+    const { t } = useTranslation('common')
     // 移除调试日志，减少控制台输出
     /**
      * 格式化文件大小
@@ -175,7 +177,7 @@ const FileUpload: React.FC<FileUploadProps> = ({
             <Space size="small">
                 {/* 暂停按钮 - 仅在上传中时显示 */}
                 {status === 'uploading' && (
-                    <Tooltip title="暂停上传">
+                    <Tooltip title={t('upload.pause')}>
                         <Button
                             type="text"
                             size="small"
@@ -187,7 +189,7 @@ const FileUpload: React.FC<FileUploadProps> = ({
 
                 {/* 继续按钮 - 仅在暂停时显示 */}
                 {status === 'paused' && (
-                    <Tooltip title="继续上传">
+                    <Tooltip title={t('upload.resume')}>
                         <Button
                             type="text"
                             size="small"
@@ -199,7 +201,7 @@ const FileUpload: React.FC<FileUploadProps> = ({
 
                 {/* 重试按钮 - 仅在失败时显示 */}
                 {(status === 'error' || status === 'failed') && (
-                    <Tooltip title="重试上传">
+                    <Tooltip title={t('upload.retry')}>
                         <Button
                             type="text"
                             size="small"
@@ -211,7 +213,7 @@ const FileUpload: React.FC<FileUploadProps> = ({
 
                 {/* 取消按钮 - 在待上传、上传中、暂停时显示 */}
                 {['pending', 'uploading', 'paused'].includes(status || '') && (
-                    <Tooltip title="取消上传">
+                    <Tooltip title={t('upload.cancel')}>
                         <Button
                             type="text"
                             size="small"
@@ -223,9 +225,9 @@ const FileUpload: React.FC<FileUploadProps> = ({
 
                 {/* 删除记录按钮 - 在完成、失败、取消时显示 */}
                 {['success', 'error', 'failed', 'cancelled'].includes(status || '') && (
-                    <Tooltip title="删除记录">
+                    <Tooltip title={t('upload.remove_record')}>
                         <Button type="text" size="small" danger onClick={() => handleRemove(file)}>
-                            删除记录
+                            {t('upload.remove_record')}
                         </Button>
                     </Tooltip>
                 )}
@@ -318,7 +320,7 @@ const FileUpload: React.FC<FileUploadProps> = ({
             },
         },
         {
-            title: '上传进度',
+            title: t('upload.upload_progress'),
             key: 'progress',
             width: '20%',
             render: (_: unknown, record: UploadFileItem, index: number) => {
@@ -365,7 +367,7 @@ const FileUpload: React.FC<FileUploadProps> = ({
             },
         },
         {
-            title: '操作',
+            title: t('upload.actions'),
             key: 'action',
             width: '15%',
             render: (_: unknown, record: UploadFileItem, index: number) => {
@@ -435,7 +437,7 @@ const FileUpload: React.FC<FileUploadProps> = ({
                                 onClick={onBatchActions.onPauseAll}
                                 disabled={!fileList.some((f) => f.status === 'uploading')}
                             >
-                                全部暂停
+                                {t('upload.pause_all')}
                             </Button>
                             <Button
                                 size="small"
@@ -443,7 +445,7 @@ const FileUpload: React.FC<FileUploadProps> = ({
                                 onClick={onBatchActions.onResumeAll}
                                 disabled={!fileList.some((f) => f.status === 'paused')}
                             >
-                                全部继续
+                                {t('upload.resume_all')}
                             </Button>
                             <Button
                                 size="small"
@@ -455,7 +457,7 @@ const FileUpload: React.FC<FileUploadProps> = ({
                                     )
                                 }
                             >
-                                全部取消
+                                {t('upload.cancel_all')}
                             </Button>
                             <Button
                                 size="small"
@@ -465,7 +467,7 @@ const FileUpload: React.FC<FileUploadProps> = ({
                                     onFileListChange([])
                                 }}
                             >
-                                清空记录
+                                {t('upload.clear_records')}
                             </Button>
                         </Space>
                     </div>
