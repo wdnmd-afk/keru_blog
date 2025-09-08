@@ -1,66 +1,66 @@
 {
-  "header": {
-    "title": "Technology Books Recommendation",
-    "subtitle": "Curated quality technology books to boost your skills"
-  },
-  "search": {
-    "placeholder": "Search books or authors...",
-    "no_results": "No books found",
-    "results_count": "Found {{count}} books"
-  },
-  "categories": {
-    "all": "All Categories",
-    "javascript": "JavaScript",
-    "react": "React",
-    "vue": "Vue.js",
-    "nodejs": "Node.js",
-    "typescript": "TypeScript",
-    "python": "Python",
-    "java": "Java",
-    "golang": "Go",
-    "database": "Database",
-    "devops": "DevOps",
-    "algorithm": "Algorithm",
-    "system_design": "System Design",
-    "frontend": "Frontend Development",
-    "backend": "Backend Development",
-    "mobile": "Mobile Development"
-  },
-  "actions": {
-    "preview": "Preview",
-    "download": "Download",
-    "favorite": "Favorite",
-    "unfavorite": "Unfavorite",
-    "share": "Share",
-    "read_online": "Read Online",
-    "buy": "Buy"
-  },
-  "details": {
-    "author": "Author",
-    "category": "Category",
-    "rating": "Rating",
-    "pages": "Pages",
-    "publish_year": "Publish Year",
-    "publisher": "Publisher",
-    "isbn": "ISBN",
-    "language": "Language",
-    "tags": "Tags",
-    "description": "Description",
-    "table_of_contents": "Table of Contents"
-  },
-  "status": {
-    "available": "Available",
-    "unavailable": "Unavailable",
-    "coming_soon": "Coming Soon",
-    "out_of_stock": "Out of Stock"
-  },
-  "messages": {
-    "added_to_favorites": "Added to favorites",
-    "removed_from_favorites": "Removed from favorites",
-    "download_started": "Download started",
-    "download_failed": "Download failed",
-    "preview_not_available": "Preview not available",
-    "loading_books": "Loading books...",
-    "load_failed": "Load failed, please retry"
-  }
+    "header": {
+        "title": "Technology Books Recommendation",
+        "subtitle": "Curated quality technology books to boost your skills"
+    },
+    "search": {
+        "placeholder": "Search books or authors...",
+        "no_results": "No books found",
+        "results_count": "Found {{count}} books"
+    },
+    "categories": {
+        "all": "All Categories",
+        "javascript": "JavaScript",
+        "react": "React",
+        "vue": "Vue.js",
+        "nodejs": "Node.js",
+        "typescript": "TypeScript",
+        "python": "Python",
+        "java": "Java",
+        "golang": "Go",
+        "database": "Database",
+        "devops": "DevOps",
+        "algorithm": "Algorithm",
+        "system_design": "System Design",
+        "frontend": "Frontend Development",
+        "backend": "Backend Development",
+        "mobile": "Mobile Development"
+    },
+    "actions": {
+        "preview": "Preview",
+        "download": "Download",
+        "favorite": "Favorite",
+        "unfavorite": "Unfavorite",
+        "share": "Share",
+        "read_online": "Read Online",
+        "buy": "Buy"
+    },
+    "details": {
+        "author": "Author",
+        "category": "Category",
+        "rating": "Rating",
+        "pages": "Pages",
+        "publish_year": "Publish Year",
+        "publisher": "Publisher",
+        "isbn": "ISBN",
+        "language": "Language",
+        "tags": "Tags",
+        "description": "Description",
+        "table_of_contents": "Table of Contents"
+    },
+    "status": {
+        "available": "Available",
+        "unavailable": "Unavailable",
+        "coming_soon": "Coming Soon",
+        "out_of_stock": "Out of Stock"
+    },
+    "messages": {
+        "added_to_favorites": "Added to favorites",
+        "removed_from_favorites": "Removed from favorites",
+        "download_started": "Download started",
+        "download_failed": "Download failed",
+        "preview_not_available": "Preview not available",
+        "loading_books": "Loading books...",
+        "load_failed": "Load failed, please retry"
+    }
 }

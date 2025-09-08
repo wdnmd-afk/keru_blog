@@ -1,6 +1,6 @@
 /**
  * 右上角功能区容器组件
- * 
+ *
  * 功能说明：
  * 1. 整合语言切换、外部链接和用户信息功能
  * 2. 提供统一的布局和样式管理
@@ -12,13 +12,13 @@ import ExternalLinks from '@/components/ExternalLinks'
 import LanguageSwitcher from '@/components/LanguageSwitcher'
 import SvgIcon from '@/components/SvgIcon'
 import { useGlobalStore } from '@/store'
+import styles from '@/styles/headerActions.module.scss'
 import { BrowserLocalStorage } from '@/utils'
-import { Dropdown } from 'antd'
 import type { MenuProps } from 'antd'
+import { Dropdown } from 'antd'
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
-import styles from '@/styles/headerActions.module.scss'
 
 interface HeaderActionsProps {
     /** 是否显示语言切换器 */
@@ -46,7 +46,7 @@ const HeaderActions: React.FC<HeaderActionsProps> = ({
     const { t } = useTranslation('layout')
     const navigate = useNavigate()
     const user = useGlobalStore((state) => state.user)
-    
+
     // 获取用户信息
     const name = BrowserLocalStorage.get('userInfo')?.name || user.name
 
@@ -102,10 +102,7 @@ const HeaderActions: React.FC<HeaderActionsProps> = ({
             {/* 语言切换器 */}
             {showLanguageSwitcher && (
                 <div className={styles.actionItem}>
-                    <LanguageSwitcher
-                        showLabel={languageSwitcherShowLabel}
-                        size={size}
-                    />
+                    <LanguageSwitcher showLabel={languageSwitcherShowLabel} size={size} />
                 </div>
             )}
 
@@ -129,7 +126,10 @@ const HeaderActions: React.FC<HeaderActionsProps> = ({
                         trigger={['click']}
                     >
                         <div className={styles.userInfo}>
-                            <SvgIcon name="react" size={size === 'small' ? 28 : size === 'large' ? 42 : 35} />
+                            <SvgIcon
+                                name="react"
+                                size={size === 'small' ? 28 : size === 'large' ? 42 : 35}
+                            />
                             <div className={styles.userName}>{name}</div>
                         </div>
                     </Dropdown>

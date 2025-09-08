@@ -1,91 +1,91 @@
 {
-  "common": {
-    "loading": "加载中...",
-    "load_error": "加载失败",
-    "load_failed_with_error": "加载失败: {{error}}",
-    "loading_code_data": "加载代码数据中...",
-    "back_button": "返回",
-    "tech_not_found": "技术栈不存在",
-    "tech_not_found_desc": "请选择一个有效的技术栈查看详解",
-    "back_to_tech_stack": "返回技术栈",
-    "tech_details": "技术详解",
-    "proficiency": "熟练度",
-    "tech_skills": "技术能力",
-    "learning_journey": "学习历程",
-    "projects": "项目经验"
-  },
-  "categories": {
-    "frontend": "前端技术",
-    "backend": "后端技术",
-    "database": "数据库",
-    "devops": "运维部署",
-    "tools": "开发工具",
-    "mobile": "移动开发"
-  },
-  "react": {
-    "title": "React",
-    "description": "用于构建用户界面的JavaScript库",
-    "topics": {
-      "hooks": "React Hooks",
-      "components": "组件开发",
-      "state_management": "状态管理",
-      "performance": "性能优化",
-      "error_boundary": "错误边界"
+    "common": {
+        "loading": "加载中...",
+        "load_error": "加载失败",
+        "load_failed_with_error": "加载失败: {{error}}",
+        "loading_code_data": "加载代码数据中...",
+        "back_button": "返回",
+        "tech_not_found": "技术栈不存在",
+        "tech_not_found_desc": "请选择一个有效的技术栈查看详解",
+        "back_to_tech_stack": "返回技术栈",
+        "tech_details": "技术详解",
+        "proficiency": "熟练度",
+        "tech_skills": "技术能力",
+        "learning_journey": "学习历程",
+        "projects": "项目经验"
+    },
+    "categories": {
+        "frontend": "前端技术",
+        "backend": "后端技术",
+        "database": "数据库",
+        "devops": "运维部署",
+        "tools": "开发工具",
+        "mobile": "移动开发"
+    },
+    "react": {
+        "title": "React",
+        "description": "用于构建用户界面的JavaScript库",
+        "topics": {
+            "hooks": "React Hooks",
+            "components": "组件开发",
+            "state_management": "状态管理",
+            "performance": "性能优化",
+            "error_boundary": "错误边界"
+        }
+    },
+    "vue": {
+        "title": "Vue.js",
+        "description": "渐进式JavaScript框架",
+        "topics": {
+            "composition_api": "组合式API",
+            "components": "组件系统",
+            "state_management": "状态管理",
+            "ssr": "服务端渲染",
+            "performance": "性能优化"
+        }
+    },
+    "typescript": {
+        "title": "TypeScript",
+        "description": "JavaScript的超集，添加了静态类型定义",
+        "topics": {
+            "basics": "基础语法",
+            "advanced": "高级特性",
+            "react_integration": "React集成",
+            "modules": "模块系统",
+            "generics": "泛型"
+        }
+    },
+    "nodejs": {
+        "title": "Node.js",
+        "description": "基于Chrome V8引擎的JavaScript运行时",
+        "topics": {
+            "fundamentals": "基础概念",
+            "express": "Express框架",
+            "modules": "模块系统",
+            "async": "异步编程",
+            "performance": "性能优化"
+        }
+    },
+    "docker": {
+        "title": "Docker",
+        "description": "容器化平台",
+        "topics": {
+            "fundamentals": "基础概念",
+            "compose": "Docker Compose",
+            "networking": "网络配置",
+            "volumes": "数据卷",
+            "best_practices": "最佳实践"
+        }
+    },
+    "git": {
+        "title": "Git",
+        "description": "分布式版本控制系统",
+        "topics": {
+            "basics": "基础操作",
+            "branching": "分支管理",
+            "advanced": "高级功能",
+            "workflows": "工作流程",
+            "best_practices": "最佳实践"
+        }
     }
-  },
-  "vue": {
-    "title": "Vue.js",
-    "description": "渐进式JavaScript框架",
-    "topics": {
-      "composition_api": "组合式API",
-      "components": "组件系统",
-      "state_management": "状态管理",
-      "ssr": "服务端渲染",
-      "performance": "性能优化"
-    }
-  },
-  "typescript": {
-    "title": "TypeScript",
-    "description": "JavaScript的超集，添加了静态类型定义",
-    "topics": {
-      "basics": "基础语法",
-      "advanced": "高级特性",
-      "react_integration": "React集成",
-      "modules": "模块系统",
-      "generics": "泛型"
-    }
-  },
-  "nodejs": {
-    "title": "Node.js",
-    "description": "基于Chrome V8引擎的JavaScript运行时",
-    "topics": {
-      "fundamentals": "基础概念",
-      "express": "Express框架",
-      "modules": "模块系统",
-      "async": "异步编程",
-      "performance": "性能优化"
-    }
-  },
-  "docker": {
-    "title": "Docker",
-    "description": "容器化平台",
-    "topics": {
-      "fundamentals": "基础概念",
-      "compose": "Docker Compose",
-      "networking": "网络配置",
-      "volumes": "数据卷",
-      "best_practices": "最佳实践"
-    }
-  },
-  "git": {
-    "title": "Git",
-    "description": "分布式版本控制系统",
-    "topics": {
-      "basics": "基础操作",
-      "branching": "分支管理",
-      "advanced": "高级功能",
-      "workflows": "工作流程",
-      "best_practices": "最佳实践"
-    }
-  }
 }

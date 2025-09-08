@@ -71,12 +71,7 @@
     .divider {
         width: 1px;
         height: 20px;
-        background: linear-gradient(
-            to bottom,
-            transparent,
-            rgba(62, 92, 122, 0.3),
-            transparent
-        );
+        background: linear-gradient(to bottom, transparent, rgba(62, 92, 122, 0.3), transparent);
         margin: 0 4px;
     }
 
@@ -131,7 +126,7 @@
 .externalLinks {
     .linkItem {
         // GitHub特定样式
-        &[aria-label*="GitHub"] {
+        &[aria-label*='GitHub'] {
             &:hover {
                 background: rgba(33, 41, 60, 0.1);
                 color: #f0f6fc;

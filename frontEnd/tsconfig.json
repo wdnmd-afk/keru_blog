@@ -30,12 +30,13 @@
             "@/*": ["src/*"]
         }
     },
-    
+
     "include": [
         "src/**/*.ts",
         "src/**/*.d.ts",
         "src/**/*.tsx",
         "src/**/*.vue",
+        "src/**/*.json",
         "src/types/*.d.ts",
         "build/**/*.ts",
         "build/**/*.d.ts",

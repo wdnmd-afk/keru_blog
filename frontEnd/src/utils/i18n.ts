@@ -1,6 +1,6 @@
 /**
  * 国际化工具函数
- * 
+ *
  * 功能说明：
  * 1. 提供便捷的翻译方法
  * 2. 语言检测和切换工具
@@ -46,10 +46,10 @@ export const switchLanguage = async (language: SupportedLanguage): Promise<void>
 export const updatePageLanguage = (language: SupportedLanguage): void => {
     // 更新HTML lang属性
     document.documentElement.lang = language
-    
-    // 更新页面方向（如果需要支持RTL语言）
-    document.documentElement.dir = language === 'ar' ? 'rtl' : 'ltr'
-    
+
+    // 更新页面方向（当前支持的语言都是LTR）
+    document.documentElement.dir = 'ltr'
+
     // 可以在这里添加更多页面级别的语言更新逻辑
 }
 
@@ -58,10 +58,10 @@ export const updatePageLanguage = (language: SupportedLanguage): void => {
  */
 export const getBrowserLanguage = (): SupportedLanguage => {
     const browserLang = navigator.language || navigator.languages?.[0] || 'zh'
-    
+
     // 提取语言代码（忽略地区代码）
     const langCode = browserLang.split('-')[0].toLowerCase()
-    
+
     return isSupportedLanguage(langCode) ? langCode : 'zh'
 }
 
@@ -148,7 +148,7 @@ export const formatDateTime = (
 ): string => {
     const currentLang = getCurrentLanguage()
     const locale = currentLang === 'zh' ? 'zh-CN' : 'en-US'
-    
+
     try {
         const dateObj = typeof date === 'string' || typeof date === 'number' ? new Date(date) : date
         return new Intl.DateTimeFormat(locale, options).format(dateObj)
@@ -161,13 +161,10 @@ export const formatDateTime = (
 /**
  * 格式化数字（根据当前语言）
  */
-export const formatNumber = (
-    number: number,
-    options?: Intl.NumberFormatOptions
-): string => {
+export const formatNumber = (number: number, options?: Intl.NumberFormatOptions): string => {
     const currentLang = getCurrentLanguage()
     const locale = currentLang === 'zh' ? 'zh-CN' : 'en-US'
-    
+
     try {
         return new Intl.NumberFormat(locale, options).format(number)
     } catch (error) {
@@ -179,13 +176,10 @@ export const formatNumber = (
 /**
  * 格式化货币（根据当前语言）
  */
-export const formatCurrency = (
-    amount: number,
-    currency: string = 'CNY'
-): string => {
+export const formatCurrency = (amount: number, currency: string = 'CNY'): string => {
     const currentLang = getCurrentLanguage()
     const locale = currentLang === 'zh' ? 'zh-CN' : 'en-US'
-    
+
     try {
         return new Intl.NumberFormat(locale, {
             style: 'currency',
@@ -205,7 +199,7 @@ export const getRelativeTime = (date: Date | string | number): string => {
     const now = new Date()
     const targetDate = typeof date === 'string' || typeof date === 'number' ? new Date(date) : date
     const diffInSeconds = Math.floor((now.getTime() - targetDate.getTime()) / 1000)
-    
+
     if (diffInSeconds < 60) {
         return formatTranslation('time.just_now', {}, 'common')
     } else if (diffInSeconds < 3600) {
@@ -232,7 +226,7 @@ export const getRelativeTime = (date: Date | string | number): string => {
 export const validateTranslationResources = (): boolean => {
     const supportedLanguages = getSupportedLanguages()
     const requiredNamespaces = ['common', 'layout']
-    
+
     try {
         for (const lang of supportedLanguages) {
             for (const ns of requiredNamespaces) {

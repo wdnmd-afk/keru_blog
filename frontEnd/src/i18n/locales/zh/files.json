@@ -1,78 +1,78 @@
 {
-  "tabs": {
-    "upload": "文件上传",
-    "list": "文件列表",
-    "preview": "文件预览"
-  },
-  "upload": {
-    "drag_text": "点击或拖拽文件到此区域上传",
-    "drag_hint": "支持单个或批量上传，严禁上传公司数据或其他敏感信息",
-    "select_files": "选择文件",
-    "uploading": "上传中...",
-    "upload_success": "上传成功",
-    "upload_failed": "上传失败",
-    "file_too_large": "文件过大",
-    "invalid_file_type": "不支持的文件类型",
-    "max_files_exceeded": "超出最大文件数量限制"
-  },
-  "list": {
-    "file_name": "文件名",
-    "file_size": "文件大小",
-    "upload_time": "上传时间",
-    "file_type": "文件类型",
-    "status": "状态",
-    "actions": "操作",
-    "no_files": "暂无文件",
-    "loading_files": "正在加载文件列表...",
-    "load_failed": "加载失败"
-  },
-  "preview": {
-    "loading": "正在加载预览...",
-    "load_failed": "预览加载失败",
-    "not_supported": "不支持预览此文件类型",
-    "download_to_view": "请下载文件查看",
-    "text_encoding": "文本编码",
-    "auto_detect": "自动检测"
-  },
-  "actions": {
-    "preview": "预览",
-    "download": "下载",
-    "delete": "删除",
-    "rename": "重命名",
-    "copy_link": "复制链接",
-    "share": "分享",
-    "move": "移动",
-    "copy": "复制"
-  },
-  "status": {
-    "uploading": "上传中",
-    "success": "成功",
-    "failed": "失败",
-    "pending": "等待中",
-    "paused": "已暂停",
-    "cancelled": "已取消",
-    "processing": "处理中"
-  },
-  "messages": {
-    "delete_confirm": "确认删除此文件？",
-    "delete_success": "文件删除成功",
-    "delete_failed": "文件删除失败",
-    "download_started": "下载已开始",
-    "download_failed": "下载失败",
-    "link_copied": "链接已复制到剪贴板",
-    "rename_success": "重命名成功",
-    "rename_failed": "重命名失败",
-    "operation_not_allowed": "操作不被允许"
-  },
-  "errors": {
-    "network_error": "网络错误",
-    "server_error": "服务器错误",
-    "permission_denied": "权限不足",
-    "file_not_found": "文件不存在",
-    "quota_exceeded": "存储空间不足",
-    "invalid_operation": "无效操作",
-    "file_too_large": "文件过大，无法预览（限制1MB）",
-    "encoding_error": "编码错误",
-    "load_timeout": "加载超时"
-  }
+    "tabs": {
+        "upload": "文件上传",
+        "list": "文件列表",
+        "preview": "文件预览"
+    },
+    "upload": {
+        "drag_text": "点击或拖拽文件到此区域上传",
+        "drag_hint": "支持单个或批量上传，严禁上传公司数据或其他敏感信息",
+        "select_files": "选择文件",
+        "uploading": "上传中...",
+        "upload_success": "上传成功",
+        "upload_failed": "上传失败",
+        "file_too_large": "文件过大",
+        "invalid_file_type": "不支持的文件类型",
+        "max_files_exceeded": "超出最大文件数量限制"
+    },
+    "list": {
+        "file_name": "文件名",
+        "file_size": "文件大小",
+        "upload_time": "上传时间",
+        "file_type": "文件类型",
+        "status": "状态",
+        "actions": "操作",
+        "no_files": "暂无文件",
+        "loading_files": "正在加载文件列表...",
+        "load_failed": "加载失败"
+    },
+    "preview": {
+        "loading": "正在加载预览...",
+        "load_failed": "预览加载失败",
+        "not_supported": "不支持预览此文件类型",
+        "download_to_view": "请下载文件查看",
+        "text_encoding": "文本编码",
+        "auto_detect": "自动检测"
+    },
+    "actions": {
+        "preview": "预览",
+        "download": "下载",
+        "delete": "删除",
+        "rename": "重命名",
+        "copy_link": "复制链接",
+        "share": "分享",
+        "move": "移动",
+        "copy": "复制"
+    },
+    "status": {
+        "uploading": "上传中",
+        "success": "成功",
+        "failed": "失败",
+        "pending": "等待中",
+        "paused": "已暂停",
+        "cancelled": "已取消",
+        "processing": "处理中"
+    },
+    "messages": {
+        "delete_confirm": "确认删除此文件？",
+        "delete_success": "文件删除成功",
+        "delete_failed": "文件删除失败",
+        "download_started": "下载已开始",
+        "download_failed": "下载失败",
+        "link_copied": "链接已复制到剪贴板",
+        "rename_success": "重命名成功",
+        "rename_failed": "重命名失败",
+        "operation_not_allowed": "操作不被允许"
+    },
+    "errors": {
+        "network_error": "网络错误",
+        "server_error": "服务器错误",
+        "permission_denied": "权限不足",
+        "file_not_found": "文件不存在",
+        "quota_exceeded": "存储空间不足",
+        "invalid_operation": "无效操作",
+        "file_too_large": "文件过大，无法预览（限制1MB）",
+        "encoding_error": "编码错误",
+        "load_timeout": "加载超时"
+    }
 }

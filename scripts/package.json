@@ -11,6 +11,8 @@
     "workflow:auto": "node i18n-workflow.js --no-interactive",
     "diagnostic": "node path-diagnostic.js",
     "quick-fix": "node quick-fix.js",
+    "test-ts-config": "node test-typescript-config.js",
+    "verify-ts-fixes": "node verify-ts-fixes.js",
     "install-deps": "npm install",
     "test-scan": "node i18n-scanner.js ../frontEnd/src ./test-output"
   },

@@ -1,8 +1,8 @@
+import '@/i18n' // 导入国际化配置
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import 'virtual:svg-icons-register'
 import 'virtual:uno.css'
-import '@/i18n' // 导入国际化配置
 import App from './App.tsx'
 import './index.css'
 import './styles/antd.scss'

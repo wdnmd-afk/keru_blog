@@ -1,6 +1,6 @@
 /**
  * 外部链接组件
- * 
+ *
  * 功能说明：
  * 1. 提供GitHub等外部链接访问
  * 2. 支持多种社交媒体平台扩展
@@ -9,10 +9,10 @@
  */
 
 import SvgIcon from '@/components/SvgIcon'
+import styles from '@/styles/externalLinks.module.scss'
 import { Tooltip } from 'antd'
 import React from 'react'
 import { useTranslation } from 'react-i18next'
-import styles from '@/styles/externalLinks.module.scss'
 
 // 外部链接配置接口
 interface ExternalLink {
@@ -102,10 +102,7 @@ const ExternalLinks: React.FC<ExternalLinksProps> = ({
         <div className={`${styles.externalLinks} ${styles[size]} ${className}`}>
             {links.map((link, index) => (
                 <React.Fragment key={link.key}>
-                    <Tooltip
-                        title={t(link.tooltipKey)}
-                        placement="bottom"
-                    >
+                    <Tooltip title={t(link.tooltipKey)} placement="bottom">
                         <div
                             className={styles.linkItem}
                             onClick={() => handleLinkClick(link)}
@@ -119,16 +116,10 @@ const ExternalLinks: React.FC<ExternalLinksProps> = ({
                                 }
                             }}
                         >
-                            <SvgIcon
-                                name={link.icon}
-                                size={getIconSize()}
-                                color="currentColor"
-                            />
+                            <SvgIcon name={link.icon} size={getIconSize()} color="currentColor" />
                         </div>
                     </Tooltip>
-                    {showDivider && index < links.length - 1 && (
-                        <div className={styles.divider} />
-                    )}
+                    {showDivider && index < links.length - 1 && <div className={styles.divider} />}
                 </React.Fragment>
             ))}
         </div>

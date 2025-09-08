@@ -246,7 +246,9 @@ const Technology: React.FC = () => {
                                         strokeColor={tech.color}
                                         showInfo={false}
                                     />
-                                    <div className={styles.skill_level}>{t('common.proficiency')}: {tech.level}%</div>
+                                    <div className={styles.skill_level}>
+                                        {t('common.proficiency')}: {tech.level}%
+                                    </div>
                                 </Card>
                             </Col>
                         ))}

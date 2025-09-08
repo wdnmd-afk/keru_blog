@@ -15,7 +15,8 @@ const ErrorBoundaryDetail: React.FC = () => {
     const handleBack = () => navigate('/technology/react')
 
     if (loading) return <div className={styles.loading}>{t('common.loading')}</div>
-    if (error) return <div className={styles.error}>{t('common.load_failed_with_error', { error })}</div>
+    if (error)
+        return <div className={styles.error}>{t('common.load_failed_with_error', { error })}</div>
 
     return (
         <div className={styles.topic_detail_container}>

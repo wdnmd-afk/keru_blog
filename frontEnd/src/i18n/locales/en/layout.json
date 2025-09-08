@@ -1,49 +1,49 @@
 {
-  "header": {
-    "logo": "Keru Blog",
-    "navigation": {
-      "home": "Home",
-      "books": "Books",
-      "files": "Files",
-      "technology": "Technology"
+    "header": {
+        "logo": "Keru Blog",
+        "navigation": {
+            "home": "Home",
+            "books": "Books",
+            "files": "Files",
+            "technology": "Technology"
+        },
+        "user_menu": {
+            "profile": "Profile",
+            "settings": "Settings",
+            "logout": "Logout"
+        },
+        "language_switcher": {
+            "title": "Language",
+            "chinese": "中文",
+            "english": "English"
+        },
+        "external_links": {
+            "github": "GitHub Repository",
+            "github_tooltip": "View source code"
+        }
     },
-    "user_menu": {
-      "profile": "Profile",
-      "settings": "Settings",
-      "logout": "Logout"
+    "footer": {
+        "copyright": "© 2024 Keru Blog. All rights reserved.",
+        "powered_by": "Built with React + TypeScript",
+        "version": "Version {{version}}"
     },
-    "language_switcher": {
-      "title": "Language",
-      "chinese": "中文",
-      "english": "English"
+    "sidebar": {
+        "menu": "Menu",
+        "collapse": "Collapse",
+        "expand": "Expand"
     },
-    "external_links": {
-      "github": "GitHub Repository",
-      "github_tooltip": "View source code"
+    "breadcrumb": {
+        "home": "Home",
+        "current": "Current Page"
+    },
+    "theme": {
+        "light": "Light Theme",
+        "dark": "Dark Theme",
+        "auto": "Follow System"
+    },
+    "search": {
+        "placeholder": "Search content...",
+        "no_results": "No results found",
+        "results_count": "Found {{count}} results"
     }
-  },
-  "footer": {
-    "copyright": "© 2024 Keru Blog. All rights reserved.",
-    "powered_by": "Built with React + TypeScript",
-    "version": "Version {{version}}"
-  },
-  "sidebar": {
-    "menu": "Menu",
-    "collapse": "Collapse",
-    "expand": "Expand"
-  },
-  "breadcrumb": {
-    "home": "Home",
-    "current": "Current Page"
-  },
-  "theme": {
-    "light": "Light Theme",
-    "dark": "Dark Theme",
-    "auto": "Follow System"
-  },
-  "search": {
-    "placeholder": "Search content...",
-    "no_results": "No results found",
-    "results_count": "Found {{count}} results"
-  }
 }

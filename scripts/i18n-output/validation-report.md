@@ -1,0 +1,8651 @@
+# 国际化质量检测报告
+
+- 检测时间: 2025-09-08T06:02:37.432Z
+- 总问题数: 4576
+- 翻译键总数: 0
+- 已使用键数: 527
+- 支持语言: zh, en
+
+## 问题统计
+
+- missing_language_dir: 2
+- untranslated_text: 4047
+- missing_key: 527
+
+## 详细问题
+
+### missing_language_dir
+
+- 缺少语言目录: ..rontEndsrci18n\locales\zh
+- 缺少语言目录: ..rontEndsrci18n\locales\en
+
+### untranslated_text
+
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\main.tsx:5
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\TechnologyLayout.tsx:64
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\TechnologyLayout.tsx:92
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\TechnologyLayout.tsx:94
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\TechnologyLayout.tsx:97
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\index.tsx:262
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\index.tsx:281
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\index.tsx:291
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\index.tsx:346
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VuexPiniaDetail.tsx:29
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VuexPiniaDetail.tsx:37
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VuexPiniaDetail.tsx:41
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VuexPiniaDetail.tsx:47
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VuexPiniaDetail.tsx:48
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VuexPiniaDetail.tsx:53
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VuexPiniaDetail.tsx:59
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VuexPiniaDetail.tsx:61
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VuexPiniaDetail.tsx:62
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VuexPiniaDetail.tsx:64
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VuexPiniaDetail.tsx:65
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VuexPiniaDetail.tsx:73
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VuexPiniaDetail.tsx:75
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VuexPiniaDetail.tsx:77
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VuexPiniaDetail.tsx:79
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VuexPiniaDetail.tsx:81
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VuexPiniaDetail.tsx:84
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VuexPiniaDetail.tsx:86
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VuexPiniaDetail.tsx:87
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VuexPiniaDetail.tsx:89
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VuexPiniaDetail.tsx:92
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VuexPiniaDetail.tsx:93
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VuexPiniaDetail.tsx:96
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VuexPiniaDetail.tsx:101
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VuexPiniaDetail.tsx:102
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VuexPiniaDetail.tsx:104
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VuexPiniaDetail.tsx:140
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VuexPiniaDetail.tsx:157
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VuexPiniaDetail.tsx:160
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VuexPiniaDetail.tsx:164
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VuexPiniaDetail.tsx:166
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VuexPiniaDetail.tsx:169
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VuexPiniaDetail.tsx:216
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VuexPiniaDetail.tsx:230
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VuexPiniaDetail.tsx:235
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VuexPiniaDetail.tsx:236
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VuexPiniaDetail.tsx:238
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VuexPiniaDetail.tsx:284
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VuexPiniaDetail.tsx:296
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VuexPiniaDetail.tsx:299
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VuexPiniaDetail.tsx:301
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VuexPiniaDetail.tsx:313
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VuexPiniaDetail.tsx:364
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VuexPiniaDetail.tsx:367
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VuexPiniaDetail.tsx:371
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VuexPiniaDetail.tsx:373
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VuexPiniaDetail.tsx:374
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VuexPiniaDetail.tsx:376
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VuexPiniaDetail.tsx:378
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VuexPiniaDetail.tsx:379
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VuexPiniaDetail.tsx:382
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VuexPiniaDetail.tsx:412
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VuexPiniaDetail.tsx:418
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VuexPiniaDetail.tsx:422
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VuexPiniaDetail.tsx:427
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VuexPiniaDetail.tsx:428
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VuexPiniaDetail.tsx:430
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VuexPiniaDetail.tsx:432
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VuexPiniaDetail.tsx:480
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VuexPiniaDetail.tsx:489
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VuexPiniaDetail.tsx:492
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VuexPiniaDetail.tsx:494
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VuexPiniaDetail.tsx:527
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VuexPiniaDetail.tsx:530
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VuexPiniaDetail.tsx:569
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VuexPiniaDetail.tsx:593
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VueRouterDetail.tsx:18
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VueRouterDetail.tsx:22
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VueRouterDetail.tsx:27
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VueRouterDetail.tsx:35
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VueRouterDetail.tsx:39
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VueRouterDetail.tsx:45
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VueRouterDetail.tsx:46
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VueRouterDetail.tsx:50
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VueRouterDetail.tsx:52
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VueRouterDetail.tsx:57
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VueRouterDetail.tsx:59
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VueRouterDetail.tsx:60
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VueRouterDetail.tsx:62
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VueRouterDetail.tsx:64
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VueRouterDetail.tsx:67
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VueRouterDetail.tsx:100
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VueRouterDetail.tsx:103
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VueRouterDetail.tsx:109
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VueRouterDetail.tsx:110
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VueRouterDetail.tsx:111
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VueRouterDetail.tsx:113
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VueRouterDetail.tsx:115
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VueRouterDetail.tsx:118
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VueRouterDetail.tsx:120
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VueRouterDetail.tsx:124
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VueRouterDetail.tsx:136
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VueRouterDetail.tsx:141
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VueRouterDetail.tsx:142
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VueRouterDetail.tsx:144
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VueRouterDetail.tsx:146
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VueRouterDetail.tsx:161
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VueRouterDetail.tsx:167
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VueRouterDetail.tsx:179
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VueRouterDetail.tsx:189
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VueRouterDetail.tsx:192
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VueRouterDetail.tsx:194
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VueRouterDetail.tsx:197
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VueRouterDetail.tsx:199
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VueRouterDetail.tsx:231
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VueRouterDetail.tsx:236
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VueRouterDetail.tsx:241
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VueRouterDetail.tsx:242
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VueRouterDetail.tsx:244
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VueRouterDetail.tsx:246
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VueRouterDetail.tsx:266
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VueRouterDetail.tsx:268
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VueRouterDetail.tsx:270
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VueRouterDetail.tsx:271
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VueRouterDetail.tsx:275
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VueRouterDetail.tsx:280
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VueRouterDetail.tsx:283
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VueRouterDetail.tsx:285
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VueRouterDetail.tsx:303
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VueRouterDetail.tsx:308
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VueRouterDetail.tsx:313
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VueRouterDetail.tsx:314
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VueRouterDetail.tsx:316
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VueRouterDetail.tsx:318
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VueRouterDetail.tsx:320
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VueRouterDetail.tsx:350
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VueRouterDetail.tsx:353
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VueRouterDetail.tsx:356
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VueRouterDetail.tsx:396
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VueRouterDetail.tsx:399
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VueRouterDetail.tsx:406
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VueRouterDetail.tsx:412
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VueRouterDetail.tsx:419
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VueRouterDetail.tsx:423
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VueRouterDetail.tsx:429
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VueRouterDetail.tsx:434
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VueRouterDetail.tsx:435
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VueRouterDetail.tsx:437
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VueRouterDetail.tsx:476
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VueRouterDetail.tsx:480
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VueRouterDetail.tsx:484
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VueRouterDetail.tsx:487
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VueRouterDetail.tsx:503
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VueRouterDetail.tsx:507
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VueRouterDetail.tsx:524
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VueRouterDetail.tsx:526
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VueRouterDetail.tsx:529
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\VueRouterDetail.tsx:534
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\TestingDetail.tsx:18
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\TestingDetail.tsx:22
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\TestingDetail.tsx:27
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\TestingDetail.tsx:35
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\TestingDetail.tsx:39
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\TestingDetail.tsx:45
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\TestingDetail.tsx:46
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\TestingDetail.tsx:49
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\TestingDetail.tsx:57
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\TestingDetail.tsx:59
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\TestingDetail.tsx:60
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\TestingDetail.tsx:64
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\TestingDetail.tsx:86
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\TestingDetail.tsx:89
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\TestingDetail.tsx:91
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\TestingDetail.tsx:116
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\TestingDetail.tsx:121
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\TestingDetail.tsx:122
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\TestingDetail.tsx:124
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\TestingDetail.tsx:129
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\TestingDetail.tsx:130
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\TestingDetail.tsx:155
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\TestingDetail.tsx:178
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\TestingDetail.tsx:181
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\TestingDetail.tsx:188
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\TestingDetail.tsx:220
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\TestingDetail.tsx:223
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\TestingDetail.tsx:260
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\TestingDetail.tsx:265
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\TestingDetail.tsx:266
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\TestingDetail.tsx:268
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\TestingDetail.tsx:336
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\SSRDetail.tsx:29
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\SSRDetail.tsx:37
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\SSRDetail.tsx:41
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\SSRDetail.tsx:47
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\SSRDetail.tsx:48
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\SSRDetail.tsx:54
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\SSRDetail.tsx:59
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\SSRDetail.tsx:61
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\SSRDetail.tsx:62
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\SSRDetail.tsx:64
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\SSRDetail.tsx:65
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\SSRDetail.tsx:73
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\SSRDetail.tsx:84
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\SSRDetail.tsx:85
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\SSRDetail.tsx:87
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\SSRDetail.tsx:96
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\SSRDetail.tsx:105
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\SSRDetail.tsx:116
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\SSRDetail.tsx:117
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\SSRDetail.tsx:119
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\SSRDetail.tsx:128
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\SSRDetail.tsx:137
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\SSRDetail.tsx:148
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\SSRDetail.tsx:149
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\SSRDetail.tsx:151
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\SSRDetail.tsx:160
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\SSRDetail.tsx:169
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\ReactivityDetail.tsx:18
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\ReactivityDetail.tsx:22
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\ReactivityDetail.tsx:27
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\ReactivityDetail.tsx:35
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\ReactivityDetail.tsx:39
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\ReactivityDetail.tsx:45
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\ReactivityDetail.tsx:46
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\ReactivityDetail.tsx:49
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\ReactivityDetail.tsx:57
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\ReactivityDetail.tsx:59
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\ReactivityDetail.tsx:60
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\ReactivityDetail.tsx:62
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\ReactivityDetail.tsx:73
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\ReactivityDetail.tsx:74
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\ReactivityDetail.tsx:77
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\ReactivityDetail.tsx:88
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\ReactivityDetail.tsx:99
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\ReactivityDetail.tsx:111
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\ReactivityDetail.tsx:112
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\ReactivityDetail.tsx:114
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\ReactivityDetail.tsx:123
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\ReactivityDetail.tsx:132
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\ReactivityDetail.tsx:143
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\ReactivityDetail.tsx:144
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\ReactivityDetail.tsx:146
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\ReactivityDetail.tsx:149
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\ReactivityDetail.tsx:152
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\ReactivityDetail.tsx:155
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\ReactivityDetail.tsx:158
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\ReactivityDetail.tsx:161
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\PerformanceDetail.tsx:18
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\PerformanceDetail.tsx:22
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\PerformanceDetail.tsx:27
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\PerformanceDetail.tsx:35
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\PerformanceDetail.tsx:39
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\PerformanceDetail.tsx:45
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\PerformanceDetail.tsx:46
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\PerformanceDetail.tsx:49
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\PerformanceDetail.tsx:51
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\PerformanceDetail.tsx:57
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\PerformanceDetail.tsx:59
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\PerformanceDetail.tsx:60
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\PerformanceDetail.tsx:62
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\PerformanceDetail.tsx:71
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\PerformanceDetail.tsx:80
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\PerformanceDetail.tsx:91
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\PerformanceDetail.tsx:92
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\PerformanceDetail.tsx:94
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\PerformanceDetail.tsx:103
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\PerformanceDetail.tsx:112
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\PerformanceDetail.tsx:123
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\PerformanceDetail.tsx:124
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\PerformanceDetail.tsx:126
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\PerformanceDetail.tsx:135
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\PerformanceDetail.tsx:146
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\PerformanceDetail.tsx:147
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\PerformanceDetail.tsx:149
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\PerformanceDetail.tsx:150
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\PerformanceDetail.tsx:158
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\PerformanceDetail.tsx:167
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\MigrationDetail.tsx:18
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\MigrationDetail.tsx:22
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\MigrationDetail.tsx:27
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\MigrationDetail.tsx:35
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\MigrationDetail.tsx:39
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\MigrationDetail.tsx:45
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\MigrationDetail.tsx:46
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\MigrationDetail.tsx:49
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\MigrationDetail.tsx:51
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\MigrationDetail.tsx:57
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\MigrationDetail.tsx:59
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\MigrationDetail.tsx:60
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\MigrationDetail.tsx:62
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\MigrationDetail.tsx:63
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\MigrationDetail.tsx:71
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\MigrationDetail.tsx:82
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\MigrationDetail.tsx:93
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\MigrationDetail.tsx:105
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\MigrationDetail.tsx:106
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\MigrationDetail.tsx:108
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\MigrationDetail.tsx:117
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\MigrationDetail.tsx:126
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\MigrationDetail.tsx:137
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\MigrationDetail.tsx:138
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\MigrationDetail.tsx:140
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\MigrationDetail.tsx:149
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\MigrationDetail.tsx:160
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\MigrationDetail.tsx:161
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\MigrationDetail.tsx:163
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\MigrationDetail.tsx:164
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\MigrationDetail.tsx:172
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\MigrationDetail.tsx:181
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\CompositionAPIDetail.tsx:29
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\CompositionAPIDetail.tsx:37
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\CompositionAPIDetail.tsx:41
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\CompositionAPIDetail.tsx:47
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\CompositionAPIDetail.tsx:52
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\CompositionAPIDetail.tsx:58
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\CompositionAPIDetail.tsx:60
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\CompositionAPIDetail.tsx:61
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\CompositionAPIDetail.tsx:63
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\CompositionAPIDetail.tsx:65
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\CompositionAPIDetail.tsx:66
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\CompositionAPIDetail.tsx:69
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\CompositionAPIDetail.tsx:80
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\CompositionAPIDetail.tsx:81
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\CompositionAPIDetail.tsx:84
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\CompositionAPIDetail.tsx:95
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\vue\CompositionAPIDetail.tsx:106
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\UtilityTypesDetail.tsx:18
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\UtilityTypesDetail.tsx:22
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\UtilityTypesDetail.tsx:27
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\UtilityTypesDetail.tsx:35
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\UtilityTypesDetail.tsx:39
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\UtilityTypesDetail.tsx:45
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\UtilityTypesDetail.tsx:46
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\UtilityTypesDetail.tsx:48
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\UtilityTypesDetail.tsx:49
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\UtilityTypesDetail.tsx:50
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\UtilityTypesDetail.tsx:56
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\UtilityTypesDetail.tsx:58
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\UtilityTypesDetail.tsx:59
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\UtilityTypesDetail.tsx:61
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\UtilityTypesDetail.tsx:63
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\UtilityTypesDetail.tsx:64
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\UtilityTypesDetail.tsx:67
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\UtilityTypesDetail.tsx:70
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\UtilityTypesDetail.tsx:75
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\UtilityTypesDetail.tsx:80
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\UtilityTypesDetail.tsx:85
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\UtilityTypesDetail.tsx:91
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\UtilityTypesDetail.tsx:92
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\UtilityTypesDetail.tsx:99
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\UtilityTypesDetail.tsx:100
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\UtilityTypesDetail.tsx:137
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\UtilityTypesDetail.tsx:138
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\UtilityTypesDetail.tsx:149
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\UtilityTypesDetail.tsx:160
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\UtilityTypesDetail.tsx:161
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\UtilityTypesDetail.tsx:172
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\UtilityTypesDetail.tsx:183
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\UtilityTypesDetail.tsx:184
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\UtilityTypesDetail.tsx:186
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\UtilityTypesDetail.tsx:197
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\UtilityTypesDetail.tsx:198
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\UtilityTypesDetail.tsx:203
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\UtilityTypesDetail.tsx:204
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\UtilityTypesDetail.tsx:206
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\UtilityTypesDetail.tsx:207
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\UtilityTypesDetail.tsx:209
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\UtilityTypesDetail.tsx:217
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\UtilityTypesDetail.tsx:218
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\UtilityTypesDetail.tsx:220
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\UtilityTypesDetail.tsx:221
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\UtilityTypesDetail.tsx:223
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\UtilityTypesDetail.tsx:231
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\UtilityTypesDetail.tsx:232
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\UtilityTypesDetail.tsx:234
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\UtilityTypesDetail.tsx:236
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\UtilityTypesDetail.tsx:245
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\UtilityTypesDetail.tsx:246
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\UtilityTypesDetail.tsx:248
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\UtilityTypesDetail.tsx:250
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ReactTypeScriptDetail.tsx:18
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ReactTypeScriptDetail.tsx:22
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ReactTypeScriptDetail.tsx:27
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ReactTypeScriptDetail.tsx:35
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ReactTypeScriptDetail.tsx:39
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ReactTypeScriptDetail.tsx:45
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ReactTypeScriptDetail.tsx:46
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ReactTypeScriptDetail.tsx:50
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ReactTypeScriptDetail.tsx:51
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ReactTypeScriptDetail.tsx:56
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ReactTypeScriptDetail.tsx:58
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ReactTypeScriptDetail.tsx:59
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ReactTypeScriptDetail.tsx:61
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ReactTypeScriptDetail.tsx:63
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ReactTypeScriptDetail.tsx:66
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ReactTypeScriptDetail.tsx:69
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ReactTypeScriptDetail.tsx:70
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ReactTypeScriptDetail.tsx:74
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ReactTypeScriptDetail.tsx:75
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ReactTypeScriptDetail.tsx:79
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ReactTypeScriptDetail.tsx:80
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ReactTypeScriptDetail.tsx:84
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ReactTypeScriptDetail.tsx:85
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ReactTypeScriptDetail.tsx:89
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ReactTypeScriptDetail.tsx:100
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ReactTypeScriptDetail.tsx:101
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ReactTypeScriptDetail.tsx:104
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ReactTypeScriptDetail.tsx:115
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ReactTypeScriptDetail.tsx:126
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ReactTypeScriptDetail.tsx:138
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ReactTypeScriptDetail.tsx:139
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ReactTypeScriptDetail.tsx:141
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ReactTypeScriptDetail.tsx:150
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ReactTypeScriptDetail.tsx:161
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ReactTypeScriptDetail.tsx:162
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ReactTypeScriptDetail.tsx:164
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ReactTypeScriptDetail.tsx:173
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ReactTypeScriptDetail.tsx:184
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ReactTypeScriptDetail.tsx:185
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ReactTypeScriptDetail.tsx:190
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ReactTypeScriptDetail.tsx:191
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ReactTypeScriptDetail.tsx:193
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ReactTypeScriptDetail.tsx:194
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ReactTypeScriptDetail.tsx:196
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ReactTypeScriptDetail.tsx:204
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ReactTypeScriptDetail.tsx:205
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ReactTypeScriptDetail.tsx:207
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ReactTypeScriptDetail.tsx:208
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ReactTypeScriptDetail.tsx:210
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ReactTypeScriptDetail.tsx:218
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ReactTypeScriptDetail.tsx:219
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ReactTypeScriptDetail.tsx:221
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ReactTypeScriptDetail.tsx:222
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ReactTypeScriptDetail.tsx:223
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ReactTypeScriptDetail.tsx:224
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ReactTypeScriptDetail.tsx:232
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ReactTypeScriptDetail.tsx:233
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ReactTypeScriptDetail.tsx:235
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ReactTypeScriptDetail.tsx:236
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ReactTypeScriptDetail.tsx:238
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ModulesDetail.tsx:18
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ModulesDetail.tsx:22
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ModulesDetail.tsx:27
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ModulesDetail.tsx:35
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ModulesDetail.tsx:39
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ModulesDetail.tsx:45
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ModulesDetail.tsx:46
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ModulesDetail.tsx:48
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ModulesDetail.tsx:51
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ModulesDetail.tsx:56
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ModulesDetail.tsx:58
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ModulesDetail.tsx:59
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ModulesDetail.tsx:61
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ModulesDetail.tsx:63
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ModulesDetail.tsx:66
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ModulesDetail.tsx:71
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ModulesDetail.tsx:75
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ModulesDetail.tsx:77
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ModulesDetail.tsx:78
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ModulesDetail.tsx:79
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ModulesDetail.tsx:80
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ModulesDetail.tsx:89
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ModulesDetail.tsx:93
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ModulesDetail.tsx:95
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ModulesDetail.tsx:97
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ModulesDetail.tsx:101
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ModulesDetail.tsx:103
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ModulesDetail.tsx:104
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ModulesDetail.tsx:113
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ModulesDetail.tsx:114
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ModulesDetail.tsx:122
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ModulesDetail.tsx:125
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ModulesDetail.tsx:136
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ModulesDetail.tsx:147
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ModulesDetail.tsx:159
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ModulesDetail.tsx:160
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ModulesDetail.tsx:162
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ModulesDetail.tsx:171
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ModulesDetail.tsx:182
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ModulesDetail.tsx:183
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ModulesDetail.tsx:185
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ModulesDetail.tsx:194
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ModulesDetail.tsx:205
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ModulesDetail.tsx:206
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ModulesDetail.tsx:211
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ModulesDetail.tsx:214
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ModulesDetail.tsx:215
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ModulesDetail.tsx:217
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ModulesDetail.tsx:225
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ModulesDetail.tsx:226
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ModulesDetail.tsx:228
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ModulesDetail.tsx:229
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ModulesDetail.tsx:231
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ModulesDetail.tsx:239
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ModulesDetail.tsx:242
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ModulesDetail.tsx:244
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ModulesDetail.tsx:245
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ModulesDetail.tsx:253
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ModulesDetail.tsx:256
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ModulesDetail.tsx:258
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ModulesDetail.tsx:259
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\GenericsDetail.tsx:18
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\GenericsDetail.tsx:22
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\GenericsDetail.tsx:27
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\GenericsDetail.tsx:35
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\GenericsDetail.tsx:39
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\GenericsDetail.tsx:45
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\GenericsDetail.tsx:46
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\GenericsDetail.tsx:49
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\GenericsDetail.tsx:50
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\GenericsDetail.tsx:56
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\GenericsDetail.tsx:58
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\GenericsDetail.tsx:59
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\GenericsDetail.tsx:61
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\GenericsDetail.tsx:63
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\GenericsDetail.tsx:66
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\GenericsDetail.tsx:77
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\GenericsDetail.tsx:78
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\GenericsDetail.tsx:81
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\GenericsDetail.tsx:94
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\GenericsDetail.tsx:106
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\GenericsDetail.tsx:107
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\GenericsDetail.tsx:109
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\GenericsDetail.tsx:118
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\GenericsDetail.tsx:129
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\GenericsDetail.tsx:130
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\GenericsDetail.tsx:132
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\GenericsDetail.tsx:141
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\GenericsDetail.tsx:150
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\GenericsDetail.tsx:161
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\GenericsDetail.tsx:162
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\GenericsDetail.tsx:164
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\GenericsDetail.tsx:173
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\GenericsDetail.tsx:184
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\GenericsDetail.tsx:185
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\GenericsDetail.tsx:190
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\GenericsDetail.tsx:205
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\GenericsDetail.tsx:206
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\GenericsDetail.tsx:220
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\GenericsDetail.tsx:221
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\DecoratorsDetail.tsx:27
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\DecoratorsDetail.tsx:35
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\DecoratorsDetail.tsx:39
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\DecoratorsDetail.tsx:45
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\DecoratorsDetail.tsx:46
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\DecoratorsDetail.tsx:49
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\DecoratorsDetail.tsx:51
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\DecoratorsDetail.tsx:56
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\DecoratorsDetail.tsx:58
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\DecoratorsDetail.tsx:59
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\DecoratorsDetail.tsx:61
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\DecoratorsDetail.tsx:63
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\DecoratorsDetail.tsx:67
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\DecoratorsDetail.tsx:68
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\DecoratorsDetail.tsx:73
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\DecoratorsDetail.tsx:82
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\DecoratorsDetail.tsx:85
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\DecoratorsDetail.tsx:86
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\DecoratorsDetail.tsx:90
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\DecoratorsDetail.tsx:91
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\DecoratorsDetail.tsx:95
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\DecoratorsDetail.tsx:96
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\DecoratorsDetail.tsx:100
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\DecoratorsDetail.tsx:105
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\DecoratorsDetail.tsx:112
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\DecoratorsDetail.tsx:113
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\DecoratorsDetail.tsx:116
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\DecoratorsDetail.tsx:127
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\DecoratorsDetail.tsx:138
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\DecoratorsDetail.tsx:150
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\DecoratorsDetail.tsx:151
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\DecoratorsDetail.tsx:153
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\DecoratorsDetail.tsx:162
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\DecoratorsDetail.tsx:173
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\DecoratorsDetail.tsx:174
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\DecoratorsDetail.tsx:176
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\DecoratorsDetail.tsx:185
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\DecoratorsDetail.tsx:196
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\DecoratorsDetail.tsx:197
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\DecoratorsDetail.tsx:199
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\DecoratorsDetail.tsx:208
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\DecoratorsDetail.tsx:219
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\DecoratorsDetail.tsx:220
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\DecoratorsDetail.tsx:225
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\DecoratorsDetail.tsx:226
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\DecoratorsDetail.tsx:228
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\DecoratorsDetail.tsx:229
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\DecoratorsDetail.tsx:231
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\DecoratorsDetail.tsx:239
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\DecoratorsDetail.tsx:240
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\DecoratorsDetail.tsx:242
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\DecoratorsDetail.tsx:244
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\DecoratorsDetail.tsx:253
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\DecoratorsDetail.tsx:254
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\DecoratorsDetail.tsx:256
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\DecoratorsDetail.tsx:258
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\DecoratorsDetail.tsx:267
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\DecoratorsDetail.tsx:268
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\DecoratorsDetail.tsx:270
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\DecoratorsDetail.tsx:271
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\DecoratorsDetail.tsx:273
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ConfigurationDetail.tsx:27
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ConfigurationDetail.tsx:35
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ConfigurationDetail.tsx:39
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ConfigurationDetail.tsx:45
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ConfigurationDetail.tsx:46
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ConfigurationDetail.tsx:49
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ConfigurationDetail.tsx:50
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ConfigurationDetail.tsx:56
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ConfigurationDetail.tsx:58
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ConfigurationDetail.tsx:59
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ConfigurationDetail.tsx:61
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ConfigurationDetail.tsx:63
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ConfigurationDetail.tsx:66
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ConfigurationDetail.tsx:77
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ConfigurationDetail.tsx:78
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ConfigurationDetail.tsx:81
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ConfigurationDetail.tsx:92
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ConfigurationDetail.tsx:103
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ConfigurationDetail.tsx:114
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ConfigurationDetail.tsx:125
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ConfigurationDetail.tsx:137
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ConfigurationDetail.tsx:138
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ConfigurationDetail.tsx:140
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ConfigurationDetail.tsx:149
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ConfigurationDetail.tsx:160
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ConfigurationDetail.tsx:161
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ConfigurationDetail.tsx:163
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ConfigurationDetail.tsx:172
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ConfigurationDetail.tsx:181
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ConfigurationDetail.tsx:192
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ConfigurationDetail.tsx:193
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ConfigurationDetail.tsx:198
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ConfigurationDetail.tsx:199
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ConfigurationDetail.tsx:201
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ConfigurationDetail.tsx:202
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ConfigurationDetail.tsx:203
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ConfigurationDetail.tsx:212
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ConfigurationDetail.tsx:213
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ConfigurationDetail.tsx:215
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ConfigurationDetail.tsx:216
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ConfigurationDetail.tsx:218
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ConfigurationDetail.tsx:226
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ConfigurationDetail.tsx:229
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ConfigurationDetail.tsx:230
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ConfigurationDetail.tsx:231
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ConfigurationDetail.tsx:240
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ConfigurationDetail.tsx:243
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ConfigurationDetail.tsx:244
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\ConfigurationDetail.tsx:245
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\BasicTypesDetail.tsx:18
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\BasicTypesDetail.tsx:22
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\BasicTypesDetail.tsx:27
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\BasicTypesDetail.tsx:35
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\BasicTypesDetail.tsx:39
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\BasicTypesDetail.tsx:45
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\BasicTypesDetail.tsx:46
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\BasicTypesDetail.tsx:49
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\BasicTypesDetail.tsx:50
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\BasicTypesDetail.tsx:52
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\BasicTypesDetail.tsx:57
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\BasicTypesDetail.tsx:59
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\BasicTypesDetail.tsx:60
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\BasicTypesDetail.tsx:62
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\BasicTypesDetail.tsx:71
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\BasicTypesDetail.tsx:82
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\BasicTypesDetail.tsx:83
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\BasicTypesDetail.tsx:86
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\BasicTypesDetail.tsx:97
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\BasicTypesDetail.tsx:109
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\BasicTypesDetail.tsx:110
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\BasicTypesDetail.tsx:112
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\BasicTypesDetail.tsx:121
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\BasicTypesDetail.tsx:132
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\BasicTypesDetail.tsx:133
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\BasicTypesDetail.tsx:135
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\BasicTypesDetail.tsx:146
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\BasicTypesDetail.tsx:147
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\BasicTypesDetail.tsx:149
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\BasicTypesDetail.tsx:158
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\AdvancedTypesDetail.tsx:22
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\AdvancedTypesDetail.tsx:30
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\AdvancedTypesDetail.tsx:34
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\AdvancedTypesDetail.tsx:40
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\AdvancedTypesDetail.tsx:41
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\AdvancedTypesDetail.tsx:44
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\AdvancedTypesDetail.tsx:45
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\AdvancedTypesDetail.tsx:51
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\AdvancedTypesDetail.tsx:53
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\AdvancedTypesDetail.tsx:54
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\AdvancedTypesDetail.tsx:56
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\AdvancedTypesDetail.tsx:57
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\AdvancedTypesDetail.tsx:67
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\AdvancedTypesDetail.tsx:68
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\AdvancedTypesDetail.tsx:80
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\AdvancedTypesDetail.tsx:81
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\AdvancedTypesDetail.tsx:84
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\AdvancedTypesDetail.tsx:95
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\AdvancedTypesDetail.tsx:107
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\AdvancedTypesDetail.tsx:108
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\AdvancedTypesDetail.tsx:110
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\AdvancedTypesDetail.tsx:119
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\AdvancedTypesDetail.tsx:130
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\AdvancedTypesDetail.tsx:131
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\AdvancedTypesDetail.tsx:133
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\AdvancedTypesDetail.tsx:144
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\AdvancedTypesDetail.tsx:145
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\AdvancedTypesDetail.tsx:150
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\AdvancedTypesDetail.tsx:151
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\AdvancedTypesDetail.tsx:165
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\typescript\AdvancedTypesDetail.tsx:166
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\WebpackDetail.tsx:18
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\WebpackDetail.tsx:22
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\WebpackDetail.tsx:33
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\WebpackDetail.tsx:36
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\WebpackDetail.tsx:38
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\WebpackDetail.tsx:42
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\WebpackDetail.tsx:43
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\WebpackDetail.tsx:45
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\WebpackDetail.tsx:47
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\WebpackDetail.tsx:48
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\WebpackDetail.tsx:52
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\WebpackDetail.tsx:54
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\WebpackDetail.tsx:55
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\WebpackDetail.tsx:56
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\WebpackDetail.tsx:58
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\WebpackDetail.tsx:61
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\WebpackDetail.tsx:64
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\WebpackDetail.tsx:67
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\WebpackDetail.tsx:70
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\WebpackDetail.tsx:73
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\WebpackDetail.tsx:76
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\WebpackDetail.tsx:82
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\WebpackDetail.tsx:83
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\WebpackDetail.tsx:85
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\WebpackDetail.tsx:96
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\WebpackDetail.tsx:97
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\WebpackDetail.tsx:99
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\WebpackDetail.tsx:110
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\WebpackDetail.tsx:111
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\WebpackDetail.tsx:113
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\WebpackDetail.tsx:124
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\WebpackDetail.tsx:125
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\WebpackDetail.tsx:127
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\WebpackDetail.tsx:138
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\WebpackDetail.tsx:139
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\WebpackDetail.tsx:141
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\WebpackDetail.tsx:152
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\WebpackDetail.tsx:153
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\WebpackDetail.tsx:155
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\WebpackDetail.tsx:166
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\WebpackDetail.tsx:167
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\WebpackDetail.tsx:169
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\WebpackDetail.tsx:180
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\WebpackDetail.tsx:181
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\WebpackDetail.tsx:183
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\WebpackDetail.tsx:194
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\WebpackDetail.tsx:195
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\WebpackDetail.tsx:198
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\WebpackDetail.tsx:201
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\WebpackDetail.tsx:202
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\WebpackDetail.tsx:204
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\WebpackDetail.tsx:205
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\WebpackDetail.tsx:206
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\WebpackDetail.tsx:216
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\WebpackDetail.tsx:220
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\WebpackDetail.tsx:223
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\WebpackDetail.tsx:226
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\WebpackDetail.tsx:229
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\WebpackDetail.tsx:232
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\VSCodeDetail.tsx:18
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\VSCodeDetail.tsx:22
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\VSCodeDetail.tsx:33
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\VSCodeDetail.tsx:38
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\VSCodeDetail.tsx:42
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\VSCodeDetail.tsx:43
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\VSCodeDetail.tsx:45
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\VSCodeDetail.tsx:47
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\VSCodeDetail.tsx:48
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\VSCodeDetail.tsx:51
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\VSCodeDetail.tsx:54
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\VSCodeDetail.tsx:57
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\VSCodeDetail.tsx:60
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\VSCodeDetail.tsx:63
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\VSCodeDetail.tsx:66
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\VSCodeDetail.tsx:69
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\VSCodeDetail.tsx:75
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\VSCodeDetail.tsx:76
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\VSCodeDetail.tsx:78
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\VSCodeDetail.tsx:87
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\VSCodeDetail.tsx:98
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\VSCodeDetail.tsx:99
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\VSCodeDetail.tsx:101
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\VSCodeDetail.tsx:112
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\VSCodeDetail.tsx:113
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\VSCodeDetail.tsx:115
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\VSCodeDetail.tsx:124
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\VSCodeDetail.tsx:135
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\VSCodeDetail.tsx:136
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\VSCodeDetail.tsx:138
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\VSCodeDetail.tsx:149
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\VSCodeDetail.tsx:150
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\VSCodeDetail.tsx:152
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\VSCodeDetail.tsx:163
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\VSCodeDetail.tsx:164
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\VSCodeDetail.tsx:167
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\VSCodeDetail.tsx:170
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\VSCodeDetail.tsx:171
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\VSCodeDetail.tsx:173
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\VSCodeDetail.tsx:175
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\VSCodeDetail.tsx:185
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\VSCodeDetail.tsx:189
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\VSCodeDetail.tsx:192
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\VSCodeDetail.tsx:195
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\VSCodeDetail.tsx:198
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\VSCodeDetail.tsx:201
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\VSCodeDetail.tsx:204
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ViteDetail.tsx:18
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ViteDetail.tsx:22
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ViteDetail.tsx:33
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ViteDetail.tsx:36
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ViteDetail.tsx:38
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ViteDetail.tsx:42
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ViteDetail.tsx:43
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ViteDetail.tsx:45
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ViteDetail.tsx:47
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ViteDetail.tsx:48
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ViteDetail.tsx:52
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ViteDetail.tsx:54
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ViteDetail.tsx:55
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ViteDetail.tsx:56
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ViteDetail.tsx:58
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ViteDetail.tsx:61
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ViteDetail.tsx:64
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ViteDetail.tsx:67
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ViteDetail.tsx:70
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ViteDetail.tsx:73
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ViteDetail.tsx:76
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ViteDetail.tsx:82
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ViteDetail.tsx:83
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ViteDetail.tsx:85
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ViteDetail.tsx:94
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ViteDetail.tsx:103
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ViteDetail.tsx:114
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ViteDetail.tsx:115
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ViteDetail.tsx:117
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ViteDetail.tsx:126
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ViteDetail.tsx:137
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ViteDetail.tsx:138
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ViteDetail.tsx:140
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ViteDetail.tsx:149
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ViteDetail.tsx:160
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ViteDetail.tsx:161
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ViteDetail.tsx:163
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ViteDetail.tsx:172
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ViteDetail.tsx:183
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ViteDetail.tsx:184
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ViteDetail.tsx:186
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ViteDetail.tsx:197
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ViteDetail.tsx:198
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ViteDetail.tsx:201
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ViteDetail.tsx:204
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ViteDetail.tsx:205
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ViteDetail.tsx:206
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ViteDetail.tsx:208
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ViteDetail.tsx:209
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ViteDetail.tsx:223
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ViteDetail.tsx:226
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ViteDetail.tsx:229
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ViteDetail.tsx:232
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ViteDetail.tsx:235
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\TestingToolsDetail.tsx:18
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\TestingToolsDetail.tsx:22
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\TestingToolsDetail.tsx:33
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\TestingToolsDetail.tsx:36
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\TestingToolsDetail.tsx:38
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\TestingToolsDetail.tsx:42
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\TestingToolsDetail.tsx:43
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\TestingToolsDetail.tsx:45
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\TestingToolsDetail.tsx:47
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\TestingToolsDetail.tsx:49
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\TestingToolsDetail.tsx:52
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\TestingToolsDetail.tsx:54
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\TestingToolsDetail.tsx:55
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\TestingToolsDetail.tsx:56
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\TestingToolsDetail.tsx:58
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\TestingToolsDetail.tsx:62
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\TestingToolsDetail.tsx:65
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\TestingToolsDetail.tsx:68
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\TestingToolsDetail.tsx:71
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\TestingToolsDetail.tsx:74
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\TestingToolsDetail.tsx:80
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\TestingToolsDetail.tsx:81
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\TestingToolsDetail.tsx:83
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\TestingToolsDetail.tsx:92
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\TestingToolsDetail.tsx:101
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\TestingToolsDetail.tsx:112
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\TestingToolsDetail.tsx:113
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\TestingToolsDetail.tsx:115
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\TestingToolsDetail.tsx:124
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\TestingToolsDetail.tsx:135
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\TestingToolsDetail.tsx:136
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\TestingToolsDetail.tsx:138
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\TestingToolsDetail.tsx:147
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\TestingToolsDetail.tsx:158
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\TestingToolsDetail.tsx:159
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\TestingToolsDetail.tsx:161
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\TestingToolsDetail.tsx:172
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\TestingToolsDetail.tsx:173
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\TestingToolsDetail.tsx:176
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\TestingToolsDetail.tsx:180
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\TestingToolsDetail.tsx:182
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\TestingToolsDetail.tsx:183
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\TestingToolsDetail.tsx:184
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\TestingToolsDetail.tsx:186
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\TestingToolsDetail.tsx:196
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\TestingToolsDetail.tsx:200
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\TestingToolsDetail.tsx:203
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\TestingToolsDetail.tsx:206
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\TestingToolsDetail.tsx:209
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\TestingToolsDetail.tsx:212
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\TestingToolsDetail.tsx:223
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\TestingToolsDetail.tsx:227
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\TestingToolsDetail.tsx:231
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\TestingToolsDetail.tsx:234
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\TestingToolsDetail.tsx:237
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\TestingToolsDetail.tsx:240
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\TerminalDetail.tsx:22
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\TerminalDetail.tsx:31
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\TerminalDetail.tsx:38
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\TerminalDetail.tsx:46
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\TerminalDetail.tsx:50
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\TerminalDetail.tsx:56
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\TerminalDetail.tsx:57
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\TerminalDetail.tsx:59
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\TerminalDetail.tsx:60
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\TerminalDetail.tsx:62
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\TerminalDetail.tsx:67
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\TerminalDetail.tsx:69
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\TerminalDetail.tsx:70
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\TerminalDetail.tsx:72
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\TerminalDetail.tsx:74
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\TerminalDetail.tsx:75
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\TerminalDetail.tsx:78
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\TerminalDetail.tsx:80
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\TerminalDetail.tsx:81
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\TerminalDetail.tsx:83
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\TerminalDetail.tsx:84
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\TerminalDetail.tsx:87
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\TerminalDetail.tsx:90
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\TerminalDetail.tsx:93
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\TerminalDetail.tsx:96
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\TerminalDetail.tsx:99
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\TerminalDetail.tsx:102
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\TerminalDetail.tsx:108
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\TerminalDetail.tsx:109
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\TerminalDetail.tsx:112
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\TerminalDetail.tsx:123
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\TerminalDetail.tsx:134
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\TerminalDetail.tsx:146
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\TerminalDetail.tsx:147
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\TerminalDetail.tsx:150
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\TerminalDetail.tsx:161
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\TerminalDetail.tsx:172
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\TerminalDetail.tsx:184
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\TerminalDetail.tsx:185
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\TerminalDetail.tsx:188
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\TerminalDetail.tsx:192
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\TerminalDetail.tsx:193
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\TerminalDetail.tsx:194
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\TerminalDetail.tsx:196
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\TerminalDetail.tsx:197
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\TerminalDetail.tsx:205
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\TerminalDetail.tsx:210
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\TerminalDetail.tsx:213
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\TerminalDetail.tsx:216
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\TerminalDetail.tsx:219
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\TerminalDetail.tsx:222
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\TerminalDetail.tsx:231
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\TerminalDetail.tsx:236
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\TerminalDetail.tsx:239
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\TerminalDetail.tsx:242
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\TerminalDetail.tsx:245
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\TerminalDetail.tsx:248
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ProductivityDetail.tsx:22
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ProductivityDetail.tsx:31
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ProductivityDetail.tsx:38
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ProductivityDetail.tsx:46
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ProductivityDetail.tsx:50
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ProductivityDetail.tsx:56
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ProductivityDetail.tsx:57
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ProductivityDetail.tsx:59
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ProductivityDetail.tsx:60
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ProductivityDetail.tsx:61
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ProductivityDetail.tsx:62
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ProductivityDetail.tsx:67
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ProductivityDetail.tsx:69
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ProductivityDetail.tsx:70
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ProductivityDetail.tsx:72
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ProductivityDetail.tsx:74
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ProductivityDetail.tsx:75
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ProductivityDetail.tsx:79
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ProductivityDetail.tsx:81
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ProductivityDetail.tsx:82
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ProductivityDetail.tsx:83
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ProductivityDetail.tsx:85
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ProductivityDetail.tsx:89
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ProductivityDetail.tsx:92
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ProductivityDetail.tsx:95
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ProductivityDetail.tsx:98
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ProductivityDetail.tsx:101
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ProductivityDetail.tsx:104
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ProductivityDetail.tsx:110
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ProductivityDetail.tsx:111
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ProductivityDetail.tsx:114
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ProductivityDetail.tsx:125
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ProductivityDetail.tsx:136
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ProductivityDetail.tsx:148
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ProductivityDetail.tsx:149
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ProductivityDetail.tsx:152
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ProductivityDetail.tsx:163
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ProductivityDetail.tsx:174
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ProductivityDetail.tsx:186
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ProductivityDetail.tsx:187
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ProductivityDetail.tsx:190
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ProductivityDetail.tsx:194
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ProductivityDetail.tsx:195
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ProductivityDetail.tsx:197
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ProductivityDetail.tsx:198
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ProductivityDetail.tsx:207
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ProductivityDetail.tsx:212
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ProductivityDetail.tsx:215
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ProductivityDetail.tsx:218
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ProductivityDetail.tsx:221
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ProductivityDetail.tsx:224
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ProductivityDetail.tsx:233
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ProductivityDetail.tsx:238
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ProductivityDetail.tsx:241
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ProductivityDetail.tsx:244
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ProductivityDetail.tsx:247
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ProductivityDetail.tsx:250
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\PostmanDetail.tsx:18
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\PostmanDetail.tsx:22
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\PostmanDetail.tsx:33
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\PostmanDetail.tsx:36
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\PostmanDetail.tsx:38
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\PostmanDetail.tsx:42
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\PostmanDetail.tsx:43
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\PostmanDetail.tsx:45
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\PostmanDetail.tsx:47
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\PostmanDetail.tsx:48
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\PostmanDetail.tsx:51
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\PostmanDetail.tsx:53
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\PostmanDetail.tsx:55
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\PostmanDetail.tsx:57
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\PostmanDetail.tsx:61
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\PostmanDetail.tsx:64
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\PostmanDetail.tsx:67
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\PostmanDetail.tsx:70
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\PostmanDetail.tsx:73
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\PostmanDetail.tsx:76
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\PostmanDetail.tsx:82
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\PostmanDetail.tsx:83
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\PostmanDetail.tsx:85
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\PostmanDetail.tsx:94
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\PostmanDetail.tsx:103
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\PostmanDetail.tsx:114
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\PostmanDetail.tsx:115
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\PostmanDetail.tsx:117
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\PostmanDetail.tsx:126
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\PostmanDetail.tsx:135
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\PostmanDetail.tsx:147
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\PostmanDetail.tsx:149
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\PostmanDetail.tsx:158
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\PostmanDetail.tsx:169
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\PostmanDetail.tsx:170
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\PostmanDetail.tsx:173
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\PostmanDetail.tsx:176
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\PostmanDetail.tsx:177
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\PostmanDetail.tsx:178
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\PostmanDetail.tsx:179
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\PostmanDetail.tsx:181
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\PostmanDetail.tsx:191
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\PostmanDetail.tsx:195
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\PostmanDetail.tsx:198
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\PostmanDetail.tsx:201
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\PostmanDetail.tsx:204
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\PostmanDetail.tsx:207
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\PostmanDetail.tsx:218
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\PostmanDetail.tsx:222
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\PostmanDetail.tsx:225
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\PostmanDetail.tsx:228
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\PostmanDetail.tsx:231
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\PostmanDetail.tsx:234
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\PerformanceToolsDetail.tsx:18
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\PerformanceToolsDetail.tsx:22
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\PerformanceToolsDetail.tsx:33
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\PerformanceToolsDetail.tsx:36
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\PerformanceToolsDetail.tsx:38
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\PerformanceToolsDetail.tsx:42
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\PerformanceToolsDetail.tsx:43
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\PerformanceToolsDetail.tsx:45
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\PerformanceToolsDetail.tsx:47
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\PerformanceToolsDetail.tsx:48
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\PerformanceToolsDetail.tsx:52
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\PerformanceToolsDetail.tsx:54
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\PerformanceToolsDetail.tsx:56
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\PerformanceToolsDetail.tsx:58
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\PerformanceToolsDetail.tsx:61
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\PerformanceToolsDetail.tsx:64
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\PerformanceToolsDetail.tsx:67
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\PerformanceToolsDetail.tsx:70
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\PerformanceToolsDetail.tsx:73
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\PerformanceToolsDetail.tsx:76
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\PerformanceToolsDetail.tsx:83
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\PerformanceToolsDetail.tsx:85
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\PerformanceToolsDetail.tsx:94
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\PerformanceToolsDetail.tsx:103
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\PerformanceToolsDetail.tsx:115
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\PerformanceToolsDetail.tsx:117
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\PerformanceToolsDetail.tsx:126
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\PerformanceToolsDetail.tsx:137
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\PerformanceToolsDetail.tsx:138
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\PerformanceToolsDetail.tsx:140
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\PerformanceToolsDetail.tsx:151
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\PerformanceToolsDetail.tsx:152
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\PerformanceToolsDetail.tsx:155
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\PerformanceToolsDetail.tsx:158
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\PerformanceToolsDetail.tsx:159
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\PerformanceToolsDetail.tsx:161
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\PerformanceToolsDetail.tsx:162
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\PerformanceToolsDetail.tsx:173
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\PerformanceToolsDetail.tsx:177
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\PerformanceToolsDetail.tsx:180
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\PerformanceToolsDetail.tsx:183
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\PerformanceToolsDetail.tsx:186
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\PerformanceToolsDetail.tsx:189
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\PerformanceToolsDetail.tsx:200
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\PerformanceToolsDetail.tsx:204
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\PerformanceToolsDetail.tsx:207
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\PerformanceToolsDetail.tsx:210
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\PerformanceToolsDetail.tsx:213
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\PerformanceToolsDetail.tsx:216
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ESLintPrettierDetail.tsx:18
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ESLintPrettierDetail.tsx:22
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ESLintPrettierDetail.tsx:33
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ESLintPrettierDetail.tsx:38
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ESLintPrettierDetail.tsx:42
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ESLintPrettierDetail.tsx:43
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ESLintPrettierDetail.tsx:45
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ESLintPrettierDetail.tsx:47
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ESLintPrettierDetail.tsx:48
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ESLintPrettierDetail.tsx:51
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ESLintPrettierDetail.tsx:53
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ESLintPrettierDetail.tsx:54
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ESLintPrettierDetail.tsx:57
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ESLintPrettierDetail.tsx:59
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ESLintPrettierDetail.tsx:61
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ESLintPrettierDetail.tsx:63
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ESLintPrettierDetail.tsx:68
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ESLintPrettierDetail.tsx:69
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ESLintPrettierDetail.tsx:71
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ESLintPrettierDetail.tsx:80
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ESLintPrettierDetail.tsx:91
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ESLintPrettierDetail.tsx:92
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ESLintPrettierDetail.tsx:94
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ESLintPrettierDetail.tsx:103
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ESLintPrettierDetail.tsx:114
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ESLintPrettierDetail.tsx:115
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ESLintPrettierDetail.tsx:117
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ESLintPrettierDetail.tsx:126
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ESLintPrettierDetail.tsx:137
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ESLintPrettierDetail.tsx:138
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ESLintPrettierDetail.tsx:140
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ESLintPrettierDetail.tsx:149
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ESLintPrettierDetail.tsx:158
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ESLintPrettierDetail.tsx:169
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ESLintPrettierDetail.tsx:170
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ESLintPrettierDetail.tsx:172
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ESLintPrettierDetail.tsx:181
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ESLintPrettierDetail.tsx:192
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ESLintPrettierDetail.tsx:193
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ESLintPrettierDetail.tsx:196
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ESLintPrettierDetail.tsx:199
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ESLintPrettierDetail.tsx:200
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ESLintPrettierDetail.tsx:201
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ESLintPrettierDetail.tsx:202
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ESLintPrettierDetail.tsx:204
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ESLintPrettierDetail.tsx:214
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ESLintPrettierDetail.tsx:217
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ESLintPrettierDetail.tsx:218
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ESLintPrettierDetail.tsx:219
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ESLintPrettierDetail.tsx:220
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ESLintPrettierDetail.tsx:231
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ESLintPrettierDetail.tsx:235
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ESLintPrettierDetail.tsx:238
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ESLintPrettierDetail.tsx:241
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ESLintPrettierDetail.tsx:244
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ChromeDevToolsDetail.tsx:18
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ChromeDevToolsDetail.tsx:22
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ChromeDevToolsDetail.tsx:33
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ChromeDevToolsDetail.tsx:38
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ChromeDevToolsDetail.tsx:42
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ChromeDevToolsDetail.tsx:43
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ChromeDevToolsDetail.tsx:45
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ChromeDevToolsDetail.tsx:47
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ChromeDevToolsDetail.tsx:48
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ChromeDevToolsDetail.tsx:51
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ChromeDevToolsDetail.tsx:63
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ChromeDevToolsDetail.tsx:74
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ChromeDevToolsDetail.tsx:75
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ChromeDevToolsDetail.tsx:77
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ChromeDevToolsDetail.tsx:86
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ChromeDevToolsDetail.tsx:95
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ChromeDevToolsDetail.tsx:106
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ChromeDevToolsDetail.tsx:107
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ChromeDevToolsDetail.tsx:109
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ChromeDevToolsDetail.tsx:118
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ChromeDevToolsDetail.tsx:129
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ChromeDevToolsDetail.tsx:130
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ChromeDevToolsDetail.tsx:132
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ChromeDevToolsDetail.tsx:141
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ChromeDevToolsDetail.tsx:152
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ChromeDevToolsDetail.tsx:153
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ChromeDevToolsDetail.tsx:155
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ChromeDevToolsDetail.tsx:164
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ChromeDevToolsDetail.tsx:175
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ChromeDevToolsDetail.tsx:176
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ChromeDevToolsDetail.tsx:178
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ChromeDevToolsDetail.tsx:189
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ChromeDevToolsDetail.tsx:190
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ChromeDevToolsDetail.tsx:193
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ChromeDevToolsDetail.tsx:196
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ChromeDevToolsDetail.tsx:197
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ChromeDevToolsDetail.tsx:198
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ChromeDevToolsDetail.tsx:199
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ChromeDevToolsDetail.tsx:200
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ChromeDevToolsDetail.tsx:211
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ChromeDevToolsDetail.tsx:214
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ChromeDevToolsDetail.tsx:215
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ChromeDevToolsDetail.tsx:216
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ChromeDevToolsDetail.tsx:217
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ChromeDevToolsDetail.tsx:228
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ChromeDevToolsDetail.tsx:232
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ChromeDevToolsDetail.tsx:235
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ChromeDevToolsDetail.tsx:238
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ChromeDevToolsDetail.tsx:241
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\ChromeDevToolsDetail.tsx:244
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\AutomationToolsDetail.tsx:18
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\AutomationToolsDetail.tsx:22
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\AutomationToolsDetail.tsx:33
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\AutomationToolsDetail.tsx:36
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\AutomationToolsDetail.tsx:38
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\AutomationToolsDetail.tsx:42
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\AutomationToolsDetail.tsx:43
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\AutomationToolsDetail.tsx:45
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\AutomationToolsDetail.tsx:47
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\AutomationToolsDetail.tsx:49
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\AutomationToolsDetail.tsx:52
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\AutomationToolsDetail.tsx:54
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\AutomationToolsDetail.tsx:56
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\AutomationToolsDetail.tsx:58
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\AutomationToolsDetail.tsx:61
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\AutomationToolsDetail.tsx:64
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\AutomationToolsDetail.tsx:67
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\AutomationToolsDetail.tsx:70
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\AutomationToolsDetail.tsx:73
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\AutomationToolsDetail.tsx:76
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\AutomationToolsDetail.tsx:82
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\AutomationToolsDetail.tsx:83
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\AutomationToolsDetail.tsx:85
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\AutomationToolsDetail.tsx:94
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\AutomationToolsDetail.tsx:103
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\AutomationToolsDetail.tsx:114
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\AutomationToolsDetail.tsx:115
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\AutomationToolsDetail.tsx:117
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\AutomationToolsDetail.tsx:126
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\AutomationToolsDetail.tsx:137
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\AutomationToolsDetail.tsx:138
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\AutomationToolsDetail.tsx:141
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\AutomationToolsDetail.tsx:144
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\AutomationToolsDetail.tsx:145
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\AutomationToolsDetail.tsx:146
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\AutomationToolsDetail.tsx:148
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\AutomationToolsDetail.tsx:159
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\AutomationToolsDetail.tsx:162
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\AutomationToolsDetail.tsx:164
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\AutomationToolsDetail.tsx:166
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\AutomationToolsDetail.tsx:176
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\AutomationToolsDetail.tsx:180
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\AutomationToolsDetail.tsx:183
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\AutomationToolsDetail.tsx:186
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\AutomationToolsDetail.tsx:189
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\tools\AutomationToolsDetail.tsx:192
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseMemoDetail.tsx:24
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseMemoDetail.tsx:28
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseMemoDetail.tsx:33
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseMemoDetail.tsx:41
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseMemoDetail.tsx:45
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseMemoDetail.tsx:51
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseMemoDetail.tsx:52
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseMemoDetail.tsx:55
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseMemoDetail.tsx:57
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseMemoDetail.tsx:62
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseMemoDetail.tsx:64
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseMemoDetail.tsx:65
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseMemoDetail.tsx:67
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseMemoDetail.tsx:69
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseMemoDetail.tsx:72
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseMemoDetail.tsx:81
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseMemoDetail.tsx:83
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseMemoDetail.tsx:88
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseMemoDetail.tsx:89
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseMemoDetail.tsx:92
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseMemoDetail.tsx:103
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseMemoDetail.tsx:114
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseMemoDetail.tsx:126
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseMemoDetail.tsx:127
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseMemoDetail.tsx:129
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseMemoDetail.tsx:130
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseMemoDetail.tsx:141
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseMemoDetail.tsx:144
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseMemoDetail.tsx:159
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseMemoDetail.tsx:162
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseMemoDetail.tsx:176
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseMemoDetail.tsx:177
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseMemoDetail.tsx:182
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseMemoDetail.tsx:184
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseMemoDetail.tsx:192
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseMemoDetail.tsx:194
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseMemoDetail.tsx:202
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseMemoDetail.tsx:204
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseMemoDetail.tsx:205
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseMemoDetail.tsx:213
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseMemoDetail.tsx:214
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseMemoDetail.tsx:220
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseMemoDetail.tsx:221
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseMemoDetail.tsx:223
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseMemoDetail.tsx:232
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseMemoDetail.tsx:241
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseEffectDetail.tsx:18
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseEffectDetail.tsx:22
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseEffectDetail.tsx:27
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseEffectDetail.tsx:35
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseEffectDetail.tsx:39
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseEffectDetail.tsx:45
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseEffectDetail.tsx:46
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseEffectDetail.tsx:49
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseEffectDetail.tsx:51
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseEffectDetail.tsx:56
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseEffectDetail.tsx:58
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseEffectDetail.tsx:59
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseEffectDetail.tsx:61
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseEffectDetail.tsx:63
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseEffectDetail.tsx:64
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseEffectDetail.tsx:67
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseEffectDetail.tsx:78
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseEffectDetail.tsx:79
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseEffectDetail.tsx:82
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseEffectDetail.tsx:93
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseEffectDetail.tsx:104
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseContextDetail.tsx:18
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseContextDetail.tsx:22
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseContextDetail.tsx:27
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseContextDetail.tsx:35
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseContextDetail.tsx:39
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseContextDetail.tsx:45
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseContextDetail.tsx:46
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseContextDetail.tsx:49
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseContextDetail.tsx:51
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseContextDetail.tsx:56
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseContextDetail.tsx:58
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseContextDetail.tsx:59
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseContextDetail.tsx:61
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseContextDetail.tsx:63
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseContextDetail.tsx:67
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseContextDetail.tsx:76
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseContextDetail.tsx:78
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseContextDetail.tsx:83
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseContextDetail.tsx:84
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseContextDetail.tsx:87
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseContextDetail.tsx:98
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseContextDetail.tsx:109
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseCallbackDetail.tsx:24
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseCallbackDetail.tsx:28
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseCallbackDetail.tsx:33
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseCallbackDetail.tsx:41
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseCallbackDetail.tsx:45
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseCallbackDetail.tsx:51
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseCallbackDetail.tsx:52
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseCallbackDetail.tsx:55
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseCallbackDetail.tsx:57
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseCallbackDetail.tsx:62
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseCallbackDetail.tsx:64
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseCallbackDetail.tsx:65
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseCallbackDetail.tsx:67
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseCallbackDetail.tsx:69
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseCallbackDetail.tsx:72
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseCallbackDetail.tsx:81
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseCallbackDetail.tsx:83
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseCallbackDetail.tsx:88
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseCallbackDetail.tsx:89
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseCallbackDetail.tsx:92
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseCallbackDetail.tsx:103
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseCallbackDetail.tsx:114
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseCallbackDetail.tsx:126
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseCallbackDetail.tsx:127
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseCallbackDetail.tsx:129
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseCallbackDetail.tsx:130
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseCallbackDetail.tsx:141
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseCallbackDetail.tsx:157
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseCallbackDetail.tsx:172
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseCallbackDetail.tsx:173
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseCallbackDetail.tsx:178
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseCallbackDetail.tsx:180
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseCallbackDetail.tsx:195
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseCallbackDetail.tsx:196
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseCallbackDetail.tsx:203
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseCallbackDetail.tsx:205
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseCallbackDetail.tsx:213
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\UseCallbackDetail.tsx:214
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\TestingDetail.tsx:18
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\TestingDetail.tsx:22
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\TestingDetail.tsx:27
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\TestingDetail.tsx:35
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\TestingDetail.tsx:39
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\TestingDetail.tsx:45
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\TestingDetail.tsx:46
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\TestingDetail.tsx:57
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\TestingDetail.tsx:59
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\TestingDetail.tsx:60
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\TestingDetail.tsx:62
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\TestingDetail.tsx:73
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\TestingDetail.tsx:74
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\TestingDetail.tsx:77
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\TestingDetail.tsx:88
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\TestingDetail.tsx:100
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\TestingDetail.tsx:101
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\TestingDetail.tsx:103
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\TestingDetail.tsx:114
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\TestingDetail.tsx:115
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\TestingDetail.tsx:117
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\TestingDetail.tsx:120
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\TestingDetail.tsx:123
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\TestingDetail.tsx:126
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\TestingDetail.tsx:129
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\TestingDetail.tsx:132
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\TestingDetail.tsx:136
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\TestingDetail.tsx:138
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\TestingDetail.tsx:143
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\TestingDetail.tsx:165
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\TestingDetail.tsx:175
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\TestingDetail.tsx:185
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\PerformanceDetail.tsx:34
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\PerformanceDetail.tsx:42
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\PerformanceDetail.tsx:46
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\PerformanceDetail.tsx:52
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\PerformanceDetail.tsx:53
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\PerformanceDetail.tsx:56
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\PerformanceDetail.tsx:58
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\PerformanceDetail.tsx:64
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\PerformanceDetail.tsx:66
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\PerformanceDetail.tsx:67
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\PerformanceDetail.tsx:80
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\PerformanceDetail.tsx:81
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\PerformanceDetail.tsx:84
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\PerformanceDetail.tsx:95
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\PerformanceDetail.tsx:106
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\PerformanceDetail.tsx:118
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\PerformanceDetail.tsx:119
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\PerformanceDetail.tsx:124
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\PerformanceDetail.tsx:125
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\PerformanceDetail.tsx:134
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\PerformanceDetail.tsx:148
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\ErrorBoundaryDetail.tsx:22
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\ErrorBoundaryDetail.tsx:30
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\ErrorBoundaryDetail.tsx:34
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\ErrorBoundaryDetail.tsx:40
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\ErrorBoundaryDetail.tsx:41
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\ErrorBoundaryDetail.tsx:44
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\ErrorBoundaryDetail.tsx:45
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\ErrorBoundaryDetail.tsx:51
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\ErrorBoundaryDetail.tsx:53
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\ErrorBoundaryDetail.tsx:54
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\ErrorBoundaryDetail.tsx:56
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\ErrorBoundaryDetail.tsx:59
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\ErrorBoundaryDetail.tsx:62
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\ErrorBoundaryDetail.tsx:73
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\ErrorBoundaryDetail.tsx:74
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\ErrorBoundaryDetail.tsx:77
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\ErrorBoundaryDetail.tsx:88
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\CustomHooksDetail.tsx:22
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\CustomHooksDetail.tsx:31
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\CustomHooksDetail.tsx:38
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\CustomHooksDetail.tsx:46
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\CustomHooksDetail.tsx:50
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\CustomHooksDetail.tsx:56
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\CustomHooksDetail.tsx:57
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\CustomHooksDetail.tsx:60
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\CustomHooksDetail.tsx:61
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\CustomHooksDetail.tsx:67
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\CustomHooksDetail.tsx:69
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\CustomHooksDetail.tsx:70
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\CustomHooksDetail.tsx:72
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\CustomHooksDetail.tsx:74
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\CustomHooksDetail.tsx:77
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\CustomHooksDetail.tsx:86
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\CustomHooksDetail.tsx:89
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\CustomHooksDetail.tsx:92
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\CustomHooksDetail.tsx:95
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\CustomHooksDetail.tsx:98
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\CustomHooksDetail.tsx:104
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\CustomHooksDetail.tsx:105
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\CustomHooksDetail.tsx:108
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\CustomHooksDetail.tsx:119
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\CustomHooksDetail.tsx:130
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\CustomHooksDetail.tsx:141
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\CustomHooksDetail.tsx:152
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\CustomHooksDetail.tsx:163
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\CustomHooksDetail.tsx:175
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\CustomHooksDetail.tsx:176
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\CustomHooksDetail.tsx:181
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\CustomHooksDetail.tsx:182
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\CustomHooksDetail.tsx:184
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\CustomHooksDetail.tsx:203
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\CustomHooksDetail.tsx:211
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\CustomHooksDetail.tsx:212
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\CustomHooksDetail.tsx:214
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\CustomHooksDetail.tsx:230
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\CustomHooksDetail.tsx:237
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\CustomHooksDetail.tsx:238
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\CustomHooksDetail.tsx:250
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\react\CustomHooksDetail.tsx:255
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\TestingDetail.tsx:18
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\TestingDetail.tsx:22
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\TestingDetail.tsx:33
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\TestingDetail.tsx:36
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\TestingDetail.tsx:38
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\TestingDetail.tsx:42
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\TestingDetail.tsx:43
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\TestingDetail.tsx:45
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\TestingDetail.tsx:47
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\TestingDetail.tsx:48
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\TestingDetail.tsx:51
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\TestingDetail.tsx:53
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\TestingDetail.tsx:54
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\TestingDetail.tsx:55
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\TestingDetail.tsx:57
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\TestingDetail.tsx:60
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\TestingDetail.tsx:63
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\TestingDetail.tsx:66
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\TestingDetail.tsx:69
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\TestingDetail.tsx:72
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\TestingDetail.tsx:75
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\TestingDetail.tsx:81
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\TestingDetail.tsx:82
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\TestingDetail.tsx:84
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\TestingDetail.tsx:95
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\TestingDetail.tsx:96
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\TestingDetail.tsx:98
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\TestingDetail.tsx:109
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\TestingDetail.tsx:110
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\TestingDetail.tsx:112
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\TestingDetail.tsx:123
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\TestingDetail.tsx:124
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\TestingDetail.tsx:126
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\TestingDetail.tsx:137
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\TestingDetail.tsx:138
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\TestingDetail.tsx:140
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\TestingDetail.tsx:151
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\TestingDetail.tsx:152
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\TestingDetail.tsx:155
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\TestingDetail.tsx:159
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\TestingDetail.tsx:161
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\TestingDetail.tsx:163
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\TestingDetail.tsx:165
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\TestingDetail.tsx:175
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\TestingDetail.tsx:178
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\TestingDetail.tsx:179
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\TestingDetail.tsx:180
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\TestingDetail.tsx:182
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\ModulesDetail.tsx:18
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\ModulesDetail.tsx:22
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\ModulesDetail.tsx:33
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\ModulesDetail.tsx:36
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\ModulesDetail.tsx:38
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\ModulesDetail.tsx:42
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\ModulesDetail.tsx:43
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\ModulesDetail.tsx:45
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\ModulesDetail.tsx:47
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\ModulesDetail.tsx:48
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\ModulesDetail.tsx:51
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\ModulesDetail.tsx:54
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\ModulesDetail.tsx:57
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\ModulesDetail.tsx:60
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\ModulesDetail.tsx:63
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\ModulesDetail.tsx:66
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\ModulesDetail.tsx:72
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\ModulesDetail.tsx:73
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\ModulesDetail.tsx:75
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\ModulesDetail.tsx:84
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\ModulesDetail.tsx:95
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\ModulesDetail.tsx:96
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\ModulesDetail.tsx:99
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\ModulesDetail.tsx:112
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\ModulesDetail.tsx:114
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\ModulesDetail.tsx:125
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\ModulesDetail.tsx:126
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\ModulesDetail.tsx:128
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\ModulesDetail.tsx:139
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\ModulesDetail.tsx:140
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\ModulesDetail.tsx:142
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\ModulesDetail.tsx:153
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\ModulesDetail.tsx:154
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\ModulesDetail.tsx:157
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\ModulesDetail.tsx:160
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\ModulesDetail.tsx:162
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\ModulesDetail.tsx:163
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\ModulesDetail.tsx:165
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\ModulesDetail.tsx:175
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\ModulesDetail.tsx:178
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\ModulesDetail.tsx:179
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\ModulesDetail.tsx:181
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\MicroservicesDetail.tsx:18
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\MicroservicesDetail.tsx:22
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\MicroservicesDetail.tsx:33
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\MicroservicesDetail.tsx:36
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\MicroservicesDetail.tsx:38
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\MicroservicesDetail.tsx:42
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\MicroservicesDetail.tsx:43
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\MicroservicesDetail.tsx:45
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\MicroservicesDetail.tsx:47
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\MicroservicesDetail.tsx:48
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\MicroservicesDetail.tsx:52
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\MicroservicesDetail.tsx:55
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\MicroservicesDetail.tsx:58
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\MicroservicesDetail.tsx:61
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\MicroservicesDetail.tsx:64
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\MicroservicesDetail.tsx:67
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\MicroservicesDetail.tsx:71
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\MicroservicesDetail.tsx:74
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\MicroservicesDetail.tsx:77
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\MicroservicesDetail.tsx:80
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\MicroservicesDetail.tsx:83
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\MicroservicesDetail.tsx:89
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\MicroservicesDetail.tsx:90
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\MicroservicesDetail.tsx:92
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\MicroservicesDetail.tsx:95
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\MicroservicesDetail.tsx:106
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\MicroservicesDetail.tsx:117
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\MicroservicesDetail.tsx:129
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\MicroservicesDetail.tsx:130
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\MicroservicesDetail.tsx:132
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\MicroservicesDetail.tsx:141
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\MicroservicesDetail.tsx:143
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\MicroservicesDetail.tsx:148
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\MicroservicesDetail.tsx:149
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\MicroservicesDetail.tsx:151
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\MicroservicesDetail.tsx:153
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\MicroservicesDetail.tsx:156
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\MicroservicesDetail.tsx:158
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\MicroservicesDetail.tsx:163
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\MicroservicesDetail.tsx:164
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\MicroservicesDetail.tsx:167
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\MicroservicesDetail.tsx:170
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\MicroservicesDetail.tsx:171
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\MicroservicesDetail.tsx:173
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\MicroservicesDetail.tsx:175
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\MicroservicesDetail.tsx:185
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\MicroservicesDetail.tsx:188
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\MicroservicesDetail.tsx:189
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\MicroservicesDetail.tsx:191
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\ExpressDetail.tsx:18
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\ExpressDetail.tsx:22
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\ExpressDetail.tsx:27
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\ExpressDetail.tsx:35
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\ExpressDetail.tsx:39
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\ExpressDetail.tsx:45
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\ExpressDetail.tsx:46
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\ExpressDetail.tsx:49
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\ExpressDetail.tsx:56
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\ExpressDetail.tsx:58
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\ExpressDetail.tsx:59
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\ExpressDetail.tsx:61
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\ExpressDetail.tsx:63
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\ExpressDetail.tsx:66
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\ExpressDetail.tsx:75
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\ExpressDetail.tsx:86
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\ExpressDetail.tsx:87
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\ExpressDetail.tsx:90
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\ExpressDetail.tsx:101
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\ExpressDetail.tsx:112
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\ExpressDetail.tsx:124
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\ExpressDetail.tsx:125
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\ExpressDetail.tsx:127
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\ExpressDetail.tsx:136
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\ExpressDetail.tsx:145
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\ExpressDetail.tsx:156
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\ExpressDetail.tsx:157
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\ExpressDetail.tsx:159
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\ExpressDetail.tsx:168
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\ExpressDetail.tsx:180
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\ExpressDetail.tsx:182
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\ExpressDetail.tsx:193
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\ExpressDetail.tsx:194
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\ExpressDetail.tsx:199
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\ExpressDetail.tsx:200
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\ExpressDetail.tsx:214
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\ExpressDetail.tsx:215
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\ExpressDetail.tsx:229
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\ExpressDetail.tsx:230
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\ExpressDetail.tsx:232
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\ExpressDetail.tsx:234
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\ExpressDetail.tsx:236
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\EventLoopDetail.tsx:18
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\EventLoopDetail.tsx:22
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\EventLoopDetail.tsx:27
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\EventLoopDetail.tsx:35
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\EventLoopDetail.tsx:39
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\EventLoopDetail.tsx:45
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\EventLoopDetail.tsx:46
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\EventLoopDetail.tsx:49
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\EventLoopDetail.tsx:50
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\EventLoopDetail.tsx:56
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\EventLoopDetail.tsx:58
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\EventLoopDetail.tsx:59
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\EventLoopDetail.tsx:61
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\EventLoopDetail.tsx:63
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\EventLoopDetail.tsx:66
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\EventLoopDetail.tsx:75
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\EventLoopDetail.tsx:86
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\EventLoopDetail.tsx:87
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\EventLoopDetail.tsx:90
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\EventLoopDetail.tsx:101
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\EventLoopDetail.tsx:113
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\EventLoopDetail.tsx:114
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\EventLoopDetail.tsx:116
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\EventLoopDetail.tsx:125
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\EventLoopDetail.tsx:136
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\EventLoopDetail.tsx:137
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\EventLoopDetail.tsx:139
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\EventLoopDetail.tsx:150
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\EventLoopDetail.tsx:151
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\EventLoopDetail.tsx:156
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\EventLoopDetail.tsx:157
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\EventLoopDetail.tsx:164
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\EventLoopDetail.tsx:165
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\EventLoopDetail.tsx:172
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\EventLoopDetail.tsx:173
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\EventLoopDetail.tsx:180
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\EventLoopDetail.tsx:181
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\DatabaseDetail.tsx:18
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\DatabaseDetail.tsx:22
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\DatabaseDetail.tsx:33
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\DatabaseDetail.tsx:36
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\DatabaseDetail.tsx:38
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\DatabaseDetail.tsx:42
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\DatabaseDetail.tsx:43
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\DatabaseDetail.tsx:45
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\DatabaseDetail.tsx:54
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\DatabaseDetail.tsx:57
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\DatabaseDetail.tsx:60
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\DatabaseDetail.tsx:63
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\DatabaseDetail.tsx:66
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\DatabaseDetail.tsx:69
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\DatabaseDetail.tsx:76
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\DatabaseDetail.tsx:78
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\DatabaseDetail.tsx:81
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\DatabaseDetail.tsx:116
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\DatabaseDetail.tsx:118
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\DatabaseDetail.tsx:139
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\DatabaseDetail.tsx:141
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\DatabaseDetail.tsx:150
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\DatabaseDetail.tsx:161
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\DatabaseDetail.tsx:162
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\DatabaseDetail.tsx:165
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\DatabaseDetail.tsx:168
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\DatabaseDetail.tsx:169
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\DatabaseDetail.tsx:171
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\DatabaseDetail.tsx:173
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\DatabaseDetail.tsx:183
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\DatabaseDetail.tsx:186
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\DatabaseDetail.tsx:188
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\DatabaseDetail.tsx:189
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\AuthenticationDetail.tsx:18
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\AuthenticationDetail.tsx:22
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\AuthenticationDetail.tsx:27
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\AuthenticationDetail.tsx:35
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\AuthenticationDetail.tsx:39
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\AuthenticationDetail.tsx:45
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\AuthenticationDetail.tsx:46
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\AuthenticationDetail.tsx:48
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\AuthenticationDetail.tsx:56
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\AuthenticationDetail.tsx:58
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\AuthenticationDetail.tsx:59
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\AuthenticationDetail.tsx:61
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\AuthenticationDetail.tsx:66
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\AuthenticationDetail.tsx:70
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\AuthenticationDetail.tsx:72
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\AuthenticationDetail.tsx:74
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\AuthenticationDetail.tsx:79
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\AuthenticationDetail.tsx:81
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\AuthenticationDetail.tsx:83
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\AuthenticationDetail.tsx:84
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\AuthenticationDetail.tsx:93
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\AuthenticationDetail.tsx:97
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\AuthenticationDetail.tsx:99
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\AuthenticationDetail.tsx:100
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\AuthenticationDetail.tsx:101
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\AuthenticationDetail.tsx:102
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\AuthenticationDetail.tsx:106
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\AuthenticationDetail.tsx:108
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\AuthenticationDetail.tsx:110
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\AuthenticationDetail.tsx:111
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\AuthenticationDetail.tsx:119
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\AuthenticationDetail.tsx:120
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\AuthenticationDetail.tsx:127
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\AuthenticationDetail.tsx:128
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\AuthenticationDetail.tsx:131
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\AuthenticationDetail.tsx:142
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\AuthenticationDetail.tsx:153
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\AuthenticationDetail.tsx:165
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\AuthenticationDetail.tsx:166
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\AuthenticationDetail.tsx:168
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\AuthenticationDetail.tsx:177
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\AuthenticationDetail.tsx:188
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\AuthenticationDetail.tsx:189
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\AuthenticationDetail.tsx:191
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\AuthenticationDetail.tsx:202
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\AuthenticationDetail.tsx:203
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\AuthenticationDetail.tsx:208
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\AuthenticationDetail.tsx:209
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\AuthenticationDetail.tsx:211
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\AuthenticationDetail.tsx:212
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\AuthenticationDetail.tsx:214
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\AuthenticationDetail.tsx:222
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\AuthenticationDetail.tsx:225
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\AuthenticationDetail.tsx:227
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\AuthenticationDetail.tsx:228
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\AuthenticationDetail.tsx:236
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\AuthenticationDetail.tsx:239
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\AuthenticationDetail.tsx:240
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\AuthenticationDetail.tsx:242
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\AuthenticationDetail.tsx:250
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\AuthenticationDetail.tsx:251
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\AuthenticationDetail.tsx:253
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\AuthenticationDetail.tsx:255
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\nodejs\AuthenticationDetail.tsx:256
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\UnitTestingDetail.tsx:18
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\UnitTestingDetail.tsx:22
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\UnitTestingDetail.tsx:27
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\UnitTestingDetail.tsx:35
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\UnitTestingDetail.tsx:39
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\UnitTestingDetail.tsx:45
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\UnitTestingDetail.tsx:46
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\UnitTestingDetail.tsx:48
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\UnitTestingDetail.tsx:50
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\UnitTestingDetail.tsx:55
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\UnitTestingDetail.tsx:57
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\UnitTestingDetail.tsx:58
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\UnitTestingDetail.tsx:60
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\UnitTestingDetail.tsx:62
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\UnitTestingDetail.tsx:63
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\UnitTestingDetail.tsx:67
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\UnitTestingDetail.tsx:69
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\UnitTestingDetail.tsx:70
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\UnitTestingDetail.tsx:72
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\UnitTestingDetail.tsx:73
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\UnitTestingDetail.tsx:76
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\UnitTestingDetail.tsx:79
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\UnitTestingDetail.tsx:82
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\UnitTestingDetail.tsx:85
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\UnitTestingDetail.tsx:88
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\UnitTestingDetail.tsx:91
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\UnitTestingDetail.tsx:97
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\UnitTestingDetail.tsx:98
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\UnitTestingDetail.tsx:100
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\UnitTestingDetail.tsx:109
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\UnitTestingDetail.tsx:120
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\UnitTestingDetail.tsx:121
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\UnitTestingDetail.tsx:123
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\UnitTestingDetail.tsx:132
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\UnitTestingDetail.tsx:143
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\UnitTestingDetail.tsx:144
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\UnitTestingDetail.tsx:146
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\UnitTestingDetail.tsx:155
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\UnitTestingDetail.tsx:166
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\UnitTestingDetail.tsx:167
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\UnitTestingDetail.tsx:169
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\UnitTestingDetail.tsx:178
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\UnitTestingDetail.tsx:189
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\UnitTestingDetail.tsx:190
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\UnitTestingDetail.tsx:192
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\UnitTestingDetail.tsx:201
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\UnitTestingDetail.tsx:212
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\UnitTestingDetail.tsx:213
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\UnitTestingDetail.tsx:216
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\UnitTestingDetail.tsx:220
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\UnitTestingDetail.tsx:222
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\UnitTestingDetail.tsx:223
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\UnitTestingDetail.tsx:225
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\UnitTestingDetail.tsx:226
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\UnitTestingDetail.tsx:236
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\UnitTestingDetail.tsx:240
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\UnitTestingDetail.tsx:243
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\UnitTestingDetail.tsx:246
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\UnitTestingDetail.tsx:249
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\UnitTestingDetail.tsx:252
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\UnitTestingDetail.tsx:263
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\UnitTestingDetail.tsx:267
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\UnitTestingDetail.tsx:270
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\UnitTestingDetail.tsx:273
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\UnitTestingDetail.tsx:276
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\UnitTestingDetail.tsx:279
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\MockingDetail.tsx:18
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\MockingDetail.tsx:22
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\MockingDetail.tsx:27
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\MockingDetail.tsx:35
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\MockingDetail.tsx:39
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\MockingDetail.tsx:45
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\MockingDetail.tsx:46
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\MockingDetail.tsx:50
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\MockingDetail.tsx:55
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\MockingDetail.tsx:57
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\MockingDetail.tsx:58
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\MockingDetail.tsx:60
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\MockingDetail.tsx:62
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\MockingDetail.tsx:63
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\MockingDetail.tsx:67
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\MockingDetail.tsx:69
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\MockingDetail.tsx:70
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\MockingDetail.tsx:72
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\MockingDetail.tsx:76
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\MockingDetail.tsx:79
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\MockingDetail.tsx:82
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\MockingDetail.tsx:85
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\MockingDetail.tsx:88
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\MockingDetail.tsx:91
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\MockingDetail.tsx:97
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\MockingDetail.tsx:98
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\MockingDetail.tsx:100
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\MockingDetail.tsx:109
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\MockingDetail.tsx:120
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\MockingDetail.tsx:121
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\MockingDetail.tsx:123
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\MockingDetail.tsx:132
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\MockingDetail.tsx:143
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\MockingDetail.tsx:144
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\MockingDetail.tsx:146
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\MockingDetail.tsx:155
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\MockingDetail.tsx:166
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\MockingDetail.tsx:167
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\MockingDetail.tsx:169
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\MockingDetail.tsx:178
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\MockingDetail.tsx:189
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\MockingDetail.tsx:190
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\MockingDetail.tsx:192
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\MockingDetail.tsx:201
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\MockingDetail.tsx:212
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\MockingDetail.tsx:213
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\MockingDetail.tsx:216
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\MockingDetail.tsx:219
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\MockingDetail.tsx:220
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\MockingDetail.tsx:222
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\MockingDetail.tsx:223
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\MockingDetail.tsx:224
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\MockingDetail.tsx:234
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\MockingDetail.tsx:238
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\MockingDetail.tsx:241
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\MockingDetail.tsx:244
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\MockingDetail.tsx:247
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\MockingDetail.tsx:250
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\MockingDetail.tsx:261
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\MockingDetail.tsx:265
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\MockingDetail.tsx:268
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\MockingDetail.tsx:271
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\MockingDetail.tsx:274
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\MockingDetail.tsx:277
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\JestBasicsDetail.tsx:18
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\JestBasicsDetail.tsx:22
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\JestBasicsDetail.tsx:27
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\JestBasicsDetail.tsx:35
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\JestBasicsDetail.tsx:39
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\JestBasicsDetail.tsx:45
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\JestBasicsDetail.tsx:46
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\JestBasicsDetail.tsx:48
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\JestBasicsDetail.tsx:50
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\JestBasicsDetail.tsx:55
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\JestBasicsDetail.tsx:57
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\JestBasicsDetail.tsx:58
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\JestBasicsDetail.tsx:60
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\JestBasicsDetail.tsx:62
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\JestBasicsDetail.tsx:63
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\JestBasicsDetail.tsx:64
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\JestBasicsDetail.tsx:67
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\JestBasicsDetail.tsx:69
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\JestBasicsDetail.tsx:70
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\JestBasicsDetail.tsx:71
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\JestBasicsDetail.tsx:73
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\JestBasicsDetail.tsx:77
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\JestBasicsDetail.tsx:80
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\JestBasicsDetail.tsx:83
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\JestBasicsDetail.tsx:86
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\JestBasicsDetail.tsx:89
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\JestBasicsDetail.tsx:92
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\JestBasicsDetail.tsx:98
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\JestBasicsDetail.tsx:99
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\JestBasicsDetail.tsx:101
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\JestBasicsDetail.tsx:110
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\JestBasicsDetail.tsx:119
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\JestBasicsDetail.tsx:130
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\JestBasicsDetail.tsx:131
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\JestBasicsDetail.tsx:133
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\JestBasicsDetail.tsx:142
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\JestBasicsDetail.tsx:153
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\JestBasicsDetail.tsx:154
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\JestBasicsDetail.tsx:156
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\JestBasicsDetail.tsx:165
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\JestBasicsDetail.tsx:176
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\JestBasicsDetail.tsx:177
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\JestBasicsDetail.tsx:179
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\JestBasicsDetail.tsx:190
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\JestBasicsDetail.tsx:191
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\JestBasicsDetail.tsx:194
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\JestBasicsDetail.tsx:197
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\JestBasicsDetail.tsx:198
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\JestBasicsDetail.tsx:199
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\JestBasicsDetail.tsx:201
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\JestBasicsDetail.tsx:202
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\JestBasicsDetail.tsx:212
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\JestBasicsDetail.tsx:216
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\JestBasicsDetail.tsx:219
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\JestBasicsDetail.tsx:222
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\JestBasicsDetail.tsx:225
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\JestBasicsDetail.tsx:228
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\JestBasicsDetail.tsx:239
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\JestBasicsDetail.tsx:243
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\JestBasicsDetail.tsx:246
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\JestBasicsDetail.tsx:249
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\JestBasicsDetail.tsx:252
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\JestBasicsDetail.tsx:255
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\CoverageDetail.tsx:18
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\CoverageDetail.tsx:22
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\CoverageDetail.tsx:27
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\CoverageDetail.tsx:35
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\CoverageDetail.tsx:39
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\CoverageDetail.tsx:45
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\CoverageDetail.tsx:46
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\CoverageDetail.tsx:48
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\CoverageDetail.tsx:50
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\CoverageDetail.tsx:55
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\CoverageDetail.tsx:57
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\CoverageDetail.tsx:58
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\CoverageDetail.tsx:60
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\CoverageDetail.tsx:62
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\CoverageDetail.tsx:63
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\CoverageDetail.tsx:66
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\CoverageDetail.tsx:68
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\CoverageDetail.tsx:69
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\CoverageDetail.tsx:70
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\CoverageDetail.tsx:74
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\CoverageDetail.tsx:77
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\CoverageDetail.tsx:80
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\CoverageDetail.tsx:83
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\CoverageDetail.tsx:86
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\CoverageDetail.tsx:89
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\CoverageDetail.tsx:95
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\CoverageDetail.tsx:96
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\CoverageDetail.tsx:98
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\CoverageDetail.tsx:107
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\CoverageDetail.tsx:118
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\CoverageDetail.tsx:119
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\CoverageDetail.tsx:121
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\CoverageDetail.tsx:130
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\CoverageDetail.tsx:141
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\CoverageDetail.tsx:142
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\CoverageDetail.tsx:144
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\CoverageDetail.tsx:153
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\CoverageDetail.tsx:164
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\CoverageDetail.tsx:165
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\CoverageDetail.tsx:167
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\CoverageDetail.tsx:176
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\CoverageDetail.tsx:187
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\CoverageDetail.tsx:188
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\CoverageDetail.tsx:190
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\CoverageDetail.tsx:199
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\CoverageDetail.tsx:210
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\CoverageDetail.tsx:211
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\CoverageDetail.tsx:214
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\CoverageDetail.tsx:217
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\CoverageDetail.tsx:218
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\CoverageDetail.tsx:220
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\CoverageDetail.tsx:221
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\CoverageDetail.tsx:222
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\CoverageDetail.tsx:232
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\CoverageDetail.tsx:236
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\CoverageDetail.tsx:239
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\CoverageDetail.tsx:242
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\CoverageDetail.tsx:245
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\CoverageDetail.tsx:248
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\CoverageDetail.tsx:259
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\CoverageDetail.tsx:263
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\CoverageDetail.tsx:266
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\CoverageDetail.tsx:269
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\CoverageDetail.tsx:272
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\CoverageDetail.tsx:275
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\BestPracticesDetail.tsx:18
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\BestPracticesDetail.tsx:22
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\BestPracticesDetail.tsx:27
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\BestPracticesDetail.tsx:35
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\BestPracticesDetail.tsx:39
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\BestPracticesDetail.tsx:45
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\BestPracticesDetail.tsx:46
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\BestPracticesDetail.tsx:48
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\BestPracticesDetail.tsx:49
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\BestPracticesDetail.tsx:50
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\BestPracticesDetail.tsx:55
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\BestPracticesDetail.tsx:57
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\BestPracticesDetail.tsx:58
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\BestPracticesDetail.tsx:60
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\BestPracticesDetail.tsx:62
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\BestPracticesDetail.tsx:63
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\BestPracticesDetail.tsx:67
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\BestPracticesDetail.tsx:69
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\BestPracticesDetail.tsx:70
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\BestPracticesDetail.tsx:71
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\BestPracticesDetail.tsx:73
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\BestPracticesDetail.tsx:74
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\BestPracticesDetail.tsx:77
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\BestPracticesDetail.tsx:80
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\BestPracticesDetail.tsx:83
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\BestPracticesDetail.tsx:86
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\BestPracticesDetail.tsx:89
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\BestPracticesDetail.tsx:92
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\BestPracticesDetail.tsx:98
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\BestPracticesDetail.tsx:99
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\BestPracticesDetail.tsx:101
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\BestPracticesDetail.tsx:110
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\BestPracticesDetail.tsx:121
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\BestPracticesDetail.tsx:122
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\BestPracticesDetail.tsx:124
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\BestPracticesDetail.tsx:133
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\BestPracticesDetail.tsx:144
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\BestPracticesDetail.tsx:145
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\BestPracticesDetail.tsx:147
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\BestPracticesDetail.tsx:156
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\BestPracticesDetail.tsx:167
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\BestPracticesDetail.tsx:168
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\BestPracticesDetail.tsx:170
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\BestPracticesDetail.tsx:179
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\BestPracticesDetail.tsx:190
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\BestPracticesDetail.tsx:191
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\BestPracticesDetail.tsx:193
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\BestPracticesDetail.tsx:202
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\BestPracticesDetail.tsx:213
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\BestPracticesDetail.tsx:214
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\BestPracticesDetail.tsx:216
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\BestPracticesDetail.tsx:227
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\BestPracticesDetail.tsx:228
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\BestPracticesDetail.tsx:231
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\BestPracticesDetail.tsx:234
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\BestPracticesDetail.tsx:235
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\BestPracticesDetail.tsx:236
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\BestPracticesDetail.tsx:238
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\BestPracticesDetail.tsx:239
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\BestPracticesDetail.tsx:249
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\BestPracticesDetail.tsx:253
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\BestPracticesDetail.tsx:256
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\BestPracticesDetail.tsx:259
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\BestPracticesDetail.tsx:262
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\BestPracticesDetail.tsx:265
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\BestPracticesDetail.tsx:276
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\BestPracticesDetail.tsx:280
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\BestPracticesDetail.tsx:283
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\BestPracticesDetail.tsx:286
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\BestPracticesDetail.tsx:289
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\BestPracticesDetail.tsx:292
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\AsyncTestingDetail.tsx:18
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\AsyncTestingDetail.tsx:22
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\AsyncTestingDetail.tsx:27
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\AsyncTestingDetail.tsx:35
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\AsyncTestingDetail.tsx:39
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\AsyncTestingDetail.tsx:45
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\AsyncTestingDetail.tsx:46
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\AsyncTestingDetail.tsx:48
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\AsyncTestingDetail.tsx:55
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\AsyncTestingDetail.tsx:57
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\AsyncTestingDetail.tsx:58
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\AsyncTestingDetail.tsx:60
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\AsyncTestingDetail.tsx:62
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\AsyncTestingDetail.tsx:63
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\AsyncTestingDetail.tsx:67
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\AsyncTestingDetail.tsx:69
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\AsyncTestingDetail.tsx:70
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\AsyncTestingDetail.tsx:72
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\AsyncTestingDetail.tsx:73
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\AsyncTestingDetail.tsx:76
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\AsyncTestingDetail.tsx:79
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\AsyncTestingDetail.tsx:82
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\AsyncTestingDetail.tsx:85
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\AsyncTestingDetail.tsx:88
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\AsyncTestingDetail.tsx:91
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\AsyncTestingDetail.tsx:97
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\AsyncTestingDetail.tsx:98
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\AsyncTestingDetail.tsx:100
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\AsyncTestingDetail.tsx:109
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\AsyncTestingDetail.tsx:120
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\AsyncTestingDetail.tsx:121
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\AsyncTestingDetail.tsx:123
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\AsyncTestingDetail.tsx:132
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\AsyncTestingDetail.tsx:143
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\AsyncTestingDetail.tsx:144
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\AsyncTestingDetail.tsx:146
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\AsyncTestingDetail.tsx:155
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\AsyncTestingDetail.tsx:166
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\AsyncTestingDetail.tsx:167
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\AsyncTestingDetail.tsx:169
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\AsyncTestingDetail.tsx:178
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\AsyncTestingDetail.tsx:189
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\AsyncTestingDetail.tsx:190
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\AsyncTestingDetail.tsx:192
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\AsyncTestingDetail.tsx:203
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\AsyncTestingDetail.tsx:204
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\AsyncTestingDetail.tsx:207
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\AsyncTestingDetail.tsx:210
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\AsyncTestingDetail.tsx:211
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\AsyncTestingDetail.tsx:212
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\AsyncTestingDetail.tsx:214
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\AsyncTestingDetail.tsx:215
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\AsyncTestingDetail.tsx:225
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\AsyncTestingDetail.tsx:229
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\AsyncTestingDetail.tsx:232
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\AsyncTestingDetail.tsx:236
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\AsyncTestingDetail.tsx:239
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\AsyncTestingDetail.tsx:242
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\AsyncTestingDetail.tsx:253
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\AsyncTestingDetail.tsx:257
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\AsyncTestingDetail.tsx:260
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\AsyncTestingDetail.tsx:263
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\AsyncTestingDetail.tsx:266
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\jest\AsyncTestingDetail.tsx:269
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\SecurityBestPracticesDetail.tsx:13
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\SecurityBestPracticesDetail.tsx:22
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\SecurityBestPracticesDetail.tsx:30
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\SecurityBestPracticesDetail.tsx:34
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\SecurityBestPracticesDetail.tsx:40
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\SecurityBestPracticesDetail.tsx:41
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\SecurityBestPracticesDetail.tsx:43
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\SecurityBestPracticesDetail.tsx:45
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\SecurityBestPracticesDetail.tsx:51
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\SecurityBestPracticesDetail.tsx:53
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\SecurityBestPracticesDetail.tsx:54
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\SecurityBestPracticesDetail.tsx:56
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\SecurityBestPracticesDetail.tsx:58
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\SecurityBestPracticesDetail.tsx:63
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\SecurityBestPracticesDetail.tsx:66
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\SecurityBestPracticesDetail.tsx:68
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\SecurityBestPracticesDetail.tsx:69
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\SecurityBestPracticesDetail.tsx:74
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\SecurityBestPracticesDetail.tsx:77
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\SecurityBestPracticesDetail.tsx:79
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\SecurityBestPracticesDetail.tsx:80
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\SecurityBestPracticesDetail.tsx:85
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\SecurityBestPracticesDetail.tsx:88
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\SecurityBestPracticesDetail.tsx:90
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\SecurityBestPracticesDetail.tsx:91
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\SecurityBestPracticesDetail.tsx:96
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\SecurityBestPracticesDetail.tsx:99
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\SecurityBestPracticesDetail.tsx:101
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\SecurityBestPracticesDetail.tsx:108
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\SecurityBestPracticesDetail.tsx:109
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\SecurityBestPracticesDetail.tsx:116
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\SecurityBestPracticesDetail.tsx:117
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\SecurityBestPracticesDetail.tsx:120
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\SecurityBestPracticesDetail.tsx:125
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\SecurityBestPracticesDetail.tsx:131
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\SecurityBestPracticesDetail.tsx:136
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\SecurityBestPracticesDetail.tsx:142
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\SecurityBestPracticesDetail.tsx:147
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\SecurityBestPracticesDetail.tsx:154
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\SecurityBestPracticesDetail.tsx:155
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\SecurityBestPracticesDetail.tsx:157
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\SecurityBestPracticesDetail.tsx:162
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\SecurityBestPracticesDetail.tsx:166
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\SecurityBestPracticesDetail.tsx:171
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\SecurityBestPracticesDetail.tsx:177
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\SecurityBestPracticesDetail.tsx:178
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\SecurityBestPracticesDetail.tsx:180
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\SecurityBestPracticesDetail.tsx:185
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\SecurityBestPracticesDetail.tsx:189
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\SecurityBestPracticesDetail.tsx:194
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\SecurityBestPracticesDetail.tsx:200
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\SecurityBestPracticesDetail.tsx:201
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\SecurityBestPracticesDetail.tsx:206
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\SecurityBestPracticesDetail.tsx:209
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\SecurityBestPracticesDetail.tsx:210
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\SecurityBestPracticesDetail.tsx:211
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\SecurityBestPracticesDetail.tsx:220
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\SecurityBestPracticesDetail.tsx:223
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\SecurityBestPracticesDetail.tsx:224
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\SecurityBestPracticesDetail.tsx:225
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\SecurityBestPracticesDetail.tsx:234
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\SecurityBestPracticesDetail.tsx:237
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\SecurityBestPracticesDetail.tsx:239
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\SecurityBestPracticesDetail.tsx:240
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\SecurityBestPracticesDetail.tsx:248
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\SecurityBestPracticesDetail.tsx:249
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\SecurityBestPracticesDetail.tsx:251
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\SecurityBestPracticesDetail.tsx:253
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\SecurityBestPracticesDetail.tsx:254
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubWorkflowDetail.tsx:18
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubWorkflowDetail.tsx:22
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubWorkflowDetail.tsx:27
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubWorkflowDetail.tsx:35
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubWorkflowDetail.tsx:39
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubWorkflowDetail.tsx:45
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubWorkflowDetail.tsx:46
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubWorkflowDetail.tsx:51
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubWorkflowDetail.tsx:56
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubWorkflowDetail.tsx:58
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubWorkflowDetail.tsx:59
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubWorkflowDetail.tsx:61
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubWorkflowDetail.tsx:64
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubWorkflowDetail.tsx:67
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubWorkflowDetail.tsx:72
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubWorkflowDetail.tsx:73
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubWorkflowDetail.tsx:80
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubWorkflowDetail.tsx:81
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubWorkflowDetail.tsx:88
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubWorkflowDetail.tsx:89
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubWorkflowDetail.tsx:96
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubWorkflowDetail.tsx:97
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubWorkflowDetail.tsx:104
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubWorkflowDetail.tsx:105
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubWorkflowDetail.tsx:112
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubWorkflowDetail.tsx:113
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubWorkflowDetail.tsx:120
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubWorkflowDetail.tsx:121
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubWorkflowDetail.tsx:124
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubWorkflowDetail.tsx:135
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubWorkflowDetail.tsx:146
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubWorkflowDetail.tsx:158
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubWorkflowDetail.tsx:159
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubWorkflowDetail.tsx:161
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubWorkflowDetail.tsx:170
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubWorkflowDetail.tsx:181
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubWorkflowDetail.tsx:182
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubWorkflowDetail.tsx:184
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubWorkflowDetail.tsx:195
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubWorkflowDetail.tsx:196
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubWorkflowDetail.tsx:201
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubWorkflowDetail.tsx:202
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubWorkflowDetail.tsx:204
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubWorkflowDetail.tsx:205
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubWorkflowDetail.tsx:206
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubWorkflowDetail.tsx:207
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubWorkflowDetail.tsx:215
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubWorkflowDetail.tsx:216
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubWorkflowDetail.tsx:218
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubWorkflowDetail.tsx:220
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubWorkflowDetail.tsx:229
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubWorkflowDetail.tsx:230
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubWorkflowDetail.tsx:232
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubWorkflowDetail.tsx:233
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubWorkflowDetail.tsx:235
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubWorkflowDetail.tsx:243
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubWorkflowDetail.tsx:246
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubWorkflowDetail.tsx:247
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubWorkflowDetail.tsx:249
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubActionsDetail.tsx:18
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubActionsDetail.tsx:22
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubActionsDetail.tsx:27
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubActionsDetail.tsx:35
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubActionsDetail.tsx:39
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubActionsDetail.tsx:45
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubActionsDetail.tsx:46
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubActionsDetail.tsx:50
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubActionsDetail.tsx:56
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubActionsDetail.tsx:58
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubActionsDetail.tsx:59
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubActionsDetail.tsx:61
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubActionsDetail.tsx:64
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubActionsDetail.tsx:65
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubActionsDetail.tsx:68
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubActionsDetail.tsx:71
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubActionsDetail.tsx:72
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubActionsDetail.tsx:76
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubActionsDetail.tsx:77
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubActionsDetail.tsx:81
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubActionsDetail.tsx:82
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubActionsDetail.tsx:86
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubActionsDetail.tsx:87
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubActionsDetail.tsx:91
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubActionsDetail.tsx:92
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubActionsDetail.tsx:96
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubActionsDetail.tsx:97
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubActionsDetail.tsx:101
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubActionsDetail.tsx:112
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubActionsDetail.tsx:113
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubActionsDetail.tsx:116
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubActionsDetail.tsx:127
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubActionsDetail.tsx:138
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubActionsDetail.tsx:150
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubActionsDetail.tsx:151
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubActionsDetail.tsx:153
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubActionsDetail.tsx:162
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubActionsDetail.tsx:173
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubActionsDetail.tsx:174
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubActionsDetail.tsx:176
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubActionsDetail.tsx:185
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubActionsDetail.tsx:196
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubActionsDetail.tsx:197
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubActionsDetail.tsx:199
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubActionsDetail.tsx:208
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubActionsDetail.tsx:219
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubActionsDetail.tsx:220
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubActionsDetail.tsx:225
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubActionsDetail.tsx:226
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubActionsDetail.tsx:228
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubActionsDetail.tsx:229
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubActionsDetail.tsx:230
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubActionsDetail.tsx:232
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubActionsDetail.tsx:240
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubActionsDetail.tsx:241
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubActionsDetail.tsx:255
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubActionsDetail.tsx:256
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubActionsDetail.tsx:258
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubActionsDetail.tsx:260
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubActionsDetail.tsx:262
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubActionsDetail.tsx:270
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubActionsDetail.tsx:271
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubActionsDetail.tsx:273
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubActionsDetail.tsx:275
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHubActionsDetail.tsx:277
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHooksDetail.tsx:18
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHooksDetail.tsx:22
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHooksDetail.tsx:27
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHooksDetail.tsx:35
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHooksDetail.tsx:39
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHooksDetail.tsx:45
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHooksDetail.tsx:46
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHooksDetail.tsx:49
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHooksDetail.tsx:50
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHooksDetail.tsx:51
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHooksDetail.tsx:56
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHooksDetail.tsx:58
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHooksDetail.tsx:59
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHooksDetail.tsx:61
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHooksDetail.tsx:64
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHooksDetail.tsx:67
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHooksDetail.tsx:70
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHooksDetail.tsx:73
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHooksDetail.tsx:74
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHooksDetail.tsx:76
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHooksDetail.tsx:81
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHooksDetail.tsx:84
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHooksDetail.tsx:86
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHooksDetail.tsx:93
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHooksDetail.tsx:94
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHooksDetail.tsx:101
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHooksDetail.tsx:102
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHooksDetail.tsx:139
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHooksDetail.tsx:140
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHooksDetail.tsx:162
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHooksDetail.tsx:163
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHooksDetail.tsx:165
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHooksDetail.tsx:174
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHooksDetail.tsx:185
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHooksDetail.tsx:186
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHooksDetail.tsx:191
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHooksDetail.tsx:194
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHooksDetail.tsx:195
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHooksDetail.tsx:197
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHooksDetail.tsx:205
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHooksDetail.tsx:206
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHooksDetail.tsx:208
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHooksDetail.tsx:210
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHooksDetail.tsx:219
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHooksDetail.tsx:222
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHooksDetail.tsx:223
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHooksDetail.tsx:224
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHooksDetail.tsx:225
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHooksDetail.tsx:233
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHooksDetail.tsx:234
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHooksDetail.tsx:236
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHooksDetail.tsx:237
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitHooksDetail.tsx:239
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitBasicsDetail.tsx:18
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitBasicsDetail.tsx:22
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitBasicsDetail.tsx:27
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitBasicsDetail.tsx:35
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitBasicsDetail.tsx:39
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitBasicsDetail.tsx:45
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitBasicsDetail.tsx:46
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitBasicsDetail.tsx:49
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitBasicsDetail.tsx:50
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitBasicsDetail.tsx:56
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitBasicsDetail.tsx:58
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitBasicsDetail.tsx:59
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitBasicsDetail.tsx:61
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitBasicsDetail.tsx:64
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitBasicsDetail.tsx:65
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitBasicsDetail.tsx:69
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitBasicsDetail.tsx:70
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitBasicsDetail.tsx:74
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitBasicsDetail.tsx:75
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitBasicsDetail.tsx:79
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitBasicsDetail.tsx:90
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitBasicsDetail.tsx:91
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitBasicsDetail.tsx:94
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitBasicsDetail.tsx:112
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitBasicsDetail.tsx:130
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitBasicsDetail.tsx:149
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitBasicsDetail.tsx:150
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitBasicsDetail.tsx:152
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitBasicsDetail.tsx:161
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitBasicsDetail.tsx:172
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitBasicsDetail.tsx:173
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitBasicsDetail.tsx:175
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitBasicsDetail.tsx:184
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitBasicsDetail.tsx:189
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitBasicsDetail.tsx:195
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitBasicsDetail.tsx:196
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitBasicsDetail.tsx:198
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitBasicsDetail.tsx:209
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitBasicsDetail.tsx:210
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitBasicsDetail.tsx:215
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitBasicsDetail.tsx:216
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitBasicsDetail.tsx:230
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitBasicsDetail.tsx:231
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitBasicsDetail.tsx:245
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitBasicsDetail.tsx:246
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitBasicsDetail.tsx:249
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitBasicsDetail.tsx:252
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitBasicsDetail.tsx:255
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitBasicsDetail.tsx:258
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitBasicsDetail.tsx:261
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitBasicsDetail.tsx:270
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitBasicsDetail.tsx:271
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitBasicsDetail.tsx:273
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitBasicsDetail.tsx:274
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\GitBasicsDetail.tsx:275
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\CollaborationDetail.tsx:18
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\CollaborationDetail.tsx:22
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\CollaborationDetail.tsx:27
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\CollaborationDetail.tsx:35
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\CollaborationDetail.tsx:39
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\CollaborationDetail.tsx:45
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\CollaborationDetail.tsx:46
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\CollaborationDetail.tsx:48
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\CollaborationDetail.tsx:50
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\CollaborationDetail.tsx:56
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\CollaborationDetail.tsx:58
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\CollaborationDetail.tsx:59
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\CollaborationDetail.tsx:61
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\CollaborationDetail.tsx:63
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\CollaborationDetail.tsx:66
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\CollaborationDetail.tsx:69
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\CollaborationDetail.tsx:70
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\CollaborationDetail.tsx:79
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\CollaborationDetail.tsx:80
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\CollaborationDetail.tsx:83
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\CollaborationDetail.tsx:89
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\CollaborationDetail.tsx:90
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\CollaborationDetail.tsx:94
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\CollaborationDetail.tsx:99
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\CollaborationDetail.tsx:100
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\CollaborationDetail.tsx:102
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\CollaborationDetail.tsx:104
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\CollaborationDetail.tsx:111
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\CollaborationDetail.tsx:112
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\CollaborationDetail.tsx:115
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\CollaborationDetail.tsx:126
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\CollaborationDetail.tsx:137
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\CollaborationDetail.tsx:149
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\CollaborationDetail.tsx:150
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\CollaborationDetail.tsx:152
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\CollaborationDetail.tsx:161
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\CollaborationDetail.tsx:172
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\CollaborationDetail.tsx:173
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\CollaborationDetail.tsx:175
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\CollaborationDetail.tsx:184
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\CollaborationDetail.tsx:195
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\CollaborationDetail.tsx:196
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\CollaborationDetail.tsx:201
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\CollaborationDetail.tsx:202
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\CollaborationDetail.tsx:204
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\CollaborationDetail.tsx:206
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\CollaborationDetail.tsx:215
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\CollaborationDetail.tsx:216
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\CollaborationDetail.tsx:218
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\CollaborationDetail.tsx:220
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\CollaborationDetail.tsx:229
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\CollaborationDetail.tsx:232
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\CollaborationDetail.tsx:234
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\CollaborationDetail.tsx:243
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\CollaborationDetail.tsx:246
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\CollaborationDetail.tsx:248
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\BranchingDetail.tsx:18
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\BranchingDetail.tsx:22
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\BranchingDetail.tsx:27
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\BranchingDetail.tsx:35
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\BranchingDetail.tsx:39
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\BranchingDetail.tsx:45
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\BranchingDetail.tsx:46
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\BranchingDetail.tsx:49
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\BranchingDetail.tsx:50
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\BranchingDetail.tsx:56
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\BranchingDetail.tsx:58
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\BranchingDetail.tsx:59
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\BranchingDetail.tsx:61
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\BranchingDetail.tsx:63
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\BranchingDetail.tsx:66
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\BranchingDetail.tsx:69
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\BranchingDetail.tsx:70
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\BranchingDetail.tsx:74
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\BranchingDetail.tsx:75
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\BranchingDetail.tsx:79
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\BranchingDetail.tsx:80
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\BranchingDetail.tsx:84
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\BranchingDetail.tsx:85
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\BranchingDetail.tsx:89
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\BranchingDetail.tsx:107
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\BranchingDetail.tsx:108
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\BranchingDetail.tsx:138
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\BranchingDetail.tsx:145
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\BranchingDetail.tsx:146
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\BranchingDetail.tsx:148
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\BranchingDetail.tsx:157
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\BranchingDetail.tsx:166
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\BranchingDetail.tsx:184
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\BranchingDetail.tsx:185
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\BranchingDetail.tsx:187
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\BranchingDetail.tsx:196
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\BranchingDetail.tsx:201
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\BranchingDetail.tsx:207
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\BranchingDetail.tsx:208
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\BranchingDetail.tsx:213
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\BranchingDetail.tsx:214
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\BranchingDetail.tsx:217
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\BranchingDetail.tsx:221
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\BranchingDetail.tsx:225
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\BranchingDetail.tsx:228
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\BranchingDetail.tsx:238
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\BranchingDetail.tsx:241
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\BranchingDetail.tsx:243
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\BranchingDetail.tsx:244
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\BranchingDetail.tsx:252
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\BranchingDetail.tsx:253
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\BranchingDetail.tsx:256
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\BranchingDetail.tsx:259
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\BranchingDetail.tsx:262
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\BranchingDetail.tsx:264
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\BranchingDetail.tsx:272
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\BranchingDetail.tsx:275
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\BranchingDetail.tsx:276
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\BranchingDetail.tsx:278
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\AdvancedTechniquesDetail.tsx:18
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\AdvancedTechniquesDetail.tsx:22
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\AdvancedTechniquesDetail.tsx:27
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\AdvancedTechniquesDetail.tsx:35
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\AdvancedTechniquesDetail.tsx:39
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\AdvancedTechniquesDetail.tsx:45
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\AdvancedTechniquesDetail.tsx:46
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\AdvancedTechniquesDetail.tsx:48
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\AdvancedTechniquesDetail.tsx:50
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\AdvancedTechniquesDetail.tsx:56
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\AdvancedTechniquesDetail.tsx:58
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\AdvancedTechniquesDetail.tsx:59
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\AdvancedTechniquesDetail.tsx:61
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\AdvancedTechniquesDetail.tsx:70
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\AdvancedTechniquesDetail.tsx:75
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\AdvancedTechniquesDetail.tsx:81
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\AdvancedTechniquesDetail.tsx:82
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\AdvancedTechniquesDetail.tsx:85
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\AdvancedTechniquesDetail.tsx:96
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\AdvancedTechniquesDetail.tsx:101
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\AdvancedTechniquesDetail.tsx:107
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\AdvancedTechniquesDetail.tsx:112
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\AdvancedTechniquesDetail.tsx:119
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\AdvancedTechniquesDetail.tsx:120
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\AdvancedTechniquesDetail.tsx:122
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\AdvancedTechniquesDetail.tsx:127
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\AdvancedTechniquesDetail.tsx:131
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\AdvancedTechniquesDetail.tsx:142
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\AdvancedTechniquesDetail.tsx:143
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\AdvancedTechniquesDetail.tsx:145
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\AdvancedTechniquesDetail.tsx:154
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\AdvancedTechniquesDetail.tsx:165
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\AdvancedTechniquesDetail.tsx:166
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\AdvancedTechniquesDetail.tsx:168
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\AdvancedTechniquesDetail.tsx:177
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\AdvancedTechniquesDetail.tsx:188
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\AdvancedTechniquesDetail.tsx:189
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\AdvancedTechniquesDetail.tsx:194
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\AdvancedTechniquesDetail.tsx:195
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\AdvancedTechniquesDetail.tsx:197
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\AdvancedTechniquesDetail.tsx:199
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\AdvancedTechniquesDetail.tsx:200
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\AdvancedTechniquesDetail.tsx:208
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\AdvancedTechniquesDetail.tsx:211
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\AdvancedTechniquesDetail.tsx:213
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\AdvancedTechniquesDetail.tsx:222
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\AdvancedTechniquesDetail.tsx:225
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\AdvancedTechniquesDetail.tsx:226
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\AdvancedTechniquesDetail.tsx:228
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\AdvancedTechniquesDetail.tsx:236
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\AdvancedTechniquesDetail.tsx:237
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\AdvancedTechniquesDetail.tsx:239
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\AdvancedTechniquesDetail.tsx:240
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\git\AdvancedTechniquesDetail.tsx:242
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\SecurityDetail.tsx:18
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\SecurityDetail.tsx:22
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\SecurityDetail.tsx:33
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\SecurityDetail.tsx:36
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\SecurityDetail.tsx:38
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\SecurityDetail.tsx:42
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\SecurityDetail.tsx:43
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\SecurityDetail.tsx:45
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\SecurityDetail.tsx:47
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\SecurityDetail.tsx:48
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\SecurityDetail.tsx:51
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\SecurityDetail.tsx:53
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\SecurityDetail.tsx:54
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\SecurityDetail.tsx:56
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\SecurityDetail.tsx:57
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\SecurityDetail.tsx:60
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\SecurityDetail.tsx:63
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\SecurityDetail.tsx:66
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\SecurityDetail.tsx:69
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\SecurityDetail.tsx:72
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\SecurityDetail.tsx:75
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\SecurityDetail.tsx:81
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\SecurityDetail.tsx:82
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\SecurityDetail.tsx:84
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\SecurityDetail.tsx:93
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\SecurityDetail.tsx:102
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\SecurityDetail.tsx:113
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\SecurityDetail.tsx:114
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\SecurityDetail.tsx:116
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\SecurityDetail.tsx:125
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\SecurityDetail.tsx:134
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\SecurityDetail.tsx:145
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\SecurityDetail.tsx:146
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\SecurityDetail.tsx:148
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\SecurityDetail.tsx:157
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\SecurityDetail.tsx:168
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\SecurityDetail.tsx:169
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\SecurityDetail.tsx:180
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\SecurityDetail.tsx:191
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\SecurityDetail.tsx:192
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\SecurityDetail.tsx:194
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\SecurityDetail.tsx:203
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\SecurityDetail.tsx:212
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\SecurityDetail.tsx:223
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\SecurityDetail.tsx:224
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\SecurityDetail.tsx:227
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\SecurityDetail.tsx:230
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\SecurityDetail.tsx:232
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\SecurityDetail.tsx:234
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\SecurityDetail.tsx:235
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\SecurityDetail.tsx:245
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\SecurityDetail.tsx:249
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\SecurityDetail.tsx:252
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\SecurityDetail.tsx:255
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\SecurityDetail.tsx:258
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\SecurityDetail.tsx:261
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\SecurityDetail.tsx:272
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\SecurityDetail.tsx:276
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\SecurityDetail.tsx:279
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\SecurityDetail.tsx:282
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\SecurityDetail.tsx:285
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\SecurityDetail.tsx:288
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\PerformanceOptimizationDetail.tsx:18
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\PerformanceOptimizationDetail.tsx:22
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\PerformanceOptimizationDetail.tsx:33
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\PerformanceOptimizationDetail.tsx:36
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\PerformanceOptimizationDetail.tsx:38
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\PerformanceOptimizationDetail.tsx:42
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\PerformanceOptimizationDetail.tsx:43
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\PerformanceOptimizationDetail.tsx:45
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\PerformanceOptimizationDetail.tsx:47
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\PerformanceOptimizationDetail.tsx:49
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\PerformanceOptimizationDetail.tsx:52
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\PerformanceOptimizationDetail.tsx:54
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\PerformanceOptimizationDetail.tsx:55
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\PerformanceOptimizationDetail.tsx:56
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\PerformanceOptimizationDetail.tsx:58
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\PerformanceOptimizationDetail.tsx:61
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\PerformanceOptimizationDetail.tsx:64
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\PerformanceOptimizationDetail.tsx:67
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\PerformanceOptimizationDetail.tsx:70
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\PerformanceOptimizationDetail.tsx:73
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\PerformanceOptimizationDetail.tsx:76
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\PerformanceOptimizationDetail.tsx:82
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\PerformanceOptimizationDetail.tsx:83
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\PerformanceOptimizationDetail.tsx:85
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\PerformanceOptimizationDetail.tsx:94
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\PerformanceOptimizationDetail.tsx:103
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\PerformanceOptimizationDetail.tsx:114
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\PerformanceOptimizationDetail.tsx:115
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\PerformanceOptimizationDetail.tsx:117
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\PerformanceOptimizationDetail.tsx:126
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\PerformanceOptimizationDetail.tsx:135
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\PerformanceOptimizationDetail.tsx:146
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\PerformanceOptimizationDetail.tsx:147
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\PerformanceOptimizationDetail.tsx:149
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\PerformanceOptimizationDetail.tsx:158
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\PerformanceOptimizationDetail.tsx:169
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\PerformanceOptimizationDetail.tsx:170
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\PerformanceOptimizationDetail.tsx:172
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\PerformanceOptimizationDetail.tsx:181
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\PerformanceOptimizationDetail.tsx:192
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\PerformanceOptimizationDetail.tsx:193
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\PerformanceOptimizationDetail.tsx:195
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\PerformanceOptimizationDetail.tsx:204
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\PerformanceOptimizationDetail.tsx:213
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\PerformanceOptimizationDetail.tsx:224
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\PerformanceOptimizationDetail.tsx:225
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\PerformanceOptimizationDetail.tsx:228
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\PerformanceOptimizationDetail.tsx:231
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\PerformanceOptimizationDetail.tsx:232
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\PerformanceOptimizationDetail.tsx:233
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\PerformanceOptimizationDetail.tsx:234
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\PerformanceOptimizationDetail.tsx:236
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\PerformanceOptimizationDetail.tsx:246
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\PerformanceOptimizationDetail.tsx:250
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\PerformanceOptimizationDetail.tsx:253
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\PerformanceOptimizationDetail.tsx:256
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\PerformanceOptimizationDetail.tsx:259
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\PerformanceOptimizationDetail.tsx:262
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\PerformanceOptimizationDetail.tsx:273
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\PerformanceOptimizationDetail.tsx:277
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\PerformanceOptimizationDetail.tsx:280
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\PerformanceOptimizationDetail.tsx:283
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\PerformanceOptimizationDetail.tsx:286
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\PerformanceOptimizationDetail.tsx:289
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\NetworkingDetail.tsx:22
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\NetworkingDetail.tsx:31
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\NetworkingDetail.tsx:38
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\NetworkingDetail.tsx:46
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\NetworkingDetail.tsx:50
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\NetworkingDetail.tsx:56
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\NetworkingDetail.tsx:57
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\NetworkingDetail.tsx:59
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\NetworkingDetail.tsx:60
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\NetworkingDetail.tsx:61
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\NetworkingDetail.tsx:67
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\NetworkingDetail.tsx:69
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\NetworkingDetail.tsx:70
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\NetworkingDetail.tsx:72
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\NetworkingDetail.tsx:74
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\NetworkingDetail.tsx:75
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\NetworkingDetail.tsx:78
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\NetworkingDetail.tsx:80
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\NetworkingDetail.tsx:82
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\NetworkingDetail.tsx:84
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\NetworkingDetail.tsx:87
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\NetworkingDetail.tsx:90
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\NetworkingDetail.tsx:93
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\NetworkingDetail.tsx:96
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\NetworkingDetail.tsx:99
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\NetworkingDetail.tsx:103
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\NetworkingDetail.tsx:114
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\NetworkingDetail.tsx:115
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\NetworkingDetail.tsx:118
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\NetworkingDetail.tsx:129
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\NetworkingDetail.tsx:140
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\NetworkingDetail.tsx:152
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\NetworkingDetail.tsx:153
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\NetworkingDetail.tsx:156
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\NetworkingDetail.tsx:167
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\NetworkingDetail.tsx:178
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\NetworkingDetail.tsx:190
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\NetworkingDetail.tsx:191
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\NetworkingDetail.tsx:196
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\NetworkingDetail.tsx:197
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\NetworkingDetail.tsx:198
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\NetworkingDetail.tsx:212
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\NetworkingDetail.tsx:213
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\NetworkingDetail.tsx:228
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\NetworkingDetail.tsx:229
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\NetworkingDetail.tsx:243
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\NetworkingDetail.tsx:244
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\NetworkingDetail.tsx:247
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\NetworkingDetail.tsx:252
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\NetworkingDetail.tsx:255
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\NetworkingDetail.tsx:258
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\NetworkingDetail.tsx:261
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\NetworkingDetail.tsx:270
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\NetworkingDetail.tsx:275
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\NetworkingDetail.tsx:278
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\NetworkingDetail.tsx:281
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\NetworkingDetail.tsx:284
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\NetworkingDetail.tsx:287
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\NetworkingDetail.tsx:296
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\NetworkingDetail.tsx:301
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\NetworkingDetail.tsx:304
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\NetworkingDetail.tsx:307
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\NetworkingDetail.tsx:310
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\NetworkingDetail.tsx:313
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\KubernetesDetail.tsx:18
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\KubernetesDetail.tsx:22
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\KubernetesDetail.tsx:33
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\KubernetesDetail.tsx:36
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\KubernetesDetail.tsx:38
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\KubernetesDetail.tsx:42
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\KubernetesDetail.tsx:43
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\KubernetesDetail.tsx:45
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\KubernetesDetail.tsx:47
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\KubernetesDetail.tsx:51
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\KubernetesDetail.tsx:53
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\KubernetesDetail.tsx:54
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\KubernetesDetail.tsx:55
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\KubernetesDetail.tsx:57
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\KubernetesDetail.tsx:61
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\KubernetesDetail.tsx:64
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\KubernetesDetail.tsx:67
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\KubernetesDetail.tsx:70
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\KubernetesDetail.tsx:73
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\KubernetesDetail.tsx:76
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\KubernetesDetail.tsx:82
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\KubernetesDetail.tsx:83
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\KubernetesDetail.tsx:85
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\KubernetesDetail.tsx:96
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\KubernetesDetail.tsx:97
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\KubernetesDetail.tsx:99
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\KubernetesDetail.tsx:108
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\KubernetesDetail.tsx:117
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\KubernetesDetail.tsx:128
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\KubernetesDetail.tsx:129
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\KubernetesDetail.tsx:131
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\KubernetesDetail.tsx:140
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\KubernetesDetail.tsx:151
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\KubernetesDetail.tsx:152
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\KubernetesDetail.tsx:154
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\KubernetesDetail.tsx:163
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\KubernetesDetail.tsx:174
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\KubernetesDetail.tsx:175
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\KubernetesDetail.tsx:177
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\KubernetesDetail.tsx:186
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\KubernetesDetail.tsx:197
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\KubernetesDetail.tsx:198
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\KubernetesDetail.tsx:200
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\KubernetesDetail.tsx:211
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\KubernetesDetail.tsx:212
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\KubernetesDetail.tsx:214
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\KubernetesDetail.tsx:223
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\KubernetesDetail.tsx:234
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\KubernetesDetail.tsx:235
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\KubernetesDetail.tsx:238
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\KubernetesDetail.tsx:241
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\KubernetesDetail.tsx:242
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\KubernetesDetail.tsx:244
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\KubernetesDetail.tsx:246
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\KubernetesDetail.tsx:256
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\KubernetesDetail.tsx:260
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\KubernetesDetail.tsx:263
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\KubernetesDetail.tsx:266
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\KubernetesDetail.tsx:269
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\KubernetesDetail.tsx:272
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\KubernetesDetail.tsx:283
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\KubernetesDetail.tsx:287
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\KubernetesDetail.tsx:290
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\KubernetesDetail.tsx:293
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\KubernetesDetail.tsx:296
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\KubernetesDetail.tsx:299
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\FundamentalsDetail.tsx:22
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\FundamentalsDetail.tsx:31
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\FundamentalsDetail.tsx:38
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\FundamentalsDetail.tsx:46
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\FundamentalsDetail.tsx:50
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\FundamentalsDetail.tsx:56
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\FundamentalsDetail.tsx:57
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\FundamentalsDetail.tsx:59
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\FundamentalsDetail.tsx:60
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\FundamentalsDetail.tsx:61
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\FundamentalsDetail.tsx:63
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\FundamentalsDetail.tsx:69
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\FundamentalsDetail.tsx:71
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\FundamentalsDetail.tsx:72
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\FundamentalsDetail.tsx:74
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\FundamentalsDetail.tsx:77
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\FundamentalsDetail.tsx:78
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\FundamentalsDetail.tsx:81
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\FundamentalsDetail.tsx:83
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\FundamentalsDetail.tsx:84
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\FundamentalsDetail.tsx:85
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\FundamentalsDetail.tsx:87
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\FundamentalsDetail.tsx:91
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\FundamentalsDetail.tsx:94
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\FundamentalsDetail.tsx:97
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\FundamentalsDetail.tsx:100
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\FundamentalsDetail.tsx:103
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\FundamentalsDetail.tsx:106
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\FundamentalsDetail.tsx:112
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\FundamentalsDetail.tsx:113
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\FundamentalsDetail.tsx:116
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\FundamentalsDetail.tsx:128
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\FundamentalsDetail.tsx:129
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\FundamentalsDetail.tsx:132
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\FundamentalsDetail.tsx:145
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\FundamentalsDetail.tsx:148
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\FundamentalsDetail.tsx:160
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\FundamentalsDetail.tsx:161
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\FundamentalsDetail.tsx:164
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\FundamentalsDetail.tsx:176
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\FundamentalsDetail.tsx:177
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\FundamentalsDetail.tsx:180
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\FundamentalsDetail.tsx:192
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\FundamentalsDetail.tsx:193
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\FundamentalsDetail.tsx:196
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\FundamentalsDetail.tsx:208
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\FundamentalsDetail.tsx:209
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\FundamentalsDetail.tsx:212
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\FundamentalsDetail.tsx:224
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\FundamentalsDetail.tsx:225
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\FundamentalsDetail.tsx:228
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\FundamentalsDetail.tsx:240
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\FundamentalsDetail.tsx:241
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\FundamentalsDetail.tsx:244
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\FundamentalsDetail.tsx:248
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\FundamentalsDetail.tsx:249
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\FundamentalsDetail.tsx:251
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\FundamentalsDetail.tsx:252
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\FundamentalsDetail.tsx:261
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\FundamentalsDetail.tsx:266
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\FundamentalsDetail.tsx:269
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\FundamentalsDetail.tsx:272
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\FundamentalsDetail.tsx:275
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\FundamentalsDetail.tsx:278
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\FundamentalsDetail.tsx:287
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\FundamentalsDetail.tsx:292
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\FundamentalsDetail.tsx:295
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\FundamentalsDetail.tsx:298
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\FundamentalsDetail.tsx:301
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\FundamentalsDetail.tsx:304
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerfileDetail.tsx:32
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerfileDetail.tsx:37
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerfileDetail.tsx:42
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerfileDetail.tsx:49
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerfileDetail.tsx:56
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerfileDetail.tsx:57
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerfileDetail.tsx:59
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerfileDetail.tsx:60
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerfileDetail.tsx:61
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerfileDetail.tsx:68
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerfileDetail.tsx:70
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerfileDetail.tsx:71
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerfileDetail.tsx:73
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerfileDetail.tsx:75
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerfileDetail.tsx:76
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerfileDetail.tsx:80
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerfileDetail.tsx:82
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerfileDetail.tsx:84
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerfileDetail.tsx:86
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerfileDetail.tsx:87
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerfileDetail.tsx:90
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerfileDetail.tsx:101
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerfileDetail.tsx:102
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerfileDetail.tsx:104
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerfileDetail.tsx:106
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerfileDetail.tsx:107
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerfileDetail.tsx:115
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerfileDetail.tsx:121
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerfileDetail.tsx:127
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerfileDetail.tsx:142
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerfileDetail.tsx:143
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerfileDetail.tsx:145
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerfileDetail.tsx:147
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerfileDetail.tsx:155
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerfileDetail.tsx:156
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerfileDetail.tsx:162
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerfileDetail.tsx:163
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerfileDetail.tsx:169
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerfileDetail.tsx:170
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerfileDetail.tsx:185
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerfileDetail.tsx:186
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerfileDetail.tsx:188
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerfileDetail.tsx:190
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerfileDetail.tsx:191
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerfileDetail.tsx:198
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerfileDetail.tsx:199
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerfileDetail.tsx:205
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerfileDetail.tsx:206
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerfileDetail.tsx:212
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerfileDetail.tsx:213
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerfileDetail.tsx:226
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerfileDetail.tsx:237
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerfileDetail.tsx:238
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerfileDetail.tsx:240
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerfileDetail.tsx:241
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerfileDetail.tsx:248
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerfileDetail.tsx:251
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerfileDetail.tsx:267
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerfileDetail.tsx:268
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerfileDetail.tsx:270
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerfileDetail.tsx:272
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerfileDetail.tsx:273
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerfileDetail.tsx:280
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerfileDetail.tsx:286
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerfileDetail.tsx:292
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerfileDetail.tsx:307
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerfileDetail.tsx:308
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerfileDetail.tsx:310
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerfileDetail.tsx:312
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerfileDetail.tsx:325
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerfileDetail.tsx:326
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerfileDetail.tsx:328
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerfileDetail.tsx:334
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerfileDetail.tsx:335
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerfileDetail.tsx:342
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerfileDetail.tsx:343
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerfileDetail.tsx:350
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerfileDetail.tsx:351
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerfileDetail.tsx:359
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerfileDetail.tsx:363
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerfileDetail.tsx:366
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerfileDetail.tsx:369
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerfileDetail.tsx:372
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerfileDetail.tsx:383
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerfileDetail.tsx:387
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerfileDetail.tsx:390
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerfileDetail.tsx:394
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerfileDetail.tsx:397
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerfileDetail.tsx:400
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerfileDetail.tsx:411
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerfileDetail.tsx:415
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerfileDetail.tsx:418
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerfileDetail.tsx:421
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerfileDetail.tsx:424
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerComposeDetail.tsx:22
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerComposeDetail.tsx:31
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerComposeDetail.tsx:38
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerComposeDetail.tsx:46
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerComposeDetail.tsx:50
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerComposeDetail.tsx:57
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerComposeDetail.tsx:59
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerComposeDetail.tsx:60
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerComposeDetail.tsx:62
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerComposeDetail.tsx:67
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerComposeDetail.tsx:69
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerComposeDetail.tsx:70
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerComposeDetail.tsx:72
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerComposeDetail.tsx:74
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerComposeDetail.tsx:75
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerComposeDetail.tsx:78
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerComposeDetail.tsx:80
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerComposeDetail.tsx:81
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerComposeDetail.tsx:82
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerComposeDetail.tsx:84
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerComposeDetail.tsx:87
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerComposeDetail.tsx:90
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerComposeDetail.tsx:93
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerComposeDetail.tsx:96
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerComposeDetail.tsx:99
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerComposeDetail.tsx:105
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerComposeDetail.tsx:106
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerComposeDetail.tsx:109
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerComposeDetail.tsx:120
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerComposeDetail.tsx:131
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerComposeDetail.tsx:143
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerComposeDetail.tsx:144
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerComposeDetail.tsx:147
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerComposeDetail.tsx:158
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerComposeDetail.tsx:169
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerComposeDetail.tsx:181
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerComposeDetail.tsx:182
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerComposeDetail.tsx:185
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerComposeDetail.tsx:196
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerComposeDetail.tsx:207
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerComposeDetail.tsx:219
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerComposeDetail.tsx:220
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerComposeDetail.tsx:223
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerComposeDetail.tsx:234
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerComposeDetail.tsx:246
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerComposeDetail.tsx:247
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerComposeDetail.tsx:250
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerComposeDetail.tsx:254
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerComposeDetail.tsx:255
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerComposeDetail.tsx:256
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerComposeDetail.tsx:258
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerComposeDetail.tsx:267
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerComposeDetail.tsx:272
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerComposeDetail.tsx:275
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerComposeDetail.tsx:278
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerComposeDetail.tsx:281
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerComposeDetail.tsx:284
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerComposeDetail.tsx:293
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerComposeDetail.tsx:298
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerComposeDetail.tsx:301
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerComposeDetail.tsx:304
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerComposeDetail.tsx:307
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DockerComposeDetail.tsx:310
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DataManagementDetail.tsx:22
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DataManagementDetail.tsx:31
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DataManagementDetail.tsx:38
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DataManagementDetail.tsx:46
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DataManagementDetail.tsx:50
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DataManagementDetail.tsx:56
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DataManagementDetail.tsx:57
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DataManagementDetail.tsx:59
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DataManagementDetail.tsx:60
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DataManagementDetail.tsx:61
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DataManagementDetail.tsx:67
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DataManagementDetail.tsx:69
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DataManagementDetail.tsx:70
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DataManagementDetail.tsx:72
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DataManagementDetail.tsx:74
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DataManagementDetail.tsx:75
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DataManagementDetail.tsx:78
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DataManagementDetail.tsx:80
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DataManagementDetail.tsx:81
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DataManagementDetail.tsx:82
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DataManagementDetail.tsx:85
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DataManagementDetail.tsx:88
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DataManagementDetail.tsx:91
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DataManagementDetail.tsx:94
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DataManagementDetail.tsx:100
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DataManagementDetail.tsx:101
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DataManagementDetail.tsx:104
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DataManagementDetail.tsx:115
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DataManagementDetail.tsx:126
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DataManagementDetail.tsx:138
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DataManagementDetail.tsx:139
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DataManagementDetail.tsx:142
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DataManagementDetail.tsx:153
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DataManagementDetail.tsx:164
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DataManagementDetail.tsx:176
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DataManagementDetail.tsx:177
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DataManagementDetail.tsx:180
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DataManagementDetail.tsx:191
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DataManagementDetail.tsx:202
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DataManagementDetail.tsx:214
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DataManagementDetail.tsx:215
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DataManagementDetail.tsx:218
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DataManagementDetail.tsx:229
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DataManagementDetail.tsx:241
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DataManagementDetail.tsx:242
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DataManagementDetail.tsx:245
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DataManagementDetail.tsx:249
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DataManagementDetail.tsx:250
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DataManagementDetail.tsx:251
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DataManagementDetail.tsx:253
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DataManagementDetail.tsx:254
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DataManagementDetail.tsx:262
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DataManagementDetail.tsx:267
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DataManagementDetail.tsx:270
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DataManagementDetail.tsx:273
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DataManagementDetail.tsx:276
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DataManagementDetail.tsx:279
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DataManagementDetail.tsx:288
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DataManagementDetail.tsx:293
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DataManagementDetail.tsx:296
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DataManagementDetail.tsx:299
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DataManagementDetail.tsx:302
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Technology\pages\docker\DataManagementDetail.tsx:305
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\systemPages\ResetPassword.tsx:42
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\systemPages\ResetPassword.tsx:47
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\systemPages\ResetPassword.tsx:61
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\systemPages\ResetPassword.tsx:68
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\systemPages\ResetPassword.tsx:78
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\systemPages\ResetPassword.tsx:79
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\systemPages\ResetPassword.tsx:87
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\systemPages\ResetPassword.tsx:97
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\systemPages\ResetPassword.tsx:106
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\systemPages\ResetPassword.tsx:124
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\systemPages\ResetPassword.tsx:140
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\systemPages\ResetPassword.tsx:160
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\systemPages\ResetPassword.tsx:180
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\systemPages\ResetPassword.tsx:190
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\systemPages\Login.tsx:74
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\systemPages\Login.tsx:79
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\systemPages\Login.tsx:95
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\systemPages\Login.tsx:98
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\systemPages\Login.tsx:119
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\systemPages\Login.tsx:132
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\systemPages\Login.tsx:139
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\systemPages\Login.tsx:146
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\systemPages\Login.tsx:153
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\systemPages\Login.tsx:167
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\systemPages\Login.tsx:177
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\systemPages\Login.tsx:189
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\systemPages\Login.tsx:199
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\systemPages\Login.tsx:211
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\systemPages\Login.tsx:218
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\systemPages\Login.tsx:227
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\systemPages\Login.tsx:228
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\systemPages\Login.tsx:236
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\systemPages\Login.tsx:245
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\systemPages\Login.tsx:254
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\systemPages\Login.tsx:271
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\systemPages\Login.tsx:287
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\systemPages\Login.tsx:303
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\systemPages\Login.tsx:318
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\systemPages\Login.tsx:332
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\systemPages\Login.tsx:337
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Home\components\TodoList.tsx:11
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Home\components\TodoList.tsx:12
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Home\components\TodoList.tsx:13
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Home\components\TodoList.tsx:75
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Home\components\TodoList.tsx:77
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Home\components\TodoList.tsx:83
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Home\components\TodoList.tsx:87
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Home\components\TodoList.tsx:88
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Home\components\TodoList.tsx:94
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Home\components\TodoList.tsx:95
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Home\components\TodoList.tsx:97
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Home\components\TodoList.tsx:101
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Home\components\TodoList.tsx:102
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Home\components\TodoList.tsx:118
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Home\components\TodoList.tsx:135
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Home\components\TodoList.tsx:151
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Home\components\Header.tsx:17
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Home\components\Header.tsx:19
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Home\components\Content.tsx:25
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Home\components\Content.tsx:27
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Home\components\Content.tsx:29
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Home\components\Content.tsx:41
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Home\components\Content.tsx:42
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Home\components\Content.tsx:44
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Home\components\Content.tsx:45
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Home\components\Content.tsx:56
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Home\components\Content.tsx:57
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Home\components\Content.tsx:59
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Home\components\Content.tsx:71
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Home\components\Content.tsx:72
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Home\components\Content.tsx:74
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Home\components\Content.tsx:75
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Home\components\Content.tsx:86
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Home\components\Content.tsx:88
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Home\components\Content.tsx:90
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Home\components\Content.tsx:102
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Home\components\Content.tsx:103
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Home\components\Content.tsx:105
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Home\components\Content.tsx:117
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Home\components\Content.tsx:118
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Home\components\Content.tsx:120
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Home\components\Content.tsx:121
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Home\components\Content.tsx:132
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Home\components\Content.tsx:133
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Home\components\Content.tsx:135
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Home\components\Content.tsx:168
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Home\components\Content.tsx:170
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Home\components\Content.tsx:172
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Home\components\Content.tsx:189
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\Upload.tsx:28
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\Upload.tsx:48
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\Upload.tsx:77
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\Upload.tsx:93
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\Upload.tsx:104
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\Upload.tsx:108
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\Upload.tsx:112
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\Upload.tsx:242
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\FilePreview.tsx:13
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\FilePreview.tsx:134
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\FilePreview.tsx:138
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\FilePreview.tsx:141
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\FilePreview.tsx:160
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\FilePreview.tsx:168
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\VideoPreview.tsx:18
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\VideoPreview.tsx:20
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\VideoPreview.tsx:22
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\VideoPreview.tsx:24
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\VideoPreview.tsx:26
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\VideoPreview.tsx:28
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\VideoPreview.tsx:30
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\VideoPreview.tsx:32
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\VideoPreview.tsx:34
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\VideoPreview.tsx:36
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\VideoPreview.tsx:38
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\VideoPreview.tsx:85
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\VideoPreview.tsx:86
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\VideoPreview.tsx:243
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\VideoPreview.tsx:250
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\VideoPreview.tsx:251
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\VideoPreview.tsx:259
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\VideoPreview.tsx:272
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\VideoPreview.tsx:276
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\VideoPreview.tsx:284
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\VideoPreview.tsx:295
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\VideoPreview.tsx:315
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\VideoPreview.tsx:321
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\VideoPreview.tsx:324
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\VideoPreview.tsx:340
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\TextPreview.tsx:19
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\TextPreview.tsx:21
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\TextPreview.tsx:23
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\TextPreview.tsx:25
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\TextPreview.tsx:27
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\TextPreview.tsx:29
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\TextPreview.tsx:31
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\TextPreview.tsx:33
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\TextPreview.tsx:35
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\TextPreview.tsx:128
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\TextPreview.tsx:130
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\TextPreview.tsx:226
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\TextPreview.tsx:233
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\TextPreview.tsx:234
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\TextPreview.tsx:242
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\TextPreview.tsx:256
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\TextPreview.tsx:273
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\TextPreview.tsx:278
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\TextPreview.tsx:283
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\TextPreview.tsx:297
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\TextPreview.tsx:306
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\TextPreview.tsx:310
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\TextPreview.tsx:318
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\TextPreview.tsx:329
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\TextPreview.tsx:334
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\TextPreview.tsx:341
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\TextPreview.tsx:347
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\PDFPreview.tsx:28
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\PDFPreview.tsx:34
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\PDFPreview.tsx:42
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\PDFPreview.tsx:44
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\PDFPreview.tsx:46
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\PDFPreview.tsx:48
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\PDFPreview.tsx:50
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\PDFPreview.tsx:52
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\PDFPreview.tsx:54
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\PDFPreview.tsx:56
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\PDFPreview.tsx:58
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\PDFPreview.tsx:60
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\PDFPreview.tsx:64
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\PDFPreview.tsx:94
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\PDFPreview.tsx:98
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\PDFPreview.tsx:127
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\PDFPreview.tsx:131
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\PDFPreview.tsx:144
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\PDFPreview.tsx:145
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\PDFPreview.tsx:148
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\PDFPreview.tsx:152
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\PDFPreview.tsx:154
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\PDFPreview.tsx:156
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\PDFPreview.tsx:161
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\PDFPreview.tsx:163
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\PDFPreview.tsx:165
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\PDFPreview.tsx:167
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\PDFPreview.tsx:193
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\PDFPreview.tsx:324
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\PDFPreview.tsx:325
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\PDFPreview.tsx:464
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\PDFPreview.tsx:481
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\PDFPreview.tsx:488
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\PDFPreview.tsx:489
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\PDFPreview.tsx:490
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\PDFPreview.tsx:498
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\PDFPreview.tsx:511
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\PDFPreview.tsx:514
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\PDFPreview.tsx:538
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\PDFPreview.tsx:552
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\PDFPreview.tsx:553
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\PDFPreview.tsx:563
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\PDFPreview.tsx:573
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\PDFPreview.tsx:584
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\PDFPreview.tsx:593
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\PDFPreview.tsx:602
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\PDFPreview.tsx:611
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\PDFPreview.tsx:620
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\PDFPreview.tsx:632
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\PDFPreview.tsx:648
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\PDFPreview.tsx:654
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\PDFPreview.tsx:655
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\PDFPreview.tsx:664
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\PDFPreview.tsx:665
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\PDFPreview.tsx:677
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\PDFPreview.tsx:678
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\PDFPreview.tsx:687
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\PDFPreview.tsx:691
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\PDFPreview.tsx:694
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\PDFPreview.tsx:696
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\PDFPreview.tsx:698
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\PDFPreview.tsx:700
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\MarkdownPreview.tsx:18
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\MarkdownPreview.tsx:20
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\MarkdownPreview.tsx:22
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\MarkdownPreview.tsx:24
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\MarkdownPreview.tsx:26
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\MarkdownPreview.tsx:28
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\MarkdownPreview.tsx:30
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\MarkdownPreview.tsx:32
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\MarkdownPreview.tsx:139
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\MarkdownPreview.tsx:150
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\MarkdownPreview.tsx:164
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\MarkdownPreview.tsx:166
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\MarkdownPreview.tsx:223
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\MarkdownPreview.tsx:230
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\MarkdownPreview.tsx:231
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\MarkdownPreview.tsx:239
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\MarkdownPreview.tsx:266
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\MarkdownPreview.tsx:273
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\MarkdownPreview.tsx:282
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\MarkdownPreview.tsx:286
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\MarkdownPreview.tsx:294
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\MarkdownPreview.tsx:305
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\MarkdownPreview.tsx:310
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\MarkdownPreview.tsx:329
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\MarkdownPreview.tsx:335
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\ImagePreview.tsx:19
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\ImagePreview.tsx:21
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\ImagePreview.tsx:23
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\ImagePreview.tsx:25
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\ImagePreview.tsx:27
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\ImagePreview.tsx:29
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\ImagePreview.tsx:31
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\ImagePreview.tsx:33
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\ImagePreview.tsx:91
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\ImagePreview.tsx:244
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\ImagePreview.tsx:284
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\ImagePreview.tsx:290
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\ImagePreview.tsx:297
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\ImagePreview.tsx:310
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\ImagePreview.tsx:319
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\ImagePreview.tsx:328
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\ImagePreview.tsx:336
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\ImagePreview.tsx:344
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\ImagePreview.tsx:350
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\ImagePreview.tsx:354
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\ImagePreview.tsx:362
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\ImagePreview.tsx:373
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\ImagePreview.tsx:391
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\ImagePreview.tsx:412
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\ImagePreview.tsx:426
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\ImagePreview.tsx:430
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\FileViewerContainer.tsx:14
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\FileViewerContainer.tsx:22
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\FileViewerContainer.tsx:32
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\FileViewerContainer.tsx:42
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\FileViewerContainer.tsx:46
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\FileViewerContainer.tsx:52
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\FileViewerContainer.tsx:53
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\FileViewerContainer.tsx:55
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\FileViewerContainer.tsx:58
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\FileViewerContainer.tsx:59
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\FileViewerContainer.tsx:61
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\FileViewerContainer.tsx:63
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\FilePreviewModal.tsx:12
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\FilePreviewModal.tsx:14
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\FilePreviewModal.tsx:16
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\FilePreviewModal.tsx:18
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\FilePreviewModal.tsx:20
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\FilePreviewModal.tsx:22
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\FilePreviewModal.tsx:24
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\FilePreviewModal.tsx:27
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\FilePreviewModal.tsx:29
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\FilePreviewModal.tsx:31
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\FilePreviewModal.tsx:33
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\FilePreviewModal.tsx:35
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\FilePreviewModal.tsx:60
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\FilePreview.tsx:25
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\FilePreview.tsx:27
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\FilePreview.tsx:29
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\FilePreview.tsx:31
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\FilePreview.tsx:33
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\FilePreview.tsx:35
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\FilePreview.tsx:37
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\FilePreview.tsx:39
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\FilePreview.tsx:41
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\FilePreview.tsx:45
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\FilePreview.tsx:49
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\FilePreview.tsx:55
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\FilePreview.tsx:60
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\FilePreview.tsx:65
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\FilePreview.tsx:67
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\FilePreview.tsx:147
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\FilePreview.tsx:148
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\FilePreview.tsx:157
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\FilePreview.tsx:179
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\FilePreview.tsx:180
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\FilePreview.tsx:190
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\FilePreview.tsx:199
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\FilePreview.tsx:200
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\FilePreview.tsx:210
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\FilePreview.tsx:221
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\FilePreview.tsx:233
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\FilePreview.tsx:258
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\FilePreview.tsx:263
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\FilePreview.tsx:270
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\FilePreview.tsx:277
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\EnhancedMarkdownPreview.tsx:35
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\EnhancedMarkdownPreview.tsx:37
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\EnhancedMarkdownPreview.tsx:39
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\EnhancedMarkdownPreview.tsx:41
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\EnhancedMarkdownPreview.tsx:43
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\EnhancedMarkdownPreview.tsx:45
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\EnhancedMarkdownPreview.tsx:47
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\EnhancedMarkdownPreview.tsx:49
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\EnhancedMarkdownPreview.tsx:51
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\EnhancedMarkdownPreview.tsx:124
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\EnhancedMarkdownPreview.tsx:146
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\EnhancedMarkdownPreview.tsx:165
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\EnhancedMarkdownPreview.tsx:167
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\EnhancedMarkdownPreview.tsx:276
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\EnhancedMarkdownPreview.tsx:297
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\EnhancedMarkdownPreview.tsx:329
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\EnhancedMarkdownPreview.tsx:335
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\EnhancedMarkdownPreview.tsx:347
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\EnhancedMarkdownPreview.tsx:352
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\EnhancedMarkdownPreview.tsx:363
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\EnhancedMarkdownPreview.tsx:372
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\EnhancedMarkdownPreview.tsx:382
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\EnhancedMarkdownPreview.tsx:391
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\EnhancedMarkdownPreview.tsx:395
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\EnhancedMarkdownPreview.tsx:403
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\EnhancedMarkdownPreview.tsx:411
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\EnhancedMarkdownPreview.tsx:422
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\EnhancedMarkdownPreview.tsx:431
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\EnhancedMarkdownPreview.tsx:457
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Files\components\EnhancedMarkdownPreview.tsx:459
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Books\index.tsx:13
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Books\index.tsx:16
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Books\index.tsx:19
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Books\index.tsx:25
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Books\index.tsx:28
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Books\index.tsx:31
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Books\index.tsx:37
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Books\index.tsx:40
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Books\index.tsx:43
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Books\index.tsx:91
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Books\index.tsx:92
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Books\index.tsx:97
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Books\index.tsx:112
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Books\index.tsx:139
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Books\index.tsx:142
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Books\index.tsx:145
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Books\index.tsx:153
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Books\index.tsx:157
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\views\Books\index.tsx:158
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\utils\resumeStorage.ts:6
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\utils\resumeStorage.ts:8
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\utils\resumeStorage.ts:10
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\utils\resumeStorage.ts:12
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\utils\resumeStorage.ts:14
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\utils\resumeStorage.ts:16
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\utils\resumeStorage.ts:18
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\utils\resumeStorage.ts:20
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\utils\resumeStorage.ts:22
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\utils\resumeStorage.ts:24
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\utils\resumeStorage.ts:26
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\utils\resumeStorage.ts:28
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\utils\resumeStorage.ts:30
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\utils\resumeStorage.ts:34
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\utils\resumeStorage.ts:36
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\utils\resumeStorage.ts:38
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\utils\resumeStorage.ts:40
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\utils\resumeStorage.ts:48
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\utils\resumeStorage.ts:51
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\utils\resumeStorage.ts:54
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\utils\resumeStorage.ts:55
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\utils\resumeStorage.ts:83
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\utils\resumeStorage.ts:85
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\utils\resumeStorage.ts:112
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\utils\resumeStorage.ts:129
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\utils\resumeStorage.ts:132
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\utils\resumeStorage.ts:186
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\utils\resumeStorage.ts:209
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\utils\resumeStorage.ts:212
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\utils\resumeStorage.ts:222
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\utils\resumeStorage.ts:224
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\utils\resumeStorage.ts:237
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\utils\resumeStorage.ts:253
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\utils\memoComparator.ts:9
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\utils\memoComparator.ts:11
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\utils\memoComparator.ts:13
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\utils\memoComparator.ts:83
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\utils\memoComparator.ts:90
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\utils\memoComparator.ts:94
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\utils\i18n.ts:125
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\utils\i18n.ts:136
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\utils\filePreview.ts:6
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\utils\filePreview.ts:20
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\utils\filePreview.ts:26
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\utils\filePreview.ts:240
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\utils\filePreview.ts:241
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\utils\filePreview.ts:243
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\utils\filePreview.ts:246
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\utils\filePreview.ts:247
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\utils\filePreview.ts:249
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\utils\filePreview.ts:252
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\utils\filePreview.ts:307
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\utils\codeParser.ts:110
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\utils\codeParser.ts:112
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\utils\upload\hash-worker.js:34
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\utils\upload\hash-worker.js:46
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\utils\upload\hash-worker.js:59
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\utils\upload\hash-worker.js:62
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\utils\upload\hash-worker.js:73
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\utils\upload\hash-worker.js:78
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\utils\upload\hash-worker.js:86
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\utils\http\index.ts:84
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\utils\http\index.ts:93
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\utils\http\index.ts:101
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\types\files.ts:12
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\types\files.ts:14
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\types\files.ts:16
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\types\files.ts:18
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\types\files.ts:20
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\types\files.ts:22
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\types\files.ts:24
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\types\files.ts:26
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\types\files.ts:34
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\types\files.ts:36
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\types\files.ts:38
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\types\files.ts:40
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\types\files.ts:42
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\types\files.ts:52
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\types\files.ts:54
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\types\files.ts:56
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\types\files.ts:58
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\types\files.ts:66
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\types\files.ts:68
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\types\files.ts:101
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\types\files.ts:103
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\types\files.ts:105
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\types\files.ts:107
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\types\files.ts:115
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\types\files.ts:117
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\types\files.ts:119
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\types\files.ts:121
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\types\files.ts:123
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\types\files.ts:125
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\types\files.ts:127
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\types\files.ts:129
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\types\files.ts:131
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\types\files.ts:133
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\types\files.ts:135
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\types\files.ts:137
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\types\files.ts:139
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\types\files.ts:141
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\types\files.ts:143
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\types\files.ts:166
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\types\files.ts:168
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\types\files.ts:170
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\types\files.ts:172
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\types\files.ts:180
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\types\files.ts:182
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\types\files.ts:184
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\types\files.ts:186
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\types\files.ts:196
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\types\files.ts:198
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\types\files.ts:200
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\types\files.ts:202
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\types\files.ts:210
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\types\files.ts:212
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\types\files.ts:214
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\types\files.ts:222
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\types\files.ts:230
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\types\files.ts:240
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\types\files.ts:242
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\types\files.ts:244
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\types\files.ts:246
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\types\files.ts:248
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\types\files.ts:250
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\types\files.ts:252
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\types\files.ts:254
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\types\files.ts:256
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\types\files.ts:258
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\types\files.ts:260
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\types\files.ts:262
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\types\files.ts:270
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\types\files.ts:272
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\types\files.ts:274
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\types\files.ts:276
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\types\files.ts:284
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\types\files.ts:286
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\types\files.ts:288
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\types\files.ts:292
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\types\files.ts:294
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\types\files.ts:296
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\types\files.ts:298
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\types\files.ts:300
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\types\files.ts:302
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\types\files.ts:304
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\types\files.ts:307
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\types\files.ts:309
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\types\files.ts:311
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\types\files.ts:313
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\types\files.ts:322
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\types\files.ts:324
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\types\files.ts:326
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\types\files.ts:328
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\types\files.ts:338
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\types\files.ts:340
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\types\files.ts:342
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\types\files.ts:344
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\types\files.ts:346
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\types\files.ts:348
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\types\files.ts:350
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\types\files.ts:352
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\types\files.ts:360
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\types\files.ts:362
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\types\files.ts:364
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\types\files.ts:366
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\types\files.ts:368
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\types\files.ts:370
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\types\files.ts:372
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\types\files.ts:374
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\store\fileStore.ts:41
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\store\fileStore.ts:43
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\store\fileStore.ts:45
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\store\fileStore.ts:55
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\store\fileStore.ts:61
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\store\fileStore.ts:72
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\store\fileStore.ts:74
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\store\fileStore.ts:80
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\store\fileStore.ts:84
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\store\fileStore.ts:86
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\store\fileStore.ts:88
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\store\fileStore.ts:90
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\store\fileStore.ts:92
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\store\fileStore.ts:94
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\store\fileStore.ts:100
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\store\fileStore.ts:106
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\store\fileStore.ts:108
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\store\fileStore.ts:168
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\store\fileStore.ts:196
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\store\fileStore.ts:199
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\store\fileStore.ts:246
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\store\fileStore.ts:254
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\store\fileStore.ts:315
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\routes\index.tsx:135
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\routes\index.tsx:149
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\i18n\index.ts:109
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\i18n\index.ts:115
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\hooks\useUpload.ts:8
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\hooks\useUpload.ts:9
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\hooks\useUpload.ts:13
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\hooks\useUpload.ts:15
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\hooks\useUpload.ts:17
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\hooks\useUpload.ts:19
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\hooks\useUpload.ts:21
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\hooks\useUpload.ts:23
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\hooks\useUpload.ts:25
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\hooks\useUpload.ts:27
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\hooks\useUpload.ts:29
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\hooks\useUpload.ts:33
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\hooks\useUpload.ts:35
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\hooks\useUpload.ts:37
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\hooks\useUpload.ts:38
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\hooks\useUpload.ts:39
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\hooks\useUpload.ts:40
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\hooks\useUpload.ts:42
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\hooks\useUpload.ts:43
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\hooks\useUpload.ts:44
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\hooks\useUpload.ts:47
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\hooks\useUpload.ts:48
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\hooks\useUpload.ts:52
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\hooks\useUpload.ts:54
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\hooks\useUpload.ts:56
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\hooks\useUpload.ts:57
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\hooks\useUpload.ts:62
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\hooks\useUpload.ts:64
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\hooks\useUpload.ts:66
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\hooks\useUpload.ts:67
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\hooks\useUpload.ts:68
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\hooks\useUpload.ts:70
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\hooks\useUpload.ts:71
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\hooks\useUpload.ts:72
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\hooks\useUpload.ts:79
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\hooks\useUpload.ts:81
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\hooks\useUpload.ts:82
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\hooks\useUpload.ts:237
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\hooks\useUpload.ts:247
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\hooks\useUpload.ts:256
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\hooks\useUpload.ts:268
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\hooks\useUpload.ts:387
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\hooks\useUpload.ts:407
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\hooks\useUpload.ts:415
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\hooks\useUpload.ts:461
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\hooks\useUpload.ts:497
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\hooks\useUpload.ts:517
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\hooks\useUpload.ts:524
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\hooks\useUpload.ts:530
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\hooks\useUpload.ts:549
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\hooks\useUpload.ts:556
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\hooks\useUpload.ts:563
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\hooks\useUpload.ts:585
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\hooks\useUpload.ts:596
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\hooks\useUpload.ts:599
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\hooks\useUpload.ts:607
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\hooks\useUpload.ts:610
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\hooks\useUpload.ts:616
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\hooks\useUpload.ts:621
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\hooks\useUpload.ts:718
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\hooks\useUpload.ts:728
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\hooks\useUpload.ts:781
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\hooks\useUpload.ts:838
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\hooks\useUpload.ts:896
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\hooks\useUpload.ts:902
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\hooks\useUpload.ts:960
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\hooks\useUpload.ts:973
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\hooks\useUpload.ts:1028
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\hooks\useUpload.ts:1059
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\hooks\useUpload.ts:1095
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\hooks\useUpload.ts:1116
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\hooks\useUpload.ts:1146
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\hooks\useUpload.ts:1168
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\hooks\useFilePreview.ts:18
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\hooks\useFilePreview.ts:20
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\hooks\useFilePreview.ts:22
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\hooks\useFilePreview.ts:24
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\hooks\useFilePreview.ts:29
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\hooks\useFilePreview.ts:31
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\hooks\useFilePreview.ts:33
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\hooks\useFilePreview.ts:38
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\hooks\useFilePreview.ts:40
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\hooks\useFilePreview.ts:42
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\hooks\useFilePreview.ts:44
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\hooks\useFilePreview.ts:46
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\hooks\useFilePreview.ts:48
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\hooks\useFilePreview.ts:257
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\config\upload.ts:6
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\config\upload.ts:13
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\config\upload.ts:15
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\config\upload.ts:17
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\config\upload.ts:19
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\config\upload.ts:21
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\config\upload.ts:23
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\config\upload.ts:27
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\config\upload.ts:29
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\config\upload.ts:31
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\config\upload.ts:33
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\config\upload.ts:37
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\config\upload.ts:39
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\config\upload.ts:41
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\config\upload.ts:45
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\config\upload.ts:94
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\config\upload.ts:144
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\config\upload.ts:197
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\config\upload.ts:205
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\config\technologyTypes.ts:7
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\config\technologyTypes.ts:9
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\config\technologyTypes.ts:11
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\config\technologyTypes.ts:19
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\config\technologyTypes.ts:21
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\config\technologyTypes.ts:29
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\config\technologyTypes.ts:31
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\config\technologyTypes.ts:33
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\config\technologyTypes.ts:35
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\config\technologyTypes.ts:37
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\config\technologyTypes.ts:45
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\config\technologyTypes.ts:47
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\config\technologyTypes.ts:49
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\config\technologyTypes.ts:57
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\config\technologyTypes.ts:59
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\config\technologyTypes.ts:74
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\config\technologyTypes.ts:76
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\config\technologyTypes.ts:78
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\components\LanguageSwitcher.tsx:21
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\components\LanguageSwitcher.tsx:23
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\components\LanguageSwitcher.tsx:25
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\components\KTable.tsx:9
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\components\KTable.tsx:11
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\components\KTable.tsx:12
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\components\KTable.tsx:13
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\components\KTable.tsx:14
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\components\KTable.tsx:39
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\components\KTable.tsx:40
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\components\KTable.tsx:59
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\components\KTable.tsx:69
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\components\KTable.tsx:96
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\components\KTable.tsx:121
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\components\KTable.tsx:126
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\components\KTable.tsx:184
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\components\HeaderActions.tsx:24
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\components\HeaderActions.tsx:26
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\components\HeaderActions.tsx:28
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\components\HeaderActions.tsx:30
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\components\HeaderActions.tsx:32
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\components\HeaderActions.tsx:34
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\components\HeaderActions.tsx:58
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\components\HeaderActions.tsx:63
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\components\HeaderActions.tsx:102
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\components\HeaderActions.tsx:112
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\components\HeaderActions.tsx:122
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\components\ExternalLinks.tsx:19
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\components\ExternalLinks.tsx:21
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\components\ExternalLinks.tsx:23
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\components\ExternalLinks.tsx:25
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\components\ExternalLinks.tsx:27
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\components\ExternalLinks.tsx:29
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\components\ExternalLinks.tsx:37
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\components\ExternalLinks.tsx:55
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\components\ExternalLinks.tsx:57
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\components\ExternalLinks.tsx:59
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\components\ExternalLinks.tsx:61
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\components\ExternalLinks.tsx:63
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\components\TechBreadcrumb\index.tsx:20
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\components\TechBreadcrumb\index.tsx:22
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\components\TechBreadcrumb\index.tsx:24
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\components\Files\Toolbar.tsx:42
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\components\Files\Toolbar.tsx:46
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\components\Files\Toolbar.tsx:49
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\components\Files\Toolbar.tsx:50
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\components\Files\FileUpload.tsx:114
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\components\Files\FileUpload.tsx:120
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\components\Files\FileUpload.tsx:130
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\components\Files\FileUpload.tsx:151
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\components\Files\FileUpload.tsx:178
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\components\Files\FileUpload.tsx:190
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\components\Files\FileUpload.tsx:202
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\components\Files\FileUpload.tsx:214
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\components\Files\FileUpload.tsx:226
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\components\Files\FileUpload.tsx:352
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\components\Files\FileUpload.tsx:391
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\components\Files\FileUpload.tsx:400
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\components\Files\FileUpload.tsx:407
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\components\Files\FileUpload.tsx:412
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\components\Files\FileUpload.tsx:430
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\components\Files\FileUpload.tsx:476
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\components\Files\FileSearch.tsx:41
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\components\Files\FileSearch.tsx:79
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\components\Files\FileSearch.tsx:135
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\components\Files\FileSearch.tsx:137
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\components\Files\FileSearch.tsx:145
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\components\Files\FileSearch.tsx:147
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\components\Files\FileSearch.tsx:163
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\components\Files\FileSearch.tsx:166
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\components\Files\FileList.tsx:23
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\components\Files\FileList.tsx:24
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\components\Files\FileList.tsx:48
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\components\Files\FileList.tsx:55
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\components\Files\FileList.tsx:62
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\components\Files\FileList.tsx:69
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\components\Files\FileList.tsx:76
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\components\Files\FileList.tsx:83
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\components\Files\FileList.tsx:88
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\components\Files\FileList.tsx:100
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\components\Files\ErrorBoundary.tsx:8
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\components\Files\ErrorBoundary.tsx:10
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\components\Files\ErrorBoundary.tsx:12
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\components\Files\ErrorBoundary.tsx:14
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\components\Files\ErrorBoundary.tsx:22
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\components\Files\ErrorBoundary.tsx:24
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\components\Files\ErrorBoundary.tsx:26
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\components\Files\ErrorBoundary.tsx:106
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\components\Files\ErrorBoundary.tsx:107
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\components\Files\ErrorBoundary.tsx:110
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\components\Files\ErrorBoundary.tsx:113
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\components\Files\ErrorBoundary.tsx:121
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\components\Files\ErrorBoundary.tsx:124
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\components\Files\ErrorBoundary.tsx:131
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\components\Files\CustomProgress.tsx:64
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\components\CodeHighlight\index.tsx:54
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\components\CodeHighlight\index.tsx:82
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\build\proxy.ts:4
+- 发现未国际化的中文文本
+  - 文件: ..\frontEnd\src\build\proxy.ts:6
+
+### missing_key
+
+- 使用了不存在的翻译键: ./Home/index.tsx
+- 使用了不存在的翻译键: ./systemPages/NotFound.tsx
+- 使用了不存在的翻译键: common.loading
+- 使用了不存在的翻译键: common.tech_not_found
+- 使用了不存在的翻译键: common.tech_not_found_desc
+- 使用了不存在的翻译键: common.back_to_tech_stack
+- 使用了不存在的翻译键: common.tech_details
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\index_react\u751F\u6001\u7CFB\u7EDF\u4E0E\u6700\u4F73\u5B9E\u8DF5
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\index_typescript\u7C7B\u578B\u7CFB\u7EDF\u4E0E\u8FDB\u9636
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\index_node_js\u540E\u7AEF\u5F00\u53D1\u6280\u672F
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\index_vue_js\u6846\u67B6\u6DF1\u5EA6\u89E3\u6790
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\index_docker\u5BB9\u5668\u5316\u6280\u672F
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\index_\u5F00\u53D1\u5DE5\u5177
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\index_\u5F00\u53D1\u5DE5\u5177\u4E0E\u6548\u7387\u63D0\u5347
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\index_\u7248\u672C\u63A7\u5236\u4E0E\u56E2\u961F\u534F\u4F5C
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\index_jest\u6D4B\u8BD5\u6846\u67B6\u4E0E\u6700\u4F73\u5B9E\u8DF5
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\index_k\u7237\u7684\u535A\u5BA2\u7CFB\u7EDF
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\index_\u57FA\u4E8Ereact_node_js\u7684\u5168\u6808\u535A\u5BA2\u7CFB\u7EDF
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\index_\u8FDB\u884C\u4E2D
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\index_\u6587\u4EF6\u7BA1\u7406\u7CFB\u7EDF
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\index_\u652F\u6301\u591A\u79CD\u6587\u4EF6\u683C\u5F0F\u9884\u89C8\u548C\u7BA1\u7406\u7684web\u5E94\u7528_\u5305\u542B\u4E0A\u4F20_\u4E0B\u8F7D
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\index_\u5DF2\u5B8C\u6210
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\index_\u5B9E\u65F6\u804A\u5929\u5E94\u7528
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\index_\u57FA\u4E8Ewebsocket\u7684\u5B9E\u65F6\u804A\u5929\u5E94\u7528_\u652F\u6301\u7FA4\u804A_\u79C1\u804A
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\index_\u8BA1\u5212\u4E2D
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\index_2024\u5E74
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\index_\u6DF1\u5165\u5B66\u4E60\u5FAE\u524D\u7AEF\u67B6\u6784
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\index_\u7814\u7A76qiankun_single_spa\u7B49\u5FAE\u524D\u7AEF\u89E3\u51B3\u65B9\u6848
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\index_2023\u5E74
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\index_\u638C\u63E1\u4E91\u539F\u751F\u6280\u672F
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\index_\u5B66\u4E60docker_kubernetes_ci
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\index_2022\u5E74
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\index_\u5168\u6808\u5F00\u53D1\u80FD\u529B\u63D0\u5347
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\index_\u6DF1\u5165\u5B66\u4E60node_js_\u6570\u636E\u5E93\u8BBE\u8BA1
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\index_2021\u5E74
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\index_\u524D\u7AEF\u6846\u67B6\u7CBE\u901A
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\index_\u6DF1\u5165\u5B66\u4E60react_vue_js\u751F\u6001\u7CFB\u7EDF
+- 使用了不存在的翻译键: react.description
+- 使用了不存在的翻译键: typescript.description
+- 使用了不存在的翻译键: nodejs.description
+- 使用了不存在的翻译键: vue.description
+- 使用了不存在的翻译键: docker.description
+- 使用了不存在的翻译键: categories.tools
+- 使用了不存在的翻译键: git.description
+- 使用了不存在的翻译键: categories.frontend
+- 使用了不存在的翻译键: common.tech_skills
+- 使用了不存在的翻译键: common.proficiency
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\index_\u9879\u76EE\u5C55\u793A
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\index_\u8FDB\u5EA6
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\index_\u6280\u672F\u6210\u957F\u65F6\u95F4\u7EBF
+- 使用了不存在的翻译键: common.learning_journey
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\vuedetail_vue_3\u7EC4\u5408\u5F0Fapi\u7684\u6DF1\u5EA6\u89E3\u6790\u4E0E\u6700\u4F73\u5B9E\u8DF5
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\vuedetail_\u4E2D\u7B49
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\vuedetail_\u54CD\u5E94\u5F0F\u539F\u7406
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\vuedetail_vue\u54CD\u5E94\u5F0F\u7CFB\u7EDF\u7684\u5B9E\u73B0\u539F\u7406\u4E0E\u6027\u80FD\u4F18\u5316
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\vuedetail_\u9AD8\u7EA7
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\vuedetail_\u6838\u5FC3\u539F\u7406
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\vuedetail_vue\u8DEF\u7531\u7CFB\u7EDF\u7684\u914D\u7F6E\u4E0E\u9AD8\u7EA7\u7528\u6CD5
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\vuedetail_\u751F\u6001\u7CFB\u7EDF
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\vuedetail_vue\u72B6\u6001\u7BA1\u7406\u89E3\u51B3\u65B9\u6848\u5BF9\u6BD4\u4E0E\u5B9E\u8DF5
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\vuedetail_\u72B6\u6001\u7BA1\u7406
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\vuedetail_vue\u5E94\u7528\u6027\u80FD\u4F18\u5316\u7B56\u7565\u4E0E\u5B9E\u8DF5
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\vuedetail_\u6027\u80FD\u4F18\u5316
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\vuedetail_vue\u7EC4\u4EF6\u6D4B\u8BD5\u6700\u4F73\u5B9E\u8DF5
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\vuedetail_\u6D4B\u8BD5
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\vuedetail_\u670D\u52A1\u7AEF\u6E32\u67D3\u4E0Enuxt_js\u6846\u67B6
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\vuedetail_\u670D\u52A1\u7AEF\u6E32\u67D3
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\vuedetail_vue_2\u5230vue_3\u7684\u8FC1\u79FB\u6307\u5357
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\vuedetail_\u8FC1\u79FB\u5347\u7EA7
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\vuedetail_\u7B80\u5355
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\vuedetail_vue_js_\u6280\u672F\u6DF1\u5EA6\u89E3\u6790
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\vuedetail_\u6DF1\u5165\u7406\u89E3vue_js\u7684\u6838\u5FC3\u6982\u5FF5_\u751F\u6001\u7CFB\u7EDF\u548C\u6700\u4F73\u5B9E\u8DF5
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\vuedetail_\u524D\u7AEF\u6846\u67B6
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\vuedetail_\u6E10\u8FDB\u5F0F
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\vuedetail_\u54CD\u5E94\u5F0F
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\vuedetail_\u7EC4\u5408\u5F0Fapi
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\vuedetail_\u70B9\u51FB\u67E5\u770B\u8BE6\u89E3
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\typescriptdetail_\u57FA\u7840\u7C7B\u578B\u7CFB\u7EDF
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\typescriptdetail_typescript\u57FA\u7840\u7C7B\u578B\u4E0E\u7C7B\u578B\u6CE8\u89E3\u8BE6\u89E3
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\typescriptdetail_\u7B80\u5355
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\typescriptdetail_\u57FA\u7840\u8BED\u6CD5
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\typescriptdetail_\u9AD8\u7EA7\u7C7B\u578B
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\typescriptdetail_\u8054\u5408\u7C7B\u578B_\u4EA4\u53C9\u7C7B\u578B_\u6761\u4EF6\u7C7B\u578B\u7B49\u9AD8\u7EA7\u7279\u6027
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\typescriptdetail_\u9AD8\u7EA7
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\typescriptdetail_\u9AD8\u7EA7\u7279\u6027
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\typescriptdetail_\u6CDB\u578B\u7F16\u7A0B
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\typescriptdetail_\u6CDB\u578B\u7684\u4F7F\u7528\u6280\u5DE7\u4E0E\u5B9E\u9645\u5E94\u7528\u573A\u666F
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\typescriptdetail_\u4E2D\u7B49
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\typescriptdetail_\u6CDB\u578B
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\typescriptdetail_\u88C5\u9970\u5668
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\typescriptdetail_\u88C5\u9970\u5668\u6A21\u5F0F\u5728typescript\u4E2D\u7684\u5E94\u7528
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\typescriptdetail_\u6A21\u5757\u7CFB\u7EDF
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\typescriptdetail_typescript\u6A21\u5757\u5316\u5F00\u53D1\u4E0E\u547D\u540D\u7A7A\u95F4
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\typescriptdetail_\u6A21\u5757\u5316
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\typescriptdetail_\u5DE5\u5177\u7C7B\u578B
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\typescriptdetail_\u5185\u7F6E\u5DE5\u5177\u7C7B\u578B\u4E0E\u81EA\u5B9A\u4E49\u5DE5\u5177\u7C7B\u578B
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\typescriptdetail_typescript\u5728react\u9879\u76EE\u4E2D\u7684\u6700\u4F73\u5B9E\u8DF5
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\typescriptdetail_react\u96C6\u6210
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\typescriptdetail_\u914D\u7F6E\u4E0E\u5DE5\u5177\u94FE
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\typescriptdetail_tsconfig_json\u914D\u7F6E\u4E0E\u5F00\u53D1\u5DE5\u5177\u96C6\u6210
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\typescriptdetail_\u914D\u7F6E
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\typescriptdetail_typescript_\u6280\u672F\u6DF1\u5EA6\u89E3\u6790
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\typescriptdetail_\u638C\u63E1typescript\u7C7B\u578B\u7CFB\u7EDF_\u7F16\u5199\u66F4\u5B89\u5168_\u66F4\u53EF\u7EF4\u62A4\u7684javascript\u4EE3\u7801
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\typescriptdetail_\u7C7B\u578B\u5B89\u5168
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\typescriptdetail_\u9759\u6001\u68C0\u67E5
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\typescriptdetail_javascript\u8D85\u96C6
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\typescriptdetail_\u5F00\u53D1\u4F53\u9A8C
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\typescriptdetail_\u70B9\u51FB\u67E5\u770B\u8BE6\u89E3
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\toolsdetail_vs_code\u7F16\u8F91\u5668\u914D\u7F6E_\u63D2\u4EF6\u4E0E\u9AD8\u6548\u5F00\u53D1\u6280\u5DE7
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\toolsdetail_\u7B80\u5355
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\toolsdetail_\u4EE3\u7801\u7F16\u8F91\u5668
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\toolsdetail_\u6A21\u5757\u6253\u5305\u5DE5\u5177\u914D\u7F6E\u4E0E\u6027\u80FD\u4F18\u5316
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\toolsdetail_\u4E2D\u7B49
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\toolsdetail_\u6784\u5EFA\u5DE5\u5177
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\toolsdetail_\u4E0B\u4E00\u4EE3\u524D\u7AEF\u6784\u5EFA\u5DE5\u5177\u4E0E\u5F00\u53D1\u670D\u52A1\u5668
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\toolsdetail_\u4EE3\u7801\u8D28\u91CF\u68C0\u67E5\u4E0E\u683C\u5F0F\u5316\u5DE5\u5177\u914D\u7F6E
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\toolsdetail_\u4EE3\u7801\u8D28\u91CF
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\toolsdetail_\u6D4F\u89C8\u5668\u5F00\u53D1\u8005\u5DE5\u5177\u8C03\u8BD5\u6280\u5DE7
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\toolsdetail_\u8C03\u8BD5\u5DE5\u5177
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\toolsdetail_api\u6D4B\u8BD5\u4E0E\u63A5\u53E3\u6587\u6863\u7BA1\u7406
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\toolsdetail_api\u5DE5\u5177
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\toolsdetail_\u7EC8\u7AEF\u5DE5\u5177
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\toolsdetail_shell_zsh_\u7EC8\u7AEF\u6548\u7387\u63D0\u5347\u6280\u5DE7
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\toolsdetail_\u547D\u4EE4\u884C
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\toolsdetail_\u6548\u7387\u5DE5\u5177
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\toolsdetail_\u5F00\u53D1\u6548\u7387\u63D0\u5347\u7684\u5DE5\u5177\u4E0E\u65B9\u6CD5\u8BBA
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\toolsdetail_\u6548\u7387\u63D0\u5347
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\toolsdetail_\u9AD8\u7EA7
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\toolsdetail_\u5F00\u53D1\u5DE5\u5177_\u6280\u672F\u6DF1\u5EA6\u89E3\u6790
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\toolsdetail_\u638C\u63E1\u73B0\u4EE3\u5F00\u53D1\u5DE5\u5177\u94FE_\u63D0\u5347\u5F00\u53D1\u6548\u7387\u4E0E\u4EE3\u7801\u8D28\u91CF
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\toolsdetail_\u5DE5\u5177\u94FE
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\toolsdetail_\u81EA\u52A8\u5316
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\toolsdetail_\u6700\u4F73\u5B9E\u8DF5
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\toolsdetail_\u70B9\u51FB\u67E5\u770B\u8BE6\u89E3
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\reactdetail_effect_hook\u7684\u4F7F\u7528\u6280\u5DE7\u4E0E\u5E38\u89C1\u9677\u9631
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\reactdetail_\u4E2D\u7B49
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\reactdetail_\u6027\u80FD\u4F18\u5316\u5229\u5668_\u907F\u514D\u4E0D\u5FC5\u8981\u7684\u91CD\u65B0\u6E32\u67D3
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\reactdetail_\u7F13\u5B58\u8BA1\u7B97\u7ED3\u679C_\u4F18\u5316\u7EC4\u4EF6\u6027\u80FD
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\reactdetail_\u8DE8\u7EC4\u4EF6\u72B6\u6001\u5171\u4EAB\u7684\u6700\u4F73\u5B9E\u8DF5
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\reactdetail_\u7B80\u5355
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\reactdetail_\u81EA\u5B9A\u4E49hook\u7684\u8BBE\u8BA1\u6A21\u5F0F\u4E0E\u5B9E\u73B0
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\reactdetail_\u9AD8\u7EA7
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\reactdetail_react\u6027\u80FD\u4F18\u5316\u7B56\u7565\u4E0E\u5B9E\u8DF5
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\reactdetail_\u6027\u80FD\u4F18\u5316
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\reactdetail_\u9519\u8BEF\u8FB9\u754C\u5904\u7406\u4E0E\u5F02\u5E38\u6355\u83B7
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\reactdetail_\u9519\u8BEF\u5904\u7406
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\reactdetail_react\u7EC4\u4EF6\u6D4B\u8BD5\u6700\u4F73\u5B9E\u8DF5
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\reactdetail_\u6D4B\u8BD5
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\reactdetail_react_\u6280\u672F\u6DF1\u5EA6\u89E3\u6790
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\reactdetail_\u6DF1\u5165\u7406\u89E3react\u7684\u6838\u5FC3\u6982\u5FF5_\u6700\u4F73\u5B9E\u8DF5\u548C\u5E38\u89C1\u96BE\u70B9
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\reactdetail_\u524D\u7AEF\u6846\u67B6
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\reactdetail_\u7EC4\u4EF6\u5316
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\reactdetail_\u865A\u62DFdom
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\reactdetail_\u70B9\u51FB\u67E5\u770B\u8BE6\u89E3
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\nodejsdetail_\u4E8B\u4EF6\u5FAA\u73AF\u673A\u5236
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\nodejsdetail_node_js\u4E8B\u4EF6\u5FAA\u73AF\u539F\u7406\u4E0E\u5F02\u6B65\u7F16\u7A0B\u6A21\u5F0F
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\nodejsdetail_\u9AD8\u7EA7
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\nodejsdetail_\u6838\u5FC3\u539F\u7406
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\nodejsdetail_\u6A21\u5757\u7CFB\u7EDF
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\nodejsdetail_commonjs_es_modules\u4E0E\u5305\u7BA1\u7406
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\nodejsdetail_\u4E2D\u7B49
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\nodejsdetail_\u6A21\u5757\u5316
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\nodejsdetail_express\u6846\u67B6
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\nodejsdetail_express_js_web\u5E94\u7528\u5F00\u53D1\u4E0E\u4E2D\u95F4\u4EF6
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\nodejsdetail_web\u6846\u67B6
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\nodejsdetail_\u6570\u636E\u5E93\u96C6\u6210
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\nodejsdetail_mongodb_mysql\u7B49\u6570\u636E\u5E93\u64CD\u4F5C\u4E0Eorm
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\nodejsdetail_\u6570\u636E\u5E93
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\nodejsdetail_\u8EAB\u4EFD\u8BA4\u8BC1
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\nodejsdetail_jwt_oauth_session\u7B49\u8BA4\u8BC1\u65B9\u6848
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\nodejsdetail_\u5B89\u5168
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\nodejsdetail_\u6D4B\u8BD5\u7B56\u7565
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\nodejsdetail_jest_mocha\u7B49\u6D4B\u8BD5\u6846\u67B6\u4E0E\u5B9E\u8DF5
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\nodejsdetail_\u6D4B\u8BD5
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\nodejsdetail_\u6027\u80FD\u4F18\u5316
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\nodejsdetail_\u5185\u5B58\u7BA1\u7406_\u96C6\u7FA4\u90E8\u7F72\u4E0E\u6027\u80FD\u76D1\u63A7
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\nodejsdetail_\u5FAE\u670D\u52A1\u67B6\u6784
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\nodejsdetail_\u5FAE\u670D\u52A1\u8BBE\u8BA1\u6A21\u5F0F\u4E0E\u670D\u52A1\u95F4\u901A\u4FE1
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\nodejsdetail_\u67B6\u6784\u8BBE\u8BA1
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\nodejsdetail_\u7B80\u5355
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\nodejsdetail_node_js_\u6280\u672F\u6DF1\u5EA6\u89E3\u6790
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\nodejsdetail_\u638C\u63E1node_js\u540E\u7AEF\u5F00\u53D1\u6280\u672F_\u6784\u5EFA\u9AD8\u6027\u80FD\u7684\u670D\u52A1\u7AEF\u5E94\u7528
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\nodejsdetail_javascript\u8FD0\u884C\u65F6
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\nodejsdetail_\u4E8B\u4EF6\u9A71\u52A8
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\nodejsdetail_\u975E\u963B\u585Ei_o
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\nodejsdetail_\u9AD8\u5E76\u53D1
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\nodejsdetail_\u70B9\u51FB\u67E5\u770B\u8BE6\u89E3
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\jestdetail_jest_\u57FA\u7840
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\jestdetail_jest_\u5B89\u88C5\u914D\u7F6E_\u57FA\u672C\u6982\u5FF5\u4E0E\u6D4B\u8BD5\u73AF\u5883\u642D\u5EFA
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\jestdetail_\u7B80\u5355
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\jestdetail_\u57FA\u7840\u914D\u7F6E
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\jestdetail_\u5355\u5143\u6D4B\u8BD5
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\jestdetail_\u7F16\u5199\u5355\u5143\u6D4B\u8BD5_\u65AD\u8A00\u65B9\u6CD5\u4E0E\u6D4B\u8BD5\u7528\u4F8B\u8BBE\u8BA1
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\jestdetail_\u6D4B\u8BD5\u7F16\u5199
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\jestdetail_mock_\u4E0E_spy
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\jestdetail_jest_mock_\u529F\u80FD
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\jestdetail_\u4E2D\u7B49
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\jestdetail_\u9AD8\u7EA7\u529F\u80FD
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\jestdetail_\u5F02\u6B65\u6D4B\u8BD5
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\jestdetail_promise_async_await
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\jestdetail_\u5F02\u6B65\u5904\u7406
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\jestdetail_\u6D4B\u8BD5\u8986\u76D6\u7387
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\jestdetail_\u4EE3\u7801\u8986\u76D6\u7387\u5206\u6790_\u62A5\u544A\u751F\u6210\u4E0E\u8D28\u91CF\u8BC4\u4F30
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\jestdetail_\u8D28\u91CF\u4FDD\u8BC1
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\jestdetail_\u6700\u4F73\u5B9E\u8DF5
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\jestdetail_jest_\u6D4B\u8BD5\u6700\u4F73\u5B9E\u8DF5_\u6027\u80FD\u4F18\u5316\u4E0E\u56E2\u961F\u534F\u4F5C
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\jestdetail_\u9AD8\u7EA7
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\jestdetail_\u5B9E\u8DF5\u6307\u5357
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\jestdetail_jest_\u6D4B\u8BD5\u6846\u67B6\u6DF1\u5EA6\u89E3\u6790
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\jestdetail_\u638C\u63E1jest\u6D4B\u8BD5\u6846\u67B6\u7684\u6838\u5FC3\u6982\u5FF5_\u6700\u4F73\u5B9E\u8DF5\u548C\u9AD8\u7EA7\u7279\u6027
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\jestdetail_\u6D4B\u8BD5\u6846\u67B6
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\jestdetail_\u8986\u76D6\u7387
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\jestdetail_\u70B9\u51FB\u67E5\u770B\u8BE6\u89E3
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\gitdetail_git\u57FA\u7840
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\gitdetail_git\u7248\u672C\u63A7\u5236\u57FA\u672C\u6982\u5FF5\u4E0E\u5E38\u7528\u547D\u4EE4
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\gitdetail_\u7B80\u5355
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\gitdetail_\u57FA\u7840\u64CD\u4F5C
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\gitdetail_\u5206\u652F\u7BA1\u7406
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\gitdetail_git\u5206\u652F\u7B56\u7565\u4E0E\u5408\u5E76\u51B2\u7A81\u89E3\u51B3
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\gitdetail_\u4E2D\u7B49
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\gitdetail_github\u5DE5\u4F5C\u6D41
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\gitdetail_pull_request_issue
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\gitdetail_\u534F\u4F5C\u6D41\u7A0B
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\gitdetail_ci_cd\u81EA\u52A8\u5316\u5DE5\u4F5C\u6D41\u914D\u7F6E\u4E0E\u5B9E\u8DF5
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\gitdetail_\u9AD8\u7EA7
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\gitdetail_git\u9AD8\u7EA7\u6280\u5DE7
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\gitdetail_rebase_cherry_pick
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\gitdetail_\u9AD8\u7EA7\u64CD\u4F5C
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\gitdetail_git\u94A9\u5B50\u811A\u672C\u4E0E\u4EE3\u7801\u8D28\u91CF\u81EA\u52A8\u5316
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\gitdetail_\u81EA\u52A8\u5316
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\gitdetail_\u56E2\u961F\u534F\u4F5C
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\gitdetail_\u591A\u4EBA\u534F\u4F5C\u5F00\u53D1\u7684\u6700\u4F73\u5B9E\u8DF5\u4E0E\u89C4\u8303
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\gitdetail_\u5B89\u5168\u6700\u4F73\u5B9E\u8DF5
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\gitdetail_git\u5B89\u5168\u914D\u7F6E\u4E0E\u654F\u611F\u4FE1\u606F\u4FDD\u62A4
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\gitdetail_\u5B89\u5168
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\gitdetail_git_github_\u6280\u672F\u6DF1\u5EA6\u89E3\u6790
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\gitdetail_\u638C\u63E1\u7248\u672C\u63A7\u5236\u4E0E\u56E2\u961F\u534F\u4F5C_\u6784\u5EFA\u9AD8\u6548\u7684\u5F00\u53D1\u5DE5\u4F5C\u6D41
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\gitdetail_\u7248\u672C\u63A7\u5236
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\gitdetail_\u5F00\u6E90\u793E\u533A
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\gitdetail_\u70B9\u51FB\u67E5\u770B\u8BE6\u89E3
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\dockerdetail_docker\u57FA\u7840
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\dockerdetail_\u5BB9\u5668\u5316\u6982\u5FF5_\u955C\u50CF\u4E0E\u5BB9\u5668\u7684\u57FA\u672C\u64CD\u4F5C
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\dockerdetail_\u7B80\u5355
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\dockerdetail_\u57FA\u7840\u6982\u5FF5
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\dockerdetail_\u955C\u50CF\u6784\u5EFA\u6587\u4EF6\u7F16\u5199\u4E0E\u6700\u4F73\u5B9E\u8DF5
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\dockerdetail_\u4E2D\u7B49
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\dockerdetail_\u955C\u50CF\u6784\u5EFA
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\dockerdetail_\u591A\u5BB9\u5668\u5E94\u7528\u7F16\u6392\u4E0E\u670D\u52A1\u7BA1\u7406
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\dockerdetail_\u5BB9\u5668\u7F16\u6392
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\dockerdetail_\u7F51\u7EDC\u914D\u7F6E
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\dockerdetail_docker\u7F51\u7EDC\u6A21\u5F0F\u4E0E\u5BB9\u5668\u95F4\u901A\u4FE1
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\dockerdetail_\u7F51\u7EDC
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\dockerdetail_\u6570\u636E\u7BA1\u7406
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\dockerdetail_\u6570\u636E\u5377_\u7ED1\u5B9A\u6302\u8F7D\u4E0E\u6570\u636E\u6301\u4E45\u5316
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\dockerdetail_\u6570\u636E\u5B58\u50A8
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\dockerdetail_\u5B89\u5168\u6700\u4F73\u5B9E\u8DF5
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\dockerdetail_\u5BB9\u5668\u5B89\u5168_\u955C\u50CF\u626B\u63CF\u4E0E\u6743\u9650\u7BA1\u7406
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\dockerdetail_\u9AD8\u7EA7
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\dockerdetail_\u5B89\u5168
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\dockerdetail_\u6027\u80FD\u4F18\u5316
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\dockerdetail_\u955C\u50CF\u4F18\u5316_\u8D44\u6E90\u9650\u5236\u4E0E\u76D1\u63A7
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\dockerdetail_kubernetes\u96C6\u6210
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\dockerdetail_k8s\u5BB9\u5668\u7F16\u6392\u4E0E\u5FAE\u670D\u52A1\u90E8\u7F72
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\dockerdetail_docker_\u6280\u672F\u6DF1\u5EA6\u89E3\u6790
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\dockerdetail_\u638C\u63E1docker\u5BB9\u5668\u5316\u6280\u672F_\u5B9E\u73B0\u5E94\u7528\u7684\u5FEB\u901F\u90E8\u7F72\u4E0E\u6269\u5C55
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\dockerdetail_\u5BB9\u5668\u5316
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\dockerdetail_\u8F7B\u91CF\u7EA7
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\dockerdetail_\u53EF\u79FB\u690D
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\dockerdetail_\u5FAE\u670D\u52A1
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\technology\\pages\\dockerdetail_\u70B9\u51FB\u67E5\u770B\u8BE6\u89E3
+- 使用了不存在的翻译键: INCREMENT
+- 使用了不存在的翻译键: #app
+- 使用了不存在的翻译键: 计数: 1
+- 使用了不存在的翻译键: pages.not_found.title
+- 使用了不存在的翻译键: pages.not_found.subtitle
+- 使用了不存在的翻译键: pages.not_found.back_home
+- 使用了不存在的翻译键: savedLoginInfo
+- 使用了不存在的翻译键: header.navigation.home
+- 使用了不存在的翻译键: header.navigation.books
+- 使用了不存在的翻译键: header.navigation.files
+- 使用了不存在的翻译键: header.navigation.technology
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\files\\upload_\u6587\u4EF6\u4E0A\u4F20\u6210\u529F_\u72B6\u6001\u5DF2\u66F4\u65B0
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\files\\upload_\u6587\u4EF6\u4E0A\u4F20\u5931\u8D25_\u72B6\u6001\u5DF2\u66F4\u65B0
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\files\\upload_\u6682\u505C\u6587\u4EF6
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\files\\upload_\u4F7F\u7528\u6807\u8BC6\u7B26\u6682\u505C\u6587\u4EF6
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\files\\upload_\u6587\u4EF6\u6682\u505C\u5904\u7406\u5B8C\u6210
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\files\\upload_\u6587\u4EF6\u4E0A\u4F20\u8FC7\u6EE4\u7ED3\u679C
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\files\\upload_\u6CA1\u6709\u9700\u8981\u4E0A\u4F20\u7684\u6587\u4EF6
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\files\\upload_\u4E0A\u4F20\u5931\u8D25
+- 使用了不存在的翻译键: tabs.upload
+- 使用了不存在的翻译键: tabs.list
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\files\\filepreview_\u6587\u4EF6\u5217\u8868
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\files\\filepreview_\u6587\u4EF6\u9884\u89C8
+- 使用了不存在的翻译键: a
+- 使用了不存在的翻译键: content-length
+- 使用了不存在的翻译键: errors.file_too_large
+- 使用了不存在的翻译键: preview.load_failed
+- 使用了不存在的翻译键: \n
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\files\\components\\filepreviewmodal_\u6587\u4EF6\u9884\u89C8
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\files\\components\\filepreviewmodal_\u6587\u4EF6\u9884\u89C8\u52A0\u8F7D\u6210\u529F
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\files\\components\\filepreviewmodal_\u6587\u4EF6\u9884\u89C8\u5931\u8D25
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\files\\components\\filepreviewmodal_\u6CA1\u6709\u9009\u62E9\u6587\u4EF6
+- 使用了不存在的翻译键: common:..\\frontend\\src\\views\\files\\components\\filepreviewmodal_\u8BF7\u9009\u62E9\u8981\u9884\u89C8\u7684\u6587\u4EF6
+- 使用了不存在的翻译键: div
+- 使用了不存在的翻译键: /
+- 使用了不存在的翻译键: common:..\\frontend\\src\\utils\\routeutils_\u5F00\u53D1\u5DE5\u5177
+- 使用了不存在的翻译键: common:..\\frontend\\src\\utils\\routeutils_\u9996\u9875
+- 使用了不存在的翻译键: common:..\\frontend\\src\\utils\\routeutils_\u6280\u672F\u6808
+- 使用了不存在的翻译键: -
+- 使用了不存在的翻译键: ../views/Technology/codeJson/${techStack}/${fileName}.json
+- 使用了不存在的翻译键: textarea
+- 使用了不存在的翻译键: common:..\\frontend\\src\\utils\\message\\messagebox_\u53D6\u6D88
+- 使用了不存在的翻译键: common:..\\frontend\\src\\utils\\message\\messagebox_\u786E\u8BA4
+- 使用了不存在的翻译键: common:..\\frontend\\src\\utils\\message\\messagebox_\u63D0\u793A
+- 使用了不存在的翻译键: userInfo
+- 使用了不存在的翻译键: @/views/Home/index.tsx
+- 使用了不存在的翻译键: @/views/systemPages/NotFound.tsx
+- 使用了不存在的翻译键: @/views/systemPages/Login.tsx
+- 使用了不存在的翻译键: @/views/Books/index.tsx
+- 使用了不存在的翻译键: @/views/Technology/index.tsx
+- 使用了不存在的翻译键: @/views/Files/index.tsx
+- 使用了不存在的翻译键: @/views/Technology/TechnologyLayout.tsx
+- 使用了不存在的翻译键: @/views/Technology/pages/ReactDetail.tsx
+- 使用了不存在的翻译键: common:..\\frontend\\src\\routes\\index_\u767B\u5F55_\u6CE8\u518C\u9875\u9762
+- 使用了不存在的翻译键: common:..\\frontend\\src\\routes\\index_404\u9519\u8BEF\u9875\u9762_\u5904\u7406\u6240\u6709\u672A\u5339\u914D\u7684\u8DEF\u7531
+- 使用了不存在的翻译键: common:..\\frontend\\src\\routes\\index_\u9996\u9875_\u6280\u672F\u535A\u5BA2\u548C\u6587\u7AE0\u5C55\u793A
+- 使用了不存在的翻译键: common:..\\frontend\\src\\routes\\index_\u4E66\u7C4D\u63A8\u8350_\u6280\u672F\u4E66\u7C4D\u5C55\u793A\u548C\u63A8\u8350
+- 使用了不存在的翻译键: common:..\\frontend\\src\\routes\\index_\u6280\u672F\u6808_\u4E2A\u4EBA\u6280\u80FD_\u9879\u76EE\u7ECF\u9A8C
+- 使用了不存在的翻译键: common:..\\frontend\\src\\routes\\index_\u6280\u672F\u8BE6\u89E3_\u5177\u4F53\u6280\u672F\u7684\u6DF1\u5EA6\u89E3\u6790
+- 使用了不存在的翻译键: common:..\\frontend\\src\\routes\\index_\u6280\u672F\u4E3B\u9898\u8BE6\u89E3_\u5177\u4F53\u6280\u672F\u4E3B\u9898\u7684\u6DF1\u5EA6\u89E3\u6790
+- 使用了不存在的翻译键: common:..\\frontend\\src\\routes\\index_\u6587\u4EF6\u7BA1\u7406_\u6587\u4EF6\u4E0A\u4F20_\u9884\u89C8
+- 使用了不存在的翻译键: common:..\\frontend\\src\\i18n\\index_\u4E2D\u6587
+- 使用了不存在的翻译键: common:..\\frontend\\src\\hooks\\useupload_\u7528\u6237\u4E3B\u52A8\u6682\u505C
+- 使用了不存在的翻译键: common:..\\frontend\\src\\hooks\\useupload_\u6682\u505C\u72B6\u6001\u4FDD\u5B58
+- 使用了不存在的翻译键: common:..\\frontend\\src\\hooks\\useupload_\u8FDB\u5EA6\u8BA1\u7B97\u8BE6\u60C5
+- 使用了不存在的翻译键: common:..\\frontend\\src\\hooks\\useupload_\u6587\u4EF6\u5408\u5E76\u5931\u8D25
+- 使用了不存在的翻译键: common:..\\frontend\\src\\hooks\\useupload_\u9009\u62E9\u4E0A\u4F20\u5206\u7247
+- 使用了不存在的翻译键: common:..\\frontend\\src\\hooks\\useupload_\u5C0F\u6587\u4EF6\u4E0A\u4F20
+- 使用了不存在的翻译键: common:..\\frontend\\src\\hooks\\useupload_\u5C0F\u6587\u4EF6\u4E0A\u4F20_\u6587\u4EF6\u540D
+- 使用了不存在的翻译键: common:..\\frontend\\src\\hooks\\useupload_\u5C0F\u6587\u4EF6\u4E0A\u4F20\u5931\u8D25
+- 使用了不存在的翻译键: common:..\\frontend\\src\\hooks\\useupload_\u6587\u4EF6\u5DF2\u5B58\u5728_\u5B9E\u73B0\u79D2\u4F20
+- 使用了不存在的翻译键: common:..\\frontend\\src\\hooks\\useupload_\u5927\u6587\u4EF6\u4E0A\u4F20\u5931\u8D25
+- 使用了不存在的翻译键: common:..\\frontend\\src\\hooks\\useupload_\u6587\u4EF6\u4E0A\u4F20\u7B56\u7565\u9009\u62E9
+- 使用了不存在的翻译键: common:..\\frontend\\src\\hooks\\useupload_\u5C0F\u6587\u4EF6\u76F4\u63A5\u4E0A\u4F20
+- 使用了不存在的翻译键: common:..\\frontend\\src\\hooks\\useupload_\u5927\u6587\u4EF6\u5206\u7247\u4E0A\u4F20
+- 使用了不存在的翻译键: common:..\\frontend\\src\\hooks\\useupload_\u4E0A\u4F20\u5931\u8D25
+- 使用了不存在的翻译键: common:..\\frontend\\src\\hooks\\useupload_pausefile\u88AB\u8C03\u7528
+- 使用了不存在的翻译键: common:..\\frontend\\src\\hooks\\useupload_\u901A\u8FC7filename\u67E5\u627E\u4EFB\u52A1
+- 使用了不存在的翻译键: common:..\\frontend\\src\\hooks\\useupload_\u627E\u5230
+- 使用了不存在的翻译键: common:..\\frontend\\src\\hooks\\useupload_\u672A\u627E\u5230
+- 使用了不存在的翻译键: common:..\\frontend\\src\\hooks\\useupload_\u627E\u5230\u4E0A\u4F20\u4E2D\u7684\u4EFB\u52A1_\u5F00\u59CB\u6682\u505C
+- 使用了不存在的翻译键: common:..\\frontend\\src\\hooks\\useupload_\u6682\u505C\u540E\u4EFB\u52A1\u72B6\u6001
+- 使用了不存在的翻译键: common:..\\frontend\\src\\hooks\\useupload_\u672A\u627E\u5230\u53EF\u6682\u505C\u7684\u4EFB\u52A1
+- 使用了不存在的翻译键: common:..\\frontend\\src\\hooks\\useupload_\u5F00\u59CB\u7EE7\u7EED\u4E0A\u4F20
+- 使用了不存在的翻译键: common:..\\frontend\\src\\hooks\\useupload_\u7EE7\u7EED\u4E0A\u4F20\u5206\u7247\u72B6\u6001
+- 使用了不存在的翻译键: common:..\\frontend\\src\\hooks\\useupload_\u6240\u6709\u5206\u7247\u5DF2\u5B8C\u6210_\u5F00\u59CB\u5408\u5E76\u6587\u4EF6
+- 使用了不存在的翻译键: common:..\\frontend\\src\\hooks\\useupload_pauseall\u88AB\u8C03\u7528
+- 使用了不存在的翻译键: common:..\\frontend\\src\\hooks\\usefilepreview_\u6587\u4EF6\u8FC7\u5927_\u65E0\u6CD5\u9884\u89C8
+- 使用了不存在的翻译键: common:..\\frontend\\src\\hooks\\usefilepreview_\u4E0D\u652F\u6301\u7684\u6587\u4EF6\u7C7B\u578B
+- 使用了不存在的翻译键: common:..\\frontend\\src\\hooks\\usefilepreview_\u52A0\u8F7D\u4E2D
+- 使用了不存在的翻译键: common:..\\frontend\\src\\hooks\\usefilepreview_\u53EF\u4EE5\u9884\u89C8
+- 使用了不存在的翻译键: common:..\\frontend\\src\\hooks\\usefilepreview_\u65E0\u6CD5\u9884\u89C8
+- 使用了不存在的翻译键: common:..\\frontend\\src\\hooks\\usecodedata_\u52A0\u8F7D\u4EE3\u7801\u6570\u636E\u5931\u8D25
+- 使用了不存在的翻译键: common:..\\frontend\\src\\hooks\\usecodedata_\u52A0\u8F7D\u4EE3\u7801\u5757\u5931\u8D25
+- 使用了不存在的翻译键: .
+- 使用了不存在的翻译键: @/views/Technology/pages/ReactDetail
+- 使用了不存在的翻译键: @/views/Technology/pages/VueDetail
+- 使用了不存在的翻译键: @/views/Technology/pages/TypeScriptDetail
+- 使用了不存在的翻译键: @/views/Technology/pages/NodeJSDetail
+- 使用了不存在的翻译键: @/views/Technology/pages/DockerDetail
+- 使用了不存在的翻译键: @/views/Technology/pages/GitDetail
+- 使用了不存在的翻译键: @/views/Technology/pages/ToolsDetail
+- 使用了不存在的翻译键: @/views/Technology/pages/JestDetail
+- 使用了不存在的翻译键: @/views/Technology/pages/react/UseEffectDetail
+- 使用了不存在的翻译键: @/views/Technology/pages/react/UseCallbackDetail
+- 使用了不存在的翻译键: @/views/Technology/pages/react/UseMemoDetail
+- 使用了不存在的翻译键: @/views/Technology/pages/react/UseContextDetail
+- 使用了不存在的翻译键: @/views/Technology/pages/react/CustomHooksDetail
+- 使用了不存在的翻译键: @/views/Technology/pages/react/PerformanceDetail
+- 使用了不存在的翻译键: @/views/Technology/pages/react/ErrorBoundaryDetail
+- 使用了不存在的翻译键: @/views/Technology/pages/react/TestingDetail
+- 使用了不存在的翻译键: @/views/Technology/pages/vue/CompositionAPIDetail
+- 使用了不存在的翻译键: @/views/Technology/pages/vue/ReactivityDetail
+- 使用了不存在的翻译键: @/views/Technology/pages/vue/VueRouterDetail
+- 使用了不存在的翻译键: @/views/Technology/pages/vue/VuexPiniaDetail
+- 使用了不存在的翻译键: @/views/Technology/pages/vue/PerformanceDetail
+- 使用了不存在的翻译键: @/views/Technology/pages/vue/TestingDetail
+- 使用了不存在的翻译键: @/views/Technology/pages/vue/SSRDetail
+- 使用了不存在的翻译键: @/views/Technology/pages/vue/MigrationDetail
+- 使用了不存在的翻译键: @/views/Technology/pages/typescript/BasicTypesDetail
+- 使用了不存在的翻译键: @/views/Technology/pages/typescript/AdvancedTypesDetail
+- 使用了不存在的翻译键: @/views/Technology/pages/typescript/GenericsDetail
+- 使用了不存在的翻译键: @/views/Technology/pages/typescript/DecoratorsDetail
+- 使用了不存在的翻译键: @/views/Technology/pages/typescript/ModulesDetail
+- 使用了不存在的翻译键: @/views/Technology/pages/typescript/UtilityTypesDetail
+- 使用了不存在的翻译键: @/views/Technology/pages/typescript/ReactTypeScriptDetail
+- 使用了不存在的翻译键: @/views/Technology/pages/typescript/ConfigurationDetail
+- 使用了不存在的翻译键: @/views/Technology/pages/nodejs/EventLoopDetail
+- 使用了不存在的翻译键: @/views/Technology/pages/nodejs/ModulesDetail
+- 使用了不存在的翻译键: @/views/Technology/pages/nodejs/ExpressDetail
+- 使用了不存在的翻译键: @/views/Technology/pages/nodejs/DatabaseDetail
+- 使用了不存在的翻译键: @/views/Technology/pages/nodejs/AuthenticationDetail
+- 使用了不存在的翻译键: @/views/Technology/pages/nodejs/TestingDetail
+- 使用了不存在的翻译键: @/views/Technology/pages/nodejs/MicroservicesDetail
+- 使用了不存在的翻译键: @/views/Technology/pages/docker/FundamentalsDetail
+- 使用了不存在的翻译键: @/views/Technology/pages/docker/DockerfileDetail
+- 使用了不存在的翻译键: @/views/Technology/pages/docker/DockerComposeDetail
+- 使用了不存在的翻译键: @/views/Technology/pages/docker/NetworkingDetail
+- 使用了不存在的翻译键: @/views/Technology/pages/docker/DataManagementDetail
+- 使用了不存在的翻译键: @/views/Technology/pages/docker/SecurityDetail
+- 使用了不存在的翻译键: @/views/Technology/pages/docker/PerformanceOptimizationDetail
+- 使用了不存在的翻译键: @/views/Technology/pages/docker/KubernetesDetail
+- 使用了不存在的翻译键: @/views/Technology/pages/git/GitBasicsDetail
+- 使用了不存在的翻译键: @/views/Technology/pages/git/BranchingDetail
+- 使用了不存在的翻译键: @/views/Technology/pages/git/GitHubWorkflowDetail
+- 使用了不存在的翻译键: @/views/Technology/pages/git/GitHubActionsDetail
+- 使用了不存在的翻译键: @/views/Technology/pages/git/AdvancedTechniquesDetail
+- 使用了不存在的翻译键: @/views/Technology/pages/git/GitHooksDetail
+- 使用了不存在的翻译键: @/views/Technology/pages/git/CollaborationDetail
+- 使用了不存在的翻译键: @/views/Technology/pages/git/SecurityBestPracticesDetail
+- 使用了不存在的翻译键: @/views/Technology/pages/tools/VSCodeDetail
+- 使用了不存在的翻译键: @/views/Technology/pages/tools/WebpackDetail
+- 使用了不存在的翻译键: @/views/Technology/pages/tools/ViteDetail
+- 使用了不存在的翻译键: @/views/Technology/pages/tools/ESLintPrettierDetail
+- 使用了不存在的翻译键: @/views/Technology/pages/tools/ChromeDevToolsDetail
+- 使用了不存在的翻译键: @/views/Technology/pages/tools/PostmanDetail
+- 使用了不存在的翻译键: @/views/Technology/pages/tools/TerminalDetail
+- 使用了不存在的翻译键: @/views/Technology/pages/tools/ProductivityDetail
+- 使用了不存在的翻译键: @/views/Technology/pages/jest/JestBasicsDetail
+- 使用了不存在的翻译键: @/views/Technology/pages/jest/UnitTestingDetail
+- 使用了不存在的翻译键: @/views/Technology/pages/jest/MockingDetail
+- 使用了不存在的翻译键: @/views/Technology/pages/jest/AsyncTestingDetail
+- 使用了不存在的翻译键: @/views/Technology/pages/jest/CoverageDetail
+- 使用了不存在的翻译键: @/views/Technology/pages/jest/BestPracticesDetail
+- 使用了不存在的翻译键: common:..\\frontend\\src\\config\\technologyroutes_react\u751F\u6001\u7CFB\u7EDF\u4E0E\u6700\u4F73\u5B9E\u8DF5
+- 使用了不存在的翻译键: common:..\\frontend\\src\\config\\technologyroutes_vue_js\u6846\u67B6\u6DF1\u5EA6\u89E3\u6790
+- 使用了不存在的翻译键: common:..\\frontend\\src\\config\\technologyroutes_typescript\u7C7B\u578B\u7CFB\u7EDF\u4E0E\u8FDB\u9636
+- 使用了不存在的翻译键: common:..\\frontend\\src\\config\\technologyroutes_node_js\u540E\u7AEF\u5F00\u53D1\u6280\u672F
+- 使用了不存在的翻译键: common:..\\frontend\\src\\config\\technologyroutes_docker\u5BB9\u5668\u5316\u6280\u672F
+- 使用了不存在的翻译键: common:..\\frontend\\src\\config\\technologyroutes_\u5F00\u53D1\u5DE5\u5177
+- 使用了不存在的翻译键: common:..\\frontend\\src\\config\\technologyroutes_\u5F00\u53D1\u5DE5\u5177\u4E0E\u6548\u7387\u63D0\u5347
+- 使用了不存在的翻译键: common:..\\frontend\\src\\config\\technologyroutes_\u7248\u672C\u63A7\u5236\u4E0E\u56E2\u961F\u534F\u4F5C
+- 使用了不存在的翻译键: common:..\\frontend\\src\\config\\technologyroutes_jest\u6D4B\u8BD5\u6846\u67B6\u4E0E\u6700\u4F73\u5B9E\u8DF5
+- 使用了不存在的翻译键: common:..\\frontend\\src\\config\\technologyroutes_\u81EA\u5B9A\u4E49_hook
+- 使用了不存在的翻译键: common:..\\frontend\\src\\config\\technologyroutes_react_\u6027\u80FD\u4F18\u5316
+- 使用了不存在的翻译键: common:..\\frontend\\src\\config\\technologyroutes_\u9519\u8BEF\u8FB9\u754C
+- 使用了不存在的翻译键: common:..\\frontend\\src\\config\\technologyroutes_react_\u6D4B\u8BD5
+- 使用了不存在的翻译键: common:..\\frontend\\src\\config\\technologyroutes_\u54CD\u5E94\u5F0F\u539F\u7406
+- 使用了不存在的翻译键: common:..\\frontend\\src\\config\\technologyroutes_vue_\u6027\u80FD\u4F18\u5316
+- 使用了不存在的翻译键: common:..\\frontend\\src\\config\\technologyroutes_vue_\u6D4B\u8BD5
+- 使用了不存在的翻译键: common:..\\frontend\\src\\config\\technologyroutes_\u670D\u52A1\u7AEF\u6E32\u67D3
+- 使用了不存在的翻译键: common:..\\frontend\\src\\config\\technologyroutes_\u7248\u672C\u8FC1\u79FB\u6307\u5357
+- 使用了不存在的翻译键: common:..\\frontend\\src\\config\\technologyroutes_\u57FA\u7840\u7C7B\u578B
+- 使用了不存在的翻译键: common:..\\frontend\\src\\config\\technologyroutes_\u9AD8\u7EA7\u7C7B\u578B
+- 使用了不存在的翻译键: common:..\\frontend\\src\\config\\technologyroutes_\u6CDB\u578B
+- 使用了不存在的翻译键: common:..\\frontend\\src\\config\\technologyroutes_\u88C5\u9970\u5668
+- 使用了不存在的翻译键: common:..\\frontend\\src\\config\\technologyroutes_\u6A21\u5757\u7CFB\u7EDF
+- 使用了不存在的翻译键: common:..\\frontend\\src\\config\\technologyroutes_\u5B9E\u7528\u7C7B\u578B
+- 使用了不存在的翻译键: common:..\\frontend\\src\\config\\technologyroutes_\u914D\u7F6E\u6307\u5357
+- 使用了不存在的翻译键: common:..\\frontend\\src\\config\\technologyroutes_\u4E8B\u4EF6\u5FAA\u73AF
+- 使用了不存在的翻译键: common:..\\frontend\\src\\config\\technologyroutes_express_\u6846\u67B6
+- 使用了不存在的翻译键: common:..\\frontend\\src\\config\\technologyroutes_\u6570\u636E\u5E93\u96C6\u6210
+- 使用了不存在的翻译键: common:..\\frontend\\src\\config\\technologyroutes_\u8EAB\u4EFD\u9A8C\u8BC1
+- 使用了不存在的翻译键: common:..\\frontend\\src\\config\\technologyroutes_node_js_\u6D4B\u8BD5
+- 使用了不存在的翻译键: common:..\\frontend\\src\\config\\technologyroutes_\u5FAE\u670D\u52A1\u67B6\u6784
+- 使用了不存在的翻译键: common:..\\frontend\\src\\config\\technologyroutes_docker_\u57FA\u7840
+- 使用了不存在的翻译键: common:..\\frontend\\src\\config\\technologyroutes_\u7F51\u7EDC\u914D\u7F6E
+- 使用了不存在的翻译键: common:..\\frontend\\src\\config\\technologyroutes_\u6570\u636E\u7BA1\u7406
+- 使用了不存在的翻译键: common:..\\frontend\\src\\config\\technologyroutes_\u5B89\u5168\u5B9E\u8DF5
+- 使用了不存在的翻译键: common:..\\frontend\\src\\config\\technologyroutes_\u6027\u80FD\u4F18\u5316
+- 使用了不存在的翻译键: common:..\\frontend\\src\\config\\technologyroutes_git_\u57FA\u7840
+- 使用了不存在的翻译键: common:..\\frontend\\src\\config\\technologyroutes_\u5206\u652F\u7BA1\u7406
+- 使用了不存在的翻译键: common:..\\frontend\\src\\config\\technologyroutes_github_\u5DE5\u4F5C\u6D41
+- 使用了不存在的翻译键: common:..\\frontend\\src\\config\\technologyroutes_git_\u9AD8\u7EA7\u6280\u5DE7
+- 使用了不存在的翻译键: common:..\\frontend\\src\\config\\technologyroutes_\u56E2\u961F\u534F\u4F5C
+- 使用了不存在的翻译键: common:..\\frontend\\src\\config\\technologyroutes_\u5B89\u5168\u6700\u4F73\u5B9E\u8DF5
+- 使用了不存在的翻译键: common:..\\frontend\\src\\config\\technologyroutes_\u7EC8\u7AEF\u5DE5\u5177
+- 使用了不存在的翻译键: common:..\\frontend\\src\\config\\technologyroutes_\u6548\u7387\u5DE5\u5177
+- 使用了不存在的翻译键: common:..\\frontend\\src\\config\\technologyroutes_jest_\u57FA\u7840
+- 使用了不存在的翻译键: common:..\\frontend\\src\\config\\technologyroutes_\u5355\u5143\u6D4B\u8BD5
+- 使用了不存在的翻译键: common:..\\frontend\\src\\config\\technologyroutes_mock_\u4E0E_spy
+- 使用了不存在的翻译键: common:..\\frontend\\src\\config\\technologyroutes_\u5F02\u6B65\u6D4B\u8BD5
+- 使用了不存在的翻译键: common:..\\frontend\\src\\config\\technologyroutes_\u6D4B\u8BD5\u8986\u76D6\u7387
+- 使用了不存在的翻译键: common:..\\frontend\\src\\config\\technologyroutes_\u6700\u4F73\u5B9E\u8DF5
+- 使用了不存在的翻译键: common:..\\frontend\\src\\components\\languageswitcher_\u8BED\u8A00\u5207\u6362\u5931\u8D25
+- 使用了不存在的翻译键: header.language_switcher.title
+- 使用了不存在的翻译键: header.user_menu.profile
+- 使用了不存在的翻译键: header.user_menu.settings
+- 使用了不存在的翻译键: header.user_menu.logout
+- 使用了不存在的翻译键: messages.no_data
+- 使用了不存在的翻译键: common:..\\frontend\\src\\components\\files\\toolbar_\u4E0B\u8F7D
+- 使用了不存在的翻译键: common:..\\frontend\\src\\components\\files\\fileupload_\u4E0A\u4F20\u6210\u529F
+- 使用了不存在的翻译键: common:..\\frontend\\src\\components\\files\\fileupload_\u4E0A\u4F20\u5931\u8D25
+- 使用了不存在的翻译键: common:..\\frontend\\src\\components\\files\\fileupload_\u4E0A\u4F20\u4E2D
+- 使用了不存在的翻译键: common:..\\frontend\\src\\components\\files\\fileupload_\u5DF2\u6682\u505C
+- 使用了不存在的翻译键: common:..\\frontend\\src\\components\\files\\fileupload_\u5DF2\u53D6\u6D88
+- 使用了不存在的翻译键: common:..\\frontend\\src\\components\\files\\fileupload_\u7B49\u5F85\u4E0A\u4F20
+- 使用了不存在的翻译键: common:..\\frontend\\src\\components\\files\\fileupload_\u6587\u4EF6\u5BF9\u8C61\u65E0\u6548
+- 使用了不存在的翻译键: upload.pause
+- 使用了不存在的翻译键: upload.resume
+- 使用了不存在的翻译键: upload.retry
+- 使用了不存在的翻译键: upload.cancel
+- 使用了不存在的翻译键: upload.remove_record
+- 使用了不存在的翻译键: common:..\\frontend\\src\\components\\files\\fileupload_\u8BF7\u9009\u62E9\u6587\u4EF6
+- 使用了不存在的翻译键: common:..\\frontend\\src\\components\\files\\fileupload_\u6CA1\u6709\u9700\u8981\u4E0A\u4F20\u7684\u6587\u4EF6
+- 使用了不存在的翻译键: common:..\\frontend\\src\\components\\files\\fileupload_\u4E0A\u4F20\u5931\u8D25_\u8BF7\u91CD\u8BD5
+- 使用了不存在的翻译键: common:..\\frontend\\src\\components\\files\\fileupload_\u6587\u4EF6\u540D\u79F0
+- 使用了不存在的翻译键: common:..\\frontend\\src\\components\\files\\fileupload_\u6587\u4EF6\u5927\u5C0F
+- 使用了不存在的翻译键: common:..\\frontend\\src\\components\\files\\fileupload_\u6587\u4EF6\u7C7B\u578B
+- 使用了不存在的翻译键: common:..\\frontend\\src\\components\\files\\fileupload_\u72B6\u6001
+- 使用了不存在的翻译键: upload.upload_progress
+- 使用了不存在的翻译键: upload.actions
+- 使用了不存在的翻译键: common:..\\frontend\\src\\components\\files\\fileupload_\u62D6\u62FD_\u70B9\u51FB\u4E0A\u4F20\u533A\u57DF
+- 使用了不存在的翻译键: common:..\\frontend\\src\\components\\files\\fileupload_\u652F\u6301\u5355\u4E2A\u6216\u6279\u91CF\u4E0A\u4F20_\u6587\u4EF6\u5927\u5C0F\u9650\u5236500mb
+- 使用了不存在的翻译键: common:..\\frontend\\src\\components\\files\\fileupload_\u5F85\u4E0A\u4F20\u6587\u4EF6\u5217\u8868
+- 使用了不存在的翻译键: upload.pause_all
+- 使用了不存在的翻译键: upload.resume_all
+- 使用了不存在的翻译键: upload.cancel_all
+- 使用了不存在的翻译键: upload.clear_records
+- 使用了不存在的翻译键: common:..\\frontend\\src\\components\\files\\fileupload_\u5F00\u59CB\u4E0A\u4F20
+- 使用了不存在的翻译键: code.copied_to_clipboard
+- 使用了不存在的翻译键: code.copy_failed
+- 使用了不存在的翻译键: code.lines
+- 使用了不存在的翻译键: code.characters
+- 使用了不存在的翻译键: code.copied
+- 使用了不存在的翻译键: code.copy_code
+- 使用了不存在的翻译键: /todo/getTodos
+
+## 建议
+
+- **action**: 发现 4047 处未国际化的文本，建议使用自动替换工具处理

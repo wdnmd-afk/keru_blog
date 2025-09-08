@@ -1,91 +1,91 @@
 {
-  "common": {
-    "loading": "Loading...",
-    "load_error": "Load Failed",
-    "load_failed_with_error": "Load failed: {{error}}",
-    "loading_code_data": "Loading code data...",
-    "back_button": "Back",
-    "tech_not_found": "Technology Stack Not Found",
-    "tech_not_found_desc": "Please select a valid technology stack to view details",
-    "back_to_tech_stack": "Back to Technology Stack",
-    "tech_details": "Technology Details",
-    "proficiency": "Proficiency",
-    "tech_skills": "Technical Skills",
-    "learning_journey": "Learning Journey",
-    "projects": "Project Experience"
-  },
-  "categories": {
-    "frontend": "Frontend",
-    "backend": "Backend",
-    "database": "Database",
-    "devops": "DevOps",
-    "tools": "Development Tools",
-    "mobile": "Mobile Development"
-  },
-  "react": {
-    "title": "React",
-    "description": "A JavaScript library for building user interfaces",
-    "topics": {
-      "hooks": "React Hooks",
-      "components": "Component Development",
-      "state_management": "State Management",
-      "performance": "Performance Optimization",
-      "error_boundary": "Error Boundary"
+    "common": {
+        "loading": "Loading...",
+        "load_error": "Load Failed",
+        "load_failed_with_error": "Load failed: {{error}}",
+        "loading_code_data": "Loading code data...",
+        "back_button": "Back",
+        "tech_not_found": "Technology Stack Not Found",
+        "tech_not_found_desc": "Please select a valid technology stack to view details",
+        "back_to_tech_stack": "Back to Technology Stack",
+        "tech_details": "Technology Details",
+        "proficiency": "Proficiency",
+        "tech_skills": "Technical Skills",
+        "learning_journey": "Learning Journey",
+        "projects": "Project Experience"
+    },
+    "categories": {
+        "frontend": "Frontend",
+        "backend": "Backend",
+        "database": "Database",
+        "devops": "DevOps",
+        "tools": "Development Tools",
+        "mobile": "Mobile Development"
+    },
+    "react": {
+        "title": "React",
+        "description": "A JavaScript library for building user interfaces",
+        "topics": {
+            "hooks": "React Hooks",
+            "components": "Component Development",
+            "state_management": "State Management",
+            "performance": "Performance Optimization",
+            "error_boundary": "Error Boundary"
+        }
+    },
+    "vue": {
+        "title": "Vue.js",
+        "description": "The Progressive JavaScript Framework",
+        "topics": {
+            "composition_api": "Composition API",
+            "components": "Component System",
+            "state_management": "State Management",
+            "ssr": "Server-Side Rendering",
+            "performance": "Performance Optimization"
+        }
+    },
+    "typescript": {
+        "title": "TypeScript",
+        "description": "JavaScript with syntax for types",
+        "topics": {
+            "basics": "Basic Syntax",
+            "advanced": "Advanced Features",
+            "react_integration": "React Integration",
+            "modules": "Module System",
+            "generics": "Generics"
+        }
+    },
+    "nodejs": {
+        "title": "Node.js",
+        "description": "JavaScript runtime built on Chrome's V8 JavaScript engine",
+        "topics": {
+            "fundamentals": "Fundamentals",
+            "express": "Express Framework",
+            "modules": "Module System",
+            "async": "Asynchronous Programming",
+            "performance": "Performance Optimization"
+        }
+    },
+    "docker": {
+        "title": "Docker",
+        "description": "Containerization Platform",
+        "topics": {
+            "fundamentals": "Fundamentals",
+            "compose": "Docker Compose",
+            "networking": "Networking",
+            "volumes": "Volumes",
+            "best_practices": "Best Practices"
+        }
+    },
+    "git": {
+        "title": "Git",
+        "description": "Distributed Version Control System",
+        "topics": {
+            "basics": "Basic Operations",
+            "branching": "Branch Management",
+            "advanced": "Advanced Features",
+            "workflows": "Workflows",
+            "best_practices": "Best Practices"
+        }
     }
-  },
-  "vue": {
-    "title": "Vue.js",
-    "description": "The Progressive JavaScript Framework",
-    "topics": {
-      "composition_api": "Composition API",
-      "components": "Component System",
-      "state_management": "State Management",
-      "ssr": "Server-Side Rendering",
-      "performance": "Performance Optimization"
-    }
-  },
-  "typescript": {
-    "title": "TypeScript",
-    "description": "JavaScript with syntax for types",
-    "topics": {
-      "basics": "Basic Syntax",
-      "advanced": "Advanced Features",
-      "react_integration": "React Integration",
-      "modules": "Module System",
-      "generics": "Generics"
-    }
-  },
-  "nodejs": {
-    "title": "Node.js",
-    "description": "JavaScript runtime built on Chrome's V8 JavaScript engine",
-    "topics": {
-      "fundamentals": "Fundamentals",
-      "express": "Express Framework",
-      "modules": "Module System",
-      "async": "Asynchronous Programming",
-      "performance": "Performance Optimization"
-    }
-  },
-  "docker": {
-    "title": "Docker",
-    "description": "Containerization Platform",
-    "topics": {
-      "fundamentals": "Fundamentals",
-      "compose": "Docker Compose",
-      "networking": "Networking",
-      "volumes": "Volumes",
-      "best_practices": "Best Practices"
-    }
-  },
-  "git": {
-    "title": "Git",
-    "description": "Distributed Version Control System",
-    "topics": {
-      "basics": "Basic Operations",
-      "branching": "Branch Management",
-      "advanced": "Advanced Features",
-      "workflows": "Workflows",
-      "best_practices": "Best Practices"
-    }
-  }
 }

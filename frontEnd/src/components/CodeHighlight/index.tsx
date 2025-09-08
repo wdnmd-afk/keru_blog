@@ -57,8 +57,12 @@ const CodeHighlight: React.FC<CodeHighlightProps> = ({
                     {title && <span className={styles.title}>{title}</span>}
                     {showStats && stats && (
                         <div className={styles.stats}>
-                            <span>{stats.totalLines} {t('code.lines')}</span>
-                            <span>{stats.characters} {t('code.characters')}</span>
+                            <span>
+                                {stats.totalLines} {t('code.lines')}
+                            </span>
+                            <span>
+                                {stats.characters} {t('code.characters')}
+                            </span>
                         </div>
                     )}
                 </div>

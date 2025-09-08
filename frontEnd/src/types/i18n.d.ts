@@ -1,6 +1,6 @@
 /**
  * 国际化相关类型定义
- * 
+ *
  * 功能说明：
  * 1. 定义支持的语言类型
  * 2. 定义翻译资源的结构类型
@@ -146,6 +146,116 @@ export interface TranslationResources {
             results_count: string
         }
     }
+    technology: {
+        common: {
+            loading: string
+            load_error: string
+            load_failed_with_error: string
+            loading_code_data: string
+            back_button: string
+            tech_not_found: string
+            tech_not_found_desc: string
+            back_to_tech_stack: string
+            tech_details: string
+            proficiency: string
+            tech_skills: string
+            learning_journey: string
+            projects: string
+        }
+        categories: {
+            frontend: string
+            backend: string
+            database: string
+            devops: string
+            tools: string
+            mobile: string
+        }
+        react: {
+            title: string
+            description: string
+            topics: Record<string, string>
+        }
+        vue: {
+            title: string
+            description: string
+            topics: Record<string, string>
+        }
+        typescript: {
+            title: string
+            description: string
+            topics: Record<string, string>
+        }
+        nodejs: {
+            title: string
+            description: string
+            topics: Record<string, string>
+        }
+        docker: {
+            title: string
+            description: string
+            topics: Record<string, string>
+        }
+        git: {
+            title: string
+            description: string
+            topics: Record<string, string>
+        }
+    }
+    books: {
+        header: {
+            title: string
+            subtitle: string
+        }
+        search: {
+            placeholder: string
+            no_results: string
+            results_count: string
+        }
+        categories: Record<string, string>
+        actions: {
+            preview: string
+            download: string
+            favorite: string
+            unfavorite: string
+            share: string
+            read_online: string
+            buy: string
+        }
+        details: {
+            author: string
+            category: string
+            rating: string
+            pages: string
+            publish_year: string
+            publisher: string
+            isbn: string
+            language: string
+            tags: string
+            description: string
+            table_of_contents: string
+        }
+        status: {
+            available: string
+            unavailable: string
+            coming_soon: string
+            out_of_stock: string
+        }
+        messages: Record<string, string>
+    }
+    files: {
+        tabs: {
+            upload: string
+            list: string
+            preview: string
+        }
+        upload: Record<string, string>
+        list: Record<string, string>
+        preview: Record<string, string>
+        actions: Record<string, string>
+        status: Record<string, string>
+        messages: Record<string, string>
+        errors: Record<string, string>
+    }
 }
 
 // 扩展react-i18next的类型定义
@@ -171,11 +281,17 @@ declare module 'react-i18next' {
 }
 
 // 翻译键类型（用于类型安全的翻译键访问）
-export type TranslationKey = 
+export type TranslationKey =
     | keyof TranslationResources['common']
     | keyof TranslationResources['layout']
+    | keyof TranslationResources['technology']
+    | keyof TranslationResources['books']
+    | keyof TranslationResources['files']
     | `common.${string}`
     | `layout.${string}`
+    | `technology.${string}`
+    | `books.${string}`
+    | `files.${string}`
 
 // 语言切换器配置类型
 export interface LanguageSwitcherConfig {
@@ -205,11 +321,11 @@ export interface LanguageDetectionConfig {
 
 // 导出所有类型
 export type {
-    SupportedLanguage,
-    LanguageNames,
-    TranslationResources,
-    TranslationKey,
-    LanguageSwitcherConfig,
     I18nConfig,
     LanguageDetectionConfig,
+    LanguageNames,
+    LanguageSwitcherConfig,
+    SupportedLanguage,
+    TranslationKey,
+    TranslationResources,
 }
