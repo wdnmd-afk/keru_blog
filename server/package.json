@@ -6,7 +6,11 @@
   "type": "module",
   "scripts": {
     "dev": "nodemon --exec tsx main.ts",
-    "generate": "npx prisma generate && npx prisma migrate dev --name keru"
+    "generate": "npx prisma generate && npx prisma migrate dev --name keru",
+    "ts-check": "node scripts/ts-error-checker.js",
+    "ts-check:direct": "node scripts/direct-ts-check.js",
+    "format": "prettier --write \"src/**/*.{js,ts,json}\" \"*.{js,ts,json}\" \"scripts/**/*.{js,ts}\"",
+    "format:check": "prettier --check \"src/**/*.{js,ts,json}\" \"*.{js,ts,json}\" \"scripts/**/*.{js,ts}\""
   },
   "keywords": [],
   "author": "",
@@ -39,6 +43,8 @@
   "devDependencies": {
     "@types/multer": "^1.4.12",
     "@types/node": "^22.0.0",
+    "prettier": "^3.3.3",
+    "prettier-plugin-organize-imports": "^4.2.0",
     "prisma": "^5.17.0",
     "ts-node": "^10.9.2",
     "typescript": "^5.4.5"

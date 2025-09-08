@@ -103,10 +103,41 @@ export const UPLOAD_CONFIG = {
     ENABLE_VIRUS_SCAN: false,
     /** 危险文件扩展名黑名单 */
     DANGEROUS_EXTENSIONS: [
-      '.bat', '.cmd', '.com', '.cpl', '.dll', '.exe', '.gadget', '.inf1',
-      '.ins', '.inx', '.isu', '.job', '.jse', '.lnk', '.msc', '.msi', '.msp',
-      '.mst', '.paf', '.pif', '.ps1', '.reg', '.rgs', '.scr', '.sct', '.shb',
-      '.shs', '.u3p', '.vb', '.vbe', '.vbs', '.vbscript', '.ws', '.wsf', '.wsh'
+      '.bat',
+      '.cmd',
+      '.com',
+      '.cpl',
+      '.dll',
+      '.exe',
+      '.gadget',
+      '.inf1',
+      '.ins',
+      '.inx',
+      '.isu',
+      '.job',
+      '.jse',
+      '.lnk',
+      '.msc',
+      '.msi',
+      '.msp',
+      '.mst',
+      '.paf',
+      '.pif',
+      '.ps1',
+      '.reg',
+      '.rgs',
+      '.scr',
+      '.sct',
+      '.shb',
+      '.shs',
+      '.u3p',
+      '.vb',
+      '.vbe',
+      '.vbs',
+      '.vbscript',
+      '.ws',
+      '.wsf',
+      '.wsh',
     ],
   },
 } as const
@@ -143,7 +174,7 @@ export const UploadUtils = {
    * @returns 是否支持
    */
   isFileTypeSupported: (fileType: string): boolean => {
-    return UPLOAD_CONFIG.ALLOWED_TYPES.includes(fileType)
+    return UPLOAD_CONFIG.ALLOWED_TYPES.includes(fileType as any)
   },
 
   /**
@@ -153,7 +184,7 @@ export const UploadUtils = {
    */
   isDangerousFile: (fileName: string): boolean => {
     const ext = fileName.toLowerCase().substring(fileName.lastIndexOf('.'))
-    return UPLOAD_CONFIG.SECURITY.DANGEROUS_EXTENSIONS.includes(ext)
+    return UPLOAD_CONFIG.SECURITY.DANGEROUS_EXTENSIONS.includes(ext as any)
   },
 
   /**

@@ -1,24 +1,24 @@
-import { IsString, IsBoolean, IsOptional, IsEnum } from 'class-validator';
-import { TodoType } from '@prisma/client';
+import { TodoType } from '@prisma/client'
+import { IsBoolean, IsEnum, IsOptional, IsString } from 'class-validator'
 
 export class CreateTodoDto {
   @IsString()
-  content: string;
+  content: string
 
   @IsEnum(TodoType)
-  type: TodoType;
+  type: TodoType
 }
 
 export class UpdateTodoDto {
   @IsString()
   @IsOptional()
-  content?: string;
+  content?: string
 
   @IsBoolean()
   @IsOptional()
-  completed?: boolean;
+  completed?: boolean
 
   @IsEnum(TodoType)
   @IsOptional()
-  type?: TodoType;
+  type?: TodoType
 }

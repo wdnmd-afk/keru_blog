@@ -53,6 +53,9 @@ importers:
       ioredis:
         specifier: ^5.4.1
         version: 5.4.1
+      jsonwebtoken:
+        specifier: ^9.0.2
+        version: 9.0.2
       log4js:
         specifier: ^6.9.1
         version: 6.9.1
@@ -81,9 +84,12 @@ importers:
       '@types/node':
         specifier: ^22.0.0
         version: 22.5.2
-      jsonwebtoken:
-        specifier: ^9.0.2
-        version: 9.0.2
+      prettier:
+        specifier: ^3.3.3
+        version: 3.6.2
+      prettier-plugin-organize-imports:
+        specifier: ^4.2.0
+        version: 4.2.0(prettier@3.6.2)(typescript@5.5.4)
       prisma:
         specifier: ^5.17.0
         version: 5.19.1
@@ -752,6 +758,21 @@ packages:
 
   picocolors@1.1.0:
     resolution: {integrity: sha512-TQ92mBOW0l3LeMeyLV6mzy/kWr8lkd/hp3mTg7wYK7zJhuBStmGMBG0BdeDZS/dZx1IukaX6Bk11zcln25o1Aw==}
+
+  prettier-plugin-organize-imports@4.2.0:
+    resolution: {integrity: sha512-Zdy27UhlmyvATZi67BTnLcKTo8fm6Oik59Sz6H64PgZJVs6NJpPD1mT240mmJn62c98/QaL+r3kx9Q3gRpDajg==}
+    peerDependencies:
+      prettier: '>=2.0'
+      typescript: '>=2.9'
+      vue-tsc: ^2.1.0 || 3
+    peerDependenciesMeta:
+      vue-tsc:
+        optional: true
+
+  prettier@3.6.2:
+    resolution: {integrity: sha512-I7AIg5boAr5R0FFtJ6rCfD+LFsWHp81dolrFD8S79U9tb8Az2nGrJncnMSnys+bpQJfRUzqs9hnA81OAA3hCuQ==}
+    engines: {node: '>=14'}
+    hasBin: true
 
   prisma@5.19.1:
     resolution: {integrity: sha512-c5K9MiDaa+VAAyh1OiYk76PXOme9s3E992D7kvvIOhCrNsBQfy2mP2QAQtX0WNj140IgG++12kwZpYB9iIydNQ==}
@@ -1674,6 +1695,13 @@ snapshots:
   pause@0.0.1: {}
 
   picocolors@1.1.0: {}
+
+  prettier-plugin-organize-imports@4.2.0(prettier@3.6.2)(typescript@5.5.4):
+    dependencies:
+      prettier: 3.6.2
+      typescript: 5.5.4
+
+  prettier@3.6.2: {}
 
   prisma@5.19.1:
     dependencies:

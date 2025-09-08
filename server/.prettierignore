@@ -1,0 +1,84 @@
+# 依赖目录
+node_modules/
+.pnpm/
+
+# 构建输出
+dist/
+build/
+out/
+
+# 缓存目录
+.cache/
+.temp/
+.tmp/
+temp/
+
+# 日志文件
+*.log
+logs/
+
+# 环境变量文件
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# IDE和编辑器文件
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# 操作系统文件
+.DS_Store
+Thumbs.db
+
+# 版本控制
+.git/
+.gitignore
+
+# 包管理器文件
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# TypeScript编译输出
+*.tsbuildinfo
+*.d.ts
+
+# 测试覆盖率报告
+coverage/
+
+# 文档生成
+docs/
+
+# 错误报告目录
+TsError/
+
+# Prisma生成文件
+prisma/migrations/
+prisma/generated/
+
+# 静态文件目录
+static/
+
+# 数据库文件
+*.db
+*.sqlite
+*.sqlite3
+
+# 自动生成的文件
+auto-imports.d.ts
+components.d.ts
+
+# 特定文件类型
+*.min.js
+*.min.css
+*.bundle.js
+*.chunk.js
+
+# 服务器特定文件
+uploads/
+temp/
