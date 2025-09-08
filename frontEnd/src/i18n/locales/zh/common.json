@@ -111,5 +111,35 @@
     "home": {
       "view_details": "查看详情"
     }
+  },
+  "technology": {
+    "loading": "加载中...",
+    "load_error": "加载失败",
+    "not_found": "技术栈不存在",
+    "not_found_desc": "请选择一个有效的技术栈查看详解",
+    "back_to_tech": "返回技术栈",
+    "tech_detail": "技术详解",
+    "loading_code": "加载代码数据中...",
+    "load_failed": "加载失败"
+  },
+  "books": {
+    "title": "技术书籍推荐",
+    "subtitle": "精选优质技术书籍，助力技术成长",
+    "search_placeholder": "搜索书籍或作者...",
+    "all_categories": "全部分类",
+    "preview": "预览",
+    "download": "下载",
+    "favorite": "收藏",
+    "rating": "评分",
+    "pages": "页数",
+    "publish_year": "出版年份",
+    "author": "作者",
+    "category": "分类",
+    "tags": "标签"
+  },
+  "files": {
+    "upload_tab": "文件上传",
+    "list_tab": "文件列表",
+    "text_load_failed": "文本加载失败"
   }
 }

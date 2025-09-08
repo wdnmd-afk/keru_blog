@@ -5,24 +5,32 @@ import { parseRoute } from '@/utils/routeUtils'
 import { ArrowLeftOutlined } from '@ant-design/icons'
 import { Menu } from 'antd'
 import React, { Suspense } from 'react'
+import { useTranslation } from 'react-i18next'
 import { useLocation, useNavigate, useParams } from 'react-router-dom'
 
 // 加载中组件
-const Loading: React.FC = () => (
-    <div className={styles.loading_container}>
-        <div className={styles.loading_spinner}>加载中...</div>
-    </div>
-)
+const Loading: React.FC = () => {
+    const { t } = useTranslation('technology')
+    return (
+        <div className={styles.loading_container}>
+            <div className={styles.loading_spinner}>{t('common.loading')}</div>
+        </div>
+    )
+}
 
 // 404组件
-const NotFoundTech: React.FC = () => (
-    <div className={styles.not_found_container}>
-        <h2>技术栈不存在</h2>
-        <p>请选择一个有效的技术栈查看详解</p>
-    </div>
-)
+const NotFoundTech: React.FC = () => {
+    const { t } = useTranslation('technology')
+    return (
+        <div className={styles.not_found_container}>
+            <h2>{t('common.tech_not_found')}</h2>
+            <p>{t('common.tech_not_found_desc')}</p>
+        </div>
+    )
+}
 
 const TechnologyLayout: React.FC = () => {
+    const { t } = useTranslation('technology')
     const navigate = useNavigate()
     const location = useLocation()
     const { tech } = useParams<{ tech: string }>()
@@ -58,9 +66,9 @@ const TechnologyLayout: React.FC = () => {
                 <div className={styles.sidebar_header}>
                     <div className={styles.back_button} onClick={handleBackToMain}>
                         <ArrowLeftOutlined />
-                        <span>返回技术栈</span>
+                        <span>{t('common.back_to_tech_stack')}</span>
                     </div>
-                    <h3>技术详解</h3>
+                    <h3>{t('common.tech_details')}</h3>
                 </div>
 
                 <Menu

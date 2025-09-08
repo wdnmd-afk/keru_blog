@@ -15,18 +15,30 @@ import { initReactI18next } from 'react-i18next'
 // 导入语言资源文件
 import enCommon from './locales/en/common.json'
 import enLayout from './locales/en/layout.json'
+import enTechnology from './locales/en/technology.json'
+import enBooks from './locales/en/books.json'
+import enFiles from './locales/en/files.json'
 import zhCommon from './locales/zh/common.json'
 import zhLayout from './locales/zh/layout.json'
+import zhTechnology from './locales/zh/technology.json'
+import zhBooks from './locales/zh/books.json'
+import zhFiles from './locales/zh/files.json'
 
 // 语言资源配置
 const resources = {
     zh: {
         common: zhCommon,
         layout: zhLayout,
+        technology: zhTechnology,
+        books: zhBooks,
+        files: zhFiles,
     },
     en: {
         common: enCommon,
         layout: enLayout,
+        technology: enTechnology,
+        books: enBooks,
+        files: enFiles,
     },
 }
 
@@ -82,7 +94,7 @@ i18n
         defaultNS: 'common',
         
         // 命名空间配置
-        ns: ['common', 'layout'],
+        ns: ['common', 'layout', 'technology', 'books', 'files'],
         
         // 调试模式（开发环境启用）
         debug: import.meta.env.DEV,

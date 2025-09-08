@@ -1,0 +1,35 @@
+{
+  "name": "i18n-automation-tools",
+  "version": "1.0.0",
+  "description": "自动化国际化工具集",
+  "main": "i18n-workflow.js",
+  "scripts": {
+    "scan": "node i18n-scanner.js",
+    "replace": "node i18n-replacer.js",
+    "validate": "node i18n-validator.js",
+    "workflow": "node i18n-workflow.js",
+    "workflow:auto": "node i18n-workflow.js --no-interactive",
+    "diagnostic": "node path-diagnostic.js",
+    "quick-fix": "node quick-fix.js",
+    "install-deps": "npm install",
+    "test-scan": "node i18n-scanner.js ../frontEnd/src ./test-output"
+  },
+  "dependencies": {
+    "@babel/core": "^7.23.0",
+    "@babel/generator": "^7.23.0",
+    "@babel/parser": "^7.23.0",
+    "@babel/traverse": "^7.23.0",
+    "@babel/types": "^7.23.0",
+    "glob": "^10.3.0"
+  },
+  "devDependencies": {},
+  "keywords": [
+    "i18n",
+    "internationalization",
+    "automation",
+    "react",
+    "typescript"
+  ],
+  "author": "Keru Blog Team",
+  "license": "MIT"
+}

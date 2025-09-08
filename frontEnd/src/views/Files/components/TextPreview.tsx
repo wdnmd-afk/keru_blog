@@ -11,6 +11,7 @@ import {
 } from '@ant-design/icons'
 import { Alert, Button, Select, Space, Spin, Switch, Tooltip, message } from 'antd'
 import React, { useCallback, useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 
 const { Option } = Select
 
@@ -46,6 +47,7 @@ const TextPreview: React.FC<TextPreviewProps> = ({
     onError,
     onLoad,
 }) => {
+    const { t } = useTranslation('files')
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState<string | null>(null)
     const [content, setContent] = useState<string>('')
@@ -72,7 +74,7 @@ const TextPreview: React.FC<TextPreviewProps> = ({
                 const contentLength = response.headers.get('content-length')
                 if (contentLength && parseInt(contentLength) > 1024 * 1024) {
                     // 1MB限制
-                    throw new Error('文件过大，无法预览（限制1MB）')
+                    throw new Error(t('errors.file_too_large'))
                 }
 
                 const arrayBuffer = await response.arrayBuffer()
@@ -97,7 +99,7 @@ const TextPreview: React.FC<TextPreviewProps> = ({
                 setLoading(false)
                 onLoad?.(textContent)
             } catch (err) {
-                const errorMessage = err instanceof Error ? err.message : '文本加载失败'
+                const errorMessage = err instanceof Error ? err.message : t('preview.load_failed')
                 setError(errorMessage)
                 setLoading(false)
                 onError?.(errorMessage)

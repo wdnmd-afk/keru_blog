@@ -111,5 +111,35 @@
     "home": {
       "view_details": "View Details"
     }
+  },
+  "technology": {
+    "loading": "Loading...",
+    "load_error": "Load Failed",
+    "not_found": "Technology Stack Not Found",
+    "not_found_desc": "Please select a valid technology stack to view details",
+    "back_to_tech": "Back to Technology",
+    "tech_detail": "Technology Details",
+    "loading_code": "Loading code data...",
+    "load_failed": "Load failed"
+  },
+  "books": {
+    "title": "Technology Books Recommendation",
+    "subtitle": "Curated quality technology books to boost your skills",
+    "search_placeholder": "Search books or authors...",
+    "all_categories": "All Categories",
+    "preview": "Preview",
+    "download": "Download",
+    "favorite": "Favorite",
+    "rating": "Rating",
+    "pages": "Pages",
+    "publish_year": "Publish Year",
+    "author": "Author",
+    "category": "Category",
+    "tags": "Tags"
+  },
+  "files": {
+    "upload_tab": "File Upload",
+    "list_tab": "File List",
+    "text_load_failed": "Text loading failed"
   }
 }

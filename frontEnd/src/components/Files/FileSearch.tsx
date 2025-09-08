@@ -1,6 +1,7 @@
 import type { FileSearchProps } from '@/types/files'
 import { Button, Col, Form, Input, Row } from 'antd'
 import React, { useCallback, useEffect, useRef } from 'react'
+import { useTranslation } from 'react-i18next'
 
 /**
  * 搜索表单值类型
@@ -15,6 +16,7 @@ interface SearchFormValues {
  * 提供文件名和上传者的搜索功能，支持防抖搜索
  */
 const FileSearch: React.FC<FileSearchProps> = ({ value, onSearch, onReset, loading = false }) => {
+    const { t } = useTranslation('files')
     const [form] = Form.useForm()
     const debounceTimerRef = useRef<NodeJS.Timeout | null>(null)
 

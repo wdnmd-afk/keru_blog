@@ -1,0 +1,66 @@
+{
+  "header": {
+    "title": "技术书籍推荐",
+    "subtitle": "精选优质技术书籍，助力技术成长"
+  },
+  "search": {
+    "placeholder": "搜索书籍或作者...",
+    "no_results": "未找到相关书籍",
+    "results_count": "找到 {{count}} 本书籍"
+  },
+  "categories": {
+    "all": "全部分类",
+    "javascript": "JavaScript",
+    "react": "React",
+    "vue": "Vue.js",
+    "nodejs": "Node.js",
+    "typescript": "TypeScript",
+    "python": "Python",
+    "java": "Java",
+    "golang": "Go",
+    "database": "数据库",
+    "devops": "运维部署",
+    "algorithm": "算法",
+    "system_design": "系统设计",
+    "frontend": "前端开发",
+    "backend": "后端开发",
+    "mobile": "移动开发"
+  },
+  "actions": {
+    "preview": "预览",
+    "download": "下载",
+    "favorite": "收藏",
+    "unfavorite": "取消收藏",
+    "share": "分享",
+    "read_online": "在线阅读",
+    "buy": "购买"
+  },
+  "details": {
+    "author": "作者",
+    "category": "分类",
+    "rating": "评分",
+    "pages": "页数",
+    "publish_year": "出版年份",
+    "publisher": "出版社",
+    "isbn": "ISBN",
+    "language": "语言",
+    "tags": "标签",
+    "description": "简介",
+    "table_of_contents": "目录"
+  },
+  "status": {
+    "available": "可用",
+    "unavailable": "不可用",
+    "coming_soon": "即将上线",
+    "out_of_stock": "缺货"
+  },
+  "messages": {
+    "added_to_favorites": "已添加到收藏",
+    "removed_from_favorites": "已从收藏中移除",
+    "download_started": "下载已开始",
+    "download_failed": "下载失败",
+    "preview_not_available": "预览不可用",
+    "loading_books": "正在加载书籍...",
+    "load_failed": "加载失败，请重试"
+  }
+}

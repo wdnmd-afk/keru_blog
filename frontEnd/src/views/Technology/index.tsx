@@ -13,6 +13,7 @@ import {
 } from '@ant-design/icons'
 import { Button, Card, Col, Progress, Row, Tabs, Tag, Timeline } from 'antd'
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
 
 // 技术栈数据
@@ -147,7 +148,60 @@ const learningTimeline = [
 ]
 
 const Technology: React.FC = () => {
+    const { t } = useTranslation('technology')
     const navigate = useNavigate()
+
+    // 技术栈数据（使用国际化）
+    const techStackData = [
+        {
+            name: 'React',
+            level: 90,
+            color: '#61dafb',
+            icon: <CodeOutlined />,
+            route: 'react',
+            description: t('react.description'),
+        },
+        {
+            name: 'TypeScript',
+            level: 85,
+            color: '#3178c6',
+            icon: <CodeOutlined />,
+            route: 'typescript',
+            description: t('typescript.description'),
+        },
+        {
+            name: 'Node.js',
+            level: 80,
+            color: '#339933',
+            icon: <DatabaseOutlined />,
+            route: 'nodejs',
+            description: t('nodejs.description'),
+        },
+        {
+            name: 'Vue.js',
+            level: 75,
+            color: '#4fc08d',
+            icon: <CodeOutlined />,
+            route: 'vue',
+            description: t('vue.description'),
+        },
+        {
+            name: 'Docker',
+            level: 65,
+            color: '#2496ed',
+            icon: <CloudOutlined />,
+            route: 'docker',
+            description: t('docker.description'),
+        },
+        {
+            name: t('categories.tools'),
+            level: 80,
+            color: '#ff6b6b',
+            icon: <ToolOutlined />,
+            route: 'tools',
+            description: t('git.description'),
+        },
+    ]
 
     // 处理技术栈卡片点击
     const handleTechClick = (route: string) => {
@@ -161,14 +215,14 @@ const Technology: React.FC = () => {
             label: (
                 <span>
                     <TrophyOutlined />
-                    技术栈
+                    {t('categories.frontend')}
                 </span>
             ),
             children: (
                 <div className={styles.tech_stack_section}>
-                    <h2>技术能力</h2>
+                    <h2>{t('common.tech_skills')}</h2>
                     <Row gutter={[24, 24]}>
-                        {techStack.map((tech) => (
+                        {techStackData.map((tech) => (
                             <Col xs={24} sm={12} lg={8} key={tech.name}>
                                 <Card
                                     className={styles.skill_card}
@@ -192,7 +246,7 @@ const Technology: React.FC = () => {
                                         strokeColor={tech.color}
                                         showInfo={false}
                                     />
-                                    <div className={styles.skill_level}>熟练度: {tech.level}%</div>
+                                    <div className={styles.skill_level}>{t('common.proficiency')}: {tech.level}%</div>
                                 </Card>
                             </Col>
                         ))}
@@ -319,8 +373,8 @@ const Technology: React.FC = () => {
             <div className={styles.tech_header}>
                 <div className={styles.header_content}>
                     <CodeOutlined className={styles.header_icon} />
-                    <h1>技术成长之路</h1>
-                    <p>记录技术学习历程，分享开发经验与心得</p>
+                    <h1>{t('common.learning_journey')}</h1>
+                    <p>{t('common.tech_details')}</p>
                 </div>
             </div>
 

@@ -4,9 +4,11 @@ import styles from '@/styles/topicDetail.module.scss'
 import { ArrowLeftOutlined, DatabaseOutlined, InfoCircleOutlined } from '@ant-design/icons'
 import { Alert, Button, Card, Tag } from 'antd'
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
 
 const VuexPiniaDetail: React.FC = () => {
+    const { t } = useTranslation('technology')
     const navigate = useNavigate()
     const { codeData, loading, error } = useCodeData('Vue', 'stateManagement')
 
@@ -15,11 +17,11 @@ const VuexPiniaDetail: React.FC = () => {
     }
 
     if (loading) {
-        return <div className={styles.loading}>加载中...</div>
+        return <div className={styles.loading}>{t('common.loading')}</div>
     }
 
     if (error) {
-        return <div className={styles.error}>加载失败: {error}</div>
+        return <div className={styles.error}>{t('common.load_failed_with_error', { error })}</div>
     }
 
     return (

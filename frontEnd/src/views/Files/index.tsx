@@ -2,6 +2,7 @@ import FilesErrorBoundary from '@/components/Files/ErrorBoundary'
 import styles from '@/styles/files.module.scss'
 import { Tabs, TabsProps } from 'antd'
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 import FilePreview from './FilePreview'
 import Upload from './Upload'
 
@@ -11,6 +12,7 @@ import Upload from './Upload'
  * 使用全局状态管理，无需changeKey机制
  */
 const Files: React.FC = () => {
+    const { t } = useTranslation('files')
     const [activeKey, setActiveKey] = React.useState('1')
     /**
      * 处理Tab切换
@@ -40,7 +42,7 @@ const Files: React.FC = () => {
     const items: TabsProps['items'] = [
         {
             key: '1',
-            label: <span className="flex items-center gap-2">📁 文件上传</span>,
+            label: <span className="flex items-center gap-2">📁 {t('tabs.upload')}</span>,
             children: (
                 <FilesErrorBoundary
                     onError={handleError}
@@ -52,7 +54,7 @@ const Files: React.FC = () => {
         },
         {
             key: '2',
-            label: <span className="flex items-center gap-2">📄 文件列表</span>,
+            label: <span className="flex items-center gap-2">📄 {t('tabs.list')}</span>,
             children: (
                 <FilesErrorBoundary
                     onError={handleError}
