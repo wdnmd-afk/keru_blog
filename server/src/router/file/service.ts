@@ -9,7 +9,7 @@ import {
 import { inject, injectable } from 'inversify'
 import { FileCheckDto, FileChunkDto, FileMergeDto, FileQueryDto } from './file.dto'
 
-import * as path from 'path'
+import path from 'path'
 
 import { getFileType } from '@/enum'
 import fse from 'fs-extra'

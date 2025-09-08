@@ -1,9 +1,10 @@
+import 'reflect-metadata'
+
 import cors from 'cors'
 import express from 'express'
 import { InversifyExpressServer } from 'inversify-express-utils'
-import * as process from 'node:process'
-import * as path from 'path'
-import 'reflect-metadata'
+import process from 'node:process'
+import path from 'path'
 
 // 导入配置模块
 import { AppConfig, createAppConfig, printConfigSummary, validateConfig } from '@/config/app.config'

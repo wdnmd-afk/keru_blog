@@ -1,4 +1,6 @@
 // container.config.ts
+import 'reflect-metadata'
+
 import { PrismaClient } from '@prisma/client'
 import { Container } from 'inversify'
 
