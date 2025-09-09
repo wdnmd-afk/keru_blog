@@ -4,9 +4,11 @@ import styles from '@/styles/topicDetail.module.scss'
 import { ArrowLeftOutlined, RocketOutlined } from '@ant-design/icons'
 import { Button, Card, Tag } from 'antd'
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
 
 const UseEffectDetail: React.FC = () => {
+    const { t } = useTranslation('technology')
     const navigate = useNavigate()
     const { codeData, loading, error } = useCodeData('React', 'useEffect')
 
@@ -15,11 +17,15 @@ const UseEffectDetail: React.FC = () => {
     }
 
     if (loading) {
-        return <div className={styles.loading}>加载中...</div>
+        return <div className={styles.loading}>{t('detail_pages.common.loading')}</div>
     }
 
     if (error) {
-        return <div className={styles.error}>加载失败: {error}</div>
+        return (
+            <div className={styles.error}>
+                {t('detail_pages.common.load_failed')}: {error}
+            </div>
+        )
     }
 
     return (
@@ -32,7 +38,7 @@ const UseEffectDetail: React.FC = () => {
                     onClick={handleBack}
                     className={styles.back_button}
                 >
-                    返回React技术卡片
+                    {t('detail_pages.common.back_button', { tech: 'React' })}
                 </Button>
             </div>
 
@@ -42,13 +48,19 @@ const UseEffectDetail: React.FC = () => {
                     <RocketOutlined />
                 </div>
                 <div className={styles.topic_info}>
-                    <h1>useEffect 深度解析</h1>
-                    <p>掌握Effect Hook的使用技巧，避免常见陷阱，提升React应用性能</p>
+                    <h1>{t('detail_pages.react_hooks.use_effect.title')}</h1>
+                    <p>{t('detail_pages.react_hooks.use_effect.description')}</p>
                     <div className={styles.topic_tags}>
                         <Tag color="blue">React Hooks</Tag>
-                        <Tag color="orange">副作用</Tag>
-                        <Tag color="green">生命周期</Tag>
-                        <Tag color="purple">性能优化</Tag>
+                        <Tag color="orange">
+                            {t('detail_pages.react_hooks.use_effect.tags.side_effects')}
+                        </Tag>
+                        <Tag color="green">
+                            {t('detail_pages.react_hooks.use_effect.tags.lifecycle')}
+                        </Tag>
+                        <Tag color="purple">
+                            {t('detail_pages.react_hooks.use_effect.tags.dependencies')}
+                        </Tag>
                     </div>
                 </div>
             </div>
@@ -56,7 +68,10 @@ const UseEffectDetail: React.FC = () => {
             {/* 内容区域 */}
             <div className={styles.content_sections}>
                 {/* 基础概念 */}
-                <Card title="📚 基础概念" className={styles.content_card}>
+                <Card
+                    title={`📚 ${t('detail_pages.common.overview')}`}
+                    className={styles.content_card}
+                >
                     <div className={styles.concept_content}>
                         <h3>什么是useEffect？</h3>
                         <p>

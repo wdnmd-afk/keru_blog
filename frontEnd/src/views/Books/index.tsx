@@ -2,6 +2,7 @@ import styles from '@/styles/books.module.scss'
 import { BookOutlined, FilterOutlined, SearchOutlined } from '@ant-design/icons'
 import { Button, Card, Col, Input, Row, Select, Tag } from 'antd'
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 
 const { Search } = Input
 const { Option } = Select
@@ -48,6 +49,7 @@ const booksData = [
 ]
 
 const Books: React.FC = () => {
+    const { t } = useTranslation('books')
     const [searchText, setSearchText] = React.useState('')
     const [selectedCategory, setSelectedCategory] = React.useState('all')
     const [filteredBooks, setFilteredBooks] = React.useState(booksData)
@@ -88,13 +90,13 @@ const Books: React.FC = () => {
                 <div className={styles.header_content}>
                     <div className={styles.title_section}>
                         <BookOutlined className={styles.title_icon} />
-                        <h1>技术书籍推荐</h1>
-                        <p>精选优质技术书籍，助力技术成长</p>
+                        <h1>{t('header.title')}</h1>
+                        <p>{t('header.subtitle')}</p>
                     </div>
 
                     <div className={styles.search_section}>
                         <Search
-                            placeholder="搜索书籍或作者"
+                            placeholder={t('search.placeholder')}
                             allowClear
                             enterButton={<SearchOutlined />}
                             size="large"
@@ -109,7 +111,7 @@ const Books: React.FC = () => {
                             className={styles.category_select}
                             suffixIcon={<FilterOutlined />}
                         >
-                            <Option value="all">全部分类</Option>
+                            <Option value="all">{t('categories.all')}</Option>
                             {categories.slice(1).map((category) => (
                                 <Option key={category} value={category}>
                                     {category}
@@ -136,13 +138,13 @@ const Books: React.FC = () => {
                                 }
                                 actions={[
                                     <Button type="text" key="preview">
-                                        预览
+                                        {t('actions.preview')}
                                     </Button>,
                                     <Button type="text" key="download">
-                                        下载
+                                        {t('actions.download')}
                                     </Button>,
                                     <Button type="text" key="favorite">
-                                        收藏
+                                        {t('actions.favorite')}
                                     </Button>,
                                 ]}
                             >
@@ -150,11 +152,16 @@ const Books: React.FC = () => {
                                     title={<div className={styles.book_title}>{book.title}</div>}
                                     description={
                                         <div className={styles.book_info}>
-                                            <p className={styles.author}>作者：{book.author}</p>
+                                            <p className={styles.author}>
+                                                {t('details.author')}：{book.author}
+                                            </p>
                                             <p className={styles.description}>{book.description}</p>
                                             <div className={styles.book_meta}>
                                                 <span>⭐ {book.rating}</span>
-                                                <span>{book.pages}页</span>
+                                                <span>
+                                                    {book.pages}
+                                                    {t('details.pages')}
+                                                </span>
                                                 <span>{book.publishYear}年</span>
                                             </div>
                                             <div className={styles.tags}>

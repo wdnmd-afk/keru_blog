@@ -1,0 +1,89 @@
+{
+    "brand": {
+        "title": "KeruのBlog",
+        "subtitle": "Explore the Infinite Possibilities of Technology"
+    },
+    "tabs": {
+        "login": "Login",
+        "register": "Register"
+    },
+    "form": {
+        "labels": {
+            "username": "Username",
+            "password": "Password",
+            "email": "Email",
+            "confirm_password": "Confirm Password",
+            "remember_me": "Remember Me",
+            "admin_register": "Admin Registration"
+        },
+        "placeholders": {
+            "username": "Enter your username",
+            "password": "Enter your password",
+            "email": "Enter your email address",
+            "confirm_password": "Confirm your password"
+        },
+        "validation": {
+            "username_required": "Username is required",
+            "password_required": "Password is required",
+            "email_required": "Email is required",
+            "email_invalid": "Please enter a valid email address",
+            "password_too_short": "Password must be at least 6 characters",
+            "password_mismatch": "Passwords do not match",
+            "username_too_short": "Username must be at least 3 characters",
+            "username_invalid": "Username can only contain letters, numbers and underscores"
+        }
+    },
+    "buttons": {
+        "login": "Login",
+        "register": "Register",
+        "forgot_password": "Forgot Password?",
+        "back_to_login": "Back to Login",
+        "reset_password": "Reset Password",
+        "send_reset_email": "Send Reset Email",
+        "resend_email": "Resend Email",
+        "submit": "Submit"
+    },
+    "messages": {
+        "login_success": "Login successful, welcome back!",
+        "register_success": "Registration successful, please login",
+        "login_failed": "Login failed, please check your credentials",
+        "register_failed": "Registration failed, please try again",
+        "email_exists": "This email is already registered",
+        "username_exists": "This username is already taken",
+        "network_error": "Network error, please try again later",
+        "server_error": "Server error, please try again later",
+        "invalid_credentials": "Invalid username or password",
+        "account_locked": "Account is locked, please contact administrator",
+        "email_not_verified": "Email not verified, please verify your email first",
+        "reset_email_sent": "Password reset email sent, please check your inbox",
+        "reset_email_failed": "Failed to send reset email, please try again",
+        "password_reset_success": "Password reset successful, please login with your new password",
+        "password_reset_failed": "Password reset failed, please try again",
+        "token_expired": "Verification link has expired, please request a new one",
+        "token_invalid": "Invalid verification link"
+    },
+    "reset_password": {
+        "title": "Reset Password",
+        "subtitle": "Enter your email address and we'll send you a link to reset your password",
+        "email_label": "Email Address",
+        "email_placeholder": "Enter the email you used to register",
+        "new_password_label": "New Password",
+        "new_password_placeholder": "Enter your new password",
+        "confirm_password_label": "Confirm New Password",
+        "confirm_password_placeholder": "Confirm your new password",
+        "instructions": "Please check your email and click the reset link to complete password reset",
+        "back_to_login": "Back to Login Page"
+    },
+    "loading": {
+        "logging_in": "Logging in...",
+        "registering": "Registering...",
+        "sending_email": "Sending email...",
+        "resetting_password": "Resetting password..."
+    },
+    "help": {
+        "login_help": "If you forgot your password, click \"Forgot Password\" to reset it",
+        "register_help": "Register to enjoy the full experience",
+        "contact_admin": "Contact administrator if you have any issues",
+        "privacy_notice": "We value your privacy and will not disclose your personal information"
+    }
+}

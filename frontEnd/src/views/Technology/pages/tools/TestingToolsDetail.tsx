@@ -4,9 +4,11 @@ import styles from '@/styles/topicDetail.module.scss'
 import { ArrowLeftOutlined, BugOutlined } from '@ant-design/icons'
 import { Alert, Button, Card, Divider, Tag } from 'antd'
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
 
 const TestingToolsDetail: React.FC = () => {
+    const { t } = useTranslation('technology')
     const navigate = useNavigate()
     const { codeData, loading, error } = useCodeData('Tools', 'testing-tools')
 

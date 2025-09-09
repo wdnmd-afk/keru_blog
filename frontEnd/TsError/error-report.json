@@ -1,24 +1,5 @@
 {
-  "timestamp": "2025-09-08T06:21:14.838Z",
-  "errorCount": 2,
-  "errors": [
-    {
-      "file": "src/i18n/index.ts",
-      "line": "160",
-      "column": "5",
-      "type": "error",
-      "code": "TS2322",
-      "message": "Type 'Promise<TFunction<\"translation\", undefined>>' is not assignable to type 'Promise<void>'.",
-      "fullLine": "src/i18n/index.ts(160,5): error TS2322: Type 'Promise<TFunction<\"translation\", undefined>>' is not assignable to type 'Promise<void>'.\r"
-    },
-    {
-      "file": "src/utils/i18n.ts",
-      "line": "51",
-      "column": "36",
-      "type": "error",
-      "code": "TS2367",
-      "message": "This comparison appears to be unintentional because the types 'SupportedLanguage' and '\"ar\"' have no overlap.",
-      "fullLine": "src/utils/i18n.ts(51,36): error TS2367: This comparison appears to be unintentional because the types 'SupportedLanguage' and '\"ar\"' have no overlap.\r"
-    }
-  ]
+  "timestamp": "2025-09-09T02:41:09.692Z",
+  "errorCount": 0,
+  "errors": []
 }

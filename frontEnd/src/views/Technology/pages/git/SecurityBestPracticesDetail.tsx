@@ -4,14 +4,21 @@ import styles from '@/styles/topicDetail.module.scss'
 import { ArrowLeftOutlined, CheckCircleOutlined, SafetyOutlined } from '@ant-design/icons'
 import { Alert, Button, Card, Tag } from 'antd'
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
 
 const SecurityBestPracticesDetail: React.FC = () => {
+    const { t } = useTranslation('technology')
     const navigate = useNavigate()
     const { codeData, loading, error } = useCodeData('Git', 'securityBestPractices')
 
-    if (loading) return <div>加载中...</div>
-    if (error) return <div>加载失败: {error}</div>
+    if (loading) return <div className={styles.loading}>{t('detail_pages.common.loading')}</div>
+    if (error)
+        return (
+            <div className={styles.error}>
+                {t('detail_pages.common.load_failed')}: {error}
+            </div>
+        )
 
     const handleBack = () => {
         navigate('/technology/git')

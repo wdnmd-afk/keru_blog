@@ -4,16 +4,19 @@ import { Todo, TodoType } from '@/types/todo.d'
 import { DeleteOutlined, EditOutlined, PlusOutlined } from '@ant-design/icons'
 import { Button, Checkbox, Form, Input, List, Modal, Popconfirm, Radio, Space, Tabs } from 'antd'
 import { useEffect, useMemo, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 
 const { TabPane } = Tabs
 
-const todoTypeMap = {
-    [TodoType.RECENT]: '近期要做',
-    [TodoType.LONG_TERM]: '长期任务',
-    [TodoType.STUDY_PLAN]: '学习计划',
-}
+// 将在组件内部使用翻译函数替代
+// const todoTypeMap = {
+//     [TodoType.RECENT]: '近期要做',
+//     [TodoType.LONG_TERM]: '长期任务',
+//     [TodoType.STUDY_PLAN]: '学习计划',
+// }
 
 const TodoList = () => {
+    const { t } = useTranslation('home')
     const { todos } = useGlobalStore()
     const { getTodos, addTodo, updateTodo, deleteTodo } = useGlobalStoreAction()
     const [form] = Form.useForm()
@@ -69,45 +72,57 @@ const TodoList = () => {
         return todos.filter((todo) => todo.type === activeTab)
     }, [todos, activeTab])
 
+    // 获取翻译的待办类型映射
+    const getTodoTypeMap = () => ({
+        [TodoType.RECENT]: t('todo.types.recent'),
+        [TodoType.LONG_TERM]: t('todo.types.long_term'),
+        [TodoType.STUDY_PLAN]: t('todo.types.study_plan'),
+    })
+
     return (
         <div className={style.todo_list_container}>
             <div className={style.todo_header}>
-                <h2>待办事项</h2>
+                <h2>{t('todo.title')}</h2>
                 <Button type="primary" icon={<PlusOutlined />} onClick={showAddModal}>
-                    添加待办
+                    {t('todo.add_button')}
                 </Button>
             </div>
 
             <Modal
                 className={style.todo_modal}
-                title={editingTodo ? '编辑待办事项' : '添加新的待办事项'}
+                title={editingTodo ? t('todo.modal.edit_title') : t('todo.modal.add_title')}
                 open={isModalOpen}
                 onOk={handleOk}
                 onCancel={handleCancel}
-                okText="确认"
-                cancelText="取消"
+                okText={t('todo.modal.confirm')}
+                cancelText={t('todo.modal.cancel')}
                 destroyOnClose
             >
                 <Form form={form} layout="vertical" name="todo_form">
                     <Form.Item
                         name="content"
-                        label="内容"
-                        rules={[{ required: true, message: '请输入待办内容!' }]}
+                        label={t('todo.modal.content_label')}
+                        rules={[{ required: true, message: t('todo.modal.content_required') }]}
                     >
-                        <Input.TextArea rows={4} placeholder="准备做什么？" />
+                        <Input.TextArea
+                            rows={4}
+                            placeholder={t('todo.modal.content_placeholder')}
+                        />
                     </Form.Item>
                     <Form.Item
                         name="type"
-                        label="类型"
-                        rules={[{ required: true, message: '请选择类型!' }]}
+                        label={t('todo.modal.type_label')}
+                        rules={[{ required: true, message: t('todo.modal.type_required') }]}
                     >
                         <Radio.Group>
-                            <Radio value={TodoType.RECENT}>{todoTypeMap[TodoType.RECENT]}</Radio>
+                            <Radio value={TodoType.RECENT}>
+                                {getTodoTypeMap()[TodoType.RECENT]}
+                            </Radio>
                             <Radio value={TodoType.LONG_TERM}>
-                                {todoTypeMap[TodoType.LONG_TERM]}
+                                {getTodoTypeMap()[TodoType.LONG_TERM]}
                             </Radio>
                             <Radio value={TodoType.STUDY_PLAN}>
-                                {todoTypeMap[TodoType.STUDY_PLAN]}
+                                {getTodoTypeMap()[TodoType.STUDY_PLAN]}
                             </Radio>
                         </Radio.Group>
                     </Form.Item>
@@ -115,10 +130,10 @@ const TodoList = () => {
             </Modal>
 
             <Tabs activeKey={activeTab} onChange={setActiveTab}>
-                <TabPane tab="全部" key="ALL" />
-                <TabPane tab={todoTypeMap[TodoType.RECENT]} key={TodoType.RECENT} />
-                <TabPane tab={todoTypeMap[TodoType.LONG_TERM]} key={TodoType.LONG_TERM} />
-                <TabPane tab={todoTypeMap[TodoType.STUDY_PLAN]} key={TodoType.STUDY_PLAN} />
+                <TabPane tab={t('common:buttons.all')} key="ALL" />
+                <TabPane tab={getTodoTypeMap()[TodoType.RECENT]} key={TodoType.RECENT} />
+                <TabPane tab={getTodoTypeMap()[TodoType.LONG_TERM]} key={TodoType.LONG_TERM} />
+                <TabPane tab={getTodoTypeMap()[TodoType.STUDY_PLAN]} key={TodoType.STUDY_PLAN} />
             </Tabs>
 
             <List
@@ -132,7 +147,10 @@ const TodoList = () => {
                                 icon={<EditOutlined />}
                                 onClick={() => showEditModal(item)}
                             />,
-                            <Popconfirm title="确定删除吗？" onConfirm={() => deleteTodo(item.id)}>
+                            <Popconfirm
+                                title={t('todo.actions.delete_confirm')}
+                                onConfirm={() => deleteTodo(item.id)}
+                            >
                                 <Button type="text" icon={<DeleteOutlined />} danger />
                             </Popconfirm>,
                         ]}
@@ -148,7 +166,7 @@ const TodoList = () => {
                         </Space>
                     </List.Item>
                 )}
-                locale={{ emptyText: '暂无待办事项' }}
+                locale={{ emptyText: t('todo.empty_text') }}
             />
         </div>
     )

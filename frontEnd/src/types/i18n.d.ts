@@ -256,6 +256,59 @@ export interface TranslationResources {
         messages: Record<string, string>
         errors: Record<string, string>
     }
+    home: {
+        header: {
+            title: string
+            subtitle: string
+            stats: {
+                articles: string
+                visits: string
+                likes: string
+            }
+        }
+        content: {
+            view_details: string
+            cards: Record<string, { title: string; description: string }>
+            tags: Record<string, string>
+            author: string
+            actions: {
+                likes: string
+                comments: string
+                shares: string
+            }
+        }
+        todo: {
+            title: string
+            add_button: string
+            modal: Record<string, string>
+            types: Record<string, string>
+            actions: Record<string, string>
+            empty_text: string
+            completed: string
+        }
+        navigation: Record<string, string>
+        messages: Record<string, string>
+    }
+    login: {
+        brand: {
+            title: string
+            subtitle: string
+        }
+        tabs: {
+            login: string
+            register: string
+        }
+        form: {
+            labels: Record<string, string>
+            placeholders: Record<string, string>
+            validation: Record<string, string>
+        }
+        buttons: Record<string, string>
+        messages: Record<string, string>
+        reset_password: Record<string, string>
+        loading: Record<string, string>
+        help: Record<string, string>
+    }
 }
 
 // 扩展react-i18next的类型定义

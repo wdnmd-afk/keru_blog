@@ -4,9 +4,11 @@ import styles from '@/styles/topicDetail.module.scss'
 import { ArrowLeftOutlined, CheckCircleOutlined, GithubOutlined } from '@ant-design/icons'
 import { Button, Card, Tag } from 'antd'
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
 
 const GitHubWorkflowDetail: React.FC = () => {
+    const { t } = useTranslation('technology')
     const navigate = useNavigate()
     const { codeData, loading, error } = useCodeData('Git', 'githubWorkflow')
 
@@ -15,11 +17,15 @@ const GitHubWorkflowDetail: React.FC = () => {
     }
 
     if (loading) {
-        return <div className={styles.loading}>加载中...</div>
+        return <div className={styles.loading}>{t('detail_pages.common.loading')}</div>
     }
 
     if (error) {
-        return <div className={styles.error}>加载失败: {error}</div>
+        return (
+            <div className={styles.error}>
+                {t('detail_pages.common.load_failed')}: {error}
+            </div>
+        )
     }
 
     return (

@@ -4,9 +4,11 @@ import styles from '@/styles/topicDetail.module.scss'
 import { ArrowLeftOutlined, CloudOutlined } from '@ant-design/icons'
 import { Alert, Button, Card, Spin, Tag } from 'antd'
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
 
 const DockerComposeDetail: React.FC = () => {
+    const { t } = useTranslation('technology')
     const navigate = useNavigate()
     const { codeData, loading, error } = useCodeData('Docker', 'docker-compose')
 
@@ -19,7 +21,9 @@ const DockerComposeDetail: React.FC = () => {
             <div className={styles.topic_detail_container}>
                 <div style={{ textAlign: 'center', padding: '50px' }}>
                     <Spin size="large" />
-                    <p style={{ marginTop: '16px', color: '#ffffff' }}>加载代码数据中...</p>
+                    <p style={{ marginTop: '16px', color: '#ffffff' }}>
+                        {t('detail_pages.common.loading')}
+                    </p>
                 </div>
             </div>
         )
@@ -28,7 +32,12 @@ const DockerComposeDetail: React.FC = () => {
     if (error) {
         return (
             <div className={styles.topic_detail_container}>
-                <Alert message="加载失败" description={error} type="error" showIcon />
+                <Alert
+                    message={t('detail_pages.common.load_failed')}
+                    description={error}
+                    type="error"
+                    showIcon
+                />
             </div>
         )
     }
@@ -43,7 +52,7 @@ const DockerComposeDetail: React.FC = () => {
                     onClick={handleBack}
                     className={styles.back_button}
                 >
-                    返回Docker技术卡片
+                    {t('detail_pages.common.back_button', { tech: 'Docker' })}
                 </Button>
             </div>
 
@@ -53,13 +62,21 @@ const DockerComposeDetail: React.FC = () => {
                     <CloudOutlined />
                 </div>
                 <div className={styles.topic_info}>
-                    <h1>Docker Compose</h1>
-                    <p>使用Docker Compose管理多容器应用程序，实现服务编排和环境一致性</p>
+                    <h1>{t('detail_pages.docker_compose.title')}</h1>
+                    <p>{t('detail_pages.docker_compose.description')}</p>
                     <div className={styles.topic_tags}>
-                        <Tag color="blue">服务编排</Tag>
-                        <Tag color="green">多容器管理</Tag>
-                        <Tag color="orange">环境配置</Tag>
-                        <Tag color="purple">微服务架构</Tag>
+                        <Tag color="blue">
+                            {t('detail_pages.docker_compose.tags.service_orchestration')}
+                        </Tag>
+                        <Tag color="green">
+                            {t('detail_pages.docker_compose.tags.multi_container')}
+                        </Tag>
+                        <Tag color="orange">
+                            {t('detail_pages.docker_compose.tags.environment_config')}
+                        </Tag>
+                        <Tag color="purple">
+                            {t('detail_pages.docker_compose.tags.microservices')}
+                        </Tag>
                     </div>
                 </div>
             </div>
@@ -67,46 +84,56 @@ const DockerComposeDetail: React.FC = () => {
             {/* 内容区域 */}
             <div className={styles.content_sections}>
                 {/* 概述 */}
-                <Card title="📋 Docker Compose 概述" className={styles.content_card}>
+                <Card
+                    title={`📋 ${t('detail_pages.docker_compose.title')} ${t('detail_pages.common.overview')}`}
+                    className={styles.content_card}
+                >
                     <div className={styles.concept_content}>
-                        <h3>什么是 Docker Compose</h3>
+                        <h3>{t('detail_pages.docker_compose.sections.what_is')}</h3>
                         <p>
                             Docker Compose 是一个用于定义和运行多容器Docker应用程序的工具。
                             通过YAML文件来配置应用程序的服务，然后使用一个命令就可以创建并启动所有服务。
                         </p>
 
-                        <h3>核心概念</h3>
+                        <h3>{t('detail_pages.docker_compose.sections.core_concepts')}</h3>
                         <div className={styles.network_types}>
-                            <Tag color="blue">服务 (Services)</Tag>
-                            <Tag color="green">网络 (Networks)</Tag>
-                            <Tag color="orange">数据卷 (Volumes)</Tag>
-                            <Tag color="red">配置 (Configs)</Tag>
-                            <Tag color="purple">密钥 (Secrets)</Tag>
+                            <Tag color="blue">
+                                {t('detail_pages.docker_compose.concepts.services')}
+                            </Tag>
+                            <Tag color="green">
+                                {t('detail_pages.docker_compose.concepts.networks')}
+                            </Tag>
+                            <Tag color="orange">
+                                {t('detail_pages.docker_compose.concepts.volumes')}
+                            </Tag>
+                            <Tag color="red">
+                                {t('detail_pages.docker_compose.concepts.configs')}
+                            </Tag>
+                            <Tag color="purple">
+                                {t('detail_pages.docker_compose.concepts.secrets')}
+                            </Tag>
                         </div>
 
-                        <h3>使用场景</h3>
+                        <h3>{t('detail_pages.docker_compose.sections.use_cases')}</h3>
                         <ul>
+                            <li>{t('detail_pages.docker_compose.use_cases_list.development')}</li>
+                            <li>{t('detail_pages.docker_compose.use_cases_list.testing')}</li>
                             <li>
-                                <strong>开发环境</strong>：快速搭建开发环境
+                                {t('detail_pages.docker_compose.use_cases_list.single_machine')}
                             </li>
-                            <li>
-                                <strong>测试环境</strong>：自动化测试环境部署
-                            </li>
-                            <li>
-                                <strong>单机部署</strong>：简单的生产环境部署
-                            </li>
-                            <li>
-                                <strong>微服务</strong>：管理微服务架构
-                            </li>
+                            <li>{t('detail_pages.docker_compose.use_cases_list.microservices')}</li>
                         </ul>
                     </div>
                 </Card>
 
                 {/* 基础配置 */}
-                <Card title="📄 基础配置" className={styles.content_card}>
+                <Card
+                    title={`📄 ${t('detail_pages.common.basic_config')}`}
+                    className={styles.content_card}
+                >
                     <div className={styles.usage_grid}>
                         <div className={styles.usage_item}>
-                            <h4>1. docker-compose.yml 基础结构</h4>
+                            <h4>1. {t('detail_pages.docker_compose.sections.basic_structure')}</h4>
                             {codeData.basicCompose && (
                                 <CodeHighlight
                                     code={codeData.basicCompose.code}
@@ -244,19 +271,46 @@ const DockerComposeDetail: React.FC = () => {
                 </Card>
 
                 {/* 最佳实践 */}
-                <Card title="💡 最佳实践" className={styles.content_card}>
+                <Card
+                    title={`💡 ${t('detail_pages.common.best_practices')}`}
+                    className={styles.content_card}
+                >
                     <div className="f-ic">
                         <Alert
-                            message="Docker Compose 使用建议"
+                            message={t('detail_pages.docker_compose.best_practices.title')}
                             className={'h-50 flex-1'}
                             description={
                                 <ul>
-                                    <li>使用版本控制管理compose文件</li>
-                                    <li>合理组织项目文件结构</li>
-                                    <li>明确指定镜像版本，避免使用latest</li>
-                                    <li>使用环境变量管理配置</li>
-                                    <li>为服务设置健康检查</li>
-                                    <li>合理配置资源限制</li>
+                                    <li>
+                                        {t(
+                                            'detail_pages.docker_compose.best_practices.version_control'
+                                        )}
+                                    </li>
+                                    <li>
+                                        {t(
+                                            'detail_pages.docker_compose.best_practices.file_structure'
+                                        )}
+                                    </li>
+                                    <li>
+                                        {t(
+                                            'detail_pages.docker_compose.best_practices.image_versions'
+                                        )}
+                                    </li>
+                                    <li>
+                                        {t(
+                                            'detail_pages.docker_compose.best_practices.env_variables'
+                                        )}
+                                    </li>
+                                    <li>
+                                        {t(
+                                            'detail_pages.docker_compose.best_practices.health_checks'
+                                        )}
+                                    </li>
+                                    <li>
+                                        {t(
+                                            'detail_pages.docker_compose.best_practices.resource_limits'
+                                        )}
+                                    </li>
                                 </ul>
                             }
                             type="info"
@@ -264,24 +318,28 @@ const DockerComposeDetail: React.FC = () => {
                         />
 
                         <Alert
-                            message="生产环境注意事项"
+                            message={t('detail_pages.docker_compose.production_notes.title')}
                             className={'h-50 flex-1 mx-5'}
                             description={
                                 <ul>
                                     <li>
-                                        <strong>安全配置</strong>：使用secrets管理敏感信息
+                                        {t('detail_pages.docker_compose.production_notes.security')}
                                     </li>
                                     <li>
-                                        <strong>网络隔离</strong>：创建自定义网络隔离服务
+                                        {t(
+                                            'detail_pages.docker_compose.production_notes.network_isolation'
+                                        )}
                                     </li>
                                     <li>
-                                        <strong>日志管理</strong>：配置合适的日志驱动
+                                        {t('detail_pages.docker_compose.production_notes.logging')}
                                     </li>
                                     <li>
-                                        <strong>监控告警</strong>：集成监控和告警系统
+                                        {t(
+                                            'detail_pages.docker_compose.production_notes.monitoring'
+                                        )}
                                     </li>
                                     <li>
-                                        <strong>备份策略</strong>：制定数据备份和恢复策略
+                                        {t('detail_pages.docker_compose.production_notes.backup')}
                                     </li>
                                 </ul>
                             }
@@ -290,24 +348,34 @@ const DockerComposeDetail: React.FC = () => {
                         />
 
                         <Alert
-                            message="性能优化建议"
+                            message={t('detail_pages.docker_compose.performance_tips.title')}
                             className={'h-50 flex-1'}
                             description={
                                 <ul>
                                     <li>
-                                        <strong>镜像优化</strong>：使用多阶段构建减小镜像大小
+                                        {t(
+                                            'detail_pages.docker_compose.performance_tips.image_optimization'
+                                        )}
                                     </li>
                                     <li>
-                                        <strong>缓存利用</strong>：合理利用Docker层缓存
+                                        {t(
+                                            'detail_pages.docker_compose.performance_tips.cache_utilization'
+                                        )}
                                     </li>
                                     <li>
-                                        <strong>并行启动</strong>：优化服务启动顺序
+                                        {t(
+                                            'detail_pages.docker_compose.performance_tips.parallel_startup'
+                                        )}
                                     </li>
                                     <li>
-                                        <strong>资源分配</strong>：根据实际需求分配资源
+                                        {t(
+                                            'detail_pages.docker_compose.performance_tips.resource_allocation'
+                                        )}
                                     </li>
                                     <li>
-                                        <strong>网络优化</strong>：使用合适的网络驱动
+                                        {t(
+                                            'detail_pages.docker_compose.performance_tips.network_optimization'
+                                        )}
                                     </li>
                                 </ul>
                             }

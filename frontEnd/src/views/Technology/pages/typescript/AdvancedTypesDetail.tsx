@@ -4,9 +4,11 @@ import styles from '@/styles/topicDetail.module.scss'
 import { ArrowLeftOutlined, CheckCircleOutlined, RocketOutlined } from '@ant-design/icons'
 import { Button, Card, Tag } from 'antd'
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
 
 const AdvancedTypesDetail: React.FC = () => {
+    const { t } = useTranslation('technology')
     const navigate = useNavigate()
     const { codeData, loading, error } = useCodeData('TypeScript', 'advancedTypesDetail')
 
@@ -14,8 +16,13 @@ const AdvancedTypesDetail: React.FC = () => {
         navigate('/technology/typescript')
     }
 
-    if (loading) return <div>Loading...</div>
-    if (error) return <div>Error: {error}</div>
+    if (loading) return <div className={styles.loading}>{t('detail_pages.common.loading')}</div>
+    if (error)
+        return (
+            <div className={styles.error}>
+                {t('detail_pages.common.load_failed')}: {error}
+            </div>
+        )
 
     return (
         <div className={styles.topic_detail_container}>

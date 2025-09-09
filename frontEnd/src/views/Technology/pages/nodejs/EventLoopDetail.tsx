@@ -4,9 +4,11 @@ import styles from '@/styles/topicDetail.module.scss'
 import { ArrowLeftOutlined, CheckCircleOutlined, RocketOutlined } from '@ant-design/icons'
 import { Button, Card, Tag } from 'antd'
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
 
 const EventLoopDetail: React.FC = () => {
+    const { t } = useTranslation('technology')
     const navigate = useNavigate()
     const { codeData, loading, error } = useCodeData('NodeJS', 'eventloop')
 
@@ -15,11 +17,15 @@ const EventLoopDetail: React.FC = () => {
     }
 
     if (loading) {
-        return <div className={styles.loading}>加载中...</div>
+        return <div className={styles.loading}>{t('detail_pages.common.loading')}</div>
     }
 
     if (error) {
-        return <div className={styles.error}>加载失败: {error}</div>
+        return (
+            <div className={styles.error}>
+                {t('detail_pages.common.load_failed')}: {error}
+            </div>
+        )
     }
 
     return (
@@ -32,7 +38,7 @@ const EventLoopDetail: React.FC = () => {
                     onClick={handleBack}
                     className={styles.back_button}
                 >
-                    返回Node.js技术卡片
+                    {t('detail_pages.common.back_button', { tech: 'Node.js' })}
                 </Button>
             </div>
 
@@ -42,13 +48,19 @@ const EventLoopDetail: React.FC = () => {
                     <RocketOutlined />
                 </div>
                 <div className={styles.topic_info}>
-                    <h1>Node.js 事件循环机制</h1>
-                    <p>深入理解Node.js的事件循环原理与异步编程模式</p>
+                    <h1>{t('detail_pages.nodejs_advanced.event_loop.title')}</h1>
+                    <p>{t('detail_pages.nodejs_advanced.event_loop.description')}</p>
                     <div className={styles.topic_tags}>
                         <Tag color="green">Node.js</Tag>
-                        <Tag color="blue">事件循环</Tag>
-                        <Tag color="orange">异步编程</Tag>
-                        <Tag color="purple">性能优化</Tag>
+                        <Tag color="blue">
+                            {t('detail_pages.nodejs_advanced.event_loop.tags.event_driven')}
+                        </Tag>
+                        <Tag color="orange">
+                            {t('detail_pages.nodejs_advanced.event_loop.tags.async_programming')}
+                        </Tag>
+                        <Tag color="purple">
+                            {t('detail_pages.nodejs_advanced.event_loop.tags.performance')}
+                        </Tag>
                     </div>
                 </div>
             </div>

@@ -8,6 +8,7 @@ import {
 } from '@ant-design/icons'
 import { Button, Checkbox, Form, Input, Tabs, message } from 'antd'
 import React, { useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 // import useStores from "@/hooks/useStores.ts";
 import { LoginApi } from '@/api'
 import logoImage from '@/assets/images/k.jpg'
@@ -26,6 +27,7 @@ type FieldType = {
 }
 
 const Login: React.FC = () => {
+    const { t } = useTranslation('login')
     const [messageApi, contextHolder] = message.useMessage()
     const navigate = useNavigate()
     const { setUserInfo } = useGlobalStoreAction()
@@ -71,12 +73,12 @@ const Login: React.FC = () => {
                     BrowserLocalStorage.remove('savedLoginInfo')
                 }
 
-                messageApi.success('登录成功')
+                messageApi.success(t('messages.login_success'))
                 navigate('/')
                 reset()
             }
         } catch (error) {
-            messageApi.error('登录失败，请检查用户名和密码')
+            messageApi.error(t('messages.login_failed'))
         } finally {
             setLoading(false)
         }
@@ -92,10 +94,10 @@ const Login: React.FC = () => {
                 admin: true,
             }
             await LoginApi.register(temp)
-            messageApi.success('注册成功')
+            messageApi.success(t('messages.register_success'))
             reset()
         } catch (error) {
-            messageApi.error('注册失败，请稍后重试')
+            messageApi.error(t('messages.register_failed'))
         } finally {
             setLoading(false)
         }
@@ -116,7 +118,7 @@ const Login: React.FC = () => {
     const loginForm = (
         <div className={style.formContainer}>
             <div className={style.formHeader}>
-                <img src={logoImage} alt="K爷的空间" className={style.formLogo} />
+                <img src={logoImage} alt={t('brand.title')} className={style.formLogo} />
             </div>
             <Form
                 name="login"
@@ -129,28 +131,28 @@ const Login: React.FC = () => {
             >
                 <Form.Item
                     name="name"
-                    rules={[{ required: true, message: '请输入用户名!' }]}
+                    rules={[{ required: true, message: t('form.validation.username_required') }]}
                     className={style.formItem}
                 >
                     <div className={style.inputWrapper}>
                         <UserOutlined className={style.inputIcon} />
                         <Input
                             size="large"
-                            placeholder="请输入用户名或邮箱"
+                            placeholder={t('form.placeholders.username')}
                             className={style.customInput}
                         />
                     </div>
                 </Form.Item>
                 <Form.Item
                     name="password"
-                    rules={[{ required: true, message: '请输入密码!' }]}
+                    rules={[{ required: true, message: t('form.validation.password_required') }]}
                     className={style.formItem}
                 >
                     <div className={style.inputWrapper}>
                         <LockOutlined className={style.inputIcon} />
                         <Input
                             type={showPassword ? 'text' : 'password'}
-                            placeholder="请输入密码"
+                            placeholder={t('form.placeholders.password')}
                             size="large"
                             className={style.customInput}
                         />
@@ -164,7 +166,7 @@ const Login: React.FC = () => {
                 </Form.Item>
                 <div className={style.rememberMe}>
                     <Form.Item name="remember" valuePropName="checked" style={{ margin: 0 }}>
-                        <Checkbox>记住密码</Checkbox>
+                        <Checkbox>{t('form.labels.remember_me')}</Checkbox>
                     </Form.Item>
                     <a
                         href="#"
@@ -174,7 +176,7 @@ const Login: React.FC = () => {
                             handleForgotPassword()
                         }}
                     >
-                        忘记密码?
+                        {t('buttons.forgot_password')}
                     </a>
                 </div>
                 <Form.Item className={style.submitButton}>
@@ -186,7 +188,7 @@ const Login: React.FC = () => {
                         className={style.loginButton}
                         block
                     >
-                        登录
+                        {t('buttons.login')}
                     </Button>
                 </Form.Item>
             </Form>
@@ -196,7 +198,7 @@ const Login: React.FC = () => {
     const registerForm = (
         <div className={style.formContainer}>
             <div className={style.formHeader}>
-                <img src={logoImage} alt="K爷的空间" className={style.formLogo} />
+                <img src={logoImage} alt={t('brand.title')} className={style.formLogo} />
             </div>
             <Form
                 name="register"
@@ -208,14 +210,14 @@ const Login: React.FC = () => {
             >
                 <Form.Item
                     name="name"
-                    rules={[{ required: true, message: '请输入用户名!' }]}
+                    rules={[{ required: true, message: t('form.validation.username_required') }]}
                     className={style.formItem}
                 >
                     <div className={style.inputWrapper}>
                         <UserOutlined className={style.inputIcon} />
                         <Input
                             size="large"
-                            placeholder="请输入用户名"
+                            placeholder={t('form.placeholders.username')}
                             className={style.customInput}
                             autoComplete="off"
                         />
@@ -224,8 +226,8 @@ const Login: React.FC = () => {
                 <Form.Item
                     name="email"
                     rules={[
-                        { required: true, message: '请输入邮箱!' },
-                        { type: 'email', message: '请输入有效的邮箱地址!' },
+                        { required: true, message: t('form.validation.email_required') },
+                        { type: 'email', message: t('form.validation.email_invalid') },
                     ]}
                     className={style.formItem}
                 >
@@ -233,7 +235,7 @@ const Login: React.FC = () => {
                         <MailOutlined className={style.inputIcon} />
                         <Input
                             size="large"
-                            placeholder="请输入邮箱"
+                            placeholder={t('form.placeholders.email')}
                             className={style.customInput}
                             autoComplete="off"
                         />
@@ -242,8 +244,8 @@ const Login: React.FC = () => {
                 <Form.Item
                     name="password"
                     rules={[
-                        { required: true, message: '请输入密码!' },
-                        { min: 6, message: '密码长度至少为6位!' },
+                        { required: true, message: t('form.validation.password_required') },
+                        { min: 6, message: t('form.validation.password_too_short') },
                     ]}
                     className={style.formItem}
                 >
@@ -251,7 +253,7 @@ const Login: React.FC = () => {
                         <LockOutlined className={style.inputIcon} />
                         <Input
                             type={showPassword ? 'text' : 'password'}
-                            placeholder="请输入密码"
+                            placeholder={t('form.placeholders.password')}
                             size="large"
                             className={style.customInput}
                             autoComplete="new-password"
@@ -268,13 +270,15 @@ const Login: React.FC = () => {
                     name="confirmPassword"
                     dependencies={['password']}
                     rules={[
-                        { required: true, message: '请确认密码!' },
+                        { required: true, message: t('form.validation.password_required') },
                         ({ getFieldValue }) => ({
                             validator(_, value) {
                                 if (!value || getFieldValue('password') === value) {
                                     return Promise.resolve()
                                 }
-                                return Promise.reject(new Error('两次输入的密码不一致!'))
+                                return Promise.reject(
+                                    new Error(t('form.validation.password_mismatch'))
+                                )
                             },
                         }),
                     ]}
@@ -284,7 +288,7 @@ const Login: React.FC = () => {
                         <LockOutlined className={style.inputIcon} />
                         <Input
                             type="password"
-                            placeholder="请确认密码"
+                            placeholder={t('form.placeholders.confirm_password')}
                             size="large"
                             className={style.customInput}
                             autoComplete="new-password"
@@ -300,7 +304,7 @@ const Login: React.FC = () => {
                         className={style.loginButton}
                         block
                     >
-                        注册
+                        {t('buttons.register')}
                     </Button>
                 </Form.Item>
             </Form>
@@ -314,8 +318,8 @@ const Login: React.FC = () => {
                 <img src={backgroundImage} alt="" className={style.backgroundImage} />
                 <div className={style.backgroundOverlay}></div>
                 <div className={style.brandSection}>
-                    <h1 className={style.brandTitle}>KeruのBlog</h1>
-                    <p className={style.brandSubtitle}>探索技术的无限可能</p>
+                    <h1 className={style.brandTitle}>{t('brand.title')}</h1>
+                    <p className={style.brandSubtitle}>{t('brand.subtitle')}</p>
                 </div>
             </div>
             <div className={style.formSection}>
@@ -329,12 +333,12 @@ const Login: React.FC = () => {
                             className={style.customTabs}
                             items={[
                                 {
-                                    label: '登录',
+                                    label: t('tabs.login'),
                                     key: 'login',
                                     children: loginForm,
                                 },
                                 {
-                                    label: '注册',
+                                    label: t('tabs.register'),
                                     key: 'register',
                                     children: registerForm,
                                 },

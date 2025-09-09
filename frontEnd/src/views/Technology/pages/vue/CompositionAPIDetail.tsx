@@ -17,11 +17,15 @@ const CompositionAPIDetail: React.FC = () => {
     }
 
     if (loading) {
-        return <div className={styles.loading}>{t('common.loading')}</div>
+        return <div className={styles.loading}>{t('detail_pages.common.loading')}</div>
     }
 
     if (error) {
-        return <div className={styles.error}>{t('common.load_failed_with_error', { error })}</div>
+        return (
+            <div className={styles.error}>
+                {t('detail_pages.common.load_failed')}: {error}
+            </div>
+        )
     }
 
     return (

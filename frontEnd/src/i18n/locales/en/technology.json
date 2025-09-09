@@ -12,7 +12,21 @@
         "proficiency": "Proficiency",
         "tech_skills": "Technical Skills",
         "learning_journey": "Learning Journey",
-        "projects": "Project Experience"
+        "projects": "Project Experience",
+        "project_showcase": "Project Showcase",
+        "tech_growth_timeline": "Technology Growth Timeline",
+        "source_code": "Source Code",
+        "demo": "Demo",
+        "progress": "Progress"
+    },
+    "tabs": {
+        "project_experience": "Project Experience",
+        "learning_journey": "Learning Journey"
+    },
+    "project_status": {
+        "completed": "Completed",
+        "in_progress": "In Progress",
+        "planned": "Planned"
     },
     "categories": {
         "frontend": "Frontend",
@@ -86,6 +100,359 @@
             "advanced": "Advanced Features",
             "workflows": "Workflows",
             "best_practices": "Best Practices"
+        }
+    },
+    "projects": {
+        "blog_system": {
+            "title": "K's Blog System",
+            "description": "Full-stack blog system based on React + Node.js, supporting article publishing, comments, user management and more."
+        },
+        "file_manager": {
+            "title": "File Management System",
+            "description": "Web application supporting multiple file format preview and management, including upload, download, preview functions."
+        },
+        "chat_app": {
+            "title": "Real-time Chat Application",
+            "description": "Real-time chat application based on WebSocket, supporting group chat, private chat, file transfer and more."
+        }
+    },
+    "timeline": {
+        "2024": {
+            "title": "Deep Learning of Micro-frontend Architecture",
+            "description": "Research on micro-frontend solutions like qiankun, single-spa"
+        },
+        "2023": {
+            "title": "Mastering Cloud Native Technologies",
+            "description": "Learning Docker, Kubernetes, CI/CD and other technologies"
+        },
+        "2022": {
+            "title": "Full-stack Development Skills Enhancement",
+            "description": "Deep learning of Node.js, database design, system architecture"
+        },
+        "2021": {
+            "title": "Frontend Framework Mastery",
+            "description": "Deep learning of React, Vue.js ecosystems"
+        }
+    },
+    "detail_pages": {
+        "common": {
+            "loading": "Loading code data...",
+            "load_failed": "Load Failed",
+            "back_button": "Back to {{tech}} Technology Card",
+            "overview": "Overview",
+            "basic_config": "Basic Configuration",
+            "advanced_config": "Advanced Configuration & Optimization",
+            "best_practices": "Best Practices",
+            "enterprise_usage": "Enterprise Usage Examples",
+            "performance_optimization": "Performance Optimization",
+            "security": "Security Configuration",
+            "troubleshooting": "Troubleshooting"
+        },
+        "docker_compose": {
+            "title": "Docker Compose",
+            "description": "Use Docker Compose to manage multi-container applications, achieving service orchestration and environment consistency",
+            "tags": {
+                "service_orchestration": "Service Orchestration",
+                "multi_container": "Multi-container Management",
+                "environment_config": "Environment Configuration",
+                "microservices": "Microservices Architecture"
+            },
+            "sections": {
+                "what_is": "What is Docker Compose",
+                "core_concepts": "Core Concepts",
+                "use_cases": "Use Cases",
+                "basic_structure": "docker-compose.yml Basic Structure",
+                "multi_stage": "Multi-stage Build Configuration",
+                "commands": "Docker Compose Commands",
+                "dev_environment": "Development Environment Configuration",
+                "prod_environment": "Production Environment Configuration",
+                "env_variables": "Environment Variables Management",
+                "networking": "Network Configuration",
+                "volumes": "Volume Management",
+                "health_checks": "Health Check Configuration",
+                "resource_limits": "Resource Limits & Security Configuration",
+                "microservices_example": "Microservices Architecture Example"
+            },
+            "concepts": {
+                "services": "Services",
+                "networks": "Networks",
+                "volumes": "Volumes",
+                "configs": "Configs",
+                "secrets": "Secrets"
+            },
+            "use_cases_list": {
+                "development": "Development Environment: Quickly set up development environment",
+                "testing": "Testing Environment: Automated testing environment deployment",
+                "single_machine": "Single Machine Deployment: Simple production environment deployment",
+                "microservices": "Microservices: Manage microservices architecture"
+            },
+            "best_practices": {
+                "title": "Docker Compose Usage Recommendations",
+                "version_control": "Use version control to manage compose files",
+                "file_structure": "Organize project file structure properly",
+                "image_versions": "Specify image versions explicitly, avoid using latest",
+                "env_variables": "Use environment variables to manage configuration",
+                "health_checks": "Set up health checks for services",
+                "resource_limits": "Configure resource limits properly"
+            },
+            "production_notes": {
+                "title": "Production Environment Considerations",
+                "security": "Security Configuration: Use secrets to manage sensitive information",
+                "network_isolation": "Network Isolation: Create custom networks to isolate services",
+                "logging": "Log Management: Configure appropriate log drivers",
+                "monitoring": "Monitoring & Alerting: Integrate monitoring and alerting systems",
+                "backup": "Backup Strategy: Develop data backup and recovery strategies"
+            },
+            "performance_tips": {
+                "title": "Performance Optimization Recommendations",
+                "image_optimization": "Image Optimization: Use multi-stage builds to reduce image size",
+                "cache_utilization": "Cache Utilization: Properly utilize Docker layer caching",
+                "parallel_startup": "Parallel Startup: Optimize service startup sequence",
+                "resource_allocation": "Resource Allocation: Allocate resources based on actual needs",
+                "network_optimization": "Network Optimization: Use appropriate network drivers"
+            }
+        },
+        "react_hooks": {
+            "use_effect": {
+                "title": "useEffect Hook",
+                "description": "Master the usage of React useEffect Hook, dependency management and performance optimization techniques",
+                "tags": {
+                    "lifecycle": "Lifecycle",
+                    "side_effects": "Side Effects",
+                    "cleanup": "Cleanup Function",
+                    "dependencies": "Dependency Management"
+                }
+            },
+            "use_callback": {
+                "title": "useCallback Hook",
+                "description": "Learn useCallback Hook usage scenarios, performance optimization and best practices",
+                "tags": {
+                    "memoization": "Memoization",
+                    "performance": "Performance Optimization",
+                    "callback": "Callback Function",
+                    "optimization": "Optimization Techniques"
+                }
+            },
+            "use_memo": {
+                "title": "useMemo Hook",
+                "description": "Deep understanding of useMemo Hook working principles, usage scenarios and performance optimization strategies",
+                "tags": {
+                    "memoization": "Memoization",
+                    "expensive_calculations": "Expensive Calculations",
+                    "performance": "Performance Optimization",
+                    "caching": "Caching Mechanism"
+                }
+            },
+            "use_context": {
+                "title": "useContext Hook",
+                "description": "Learn useContext Hook usage methods, state management and component communication techniques",
+                "tags": {
+                    "context_api": "Context API",
+                    "state_management": "State Management",
+                    "prop_drilling": "Prop Drilling",
+                    "global_state": "Global State"
+                }
+            },
+            "custom_hooks": {
+                "title": "Custom Hooks",
+                "description": "Master custom Hooks design patterns, logic reuse and best practices",
+                "tags": {
+                    "reusability": "Reusability",
+                    "logic_sharing": "Logic Sharing",
+                    "abstraction": "Abstraction",
+                    "patterns": "Design Patterns"
+                }
+            }
+        },
+        "react_advanced": {
+            "error_boundary": {
+                "title": "Error Boundary",
+                "description": "Learn React Error Boundary implementation methods, error handling and user experience optimization",
+                "tags": {
+                    "error_handling": "Error Handling",
+                    "fault_tolerance": "Fault Tolerance",
+                    "user_experience": "User Experience",
+                    "debugging": "Debugging Techniques"
+                }
+            },
+            "performance": {
+                "title": "Performance Optimization",
+                "description": "Master React application performance optimization methods, tools and best practices",
+                "tags": {
+                    "optimization": "Performance Optimization",
+                    "profiling": "Performance Profiling",
+                    "bundle_splitting": "Code Splitting",
+                    "lazy_loading": "Lazy Loading"
+                }
+            },
+            "testing": {
+                "title": "Testing Strategy",
+                "description": "Learn React component testing methods, tools and test-driven development practices",
+                "tags": {
+                    "unit_testing": "Unit Testing",
+                    "integration_testing": "Integration Testing",
+                    "test_driven": "Test Driven Development",
+                    "testing_library": "Testing Library"
+                }
+            }
+        },
+        "typescript_advanced": {
+            "basic_types": {
+                "title": "Basic Types",
+                "description": "Master TypeScript basic type system, including primitive types, object types and union types",
+                "tags": {
+                    "primitive_types": "Primitive Types",
+                    "object_types": "Object Types",
+                    "union_types": "Union Types",
+                    "type_annotations": "Type Annotations"
+                }
+            },
+            "advanced_types": {
+                "title": "Advanced Types",
+                "description": "Learn TypeScript advanced type features, including generics, conditional types and mapped types",
+                "tags": {
+                    "generics": "Generics",
+                    "conditional_types": "Conditional Types",
+                    "mapped_types": "Mapped Types",
+                    "utility_types": "Utility Types"
+                }
+            },
+            "utility_types": {
+                "title": "Utility Types",
+                "description": "Master the usage of TypeScript built-in utility types and practical application scenarios",
+                "tags": {
+                    "built_in": "Built-in Types",
+                    "type_manipulation": "Type Manipulation",
+                    "practical_usage": "Practical Usage",
+                    "type_helpers": "Type Helpers"
+                }
+            },
+            "generics": {
+                "title": "Generics",
+                "description": "Deep understanding of TypeScript generics concepts, syntax and advanced application techniques",
+                "tags": {
+                    "type_parameters": "Type Parameters",
+                    "constraints": "Constraints",
+                    "inference": "Type Inference",
+                    "reusability": "Code Reusability"
+                }
+            },
+            "interfaces": {
+                "title": "Interfaces",
+                "description": "Master TypeScript interface definition, inheritance and advanced usage",
+                "tags": {
+                    "contracts": "Contract Definition",
+                    "inheritance": "Interface Inheritance",
+                    "optional_properties": "Optional Properties",
+                    "index_signatures": "Index Signatures"
+                }
+            },
+            "classes": {
+                "title": "Classes",
+                "description": "Learn TypeScript class definition, inheritance, access modifiers and decorators",
+                "tags": {
+                    "inheritance": "Class Inheritance",
+                    "access_modifiers": "Access Modifiers",
+                    "abstract_classes": "Abstract Classes",
+                    "decorators": "Decorators"
+                }
+            }
+        },
+        "nodejs_advanced": {
+            "event_loop": {
+                "title": "Event Loop",
+                "description": "Deep understanding of Node.js event loop mechanism and core principles of asynchronous programming",
+                "tags": {
+                    "async_programming": "Async Programming",
+                    "event_driven": "Event Driven",
+                    "non_blocking": "Non-blocking IO",
+                    "performance": "Performance Optimization"
+                }
+            },
+            "database": {
+                "title": "Database Integration",
+                "description": "Learn Node.js integration methods with various databases, including SQL and NoSQL databases",
+                "tags": {
+                    "sql_databases": "SQL Databases",
+                    "nosql_databases": "NoSQL Databases",
+                    "orm": "ORM Framework",
+                    "database_design": "Database Design"
+                }
+            },
+            "express": {
+                "title": "Express Framework",
+                "description": "Master Express.js framework core concepts, middleware and routing system",
+                "tags": {
+                    "middleware": "Middleware",
+                    "routing": "Routing System",
+                    "rest_api": "REST API",
+                    "web_framework": "Web Framework"
+                }
+            },
+            "authentication": {
+                "title": "Authentication",
+                "description": "Learn authentication and authorization mechanisms in Node.js applications",
+                "tags": {
+                    "jwt": "JWT Token",
+                    "oauth": "OAuth Authentication",
+                    "session": "Session Management",
+                    "security": "Security Mechanism"
+                }
+            }
+        },
+        "vue_advanced": {
+            "reactivity": {
+                "title": "Reactivity System",
+                "description": "Deep understanding of Vue.js reactivity system working principles and optimization techniques",
+                "tags": {
+                    "reactive_data": "Reactive Data",
+                    "computed_properties": "Computed Properties",
+                    "watchers": "Watchers",
+                    "performance": "Performance Optimization"
+                }
+            },
+            "composition_api": {
+                "title": "Composition API",
+                "description": "Master Vue 3 Composition API usage methods and best practices",
+                "tags": {
+                    "setup_function": "Setup Function",
+                    "reactive_refs": "Reactive Refs",
+                    "lifecycle_hooks": "Lifecycle Hooks",
+                    "composables": "Composables"
+                }
+            }
+        },
+        "tools_general": {
+            "git": {
+                "title": "Git Version Control",
+                "description": "Master Git version control system core concepts and advanced usage",
+                "tags": {
+                    "version_control": "Version Control",
+                    "branching": "Branch Management",
+                    "collaboration": "Team Collaboration",
+                    "workflow": "Workflow"
+                }
+            },
+            "jest": {
+                "title": "Jest Testing Framework",
+                "description": "Learn Jest testing framework usage methods and best practices",
+                "tags": {
+                    "unit_testing": "Unit Testing",
+                    "mocking": "Mocking",
+                    "coverage": "Test Coverage",
+                    "automation": "Test Automation"
+                }
+            },
+            "webpack": {
+                "title": "Webpack Build Tool",
+                "description": "Master Webpack module bundler configuration and optimization techniques",
+                "tags": {
+                    "bundling": "Module Bundling",
+                    "optimization": "Build Optimization",
+                    "plugins": "Plugin System",
+                    "loaders": "Loaders"
+                }
+            }
         }
     }
 }

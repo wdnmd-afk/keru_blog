@@ -85,71 +85,75 @@ const techStack = [
     },
 ]
 
-// 项目数据
-const projects = [
-    {
-        id: 1,
-        title: 'K爷的博客系统',
-        description: '基于React + Node.js的全栈博客系统，支持文章发布、评论、用户管理等功能。',
-        tech: ['React', 'TypeScript', 'Node.js', 'MongoDB'],
-        status: '进行中',
-        progress: 75,
-        github: 'https://github.com/example/blog',
-        demo: 'https://blog.example.com',
-    },
-    {
-        id: 2,
-        title: '文件管理系统',
-        description: '支持多种文件格式预览和管理的Web应用，包含上传、下载、预览等功能。',
-        tech: ['Vue.js', 'Express', 'MySQL'],
-        status: '已完成',
-        progress: 100,
-        github: 'https://github.com/example/file-manager',
-        demo: 'https://files.example.com',
-    },
-    {
-        id: 3,
-        title: '实时聊天应用',
-        description: '基于WebSocket的实时聊天应用，支持群聊、私聊、文件传输等功能。',
-        tech: ['React', 'Socket.io', 'Redis'],
-        status: '计划中',
-        progress: 20,
-        github: '',
-        demo: '',
-    },
-]
-
-// 学习时间线
-const learningTimeline = [
-    {
-        time: '2024年',
-        title: '深入学习微前端架构',
-        description: '研究qiankun、single-spa等微前端解决方案',
-        status: 'processing',
-    },
-    {
-        time: '2023年',
-        title: '掌握云原生技术',
-        description: '学习Docker、Kubernetes、CI/CD等技术',
-        status: 'finish',
-    },
-    {
-        time: '2022年',
-        title: '全栈开发能力提升',
-        description: '深入学习Node.js、数据库设计、系统架构',
-        status: 'finish',
-    },
-    {
-        time: '2021年',
-        title: '前端框架精通',
-        description: '深入学习React、Vue.js生态系统',
-        status: 'finish',
-    },
-]
+// 这些数据将在组件内部使用翻译函数动态获取
+// const projects = [...]
+// const learningTimeline = [...]
 
 const Technology: React.FC = () => {
     const { t } = useTranslation('technology')
     const navigate = useNavigate()
+
+    // 获取项目数据（使用国际化）
+    const getProjectsData = () => [
+        {
+            id: 1,
+            title: t('projects.blog_system.title'),
+            description: t('projects.blog_system.description'),
+            tech: ['React', 'TypeScript', 'Node.js', 'MongoDB'],
+            status: t('project_status.in_progress'),
+            progress: 75,
+            github: 'https://github.com/example/blog',
+            demo: 'https://blog.example.com',
+        },
+        {
+            id: 2,
+            title: t('projects.file_manager.title'),
+            description: t('projects.file_manager.description'),
+            tech: ['Vue.js', 'Express', 'MySQL'],
+            status: t('project_status.completed'),
+            progress: 100,
+            github: 'https://github.com/example/file-manager',
+            demo: 'https://files.example.com',
+        },
+        {
+            id: 3,
+            title: t('projects.chat_app.title'),
+            description: t('projects.chat_app.description'),
+            tech: ['React', 'Socket.io', 'Redis'],
+            status: t('project_status.planned'),
+            progress: 20,
+            github: '',
+            demo: '',
+        },
+    ]
+
+    // 获取学习时间线数据（使用国际化）
+    const getLearningTimelineData = () => [
+        {
+            time: '2024年',
+            title: t('timeline.2024.title'),
+            description: t('timeline.2024.description'),
+            status: 'processing',
+        },
+        {
+            time: '2023年',
+            title: t('timeline.2023.title'),
+            description: t('timeline.2023.description'),
+            status: 'finish',
+        },
+        {
+            time: '2022年',
+            title: t('timeline.2022.title'),
+            description: t('timeline.2022.description'),
+            status: 'finish',
+        },
+        {
+            time: '2021年',
+            title: t('timeline.2021.title'),
+            description: t('timeline.2021.description'),
+            status: 'finish',
+        },
+    ]
 
     // 技术栈数据（使用国际化）
     const techStackData = [
@@ -261,14 +265,14 @@ const Technology: React.FC = () => {
             label: (
                 <span>
                     <RocketOutlined />
-                    项目经验
+                    {t('tabs.project_experience')}
                 </span>
             ),
             children: (
                 <div className={styles.projects_section}>
-                    <h2>项目展示</h2>
+                    <h2>{t('common.project_showcase')}</h2>
                     <Row gutter={[24, 24]}>
-                        {projects.map((project) => (
+                        {getProjectsData().map((project) => (
                             <Col xs={24} lg={12} key={project.id}>
                                 <Card
                                     className={styles.project_card}
@@ -280,7 +284,7 @@ const Technology: React.FC = () => {
                                                 href={project.github}
                                                 target="_blank"
                                             >
-                                                源码
+                                                {t('common.source_code')}
                                             </Button>
                                         ),
                                         project.demo && (
@@ -290,7 +294,7 @@ const Technology: React.FC = () => {
                                                 href={project.demo}
                                                 target="_blank"
                                             >
-                                                演示
+                                                {t('common.demo')}
                                             </Button>
                                         ),
                                     ].filter(Boolean)}
@@ -301,9 +305,11 @@ const Technology: React.FC = () => {
                                                 {project.title}
                                                 <Tag
                                                     color={
-                                                        project.status === '已完成'
+                                                        project.status ===
+                                                        t('project_status.completed')
                                                             ? 'green'
-                                                            : project.status === '进行中'
+                                                            : project.status ===
+                                                                t('project_status.in_progress')
                                                               ? 'blue'
                                                               : 'orange'
                                                     }
@@ -323,7 +329,7 @@ const Technology: React.FC = () => {
                                                     ))}
                                                 </div>
                                                 <div className={styles.project_progress}>
-                                                    <span>进度: </span>
+                                                    <span>{t('common.progress')}: </span>
                                                     <Progress
                                                         percent={project.progress}
                                                         size="small"
@@ -345,14 +351,14 @@ const Technology: React.FC = () => {
             label: (
                 <span>
                     <BulbOutlined />
-                    学习历程
+                    {t('tabs.learning_journey')}
                 </span>
             ),
             children: (
                 <div className={styles.learning_section}>
-                    <h2>技术成长时间线</h2>
+                    <h2>{t('common.tech_growth_timeline')}</h2>
                     <Timeline mode="left" className={styles.learning_timeline}>
-                        {learningTimeline.map((item, index) => (
+                        {getLearningTimelineData().map((item, index) => (
                             <Timeline.Item
                                 key={index}
                                 color={item.status === 'processing' ? 'blue' : 'green'}

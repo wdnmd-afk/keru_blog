@@ -1,0 +1,105 @@
+{
+    "header": {
+        "title": "K's Tech Space",
+        "subtitle": "Share Technical Insights · Document Learning Journey · Explore Infinite Possibilities",
+        "stats": {
+            "articles": "Articles",
+            "visits": "Visits",
+            "likes": "Likes"
+        }
+    },
+    "content": {
+        "view_details": "View Details",
+        "cards": {
+            "react_features": {
+                "title": "Deep Dive into React 18 New Features",
+                "description": "Explore React 18's concurrent features, Suspense improvements, and new Hooks API to master modern React development."
+            },
+            "book_recommendation": {
+                "title": "Technology Books Recommendation",
+                "description": "Curated quality technology books covering frontend, backend, algorithms, system design and more to boost your skills."
+            },
+            "file_management": {
+                "title": "File Management System",
+                "description": "Efficient file upload, preview and management features supporting multiple file formats to improve productivity."
+            },
+            "docker_guide": {
+                "title": "Docker Containerization Practice",
+                "description": "From basic concepts to practical applications, master Docker containerization technology to improve development and deployment efficiency."
+            },
+            "typescript_advanced": {
+                "title": "TypeScript Advanced Guide",
+                "description": "Deep dive into TypeScript type system, master advanced types, generics, decorators and more to write safer code."
+            },
+            "performance_optimization": {
+                "title": "Frontend Performance Optimization",
+                "description": "From loading optimization to runtime performance, comprehensively improve web application performance for ultimate user experience."
+            }
+        },
+        "tags": {
+            "react": "React",
+            "javascript": "JavaScript",
+            "frontend": "Frontend",
+            "books": "Books",
+            "learning": "Learning",
+            "growth": "Growth",
+            "files": "Files",
+            "management": "Management",
+            "efficiency": "Efficiency",
+            "docker": "Docker",
+            "containerization": "Containerization",
+            "devops": "DevOps",
+            "typescript": "TypeScript",
+            "type_system": "Type System",
+            "advanced": "Advanced",
+            "performance": "Performance",
+            "optimization": "Optimization",
+            "user_experience": "User Experience"
+        },
+        "author": "K",
+        "actions": {
+            "likes": "Likes",
+            "comments": "Comments",
+            "shares": "Shares"
+        }
+    },
+    "todo": {
+        "title": "Todo List",
+        "add_button": "Add Todo",
+        "modal": {
+            "add_title": "Add New Todo Item",
+            "edit_title": "Edit Todo Item",
+            "content_label": "Content",
+            "content_placeholder": "What are you planning to do?",
+            "content_required": "Please enter todo content!",
+            "type_label": "Type",
+            "type_required": "Please select a type!",
+            "confirm": "Confirm",
+            "cancel": "Cancel"
+        },
+        "types": {
+            "recent": "Recent Plans",
+            "long_term": "Long-term Goals",
+            "study_plan": "Study Plans"
+        },
+        "actions": {
+            "edit": "Edit",
+            "delete": "Delete",
+            "delete_confirm": "Are you sure to delete?"
+        },
+        "empty_text": "No todo items",
+        "completed": "Completed"
+    },
+    "navigation": {
+        "technology": "Technology",
+        "books": "Books",
+        "files": "Files",
+        "about": "About"
+    },
+    "messages": {
+        "welcome": "Welcome to my tech space",
+        "loading": "Loading...",
+        "load_error": "Load failed, please retry",
+        "no_content": "No content available"
+    }
+}

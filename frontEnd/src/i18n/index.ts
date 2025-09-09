@@ -16,12 +16,16 @@ import { initReactI18next } from 'react-i18next'
 import enBooks from './locales/en/books.json'
 import enCommon from './locales/en/common.json'
 import enFiles from './locales/en/files.json'
+import enHome from './locales/en/home.json'
 import enLayout from './locales/en/layout.json'
+import enLogin from './locales/en/login.json'
 import enTechnology from './locales/en/technology.json'
 import zhBooks from './locales/zh/books.json'
 import zhCommon from './locales/zh/common.json'
 import zhFiles from './locales/zh/files.json'
+import zhHome from './locales/zh/home.json'
 import zhLayout from './locales/zh/layout.json'
+import zhLogin from './locales/zh/login.json'
 import zhTechnology from './locales/zh/technology.json'
 
 // 语言资源配置
@@ -32,6 +36,8 @@ const resources = {
         technology: zhTechnology,
         books: zhBooks,
         files: zhFiles,
+        home: zhHome,
+        login: zhLogin,
     },
     en: {
         common: enCommon,
@@ -39,6 +45,8 @@ const resources = {
         technology: enTechnology,
         books: enBooks,
         files: enFiles,
+        home: enHome,
+        login: enLogin,
     },
 }
 
@@ -94,7 +102,7 @@ i18n
         defaultNS: 'common',
 
         // 命名空间配置
-        ns: ['common', 'layout', 'technology', 'books', 'files'],
+        ns: ['common', 'layout', 'technology', 'books', 'files', 'home', 'login'],
 
         // 调试模式（开发环境启用）
         debug: import.meta.env.DEV,

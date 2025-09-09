@@ -32,7 +32,11 @@
         "not_supported": "不支持预览此文件类型",
         "download_to_view": "请下载文件查看",
         "text_encoding": "文本编码",
-        "auto_detect": "自动检测"
+        "auto_detect": "自动检测",
+        "select_file": "请选择文件进行预览",
+        "no_file_selected": "未选择文件",
+        "preview_completed": "文件预览加载完成",
+        "preview_error": "文件预览失败"
     },
     "actions": {
         "preview": "预览",

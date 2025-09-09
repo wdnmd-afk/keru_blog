@@ -12,7 +12,21 @@
         "proficiency": "熟练度",
         "tech_skills": "技术能力",
         "learning_journey": "学习历程",
-        "projects": "项目经验"
+        "projects": "项目经验",
+        "project_showcase": "项目展示",
+        "tech_growth_timeline": "技术成长时间线",
+        "source_code": "源码",
+        "demo": "演示",
+        "progress": "进度"
+    },
+    "tabs": {
+        "project_experience": "项目经验",
+        "learning_journey": "学习历程"
+    },
+    "project_status": {
+        "completed": "已完成",
+        "in_progress": "进行中",
+        "planned": "计划中"
     },
     "categories": {
         "frontend": "前端技术",
@@ -86,6 +100,359 @@
             "advanced": "高级功能",
             "workflows": "工作流程",
             "best_practices": "最佳实践"
+        }
+    },
+    "projects": {
+        "blog_system": {
+            "title": "K爷的博客系统",
+            "description": "基于React + Node.js的全栈博客系统，支持文章发布、评论、用户管理等功能。"
+        },
+        "file_manager": {
+            "title": "文件管理系统",
+            "description": "支持多种文件格式预览和管理的Web应用，包含上传、下载、预览等功能。"
+        },
+        "chat_app": {
+            "title": "实时聊天应用",
+            "description": "基于WebSocket的实时聊天应用，支持群聊、私聊、文件传输等功能。"
+        }
+    },
+    "timeline": {
+        "2024": {
+            "title": "深入学习微前端架构",
+            "description": "研究qiankun、single-spa等微前端解决方案"
+        },
+        "2023": {
+            "title": "掌握云原生技术",
+            "description": "学习Docker、Kubernetes、CI/CD等技术"
+        },
+        "2022": {
+            "title": "全栈开发能力提升",
+            "description": "深入学习Node.js、数据库设计、系统架构"
+        },
+        "2021": {
+            "title": "前端框架精通",
+            "description": "深入学习React、Vue.js生态系统"
+        }
+    },
+    "detail_pages": {
+        "common": {
+            "loading": "加载代码数据中...",
+            "load_failed": "加载失败",
+            "back_button": "返回{{tech}}技术卡片",
+            "overview": "概述",
+            "basic_config": "基础配置",
+            "advanced_config": "高级配置与优化",
+            "best_practices": "最佳实践",
+            "enterprise_usage": "企业级应用示例",
+            "performance_optimization": "性能优化",
+            "security": "安全配置",
+            "troubleshooting": "故障排除"
+        },
+        "docker_compose": {
+            "title": "Docker Compose",
+            "description": "使用Docker Compose管理多容器应用程序，实现服务编排和环境一致性",
+            "tags": {
+                "service_orchestration": "服务编排",
+                "multi_container": "多容器管理",
+                "environment_config": "环境配置",
+                "microservices": "微服务架构"
+            },
+            "sections": {
+                "what_is": "什么是 Docker Compose",
+                "core_concepts": "核心概念",
+                "use_cases": "使用场景",
+                "basic_structure": "docker-compose.yml 基础结构",
+                "multi_stage": "多阶段构建配置",
+                "commands": "Docker Compose 命令",
+                "dev_environment": "开发环境配置",
+                "prod_environment": "生产环境配置",
+                "env_variables": "环境变量管理",
+                "networking": "网络配置",
+                "volumes": "数据卷管理",
+                "health_checks": "健康检查配置",
+                "resource_limits": "资源限制与安全配置",
+                "microservices_example": "微服务架构示例"
+            },
+            "concepts": {
+                "services": "服务 (Services)",
+                "networks": "网络 (Networks)",
+                "volumes": "数据卷 (Volumes)",
+                "configs": "配置 (Configs)",
+                "secrets": "密钥 (Secrets)"
+            },
+            "use_cases_list": {
+                "development": "开发环境：快速搭建开发环境",
+                "testing": "测试环境：自动化测试环境部署",
+                "single_machine": "单机部署：简单的生产环境部署",
+                "microservices": "微服务：管理微服务架构"
+            },
+            "best_practices": {
+                "title": "Docker Compose 使用建议",
+                "version_control": "使用版本控制管理compose文件",
+                "file_structure": "合理组织项目文件结构",
+                "image_versions": "明确指定镜像版本，避免使用latest",
+                "env_variables": "使用环境变量管理配置",
+                "health_checks": "为服务设置健康检查",
+                "resource_limits": "合理配置资源限制"
+            },
+            "production_notes": {
+                "title": "生产环境注意事项",
+                "security": "安全配置：使用secrets管理敏感信息",
+                "network_isolation": "网络隔离：创建自定义网络隔离服务",
+                "logging": "日志管理：配置合适的日志驱动",
+                "monitoring": "监控告警：集成监控和告警系统",
+                "backup": "备份策略：制定数据备份和恢复策略"
+            },
+            "performance_tips": {
+                "title": "性能优化建议",
+                "image_optimization": "镜像优化：使用多阶段构建减小镜像大小",
+                "cache_utilization": "缓存利用：合理利用Docker层缓存",
+                "parallel_startup": "并行启动：优化服务启动顺序",
+                "resource_allocation": "资源分配：根据实际需求分配资源",
+                "network_optimization": "网络优化：使用合适的网络驱动"
+            }
+        },
+        "react_hooks": {
+            "use_effect": {
+                "title": "useEffect Hook",
+                "description": "掌握React useEffect Hook的使用方法、依赖管理和性能优化技巧",
+                "tags": {
+                    "lifecycle": "生命周期",
+                    "side_effects": "副作用",
+                    "cleanup": "清理函数",
+                    "dependencies": "依赖管理"
+                }
+            },
+            "use_callback": {
+                "title": "useCallback Hook",
+                "description": "学习useCallback Hook的使用场景、性能优化和最佳实践",
+                "tags": {
+                    "memoization": "记忆化",
+                    "performance": "性能优化",
+                    "callback": "回调函数",
+                    "optimization": "优化技巧"
+                }
+            },
+            "use_memo": {
+                "title": "useMemo Hook",
+                "description": "深入理解useMemo Hook的工作原理、使用场景和性能优化策略",
+                "tags": {
+                    "memoization": "记忆化",
+                    "expensive_calculations": "昂贵计算",
+                    "performance": "性能优化",
+                    "caching": "缓存机制"
+                }
+            },
+            "use_context": {
+                "title": "useContext Hook",
+                "description": "学习useContext Hook的使用方法、状态管理和组件通信技巧",
+                "tags": {
+                    "context_api": "Context API",
+                    "state_management": "状态管理",
+                    "prop_drilling": "属性传递",
+                    "global_state": "全局状态"
+                }
+            },
+            "custom_hooks": {
+                "title": "自定义Hooks",
+                "description": "掌握自定义Hooks的设计模式、复用逻辑和最佳实践",
+                "tags": {
+                    "reusability": "可复用性",
+                    "logic_sharing": "逻辑共享",
+                    "abstraction": "抽象封装",
+                    "patterns": "设计模式"
+                }
+            }
+        },
+        "react_advanced": {
+            "error_boundary": {
+                "title": "错误边界",
+                "description": "学习React错误边界的实现方法、错误处理和用户体验优化",
+                "tags": {
+                    "error_handling": "错误处理",
+                    "fault_tolerance": "容错机制",
+                    "user_experience": "用户体验",
+                    "debugging": "调试技巧"
+                }
+            },
+            "performance": {
+                "title": "性能优化",
+                "description": "掌握React应用性能优化的方法、工具和最佳实践",
+                "tags": {
+                    "optimization": "性能优化",
+                    "profiling": "性能分析",
+                    "bundle_splitting": "代码分割",
+                    "lazy_loading": "懒加载"
+                }
+            },
+            "testing": {
+                "title": "测试策略",
+                "description": "学习React组件测试的方法、工具和测试驱动开发实践",
+                "tags": {
+                    "unit_testing": "单元测试",
+                    "integration_testing": "集成测试",
+                    "test_driven": "测试驱动",
+                    "testing_library": "测试库"
+                }
+            }
+        },
+        "typescript_advanced": {
+            "basic_types": {
+                "title": "基础类型",
+                "description": "掌握TypeScript基础类型系统，包括原始类型、对象类型和联合类型",
+                "tags": {
+                    "primitive_types": "原始类型",
+                    "object_types": "对象类型",
+                    "union_types": "联合类型",
+                    "type_annotations": "类型注解"
+                }
+            },
+            "advanced_types": {
+                "title": "高级类型",
+                "description": "学习TypeScript高级类型特性，包括泛型、条件类型和映射类型",
+                "tags": {
+                    "generics": "泛型",
+                    "conditional_types": "条件类型",
+                    "mapped_types": "映射类型",
+                    "utility_types": "工具类型"
+                }
+            },
+            "utility_types": {
+                "title": "工具类型",
+                "description": "掌握TypeScript内置工具类型的使用方法和实际应用场景",
+                "tags": {
+                    "built_in": "内置类型",
+                    "type_manipulation": "类型操作",
+                    "practical_usage": "实际应用",
+                    "type_helpers": "类型助手"
+                }
+            },
+            "generics": {
+                "title": "泛型",
+                "description": "深入理解TypeScript泛型的概念、语法和高级应用技巧",
+                "tags": {
+                    "type_parameters": "类型参数",
+                    "constraints": "约束条件",
+                    "inference": "类型推断",
+                    "reusability": "代码复用"
+                }
+            },
+            "interfaces": {
+                "title": "接口",
+                "description": "掌握TypeScript接口的定义、继承和高级用法",
+                "tags": {
+                    "contracts": "契约定义",
+                    "inheritance": "接口继承",
+                    "optional_properties": "可选属性",
+                    "index_signatures": "索引签名"
+                }
+            },
+            "classes": {
+                "title": "类",
+                "description": "学习TypeScript类的定义、继承、访问修饰符和装饰器",
+                "tags": {
+                    "inheritance": "类继承",
+                    "access_modifiers": "访问修饰符",
+                    "abstract_classes": "抽象类",
+                    "decorators": "装饰器"
+                }
+            }
+        },
+        "nodejs_advanced": {
+            "event_loop": {
+                "title": "事件循环",
+                "description": "深入理解Node.js事件循环机制，掌握异步编程的核心原理",
+                "tags": {
+                    "async_programming": "异步编程",
+                    "event_driven": "事件驱动",
+                    "non_blocking": "非阻塞IO",
+                    "performance": "性能优化"
+                }
+            },
+            "database": {
+                "title": "数据库集成",
+                "description": "学习Node.js与各种数据库的集成方法，包括SQL和NoSQL数据库",
+                "tags": {
+                    "sql_databases": "SQL数据库",
+                    "nosql_databases": "NoSQL数据库",
+                    "orm": "ORM框架",
+                    "database_design": "数据库设计"
+                }
+            },
+            "express": {
+                "title": "Express框架",
+                "description": "掌握Express.js框架的核心概念、中间件和路由系统",
+                "tags": {
+                    "middleware": "中间件",
+                    "routing": "路由系统",
+                    "rest_api": "REST API",
+                    "web_framework": "Web框架"
+                }
+            },
+            "authentication": {
+                "title": "身份认证",
+                "description": "学习Node.js应用中的身份认证和授权机制",
+                "tags": {
+                    "jwt": "JWT令牌",
+                    "oauth": "OAuth认证",
+                    "session": "会话管理",
+                    "security": "安全机制"
+                }
+            }
+        },
+        "vue_advanced": {
+            "reactivity": {
+                "title": "响应式系统",
+                "description": "深入理解Vue.js响应式系统的工作原理和优化技巧",
+                "tags": {
+                    "reactive_data": "响应式数据",
+                    "computed_properties": "计算属性",
+                    "watchers": "侦听器",
+                    "performance": "性能优化"
+                }
+            },
+            "composition_api": {
+                "title": "组合式API",
+                "description": "掌握Vue 3组合式API的使用方法和最佳实践",
+                "tags": {
+                    "setup_function": "setup函数",
+                    "reactive_refs": "响应式引用",
+                    "lifecycle_hooks": "生命周期钩子",
+                    "composables": "组合式函数"
+                }
+            }
+        },
+        "tools_general": {
+            "git": {
+                "title": "Git版本控制",
+                "description": "掌握Git版本控制系统的核心概念和高级用法",
+                "tags": {
+                    "version_control": "版本控制",
+                    "branching": "分支管理",
+                    "collaboration": "团队协作",
+                    "workflow": "工作流程"
+                }
+            },
+            "jest": {
+                "title": "Jest测试框架",
+                "description": "学习Jest测试框架的使用方法和最佳实践",
+                "tags": {
+                    "unit_testing": "单元测试",
+                    "mocking": "模拟测试",
+                    "coverage": "测试覆盖率",
+                    "automation": "自动化测试"
+                }
+            },
+            "webpack": {
+                "title": "Webpack构建工具",
+                "description": "掌握Webpack模块打包器的配置和优化技巧",
+                "tags": {
+                    "bundling": "模块打包",
+                    "optimization": "构建优化",
+                    "plugins": "插件系统",
+                    "loaders": "加载器"
+                }
+            }
         }
     }
 }

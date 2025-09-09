@@ -1,6 +1,7 @@
 import { FilePreviewType, getFilePreviewType } from '@/utils/filePreview'
 import { Empty } from 'antd'
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 import FilePreview from './FilePreview'
 
 interface FileInfo {
@@ -15,11 +16,13 @@ interface IProps {
 }
 
 const FileViewerContainer: React.FC<IProps> = ({ fileInfo }) => {
+    const { t } = useTranslation('files')
+
     // 处理null值的情况
     if (!fileInfo) {
         return (
             <div className="flex items-center justify-center h-full">
-                <Empty description="请选择文件进行预览" />
+                <Empty description={t('preview.select_file')} />
             </div>
         )
     }
@@ -29,7 +32,7 @@ const FileViewerContainer: React.FC<IProps> = ({ fileInfo }) => {
     if (!url || !name) {
         return (
             <div className="flex items-center justify-center h-full">
-                <Empty description="请选择文件进行预览" />
+                <Empty description={t('preview.select_file')} />
             </div>
         )
     }
@@ -39,11 +42,11 @@ const FileViewerContainer: React.FC<IProps> = ({ fileInfo }) => {
 
     // 处理加载和错误回调
     const handleLoad = () => {
-        console.log(`文件预览加载完成: ${name}`)
+        console.log(`${t('preview.preview_completed')}: ${name}`)
     }
 
     const handleError = (error: string) => {
-        console.error(`文件预览失败: ${name}`, error)
+        console.error(`${t('preview.preview_error')}: ${name}`, error)
     }
 
     // 根据文件类型显示不同的预览提示

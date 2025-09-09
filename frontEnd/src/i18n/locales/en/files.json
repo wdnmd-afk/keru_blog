@@ -32,7 +32,11 @@
         "not_supported": "Preview not supported for this file type",
         "download_to_view": "Please download the file to view",
         "text_encoding": "Text Encoding",
-        "auto_detect": "Auto Detect"
+        "auto_detect": "Auto Detect",
+        "select_file": "Please select a file to preview",
+        "no_file_selected": "No file selected",
+        "preview_completed": "File preview loaded successfully",
+        "preview_error": "File preview failed"
     },
     "actions": {
         "preview": "Preview",

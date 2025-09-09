@@ -15,6 +15,7 @@ import {
     UserOutlined,
 } from '@ant-design/icons'
 import { Avatar, Button, Card, Tag } from 'antd'
+import { useTranslation } from 'react-i18next'
 
 const { Meta } = Card
 
@@ -145,6 +146,8 @@ const cardData = [
 ]
 
 const HomeContent = () => {
+    const { t } = useTranslation('home')
+
     const getCardIcon = (type: string) => {
         switch (type) {
             case 'technology':
@@ -186,7 +189,7 @@ const HomeContent = () => {
                             <img alt={item.title} src={item.cover} />
                             <div className={style.card_overlay}>
                                 <Button type="primary" icon={<EyeOutlined />}>
-                                    查看详情
+                                    {t('content.view_details')}
                                 </Button>
                             </div>
                             <div className={style.card_tags_overlay}>
@@ -217,7 +220,7 @@ const HomeContent = () => {
                     <div className={style.card_footer}>
                         <div className={style.author_info}>
                             <Avatar size="small" src={item.avatar} />
-                            <span>{item.author}</span>
+                            <span>{t('content.author')}</span>
                         </div>
                     </div>
                 </Card>

@@ -4,9 +4,11 @@ import styles from '@/styles/topicDetail.module.scss'
 import { ArrowLeftOutlined, CheckCircleOutlined, ToolOutlined } from '@ant-design/icons'
 import { Alert, Button, Card, Spin, Tag } from 'antd'
 import React from 'react'
+import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
 
 const CustomHooksDetail: React.FC = () => {
+    const { t } = useTranslation('technology')
     const navigate = useNavigate()
     const { codeData, loading, error } = useCodeData('React', 'customHooks')
 
@@ -19,7 +21,9 @@ const CustomHooksDetail: React.FC = () => {
             <div className={styles.topic_detail_container}>
                 <div style={{ textAlign: 'center', padding: '50px' }}>
                     <Spin size="large" />
-                    <p style={{ marginTop: '16px', color: '#ffffff' }}>加载代码数据中...</p>
+                    <p style={{ marginTop: '16px', color: '#ffffff' }}>
+                        {t('detail_pages.common.loading')}
+                    </p>
                 </div>
             </div>
         )
@@ -28,7 +32,12 @@ const CustomHooksDetail: React.FC = () => {
     if (error) {
         return (
             <div className={styles.topic_detail_container}>
-                <Alert message="加载失败" description={error} type="error" showIcon />
+                <Alert
+                    message={t('detail_pages.common.load_failed')}
+                    description={error}
+                    type="error"
+                    showIcon
+                />
             </div>
         )
     }
@@ -43,7 +52,7 @@ const CustomHooksDetail: React.FC = () => {
                     onClick={handleBack}
                     className={styles.back_button}
                 >
-                    返回React技术卡片
+                    {t('detail_pages.common.back_button', { tech: 'React' })}
                 </Button>
             </div>
 
@@ -53,13 +62,19 @@ const CustomHooksDetail: React.FC = () => {
                     <ToolOutlined />
                 </div>
                 <div className={styles.topic_info}>
-                    <h1>Custom Hooks 深度解析</h1>
-                    <p>自定义Hook的设计模式与实现，提升代码复用性和可维护性</p>
+                    <h1>{t('detail_pages.react_hooks.custom_hooks.title')}</h1>
+                    <p>{t('detail_pages.react_hooks.custom_hooks.description')}</p>
                     <div className={styles.topic_tags}>
                         <Tag color="blue">React Hooks</Tag>
-                        <Tag color="green">代码复用</Tag>
-                        <Tag color="orange">设计模式</Tag>
-                        <Tag color="purple">最佳实践</Tag>
+                        <Tag color="green">
+                            {t('detail_pages.react_hooks.custom_hooks.tags.reusability')}
+                        </Tag>
+                        <Tag color="orange">
+                            {t('detail_pages.react_hooks.custom_hooks.tags.patterns')}
+                        </Tag>
+                        <Tag color="purple">
+                            {t('detail_pages.react_hooks.custom_hooks.tags.abstraction')}
+                        </Tag>
                     </div>
                 </div>
             </div>
@@ -67,7 +82,10 @@ const CustomHooksDetail: React.FC = () => {
             {/* 内容区域 */}
             <div className={styles.content_sections}>
                 {/* 基础概念 */}
-                <Card title="📚 基础概念" className={styles.content_card}>
+                <Card
+                    title={`📚 ${t('detail_pages.common.overview')}`}
+                    className={styles.content_card}
+                >
                     <div className={styles.concept_content}>
                         <h3>什么是Custom Hooks？</h3>
                         <p>

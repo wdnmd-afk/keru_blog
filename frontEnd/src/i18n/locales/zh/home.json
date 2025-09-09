@@ -1,0 +1,105 @@
+{
+    "header": {
+        "title": "K's Tech Space",
+        "subtitle": "Share Technical Insights · Document Learning Journey · Explore Infinite Possibilities",
+        "stats": {
+            "articles": "文章",
+            "visits": "访问",
+            "likes": "点赞"
+        }
+    },
+    "content": {
+        "view_details": "查看详情",
+        "cards": {
+            "react_features": {
+                "title": "React 18 新特性深度解析",
+                "description": "深入了解React 18的并发特性、Suspense改进以及新的Hooks API，掌握现代React开发的核心技术。"
+            },
+            "book_recommendation": {
+                "title": "技术书籍推荐",
+                "description": "精选优质技术书籍，涵盖前端、后端、算法、系统设计等多个领域，助力技术成长。"
+            },
+            "file_management": {
+                "title": "文件管理系统",
+                "description": "高效的文件上传、预览和管理功能，支持多种文件格式，提升工作效率。"
+            },
+            "docker_guide": {
+                "title": "Docker 容器化实践",
+                "description": "从基础概念到实际应用，全面掌握Docker容器化技术，提升开发和部署效率。"
+            },
+            "typescript_advanced": {
+                "title": "TypeScript 进阶指南",
+                "description": "深入TypeScript类型系统，掌握高级类型、泛型、装饰器等特性，编写更安全的代码。"
+            },
+            "performance_optimization": {
+                "title": "前端性能优化实战",
+                "description": "从加载优化到运行时性能，全方位提升Web应用性能，打造极致用户体验。"
+            }
+        },
+        "tags": {
+            "react": "React",
+            "javascript": "JavaScript",
+            "frontend": "前端",
+            "books": "书籍",
+            "learning": "学习",
+            "growth": "成长",
+            "files": "文件",
+            "management": "管理",
+            "efficiency": "效率",
+            "docker": "Docker",
+            "containerization": "容器化",
+            "devops": "运维",
+            "typescript": "TypeScript",
+            "type_system": "类型系统",
+            "advanced": "进阶",
+            "performance": "性能",
+            "optimization": "优化",
+            "user_experience": "用户体验"
+        },
+        "author": "K爷",
+        "actions": {
+            "likes": "点赞",
+            "comments": "评论",
+            "shares": "分享"
+        }
+    },
+    "todo": {
+        "title": "待办事项",
+        "add_button": "添加待办",
+        "modal": {
+            "add_title": "添加新的待办事项",
+            "edit_title": "编辑待办事项",
+            "content_label": "内容",
+            "content_placeholder": "准备做什么？",
+            "content_required": "请输入待办内容!",
+            "type_label": "类型",
+            "type_required": "请选择类型!",
+            "confirm": "确认",
+            "cancel": "取消"
+        },
+        "types": {
+            "recent": "近期计划",
+            "long_term": "长期目标",
+            "study_plan": "学习计划"
+        },
+        "actions": {
+            "edit": "编辑",
+            "delete": "删除",
+            "delete_confirm": "确定删除吗？"
+        },
+        "empty_text": "暂无待办事项",
+        "completed": "已完成"
+    },
+    "navigation": {
+        "technology": "技术栈",
+        "books": "书籍推荐",
+        "files": "文件管理",
+        "about": "关于我"
+    },
+    "messages": {
+        "welcome": "欢迎来到我的技术空间",
+        "loading": "加载中...",
+        "load_error": "加载失败，请重试",
+        "no_content": "暂无内容"
+    }
+}
