@@ -14,14 +14,13 @@
         "learning_journey": "学习历程",
         "projects": "项目经验",
         "project_showcase": "项目展示",
-        "tech_growth_timeline": "技术成长时间线",
+
         "source_code": "源码",
         "demo": "演示",
         "progress": "进度"
     },
     "tabs": {
-        "project_experience": "项目经验",
-        "learning_journey": "学习历程"
+        "project_experience": "项目经验"
     },
     "project_status": {
         "completed": "已完成",
@@ -116,24 +115,7 @@
             "description": "基于WebSocket的实时聊天应用，支持群聊、私聊、文件传输等功能。"
         }
     },
-    "timeline": {
-        "2024": {
-            "title": "深入学习微前端架构",
-            "description": "研究qiankun、single-spa等微前端解决方案"
-        },
-        "2023": {
-            "title": "掌握云原生技术",
-            "description": "学习Docker、Kubernetes、CI/CD等技术"
-        },
-        "2022": {
-            "title": "全栈开发能力提升",
-            "description": "深入学习Node.js、数据库设计、系统架构"
-        },
-        "2021": {
-            "title": "前端框架精通",
-            "description": "深入学习React、Vue.js生态系统"
-        }
-    },
+
     "detail_pages": {
         "common": {
             "loading": "加载代码数据中...",

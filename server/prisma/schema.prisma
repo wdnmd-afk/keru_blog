@@ -67,25 +67,7 @@ model Topic {
   updatedAt    DateTime @updatedAt
 }
 
-model Book {
-  id          String   @id @unique
-  title       String
-  author      String
-  description String?
-  coverImage  String?
-  filePath    String
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-}
 
-model BookPage {
-  id        String @id @unique
-  bookId    String
-  pageNumber Int
-  content   String @db.Text
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-}
 
 model CodeSnippet {
   id           String   @id @unique

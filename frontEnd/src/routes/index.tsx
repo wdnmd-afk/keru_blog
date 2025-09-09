@@ -37,8 +37,8 @@ const LazyComponents = {
     Login: lazy(() => import('@/views/systemPages/Login.tsx')), // 登录/注册页面
 
     // ==================== 功能模块 ====================
-    Books: lazy(() => import('@/views/Books/index.tsx')), // 书籍推荐模块 - 技术书籍展示和推荐
-    Technology: lazy(() => import('@/views/Technology/index.tsx')), // 技术栈展示模块 - 技能、项目、学习历程
+    Technology: lazy(() => import('@/views/Technology/index.tsx')), // 技术栈展示模块 - 技能、项目展示
+    Learning: lazy(() => import('@/views/Learning/index.tsx')), // 学习模块 - 学习历程和学习计划管理
     Files: lazy(() => import('@/views/Files/index.tsx')), // 文件管理模块 - 文件上传、预览、管理
 
     // ==================== Technology子模块 ====================
@@ -78,15 +78,16 @@ const privateRoutes = [
         component: <LazyComponents.Home />,
         description: '首页 - 技术博客和文章展示',
     },
-    {
-        path: '/books',
-        component: <LazyComponents.Books />,
-        description: '书籍推荐 - 技术书籍展示和推荐',
-    },
+
     {
         path: '/technology',
         component: <LazyComponents.Technology />,
-        description: '技术栈 - 个人技能、项目经验、学习历程展示',
+        description: '技术栈 - 个人技能、项目经验展示',
+    },
+    {
+        path: '/learning',
+        component: <LazyComponents.Learning />,
+        description: '学习模块 - 学习历程和学习计划管理',
     },
     {
         path: '/technology/:tech',
@@ -180,12 +181,12 @@ export default AppRoutes
  *
  * 🔐 权限控制：
  * - 公共路由：/login, /404 (无需登录)
- * - 私有路由：/, /books, /technology, /files (需要登录)
+ * - 私有路由：/, /learning, /technology, /files (需要登录)
  *
  * 📁 页面结构：
  * - 首页 (/)：技术博客和文章展示
- * - 书籍推荐 (/books)：技术书籍展示和推荐
- * - 技术栈 (/technology)：个人技能、项目经验、学习历程
+ * - 学习中心 (/learning)：学习历程和学习计划管理
+ * - 技术栈 (/technology)：个人技能、项目经验展示
  * - 文件管理 (/files)：文件上传、预览、管理功能
  *
  * 🚀 性能优化：

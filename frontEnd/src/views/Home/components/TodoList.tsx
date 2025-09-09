@@ -6,8 +6,6 @@ import { Button, Checkbox, Form, Input, List, Modal, Popconfirm, Radio, Space, T
 import { useEffect, useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
-const { TabPane } = Tabs
-
 // 将在组件内部使用翻译函数替代
 // const todoTypeMap = {
 //     [TodoType.RECENT]: '近期要做',
@@ -129,12 +127,28 @@ const TodoList = () => {
                 </Form>
             </Modal>
 
-            <Tabs activeKey={activeTab} onChange={setActiveTab}>
-                <TabPane tab={t('common:buttons.all')} key="ALL" />
-                <TabPane tab={getTodoTypeMap()[TodoType.RECENT]} key={TodoType.RECENT} />
-                <TabPane tab={getTodoTypeMap()[TodoType.LONG_TERM]} key={TodoType.LONG_TERM} />
-                <TabPane tab={getTodoTypeMap()[TodoType.STUDY_PLAN]} key={TodoType.STUDY_PLAN} />
-            </Tabs>
+            <Tabs
+                activeKey={activeTab}
+                onChange={setActiveTab}
+                items={[
+                    {
+                        key: 'ALL',
+                        label: t('common:buttons.all'),
+                    },
+                    {
+                        key: TodoType.RECENT,
+                        label: getTodoTypeMap()[TodoType.RECENT],
+                    },
+                    {
+                        key: TodoType.LONG_TERM,
+                        label: getTodoTypeMap()[TodoType.LONG_TERM],
+                    },
+                    {
+                        key: TodoType.STUDY_PLAN,
+                        label: getTodoTypeMap()[TodoType.STUDY_PLAN],
+                    },
+                ]}
+            />
 
             <List
                 dataSource={filteredTodos}

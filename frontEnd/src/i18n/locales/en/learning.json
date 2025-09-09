@@ -1,0 +1,140 @@
+{
+    "header": {
+        "title": "Learning Center",
+        "subtitle": "Track learning journey and plan growth path"
+    },
+    "tabs": {
+        "learning_journey": "Learning Journey",
+        "learning_plan": "Learning Plan"
+    },
+    "timeline": {
+        "title": "Technology Growth Timeline",
+        "subtitle": "Record learning achievements and technical breakthroughs at each stage",
+        "tech_flow_title": "Technology Learning Flowchart",
+        "tech_flow_subtitle": "Visualize technology stack learning journey and relationships",
+        "view_timeline": "Timeline View",
+        "view_flowchart": "Flowchart View",
+        "view_tree": "Tree View",
+        "tech_tree_title": "Technology Learning Tree",
+        "tech_tree_subtitle": "All branches expanded by default. Click nodes to collapse/expand and explore the hierarchical structure",
+        "2024": {
+            "title": "Deep Learning of Micro-frontend Architecture",
+            "description": "Research on micro-frontend solutions like qiankun, single-spa, and explore architecture design for large applications"
+        },
+        "2023": {
+            "title": "Mastering Cloud Native Technologies",
+            "description": "Learning Docker, Kubernetes, CI/CD and other technologies to enhance DevOps capabilities"
+        },
+        "2022": {
+            "title": "Full-stack Development Skills Enhancement",
+            "description": "Deep learning of Node.js, database design, system architecture to build a complete technology stack"
+        },
+        "2021": {
+            "title": "Frontend Framework Mastery",
+            "description": "Deep learning of React, Vue.js ecosystems and mastering modern frontend development technologies"
+        }
+    },
+    "plan": {
+        "title": "Learning Plan Management",
+        "subtitle": "Set goals, track progress, achieve technical growth",
+        "add_new": "New Plan",
+        "start_date": "Start Date",
+        "target_date": "Target Date",
+        "status": {
+            "planned": "Planned",
+            "in_progress": "In Progress",
+            "completed": "Completed",
+            "paused": "Paused",
+            "cancelled": "Cancelled"
+        },
+        "priority": {
+            "low": "Low Priority",
+            "medium": "Medium Priority",
+            "high": "High Priority",
+            "urgent": "Urgent"
+        }
+    },
+    "plans": {
+        "microservices": {
+            "title": "Microservices Architecture Deep Learning",
+            "description": "Systematically learn microservices architecture design, containerized deployment, service governance and other core technologies to enhance distributed system development capabilities"
+        },
+        "ai_development": {
+            "title": "AI Development Technology Stack",
+            "description": "Learn machine learning and deep learning fundamentals, master Python AI development toolchain, explore AI applications in web development"
+        },
+        "fullstack_mastery": {
+            "title": "Full-stack Technology Mastery",
+            "description": "Master frontend and backend development technologies in depth, including React ecosystem, Node.js backend, database design and complete technology stack"
+        }
+    },
+    "categories": {
+        "frontend": "Frontend Development",
+        "backend": "Backend Development",
+        "database": "Database",
+        "devops": "DevOps",
+        "mobile": "Mobile Development",
+        "ai_ml": "Artificial Intelligence",
+        "design": "Design",
+        "testing": "Testing"
+    },
+    "resources": {
+        "book": "Book",
+        "video": "Video",
+        "article": "Article",
+        "course": "Course",
+        "documentation": "Documentation",
+        "tutorial": "Tutorial"
+    },
+    "actions": {
+        "view_details": "View Details",
+        "edit": "Edit",
+        "delete": "Delete",
+        "start": "Start Learning",
+        "pause": "Pause",
+        "resume": "Resume",
+        "complete": "Mark Complete",
+        "add_resource": "Add Resource",
+        "add_note": "Add Note"
+    },
+    "form": {
+        "title": "Plan Title",
+        "description": "Plan Description",
+        "start_date": "Start Date",
+        "target_date": "Target Date",
+        "skills": "Related Skills",
+        "category": "Category",
+        "priority": "Priority",
+        "estimated_hours": "Estimated Hours",
+        "resources": "Learning Resources",
+        "notes": "Notes",
+        "save": "Save",
+        "cancel": "Cancel",
+        "required": "Required field",
+        "invalid_date": "Invalid date format",
+        "end_before_start": "End date cannot be earlier than start date"
+    },
+    "stats": {
+        "total_plans": "Total Plans",
+        "completed_plans": "Completed",
+        "in_progress_plans": "In Progress",
+        "planned_plans": "Planned",
+        "total_hours": "Total Hours",
+        "monthly_hours": "Monthly Hours",
+        "skills_count": "Skills Mastered",
+        "completion_rate": "Completion Rate"
+    },
+    "messages": {
+        "plan_created": "Learning plan created successfully",
+        "plan_updated": "Learning plan updated successfully",
+        "plan_deleted": "Learning plan deleted successfully",
+        "plan_started": "Learning plan started",
+        "plan_completed": "Congratulations! Learning plan completed",
+        "confirm_delete": "Are you sure you want to delete this learning plan?",
+        "no_plans": "No learning plans",
+        "no_plans_desc": "Create your first learning plan to start your technical growth journey",
+        "loading": "Loading...",
+        "load_failed": "Load failed",
+        "network_error": "Network error, please try again later"
+    }
+}

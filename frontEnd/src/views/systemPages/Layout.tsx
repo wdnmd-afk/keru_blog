@@ -19,7 +19,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     // 使用国际化的导航菜单项
     const headerList: MenuItem[] = [
         { name: t('header.navigation.home'), path: '/' },
-        { name: t('header.navigation.books'), path: '/books' },
+        { name: t('header.navigation.learning'), path: '/learning' },
         { name: t('header.navigation.files'), path: '/files' },
         { name: t('header.navigation.technology'), path: '/technology' },
     ]
@@ -54,9 +54,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
                     size="medium"
                 />
             </div>
-            <div flex-1 h-0>
-                {children}
-            </div>
+            <div className="flex-1 h-full overflow-hidden">{children}</div>
             <FloatingActions />
         </div>
     )

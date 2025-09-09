@@ -1,7 +1,6 @@
 import styles from '@/styles/technology.module.scss'
 import {
     BugOutlined,
-    BulbOutlined,
     CloudOutlined,
     CodeOutlined,
     DatabaseOutlined,
@@ -11,7 +10,7 @@ import {
     ToolOutlined,
     TrophyOutlined,
 } from '@ant-design/icons'
-import { Button, Card, Col, Progress, Row, Tabs, Tag, Timeline } from 'antd'
+import { Button, Card, Col, Progress, Row, Tabs, Tag } from 'antd'
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
@@ -124,34 +123,6 @@ const Technology: React.FC = () => {
             progress: 20,
             github: '',
             demo: '',
-        },
-    ]
-
-    // 获取学习时间线数据（使用国际化）
-    const getLearningTimelineData = () => [
-        {
-            time: '2024年',
-            title: t('timeline.2024.title'),
-            description: t('timeline.2024.description'),
-            status: 'processing',
-        },
-        {
-            time: '2023年',
-            title: t('timeline.2023.title'),
-            description: t('timeline.2023.description'),
-            status: 'finish',
-        },
-        {
-            time: '2022年',
-            title: t('timeline.2022.title'),
-            description: t('timeline.2022.description'),
-            status: 'finish',
-        },
-        {
-            time: '2021年',
-            title: t('timeline.2021.title'),
-            description: t('timeline.2021.description'),
-            status: 'finish',
         },
     ]
 
@@ -343,34 +314,6 @@ const Technology: React.FC = () => {
                             </Col>
                         ))}
                     </Row>
-                </div>
-            ),
-        },
-        {
-            key: '3',
-            label: (
-                <span>
-                    <BulbOutlined />
-                    {t('tabs.learning_journey')}
-                </span>
-            ),
-            children: (
-                <div className={styles.learning_section}>
-                    <h2>{t('common.tech_growth_timeline')}</h2>
-                    <Timeline mode="left" className={styles.learning_timeline}>
-                        {getLearningTimelineData().map((item, index) => (
-                            <Timeline.Item
-                                key={index}
-                                color={item.status === 'processing' ? 'blue' : 'green'}
-                                label={<span className={styles.timeline_time}>{item.time}</span>}
-                            >
-                                <div className={styles.timeline_content}>
-                                    <h3>{item.title}</h3>
-                                    <p>{item.description}</p>
-                                </div>
-                            </Timeline.Item>
-                        ))}
-                    </Timeline>
                 </div>
             ),
         },

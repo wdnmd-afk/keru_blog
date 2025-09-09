@@ -14,14 +14,13 @@
         "learning_journey": "Learning Journey",
         "projects": "Project Experience",
         "project_showcase": "Project Showcase",
-        "tech_growth_timeline": "Technology Growth Timeline",
+
         "source_code": "Source Code",
         "demo": "Demo",
         "progress": "Progress"
     },
     "tabs": {
-        "project_experience": "Project Experience",
-        "learning_journey": "Learning Journey"
+        "project_experience": "Project Experience"
     },
     "project_status": {
         "completed": "Completed",
@@ -116,24 +115,7 @@
             "description": "Real-time chat application based on WebSocket, supporting group chat, private chat, file transfer and more."
         }
     },
-    "timeline": {
-        "2024": {
-            "title": "Deep Learning of Micro-frontend Architecture",
-            "description": "Research on micro-frontend solutions like qiankun, single-spa"
-        },
-        "2023": {
-            "title": "Mastering Cloud Native Technologies",
-            "description": "Learning Docker, Kubernetes, CI/CD and other technologies"
-        },
-        "2022": {
-            "title": "Full-stack Development Skills Enhancement",
-            "description": "Deep learning of Node.js, database design, system architecture"
-        },
-        "2021": {
-            "title": "Frontend Framework Mastery",
-            "description": "Deep learning of React, Vue.js ecosystems"
-        }
-    },
+
     "detail_pages": {
         "common": {
             "loading": "Loading code data...",

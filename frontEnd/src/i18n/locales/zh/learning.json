@@ -1,0 +1,140 @@
+{
+    "header": {
+        "title": "学习中心",
+        "subtitle": "记录学习历程，规划成长路径"
+    },
+    "tabs": {
+        "learning_journey": "学习历程",
+        "learning_plan": "学习计划"
+    },
+    "timeline": {
+        "title": "技术成长时间线",
+        "subtitle": "记录每个阶段的学习成果和技术突破",
+        "tech_flow_title": "技术学习流程图",
+        "tech_flow_subtitle": "可视化展示技术栈学习历程和关联关系",
+        "view_timeline": "时间线视图",
+        "view_flowchart": "流程图视图",
+        "view_tree": "树状图视图",
+        "tech_tree_title": "技术学习树状图",
+        "tech_tree_subtitle": "默认展开所有分支，点击节点可折叠/展开，查看技术学习的层次结构",
+        "2024": {
+            "title": "深入学习微前端架构",
+            "description": "研究qiankun、single-spa等微前端解决方案，探索大型应用的架构设计"
+        },
+        "2023": {
+            "title": "掌握云原生技术",
+            "description": "学习Docker、Kubernetes、CI/CD等技术，提升DevOps能力"
+        },
+        "2022": {
+            "title": "全栈开发能力提升",
+            "description": "深入学习Node.js、数据库设计、系统架构，构建完整的技术栈"
+        },
+        "2021": {
+            "title": "前端框架精通",
+            "description": "深入学习React、Vue.js生态系统，掌握现代前端开发技术"
+        }
+    },
+    "plan": {
+        "title": "学习计划管理",
+        "subtitle": "制定目标，跟踪进度，实现技术成长",
+        "add_new": "新建计划",
+        "start_date": "开始日期",
+        "target_date": "目标日期",
+        "status": {
+            "planned": "计划中",
+            "in_progress": "进行中",
+            "completed": "已完成",
+            "paused": "已暂停",
+            "cancelled": "已取消"
+        },
+        "priority": {
+            "low": "低优先级",
+            "medium": "中优先级",
+            "high": "高优先级",
+            "urgent": "紧急"
+        }
+    },
+    "plans": {
+        "microservices": {
+            "title": "微服务架构深度学习",
+            "description": "系统学习微服务架构设计、容器化部署、服务治理等核心技术，提升分布式系统开发能力"
+        },
+        "ai_development": {
+            "title": "AI开发技术栈",
+            "description": "学习机器学习、深度学习基础理论，掌握Python AI开发工具链，探索AI在Web开发中的应用"
+        },
+        "fullstack_mastery": {
+            "title": "全栈技术精通",
+            "description": "深度掌握前后端开发技术，包括React生态、Node.js后端、数据库设计等完整技术栈"
+        }
+    },
+    "categories": {
+        "frontend": "前端开发",
+        "backend": "后端开发",
+        "database": "数据库",
+        "devops": "运维部署",
+        "mobile": "移动开发",
+        "ai_ml": "人工智能",
+        "design": "设计",
+        "testing": "测试"
+    },
+    "resources": {
+        "book": "书籍",
+        "video": "视频",
+        "article": "文章",
+        "course": "课程",
+        "documentation": "文档",
+        "tutorial": "教程"
+    },
+    "actions": {
+        "view_details": "查看详情",
+        "edit": "编辑",
+        "delete": "删除",
+        "start": "开始学习",
+        "pause": "暂停",
+        "resume": "继续",
+        "complete": "标记完成",
+        "add_resource": "添加资源",
+        "add_note": "添加笔记"
+    },
+    "form": {
+        "title": "计划标题",
+        "description": "计划描述",
+        "start_date": "开始日期",
+        "target_date": "目标日期",
+        "skills": "相关技能",
+        "category": "分类",
+        "priority": "优先级",
+        "estimated_hours": "预估时长（小时）",
+        "resources": "学习资源",
+        "notes": "备注",
+        "save": "保存",
+        "cancel": "取消",
+        "required": "必填项",
+        "invalid_date": "日期格式不正确",
+        "end_before_start": "结束日期不能早于开始日期"
+    },
+    "stats": {
+        "total_plans": "总计划数",
+        "completed_plans": "已完成",
+        "in_progress_plans": "进行中",
+        "planned_plans": "计划中",
+        "total_hours": "总学习时长",
+        "monthly_hours": "本月学习",
+        "skills_count": "掌握技能",
+        "completion_rate": "完成率"
+    },
+    "messages": {
+        "plan_created": "学习计划创建成功",
+        "plan_updated": "学习计划更新成功",
+        "plan_deleted": "学习计划删除成功",
+        "plan_started": "学习计划已开始",
+        "plan_completed": "恭喜！学习计划已完成",
+        "confirm_delete": "确定要删除这个学习计划吗？",
+        "no_plans": "暂无学习计划",
+        "no_plans_desc": "创建你的第一个学习计划，开始技术成长之旅",
+        "loading": "加载中...",
+        "load_failed": "加载失败",
+        "network_error": "网络错误，请稍后重试"
+    }
+}
