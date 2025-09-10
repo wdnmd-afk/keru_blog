@@ -1,0 +1,166 @@
+{
+  "share": {
+    "title": "分享内容",
+    "tooltip": "分享",
+    "native": "原生分享",
+    "copy_link": "复制链接",
+    "weibo": "微博",
+    "qq": "QQ",
+    "twitter": "Twitter",
+    "facebook": "Facebook",
+    "success": "分享成功",
+    "failed": "分享失败",
+    "link_copied": "链接已复制到剪贴板",
+    "copy_failed": "复制失败",
+    "quick_copy": "快速复制",
+    "quick_share": "快速分享"
+  },
+  "favorite": {
+    "title": "我的收藏",
+    "tooltip": "收藏",
+    "add": "收藏",
+    "remove": "取消收藏",
+    "added": "已添加到收藏",
+    "removed": "已从收藏中移除",
+    "deleted": "已删除收藏",
+    "add_current": "收藏此页",
+    "remove_current": "取消收藏",
+    "search_placeholder": "搜索收藏...",
+    "all_tags": "全部",
+    "no_results": "没有找到匹配的收藏",
+    "empty": "暂无收藏内容",
+    "copy_link": "复制链接",
+    "delete": "删除",
+    "link_copied": "链接已复制",
+    "copy_failed": "复制失败"
+  },
+  "settings": {
+    "title": "设置",
+    "tooltip": "设置",
+    "theme": {
+      "title": "主题设置",
+      "description": "选择您喜欢的界面主题",
+      "light": "浅色",
+      "dark": "深色",
+      "auto": "跟随系统"
+    },
+    "language": {
+      "title": "语言设置",
+      "description": "选择界面显示语言"
+    },
+    "display": {
+      "title": "显示设置",
+      "animations": "动画效果",
+      "animations_description": "启用界面动画和过渡效果",
+      "sounds": "声音提示",
+      "sounds_description": "启用操作反馈声音"
+    },
+    "reset": "重置设置",
+    "save": "保存设置",
+    "theme_changed": "主题已更新",
+    "language_changed": "语言已更新",
+    "language_change_failed": "语言切换失败",
+    "animations_enabled": "动画效果已启用",
+    "animations_disabled": "动画效果已禁用",
+    "sounds_enabled": "声音提示已启用",
+    "sounds_disabled": "声音提示已禁用",
+    "reset_success": "设置已重置为默认值"
+  },
+  "feedback": {
+    "title": "意见反馈",
+    "tooltip": "反馈",
+    "type": {
+      "label": "反馈类型",
+      "required": "请选择反馈类型",
+      "suggestion": "功能建议",
+      "suggestion_desc": "建议新功能或改进",
+      "bug_report": "Bug报告",
+      "bug_report_desc": "报告系统错误或异常",
+      "content_feedback": "内容反馈",
+      "content_feedback_desc": "对内容的意见或建议",
+      "other": "其他",
+      "other_desc": "其他类型的反馈"
+    },
+    "title_label": "反馈标题",
+    "title": {
+      "required": "请输入反馈标题",
+      "max_length": "标题不能超过100个字符",
+      "placeholder": "请简要描述您的反馈..."
+    },
+    "content_label": "详细描述",
+    "content": {
+      "required": "请输入详细描述",
+      "min_length": "描述至少需要10个字符",
+      "max_length": "描述不能超过1000个字符",
+      "placeholder": "请详细描述您遇到的问题或建议..."
+    },
+    "email_label": "联系邮箱",
+    "email": {
+      "optional": "（可选）",
+      "invalid": "请输入有效的邮箱地址",
+      "placeholder": "如需回复，请留下您的邮箱"
+    },
+    "system_info_notice": "为了更好地处理您的反馈，我们会自动收集页面URL、浏览器信息等技术数据。",
+    "reset": "重置",
+    "submit": "提交反馈",
+    "submitting": "提交中...",
+    "submit_success": "反馈提交成功",
+    "submit_failed": "反馈提交失败"
+  },
+  "help": {
+    "title": "帮助中心",
+    "tooltip": "帮助",
+    "search_placeholder": "搜索帮助内容...",
+    "no_results": "没有找到匹配的帮助内容",
+    "footer_tip": "按 F8 可随时打开帮助，按 Esc 关闭面板",
+    "category": {
+      "shortcuts": "快捷键",
+      "features": "功能介绍",
+      "tips": "使用技巧"
+    },
+    "shortcuts": {
+      "scroll_top": "返回顶部",
+      "scroll_top_desc": "快速滚动到页面顶部",
+      "scroll_bottom": "滚动到底部",
+      "scroll_bottom_desc": "快速滚动到页面底部",
+      "search": "搜索",
+      "search_desc": "打开搜索功能",
+      "help": "帮助",
+      "help_desc": "打开帮助面板"
+    },
+    "features": {
+      "share": "分享功能",
+      "share_desc": "支持多种方式分享当前页面，包括原生分享、复制链接和社交媒体分享",
+      "favorite": "收藏功能",
+      "favorite_desc": "收藏感兴趣的页面，支持标签分类和搜索管理",
+      "settings": "设置功能",
+      "settings_desc": "自定义主题、语言和显示选项，个性化您的使用体验",
+      "feedback": "反馈功能",
+      "feedback_desc": "提交功能建议、bug报告或其他反馈，帮助我们改进产品"
+    },
+    "tips": {
+      "navigation": "页面导航",
+      "navigation_desc": "使用浮动按钮快速访问常用功能，提高浏览效率",
+      "keyboard": "键盘操作",
+      "keyboard_desc": "熟练使用快捷键可以大大提高操作效率",
+      "mobile": "移动端使用",
+      "mobile_desc": "在移动设备上，浮动按钮会自动适配屏幕尺寸，提供最佳体验"
+    }
+  },
+  "back_to_top": {
+    "tooltip": "返回顶部"
+  },
+  "common": {
+    "close": "关闭",
+    "cancel": "取消",
+    "confirm": "确认",
+    "save": "保存",
+    "delete": "删除",
+    "edit": "编辑",
+    "loading": "加载中...",
+    "success": "成功",
+    "error": "错误",
+    "warning": "警告",
+    "info": "信息"
+  }
+}

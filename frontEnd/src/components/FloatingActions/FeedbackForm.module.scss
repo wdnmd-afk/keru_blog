@@ -1,0 +1,461 @@
+/**
+ * 反馈表单样式
+ *
+ * 设计理念：
+ * 1. 与现有深蓝主题保持一致
+ * 2. 清晰的表单布局和视觉层次
+ * 3. 响应式设计适配
+ * 4. 良好的表单交互体验
+ */
+
+// 引用全局色彩变量
+:root {
+    --primary-dark: #0a0e1a;
+    --primary-blue: #1a2332;
+    --accent-blue: #2d4263;
+    --highlight-blue: #3e5c7a;
+    --text-primary: #ffffff;
+    --text-secondary: #b8c5d1;
+    --text-muted: #8a9ba8;
+    --border-color: rgba(62, 92, 122, 0.3);
+    --card-bg: rgba(26, 35, 50, 0.95);
+    --shadow-dark: rgba(0, 0, 0, 0.5);
+    --gradient-primary: linear-gradient(135deg, #0a0e1a 0%, #1a2332 50%, #2d4263 100%);
+    --gradient-accent: linear-gradient(135deg, #2d4263 0%, #3e5c7a 100%);
+}
+
+// 反馈表单遮罩层
+.feedback_form_overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(8px);
+    z-index: 1100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    animation: fadeIn 0.3s ease-out;
+
+    @media (max-width: 768px) {
+        padding: 10px;
+        align-items: flex-start;
+        padding-top: 20px;
+    }
+}
+
+// 反馈表单主体
+.feedback_form {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    box-shadow:
+        0 20px 40px rgba(0, 0, 0, 0.4),
+        0 0 0 1px rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    max-width: 600px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    animation: slideUp 0.3s ease-out;
+
+    // 覆盖Ant Design Card样式
+    :global(.ant-card-head) {
+        background: transparent;
+        border-bottom: 1px solid var(--border-color);
+        padding: 16px 20px;
+        min-height: auto;
+    }
+
+    :global(.ant-card-body) {
+        padding: 20px;
+
+        // 强制覆盖所有文本颜色，确保深色主题下可读性
+        :global(.ant-typography) {
+            color: var(--text-primary) !important;
+        }
+
+        :global(.ant-typography-caption) {
+            color: var(--text-secondary) !important;
+        }
+
+        // 覆盖表单标签颜色
+        :global(.ant-form-item-label > label) {
+            color: var(--text-primary) !important;
+        }
+
+        // 覆盖单选按钮文本颜色
+        :global(.ant-radio-wrapper) {
+            color: var(--text-primary) !important;
+        }
+    }
+
+    :global(.ant-card-head-title) {
+        padding: 0;
+        color: var(--text-primary) !important;
+    }
+
+    @media (max-width: 768px) {
+        max-height: 95vh;
+
+        :global(.ant-card-head),
+        :global(.ant-card-body) {
+            padding: 16px;
+        }
+    }
+}
+
+// 面板头部
+.panel_header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.panel_title {
+    margin: 0 !important;
+    color: var(--text-primary) !important;
+    font-size: 18px !important;
+    font-weight: 600 !important;
+}
+
+.close_button {
+    color: var(--text-secondary);
+    border: none;
+    background: transparent;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+
+    &:hover,
+    &:focus {
+        color: var(--text-primary);
+        background: rgba(62, 92, 122, 0.2);
+        transform: scale(1.1);
+    }
+
+    &:active {
+        transform: scale(0.95);
+    }
+}
+
+// 表单样式
+.form {
+    :global(.ant-form-item-label > label) {
+        color: var(--text-primary);
+        font-weight: 500;
+    }
+
+    :global(.ant-form-item-explain-error) {
+        color: #ff4d4f;
+    }
+
+    :global(.ant-form-item-has-error) {
+        :global(.ant-input),
+        :global(.ant-input:focus),
+        :global(.ant-input-focused) {
+            border-color: #ff4d4f;
+            box-shadow: 0 0 0 2px rgba(255, 77, 79, 0.2);
+        }
+    }
+}
+
+.form_label {
+    color: var(--text-primary) !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+}
+
+.form_label_optional {
+    font-weight: 400 !important;
+    font-size: 13px !important;
+    margin-left: 4px;
+}
+
+// 表单输入框
+.form_input {
+    background: rgba(62, 92, 122, 0.1);
+    border-color: var(--border-color);
+    color: var(--text-primary);
+    border-radius: 8px;
+    transition: all 0.2s ease;
+
+    &:hover {
+        border-color: var(--highlight-blue);
+        background: rgba(62, 92, 122, 0.15);
+    }
+
+    &:focus,
+    &:global(.ant-input-focused) {
+        border-color: var(--highlight-blue);
+        background: rgba(62, 92, 122, 0.15);
+        box-shadow: 0 0 0 2px rgba(62, 92, 122, 0.2);
+    }
+
+    &::placeholder {
+        color: var(--text-muted);
+    }
+
+    // 前缀图标样式
+    :global(.ant-input-prefix) {
+        color: var(--text-muted);
+        margin-right: 8px;
+    }
+}
+
+.form_textarea {
+    background: rgba(62, 92, 122, 0.1);
+    border-color: var(--border-color);
+    color: var(--text-primary);
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    resize: vertical;
+    min-height: 120px;
+
+    &:hover {
+        border-color: var(--highlight-blue);
+        background: rgba(62, 92, 122, 0.15);
+    }
+
+    &:focus,
+    &:global(.ant-input-focused) {
+        border-color: var(--highlight-blue);
+        background: rgba(62, 92, 122, 0.15);
+        box-shadow: 0 0 0 2px rgba(62, 92, 122, 0.2);
+    }
+
+    &::placeholder {
+        color: var(--text-muted);
+    }
+
+    // 字符计数样式
+    :global(.ant-input-data-count) {
+        color: var(--text-muted);
+        font-size: 12px;
+    }
+}
+
+// 反馈类型选择
+.feedback_types {
+    width: 100%;
+
+    :global(.ant-radio-wrapper) {
+        display: block;
+        width: 100%;
+        padding: 12px 16px;
+        margin: 0 0 8px 0;
+        background: rgba(62, 92, 122, 0.1);
+        border: 1px solid var(--border-color);
+        border-radius: 8px;
+        transition: all 0.2s ease;
+
+        &:hover {
+            background: rgba(62, 92, 122, 0.15);
+            border-color: var(--highlight-blue);
+        }
+
+        &:global(.ant-radio-wrapper-checked) {
+            background: rgba(62, 92, 122, 0.2);
+            border-color: var(--highlight-blue);
+            box-shadow: 0 0 0 1px rgba(62, 92, 122, 0.3);
+        }
+
+        :global(.ant-radio) {
+            margin-right: 12px;
+
+            :global(.ant-radio-inner) {
+                background: rgba(62, 92, 122, 0.2);
+                border-color: var(--border-color);
+            }
+
+            &:global(.ant-radio-checked) {
+                :global(.ant-radio-inner) {
+                    background: var(--highlight-blue);
+                    border-color: var(--highlight-blue);
+                }
+            }
+        }
+    }
+}
+
+.feedback_type_option {
+    width: 100%;
+    margin-bottom: 8px;
+}
+
+.feedback_type_content {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.feedback_type_desc {
+    font-size: 12px !important;
+    line-height: 1.4;
+    margin-left: 24px;
+}
+
+// 系统信息提示
+.system_info_notice {
+    background: rgba(62, 92, 122, 0.1);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin-bottom: 20px;
+}
+
+.notice_text {
+    font-size: 13px !important;
+    line-height: 1.5;
+    color: var(--text-muted) !important;
+}
+
+// 表单操作按钮
+.form_actions {
+    margin-bottom: 0 !important;
+    text-align: right;
+
+    :global(.ant-btn) {
+        border-radius: 8px;
+        font-weight: 500;
+        transition: all 0.2s ease;
+
+        &:hover {
+            transform: translateY(-1px);
+        }
+    }
+
+    :global(.ant-btn-default) {
+        background: rgba(62, 92, 122, 0.1);
+        border-color: var(--border-color);
+        color: var(--text-secondary);
+
+        &:hover {
+            background: rgba(62, 92, 122, 0.2);
+            border-color: var(--highlight-blue);
+            color: var(--text-primary);
+        }
+    }
+}
+
+.submit_button {
+    background: var(--gradient-accent) !important;
+    border: none !important;
+    box-shadow: 0 2px 8px rgba(62, 92, 122, 0.3);
+
+    &:hover {
+        background: linear-gradient(135deg, #4a6b8a 0%, #3e5c7a 100%) !important;
+        box-shadow: 0 4px 12px rgba(62, 92, 122, 0.4);
+    }
+
+    &:global(.ant-btn-loading) {
+        background: var(--gradient-accent) !important;
+    }
+}
+
+// 动画效果
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+// 滚动条样式
+.feedback_form {
+    &::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: rgba(62, 92, 122, 0.1);
+        border-radius: 3px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: rgba(62, 92, 122, 0.3);
+        border-radius: 3px;
+        transition: background 0.2s ease;
+
+        &:hover {
+            background: rgba(62, 92, 122, 0.5);
+        }
+    }
+}
+
+// 响应式适配
+@media (max-width: 480px) {
+    .feedback_form {
+        border-radius: 12px;
+    }
+
+    .panel_title {
+        font-size: 16px !important;
+    }
+
+    .form_actions {
+        text-align: center;
+
+        :global(.ant-btn) {
+            width: 100%;
+            margin-bottom: 8px;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    .feedback_type_desc {
+        margin-left: 20px;
+    }
+}
+
+// 无障碍访问优化
+@media (prefers-reduced-motion: reduce) {
+    .feedback_form_overlay,
+    .feedback_form,
+    .close_button,
+    .form_input,
+    .form_textarea {
+        animation: none;
+        transition: none;
+    }
+}
+
+// 高对比度模式支持
+@media (prefers-contrast: high) {
+    .feedback_form {
+        border: 2px solid var(--text-primary);
+    }
+
+    .form_input,
+    .form_textarea {
+        border: 2px solid var(--border-color);
+
+        &:focus,
+        &:global(.ant-input-focused) {
+            border: 2px solid var(--highlight-blue);
+        }
+    }
+}

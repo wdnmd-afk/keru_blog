@@ -1,0 +1,166 @@
+{
+  "share": {
+    "title": "Share Content",
+    "tooltip": "Share",
+    "native": "Native Share",
+    "copy_link": "Copy Link",
+    "weibo": "Weibo",
+    "qq": "QQ",
+    "twitter": "Twitter",
+    "facebook": "Facebook",
+    "success": "Shared successfully",
+    "failed": "Share failed",
+    "link_copied": "Link copied to clipboard",
+    "copy_failed": "Copy failed",
+    "quick_copy": "Quick Copy",
+    "quick_share": "Quick Share"
+  },
+  "favorite": {
+    "title": "My Favorites",
+    "tooltip": "Favorite",
+    "add": "Add to Favorites",
+    "remove": "Remove from Favorites",
+    "added": "Added to favorites",
+    "removed": "Removed from favorites",
+    "deleted": "Favorite deleted",
+    "add_current": "Favorite This Page",
+    "remove_current": "Unfavorite",
+    "search_placeholder": "Search favorites...",
+    "all_tags": "All",
+    "no_results": "No matching favorites found",
+    "empty": "No favorites yet",
+    "copy_link": "Copy Link",
+    "delete": "Delete",
+    "link_copied": "Link copied",
+    "copy_failed": "Copy failed"
+  },
+  "settings": {
+    "title": "Settings",
+    "tooltip": "Settings",
+    "theme": {
+      "title": "Theme Settings",
+      "description": "Choose your preferred interface theme",
+      "light": "Light",
+      "dark": "Dark",
+      "auto": "Follow System"
+    },
+    "language": {
+      "title": "Language Settings",
+      "description": "Select interface display language"
+    },
+    "display": {
+      "title": "Display Settings",
+      "animations": "Animations",
+      "animations_description": "Enable interface animations and transitions",
+      "sounds": "Sound Effects",
+      "sounds_description": "Enable operation feedback sounds"
+    },
+    "reset": "Reset Settings",
+    "save": "Save Settings",
+    "theme_changed": "Theme updated",
+    "language_changed": "Language updated",
+    "language_change_failed": "Language change failed",
+    "animations_enabled": "Animations enabled",
+    "animations_disabled": "Animations disabled",
+    "sounds_enabled": "Sound effects enabled",
+    "sounds_disabled": "Sound effects disabled",
+    "reset_success": "Settings reset to default"
+  },
+  "feedback": {
+    "title": "Feedback",
+    "tooltip": "Feedback",
+    "type": {
+      "label": "Feedback Type",
+      "required": "Please select feedback type",
+      "suggestion": "Feature Suggestion",
+      "suggestion_desc": "Suggest new features or improvements",
+      "bug_report": "Bug Report",
+      "bug_report_desc": "Report system errors or issues",
+      "content_feedback": "Content Feedback",
+      "content_feedback_desc": "Feedback on content",
+      "other": "Other",
+      "other_desc": "Other types of feedback"
+    },
+    "title_label": "Feedback Title",
+    "title": {
+      "required": "Please enter feedback title",
+      "max_length": "Title cannot exceed 100 characters",
+      "placeholder": "Please briefly describe your feedback..."
+    },
+    "content_label": "Detailed Description",
+    "content": {
+      "required": "Please enter detailed description",
+      "min_length": "Description must be at least 10 characters",
+      "max_length": "Description cannot exceed 1000 characters",
+      "placeholder": "Please describe the issue or suggestion in detail..."
+    },
+    "email_label": "Contact Email",
+    "email": {
+      "optional": "(Optional)",
+      "invalid": "Please enter a valid email address",
+      "placeholder": "Leave your email if you need a reply"
+    },
+    "system_info_notice": "To better handle your feedback, we will automatically collect technical data such as page URL and browser information.",
+    "reset": "Reset",
+    "submit": "Submit Feedback",
+    "submitting": "Submitting...",
+    "submit_success": "Feedback submitted successfully",
+    "submit_failed": "Feedback submission failed"
+  },
+  "help": {
+    "title": "Help Center",
+    "tooltip": "Help",
+    "search_placeholder": "Search help content...",
+    "no_results": "No matching help content found",
+    "footer_tip": "Press F8 to open help anytime, press Esc to close panel",
+    "category": {
+      "shortcuts": "Shortcuts",
+      "features": "Features",
+      "tips": "Tips"
+    },
+    "shortcuts": {
+      "scroll_top": "Scroll to Top",
+      "scroll_top_desc": "Quickly scroll to the top of the page",
+      "scroll_bottom": "Scroll to Bottom",
+      "scroll_bottom_desc": "Quickly scroll to the bottom of the page",
+      "search": "Search",
+      "search_desc": "Open search function",
+      "help": "Help",
+      "help_desc": "Open help panel"
+    },
+    "features": {
+      "share": "Share Feature",
+      "share_desc": "Share current page in multiple ways, including native share, copy link, and social media sharing",
+      "favorite": "Favorite Feature",
+      "favorite_desc": "Bookmark interesting pages with tag categorization and search management",
+      "settings": "Settings Feature",
+      "settings_desc": "Customize theme, language, and display options to personalize your experience",
+      "feedback": "Feedback Feature",
+      "feedback_desc": "Submit feature suggestions, bug reports, or other feedback to help us improve"
+    },
+    "tips": {
+      "navigation": "Page Navigation",
+      "navigation_desc": "Use floating buttons to quickly access common functions and improve browsing efficiency",
+      "keyboard": "Keyboard Operations",
+      "keyboard_desc": "Mastering keyboard shortcuts can greatly improve operational efficiency",
+      "mobile": "Mobile Usage",
+      "mobile_desc": "On mobile devices, floating buttons automatically adapt to screen size for optimal experience"
+    }
+  },
+  "back_to_top": {
+    "tooltip": "Back to Top"
+  },
+  "common": {
+    "close": "Close",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit",
+    "loading": "Loading...",
+    "success": "Success",
+    "error": "Error",
+    "warning": "Warning",
+    "info": "Info"
+  }
+}

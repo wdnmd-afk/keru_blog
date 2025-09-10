@@ -1,0 +1,444 @@
+/**
+ * 设置面板样式
+ *
+ * 设计理念：
+ * 1. 与现有深蓝主题保持一致
+ * 2. 清晰的设置项布局和分组
+ * 3. 响应式设计适配
+ * 4. 良好的交互反馈和视觉层次
+ */
+
+// 引用全局色彩变量
+:root {
+    --primary-dark: #0a0e1a;
+    --primary-blue: #1a2332;
+    --accent-blue: #2d4263;
+    --highlight-blue: #3e5c7a;
+    --text-primary: #ffffff;
+    --text-secondary: #b8c5d1;
+    --text-muted: #8a9ba8;
+    --border-color: rgba(62, 92, 122, 0.3);
+    --card-bg: rgba(26, 35, 50, 0.95);
+    --shadow-dark: rgba(0, 0, 0, 0.5);
+    --gradient-primary: linear-gradient(135deg, #0a0e1a 0%, #1a2332 50%, #2d4263 100%);
+    --gradient-accent: linear-gradient(135deg, #2d4263 0%, #3e5c7a 100%);
+}
+
+// 设置面板遮罩层
+.settings_panel_overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(8px);
+    z-index: 1100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    animation: fadeIn 0.3s ease-out;
+
+    @media (max-width: 768px) {
+        padding: 10px;
+        align-items: flex-start;
+        padding-top: 40px;
+    }
+}
+
+// 设置面板主体
+.settings_panel {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    box-shadow:
+        0 20px 40px rgba(0, 0, 0, 0.4),
+        0 0 0 1px rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    max-width: 500px;
+    width: 100%;
+    max-height: 80vh;
+    overflow-y: auto;
+    animation: slideUp 0.3s ease-out;
+
+    // 覆盖Ant Design Card样式
+    :global(.ant-card-head) {
+        background: transparent;
+        border-bottom: 1px solid var(--border-color);
+        padding: 16px 20px;
+        min-height: auto;
+    }
+
+    :global(.ant-card-body) {
+        padding: 20px;
+
+        // 强制覆盖所有文本颜色，确保深色主题下可读性
+        :global(.ant-typography) {
+            color: var(--text-primary) !important;
+        }
+
+        :global(.ant-typography-caption) {
+            color: var(--text-secondary) !important;
+        }
+    }
+
+    :global(.ant-card-head-title) {
+        padding: 0;
+        color: var(--text-primary) !important;
+    }
+
+    @media (max-width: 768px) {
+        max-height: 90vh;
+
+        :global(.ant-card-head),
+        :global(.ant-card-body) {
+            padding: 16px;
+        }
+    }
+}
+
+// 面板头部
+.panel_header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.panel_title {
+    margin: 0 !important;
+    color: var(--text-primary) !important;
+    font-size: 18px !important;
+    font-weight: 600 !important;
+}
+
+.close_button {
+    color: var(--text-secondary);
+    border: none;
+    background: transparent;
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+
+    &:hover,
+    &:focus {
+        color: var(--text-primary);
+        background: rgba(62, 92, 122, 0.2);
+        transform: scale(1.1);
+    }
+
+    &:active {
+        transform: scale(0.95);
+    }
+}
+
+// 设置区域
+.setting_section {
+    margin-bottom: 24px;
+
+    &:last-child {
+        margin-bottom: 0;
+    }
+}
+
+.setting_header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.setting_icon {
+    color: var(--highlight-blue);
+    font-size: 16px;
+}
+
+.setting_title {
+    margin: 0 !important;
+    color: var(--text-primary) !important;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+}
+
+.setting_description {
+    display: block;
+    margin-bottom: 16px;
+    color: var(--text-muted) !important;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+// 主题选项
+.theme_options {
+    width: 100%;
+
+    :global(.ant-radio-button-wrapper) {
+        background: rgba(62, 92, 122, 0.1);
+        border-color: var(--border-color);
+        color: var(--text-secondary);
+        transition: all 0.2s ease;
+        border-radius: 0;
+
+        &:first-child {
+            border-radius: 8px 0 0 8px;
+        }
+
+        &:last-child {
+            border-radius: 0 8px 8px 0;
+        }
+
+        &:hover {
+            background: rgba(62, 92, 122, 0.2);
+            color: var(--text-primary);
+        }
+
+        &:global(.ant-radio-button-wrapper-checked) {
+            background: var(--gradient-accent);
+            border-color: var(--highlight-blue);
+            color: var(--text-primary);
+            box-shadow: 0 2px 8px rgba(62, 92, 122, 0.3);
+
+            &:hover {
+                background: linear-gradient(135deg, #4a6b8a 0%, #3e5c7a 100%);
+            }
+        }
+    }
+}
+
+.theme_option {
+    flex: 1;
+    text-align: center;
+}
+
+// 语言选项
+.language_options {
+    width: 100%;
+
+    :global(.ant-radio-button-wrapper) {
+        background: rgba(62, 92, 122, 0.1);
+        border-color: var(--border-color);
+        color: var(--text-secondary);
+        transition: all 0.2s ease;
+        border-radius: 0;
+
+        &:first-child {
+            border-radius: 8px 0 0 8px;
+        }
+
+        &:last-child {
+            border-radius: 0 8px 8px 0;
+        }
+
+        &:hover {
+            background: rgba(62, 92, 122, 0.2);
+            color: var(--text-primary);
+        }
+
+        &:global(.ant-radio-button-wrapper-checked) {
+            background: var(--gradient-accent);
+            border-color: var(--highlight-blue);
+            color: var(--text-primary);
+            box-shadow: 0 2px 8px rgba(62, 92, 122, 0.3);
+
+            &:hover {
+                background: linear-gradient(135deg, #4a6b8a 0%, #3e5c7a 100%);
+            }
+        }
+    }
+}
+
+.language_option {
+    flex: 1;
+    text-align: center;
+}
+
+.language_flag {
+    font-size: 16px;
+    margin-right: 4px;
+}
+
+// 设置项
+.setting_item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--border-color);
+
+    &:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+    }
+
+    &:first-child {
+        padding-top: 0;
+    }
+}
+
+.setting_item_content {
+    flex: 1;
+    margin-right: 16px;
+}
+
+.setting_item_description {
+    display: block;
+    margin-top: 4px;
+    color: var(--text-muted) !important;
+    font-size: 13px;
+    line-height: 1.4;
+}
+
+.setting_switch {
+    flex-shrink: 0;
+
+    &:global(.ant-switch-checked) {
+        background: var(--gradient-accent);
+    }
+
+    &:hover:global(.ant-switch-checked) {
+        background: linear-gradient(135deg, #4a6b8a 0%, #3e5c7a 100%);
+    }
+}
+
+// 操作按钮
+.action_buttons {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-color);
+
+    :global(.ant-btn) {
+        border-radius: 8px;
+        font-weight: 500;
+        transition: all 0.2s ease;
+
+        &:hover {
+            transform: translateY(-1px);
+        }
+    }
+
+    :global(.ant-btn-primary) {
+        background: var(--gradient-accent);
+        border: none;
+        box-shadow: 0 2px 8px rgba(62, 92, 122, 0.3);
+
+        &:hover {
+            background: linear-gradient(135deg, #4a6b8a 0%, #3e5c7a 100%);
+            box-shadow: 0 4px 12px rgba(62, 92, 122, 0.4);
+        }
+    }
+
+    :global(.ant-btn-default) {
+        background: rgba(62, 92, 122, 0.1);
+        border-color: var(--border-color);
+        color: var(--text-secondary);
+
+        &:hover {
+            background: rgba(62, 92, 122, 0.2);
+            border-color: var(--highlight-blue);
+            color: var(--text-primary);
+        }
+    }
+
+    @media (max-width: 480px) {
+        flex-direction: column;
+        gap: 8px;
+
+        :global(.ant-btn) {
+            width: 100%;
+        }
+    }
+}
+
+// 动画效果
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+// 滚动条样式
+.settings_panel {
+    &::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: rgba(62, 92, 122, 0.1);
+        border-radius: 3px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: rgba(62, 92, 122, 0.3);
+        border-radius: 3px;
+        transition: background 0.2s ease;
+
+        &:hover {
+            background: rgba(62, 92, 122, 0.5);
+        }
+    }
+}
+
+// 响应式适配
+@media (max-width: 480px) {
+    .settings_panel {
+        border-radius: 12px;
+    }
+
+    .panel_title {
+        font-size: 16px !important;
+    }
+
+    .setting_title {
+        font-size: 15px !important;
+    }
+
+    .theme_options,
+    .language_options {
+        :global(.ant-radio-button-wrapper) {
+            font-size: 13px;
+            padding: 8px 12px;
+        }
+    }
+}
+
+// 无障碍访问优化
+@media (prefers-reduced-motion: reduce) {
+    .settings_panel_overlay,
+    .settings_panel,
+    .close_button,
+    .setting_switch {
+        animation: none;
+        transition: none;
+    }
+}
+
+// 高对比度模式支持
+@media (prefers-contrast: high) {
+    .settings_panel {
+        border: 2px solid var(--text-primary);
+    }
+
+    .setting_item {
+        border-bottom: 2px solid var(--border-color);
+    }
+}
