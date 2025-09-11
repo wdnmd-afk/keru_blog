@@ -19,11 +19,8 @@ import {
   DeleteOutlined,
   KeyOutlined,
 } from "@ant-design/icons";
-// 注意：暂时注释掉KTable组件的使用，因为跨项目引用配置问题
-// import KTable from "@frontend-components/KTable";
-// import type { IKTableColumns } from "@frontend-components/KTable";
-import { Table } from "antd";
-import type { ColumnsType } from "antd/es/table";
+// 导入shared目录的KTable组件
+import { KTable, type IKTableColumns } from "shared/components";
 import { UserApi, User } from "@/api";
 import "@/styles/ktable.scss";
 
@@ -40,8 +37,8 @@ const UserManagement: React.FC = () => {
     undefined,
   );
 
-  // 表格列配置
-  const columns: ColumnsType<User> = [
+  // 表格列配置 - 使用IKTableColumns类型
+  const columns: IKTableColumns[] = [
     {
       title: "用户ID",
       dataIndex: "id",
@@ -188,7 +185,7 @@ const UserManagement: React.FC = () => {
   const filteredUsers = getFilteredUsers();
 
   return (
-    <div>
+    <div style={{ display: "flex", flexDirection: "column", height: "100%" }}>
       <div className="mb-6">
         <Title level={2} className="mb-2">
           用户管理
@@ -196,7 +193,7 @@ const UserManagement: React.FC = () => {
         <Text type="secondary">管理系统用户和权限</Text>
       </div>
 
-      <Card>
+      <Card style={{ height: "100%", display: "flex", flexDirection: "column" }} bodyStyle={{ display: "flex", flexDirection: "column", flex: 1, minHeight: 0 }}>
         {/* 操作栏 */}
         <div className="mb-4 flex justify-between items-center">
           <Space>
@@ -228,23 +225,19 @@ const UserManagement: React.FC = () => {
           </Space>
         </div>
 
-        {/* 用户列表表格 */}
-        <div style={{ height: "600px" }}>
-          <Table
+        {/* 用户列表表格 - 使用共享的KTable组件 */}
+        <div style={{ flex: 1, minHeight: 0 }}>
+          <KTable
             columns={columns}
             dataSource={filteredUsers}
             loading={loading}
-            pagination={{
-              total: filteredUsers.length,
-              pageSize: 50,
-              showSizeChanger: true,
-              showQuickJumper: true,
-              showTotal: (total) => `共 ${total} 条记录`,
-            }}
+            total={filteredUsers.length}
+            pageSize={50}
             rowKey="id"
             className="management-table"
             bordered={false}
-            scroll={{ y: 500 }}
+            stripe={true}
+            size="middle"
           />
         </div>
       </Card>

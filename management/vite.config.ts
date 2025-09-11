@@ -35,7 +35,13 @@ export default defineConfig({
     alias: {
       // 当前项目的别名
       "@": resolve(__dirname, "./src"),
-      // 跨项目组件引用别名
+      // 共享代码别名
+      "shared": resolve(__dirname, "../shared/src"),
+      "shared/components": resolve(__dirname, "../shared/src/components"),
+      "shared/utils": resolve(__dirname, "../shared/src/utils"),
+      "shared/types": resolve(__dirname, "../shared/src/types"),
+      "shared/styles": resolve(__dirname, "../shared/src/styles"),
+      // 跨项目组件引用别名（保留兼容性）
       "@frontend": resolve(__dirname, "../frontEnd/src"),
       "@frontend-components": resolve(__dirname, "../frontEnd/src/components"),
       "@frontend-utils": resolve(__dirname, "../frontEnd/src/utils"),

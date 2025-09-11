@@ -1,6 +1,8 @@
 {
     "$schema": "./node_modules/typescript/lib/tsconfig.schema.json",
-    "references": [],
+    "references": [
+        { "path": "../shared" }
+    ],
     "compilerOptions": {
         "baseUrl": "./",
         "allowImportingTsExtensions": true,
@@ -28,14 +30,8 @@
         "paths": {
             "@": ["src"],
             "@/*": ["src/*"],
-            "@management": ["../management/src"],
-            "@management/*": ["../management/src/*"],
-            "@management-components": ["../management/src/components"],
-            "@management-components/*": ["../management/src/components/*"],
-            "@management-utils": ["../management/src/utils"],
-            "@management-utils/*": ["../management/src/utils/*"],
-            "@management-types": ["../management/src/types"],
-            "@management-types/*": ["../management/src/types/*"]
+            "shared": ["../shared/src"],
+            "shared/*": ["../shared/src/*"]
         }
     },
 

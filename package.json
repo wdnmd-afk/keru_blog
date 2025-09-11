@@ -1,34 +1,58 @@
 {
-  "name": "blog",
+  "name": "keru-blog-monorepo",
   "version": "1.0.0",
-  "description": "一个NodeJs后台+React18前台",
-  "main": "index.js",
+  "description": "一个基于Monorepo架构的NodeJs后台+React18前台博客系统",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@8.0.0",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev:server": "cd server && npm run dev",
-    "dev:frontend": "cd frontEnd && npm run dev",
-    "dev:management": "cd management && npm run dev",
-    "dev": "npm-run-all --parallel dev:server dev:frontend",
-    "dev:all": "npm-run-all --parallel dev:server dev:frontend dev:management",
+    "dev:server": "pnpm --filter server dev",
+    "dev:frontend": "pnpm --filter blog_react dev",
+    "dev:management": "pnpm --filter management_system dev",
+    "dev": "pnpm --parallel --filter \"!server\" dev",
+    "dev:all": "pnpm --parallel dev",
 
+    "build:shared": "pnpm --filter shared build",
+    "build:frontend": "pnpm --filter blog_react build:pro",
+    "build:management": "pnpm --filter management_system build:pro",
+    "build:server": "pnpm --filter server build",
+    "build:all": "pnpm --parallel build",
+
+    "ts-check:shared": "pnpm --filter shared ts-check",
     "ts-check:frontend": "node tools/typescript/check-single.js frontend",
     "ts-check:management": "node tools/typescript/check-single.js management",
     "ts-check:server": "node tools/typescript/check-single.js server",
     "ts-check:all": "node tools/typescript/check-all.js",
-    "ts-check:all:sequential": "node tools/typescript/check-all.js --sequential",
 
+    "format:shared": "pnpm --filter shared format",
     "format:frontend": "node tools/format/format-single.js frontend",
     "format:management": "node tools/format/format-single.js management",
     "format:server": "node tools/format/format-single.js server",
     "format:all": "node tools/format/format-all.js",
-    "format:all:sequential": "node tools/format/format-all.js --sequential",
-    "format:check:all": "node tools/format/format-all.js --check",
-    "format:config:all": "node tools/format/format-all.js --config"
+
+    "clean": "pnpm --parallel clean",
+    "clean:deps": "rm -rf node_modules && pnpm --parallel exec rm -rf node_modules",
+    "fresh": "pnpm clean:deps && pnpm install"
   },
-  "keywords": [],
+  "keywords": ["monorepo", "react", "nodejs", "blog", "typescript"],
   "author": "",
   "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "eslint": "^8.0.0",
+    "prettier": "^3.0.0",
+    "typescript": "^5.0.0",
+    "vite": "^4.0.0"
+  },
   "dependencies": {
-    "pdfjs-dist": "4.8.69"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "antd": "^5.20.1",
+    "@ant-design/icons": "^5.4.0",
+    "axios": "^1.7.3"
   }
 }

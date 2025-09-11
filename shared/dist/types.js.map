@@ -1,0 +1,1 @@
+{"version":3,"file":"types.js","sources":["../src/types/index.ts"],"sourcesContent":["// 共享类型定义导出文件\n// 统一导出所有公共类型定义\n\n// API相关类型（待迁移）\n// export * from './api';\n\n// 组件相关类型（待迁移）\n// export * from './components';\n\n// 通用类型（待迁移）\n// export * from './common';\n\n// 临时导出，避免构建错误\nexport const placeholder = 'types';\n"],"names":[],"mappings":"AAaO,MAAM,cAAc;"}

@@ -119,11 +119,13 @@ const App: React.FC = () => {
             activeShadow: "0 0 0 2px rgba(135, 133, 162, 0.2)",
           },
 
-          // Table 组件配色
+          // Table 组件配色（与 frontEnd 保持一致的蓝色表头）
           Table: {
-            headerBg: "#f6f6f6", // 表头背景浅灰
-            headerColor: "#2c2c2c", // 表头文字深灰
-            rowHoverBg: "#ffe2e2", // 行悬停浅粉色
+            headerBg: "#5E83BB", // 表头背景蓝色
+            headerColor: "#fff", // 表头文字白色
+            headerBorderRadius: 0, // 表头无圆角，风格统一
+            borderColor: "#566B99", // 边框颜色
+            rowHoverBg: "#f5f7fb", // 行悬停轻微高亮（保持克制）
           },
 
           // Tag 组件配色

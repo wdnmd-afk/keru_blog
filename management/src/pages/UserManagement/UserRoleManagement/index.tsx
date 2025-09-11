@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import {
   Card,
-  Table,
   Button,
   Space,
   Modal,
@@ -15,13 +14,15 @@ import {
   Avatar,
   Divider,
 } from "antd";
+// 导入shared目录的KTable组件
+import { KTable, type IKTableColumns } from "shared/components";
 import {
   UserOutlined,
   SettingOutlined,
   SearchOutlined,
   ReloadOutlined,
 } from "@ant-design/icons";
-import type { ColumnsType } from "antd/es/table";
+// 移除原有的ColumnsType导入，使用IKTableColumns
 import { RbacApi, UserApi, type Role } from "@/api";
 
 // 用户类型定义
@@ -154,8 +155,8 @@ const UserRoleManagement: React.FC = () => {
       (user.name && user.name.toLowerCase().includes(searchText.toLowerCase())),
   );
 
-  // 表格列定义
-  const columns: ColumnsType<User> = [
+  // 表格列定义 - 使用IKTableColumns类型
+  const columns: IKTableColumns[] = [
     {
       title: "用户",
       key: "user",
@@ -220,8 +221,12 @@ const UserRoleManagement: React.FC = () => {
   ];
 
   return (
-    <div style={{ padding: "24px" }}>
-      <Card title="用户角色管理" style={{ marginBottom: "16px" }}>
+    <div style={{ display: "flex", flexDirection: "column", height: "100%" }}>
+      <Card
+        title="用户角色管理"
+        style={{ height: "100%", display: "flex", flexDirection: "column" }}
+        bodyStyle={{ display: "flex", flexDirection: "column", flex: 1, minHeight: 0 }}
+      >
         {/* 搜索和操作区域 */}
         <Row gutter={16} style={{ marginBottom: "16px" }}>
           <Col span={8}>
@@ -255,20 +260,20 @@ const UserRoleManagement: React.FC = () => {
           </Col>
         </Row>
 
-        {/* 用户表格 */}
-        <Table
-          columns={columns}
-          dataSource={filteredUsers}
-          rowKey="id"
-          loading={loading}
-          pagination={{
-            total: filteredUsers.length,
-            pageSize: 10,
-            showSizeChanger: true,
-            showQuickJumper: true,
-            showTotal: (total) => `共 ${total} 条记录`,
-          }}
-        />
+        {/* 用户表格 - 使用共享的KTable组件 */}
+        <div style={{ flex: 1, minHeight: 0 }}>
+          <KTable
+            columns={columns}
+            dataSource={filteredUsers}
+            rowKey="id"
+            loading={loading}
+            total={filteredUsers.length}
+            pageSize={10}
+            bordered={false}
+            stripe={true}
+            size="middle"
+          />
+        </div>
       </Card>
 
       {/* 角色分配模态框 */}

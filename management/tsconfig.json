@@ -1,6 +1,8 @@
 {
   "$schema": "./node_modules/typescript/lib/tsconfig.schema.json",
-  "references": [],
+  "references": [
+    { "path": "../shared" }
+  ],
   "compilerOptions": {
     "baseUrl": "./",
     "allowImportingTsExtensions": true,
@@ -24,24 +26,12 @@
     "noUnusedLocals": false,
     "noUnusedParameters": false,
     "noImplicitAny": true,
-    /* 路径映射配置 - 支持跨项目组件引用 */
+    /* 路径映射配置 */
     "paths": {
       "@": ["src"],
       "@/*": ["src/*"],
-      "@frontend": ["../frontEnd/src"],
-      "@frontend/*": ["../frontEnd/src/*"],
-      "@frontend-components": ["../frontEnd/src/components"],
-      "@frontend-components/*": ["../frontEnd/src/components/*"],
-      "@frontend-utils": ["../frontEnd/src/utils"],
-      "@frontend-utils/*": ["../frontEnd/src/utils/*"],
-      "@frontend-types": ["../frontEnd/src/types"],
-      "@frontend-types/*": ["../frontEnd/src/types/*"],
-      "@frontend-hooks": ["../frontEnd/src/hooks"],
-      "@frontend-hooks/*": ["../frontEnd/src/hooks/*"],
-      "@frontend-stores": ["../frontEnd/src/stores"],
-      "@frontend-stores/*": ["../frontEnd/src/stores/*"],
-      "@frontend-api": ["../frontEnd/src/api"],
-      "@frontend-api/*": ["../frontEnd/src/api/*"]
+      "shared": ["../shared/src"],
+      "shared/*": ["../shared/src/*"]
     }
   },
   "include": [
@@ -51,18 +41,11 @@
     "src/**/*.vue",
     "src/**/*.json",
     "src/types/*.d.ts",
-    "vite.config.ts",
-    // 包含 frontEnd 项目的类型文件以支持跨项目引用
-    "../frontEnd/src/types/*.d.ts",
-    "../frontEnd/src/**/*.d.ts"
+    "vite.config.ts"
   ],
   "exclude": [
     "node_modules",
     "dist",
-    "**/*.js",
-    // 排除frontEnd项目的组件文件，避免编译冲突
-    "../frontEnd/src/components/**/*.tsx",
-    "../frontEnd/src/pages/**/*.tsx",
-    "../frontEnd/src/views/**/*.tsx"
+    "**/*.js"
   ]
 }

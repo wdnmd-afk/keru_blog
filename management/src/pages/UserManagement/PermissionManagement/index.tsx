@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import {
   Card,
-  Table,
   Button,
   Space,
   Modal,
@@ -24,13 +23,14 @@ import {
   ReloadOutlined,
   SearchOutlined,
 } from "@ant-design/icons";
-import type { ColumnsType } from "antd/es/table";
 import type { DataNode } from "antd/es/tree";
 import {
   RbacApi,
   type Permission as ApiPermission,
   type PermissionTreeNode,
 } from "@/api";
+// 导入shared目录的KTable组件
+import { KTable, type IKTableColumns } from "shared/components";
 
 // 使用 API 中定义的权限类型
 type Permission = ApiPermission;
@@ -175,8 +175,8 @@ const PermissionManagement: React.FC = () => {
     fetchPermissionTree();
   }, []);
 
-  // 表格列定义
-  const columns: ColumnsType<Permission> = [
+  // 表格列定义 - 使用KTable的列类型
+  const columns: IKTableColumns[] = [
     {
       title: "权限名称",
       dataIndex: "name",
@@ -245,8 +245,12 @@ const PermissionManagement: React.FC = () => {
   ];
 
   return (
-    <div style={{ padding: "24px" }}>
-      <Card title="权限管理" style={{ marginBottom: "16px" }}>
+    <div style={{ display: "flex", flexDirection: "column", height: "100%" }}>
+      <Card
+        title="权限管理"
+        style={{ height: "100%", display: "flex", flexDirection: "column" }}
+        bodyStyle={{ display: "flex", flexDirection: "column", flex: 1, minHeight: 0 }}
+      >
         {/* 搜索和操作区域 */}
         <Row gutter={16} style={{ marginBottom: "16px" }}>
           <Col span={6}>
@@ -299,20 +303,20 @@ const PermissionManagement: React.FC = () => {
           </Col>
         </Row>
 
-        {/* 权限表格 */}
-        <Table
-          columns={columns}
-          dataSource={permissions}
-          rowKey="id"
-          loading={loading}
-          pagination={{
-            total: permissions.length,
-            pageSize: 10,
-            showSizeChanger: true,
-            showQuickJumper: true,
-            showTotal: (total) => `共 ${total} 条记录`,
-          }}
-        />
+        {/* 权限表格 - 使用复用的KTable组件 */}
+        <div style={{ flex: 1, minHeight: 0 }}>
+          <KTable
+            columns={columns}
+            dataSource={permissions}
+            rowKey="id"
+            loading={loading}
+            total={permissions.length}
+            pageSize={10}
+            bordered={false}
+            stripe={true}
+            size="middle"
+          />
+        </div>
       </Card>
 
       {/* 新增/编辑权限模态框 */}

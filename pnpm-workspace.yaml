@@ -1,0 +1,14 @@
+# pnpm workspace配置
+# 定义monorepo中的所有包和应用
+
+packages:
+  # 共享代码包
+  - 'shared'
+  
+  # 应用程序
+  - 'frontEnd'
+  - 'management' 
+  - 'server'
+  
+  # 开发工具（可选）
+  - 'tools/*'

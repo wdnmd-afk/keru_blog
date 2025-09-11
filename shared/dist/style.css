@@ -1,0 +1,58 @@
+@charset "UTF-8";
+.even-row {
+  background-color: #f9f9f9; /* 偶数行的背景色 */
+}
+
+.odd-row {
+  background-color: #fff; /* 奇数行的背景色 */
+}
+
+.ant-btn-default span {
+  color: #333;
+}
+
+.KT_Box {
+  font-size: 18px;
+}
+.KT_Box .ant-table-wrapper {
+  height: 100%;
+}
+.KT_Box .ant-table-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.KT_Box .ant-spin-nested-loading {
+  height: 100%;
+}
+.KT_Box .ant-spin-container {
+  height: 100%;
+}
+.KT_Box .ant-table {
+  scrollbar-color: auto !important;
+  height: 100%;
+}
+.KT_Box .ant-table .ant-table-cell::before {
+  display: none;
+}
+.KT_Box .ant-table .ant-table-body {
+  scrollbar-width: auto;
+  scrollbar-color: auto;
+  flex: 1;
+  background-color: #fff;
+}
+.KT_Box .ant-table .ant-table-body::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+.KT_Box .ant-table .ant-table-body::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #6884ba, #3f5c99); /* 设置渐变色 */
+  border-radius: 10px; /* 滚动条的圆角 */
+}
+.KT_Box .ant-table .ant-table-body::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, #3f5c89, #6884ba); /* 鼠标悬停时渐变色 */
+}
+.KT_Box .ant-table .ant-table-body::-webkit-scrollbar-track {
+  background: #f0f0f0; /* 滚动条轨道的颜色 */
+  border-radius: 10px;
+}

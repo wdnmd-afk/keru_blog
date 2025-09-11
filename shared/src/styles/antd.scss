@@ -1,0 +1,80 @@
+// KTable组件样式
+.even-row {
+    background-color: #f9f9f9; /* 偶数行的背景色 */
+}
+
+.odd-row {
+    background-color: #fff; /* 奇数行的背景色 */
+}
+
+.ant-btn-default {
+    span {
+        color: #333;
+    }
+}
+
+.KT_Box {
+    font-size: 18px;
+    .ant-table-wrapper {
+        height: 100%;
+    }
+    .ant-table-container {
+        /* 让容器占满剩余空间，为分页器留下空间 */
+        flex: 1;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        min-height: 0;
+    }
+    .ant-spin-nested-loading {
+        height: 100%;
+    }
+    .ant-spin-container {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        min-height: 0;
+    }
+    .ant-table {
+        /* 让表格成为列布局：容器 + 分页 */
+        display: flex;
+        flex-direction: column;
+        scrollbar-color: auto !important;
+        height: 100%;
+
+        .ant-table-cell {
+            &::before {
+                display: none;
+            }
+        }
+        .ant-table-body {
+            scrollbar-width: auto;
+            scrollbar-color: auto;
+            flex: 1;
+            background-color: #fff;
+
+            // 自定义滚动条
+            &::-webkit-scrollbar {
+                width: 10px; // 设置滚动条宽度
+                height: 10px;
+            }
+
+            &::-webkit-scrollbar-thumb {
+                background: linear-gradient(to bottom, #6884ba, #3f5c99); /* 设置渐变色 */
+                border-radius: 10px; /* 滚动条的圆角 */
+            }
+            &::-webkit-scrollbar-thumb:hover {
+                background: linear-gradient(to bottom, #3f5c89, #6884ba); /* 鼠标悬停时渐变色 */
+            }
+            &::-webkit-scrollbar-track {
+                background: #f0f0f0; /* 滚动条轨道的颜色 */
+                border-radius: 10px;
+            }
+        }
+        .ant-table-pagination {
+            margin-top: 8px;
+            padding-bottom: 4px; // 预留底部空间，避免被裁剪
+        }
+
+    }
+}

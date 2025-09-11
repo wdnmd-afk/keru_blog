@@ -1,0 +1,51 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "skipLibCheck": true,
+    "strict": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "noImplicitAny": true,
+    "jsx": "react-jsx",
+    
+    // 路径映射 - 支持shared目录
+    "baseUrl": ".",
+    "paths": {
+      "shared": ["./shared/src"],
+      "shared/*": ["./shared/src/*"],
+      "shared/components": ["./shared/src/components"],
+      "shared/components/*": ["./shared/src/components/*"],
+      "shared/utils": ["./shared/src/utils"],
+      "shared/utils/*": ["./shared/src/utils/*"],
+      "shared/types": ["./shared/src/types"],
+      "shared/types/*": ["./shared/src/types/*"],
+      "shared/styles": ["./shared/src/styles"],
+      "shared/styles/*": ["./shared/src/styles/*"]
+    }
+  },
+  "include": [
+    "shared/src/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "**/node_modules",
+    "**/dist"
+  ],
+  "references": [
+    { "path": "./shared" },
+    { "path": "./frontEnd" },
+    { "path": "./management" },
+    { "path": "./server" }
+  ]
+}
