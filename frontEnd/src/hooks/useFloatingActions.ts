@@ -10,11 +10,11 @@
 
 import { useGlobalStore, useGlobalStoreAction } from '@/store'
 import {
-    FloatingActionType,
-    ShareType,
-    FeedbackData,
     FavoriteItem,
-    ShareOption
+    FeedbackData,
+    FloatingActionType,
+    ShareOption,
+    ShareType,
 } from '@/types/floatingActions'
 import { message } from 'antd'
 import { useCallback, useEffect, useMemo } from 'react'
@@ -59,22 +59,25 @@ export const useFloatingActions = () => {
     /**
      * 处理键盘事件
      */
-    const handleKeyDown = useCallback((event: KeyboardEvent) => {
-        // F8键打开帮助面板
-        if (event.key === 'F8') {
-            event.preventDefault()
-            if (floatingActions.activePanel === FloatingActionType.HELP) {
-                setActivePanel(null) // 如果已经打开则关闭
-            } else {
-                setActivePanel(FloatingActionType.HELP) // 打开帮助面板
+    const handleKeyDown = useCallback(
+        (event: KeyboardEvent) => {
+            // F8键打开帮助面板
+            if (event.key === 'F8') {
+                event.preventDefault()
+                if (floatingActions.activePanel === FloatingActionType.HELP) {
+                    setActivePanel(null) // 如果已经打开则关闭
+                } else {
+                    setActivePanel(FloatingActionType.HELP) // 打开帮助面板
+                }
             }
-        }
-        // Esc键关闭当前面板
-        else if (event.key === 'Escape' && floatingActions.activePanel) {
-            event.preventDefault()
-            setActivePanel(null)
-        }
-    }, [floatingActions.activePanel, setActivePanel])
+            // Esc键关闭当前面板
+            else if (event.key === 'Escape' && floatingActions.activePanel) {
+                event.preventDefault()
+                setActivePanel(null)
+            }
+        },
+        [floatingActions.activePanel, setActivePanel]
+    )
 
     /**
      * 返回顶部
@@ -95,8 +98,11 @@ export const useFloatingActions = () => {
         return {
             title: document.title || 'Keru Blog',
             url: window.location.href,
-            description: document.querySelector('meta[name="description"]')?.getAttribute('content') || '分享来自 Keru Blog 的精彩内容',
-            image: document.querySelector('meta[property="og:image"]')?.getAttribute('content') || '',
+            description:
+                document.querySelector('meta[name="description"]')?.getAttribute('content') ||
+                '分享来自 Keru Blog 的精彩内容',
+            image:
+                document.querySelector('meta[property="og:image"]')?.getAttribute('content') || '',
         }
     }, [])
 
@@ -140,77 +146,83 @@ export const useFloatingActions = () => {
     /**
      * 社交媒体分享
      */
-    const handleSocialShare = useCallback((type: ShareType) => {
-        const shareData = getShareData()
-        const encodedUrl = encodeURIComponent(shareData.url)
-        const encodedTitle = encodeURIComponent(shareData.title)
-        const encodedDescription = encodeURIComponent(shareData.description)
+    const handleSocialShare = useCallback(
+        (type: ShareType) => {
+            const shareData = getShareData()
+            const encodedUrl = encodeURIComponent(shareData.url)
+            const encodedTitle = encodeURIComponent(shareData.title)
+            const encodedDescription = encodeURIComponent(shareData.description)
 
-        let shareUrl = ''
+            let shareUrl = ''
 
-        switch (type) {
-            case ShareType.WEIBO:
-                shareUrl = `https://service.weibo.com/share/share.php?url=${encodedUrl}&title=${encodedTitle}&pic=${shareData.image}`
-                break
-            case ShareType.QQ:
-                shareUrl = `https://connect.qq.com/widget/shareqq/index.html?url=${encodedUrl}&title=${encodedTitle}&summary=${encodedDescription}`
-                break
-            case ShareType.TWITTER:
-                shareUrl = `https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}`
-                break
-            case ShareType.FACEBOOK:
-                shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`
-                break
-            default:
-                return
-        }
+            switch (type) {
+                case ShareType.WEIBO:
+                    shareUrl = `https://service.weibo.com/share/share.php?url=${encodedUrl}&title=${encodedTitle}&pic=${shareData.image}`
+                    break
+                case ShareType.QQ:
+                    shareUrl = `https://connect.qq.com/widget/shareqq/index.html?url=${encodedUrl}&title=${encodedTitle}&summary=${encodedDescription}`
+                    break
+                case ShareType.TWITTER:
+                    shareUrl = `https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}`
+                    break
+                case ShareType.FACEBOOK:
+                    shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`
+                    break
+                default:
+                    return
+            }
 
-        if (shareUrl) {
-            window.open(shareUrl, '_blank', 'width=600,height=400')
-        }
-    }, [getShareData])
+            if (shareUrl) {
+                window.open(shareUrl, '_blank', 'width=600,height=400')
+            }
+        },
+        [getShareData]
+    )
 
     /**
      * 获取分享选项
      */
-    const shareOptions: ShareOption[] = useMemo(() => [
-        {
-            type: ShareType.NATIVE,
-            label: t('share.native'),
-            icon: 'ShareAltOutlined',
-            onClick: handleNativeShare,
-        },
-        {
-            type: ShareType.COPY_LINK,
-            label: t('share.copy_link'),
-            icon: 'LinkOutlined',
-            onClick: handleCopyLink,
-        },
-        {
-            type: ShareType.WEIBO,
-            label: t('share.weibo'),
-            icon: 'WeiboOutlined',
-            onClick: () => handleSocialShare(ShareType.WEIBO),
-        },
-        {
-            type: ShareType.QQ,
-            label: t('share.qq'),
-            icon: 'QqOutlined',
-            onClick: () => handleSocialShare(ShareType.QQ),
-        },
-        {
-            type: ShareType.TWITTER,
-            label: t('share.twitter'),
-            icon: 'TwitterOutlined',
-            onClick: () => handleSocialShare(ShareType.TWITTER),
-        },
-        {
-            type: ShareType.FACEBOOK,
-            label: t('share.facebook'),
-            icon: 'FacebookOutlined',
-            onClick: () => handleSocialShare(ShareType.FACEBOOK),
-        },
-    ], [t, handleNativeShare, handleCopyLink, handleSocialShare])
+    const shareOptions: ShareOption[] = useMemo(
+        () => [
+            {
+                type: ShareType.NATIVE,
+                label: t('share.native'),
+                icon: 'ShareAltOutlined',
+                onClick: handleNativeShare,
+            },
+            {
+                type: ShareType.COPY_LINK,
+                label: t('share.copy_link'),
+                icon: 'LinkOutlined',
+                onClick: handleCopyLink,
+            },
+            {
+                type: ShareType.WEIBO,
+                label: t('share.weibo'),
+                icon: 'WeiboOutlined',
+                onClick: () => handleSocialShare(ShareType.WEIBO),
+            },
+            {
+                type: ShareType.QQ,
+                label: t('share.qq'),
+                icon: 'QqOutlined',
+                onClick: () => handleSocialShare(ShareType.QQ),
+            },
+            {
+                type: ShareType.TWITTER,
+                label: t('share.twitter'),
+                icon: 'TwitterOutlined',
+                onClick: () => handleSocialShare(ShareType.TWITTER),
+            },
+            {
+                type: ShareType.FACEBOOK,
+                label: t('share.facebook'),
+                icon: 'FacebookOutlined',
+                onClick: () => handleSocialShare(ShareType.FACEBOOK),
+            },
+        ],
+        [t, handleNativeShare, handleCopyLink, handleSocialShare]
+    )
 
     // ==================== 收藏功能 ====================
 
@@ -219,7 +231,7 @@ export const useFloatingActions = () => {
      */
     const isCurrentPageFavorited = useMemo(() => {
         const currentUrl = window.location.href
-        return floatingActions.favorites.some(item => item.url === currentUrl)
+        return floatingActions.favorites.some((item) => item.url === currentUrl)
     }, [floatingActions.favorites])
 
     /**
@@ -227,7 +239,7 @@ export const useFloatingActions = () => {
      */
     const toggleFavorite = useCallback(() => {
         const currentUrl = window.location.href
-        const existingFavorite = floatingActions.favorites.find(item => item.url === currentUrl)
+        const existingFavorite = floatingActions.favorites.find((item) => item.url === currentUrl)
 
         if (existingFavorite) {
             removeFavorite(existingFavorite.id)
@@ -236,8 +248,12 @@ export const useFloatingActions = () => {
             const favoriteItem: Omit<FavoriteItem, 'id' | 'createdAt' | 'updatedAt'> = {
                 title: document.title || 'Untitled',
                 url: currentUrl,
-                description: document.querySelector('meta[name="description"]')?.getAttribute('content') || '',
-                thumbnail: document.querySelector('meta[property="og:image"]')?.getAttribute('content') || '',
+                description:
+                    document.querySelector('meta[name="description"]')?.getAttribute('content') ||
+                    '',
+                thumbnail:
+                    document.querySelector('meta[property="og:image"]')?.getAttribute('content') ||
+                    '',
                 tags: [location.pathname.split('/')[1] || 'general'],
             }
             addFavorite(favoriteItem)
@@ -250,9 +266,12 @@ export const useFloatingActions = () => {
     /**
      * 打开面板
      */
-    const openPanel = useCallback((panel: FloatingActionType) => {
-        setActivePanel(panel)
-    }, [setActivePanel])
+    const openPanel = useCallback(
+        (panel: FloatingActionType) => {
+            setActivePanel(panel)
+        },
+        [setActivePanel]
+    )
 
     /**
      * 关闭面板
@@ -264,29 +283,35 @@ export const useFloatingActions = () => {
     /**
      * 切换面板
      */
-    const togglePanel = useCallback((panel: FloatingActionType) => {
-        if (floatingActions.activePanel === panel) {
-            closePanel()
-        } else {
-            openPanel(panel)
-        }
-    }, [floatingActions.activePanel, openPanel, closePanel])
+    const togglePanel = useCallback(
+        (panel: FloatingActionType) => {
+            if (floatingActions.activePanel === panel) {
+                closePanel()
+            } else {
+                openPanel(panel)
+            }
+        },
+        [floatingActions.activePanel, openPanel, closePanel]
+    )
 
     // ==================== 反馈功能 ====================
 
     /**
      * 提交反馈
      */
-    const handleSubmitFeedback = useCallback(async (feedback: FeedbackData) => {
-        try {
-            await submitFeedback(feedback)
-            message.success(t('feedback.submit_success'))
-            closePanel()
-        } catch (error) {
-            message.error(t('feedback.submit_failed'))
-            throw error
-        }
-    }, [submitFeedback, closePanel, t])
+    const handleSubmitFeedback = useCallback(
+        async (feedback: FeedbackData) => {
+            try {
+                await submitFeedback(feedback)
+                message.success(t('feedback.submit_success'))
+                closePanel()
+            } catch (error) {
+                message.error(t('feedback.submit_failed'))
+                throw error
+            }
+        },
+        [submitFeedback, closePanel, t]
+    )
 
     // ==================== 生命周期 ====================
 

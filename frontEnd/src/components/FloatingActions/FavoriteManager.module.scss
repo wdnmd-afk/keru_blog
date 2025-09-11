@@ -52,7 +52,7 @@
     background: var(--card-bg);
     border: 1px solid var(--border-color);
     border-radius: 16px;
-    box-shadow: 
+    box-shadow:
         0 20px 40px rgba(0, 0, 0, 0.4),
         0 0 0 1px rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(20px);
@@ -88,7 +88,7 @@
 
     @media (max-width: 768px) {
         max-height: 90vh;
-        
+
         :global(.ant-card-head) {
             padding: 16px;
         }

@@ -1,0 +1,13 @@
+# Frontend 项目 TypeScript 错误输出目录
+
+此目录用于存放 frontEnd 项目的 TypeScript 类型检测错误报告。
+
+## 文件说明
+
+- `error-report.json`: 详细的 JSON 格式错误报告
+- `error-summary.md`: 可读的 Markdown 格式错误摘要
+- `raw-output.txt`: 原始的 TypeScript 编译器输出 (仅在有错误时生成)
+
+## 自动生成
+
+这些文件由 `tools/typescript/check-single.js` 或 `tools/typescript/check-all.js` 自动生成。

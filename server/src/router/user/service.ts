@@ -14,7 +14,25 @@ export class UserService {
   ) {}
 
   public async getList() {
-    return this.PrismaDB.prisma.user.findMany()
+    try {
+      const users = await this.PrismaDB.prisma.user.findMany({
+        select: {
+          id: true,
+          name: true,
+          email: true,
+          admin: true,
+          // 不返回密码和随机盐等敏感信息
+          // 注意：createdAt和updatedAt字段在User模型中不存在
+        },
+        orderBy: {
+          id: 'desc', // 使用id字段进行排序，替代不存在的createdAt字段
+        },
+      })
+      return Result.success(users, '获取用户列表成功')
+    } catch (error) {
+      console.error('获取用户列表错误:', error)
+      return Result.error(500, '获取用户列表失败')
+    }
   }
   //用户注册逻辑
   public async register(user: UserDto) {

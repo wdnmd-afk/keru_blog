@@ -1,4 +1,4 @@
-import { Request, Response } from 'express'
+import { Request } from 'express'
 import { inject } from 'inversify'
 import { controller, httpPost as PostMapping } from 'inversify-express-utils'
 import { UserService } from './service'
@@ -11,10 +11,10 @@ import { LoginDto, ResetPasswordDto, UserDto } from './user.dto'
 export class User {
   constructor(@inject(UserService) private readonly UserService: UserService) {}
 
-  @PostMapping('/index') // 主要代码
-  public async getIndex(_req: Request, res: Response) {
-    let result = await this.UserService.getList()
-    res.send(result)
+  @PostMapping('/index') // 获取用户列表
+  public async getIndex(_req: Request, res: customResponse) {
+    const result = await this.UserService.getList()
+    res.sendResponse(result)
   }
 
   // 添加验证中间件和限流中间件

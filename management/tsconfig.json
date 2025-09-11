@@ -1,0 +1,68 @@
+{
+  "$schema": "./node_modules/typescript/lib/tsconfig.schema.json",
+  "references": [],
+  "compilerOptions": {
+    "baseUrl": "./",
+    "allowImportingTsExtensions": true,
+    "composite": true,
+    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.node.tsbuildinfo",
+    "skipLibCheck": true,
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "allowSyntheticDefaultImports": true,
+    "target": "ES2020",
+    "useDefineForClassFields": true,
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "moduleDetection": "force",
+    "noEmit": true,
+    "jsx": "react-jsx",
+    /* Linting */
+    "strict": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "noImplicitAny": true,
+    /* 路径映射配置 - 支持跨项目组件引用 */
+    "paths": {
+      "@": ["src"],
+      "@/*": ["src/*"],
+      "@frontend": ["../frontEnd/src"],
+      "@frontend/*": ["../frontEnd/src/*"],
+      "@frontend-components": ["../frontEnd/src/components"],
+      "@frontend-components/*": ["../frontEnd/src/components/*"],
+      "@frontend-utils": ["../frontEnd/src/utils"],
+      "@frontend-utils/*": ["../frontEnd/src/utils/*"],
+      "@frontend-types": ["../frontEnd/src/types"],
+      "@frontend-types/*": ["../frontEnd/src/types/*"],
+      "@frontend-hooks": ["../frontEnd/src/hooks"],
+      "@frontend-hooks/*": ["../frontEnd/src/hooks/*"],
+      "@frontend-stores": ["../frontEnd/src/stores"],
+      "@frontend-stores/*": ["../frontEnd/src/stores/*"],
+      "@frontend-api": ["../frontEnd/src/api"],
+      "@frontend-api/*": ["../frontEnd/src/api/*"]
+    }
+  },
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.d.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue",
+    "src/**/*.json",
+    "src/types/*.d.ts",
+    "vite.config.ts",
+    // 包含 frontEnd 项目的类型文件以支持跨项目引用
+    "../frontEnd/src/types/*.d.ts",
+    "../frontEnd/src/**/*.d.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "**/*.js",
+    // 排除frontEnd项目的组件文件，避免编译冲突
+    "../frontEnd/src/components/**/*.tsx",
+    "../frontEnd/src/pages/**/*.tsx",
+    "../frontEnd/src/views/**/*.tsx"
+  ]
+}

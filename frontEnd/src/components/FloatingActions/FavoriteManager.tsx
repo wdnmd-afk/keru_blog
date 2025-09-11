@@ -1,6 +1,6 @@
 /**
  * 收藏管理器组件
- * 
+ *
  * 功能说明：
  * 1. 管理用户收藏的页面和内容
  * 2. 支持添加、删除、搜索收藏项
@@ -9,27 +9,15 @@
  */
 
 import { FavoriteItem } from '@/types/floatingActions'
-import { 
-    CloseOutlined, 
-    DeleteOutlined, 
-    HeartFilled, 
-    HeartOutlined, 
-    LinkOutlined, 
-    SearchOutlined, 
-    TagOutlined 
+import {
+    CloseOutlined,
+    DeleteOutlined,
+    HeartFilled,
+    HeartOutlined,
+    LinkOutlined,
+    TagOutlined,
 } from '@ant-design/icons'
-import { 
-    Button, 
-    Card, 
-    Empty, 
-    Input, 
-    List, 
-    Space, 
-    Tag, 
-    Tooltip, 
-    Typography, 
-    message 
-} from 'antd'
+import { Button, Card, Empty, Input, List, Space, Tag, Tooltip, Typography, message } from 'antd'
 import React, { useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import styles from './FavoriteManager.module.scss'
@@ -70,17 +58,18 @@ const FavoriteManager: React.FC<FavoriteManagerProps> = ({
     // 获取所有标签
     const allTags = useMemo(() => {
         const tagSet = new Set<string>()
-        favorites.forEach(item => {
-            item.tags.forEach(tag => tagSet.add(tag))
+        favorites.forEach((item) => {
+            item.tags.forEach((tag) => tagSet.add(tag))
         })
         return Array.from(tagSet).sort()
     }, [favorites])
 
     // 过滤收藏项
     const filteredFavorites = useMemo(() => {
-        return favorites.filter(item => {
+        return favorites.filter((item) => {
             // 搜索文本过滤
-            const matchesSearch = !searchText || 
+            const matchesSearch =
+                !searchText ||
                 item.title.toLowerCase().includes(searchText.toLowerCase()) ||
                 item.description?.toLowerCase().includes(searchText.toLowerCase()) ||
                 item.url.toLowerCase().includes(searchText.toLowerCase())
@@ -95,7 +84,7 @@ const FavoriteManager: React.FC<FavoriteManagerProps> = ({
     // 检查当前页面是否已收藏
     const isCurrentPageFavorited = useMemo(() => {
         const currentUrl = window.location.href
-        return favorites.some(item => item.url === currentUrl)
+        return favorites.some((item) => item.url === currentUrl)
     }, [favorites])
 
     // 添加当前页面到收藏
@@ -104,8 +93,10 @@ const FavoriteManager: React.FC<FavoriteManagerProps> = ({
         const favoriteItem: Omit<FavoriteItem, 'id' | 'createdAt' | 'updatedAt'> = {
             title: document.title || 'Untitled',
             url: currentUrl,
-            description: document.querySelector('meta[name="description"]')?.getAttribute('content') || '',
-            thumbnail: document.querySelector('meta[property="og:image"]')?.getAttribute('content') || '',
+            description:
+                document.querySelector('meta[name="description"]')?.getAttribute('content') || '',
+            thumbnail:
+                document.querySelector('meta[property="og:image"]')?.getAttribute('content') || '',
             tags: [window.location.pathname.split('/')[1] || 'general'],
         }
         onAddFavorite(favoriteItem)
@@ -115,7 +106,7 @@ const FavoriteManager: React.FC<FavoriteManagerProps> = ({
     // 移除当前页面收藏
     const handleRemoveCurrentPage = () => {
         const currentUrl = window.location.href
-        const existingFavorite = favorites.find(item => item.url === currentUrl)
+        const existingFavorite = favorites.find((item) => item.url === currentUrl)
         if (existingFavorite) {
             onRemoveFavorite(existingFavorite.id)
             message.success(t('favorite.removed', '已从收藏中移除'))
@@ -160,7 +151,7 @@ const FavoriteManager: React.FC<FavoriteManagerProps> = ({
 
     return (
         <div className={styles.favorite_manager_overlay} onClick={onClose}>
-            <Card 
+            <Card
                 className={styles.favorite_manager}
                 onClick={(e) => e.stopPropagation()}
                 title={
@@ -190,13 +181,14 @@ const FavoriteManager: React.FC<FavoriteManagerProps> = ({
                     <Button
                         type={isCurrentPageFavorited ? 'default' : 'primary'}
                         icon={isCurrentPageFavorited ? <HeartFilled /> : <HeartOutlined />}
-                        onClick={isCurrentPageFavorited ? handleRemoveCurrentPage : handleAddCurrentPage}
+                        onClick={
+                            isCurrentPageFavorited ? handleRemoveCurrentPage : handleAddCurrentPage
+                        }
                         className={styles.favorite_toggle_button}
                     >
-                        {isCurrentPageFavorited 
-                            ? t('favorite.remove_current', '取消收藏') 
-                            : t('favorite.add_current', '收藏此页')
-                        }
+                        {isCurrentPageFavorited
+                            ? t('favorite.remove_current', '取消收藏')
+                            : t('favorite.add_current', '收藏此页')}
                     </Button>
                 </div>
 
@@ -209,7 +201,7 @@ const FavoriteManager: React.FC<FavoriteManagerProps> = ({
                         className={styles.search_input}
                         allowClear
                     />
-                    
+
                     {allTags.length > 0 && (
                         <div className={styles.tag_filter}>
                             <Tag
@@ -219,7 +211,7 @@ const FavoriteManager: React.FC<FavoriteManagerProps> = ({
                             >
                                 {t('favorite.all_tags', '全部')}
                             </Tag>
-                            {allTags.map(tag => (
+                            {allTags.map((tag) => (
                                 <Tag
                                     key={tag}
                                     color={selectedTag === tag ? 'blue' : 'default'}
@@ -238,7 +230,7 @@ const FavoriteManager: React.FC<FavoriteManagerProps> = ({
                     {filteredFavorites.length === 0 ? (
                         <Empty
                             description={
-                                searchText || selectedTag 
+                                searchText || selectedTag
                                     ? t('favorite.no_results', '没有找到匹配的收藏')
                                     : t('favorite.empty', '暂无收藏内容')
                             }
@@ -252,7 +244,10 @@ const FavoriteManager: React.FC<FavoriteManagerProps> = ({
                                     key={item.id}
                                     className={styles.favorite_item}
                                     actions={[
-                                        <Tooltip title={t('favorite.copy_link', '复制链接')} key="copy">
+                                        <Tooltip
+                                            title={t('favorite.copy_link', '复制链接')}
+                                            key="copy"
+                                        >
                                             <Button
                                                 type="text"
                                                 icon={<LinkOutlined />}
@@ -264,7 +259,9 @@ const FavoriteManager: React.FC<FavoriteManagerProps> = ({
                                             <Button
                                                 type="text"
                                                 icon={<DeleteOutlined />}
-                                                onClick={() => handleDeleteFavorite(item.id, item.title)}
+                                                onClick={() =>
+                                                    handleDeleteFavorite(item.id, item.title)
+                                                }
                                                 size="small"
                                                 danger
                                             />
@@ -289,19 +286,32 @@ const FavoriteManager: React.FC<FavoriteManagerProps> = ({
                                         description={
                                             <div className={styles.favorite_meta}>
                                                 {item.description && (
-                                                    <Text type="secondary" className={styles.favorite_description}>
+                                                    <Text
+                                                        type="secondary"
+                                                        className={styles.favorite_description}
+                                                    >
                                                         {item.description}
                                                     </Text>
                                                 )}
                                                 <div className={styles.favorite_footer}>
                                                     <Space size="small">
-                                                        {item.tags.map(tag => (
-                                                            <Tag key={tag} size="small" icon={<TagOutlined />}>
+                                                        {item.tags.map((tag) => (
+                                                            <Tag
+                                                                key={tag}
+                                                                icon={<TagOutlined />}
+                                                                style={{
+                                                                    fontSize: '12px',
+                                                                    padding: '2px 6px',
+                                                                }}
+                                                            >
                                                                 {tag}
                                                             </Tag>
                                                         ))}
                                                     </Space>
-                                                    <Text type="secondary" className={styles.favorite_date}>
+                                                    <Text
+                                                        type="secondary"
+                                                        className={styles.favorite_date}
+                                                    >
                                                         {formatDate(item.createdAt)}
                                                     </Text>
                                                 </div>

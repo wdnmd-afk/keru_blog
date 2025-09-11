@@ -1,0 +1,12 @@
+# TypeScript 检测汇总报告目录
+
+此目录用于存放所有项目的 TypeScript 类型检测汇总报告。
+
+## 文件说明
+
+- `summary-report.json`: 详细的 JSON 格式汇总报告
+- `summary-report.md`: 可读的 Markdown 格式汇总摘要
+
+## 自动生成
+
+这些文件由 `tools/typescript/check-all.js` 自动生成，包含所有项目的检测结果统计。

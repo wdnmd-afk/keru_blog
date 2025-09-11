@@ -1,0 +1,12 @@
+{
+  "success": true,
+  "projectKey": "server",
+  "projectName": "Server 项目",
+  "errors": [],
+  "output": "无输出",
+  "duration": 2678,
+  "timestamp": "2025/09/11 14:10:31",
+  "generatedAt": "2025/09/11 14:10:31",
+  "projectPath": "server",
+  "tsConfigPath": "server/tsconfig.json"
+}

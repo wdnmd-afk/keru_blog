@@ -6,8 +6,24 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev:server": "cd server && npm run dev",
-    "dev:frontend": "cd frontend && npm run dev",
-    "dev": "npm-run-all --parallel dev:server dev:frontend"
+    "dev:frontend": "cd frontEnd && npm run dev",
+    "dev:management": "cd management && npm run dev",
+    "dev": "npm-run-all --parallel dev:server dev:frontend",
+    "dev:all": "npm-run-all --parallel dev:server dev:frontend dev:management",
+
+    "ts-check:frontend": "node tools/typescript/check-single.js frontend",
+    "ts-check:management": "node tools/typescript/check-single.js management",
+    "ts-check:server": "node tools/typescript/check-single.js server",
+    "ts-check:all": "node tools/typescript/check-all.js",
+    "ts-check:all:sequential": "node tools/typescript/check-all.js --sequential",
+
+    "format:frontend": "node tools/format/format-single.js frontend",
+    "format:management": "node tools/format/format-single.js management",
+    "format:server": "node tools/format/format-single.js server",
+    "format:all": "node tools/format/format-all.js",
+    "format:all:sequential": "node tools/format/format-all.js --sequential",
+    "format:check:all": "node tools/format/format-all.js --check",
+    "format:config:all": "node tools/format/format-all.js --config"
   },
   "keywords": [],
   "author": "",

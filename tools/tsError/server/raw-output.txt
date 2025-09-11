@@ -1,0 +1,10 @@
+src/scripts/init-rbac-data.ts(311,7): error TS2322: Type '{ parentId: any; id: string; name: string; code: string; type: string; description: string; }[]' is not assignable to type 'PermissionCreateManyInput | PermissionCreateManyInput[]'.
+  Type '{ parentId: any; id: string; name: string; code: string; type: string; description: string; }[]' is not assignable to type 'PermissionCreateManyInput[]'.
+    Type '{ parentId: any; id: string; name: string; code: string; type: string; description: string; }' is not assignable to type 'PermissionCreateManyInput'.
+      Types of property 'type' are incompatible.
+        Type 'string' is not assignable to type 'PermissionType'.
+src/scripts/init-rbac-data.ts(354,7): error TS2322: Type '{ parentId: any; id: string; name: string; code: string; type: string; description: string; }[]' is not assignable to type 'PermissionCreateManyInput | PermissionCreateManyInput[]'.
+  Type '{ parentId: any; id: string; name: string; code: string; type: string; description: string; }[]' is not assignable to type 'PermissionCreateManyInput[]'.
+    Type '{ parentId: any; id: string; name: string; code: string; type: string; description: string; }' is not assignable to type 'PermissionCreateManyInput'.
+      Types of property 'type' are incompatible.
+        Type 'string' is not assignable to type 'PermissionType'.

@@ -1,0 +1,2 @@
+src/components/FloatingActions/FavoriteManager.tsx(301,65): error TS2322: Type '{ children: string; key: string; size: string; icon: Element; }' is not assignable to type 'IntrinsicAttributes & TagProps & RefAttributes<HTMLSpanElement>'.
+  Property 'size' does not exist on type 'IntrinsicAttributes & TagProps & RefAttributes<HTMLSpanElement>'.

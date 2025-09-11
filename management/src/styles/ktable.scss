@@ -1,0 +1,89 @@
+// KTable 组件样式
+.even-row {
+  background-color: #f9f9f9; /* 偶数行的背景色 */
+}
+
+.odd-row {
+  background-color: #fff; /* 奇数行的背景色 */
+}
+
+.KT_Box {
+  font-size: 14px; // 调整为管理系统合适的字体大小
+  .ant-table-wrapper {
+    height: 100%;
+  }
+  .ant-table-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  .ant-spin-nested-loading {
+    height: 100%;
+  }
+  .ant-spin-container {
+    height: 100%;
+  }
+  .ant-table {
+    scrollbar-color: auto !important;
+    height: 100%;
+
+    .ant-table-cell {
+      &::before {
+        display: none;
+      }
+    }
+    .ant-table-body {
+      scrollbar-width: auto;
+      scrollbar-color: auto;
+      flex: 1;
+      background-color: #fff;
+
+      // 自定义滚动条
+      &::-webkit-scrollbar {
+        width: 8px; // 设置滚动条宽度，适合管理系统
+        height: 8px; // 设置水平滚动条高度
+      }
+
+      &::-webkit-scrollbar-track {
+        background: #f1f1f1; // 滚动条轨道颜色
+        border-radius: 4px;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background: #c1c1c1; // 滚动条滑块颜色
+        border-radius: 4px;
+
+        &:hover {
+          background: #a8a8a8; // 悬停时的颜色
+        }
+      }
+
+      &::-webkit-scrollbar-corner {
+        background: #f1f1f1; // 滚动条角落颜色
+      }
+    }
+  }
+}
+
+// 管理系统特定的表格样式调整
+.management-table {
+  .ant-table-thead > tr > th {
+    background-color: #fafafa;
+    font-weight: 600;
+    color: #262626;
+    border-bottom: 2px solid #f0f0f0;
+  }
+
+  .ant-table-tbody > tr:hover > td {
+    background-color: #f5f5f5;
+  }
+
+  .ant-pagination {
+    margin-top: 16px;
+    text-align: right;
+
+    .ant-pagination-total-text {
+      color: #666;
+    }
+  }
+}

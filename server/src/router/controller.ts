@@ -1,4 +1,5 @@
 export * from './base/controller'
 export * from './file/controller'
+export * from './rbac/controller'
 export * from './todo/controller'
 export * from './user/controller'

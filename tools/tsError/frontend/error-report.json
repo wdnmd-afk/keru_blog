@@ -1,0 +1,12 @@
+{
+  "success": true,
+  "projectKey": "frontend",
+  "projectName": "Frontend 项目",
+  "errors": [],
+  "output": "无输出",
+  "duration": 3881,
+  "timestamp": "2025/09/11 14:10:25",
+  "generatedAt": "2025/09/11 14:10:25",
+  "projectPath": "frontEnd",
+  "tsConfigPath": "frontEnd/tsconfig.json"
+}

@@ -1,5 +1,6 @@
 import 'reflect-metadata'
 
+import { PrismaClient } from '@prisma/client'
 import cors from 'cors'
 import express from 'express'
 import { InversifyExpressServer } from 'inversify-express-utils'
@@ -21,6 +22,9 @@ import {
 // 导入JWT
 import { JWT } from '@/jwt'
 
+// 导入权限中间件初始化函数
+import { initPermissionMiddleware } from '@/middleware/permission'
+
 /**
  * 应用启动函数
  */
@@ -36,8 +40,12 @@ async function bootstrap() {
     // 2. 创建依赖注入容器
     const container = createContainer()
 
-    // 3. 设置应用服务器
-    const server = new InversifyExpressServer(container)
+    // 2.1 初始化权限中间件
+    const prismaClient = container.get<() => PrismaClient>('PrismaClient')()
+    initPermissionMiddleware(prismaClient)
+
+    // 3. 设置应用服务器 - 添加全局路由前缀 /api
+    const server = new InversifyExpressServer(container, null, { rootPath: '/api' })
 
     // 4. 配置中间件
     server.setConfig(app => {

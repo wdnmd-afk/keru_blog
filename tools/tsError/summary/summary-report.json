@@ -1,0 +1,34 @@
+{
+  "timestamp": "2025/09/11 14:10:31",
+  "totalProjects": 3,
+  "successfulProjects": 3,
+  "failedProjects": 0,
+  "totalErrors": 0,
+  "totalDuration": 10017,
+  "results": [
+    {
+      "projectKey": "frontend",
+      "projectName": "Frontend 项目",
+      "success": true,
+      "errorCount": 0,
+      "duration": 3881,
+      "failed": false
+    },
+    {
+      "projectKey": "management",
+      "projectName": "Management 项目",
+      "success": true,
+      "errorCount": 0,
+      "duration": 3458,
+      "failed": false
+    },
+    {
+      "projectKey": "server",
+      "projectName": "Server 项目",
+      "success": true,
+      "errorCount": 0,
+      "duration": 2678,
+      "failed": false
+    }
+  ]
+}

@@ -1,13 +1,12 @@
 import { TodoApi } from '@/api'
 import { changeLanguage, getCurrentLanguage, type SupportedLanguage } from '@/i18n'
-import { Todo, TodoType } from '@/types/todo.d'
 import {
-    FloatingActionsState,
-    FloatingActionsActions,
-    FloatingActionType,
     FavoriteItem,
-    FeedbackData
+    FeedbackData,
+    FloatingActionsState,
+    FloatingActionType,
 } from '@/types/floatingActions'
+import { Todo, TodoType } from '@/types/todo.d'
 import { create } from 'zustand'
 import { useShallow } from 'zustand/react/shallow'
 
@@ -191,7 +190,7 @@ const useGlobalStore = create<GlobalStore>((set, get) => ({
         set((state) => ({
             floatingActions: {
                 ...state.floatingActions,
-                favorites: state.floatingActions.favorites.filter(item => item.id !== id),
+                favorites: state.floatingActions.favorites.filter((item) => item.id !== id),
             },
         }))
     },
@@ -228,7 +227,7 @@ const useGlobalStore = create<GlobalStore>((set, get) => ({
             // 这里可以调用实际的API接口提交反馈
             console.log('提交反馈:', feedback)
             // 模拟API调用
-            await new Promise(resolve => setTimeout(resolve, 1000))
+            await new Promise((resolve) => setTimeout(resolve, 1000))
             // 可以在这里添加成功提示
         } catch (error) {
             console.error('提交反馈失败:', error)

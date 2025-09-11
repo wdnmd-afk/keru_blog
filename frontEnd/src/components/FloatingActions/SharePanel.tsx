@@ -1,6 +1,6 @@
 /**
  * 分享面板组件
- * 
+ *
  * 功能说明：
  * 1. 提供多种分享方式：原生分享、复制链接、社交媒体分享
  * 2. 支持Web Share API并提供降级方案
@@ -9,15 +9,15 @@
  */
 
 import { ShareOption, ShareType } from '@/types/floatingActions'
-import { 
-    CopyOutlined, 
-    FacebookOutlined, 
-    LinkOutlined, 
-    QqOutlined, 
-    ShareAltOutlined, 
-    TwitterOutlined, 
+import {
+    CloseOutlined,
+    CopyOutlined,
+    FacebookOutlined,
+    LinkOutlined,
+    QqOutlined,
+    ShareAltOutlined,
+    TwitterOutlined,
     WeiboOutlined,
-    CloseOutlined 
 } from '@ant-design/icons'
 import { Button, Card, Col, Divider, Row, Space, Tooltip, Typography } from 'antd'
 import React, { useMemo } from 'react'
@@ -61,11 +61,13 @@ const SharePanel: React.FC<SharePanelProps> = ({
         return {
             title: shareData?.title || document.title || 'Keru Blog',
             url: shareData?.url || window.location.href,
-            description: shareData?.description || 
-                document.querySelector('meta[name="description"]')?.getAttribute('content') || 
+            description:
+                shareData?.description ||
+                document.querySelector('meta[name="description"]')?.getAttribute('content') ||
                 '分享来自 Keru Blog 的精彩内容',
-            image: shareData?.image || 
-                document.querySelector('meta[property="og:image"]')?.getAttribute('content') || 
+            image:
+                shareData?.image ||
+                document.querySelector('meta[property="og:image"]')?.getAttribute('content') ||
                 '',
         }
     }, [shareData])
@@ -101,9 +103,9 @@ const SharePanel: React.FC<SharePanelProps> = ({
         const encodedUrl = encodeURIComponent(currentShareData.url)
         const encodedTitle = encodeURIComponent(currentShareData.title)
         const encodedDescription = encodeURIComponent(currentShareData.description)
-        
+
         let shareUrl = ''
-        
+
         switch (type) {
             case ShareType.WEIBO:
                 shareUrl = `https://service.weibo.com/share/share.php?url=${encodedUrl}&title=${encodedTitle}&pic=${currentShareData.image}`
@@ -120,51 +122,54 @@ const SharePanel: React.FC<SharePanelProps> = ({
             default:
                 return
         }
-        
+
         if (shareUrl) {
             window.open(shareUrl, '_blank', 'width=600,height=400,scrollbars=yes,resizable=yes')
         }
     }
 
     // 默认分享选项
-    const defaultShareOptions: ShareOption[] = useMemo(() => [
-        {
-            type: ShareType.NATIVE,
-            label: t('share.native', '原生分享'),
-            icon: 'ShareAltOutlined',
-            onClick: handleNativeShare,
-        },
-        {
-            type: ShareType.COPY_LINK,
-            label: t('share.copy_link', '复制链接'),
-            icon: 'LinkOutlined',
-            onClick: handleCopyLink,
-        },
-        {
-            type: ShareType.WEIBO,
-            label: t('share.weibo', '微博'),
-            icon: 'WeiboOutlined',
-            onClick: () => handleSocialShare(ShareType.WEIBO),
-        },
-        {
-            type: ShareType.QQ,
-            label: t('share.qq', 'QQ'),
-            icon: 'QqOutlined',
-            onClick: () => handleSocialShare(ShareType.QQ),
-        },
-        {
-            type: ShareType.TWITTER,
-            label: t('share.twitter', 'Twitter'),
-            icon: 'TwitterOutlined',
-            onClick: () => handleSocialShare(ShareType.TWITTER),
-        },
-        {
-            type: ShareType.FACEBOOK,
-            label: t('share.facebook', 'Facebook'),
-            icon: 'FacebookOutlined',
-            onClick: () => handleSocialShare(ShareType.FACEBOOK),
-        },
-    ], [t])
+    const defaultShareOptions: ShareOption[] = useMemo(
+        () => [
+            {
+                type: ShareType.NATIVE,
+                label: t('share.native', '原生分享'),
+                icon: 'ShareAltOutlined',
+                onClick: handleNativeShare,
+            },
+            {
+                type: ShareType.COPY_LINK,
+                label: t('share.copy_link', '复制链接'),
+                icon: 'LinkOutlined',
+                onClick: handleCopyLink,
+            },
+            {
+                type: ShareType.WEIBO,
+                label: t('share.weibo', '微博'),
+                icon: 'WeiboOutlined',
+                onClick: () => handleSocialShare(ShareType.WEIBO),
+            },
+            {
+                type: ShareType.QQ,
+                label: t('share.qq', 'QQ'),
+                icon: 'QqOutlined',
+                onClick: () => handleSocialShare(ShareType.QQ),
+            },
+            {
+                type: ShareType.TWITTER,
+                label: t('share.twitter', 'Twitter'),
+                icon: 'TwitterOutlined',
+                onClick: () => handleSocialShare(ShareType.TWITTER),
+            },
+            {
+                type: ShareType.FACEBOOK,
+                label: t('share.facebook', 'Facebook'),
+                icon: 'FacebookOutlined',
+                onClick: () => handleSocialShare(ShareType.FACEBOOK),
+            },
+        ],
+        [t]
+    )
 
     // 使用自定义分享选项或默认选项
     const shareOptions = customShareOptions || defaultShareOptions
@@ -192,7 +197,7 @@ const SharePanel: React.FC<SharePanelProps> = ({
 
     return (
         <div className={styles.share_panel_overlay} onClick={onClose}>
-            <Card 
+            <Card
                 className={styles.share_panel}
                 onClick={(e) => e.stopPropagation()}
                 title={

@@ -5,10 +5,16 @@ import { PrismaClient } from '@prisma/client'
 import { Container } from 'inversify'
 
 // 导入控制器
-import { BaseController, FileController, TodoController, User } from '@/router/controller'
+import {
+  BaseController,
+  FileController,
+  RbacController,
+  TodoController,
+  User,
+} from '@/router/controller'
 
 // 导入服务
-import { BaseService, FileService, TodoService, UserService } from '@/router/service'
+import { BaseService, FileService, RbacService, TodoService, UserService } from '@/router/service'
 
 // 导入中间件
 import { AuthMiddleware } from '@/middleware/auth'
@@ -23,12 +29,14 @@ export const TYPES = {
   UserController: Symbol.for('UserController'),
   BaseController: Symbol.for('BaseController'),
   FileController: Symbol.for('FileController'),
+  RbacController: Symbol.for('RbacController'),
   TodoController: Symbol.for('TodoController'),
 
   // 服务
   UserService: Symbol.for('UserService'),
   BaseService: Symbol.for('BaseService'),
   FileService: Symbol.for('FileService'),
+  RbacService: Symbol.for('RbacService'),
   TodoService: Symbol.for('TodoService'),
 
   // 基础设施
@@ -75,12 +83,14 @@ function registerControllers(container: Container): void {
   container.bind(TYPES.UserController).to(User)
   container.bind(TYPES.BaseController).to(BaseController)
   container.bind(TYPES.FileController).to(FileController)
+  container.bind(TYPES.RbacController).to(RbacController)
   container.bind(TYPES.TodoController).to(TodoController)
 
   // 为了兼容现有代码，保留原有的绑定方式
   container.bind(User).to(User)
   container.bind(BaseController).to(BaseController)
   container.bind(FileController).to(FileController)
+  container.bind(RbacController).to(RbacController)
   container.bind(TodoController).to(TodoController)
 }
 
@@ -91,12 +101,14 @@ function registerServices(container: Container): void {
   container.bind(TYPES.UserService).to(UserService)
   container.bind(TYPES.BaseService).to(BaseService)
   container.bind(TYPES.FileService).to(FileService)
+  container.bind(TYPES.RbacService).to(RbacService)
   container.bind(TYPES.TodoService).to(TodoService)
 
   // 为了兼容现有代码，保留原有的绑定方式
   container.bind(UserService).to(UserService)
   container.bind(BaseService).to(BaseService)
   container.bind(FileService).to(FileService)
+  container.bind(RbacService).to(RbacService)
   container.bind(TodoService).to(TodoService)
 }
 

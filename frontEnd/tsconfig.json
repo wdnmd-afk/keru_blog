@@ -27,7 +27,15 @@
         /* 移除了未知的编译器选项 allowUnusedImports */
         "paths": {
             "@": ["src"],
-            "@/*": ["src/*"]
+            "@/*": ["src/*"],
+            "@management": ["../management/src"],
+            "@management/*": ["../management/src/*"],
+            "@management-components": ["../management/src/components"],
+            "@management-components/*": ["../management/src/components/*"],
+            "@management-utils": ["../management/src/utils"],
+            "@management-utils/*": ["../management/src/utils/*"],
+            "@management-types": ["../management/src/types"],
+            "@management-types/*": ["../management/src/types/*"]
         }
     },
 
@@ -40,7 +48,10 @@
         "src/types/*.d.ts",
         "build/**/*.ts",
         "build/**/*.d.ts",
-        "vite.config.ts"
+        "vite.config.ts",
+        // 包含 management 项目的类型文件以支持跨项目引用
+        "../management/src/types/*.d.ts",
+        "../management/src/**/*.d.ts"
     ],
     "exclude": ["node_modules", "dist", "**/*.js"]
 }

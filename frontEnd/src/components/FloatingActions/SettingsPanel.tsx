@@ -1,6 +1,6 @@
 /**
  * 设置面板组件
- * 
+ *
  * 功能说明：
  * 1. 提供主题、语言、显示等设置选项
  * 2. 集成全局状态管理
@@ -10,25 +10,16 @@
 
 import { useGlobalStore, useGlobalStoreAction } from '@/store'
 import { FloatingActionsState } from '@/types/floatingActions'
-import { 
-    BulbOutlined, 
-    CloseOutlined, 
-    GlobalOutlined, 
-    MoonOutlined, 
-    NotificationOutlined, 
-    SoundOutlined, 
-    SunOutlined 
+import {
+    BulbOutlined,
+    CloseOutlined,
+    GlobalOutlined,
+    MoonOutlined,
+    NotificationOutlined,
+    SoundOutlined,
+    SunOutlined,
 } from '@ant-design/icons'
-import { 
-    Button, 
-    Card, 
-    Divider, 
-    Radio, 
-    Space, 
-    Switch, 
-    Typography, 
-    message 
-} from 'antd'
+import { Button, Card, Divider, Radio, Space, Switch, Typography, message } from 'antd'
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 import styles from './SettingsPanel.module.scss'
@@ -48,21 +39,14 @@ interface SettingsPanelProps {
 /**
  * 设置面板组件
  */
-const SettingsPanel: React.FC<SettingsPanelProps> = ({
-    visible,
-    onClose,
-}) => {
+const SettingsPanel: React.FC<SettingsPanelProps> = ({ visible, onClose }) => {
     const { t, i18n } = useTranslation('floatingActions')
-    
+
     // 获取全局状态和方法
     const floatingActions = useGlobalStore((state) => state.floatingActions)
     const preferences = useGlobalStore((state) => state.preferences)
-    const { 
-        updateFloatingSettings, 
-        updatePreferences,
-        setLanguage,
-        setTheme 
-    } = useGlobalStoreAction()
+    const { updateFloatingSettings, updatePreferences, setLanguage, setTheme } =
+        useGlobalStoreAction()
 
     // 主题选项
     const themeOptions = [
@@ -119,7 +103,7 @@ const SettingsPanel: React.FC<SettingsPanelProps> = ({
     const handleAnimationChange = (enabled: boolean) => {
         updateFloatingSettings({ enableAnimations: enabled })
         message.success(
-            enabled 
+            enabled
                 ? t('settings.animations_enabled', '动画效果已启用')
                 : t('settings.animations_disabled', '动画效果已禁用')
         )
@@ -129,7 +113,7 @@ const SettingsPanel: React.FC<SettingsPanelProps> = ({
     const handleSoundChange = (enabled: boolean) => {
         updateFloatingSettings({ enableSounds: enabled })
         message.success(
-            enabled 
+            enabled
                 ? t('settings.sounds_enabled', '声音提示已启用')
                 : t('settings.sounds_disabled', '声音提示已禁用')
         )
@@ -143,7 +127,7 @@ const SettingsPanel: React.FC<SettingsPanelProps> = ({
             enableAnimations: true,
             enableSounds: false,
         }
-        
+
         updateFloatingSettings(defaultSettings)
         setTheme('auto')
         setLanguage('zh' as any)
@@ -156,7 +140,7 @@ const SettingsPanel: React.FC<SettingsPanelProps> = ({
 
     return (
         <div className={styles.settings_panel_overlay} onClick={onClose}>
-            <Card 
+            <Card
                 className={styles.settings_panel}
                 onClick={(e) => e.stopPropagation()}
                 title={
@@ -191,9 +175,9 @@ const SettingsPanel: React.FC<SettingsPanelProps> = ({
                         onChange={(e) => handleThemeChange(e.target.value)}
                         className={styles.theme_options}
                     >
-                        {themeOptions.map(option => (
-                            <Radio.Button 
-                                key={option.value} 
+                        {themeOptions.map((option) => (
+                            <Radio.Button
+                                key={option.value}
                                 value={option.value}
                                 className={styles.theme_option}
                             >
@@ -224,9 +208,9 @@ const SettingsPanel: React.FC<SettingsPanelProps> = ({
                         onChange={(e) => handleLanguageChange(e.target.value)}
                         className={styles.language_options}
                     >
-                        {languageOptions.map(option => (
-                            <Radio.Button 
-                                key={option.value} 
+                        {languageOptions.map((option) => (
+                            <Radio.Button
+                                key={option.value}
                                 value={option.value}
                                 className={styles.language_option}
                             >
@@ -249,12 +233,15 @@ const SettingsPanel: React.FC<SettingsPanelProps> = ({
                             {t('settings.display.title', '显示设置')}
                         </Title>
                     </div>
-                    
+
                     <div className={styles.setting_item}>
                         <div className={styles.setting_item_content}>
                             <Text strong>{t('settings.display.animations', '动画效果')}</Text>
                             <Text type="secondary" className={styles.setting_item_description}>
-                                {t('settings.display.animations_description', '启用界面动画和过渡效果')}
+                                {t(
+                                    'settings.display.animations_description',
+                                    '启用界面动画和过渡效果'
+                                )}
                             </Text>
                         </div>
                         <Switch

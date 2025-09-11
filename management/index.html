@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>博客管理系统</title>
+    <meta name="description" content="用于配置和管理前端和服务端的各种内容和配置的管理系统" />
+    <meta name="keywords" content="管理系统,博客,配置,React,TypeScript" />
+    
+    <!-- 预加载关键资源 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- 样式预加载 -->
+    <style>
+      /* 加载动画 */
+      .loading-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: #f0f2f5;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+      }
+      
+      .loading-spinner {
+        width: 40px;
+        height: 40px;
+        border: 4px solid #f3f3f3;
+        border-top: 4px solid #1890ff;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
+      
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+      
+      .loading-text {
+        margin-top: 16px;
+        color: #666;
+        font-size: 14px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root">
+      <!-- 加载中的占位内容 -->
+      <div class="loading-container">
+        <div style="text-align: center;">
+          <div class="loading-spinner"></div>
+          <div class="loading-text">管理系统加载中...</div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- 主应用脚本 -->
+    <script type="module" src="/src/main.tsx"></script>
+    
+    <!-- 移除加载动画的脚本 -->
+    <script>
+      // 当页面加载完成后移除加载动画
+      window.addEventListener('load', function() {
+        setTimeout(function() {
+          const loadingContainer = document.querySelector('.loading-container');
+          if (loadingContainer) {
+            loadingContainer.style.opacity = '0';
+            loadingContainer.style.transition = 'opacity 0.3s ease';
+            setTimeout(function() {
+              loadingContainer.remove();
+            }, 300);
+          }
+        }, 500);
+      });
+    </script>
+  </body>
+</html>

@@ -12,22 +12,13 @@
 import { FeedbackData, FeedbackType } from '@/types/floatingActions'
 import {
     BugOutlined,
+    BulbOutlined,
     CloseOutlined,
     CommentOutlined,
-    BulbOutlined,
     MailOutlined,
-    QuestionCircleOutlined
+    QuestionCircleOutlined,
 } from '@ant-design/icons'
-import {
-    Button,
-    Card,
-    Form,
-    Input,
-    Radio,
-    Space,
-    Typography,
-    message
-} from 'antd'
+import { Button, Card, Form, Input, Radio, Space, Typography } from 'antd'
 import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import styles from './FeedbackForm.module.scss'
@@ -50,11 +41,7 @@ interface FeedbackFormProps {
 /**
  * 反馈表单组件
  */
-const FeedbackForm: React.FC<FeedbackFormProps> = ({
-    visible,
-    onClose,
-    onSubmit,
-}) => {
+const FeedbackForm: React.FC<FeedbackFormProps> = ({ visible, onClose, onSubmit }) => {
     const { t } = useTranslation('floatingActions')
     const [form] = Form.useForm()
     const [submitting, setSubmitting] = useState(false)
@@ -172,12 +159,15 @@ const FeedbackForm: React.FC<FeedbackFormProps> = ({
                             </Text>
                         }
                         rules={[
-                            { required: true, message: t('feedback.type.required', '请选择反馈类型') }
+                            {
+                                required: true,
+                                message: t('feedback.type.required', '请选择反馈类型'),
+                            },
                         ]}
                     >
                         <Radio.Group>
                             <Space direction="vertical" style={{ width: '100%' }}>
-                                {feedbackTypes.map(type => (
+                                {feedbackTypes.map((type) => (
                                     <Radio key={type.value} value={type.value}>
                                         <Space>
                                             {type.icon}
@@ -203,8 +193,14 @@ const FeedbackForm: React.FC<FeedbackFormProps> = ({
                             </Text>
                         }
                         rules={[
-                            { required: true, message: t('feedback.title.required', '请输入反馈标题') },
-                            { max: 100, message: t('feedback.title.max_length', '标题不能超过100个字符') }
+                            {
+                                required: true,
+                                message: t('feedback.title.required', '请输入反馈标题'),
+                            },
+                            {
+                                max: 100,
+                                message: t('feedback.title.max_length', '标题不能超过100个字符'),
+                            },
                         ]}
                     >
                         <Input
@@ -222,14 +218,26 @@ const FeedbackForm: React.FC<FeedbackFormProps> = ({
                             </Text>
                         }
                         rules={[
-                            { required: true, message: t('feedback.content.required', '请输入详细描述') },
-                            { min: 10, message: t('feedback.content.min_length', '描述至少需要10个字符') },
-                            { max: 1000, message: t('feedback.content.max_length', '描述不能超过1000个字符') }
+                            {
+                                required: true,
+                                message: t('feedback.content.required', '请输入详细描述'),
+                            },
+                            {
+                                min: 10,
+                                message: t('feedback.content.min_length', '描述至少需要10个字符'),
+                            },
+                            {
+                                max: 1000,
+                                message: t('feedback.content.max_length', '描述不能超过1000个字符'),
+                            },
                         ]}
                     >
                         <TextArea
                             rows={6}
-                            placeholder={t('feedback.content.placeholder', '请详细描述您遇到的问题或建议...')}
+                            placeholder={t(
+                                'feedback.content.placeholder',
+                                '请详细描述您遇到的问题或建议...'
+                            )}
                             className={styles.form_textarea}
                             showCount
                             maxLength={1000}
@@ -248,12 +256,18 @@ const FeedbackForm: React.FC<FeedbackFormProps> = ({
                             </Text>
                         }
                         rules={[
-                            { type: 'email', message: t('feedback.email.invalid', '请输入有效的邮箱地址') }
+                            {
+                                type: 'email',
+                                message: t('feedback.email.invalid', '请输入有效的邮箱地址'),
+                            },
                         ]}
                     >
                         <Input
                             prefix={<MailOutlined />}
-                            placeholder={t('feedback.email.placeholder', '如需回复，请留下您的邮箱')}
+                            placeholder={t(
+                                'feedback.email.placeholder',
+                                '如需回复，请留下您的邮箱'
+                            )}
                             className={styles.form_input}
                         />
                     </Form.Item>
@@ -261,16 +275,17 @@ const FeedbackForm: React.FC<FeedbackFormProps> = ({
                     {/* 系统信息提示 */}
                     <div className={styles.system_info_notice}>
                         <Text type="secondary" className={styles.notice_text}>
-                            {t('feedback.system_info_notice', '为了更好地处理您的反馈，我们会自动收集页面URL、浏览器信息等技术数据。')}
+                            {t(
+                                'feedback.system_info_notice',
+                                '为了更好地处理您的反馈，我们会自动收集页面URL、浏览器信息等技术数据。'
+                            )}
                         </Text>
                     </div>
 
                     {/* 操作按钮 */}
                     <Form.Item className={styles.form_actions}>
                         <Space>
-                            <Button onClick={handleReset}>
-                                {t('feedback.reset', '重置')}
-                            </Button>
+                            <Button onClick={handleReset}>{t('feedback.reset', '重置')}</Button>
                             <Button
                                 type="primary"
                                 htmlType="submit"
@@ -279,8 +294,7 @@ const FeedbackForm: React.FC<FeedbackFormProps> = ({
                             >
                                 {submitting
                                     ? t('feedback.submitting', '提交中...')
-                                    : t('feedback.submit', '提交反馈')
-                                }
+                                    : t('feedback.submit', '提交反馈')}
                             </Button>
                         </Space>
                     </Form.Item>

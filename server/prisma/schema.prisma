@@ -20,6 +20,7 @@ model User {
   UserDetail UserDetail[]
   files      File[]
   todos      Todo[]
+  userRoles  UserRole[]   // 用户角色关联
 }
 
 model UserDetail {
@@ -95,5 +96,70 @@ enum TodoType {
   RECENT
   LONG_TERM
   STUDY_PLAN
+}
+
+// RBAC 权限管理相关模型
+
+// 权限表
+model Permission {
+  id          String           @id @unique
+  name        String           // 权限名称
+  code        String           @unique // 权限代码，如 'user:create', 'dashboard:view'
+  type        PermissionType   // 权限类型：页面权限或按钮权限
+  description String?          // 权限描述
+  parentId    String?          // 父权限ID，用于构建权限树
+  parent      Permission?      @relation("PermissionHierarchy", fields: [parentId], references: [id])
+  children    Permission[]     @relation("PermissionHierarchy")
+  createdAt   DateTime         @default(now())
+  updatedAt   DateTime         @updatedAt
+  rolePermissions RolePermission[] // 角色权限关联
+}
+
+// 角色表
+model Role {
+  id          String           @id @unique
+  name        String           @unique // 角色名称
+  description String?          // 角色描述
+  status      RoleStatus       @default(ACTIVE) // 角色状态
+  createdAt   DateTime         @default(now())
+  updatedAt   DateTime         @updatedAt
+  userRoles   UserRole[]       // 用户角色关联
+  rolePermissions RolePermission[] // 角色权限关联
+}
+
+// 用户角色关联表
+model UserRole {
+  id        String   @id @unique
+  userId    String   // 用户ID
+  roleId    String   // 角色ID
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  role      Role     @relation(fields: [roleId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, roleId]) // 确保用户-角色组合唯一
+}
+
+// 角色权限关联表
+model RolePermission {
+  id           String     @id @unique
+  roleId       String     // 角色ID
+  permissionId String     // 权限ID
+  createdAt    DateTime   @default(now())
+  role         Role       @relation(fields: [roleId], references: [id], onDelete: Cascade)
+  permission   Permission @relation(fields: [permissionId], references: [id], onDelete: Cascade)
+
+  @@unique([roleId, permissionId]) // 确保角色-权限组合唯一
+}
+
+// 权限类型枚举
+enum PermissionType {
+  PAGE    // 页面权限
+  BUTTON  // 按钮权限
+}
+
+// 角色状态枚举
+enum RoleStatus {
+  ACTIVE    // 激活
+  INACTIVE  // 停用
 }
 

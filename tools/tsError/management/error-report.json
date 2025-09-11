@@ -1,0 +1,12 @@
+{
+  "success": true,
+  "projectKey": "management",
+  "projectName": "Management 项目",
+  "errors": [],
+  "output": "无输出",
+  "duration": 3458,
+  "timestamp": "2025/09/11 14:10:29",
+  "generatedAt": "2025/09/11 14:10:29",
+  "projectPath": "management",
+  "tsConfigPath": "management/tsconfig.json"
+}

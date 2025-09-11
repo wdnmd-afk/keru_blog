@@ -85,7 +85,9 @@ const FloatingActions: React.FC = () => {
                             type="text"
                             icon={<QuestionCircleOutlined />}
                             className={`${style.action_button} ${
-                                floatingActions.activePanel === FloatingActionType.HELP ? style.active : ''
+                                floatingActions.activePanel === FloatingActionType.HELP
+                                    ? style.active
+                                    : ''
                             }`}
                             onClick={handleHelp}
                             aria-label={t('help.tooltip', '帮助')}
@@ -98,7 +100,9 @@ const FloatingActions: React.FC = () => {
                             type="text"
                             icon={<SettingOutlined />}
                             className={`${style.action_button} ${
-                                floatingActions.activePanel === FloatingActionType.SETTINGS ? style.active : ''
+                                floatingActions.activePanel === FloatingActionType.SETTINGS
+                                    ? style.active
+                                    : ''
                             }`}
                             onClick={handleSettings}
                             aria-label={t('settings.tooltip', '设置')}
@@ -111,7 +115,9 @@ const FloatingActions: React.FC = () => {
                             type="text"
                             icon={<MessageOutlined />}
                             className={`${style.action_button} ${
-                                floatingActions.activePanel === FloatingActionType.FEEDBACK ? style.active : ''
+                                floatingActions.activePanel === FloatingActionType.FEEDBACK
+                                    ? style.active
+                                    : ''
                             }`}
                             onClick={handleFeedback}
                             aria-label={t('feedback.tooltip', '反馈')}
@@ -120,7 +126,11 @@ const FloatingActions: React.FC = () => {
 
                     {/* 收藏按钮 */}
                     <Tooltip
-                        title={isCurrentPageFavorited ? t('favorite.remove', '取消收藏') : t('favorite.add', '收藏')}
+                        title={
+                            isCurrentPageFavorited
+                                ? t('favorite.remove', '取消收藏')
+                                : t('favorite.add', '收藏')
+                        }
                         placement="left"
                     >
                         <Button
@@ -130,7 +140,11 @@ const FloatingActions: React.FC = () => {
                                 isCurrentPageFavorited ? style.favorited : ''
                             }`}
                             onClick={handleFavorite}
-                            aria-label={isCurrentPageFavorited ? t('favorite.remove', '取消收藏') : t('favorite.add', '收藏')}
+                            aria-label={
+                                isCurrentPageFavorited
+                                    ? t('favorite.remove', '取消收藏')
+                                    : t('favorite.add', '收藏')
+                            }
                         />
                     </Tooltip>
 
@@ -140,7 +154,9 @@ const FloatingActions: React.FC = () => {
                             type="text"
                             icon={<ShareAltOutlined />}
                             className={`${style.action_button} ${
-                                floatingActions.activePanel === FloatingActionType.SHARE ? style.active : ''
+                                floatingActions.activePanel === FloatingActionType.SHARE
+                                    ? style.active
+                                    : ''
                             }`}
                             onClick={handleShare}
                             aria-label={t('share.tooltip', '分享')}
