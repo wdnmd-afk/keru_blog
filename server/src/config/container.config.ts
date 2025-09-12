@@ -11,10 +11,14 @@ import {
   RbacController,
   TodoController,
   User,
+  FeedbackController,
+  PublicFeedbackController,
+  AIController,
 } from '@/router/controller'
 
 // 导入服务
-import { BaseService, FileService, RbacService, TodoService, UserService } from '@/router/service'
+import { BaseService, FileService, RbacService, TodoService, UserService, FeedbackService } from '@/router/service'
+import { AIService } from '@/router/ai/service'
 
 // 导入中间件
 import { AuthMiddleware } from '@/middleware/auth'
@@ -31,6 +35,9 @@ export const TYPES = {
   FileController: Symbol.for('FileController'),
   RbacController: Symbol.for('RbacController'),
   TodoController: Symbol.for('TodoController'),
+  FeedbackController: Symbol.for('FeedbackController'),
+  PublicFeedbackController: Symbol.for('PublicFeedbackController'),
+  AIController: Symbol.for('AIController'),
 
   // 服务
   UserService: Symbol.for('UserService'),
@@ -38,6 +45,8 @@ export const TYPES = {
   FileService: Symbol.for('FileService'),
   RbacService: Symbol.for('RbacService'),
   TodoService: Symbol.for('TodoService'),
+  FeedbackService: Symbol.for('FeedbackService'),
+  AIService: Symbol.for('AIService'),
 
   // 基础设施
   PrismaClient: Symbol.for('PrismaClient'),
@@ -85,6 +94,10 @@ function registerControllers(container: Container): void {
   container.bind(TYPES.FileController).to(FileController)
   container.bind(TYPES.RbacController).to(RbacController)
   container.bind(TYPES.TodoController).to(TodoController)
+  container.bind(TYPES.FeedbackController).to(FeedbackController)
+  container.bind(TYPES.PublicFeedbackController).to(PublicFeedbackController)
+  // AI 控制器
+  container.bind(TYPES.AIController).to(AIController)
 
   // 为了兼容现有代码，保留原有的绑定方式
   container.bind(User).to(User)
@@ -92,6 +105,8 @@ function registerControllers(container: Container): void {
   container.bind(FileController).to(FileController)
   container.bind(RbacController).to(RbacController)
   container.bind(TodoController).to(TodoController)
+  container.bind(FeedbackController).to(FeedbackController)
+  container.bind(PublicFeedbackController).to(PublicFeedbackController)
 }
 
 /**
@@ -103,6 +118,7 @@ function registerServices(container: Container): void {
   container.bind(TYPES.FileService).to(FileService)
   container.bind(TYPES.RbacService).to(RbacService)
   container.bind(TYPES.TodoService).to(TodoService)
+  container.bind(TYPES.FeedbackService).to(FeedbackService)
 
   // 为了兼容现有代码，保留原有的绑定方式
   container.bind(UserService).to(UserService)
@@ -110,6 +126,10 @@ function registerServices(container: Container): void {
   container.bind(FileService).to(FileService)
   container.bind(RbacService).to(RbacService)
   container.bind(TodoService).to(TodoService)
+  container.bind(FeedbackService).to(FeedbackService)
+  // 绑定 AI 服务
+  container.bind(TYPES.AIService).to(AIService)
+  container.bind(AIService).to(AIService)
 }
 
 /**

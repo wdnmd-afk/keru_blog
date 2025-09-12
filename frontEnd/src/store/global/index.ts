@@ -10,6 +10,8 @@ import { Todo, TodoType } from '@/types/todo.d'
 import { create } from 'zustand'
 import { useShallow } from 'zustand/react/shallow'
 
+import { FeedbackApiFront } from '@/api/feedback'
+
 interface GlobalState {
     user: {
         id: string
@@ -221,15 +223,32 @@ const useGlobalStore = create<GlobalStore>((set, get) => ({
         }))
     },
 
-    // 提交反馈
+    // 提交反馈（调用后端公开接口 /api/public/feedback/submit）
     submitFeedback: async (feedback) => {
         try {
-            // 这里可以调用实际的API接口提交反馈
-            console.log('提交反馈:', feedback)
-            // 模拟API调用
-            await new Promise((resolve) => setTimeout(resolve, 1000))
-            // 可以在这里添加成功提示
+            // 将组件内的反馈数据映射到后端所需的字段
+            // 后端需要：content, userName?, userEmail?, category?
+            // 其中 category 只接受 'SUGGESTION' | 'BUG' | 'OTHER'
+            const category =
+                feedback.type === 'SUGGESTION'
+                    ? 'SUGGESTION'
+                    : feedback.type === 'BUG_REPORT'
+                    ? 'BUG'
+                    : 'OTHER'
+
+            // 将标题并入内容，方便后端统一字段存储
+            const content = feedback.title
+                ? `【${feedback.title}】\n${feedback.content}`
+                : feedback.content
+
+            await FeedbackApiFront.submit({
+                title: feedback.title, // 新增：单独存储标题，后端/Prisma 已支持
+                content,
+                userEmail: feedback.email,
+                category,
+            })
         } catch (error) {
+            // 这里保留抛出，由上层（useFloatingActions）统一做 message 提示
             console.error('提交反馈失败:', error)
             throw error
         }

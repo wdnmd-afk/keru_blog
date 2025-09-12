@@ -4,14 +4,32 @@
     right: 30px;
     z-index: 1000;
 
+    // 触发细线（始终可见，紧贴屏幕右侧）
+    .edge_trigger {
+        position: absolute;
+        right: -30px; // 将细线对齐到屏幕右边缘（容器距离屏幕右侧30px）
+        top: 0;
+        bottom: 0; // 高度与容器（即浮动面板）一致
+        width: 5px; // 5px 宽度
+        background: rgba(94, 131, 187, 0.7); // 主题蓝的半透明
+        border-radius: 999px; // 完全圆角
+        box-shadow: 0 0 8px rgba(94, 131, 187, 0.4);
+        cursor: pointer;
+        transition: opacity 0.2s ease;
+        opacity: 0.85;
+
+        &:hover { opacity: 1; }
+    }
+
+    // 容器展开（.open）时隐藏触发线，避免重叠显示
+    .floating_actions.open + .edge_trigger { display: none; }
+
     @media (max-width: 768px) {
         bottom: 20px;
         right: 20px;
 
-        .floating_actions {
-            padding: 6px;
-            border-radius: 25px;
-        }
+        .floating_actions { padding: 6px; border-radius: 25px; }
+        .edge_trigger { right: -20px; }
     }
 }
 
@@ -28,6 +46,20 @@
     flex-direction: column;
     gap: 4px;
     align-items: center;
+
+    // 滑入/滑出（完全隐藏）
+    transform: translateX(calc(100% + 40px)); // 元素宽度 + 容器距屏幕右侧间距（30px）+ 冗余
+    transition: transform 0.3s ease;
+
+    &.open {
+        transform: translateX(0); // 打开时滑入
+    }
+}
+
+// 移动端隐藏距离与打开状态覆盖
+@media (max-width: 768px) {
+    .floating_actions { transform: translateX(calc(100% + 32px)); }
+    .floating_actions.open { transform: translateX(0); }
 }
 
 .action_button {

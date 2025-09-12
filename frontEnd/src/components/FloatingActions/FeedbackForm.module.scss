@@ -459,3 +459,44 @@
         }
     }
 }
+
+
+/* ===== 修复：输入时背景变白，统一保持透明背景（仅作用于本组件） ===== */
+.form_input,
+.form_textarea {
+  background: transparent !important; /* 外层容器透明 */
+}
+
+/* Input 有前缀图标时，AntD 会渲染 affix wrapper，需强制内部 input 透明 */
+.form_input :global(input.ant-input) {
+  background: transparent !important;
+}
+.form_input:global(.ant-input-affix-wrapper-focused) {
+  background: transparent !important;
+}
+.form_input :global(input.ant-input:focus) {
+  background: transparent !important;
+}
+
+/* TextArea 内部 textarea 强制透明（输入时不变白） */
+.form_textarea :global(textarea.ant-input) {
+  background: transparent !important;
+}
+.form_textarea :global(textarea.ant-input:focus) {
+  background: transparent !important;
+}
+/* 兼容 AntD v5 的内部结构：.ant-input-textarea > .ant-input */
+.form_textarea :global(.ant-input) {
+  background: transparent !important;
+}
+
+/* 聚焦与悬停状态也保持透明，仅变化边框与阴影 */
+.form_input:hover,
+.form_input:focus,
+.form_input:global(.ant-input-focused),
+.form_textarea:hover,
+.form_textarea:focus,
+.form_textarea:focus-within,
+.form_textarea:global(.ant-input-focused) {
+  background: transparent !important;
+}

@@ -73,6 +73,8 @@ const menuItems = [
       { key: "/system-monitor", label: "系统概览" },
       { key: "/system-monitor/logs", label: "日志管理" },
       { key: "/system-monitor/performance", label: "性能监控" },
+      { key: "/feedback-management", label: "意见反馈" },
+
     ],
   },
 ];
@@ -94,6 +96,7 @@ const breadcrumbMap: Record<string, string> = {
   "/system-monitor": "系统监控",
   "/system-monitor/logs": "日志管理",
   "/system-monitor/performance": "性能监控",
+  "/feedback-management": "意见反馈管理",
 };
 
 interface ManagementLayoutProps {

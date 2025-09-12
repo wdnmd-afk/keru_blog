@@ -24,7 +24,7 @@ export default defineConfig({
         alias: {
             '@': resolve(__dirname, './src'),
             // 共享代码别名
-            'shared': resolve(__dirname, '../shared/src'),
+            shared: resolve(__dirname, '../shared/src'),
             'shared/components': resolve(__dirname, '../shared/src/components'),
             'shared/utils': resolve(__dirname, '../shared/src/utils'),
             'shared/types': resolve(__dirname, '../shared/src/types'),

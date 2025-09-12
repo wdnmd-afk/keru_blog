@@ -13,10 +13,11 @@
  */
 
 import styles from '@/styles/learning.module.scss'
-import { BulbOutlined, CalendarOutlined } from '@ant-design/icons'
+import { BulbOutlined, CalendarOutlined, RobotOutlined } from '@ant-design/icons'
 import { Tabs } from 'antd'
 import React from 'react'
 import { useTranslation } from 'react-i18next'
+import AiChat from './components/AiChat'
 import LearningPlan from './components/LearningPlan'
 import LearningTimeline from './components/LearningTimeline'
 
@@ -56,6 +57,20 @@ const Learning: React.FC = () => {
             children: (
                 <div className={styles.plan_section}>
                     <LearningPlan />
+                </div>
+            ),
+        },
+        {
+            key: '3',
+            label: (
+                <span className={'text-[#fff]'}>
+                    <RobotOutlined />
+                    AI Chat
+                </span>
+            ),
+            children: (
+                <div style={{ paddingTop: 12, height: '100%' }}>
+                    <AiChat />
                 </div>
             ),
         },

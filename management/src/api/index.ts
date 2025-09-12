@@ -28,3 +28,7 @@ export { default as RbacApi } from "./rbac";
 // 导出用户相关
 export * from "./user";
 export { UserApi } from "./user";
+
+// 导出意见反馈相关
+export * from "./feedback";
+export { FeedbackApi } from "./feedback";

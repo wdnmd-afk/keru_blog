@@ -1,0 +1,12 @@
+{
+  "timestamp": "2025-09-12T06:29:20.545Z",
+  "project": "server",
+  "totalErrors": 4,
+  "errors": [
+    "src/router/base/controller.ts(22,44): error TS2339: Property 'id' does not exist on type 'unknown'.\r",
+    "src/router/feedback/public.controller.ts(24,16): error TS7030: Not all code paths return a value.\r",
+    "src/router/file/controller.ts(44,44): error TS2339: Property 'id' does not exist on type 'unknown'.\r",
+    "src/router/todo/controller.ts(22,44): error TS2339: Property 'id' does not exist on type 'unknown'.\r"
+  ],
+  "rawOutput": "src/router/base/controller.ts(22,44): error TS2339: Property 'id' does not exist on type 'unknown'.\r\nsrc/router/feedback/public.controller.ts(24,16): error TS7030: Not all code paths return a value.\r\nsrc/router/file/controller.ts(44,44): error TS2339: Property 'id' does not exist on type 'unknown'.\r\nsrc/router/todo/controller.ts(22,44): error TS2339: Property 'id' does not exist on type 'unknown'.\r\n"
+}

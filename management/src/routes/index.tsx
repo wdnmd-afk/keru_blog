@@ -68,6 +68,9 @@ const LazyComponents = {
   PerformanceMonitor: lazy(
     () => import("@/views/SystemMonitor/PerformanceMonitor"),
   ), // 性能监控
+
+  // ==================== 意见反馈管理 ====================
+  FeedbackManagement: lazy(() => import("@/pages/FeedbackManagement")), // 意见反馈管理
 };
 
 /**
@@ -184,6 +187,13 @@ const privateRoutes = [
     path: "/system-monitor/performance",
     component: <LazyComponents.PerformanceMonitor />,
     description: "性能监控",
+  },
+
+  // ==================== 意见反馈管理路由 ====================
+  {
+    path: "/feedback-management",
+    component: <LazyComponents.FeedbackManagement />,
+    description: "意见反馈管理",
   },
 ];
 

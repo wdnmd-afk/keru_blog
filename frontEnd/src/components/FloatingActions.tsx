@@ -11,7 +11,7 @@ import {
     ShareAltOutlined,
 } from '@ant-design/icons'
 import { Button, Tooltip } from 'antd'
-import React from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import FavoriteManager from './FloatingActions/FavoriteManager'
 import FeedbackForm from './FloatingActions/FeedbackForm'
@@ -75,10 +75,35 @@ const FloatingActions: React.FC = () => {
         togglePanel(floatingActions.activePanel!)
     }
 
+    // 浮动容器展开/收起控制
+    const [isOpen, setIsOpen] = useState(false)
+    const hideTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+
+    // 打开容器
+    const openContainer = () => {
+        if (hideTimerRef.current) {
+            clearTimeout(hideTimerRef.current)
+            hideTimerRef.current = null
+        }
+        setIsOpen(true)
+    }
+    // 延迟隐藏容器
+    const scheduleHide = () => {
+        if (hideTimerRef.current) {
+            clearTimeout(hideTimerRef.current)
+        }
+        hideTimerRef.current = setTimeout(() => setIsOpen(false), 3000)
+    }
+    useEffect(() => () => { if (hideTimerRef.current) clearTimeout(hideTimerRef.current) }, [])
+
     return (
         <>
-            <div className={style.floating_container}>
-                <div className={style.floating_actions}>
+            <div
+                className={style.floating_container}
+                onMouseEnter={openContainer}
+                onMouseLeave={scheduleHide}
+            >
+                <div className={`${style.floating_actions} ${isOpen ? style.open : ''}`}>
                     {/* 帮助按钮 */}
                     <Tooltip title={t('help.tooltip', '帮助')} placement="left">
                         <Button
@@ -176,6 +201,8 @@ const FloatingActions: React.FC = () => {
                         </Tooltip>
                     )}
                 </div>
+                {/* 右侧细线触发器（默认可见） */}
+                <div className={style.edge_trigger} aria-hidden />
             </div>
 
             {/* 功能面板 */}

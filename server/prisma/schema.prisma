@@ -98,6 +98,44 @@ enum TodoType {
   STUDY_PLAN
 }
 
+// ================= Feedback 模块 =================
+model Feedback {
+  id         String           @id @unique
+  title      String?
+  content    String           @db.Text
+  userName   String?
+  userEmail  String?
+  category   FeedbackCategory
+  status     FeedbackStatus   @default(PENDING)
+  createdAt  DateTime         @default(now())
+  updatedAt  DateTime         @updatedAt
+}
+
+enum FeedbackCategory {
+  SUGGESTION
+  BUG
+  OTHER
+}
+
+enum FeedbackStatus {
+  PENDING
+  VIEWED
+  RESOLVED
+}
+
+
+// ================= AI 对话记录 =================
+model AiConversation {
+  id         String   @id @unique
+  userId     String
+  message    String   @db.Text
+  response   String   @db.Text
+  createdAt  DateTime @default(now())
+
+  @@index([userId, createdAt])
+  @@map("ai_conversations")
+}
+
 // RBAC 权限管理相关模型
 
 // 权限表

@@ -43,7 +43,8 @@ function createViteProxy(
         [proxyConfig.prefix]: {
             target: proxyConfig.target,
             changeOrigin: true,
-            rewrite: (path: string) => path.replace(new RegExp('^' + basePath), ''),
+            // 将前端代理前缀替换为服务端全局前缀 /api，确保匹配后端 Inversify 的 rootPath
+            rewrite: (path: string) => path.replace(new RegExp('^' + basePath), '/api'),
         },
     }
     return proxy
