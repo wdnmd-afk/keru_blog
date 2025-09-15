@@ -4,10 +4,9 @@ import { controller, httpPost as PostMapping } from 'inversify-express-utils'
 import { UserService } from './service'
 
 import { rateLimitMiddleware, validationMiddleware } from '@/middleware'
-import { AuthMiddleware } from '@/middleware/auth'
 import { LoginDto, ResetPasswordDto, UserDto } from './user.dto'
 
-@controller('/user', AuthMiddleware)
+@controller('/user')
 export class User {
   constructor(@inject(UserService) private readonly UserService: UserService) {}
 

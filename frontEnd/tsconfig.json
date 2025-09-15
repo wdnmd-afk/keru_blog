@@ -1,8 +1,6 @@
 {
     "$schema": "./node_modules/typescript/lib/tsconfig.schema.json",
-    "references": [
-        { "path": "../shared" }
-    ],
+    "references": [{ "path": "../shared" }],
     "compilerOptions": {
         "baseUrl": "./",
         "allowImportingTsExtensions": true,

@@ -61,29 +61,29 @@ const PRETTIER_CONFIG = {
   semi: true,                // 语句末尾添加分号
   singleQuote: true,         // 使用单引号
   quoteProps: 'as-needed',   // 对象属性引号策略
-  
+
   // JSX 配置
   jsxSingleQuote: true,      // JSX 中使用单引号
   jsxBracketSameLine: false, // JSX 标签的右括号另起一行
-  
+
   // 尾随逗号
   trailingComma: 'es5',      // 在 ES5 中有效的地方添加尾随逗号
-  
+
   // 括号空格
   bracketSpacing: true,      // 对象字面量的括号间添加空格
-  
+
   // 箭头函数参数括号
   arrowParens: 'avoid',      // 单参数箭头函数省略括号
-  
+
   // 换行符
   endOfLine: 'lf',           // 使用 LF 换行符
-  
+
   // HTML 空格敏感性
   htmlWhitespaceSensitivity: 'css',
-  
+
   // Vue 文件中的脚本和样式标签缩进
   vueIndentScriptAndStyle: false,
-  
+
   // 嵌入式语言格式化
   embeddedLanguageFormatting: 'auto'
 };
@@ -95,7 +95,7 @@ const PRETTIER_CONFIG = {
  */
 function getConfigForFileType(fileType) {
   const baseConfig = { ...PRETTIER_CONFIG };
-  
+
   switch (fileType) {
     case 'json':
       return {
@@ -103,7 +103,7 @@ function getConfigForFileType(fileType) {
         parser: 'json',
         trailingComma: 'none' // JSON 不支持尾随逗号
       };
-      
+
     case 'markdown':
       return {
         ...baseConfig,
@@ -111,7 +111,7 @@ function getConfigForFileType(fileType) {
         printWidth: 80,        // Markdown 建议较短的行长度
         proseWrap: 'preserve'  // 保持原有的换行
       };
-      
+
     case 'css':
     case 'scss':
       return {
@@ -119,21 +119,21 @@ function getConfigForFileType(fileType) {
         parser: fileType,
         singleQuote: false     // CSS 中通常使用双引号
       };
-      
+
     case 'typescript':
     case 'javascript':
       return {
         ...baseConfig,
         parser: fileType === 'typescript' ? 'typescript' : 'babel'
       };
-      
+
     case 'tsx':
     case 'jsx':
       return {
         ...baseConfig,
         parser: fileType === 'tsx' ? 'typescript' : 'babel-ts'
       };
-      
+
     default:
       return baseConfig;
   }
@@ -146,7 +146,7 @@ function getConfigForFileType(fileType) {
  */
 function generatePrettierRC(projectType = 'default') {
   let config = { ...PRETTIER_CONFIG };
-  
+
   // 根据项目类型调整配置
   if (projectType === 'react-vite') {
     config = {
@@ -163,7 +163,7 @@ function generatePrettierRC(projectType = 'default') {
       semi: true
     };
   }
-  
+
   return JSON.stringify(config, null, 2);
 }
 
@@ -200,7 +200,7 @@ function generatePrettierIgnore(projectType = 'default') {
     '.DS_Store',
     'Thumbs.db'
   ];
-  
+
   if (projectType === 'react-vite') {
     return [
       ...commonIgnores,
@@ -230,11 +230,11 @@ function generatePrettierIgnore(projectType = 'default') {
       '*.sqlite'
     ].join('\n');
   }
-  
+
   return commonIgnores.join('\n');
 }
 
-module.exports = {
+export {
   FORMAT_CONFIGS,
   PRETTIER_CONFIG,
   getConfigForFileType,

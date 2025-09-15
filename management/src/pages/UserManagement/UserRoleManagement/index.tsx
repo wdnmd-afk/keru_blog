@@ -225,7 +225,12 @@ const UserRoleManagement: React.FC = () => {
       <Card
         title="用户角色管理"
         style={{ height: "100%", display: "flex", flexDirection: "column" }}
-        bodyStyle={{ display: "flex", flexDirection: "column", flex: 1, minHeight: 0 }}
+        bodyStyle={{
+          display: "flex",
+          flexDirection: "column",
+          flex: 1,
+          minHeight: 0,
+        }}
       >
         {/* 搜索和操作区域 */}
         <Row gutter={16} style={{ marginBottom: "16px" }}>

@@ -1,9 +1,9 @@
-import { PrismaDB } from '@/db'
 import { ApiResponse } from '@/common'
+import { PrismaDB } from '@/db'
 import { generateUniqueBigIntId, getJwt } from '@/utils'
+import { Request, Response } from 'express'
 import { inject } from 'inversify'
 import { BaseHttpController, controller, httpPost } from 'inversify-express-utils'
-import { Request, Response } from 'express'
 
 /**
  * 公共反馈提交控制器（无需登录）
@@ -55,4 +55,3 @@ export class PublicFeedbackController extends BaseHttpController {
     }
   }
 }
-

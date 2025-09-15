@@ -103,25 +103,35 @@ function responseHandler(req: Request, res: Response, next: NextFunction): void 
 
 // 自定义的认证失败处理器
 const AuthenticationErrorHandler = (req: Request, res: Response, next: NextFunction) => {
+  const requestId = req.requestId
+
+  // 调试：打印实际的路径信息
+  console.log(
+    `[${requestId}] Request URL: ${req.url}, Path: ${req.path}, Original URL: ${req.originalUrl}`
+  )
+
+  // 先检查白名单，如果在白名单中直接跳过认证
+  if (isWhiteListPath(req.path)) {
+    console.log(`[${requestId}] Path ${req.path} is in whitelist, skipping authentication`)
+    return next()
+  }
+
+  // 不在白名单中，进行JWT认证
   passport.authenticate('jwt', { session: false }, (err, user) => {
-    const requestId = req.requestId
-
-    if (isWhiteListPath(req.path)) {
-      return next()
-    }
-
     if (err) {
       console.error(`[${requestId}] Authentication error:`, err.message)
       return next(err)
     }
 
     if (!user) {
+      console.log(`[${requestId}] Authentication failed for path ${req.path}: no user found`)
       const response = ApiResponse.error(401, 'Unauthorized！缺少token或者token无效！', requestId)
       return res.status(401).json(response.toJSON())
     }
 
     // 将用户信息添加到请求中
     req.user = user
+    console.log(`[${requestId}] Authentication successful for user:`, user.id)
     next()
   })(req, res, next)
 }

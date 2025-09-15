@@ -40,11 +40,19 @@ function createViteProxy(
 
     const proxyConfig = getProxyConfig(proxyType)
     const proxy: Record<string, ViteProxyConfig> = {
+        // API 代理
         [proxyConfig.prefix]: {
             target: proxyConfig.target,
             changeOrigin: true,
             // 将前端代理前缀替换为服务端全局前缀 /api，确保匹配后端 Inversify 的 rootPath
             rewrite: (path: string) => path.replace(new RegExp('^' + basePath), '/api'),
+        },
+        // 静态文件代理 - 用于图片等静态资源
+        '/static': {
+            target: proxyConfig.target,
+            changeOrigin: true,
+            // 静态文件路径不需要重写，直接转发
+            rewrite: (path: string) => path,
         },
     }
     return proxy

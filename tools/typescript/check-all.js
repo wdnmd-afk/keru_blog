@@ -3,26 +3,26 @@
 /**
  * 批量 TypeScript 检测脚本
  * 用于检测 keru_blog 项目中的所有子项目
- * 
+ *
  * 使用方法:
  * node tools/typescript/check-all.js [options]
- * 
+ *
  * 选项:
  * --parallel: 并行检测所有项目 (默认)
  * --sequential: 顺序检测所有项目
  * --summary-only: 仅显示汇总信息
  */
 
-const fs = require('fs');
-const path = require('path');
-const {
+import fs from 'fs';
+import path from 'path';
+import {
   PROJECT_CONFIGS,
   ensureDirectoryExists,
   checkProjectExists,
   runTypeScriptCheck,
   saveCheckResult,
   getTimestamp
-} = require('./utils');
+} from './utils.js';
 
 /**
  * 显示使用帮助
@@ -64,7 +64,7 @@ function showHelp() {
  */
 async function checkAllParallel(summaryOnly = false) {
   const projectKeys = Object.keys(PROJECT_CONFIGS);
-  
+
   if (!summaryOnly) {
     console.log(`🚀 开始并行检测 ${projectKeys.length} 个项目...`);
   }
@@ -105,7 +105,7 @@ async function checkAllParallel(summaryOnly = false) {
   });
 
   const results = await Promise.all(promises);
-  
+
   if (!summaryOnly) {
     console.log(`✅ 并行检测完成`);
   }
@@ -128,7 +128,7 @@ async function checkAllSequential(summaryOnly = false) {
 
   for (let i = 0; i < projectKeys.length; i++) {
     const projectKey = projectKeys[i];
-    
+
     if (!summaryOnly) {
       console.log(`\n📋 [${i + 1}/${projectKeys.length}] 检测 ${PROJECT_CONFIGS[projectKey].displayName}`);
       console.log('─'.repeat(40));
@@ -212,19 +212,19 @@ function generateSummaryReport(results) {
   mdContent += `**总耗时:** ${totalDuration}ms\n\n`;
 
   mdContent += `## 项目检测结果\n\n`;
-  
+
   results.forEach(result => {
     const status = result.success ? '✅ 通过' : '❌ 失败';
     const errorInfo = result.errors?.length ? ` (${result.errors.length} 个错误)` : '';
-    
+
     mdContent += `### ${result.projectName}\n`;
     mdContent += `- **状态:** ${status}${errorInfo}\n`;
     mdContent += `- **耗时:** ${result.duration || 0}ms\n`;
-    
+
     if (result.failed) {
       mdContent += `- **失败原因:** 检测过程异常\n`;
     }
-    
+
     mdContent += `- **详细报告:** [查看详情](../${result.projectKey}/error-summary.md)\n\n`;
   });
 
@@ -271,7 +271,7 @@ function displaySummary(summary) {
  */
 async function main() {
   const args = process.argv.slice(2);
-  
+
   // 检查是否请求帮助
   if (args.includes('--help') || args.includes('-h')) {
     showHelp();
@@ -285,16 +285,16 @@ async function main() {
   console.log(`🚀 keru_blog TypeScript 批量检测工具启动`);
   console.log(`📋 检测模式: ${mode}检测`);
   console.log(`⏰ 开始时间: ${new Date().toLocaleString('zh-CN')}`);
-  
+
   if (!summaryOnly) {
     console.log('─'.repeat(50));
   }
 
   try {
     const startTime = Date.now();
-    
+
     // 执行检测
-    const results = isSequential 
+    const results = isSequential
       ? await checkAllSequential(summaryOnly)
       : await checkAllParallel(summaryOnly);
 
@@ -332,7 +332,10 @@ process.on('unhandledRejection', (reason, promise) => {
   process.exit(1);
 });
 
-// 执行主函数
-if (require.main === module) {
+// 执行主函数 (ES 模块中检查是否为主模块的方式)
+import { fileURLToPath } from 'url';
+const __filename = fileURLToPath(import.meta.url);
+
+if (process.argv[1] === __filename) {
   main();
 }

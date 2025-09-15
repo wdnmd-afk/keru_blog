@@ -3,20 +3,20 @@
 /**
  * 单项目代码格式化脚本
  * 用于格式化 keru_blog 项目中的单个子项目
- * 
+ *
  * 使用方法:
  * node tools/format/format-single.js <project> [options]
- * 
+ *
  * 支持的项目:
  * - frontend: 格式化 frontEnd 项目
- * - management: 格式化 management 项目  
+ * - management: 格式化 management 项目
  * - server: 格式化 server 项目
  */
 
-const fs = require('fs');
-const path = require('path');
-const { execSync } = require('child_process');
-const { FORMAT_CONFIGS, generatePrettierRC, generatePrettierIgnore } = require('./prettier-config');
+import fs from 'fs';
+import path from 'path';
+import { execSync } from 'child_process';
+import { FORMAT_CONFIGS, generatePrettierRC, generatePrettierIgnore } from './prettier-config.js';
 
 /**
  * 显示使用帮助
@@ -104,14 +104,14 @@ function generateProjectConfig(projectKey) {
 function runFormatCheck(projectKey) {
   const config = FORMAT_CONFIGS[projectKey];
   const startTime = Date.now();
-  
+
   console.log(`🔍 检查 ${config.displayName} 的代码格式...`);
 
   try {
     // 构建检查命令
     const patterns = config.patterns.map(p => `"${p}"`).join(' ');
     const checkCommand = `${config.checkCommand} ${patterns}`;
-    
+
     console.log(`⚙️  执行命令: ${checkCommand}`);
 
     const output = execSync(checkCommand, {
@@ -164,14 +164,14 @@ function runFormatCheck(projectKey) {
 function runFormat(projectKey) {
   const config = FORMAT_CONFIGS[projectKey];
   const startTime = Date.now();
-  
+
   console.log(`🎨 格式化 ${config.displayName} 的代码...`);
 
   try {
     // 构建格式化命令
     const patterns = config.patterns.map(p => `"${p}"`).join(' ');
     const formatCommand = `${config.formatCommand} ${patterns}`;
-    
+
     console.log(`⚙️  执行命令: ${formatCommand}`);
 
     const output = execSync(formatCommand, {
@@ -221,12 +221,12 @@ function parseUnformattedFiles(output) {
 
   const files = [];
   const lines = output.split('\n');
-  
+
   for (const line of lines) {
     const trimmed = line.trim();
     // Prettier 通常会输出需要格式化的文件路径
-    if (trimmed && !trimmed.startsWith('[') && !trimmed.includes('error') && 
-        (trimmed.endsWith('.js') || trimmed.endsWith('.ts') || 
+    if (trimmed && !trimmed.startsWith('[') && !trimmed.includes('error') &&
+        (trimmed.endsWith('.js') || trimmed.endsWith('.ts') ||
          trimmed.endsWith('.jsx') || trimmed.endsWith('.tsx') ||
          trimmed.endsWith('.json') || trimmed.endsWith('.css') ||
          trimmed.endsWith('.scss') || trimmed.endsWith('.md'))) {
@@ -242,7 +242,7 @@ function parseUnformattedFiles(output) {
  */
 async function main() {
   const args = process.argv.slice(2);
-  
+
   // 检查是否请求帮助
   if (args.includes('--help') || args.includes('-h') || args.length === 0) {
     showHelp();
@@ -252,7 +252,7 @@ async function main() {
   const projectKey = args[0];
   const isCheckMode = args.includes('--check');
   const isConfigMode = args.includes('--config');
-  
+
   // 验证项目参数
   if (!FORMAT_CONFIGS[projectKey]) {
     console.error(`❌ 错误: 未知的项目 "${projectKey}"`);
@@ -283,9 +283,9 @@ async function main() {
     } else if (isCheckMode) {
       // 格式检查模式
       const result = runFormatCheck(projectKey);
-      
+
       console.log('─'.repeat(50));
-      
+
       if (result.success) {
         console.log(`🎉 格式检查通过: ${result.projectName} 代码格式正确`);
         console.log(`⏱️  总耗时: ${result.duration}ms`);
@@ -294,26 +294,26 @@ async function main() {
         console.log(`⚠️  格式检查失败: ${result.projectName} 发现格式问题`);
         console.log(`📁 需要格式化的文件数: ${result.filesChecked}`);
         console.log(`⏱️  总耗时: ${result.duration}ms`);
-        
+
         if (result.unformattedFiles && result.unformattedFiles.length > 0) {
           console.log('\n📋 需要格式化的文件 (前5个):');
           result.unformattedFiles.slice(0, 5).forEach((file, index) => {
             console.log(`  ${index + 1}. ${file}`);
           });
-          
+
           if (result.unformattedFiles.length > 5) {
             console.log(`     ... 还有 ${result.unformattedFiles.length - 5} 个文件`);
           }
         }
-        
+
         process.exit(1);
       }
     } else {
       // 代码格式化模式
       const result = runFormat(projectKey);
-      
+
       console.log('─'.repeat(50));
-      
+
       if (result.success) {
         console.log(`🎉 格式化完成: ${result.projectName} 代码已格式化`);
         console.log(`⏱️  总耗时: ${result.duration}ms`);
@@ -330,19 +330,19 @@ async function main() {
     console.error('─'.repeat(50));
     console.error(`💥 格式化过程中发生意外错误:`);
     console.error(`错误信息: ${error.message}`);
-    
+
     if (error.stack) {
       console.error(`错误堆栈:`);
       console.error(error.stack);
     }
-    
+
     console.error('─'.repeat(50));
     console.error(`🔧 故障排除建议:`);
     console.error(`1. 确保项目依赖已安装 (npm install)`);
     console.error(`2. 确保 Prettier 已安装`);
     console.error(`3. 检查项目路径是否正确`);
     console.error(`4. 尝试生成配置文件: --config`);
-    
+
     process.exit(1);
   }
 }
@@ -358,7 +358,10 @@ process.on('unhandledRejection', (reason, promise) => {
   process.exit(1);
 });
 
-// 执行主函数
-if (require.main === module) {
+// 执行主函数 (ES 模块中检查是否为主模块的方式)
+import { fileURLToPath } from 'url';
+const __filename = fileURLToPath(import.meta.url);
+
+if (process.argv[1] === __filename) {
   main();
 }

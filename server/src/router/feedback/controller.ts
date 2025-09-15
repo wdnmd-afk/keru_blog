@@ -1,7 +1,7 @@
+import { AuthMiddleware } from '@/middleware/auth'
 import { Request, Response } from 'express'
 import { inject } from 'inversify'
 import { BaseHttpController, controller, httpPost } from 'inversify-express-utils'
-import { AuthMiddleware } from '@/middleware/auth'
 import { FeedbackService, QueryParams } from './service'
 
 /**
@@ -48,4 +48,3 @@ export class FeedbackController extends BaseHttpController {
     }
   }
 }
-

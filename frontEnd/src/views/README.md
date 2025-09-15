@@ -30,41 +30,41 @@ src/views/
 
 ### 1. 模块化组织
 
--   每个功能模块独立成文件夹
--   相关组件放在同一模块下
--   便于维护和扩展
+- 每个功能模块独立成文件夹
+- 相关组件放在同一模块下
+- 便于维护和扩展
 
 ### 2. 命名规范
 
--   文件夹使用 PascalCase（如 `Files`、`Books`）
--   主入口文件统一命名为 `index.tsx`
--   子组件按功能命名（如 `Upload.tsx`、`FilePreview.tsx`）
+- 文件夹使用 PascalCase（如 `Files`、`Books`）
+- 主入口文件统一命名为 `index.tsx`
+- 子组件按功能命名（如 `Upload.tsx`、`FilePreview.tsx`）
 
 ### 3. 组件分类
 
--   **systemPages**: 系统级页面，如登录、首页、布局等
--   **功能模块**: 按业务功能划分，如 Files、Books、Technology
+- **systemPages**: 系统级页面，如登录、首页、布局等
+- **功能模块**: 按业务功能划分，如 Files、Books、Technology
 
 ## 📋 各模块说明
 
 ### Files 模块
 
--   **功能**: 文件上传、预览、管理
--   **主要组件**:
-    -   `index.tsx`: 主页面，包含Tab切换
-    -   `Upload.tsx`: 文件上传功能
-    -   `FilePreview.tsx`: 文件列表和预览
-    -   `FileViewerContainer.tsx`: 文件查看器
+- **功能**: 文件上传、预览、管理
+- **主要组件**:
+    - `index.tsx`: 主页面，包含Tab切换
+    - `Upload.tsx`: 文件上传功能
+    - `FilePreview.tsx`: 文件列表和预览
+    - `FileViewerContainer.tsx`: 文件查看器
 
 ### Books 模块
 
--   **功能**: 技术书籍推荐和展示
--   **特点**: 卡片式布局，支持搜索和分类筛选
+- **功能**: 技术书籍推荐和展示
+- **特点**: 卡片式布局，支持搜索和分类筛选
 
 ### Technology 模块
 
--   **功能**: 技术栈展示、项目经验、学习历程
--   **特点**: Tab页面，包含技能图表、项目展示、时间线
+- **功能**: 技术栈展示、项目经验、学习历程
+- **特点**: Tab页面，包含技能图表、项目展示、时间线
 
 ## 🔄 路由配置
 
@@ -85,9 +85,9 @@ const LazyComponents = {
 
 对应的样式文件位于 `src/styles/` 目录：
 
--   `books.module.scss`: Books模块样式
--   `technology.module.scss`: Technology模块样式
--   `files.module.scss`: Files模块样式（如需要）
+- `books.module.scss`: Books模块样式
+- `technology.module.scss`: Technology模块样式
+- `files.module.scss`: Files模块样式（如需要）
 
 ## 🚀 扩展指南
 

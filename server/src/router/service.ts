@@ -1,6 +1,6 @@
 export * from './base/service'
+export * from './feedback/service'
 export * from './file/service'
 export * from './rbac/service'
 export * from './todo/service'
 export * from './user/service'
-export * from './feedback/service'

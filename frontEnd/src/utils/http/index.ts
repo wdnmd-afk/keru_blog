@@ -1,5 +1,5 @@
-import { BrowserLocalStorage, MessageBox } from '@/utils'
-import { message } from 'antd'
+import { BrowserLocalStorage } from '@/utils'
+import { message, Modal } from 'antd'
 import axios, {
     AxiosError,
     AxiosInstance,
@@ -18,6 +18,8 @@ const config = {
     // 跨域时候允许携带凭证
     withCredentials: true,
 }
+// 防止401重复弹出对话框的标记（模块级）
+let __authModalOpen = false
 
 export interface CustomAxiosRequestConfig extends InternalAxiosRequestConfig {
     noLoading?: boolean
@@ -94,17 +96,38 @@ class RequestHttp {
                     return Promise.reject(error)
                 }
 
-                // token 过期，直接退出
-                switch (data.code) {
-                    case ResultEnum.UNAUTHORIZED:
-                        MessageBox.confirm({
-                            content: '登录过期,请重新登录',
-                            confirm: () => {
-                                BrowserLocalStorage.clear()
-                                window.location.href = '/login'
+                // 统一处理 401 未授权：弹出友好确认框，支持防重复
+                const isUnauthorized =
+                    response.status === 401 || data.code === ResultEnum.UNAUTHORIZED
+                console.log(isUnauthorized, 'is')
+                if (isUnauthorized) {
+                    if (!__authModalOpen) {
+                        __authModalOpen = true
+                        const modal = Modal.confirm({
+                            title: '登录已过期',
+                            content: '您的登录状态已过期，请重新登录以继续使用',
+                            okText: '重新登录',
+                            cancelText: '取消',
+                            centered: true,
+                            onOk: () => {
+                                try {
+                                    BrowserLocalStorage.clear()
+                                } finally {
+                                    __authModalOpen = false
+                                    window.location.href = '/login'
+                                }
+                            },
+                            onCancel: () => {
+                                __authModalOpen = false
+                                modal.destroy()
                             },
                         })
-                        return Promise.reject(data)
+                    }
+                    return Promise.reject(data)
+                }
+
+                // 其他错误码处理
+                switch (data.code) {
                     case ResultEnum.ERROR:
                         message.error(data.message)
                         break
@@ -150,6 +173,119 @@ class RequestHttp {
 
     download(url: string, params?: object, _object = {}): Promise<BlobPart> {
         return this.service.post(url, params, { ..._object, responseType: 'blob' })
+    }
+
+    /**
+     * 流式请求方法 - 用于 SSE 等需要流式处理的场景
+     * 注意：由于 axios 在浏览器环境中对流式响应的限制，
+     * 这个方法实际上是对原生 fetch 的封装，但保持了统一的错误处理
+     */
+    async stream(
+        url: string,
+        params?: object,
+        handlers: {
+            onChunk?: (text: string) => void
+            onDone?: () => void
+            onError?: (err: any) => void
+        } = {},
+        _object = {}
+    ): Promise<void> {
+        try {
+            // 获取用户token（复用请求拦截器的逻辑）
+            const userInfo = BrowserLocalStorage.get('userInfo')
+            const token = userInfo?.token || ''
+
+            // 构建完整URL
+            const fullUrl = `${this.service.defaults.baseURL}${url}`
+
+            // 发起流式请求
+            const response = await fetch(fullUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: token,
+                    'x-access-token': 'token',
+                    ..._object.headers,
+                },
+                body: JSON.stringify(params),
+                credentials: 'include',
+                ..._object,
+            })
+
+            // 统一的错误处理（复用响应拦截器逻辑）
+            if (!response.ok) {
+                // 401错误会被全局的401拦截器处理，这里不需要重复处理
+                const errorData = {
+                    code: response.status,
+                    message: `HTTP ${response.status}`,
+                    data: null,
+                }
+
+                // 触发与axios响应拦截器相同的错误处理逻辑
+                if (response.status === 401) {
+                    // 401错误处理已经在全局拦截器中统一处理
+                    console.log(
+                        '[Stream] 401 error detected, will be handled by global interceptor'
+                    )
+                }
+
+                const error = new Error(errorData.message)
+                error.response = { status: response.status, data: errorData }
+                handlers.onError?.(error)
+                throw error
+            }
+
+            if (!response.body) {
+                const error = new Error('Response body is null')
+                handlers.onError?.(error)
+                throw error
+            }
+
+            // 流式读取响应
+            const reader = response.body.getReader()
+            const decoder = new TextDecoder('utf-8')
+            let buffer = ''
+
+            try {
+                while (true) {
+                    const { value, done } = await reader.read()
+                    if (done) break
+
+                    buffer += decoder.decode(value, { stream: true })
+
+                    // SSE 解析逻辑
+                    let idx: number
+                    while ((idx = buffer.indexOf('\n\n')) >= 0) {
+                        const chunk = buffer.slice(0, idx)
+                        buffer = buffer.slice(idx + 2)
+                        const lines = chunk.split('\n')
+
+                        for (const line of lines) {
+                            if (line.startsWith('data: ')) {
+                                const dataStr = line.slice(6)
+                                try {
+                                    const obj = JSON.parse(dataStr)
+                                    if (obj.type === 'chunk') handlers.onChunk?.(obj.data || '')
+                                    if (obj.type === 'done') handlers.onDone?.()
+                                    if (obj.type === 'error')
+                                        handlers.onError?.(new Error(obj.message || 'stream error'))
+                                } catch {
+                                    // data 非 JSON 时，降级按纯文本追加
+                                    handlers.onChunk?.(dataStr)
+                                }
+                            }
+                        }
+                    }
+                }
+
+                handlers.onDone?.()
+            } finally {
+                reader.releaseLock()
+            }
+        } catch (error) {
+            handlers.onError?.(error)
+            throw error
+        }
     }
 }
 

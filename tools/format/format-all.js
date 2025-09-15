@@ -3,10 +3,10 @@
 /**
  * 批量代码格式化脚本
  * 用于格式化 keru_blog 项目中的所有子项目
- * 
+ *
  * 使用方法:
  * node tools/format/format-all.js [options]
- * 
+ *
  * 选项:
  * --check: 仅检查格式，不进行修改
  * --config: 为所有项目生成/更新 Prettier 配置文件
@@ -14,10 +14,10 @@
  * --sequential: 顺序格式化所有项目
  */
 
-const fs = require('fs');
-const path = require('path');
-const { execSync } = require('child_process');
-const { FORMAT_CONFIGS, generatePrettierRC, generatePrettierIgnore } = require('./prettier-config');
+import fs from 'fs';
+import path from 'path';
+import { execSync } from 'child_process';
+import { FORMAT_CONFIGS, generatePrettierRC, generatePrettierIgnore } from './prettier-config.js';
 
 /**
  * 显示使用帮助
@@ -74,7 +74,7 @@ function checkProjectExists(projectKey) {
  */
 function generateAllConfigs() {
   const projectKeys = Object.keys(FORMAT_CONFIGS);
-  
+
   console.log(`📝 为 ${projectKeys.length} 个项目生成 Prettier 配置文件...`);
   console.log('─'.repeat(50));
 
@@ -126,11 +126,11 @@ function generateAllConfigs() {
 function runSingleFormatCheck(projectKey) {
   const config = FORMAT_CONFIGS[projectKey];
   const startTime = Date.now();
-  
+
   try {
     const patterns = config.patterns.map(p => `"${p}"`).join(' ');
     const checkCommand = `${config.checkCommand} ${patterns}`;
-    
+
     const output = execSync(checkCommand, {
       encoding: 'utf8',
       stdio: 'pipe',
@@ -175,11 +175,11 @@ function runSingleFormatCheck(projectKey) {
 function runSingleFormat(projectKey) {
   const config = FORMAT_CONFIGS[projectKey];
   const startTime = Date.now();
-  
+
   try {
     const patterns = config.patterns.map(p => `"${p}"`).join(' ');
     const formatCommand = `${config.formatCommand} ${patterns}`;
-    
+
     const output = execSync(formatCommand, {
       encoding: 'utf8',
       stdio: 'pipe',
@@ -218,7 +218,7 @@ function runSingleFormat(projectKey) {
  */
 async function checkAllParallel() {
   const projectKeys = Object.keys(FORMAT_CONFIGS).filter(checkProjectExists);
-  
+
   console.log(`🚀 开始并行检查 ${projectKeys.length} 个项目的代码格式...`);
 
   const promises = projectKeys.map(async (projectKey) => {
@@ -238,7 +238,7 @@ async function checkAllParallel() {
 
   const results = await Promise.all(promises);
   console.log(`✅ 并行检查完成`);
-  
+
   return results;
 }
 
@@ -248,7 +248,7 @@ async function checkAllParallel() {
  */
 async function formatAllParallel() {
   const projectKeys = Object.keys(FORMAT_CONFIGS).filter(checkProjectExists);
-  
+
   console.log(`🚀 开始并行格式化 ${projectKeys.length} 个项目...`);
 
   const promises = projectKeys.map(async (projectKey) => {
@@ -268,7 +268,7 @@ async function formatAllParallel() {
 
   const results = await Promise.all(promises);
   console.log(`✅ 并行格式化完成`);
-  
+
   return results;
 }
 
@@ -284,7 +284,7 @@ async function checkAllSequential() {
 
   for (let i = 0; i < projectKeys.length; i++) {
     const projectKey = projectKeys[i];
-    
+
     console.log(`\n📋 [${i + 1}/${projectKeys.length}] 检查 ${FORMAT_CONFIGS[projectKey].displayName}`);
     console.log('─'.repeat(40));
 
@@ -332,7 +332,7 @@ async function formatAllSequential() {
 
   for (let i = 0; i < projectKeys.length; i++) {
     const projectKey = projectKeys[i];
-    
+
     console.log(`\n📋 [${i + 1}/${projectKeys.length}] 格式化 ${FORMAT_CONFIGS[projectKey].displayName}`);
     console.log('─'.repeat(40));
 
@@ -378,11 +378,11 @@ function parseUnformattedFiles(output) {
 
   const files = [];
   const lines = output.split('\n');
-  
+
   for (const line of lines) {
     const trimmed = line.trim();
-    if (trimmed && !trimmed.startsWith('[') && !trimmed.includes('error') && 
-        (trimmed.endsWith('.js') || trimmed.endsWith('.ts') || 
+    if (trimmed && !trimmed.startsWith('[') && !trimmed.includes('error') &&
+        (trimmed.endsWith('.js') || trimmed.endsWith('.ts') ||
          trimmed.endsWith('.jsx') || trimmed.endsWith('.tsx') ||
          trimmed.endsWith('.json') || trimmed.endsWith('.css') ||
          trimmed.endsWith('.scss') || trimmed.endsWith('.md'))) {
@@ -417,8 +417,8 @@ function displaySummary(results, mode) {
   // 显示各项目状态
   results.forEach(result => {
     const status = result.success ? '✅' : '❌';
-    const info = result.success ? '' : 
-      (result.failed ? ' (执行失败)' : 
+    const info = result.success ? '' :
+      (result.failed ? ' (执行失败)' :
        (result.filesChecked ? ` (${result.filesChecked} 文件)` : ' (格式化失败)'));
     console.log(`${status} ${result.projectName}: ${result.duration}ms${info}`);
   });
@@ -431,7 +431,7 @@ function displaySummary(results, mode) {
  */
 async function main() {
   const args = process.argv.slice(2);
-  
+
   // 检查是否请求帮助
   if (args.includes('--help') || args.includes('-h')) {
     showHelp();
@@ -441,8 +441,8 @@ async function main() {
   const isCheckMode = args.includes('--check');
   const isConfigMode = args.includes('--config');
   const isSequential = args.includes('--sequential');
-  
-  const mode = isConfigMode ? '配置生成' : 
+
+  const mode = isConfigMode ? '配置生成' :
                isCheckMode ? '格式检查' : '代码格式化';
   const execution = isSequential ? '顺序' : '并行';
 
@@ -463,7 +463,7 @@ async function main() {
       process.exit(0);
     } else if (isCheckMode) {
       // 格式检查模式
-      const results = isSequential 
+      const results = isSequential
         ? await checkAllSequential()
         : await checkAllParallel();
 
@@ -476,7 +476,7 @@ async function main() {
       process.exit(hasFormatIssues ? 1 : 0);
     } else {
       // 代码格式化模式
-      const results = isSequential 
+      const results = isSequential
         ? await formatAllSequential()
         : await formatAllParallel();
 
@@ -509,7 +509,11 @@ process.on('unhandledRejection', (reason, promise) => {
   process.exit(1);
 });
 
-// 执行主函数
-if (require.main === module) {
+// 执行主函数 (ES 模块中检查是否为主模块的方式)
+import { fileURLToPath } from 'url';
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+if (process.argv[1] === __filename) {
   main();
 }

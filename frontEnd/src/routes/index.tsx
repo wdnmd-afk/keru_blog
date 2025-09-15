@@ -36,7 +36,6 @@ const LazyComponents = {
     NotFound: lazy(() => import('@/views/systemPages/NotFound.tsx')), // 404错误页面
     Login: lazy(() => import('@/views/systemPages/Login.tsx')), // 登录/注册页面
 
-
     // ==================== 功能模块 ====================
     Technology: lazy(() => import('@/views/Technology/index.tsx')), // 技术栈展示模块 - 技能、项目展示
     Learning: lazy(() => import('@/views/Learning/index.tsx')), // 学习模块 - 学习历程和学习计划管理

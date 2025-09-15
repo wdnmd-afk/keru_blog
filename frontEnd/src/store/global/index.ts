@@ -233,8 +233,8 @@ const useGlobalStore = create<GlobalStore>((set, get) => ({
                 feedback.type === 'SUGGESTION'
                     ? 'SUGGESTION'
                     : feedback.type === 'BUG_REPORT'
-                    ? 'BUG'
-                    : 'OTHER'
+                      ? 'BUG'
+                      : 'OTHER'
 
             // 将标题并入内容，方便后端统一字段存储
             const content = feedback.title

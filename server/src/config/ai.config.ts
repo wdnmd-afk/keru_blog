@@ -8,14 +8,17 @@ export interface AIConfig {
   apiKey: string
   baseURL: string
   model: string
+  visionModel: string // 新增：视觉模型配置
   timeoutMs: number
 }
 
 // 创建 AI 配置（从环境变量读取，避免硬编码）
 export function createAIConfig(): AIConfig {
   const apiKey = process.env.DEEPSEEK_API_KEY || process.env.AI_API_KEY || ''
-  const baseURL = process.env.DEEPSEEK_BASE_URL || process.env.AI_BASE_URL || 'https://api.deepseek.com'
+  const baseURL =
+    process.env.DEEPSEEK_BASE_URL || process.env.AI_BASE_URL || 'https://api.deepseek.com'
   const model = process.env.DEEPSEEK_MODEL || process.env.AI_MODEL || 'deepseek-chat'
+  const visionModel = process.env.DEEPSEEK_VISION_MODEL || 'deepseek-reasoner' // 新增：视觉模型配置
   const timeoutMs = parseInt(process.env.AI_TIMEOUT_MS || '60000', 10)
 
   if (!apiKey) {
@@ -27,7 +30,7 @@ export function createAIConfig(): AIConfig {
     apiKey,
     baseURL,
     model,
+    visionModel, // 新增：视觉模型
     timeoutMs,
   }
 }
-

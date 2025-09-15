@@ -18,18 +18,27 @@
         transition: opacity 0.2s ease;
         opacity: 0.85;
 
-        &:hover { opacity: 1; }
+        &:hover {
+            opacity: 1;
+        }
     }
 
     // 容器展开（.open）时隐藏触发线，避免重叠显示
-    .floating_actions.open + .edge_trigger { display: none; }
+    .floating_actions.open + .edge_trigger {
+        display: none;
+    }
 
     @media (max-width: 768px) {
         bottom: 20px;
         right: 20px;
 
-        .floating_actions { padding: 6px; border-radius: 25px; }
-        .edge_trigger { right: -20px; }
+        .floating_actions {
+            padding: 6px;
+            border-radius: 25px;
+        }
+        .edge_trigger {
+            right: -20px;
+        }
     }
 }
 
@@ -58,8 +67,12 @@
 
 // 移动端隐藏距离与打开状态覆盖
 @media (max-width: 768px) {
-    .floating_actions { transform: translateX(calc(100% + 32px)); }
-    .floating_actions.open { transform: translateX(0); }
+    .floating_actions {
+        transform: translateX(calc(100% + 32px));
+    }
+    .floating_actions.open {
+        transform: translateX(0);
+    }
 }
 
 .action_button {

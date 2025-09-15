@@ -94,7 +94,12 @@ const FloatingActions: React.FC = () => {
         }
         hideTimerRef.current = setTimeout(() => setIsOpen(false), 3000)
     }
-    useEffect(() => () => { if (hideTimerRef.current) clearTimeout(hideTimerRef.current) }, [])
+    useEffect(
+        () => () => {
+            if (hideTimerRef.current) clearTimeout(hideTimerRef.current)
+        },
+        []
+    )
 
     return (
         <>

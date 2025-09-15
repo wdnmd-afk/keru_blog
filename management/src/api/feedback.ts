@@ -26,7 +26,7 @@ export interface QueryFeedbackRequest {
   status?: FeedbackStatus;
   category?: FeedbackCategory;
   startTime?: string; // ISO 时间字符串
-  endTime?: string;   // ISO 时间字符串
+  endTime?: string; // ISO 时间字符串
   page?: number;
   pageSize?: number;
   keyword?: string; // 内容关键词
@@ -41,11 +41,11 @@ export interface QueryFeedbackRequest {
 export class FeedbackApi {
   // 分页查询
   static async queryFeedbacks(
-    params?: QueryFeedbackRequest
+    params?: QueryFeedbackRequest,
   ): Promise<PaginatedResponse<Feedback>> {
     const res = await ManagementApi.post<PaginatedResponse<Feedback>>(
       "/feedback/query",
-      params || {}
+      params || {},
     );
     return res.data;
   }
@@ -58,4 +58,3 @@ export class FeedbackApi {
 }
 
 export default FeedbackApi;
-

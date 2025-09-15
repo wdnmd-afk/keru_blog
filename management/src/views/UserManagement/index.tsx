@@ -193,7 +193,15 @@ const UserManagement: React.FC = () => {
         <Text type="secondary">管理系统用户和权限</Text>
       </div>
 
-      <Card style={{ height: "100%", display: "flex", flexDirection: "column" }} bodyStyle={{ display: "flex", flexDirection: "column", flex: 1, minHeight: 0 }}>
+      <Card
+        style={{ height: "100%", display: "flex", flexDirection: "column" }}
+        bodyStyle={{
+          display: "flex",
+          flexDirection: "column",
+          flex: 1,
+          minHeight: 0,
+        }}
+      >
         {/* 操作栏 */}
         <div className="mb-4 flex justify-between items-center">
           <Space>

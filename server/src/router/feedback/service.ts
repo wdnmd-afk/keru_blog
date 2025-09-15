@@ -49,10 +49,7 @@ export class FeedbackService {
 
     if (user) {
       // MySQL 默认按列排序规则进行匹配，常见 ci（不区分大小写）排序规则下可直接使用 contains
-      where.OR = [
-        { userName: { contains: user } },
-        { userEmail: { contains: user } },
-      ]
+      where.OR = [{ userName: { contains: user } }, { userEmail: { contains: user } }]
     }
     if (status) where.status = status
     if (category) where.category = category
@@ -93,4 +90,3 @@ export class FeedbackService {
     return data
   }
 }
-

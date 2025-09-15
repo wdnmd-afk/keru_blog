@@ -78,6 +78,14 @@ function setupMiddleware(app: express.Application, config: AppConfig, container:
   // 请求ID中间件（必须在所有其他中间件之前）
   app.use(requestIdMiddleware)
 
+  // 临时调试中间件：打印所有请求的路径信息
+  app.use((req, res, next) => {
+    console.log(
+      `[DEBUG] ${req.method} ${req.originalUrl} | path: ${req.path} | baseUrl: ${req.baseUrl}`
+    )
+    next()
+  })
+
   // 基础中间件 - 添加中文编码支持
   app.use(express.json({ limit: '50mb' }))
   app.use(

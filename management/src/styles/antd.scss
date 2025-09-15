@@ -1,66 +1,74 @@
 // KTable组件样式 - 从frontend项目复制
 .even-row {
-    background-color: #f9f9f9; /* 偶数行的背景色 */
+  background-color: #f9f9f9; /* 偶数行的背景色 */
 }
 
 .odd-row {
-    background-color: #fff; /* 奇数行的背景色 */
+  background-color: #fff; /* 奇数行的背景色 */
 }
 
 .ant-btn-default {
-    span {
-        color: #333;
-    }
+  span {
+    color: #333;
+  }
 }
 
 .KT_Box {
-    font-size: 18px;
-    .ant-table-wrapper {
-        height: 100%;
-    }
-    .ant-table-container {
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-    }
-    .ant-spin-nested-loading {
-        height: 100%;
-    }
-    .ant-spin-container {
-        height: 100%;
-    }
-    .ant-table {
-        scrollbar-color: auto !important;
-        height: 100%;
+  font-size: 18px;
+  .ant-table-wrapper {
+    height: 100%;
+  }
+  .ant-table-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  .ant-spin-nested-loading {
+    height: 100%;
+  }
+  .ant-spin-container {
+    height: 100%;
+  }
+  .ant-table {
+    scrollbar-color: auto !important;
+    height: 100%;
 
-        .ant-table-cell {
-            &::before {
-                display: none;
-            }
-        }
-        .ant-table-body {
-            scrollbar-width: auto;
-            scrollbar-color: auto;
-            flex: 1;
-            background-color: #fff;
-
-            // 自定义滚动条
-            &::-webkit-scrollbar {
-                width: 10px; // 设置滚动条宽度
-                height: 10px;
-            }
-
-            &::-webkit-scrollbar-thumb {
-                background: linear-gradient(to bottom, #6884ba, #3f5c99); /* 设置渐变色 */
-                border-radius: 10px; /* 滚动条的圆角 */
-            }
-            &::-webkit-scrollbar-thumb:hover {
-                background: linear-gradient(to bottom, #3f5c89, #6884ba); /* 鼠标悬停时渐变色 */
-            }
-            &::-webkit-scrollbar-track {
-                background: #f0f0f0; /* 滚动条轨道的颜色 */
-                border-radius: 10px;
-            }
-        }
+    .ant-table-cell {
+      &::before {
+        display: none;
+      }
     }
+    .ant-table-body {
+      scrollbar-width: auto;
+      scrollbar-color: auto;
+      flex: 1;
+      background-color: #fff;
+
+      // 自定义滚动条
+      &::-webkit-scrollbar {
+        width: 10px; // 设置滚动条宽度
+        height: 10px;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background: linear-gradient(
+          to bottom,
+          #6884ba,
+          #3f5c99
+        ); /* 设置渐变色 */
+        border-radius: 10px; /* 滚动条的圆角 */
+      }
+      &::-webkit-scrollbar-thumb:hover {
+        background: linear-gradient(
+          to bottom,
+          #3f5c89,
+          #6884ba
+        ); /* 鼠标悬停时渐变色 */
+      }
+      &::-webkit-scrollbar-track {
+        background: #f0f0f0; /* 滚动条轨道的颜色 */
+        border-radius: 10px;
+      }
+    }
+  }
 }

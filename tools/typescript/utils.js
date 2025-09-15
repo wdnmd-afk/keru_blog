@@ -3,9 +3,9 @@
  * 用于支持 keru_blog 项目的 TypeScript 类型检测
  */
 
-const fs = require('fs');
-const path = require('path');
-const { execSync } = require('child_process');
+import fs from 'fs';
+import path from 'path';
+import { execSync } from 'child_process';
 
 /**
  * 项目配置信息
@@ -112,7 +112,7 @@ function checkProjectExists(projectKey) {
 function runTypeScriptCheck(projectKey) {
   const config = PROJECT_CONFIGS[projectKey];
   const startTime = Date.now();
-  
+
   console.log(`🔍 开始检测 ${config.displayName}...`);
   console.log(`📁 项目路径: ${config.path}`);
   console.log(`⚙️  执行命令: ${config.checkCommand}`);
@@ -174,16 +174,16 @@ function parseTypeScriptErrors(output) {
 
   const errors = [];
   const lines = output.split('\n');
-  
+
   for (let i = 0; i < lines.length; i++) {
     const line = lines[i].trim();
-    
+
     // 匹配 TypeScript 错误格式: file(line,col): error TS####: message
     const errorMatch = line.match(/^(.+?)\((\d+),(\d+)\):\s*(error|warning)\s*(TS\d+):\s*(.+)$/);
-    
+
     if (errorMatch) {
       const [, file, line, column, severity, code, message] = errorMatch;
-      
+
       errors.push({
         file: file.replace(/\\/g, '/'), // 统一使用正斜杠
         line: parseInt(line),
@@ -206,7 +206,7 @@ function parseTypeScriptErrors(output) {
 function saveCheckResult(result) {
   const config = PROJECT_CONFIGS[result.projectKey];
   const outputDir = config.errorOutputDir;
-  
+
   // 确保输出目录存在
   ensureDirectoryExists(outputDir);
 
@@ -225,7 +225,7 @@ function saveCheckResult(result) {
   // 保存可读的 Markdown 报告
   const mdReportPath = path.join(outputDir, 'error-summary.md');
   const mdContent = generateMarkdownReport(result);
-  
+
   fs.writeFileSync(mdReportPath, mdContent, 'utf8');
   console.log(`📋 摘要报告已保存: ${mdReportPath}`);
 
@@ -244,7 +244,7 @@ function saveCheckResult(result) {
  */
 function generateMarkdownReport(result) {
   const config = PROJECT_CONFIGS[result.projectKey];
-  
+
   let content = `# ${result.projectName} TypeScript 检测报告\n\n`;
   content += `**检测时间:** ${result.timestamp}\n`;
   content += `**项目路径:** ${config.path}\n`;
@@ -270,10 +270,10 @@ function generateMarkdownReport(result) {
     content += `**涉及文件数:** ${Object.keys(errorsByFile).length}\n\n`;
 
     content += `## 错误详情\n\n`;
-    
+
     Object.entries(errorsByFile).forEach(([file, errors]) => {
       content += `### 📁 ${file}\n\n`;
-      
+
       errors.forEach((error, index) => {
         content += `**错误 ${index + 1}:**\n`;
         content += `- **位置:** 第 ${error.line} 行，第 ${error.column} 列\n`;
@@ -291,7 +291,7 @@ function generateMarkdownReport(result) {
   return content;
 }
 
-module.exports = {
+export {
   PROJECT_CONFIGS,
   ensureDirectoryExists,
   getTimestamp,

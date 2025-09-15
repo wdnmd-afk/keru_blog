@@ -85,7 +85,8 @@ const FeedbackManagement: React.FC = () => {
         key: "title",
         minWidth: 240,
         ellipsis: true,
-        sorter: (a: any, b: any) => (a.title || '').localeCompare(b.title || ''),
+        sorter: (a: any, b: any) =>
+          (a.title || "").localeCompare(b.title || ""),
       },
       {
         title: "反馈内容",
@@ -96,8 +97,11 @@ const FeedbackManagement: React.FC = () => {
         render: (value: string, record: Feedback) => {
           // 去除可能的标题前缀：形如 【title】\n 正文
           const textRaw = value || "-";
-          const prefix = record.title ? `【${record.title}】\n` : '';
-          const pure = prefix && textRaw.startsWith(prefix) ? textRaw.slice(prefix.length) : textRaw;
+          const prefix = record.title ? `【${record.title}】\n` : "";
+          const pure =
+            prefix && textRaw.startsWith(prefix)
+              ? textRaw.slice(prefix.length)
+              : textRaw;
           const short = pure.length > 60 ? pure.slice(0, 60) + "..." : pure;
           return (
             <Space>
@@ -147,7 +151,11 @@ const FeedbackManagement: React.FC = () => {
             OTHER: "其他",
           };
           return (
-            <Tag color={v === "BUG" ? "red" : v === "SUGGESTION" ? "blue" : "default"}>
+            <Tag
+              color={
+                v === "BUG" ? "red" : v === "SUGGESTION" ? "blue" : "default"
+              }
+            >
               {map[v]}
             </Tag>
           );
@@ -164,7 +172,8 @@ const FeedbackManagement: React.FC = () => {
             VIEWED: "已查看",
             RESOLVED: "已处理",
           };
-          const color = v === "PENDING" ? "gold" : v === "VIEWED" ? "blue" : "green";
+          const color =
+            v === "PENDING" ? "gold" : v === "VIEWED" ? "blue" : "green";
           return <Tag color={color}>{map[v]}</Tag>;
         },
       },
@@ -173,7 +182,8 @@ const FeedbackManagement: React.FC = () => {
         dataIndex: "createdAt",
         key: "createdAt",
         width: 200,
-        sorter: (a: any, b: any) => new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime(),
+        sorter: (a: any, b: any) =>
+          new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime(),
         defaultSortOrder: "descend",
         render: (v: string | number) => formatDateTime(v),
       },
@@ -182,7 +192,8 @@ const FeedbackManagement: React.FC = () => {
         dataIndex: "updatedAt",
         key: "updatedAt",
         width: 200,
-        sorter: (a: any, b: any) => new Date(a.updatedAt).getTime() - new Date(b.updatedAt).getTime(),
+        sorter: (a: any, b: any) =>
+          new Date(a.updatedAt).getTime() - new Date(b.updatedAt).getTime(),
         render: (v: string | number) => formatDateTime(v),
       },
     ],

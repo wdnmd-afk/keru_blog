@@ -964,23 +964,52 @@ const KTable = require$$0.forwardRef(
     const [selectedRowKeys, setSelectedRowKeys] = useState([]);
     const defaultColumns = columns == null ? void 0 : columns.map((item, index) => {
       const {
-        width = 100,
+        width,
         key,
         align = "center",
         ellipsis = { showTitle: true },
         dataIndex = key
       } = item;
       const columnKey = key || dataIndex || `column-${index}`;
+      const widthPatch = typeof width !== "undefined" ? { width } : {};
       return {
         ...item,
         key: columnKey,
-        width,
+        ...widthPatch,
         align,
         ellipsis,
         dataIndex
       };
     });
     const tableRef = useRef(null);
+    const boxRef = useRef(null);
+    const [scrollY, setScrollY] = useState();
+    const computeScrollY = () => {
+      const box = boxRef.current;
+      if (!box)
+        return;
+      const total2 = box.clientHeight;
+      const tableWrap = box.querySelector(
+        ".ant-table-wrapper"
+      );
+      const thead = tableWrap == null ? void 0 : tableWrap.querySelector(
+        ".ant-table-thead"
+      );
+      const pagination = box.querySelector(".ant-table-pagination") || box.querySelector(".ant-pagination");
+      const headerH = (thead == null ? void 0 : thead.offsetHeight) || 0;
+      const pagerH = (pagination == null ? void 0 : pagination.offsetHeight) || 0;
+      const safePadding = 24;
+      const y = Math.max(120, total2 - headerH - pagerH - safePadding);
+      setScrollY(y);
+    };
+    useEffect(() => {
+      if (!boxRef.current)
+        return;
+      const ro = new ResizeObserver(() => computeScrollY());
+      ro.observe(boxRef.current);
+      computeScrollY();
+      return () => ro.disconnect();
+    }, [pageSize, dataSource]);
     const handlePaginationChange = (page, size2) => {
       setCurrentPage(page);
       fetchData == null ? void 0 : fetchData(page, size2 || pageSize);
@@ -1023,26 +1052,35 @@ const KTable = require$$0.forwardRef(
         fetchData(1, pageSize);
       }
     }, [fetchData, pageSize]);
-    return /* @__PURE__ */ jsxRuntimeExports.jsx("div", { className: "KT_Box", ref, children: /* @__PURE__ */ jsxRuntimeExports.jsx(
-      Table,
+    return /* @__PURE__ */ jsxRuntimeExports.jsx(
+      "div",
       {
-        ref: tableRef,
-        ...props,
-        columns: defaultColumns,
-        dataSource,
-        rowKey,
-        bordered,
-        size,
-        pagination: paginationConfig,
-        rowSelection,
-        onChange: handleTableChange,
-        onRow: (record) => ({
-          onClick: () => handleRowClick(record)
-        }),
-        rowClassName: getRowClassName,
-        scroll: { x: "max-content", y: "calc(100vh - 300px)" }
+        className: "KT_Box",
+        ref: boxRef,
+        style: { height: "100%", display: "flex", flexDirection: "column" },
+        children: /* @__PURE__ */ jsxRuntimeExports.jsx(
+          Table,
+          {
+            ref: tableRef,
+            ...props,
+            columns: defaultColumns,
+            dataSource,
+            rowKey,
+            bordered,
+            size,
+            tableLayout: props.tableLayout ?? "auto",
+            pagination: paginationConfig,
+            rowSelection,
+            onChange: handleTableChange,
+            onRow: (record) => ({
+              onClick: () => handleRowClick(record)
+            }),
+            rowClassName: getRowClassName,
+            scroll: { x: "max-content", y: scrollY ?? "calc(100vh - 300px)" }
+          }
+        )
       }
-    ) });
+    );
   }
 );
 const MemoizedKTable = require$$0.memo(

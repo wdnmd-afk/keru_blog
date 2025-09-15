@@ -6,19 +6,26 @@ import { Container } from 'inversify'
 
 // 导入控制器
 import {
+  AIController,
   BaseController,
+  FeedbackController,
   FileController,
+  PublicFeedbackController,
   RbacController,
   TodoController,
   User,
-  FeedbackController,
-  PublicFeedbackController,
-  AIController,
 } from '@/router/controller'
 
 // 导入服务
-import { BaseService, FileService, RbacService, TodoService, UserService, FeedbackService } from '@/router/service'
 import { AIService } from '@/router/ai/service'
+import {
+  BaseService,
+  FeedbackService,
+  FileService,
+  RbacService,
+  TodoService,
+  UserService,
+} from '@/router/service'
 
 // 导入中间件
 import { AuthMiddleware } from '@/middleware/auth'
