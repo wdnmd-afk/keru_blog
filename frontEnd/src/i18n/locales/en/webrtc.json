@@ -1,0 +1,102 @@
+{
+    "page": {
+        "title": "WebRTC Real-time Communication",
+        "description": "Real-time video communication solution based on WebRTC technology, supporting low-latency video transmission from React Native to Web"
+    },
+    "tabs": {
+        "tech_introduction": "Tech Introduction",
+        "live_streaming": "Live Streaming"
+    },
+    "tech": {
+        "overview": {
+            "title": "Technical Overview",
+            "description": "WebRTC (Web Real-Time Communication) is an API that supports real-time voice or video conversations in web browsers. This project implements a complete solution for real-time video transmission from React Native Android applications to React Web, with data relay and signaling management through Nest.js and Express.js backend services."
+        },
+        "features": {
+            "title": "Core Features",
+            "video": {
+                "title": "High-Quality Video Transmission",
+                "description": "Supports multiple video encoding formats with adaptive bitrate control to ensure optimal video quality in different network environments"
+            },
+            "audio": {
+                "title": "Clear Audio Communication",
+                "description": "Integrates audio processing technologies such as echo cancellation and noise suppression to provide high-quality audio communication experience"
+            },
+            "p2p": {
+                "title": "Peer-to-Peer Connection",
+                "description": "Implements NAT traversal through ICE protocol to establish direct peer-to-peer connections, reducing latency and server load"
+            },
+            "security": {
+                "title": "Secure Encrypted Transmission",
+                "description": "Uses DTLS and SRTP protocols to ensure end-to-end encrypted transmission of audio and video data"
+            },
+            "realtime": {
+                "title": "Ultra-Low Latency",
+                "description": "Optimized transmission protocols and network adaptation algorithms achieve ultra-low latency communication under 200ms"
+            },
+            "multiuser": {
+                "title": "Multi-User Support",
+                "description": "Supports SFU and MCU architectures, scalable to multi-party video conferencing scenarios"
+            }
+        },
+        "timeline": {
+            "title": "Implementation Process",
+            "step1": {
+                "title": "Media Capture and Encoding",
+                "description": "React Native captures video streams using camera and performs real-time encoding through WebRTC"
+            },
+            "step2": {
+                "title": "Signaling Exchange",
+                "description": "Exchange SDP descriptions and ICE candidates through Nest.js signaling server to establish connection negotiation"
+            },
+            "step3": {
+                "title": "P2P Connection Establishment",
+                "description": "Use STUN/TURN servers for NAT traversal to establish direct peer-to-peer connections"
+            },
+            "step4": {
+                "title": "Real-time Stream Transmission",
+                "description": "Web receives and decodes video streams to achieve low-latency real-time video playback"
+            }
+        },
+        "architecture": {
+            "title": "System Architecture",
+            "description": "Adopts distributed architecture design where React Native handles video capture, Nest.js processes signaling services, Express.js provides relay services, Redis implements message publish-subscribe, and finally achieves video playback on React Web."
+        }
+    },
+    "streaming": {
+        "connection": {
+            "title": "Connection Control",
+            "connect": "Start Connection",
+            "disconnect": "Disconnect",
+            "state": "Connection State",
+            "status": {
+                "disconnected": "Disconnected",
+                "connecting": "Connecting...",
+                "connected": "Connected",
+                "failed": "Connection Failed"
+            }
+        },
+        "video": {
+            "waiting": "Waiting for Video Stream",
+            "waiting_description": "Please ensure the mobile app is started and streaming"
+        },
+        "controls": {
+            "play": "Play",
+            "pause": "Pause"
+        },
+        "stats": {
+            "title": "Connection Statistics",
+            "latency": "Latency",
+            "bitrate": "Bitrate",
+            "fps": "FPS",
+            "resolution": "Resolution",
+            "duration": "Duration"
+        },
+        "quality": {
+            "title": "Quality Settings",
+            "video_quality": "Video Quality",
+            "auto_adjust": "Auto Adjust",
+            "auto_adjust_description": "Automatically adjust video quality based on network conditions for optimal experience"
+        }
+    }
+}

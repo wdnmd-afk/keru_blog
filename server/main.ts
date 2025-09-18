@@ -3,6 +3,7 @@ import 'reflect-metadata'
 import { PrismaClient } from '@prisma/client'
 import cors from 'cors'
 import express from 'express'
+import { createServer } from 'http'
 import { InversifyExpressServer } from 'inversify-express-utils'
 import process from 'node:process'
 import path from 'path'
@@ -24,6 +25,9 @@ import { JWT } from '@/jwt'
 
 // 导入权限中间件初始化函数
 import { initPermissionMiddleware } from '@/middleware/permission'
+
+// 导入WebSocket服务器
+import { createWebSocketServer, createWebSocketConfig } from '@/router/webrtc/websocket'
 
 /**
  * 应用启动函数
@@ -55,16 +59,25 @@ async function bootstrap() {
     // 5. 构建应用
     const app = server.build()
 
-    // 6. 启动服务器
-    const serverInstance = app.listen(config.server.port, () => {
+    // 6. 创建HTTP服务器
+    const httpServer = createServer(app)
+
+    // 7. 初始化WebSocket服务器
+    const wsConfig = createWebSocketConfig()
+    const webSocketServer = createWebSocketServer(httpServer, container, wsConfig)
+    console.log('🔌 WebSocket server initialized')
+
+    // 8. 启动服务器
+    const serverInstance = httpServer.listen(config.server.port, () => {
       console.log(`🌟 Server is listening on port ${config.server.port}`)
       console.log(`🌐 Environment: ${config.server.env}`)
       console.log(`📡 Server URL: http://${config.server.host}:${config.server.port}`)
+      console.log(`🔌 WebSocket URL: ws://${config.server.host}:${config.server.port}`)
       console.log('✅ Server started successfully!')
     })
 
-    // 7. 设置优雅关闭
-    setupGracefulShutdown(serverInstance, container)
+    // 9. 设置优雅关闭
+    setupGracefulShutdown(serverInstance, container, webSocketServer)
   } catch (error) {
     console.error('❌ Failed to start server:', error)
     process.exit(1)
@@ -129,9 +142,15 @@ function setupMiddleware(app: express.Application, config: AppConfig, container:
 /**
  * 设置优雅关闭
  */
-function setupGracefulShutdown(server: any, container: any) {
+function setupGracefulShutdown(server: any, container: any, webSocketServer?: any) {
   const shutdown = async (signal: string) => {
     console.log(`\n🔄 Received ${signal}, starting graceful shutdown...`)
+
+    // 关闭WebSocket服务器
+    if (webSocketServer) {
+      await webSocketServer.close()
+      console.log('🔌 WebSocket server closed')
+    }
 
     // 关闭HTTP服务器
     server.close(async () => {

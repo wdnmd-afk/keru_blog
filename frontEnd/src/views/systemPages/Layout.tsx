@@ -21,6 +21,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
         { name: t('header.navigation.home'), path: '/' },
         { name: t('header.navigation.learning'), path: '/learning' },
         { name: t('header.navigation.files'), path: '/files' },
+        { name: t('header.navigation.webrtc'), path: '/webrtc' },
         { name: t('header.navigation.technology'), path: '/technology' },
     ]
     const handleMenuClick = (item: MenuItem) => {

@@ -1,0 +1,102 @@
+{
+    "page": {
+        "title": "WebRTC 实时通信",
+        "description": "基于WebRTC技术的实时视频通信解决方案，支持React Native到Web端的低延迟视频传输"
+    },
+    "tabs": {
+        "tech_introduction": "技术介绍",
+        "live_streaming": "实时直播"
+    },
+    "tech": {
+        "overview": {
+            "title": "技术概述",
+            "description": "WebRTC（Web Real-Time Communication）是一个支持网页浏览器进行实时语音对话或视频对话的API。本项目实现了React Native Android应用实时画面传输至React Web端播放的完整解决方案，通过Nest.js和Express.js后台服务实现数据中转和信令管理。"
+        },
+        "features": {
+            "title": "核心特性",
+            "video": {
+                "title": "高质量视频传输",
+                "description": "支持多种视频编码格式，自适应码率控制，确保在不同网络环境下的最佳视频质量"
+            },
+            "audio": {
+                "title": "清晰音频通信",
+                "description": "集成回声消除、噪声抑制等音频处理技术，提供高质量的音频通信体验"
+            },
+            "p2p": {
+                "title": "点对点连接",
+                "description": "通过ICE协议实现NAT穿透，建立直接的点对点连接，减少延迟和服务器负载"
+            },
+            "security": {
+                "title": "安全加密传输",
+                "description": "采用DTLS和SRTP协议，确保音视频数据的端到端加密传输"
+            },
+            "realtime": {
+                "title": "超低延迟",
+                "description": "优化的传输协议和网络适配算法，实现小于200ms的超低延迟通信"
+            },
+            "multiuser": {
+                "title": "多用户支持",
+                "description": "支持SFU和MCU架构，可扩展至多人视频会议场景"
+            }
+        },
+        "timeline": {
+            "title": "实现流程",
+            "step1": {
+                "title": "媒体采集与编码",
+                "description": "React Native端使用摄像头采集视频流，通过WebRTC进行实时编码"
+            },
+            "step2": {
+                "title": "信令交换",
+                "description": "通过Nest.js信令服务器交换SDP描述和ICE候选，建立连接协商"
+            },
+            "step3": {
+                "title": "P2P连接建立",
+                "description": "利用STUN/TURN服务器进行NAT穿透，建立直接的点对点连接"
+            },
+            "step4": {
+                "title": "实时流传输",
+                "description": "Web端接收并解码视频流，实现低延迟的实时视频播放"
+            }
+        },
+        "architecture": {
+            "title": "系统架构",
+            "description": "采用分布式架构设计，React Native负责视频采集，Nest.js处理信令服务，Express.js提供中转服务，Redis实现消息发布订阅，最终在React Web端实现视频播放。"
+        }
+    },
+    "streaming": {
+        "connection": {
+            "title": "连接控制",
+            "connect": "开始连接",
+            "disconnect": "断开连接",
+            "state": "连接状态",
+            "status": {
+                "disconnected": "未连接",
+                "connecting": "连接中...",
+                "connected": "已连接",
+                "failed": "连接失败"
+            }
+        },
+        "video": {
+            "waiting": "等待视频流",
+            "waiting_description": "请确保移动端应用已启动并开始推流"
+        },
+        "controls": {
+            "play": "播放",
+            "pause": "暂停"
+        },
+        "stats": {
+            "title": "连接统计",
+            "latency": "延迟",
+            "bitrate": "码率",
+            "fps": "帧率",
+            "resolution": "分辨率",
+            "duration": "连接时长"
+        },
+        "quality": {
+            "title": "质量设置",
+            "video_quality": "视频质量",
+            "auto_adjust": "自动调节",
+            "auto_adjust_description": "根据网络状况自动调整视频质量以获得最佳体验"
+        }
+    }
+}

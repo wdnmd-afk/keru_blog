@@ -40,6 +40,7 @@ const LazyComponents = {
     Technology: lazy(() => import('@/views/Technology/index.tsx')), // 技术栈展示模块 - 技能、项目展示
     Learning: lazy(() => import('@/views/Learning/index.tsx')), // 学习模块 - 学习历程和学习计划管理
     Files: lazy(() => import('@/views/Files/index.tsx')), // 文件管理模块 - 文件上传、预览、管理
+    WebRTC: lazy(() => import('@/views/WebRTC/index.tsx')), // WebRTC模块 - 实时视频通信功能
 
     // ==================== Technology子模块 ====================
     TechnologyLayout: lazy(() => import('@/views/Technology/TechnologyLayout.tsx')), // Technology子路由布局
@@ -89,6 +90,11 @@ const privateRoutes = [
         path: '/learning',
         component: <LazyComponents.Learning />,
         description: '学习模块 - 学习历程和学习计划管理',
+    },
+    {
+        path: '/webrtc',
+        component: <LazyComponents.WebRTC />,
+        description: 'WebRTC - 实时视频通信功能',
     },
     {
         path: '/technology/:tech',

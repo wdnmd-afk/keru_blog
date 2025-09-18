@@ -16,6 +16,9 @@ import {
   User,
 } from '@/router/controller'
 
+// 导入WebRTC模块
+import { WebRTCController, WebRTCService, WebRTCGateway } from '@/router/webrtc'
+
 // 导入服务
 import { AIService } from '@/router/ai/service'
 import {
@@ -33,6 +36,7 @@ import { AuthMiddleware } from '@/middleware/auth'
 // 导入其他依赖
 import { PrismaDB } from '@/db'
 import { JWT } from '@/jwt'
+import Redis from 'ioredis'
 
 // 定义服务标识符常量，避免魔法字符串
 export const TYPES = {
@@ -45,6 +49,7 @@ export const TYPES = {
   FeedbackController: Symbol.for('FeedbackController'),
   PublicFeedbackController: Symbol.for('PublicFeedbackController'),
   AIController: Symbol.for('AIController'),
+  WebRTCController: Symbol.for('WebRTCController'),
 
   // 服务
   UserService: Symbol.for('UserService'),
@@ -54,9 +59,12 @@ export const TYPES = {
   TodoService: Symbol.for('TodoService'),
   FeedbackService: Symbol.for('FeedbackService'),
   AIService: Symbol.for('AIService'),
+  WebRTCService: Symbol.for('WebRTCService'),
+  WebRTCGateway: Symbol.for('WebRTCGateway'),
 
   // 基础设施
   PrismaClient: Symbol.for('PrismaClient'),
+  Redis: Symbol.for('Redis'),
   PrismaDB: Symbol.for('PrismaDB'),
   JWT: Symbol.for('JWT'),
 } as const
@@ -82,6 +90,9 @@ export function createContainer(): Container {
   // 注册基础设施
   registerInfrastructure(container)
 
+  // 注册 WebRTC 组件
+  registerWebRTCComponents(container)
+
   return container
 }
 
@@ -105,6 +116,8 @@ function registerControllers(container: Container): void {
   container.bind(TYPES.PublicFeedbackController).to(PublicFeedbackController)
   // AI 控制器
   container.bind(TYPES.AIController).to(AIController)
+  // WebRTC 控制器
+  container.bind(TYPES.WebRTCController).to(WebRTCController)
 
   // 为了兼容现有代码，保留原有的绑定方式
   container.bind(User).to(User)
@@ -137,6 +150,10 @@ function registerServices(container: Container): void {
   // 绑定 AI 服务
   container.bind(TYPES.AIService).to(AIService)
   container.bind(AIService).to(AIService)
+  // 绑定 WebRTC 服务
+  container.bind(TYPES.WebRTCService).to(WebRTCService)
+  container.bind(WebRTCService).to(WebRTCService)
+  container.bind('WebRTCService').to(WebRTCService)
 }
 
 /**
@@ -156,6 +173,10 @@ function registerInfrastructure(container: Container): void {
   // JWT服务
   container.bind(TYPES.JWT).to(JWT)
   container.bind(JWT).to(JWT)
+
+  // Redis服务
+  container.bind<Redis>(TYPES.Redis).toConstantValue(createRedisClient())
+  container.bind<Redis>('Redis').toConstantValue(createRedisClient())
 }
 
 /**
@@ -171,13 +192,54 @@ function createPrismaClient(): PrismaClient {
 }
 
 /**
+ * 创建Redis客户端实例
+ */
+function createRedisClient(): Redis {
+  const redis = new Redis({
+    host: process.env.REDIS_HOST || 'localhost',
+    port: parseInt(process.env.REDIS_PORT || '6379'),
+    password: process.env.REDIS_PASSWORD,
+    db: parseInt(process.env.REDIS_DB || '0'),
+    retryDelayOnFailover: 1000,
+    maxRetriesPerRequest: 3,
+    lazyConnect: true,
+    keepAlive: true,
+  })
+
+  redis.on('connect', () => {
+    console.log('Redis connected successfully')
+  })
+
+  redis.on('error', (error) => {
+    console.error('Redis connection error:', error)
+  })
+
+  return redis
+}
+
+/**
+ * 注册 WebRTC 组件
+ */
+function registerWebRTCComponents(container: Container): void {
+  // 绑定 WebRTC Gateway
+  container.bind(TYPES.WebRTCGateway).to(WebRTCGateway)
+  container.bind(WebRTCGateway).to(WebRTCGateway) // 兼容性绑定
+}
+
+/**
  * 优雅关闭容器和数据库连接
  */
 export async function closeContainer(container: Container): Promise<void> {
   try {
+    // 关闭数据库连接
     const prisma = container.get<PrismaClient>(TYPES.PrismaClient)
     await prisma.$disconnect()
     console.log('Database disconnected successfully')
+
+    // 关闭Redis连接
+    const redis = container.get<Redis>(TYPES.Redis)
+    await redis.quit()
+    console.log('Redis disconnected successfully')
   } catch (error) {
     console.error('Error during container cleanup:', error)
   }
