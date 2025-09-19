@@ -42,6 +42,7 @@
         "remark-toc": "^9.0.0",
         "sass": "^1.77.8",
         "sass-loader": "^16.0.0",
+        "socket.io-client": "^4.8.1",
         "use-immer": "^0.10.0",
         "zustand": "^4.5.5"
     },

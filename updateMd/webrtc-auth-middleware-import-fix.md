@@ -265,3 +265,32 @@ import { AuthMiddleware } from '@/middleware/auth'
     *   Reason: 修复 "No matching bindings found for serviceIdentifier: WebRTCGateway" 错误
     *   Blockers: 无
     *   Status: 待确认
+
+## 新发现的问题：前端 socket.io-client 依赖缺失
+
+### 问题分析
+前端开发服务器启动时出现导入错误：
+- 错误：`Plugin: vite:import-analysis`
+- 位置：`frontEnd/src/views/WebRTC/hooks/useWebRTC.ts:12:27`
+- 原因：尝试导入 `socket.io-client` 但该依赖包未安装
+
+### 根本原因
+1. **WebRTC Hook 需要 WebSocket 连接**：useWebRTC.ts 中使用 `import { io, Socket } from 'socket.io-client'`
+2. **依赖包未安装**：前端 package.json 中没有 socket.io-client 依赖
+3. **Vite 导入分析失败**：Vite 无法解析不存在的模块导入
+
+### 需要修复的内容
+1. 在前端项目中安装 socket.io-client 依赖
+2. 确保版本兼容性（与后端 socket.io 版本匹配）
+3. 验证 WebRTC 功能能正常工作
+
+*   2025-01-18 16:45:00
+    *   Step: 16. 修复前端 socket.io-client 依赖缺失
+    *   Modifications:
+        - 检查后端 socket.io 版本：v4.8.1
+        - 在前端项目中安装兼容版本：`pnpm add socket.io-client@^4.8.1`
+        - 验证 package.json 正确更新，添加了 socket.io-client 依赖
+    *   Change Summary: 成功解决了前端 WebRTC 模块的 socket.io-client 导入错误。安装了与后端兼容的 socket.io-client v4.8.1 版本，确保前后端 WebSocket 通信的版本兼容性。
+    *   Reason: 修复 Vite 导入分析错误，支持 WebRTC WebSocket 功能
+    *   Blockers: 无
+    *   Status: 待确认
