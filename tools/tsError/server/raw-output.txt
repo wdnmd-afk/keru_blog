@@ -1,10 +1,7 @@
-src/scripts/init-rbac-data.ts(311,7): error TS2322: Type '{ parentId: any; id: string; name: string; code: string; type: string; description: string; }[]' is not assignable to type 'PermissionCreateManyInput | PermissionCreateManyInput[]'.
-  Type '{ parentId: any; id: string; name: string; code: string; type: string; description: string; }[]' is not assignable to type 'PermissionCreateManyInput[]'.
-    Type '{ parentId: any; id: string; name: string; code: string; type: string; description: string; }' is not assignable to type 'PermissionCreateManyInput'.
-      Types of property 'type' are incompatible.
-        Type 'string' is not assignable to type 'PermissionType'.
-src/scripts/init-rbac-data.ts(354,7): error TS2322: Type '{ parentId: any; id: string; name: string; code: string; type: string; description: string; }[]' is not assignable to type 'PermissionCreateManyInput | PermissionCreateManyInput[]'.
-  Type '{ parentId: any; id: string; name: string; code: string; type: string; description: string; }[]' is not assignable to type 'PermissionCreateManyInput[]'.
-    Type '{ parentId: any; id: string; name: string; code: string; type: string; description: string; }' is not assignable to type 'PermissionCreateManyInput'.
-      Types of property 'type' are incompatible.
-        Type 'string' is not assignable to type 'PermissionType'.
+src/config/container.config.ts(198,21): error TS2769: No overload matches this call.
+  Overload 1 of 8, '(options: RedisOptions): Redis', gave the following error.
+    Object literal may only specify known properties, and 'retryDelayOnClusterDown' does not exist in type 'RedisOptions'.
+  Overload 2 of 8, '(port: number): Redis', gave the following error.
+    Argument of type '{ host: string; port: number; password: string; db: number; retryDelayOnClusterDown: number; maxRetriesPerRequest: number; lazyConnect: boolean; keepAlive: number; }' is not assignable to parameter of type 'number'.
+  Overload 3 of 8, '(path: string): Redis', gave the following error.
+    Argument of type '{ host: string; port: number; password: string; db: number; retryDelayOnClusterDown: number; maxRetriesPerRequest: number; lazyConnect: boolean; keepAlive: number; }' is not assignable to parameter of type 'string'.

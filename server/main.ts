@@ -27,7 +27,7 @@ import { JWT } from '@/jwt'
 import { initPermissionMiddleware } from '@/middleware/permission'
 
 // 导入WebSocket服务器
-import { createWebSocketServer, createWebSocketConfig } from '@/router/webrtc/websocket'
+import { createWebSocketConfig, createWebSocketServer } from '@/router/webrtc/websocket'
 
 /**
  * 应用启动函数
@@ -60,7 +60,7 @@ async function bootstrap() {
     const app = server.build()
 
     // 6. 创建HTTP服务器
-    const httpServer = createServer(app)
+    const httpServer = createServer(app as any)
 
     // 7. 初始化WebSocket服务器
     const wsConfig = createWebSocketConfig()
@@ -92,7 +92,7 @@ function setupMiddleware(app: express.Application, config: AppConfig, container:
   app.use(requestIdMiddleware)
 
   // 临时调试中间件：打印所有请求的路径信息
-  app.use((req, res, next) => {
+  app.use((req, _res, next) => {
     console.log(
       `[DEBUG] ${req.method} ${req.originalUrl} | path: ${req.path} | baseUrl: ${req.baseUrl}`
     )

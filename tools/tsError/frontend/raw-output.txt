@@ -1,2 +1,6 @@
-src/components/FloatingActions/FavoriteManager.tsx(301,65): error TS2322: Type '{ children: string; key: string; size: string; icon: Element; }' is not assignable to type 'IntrinsicAttributes & TagProps & RefAttributes<HTMLSpanElement>'.
-  Property 'size' does not exist on type 'IntrinsicAttributes & TagProps & RefAttributes<HTMLSpanElement>'.
+src/api/aiApi.ts(69,5): error TS2741: Property 'success' is missing in type 'ResultData<any>' but required in type '{ success: boolean; code: number; message: string; data: ConversationItem[]; }'.
+src/hooks/useClipboardImage.ts(104,28): error TS2304: Cannot find name 'tempImage'.
+src/utils/http/index.ts(208,32): error TS2339: Property 'headers' does not exist on type '{}'.
+src/utils/http/index.ts(233,23): error TS2339: Property 'response' does not exist on type 'Error'.
+src/views/WebRTC/components/LiveStreaming.tsx(173,33): error TS2322: Type '"primary" | "danger"' is not assignable to type '"default" | "link" | "text" | "primary" | "dashed" | undefined'.
+  Type '"danger"' is not assignable to type '"default" | "link" | "text" | "primary" | "dashed" | undefined'.

@@ -1,24 +1,24 @@
 /**
  * WebRTC技术介绍组件
- * 
+ *
  * 功能说明：
  * 1. 展示WebRTC技术相关的介绍内容
  * 2. 包含技术架构图、特性说明、应用场景等
  * 3. 提供技术文档的链接和参考资料
  */
 
-import React from 'react'
-import { Card, Row, Col, Timeline, Tag, Divider } from 'antd'
-import { useTranslation } from 'react-i18next'
+import styles from '@/styles/webrtc.module.scss'
 import {
-    VideoCameraOutlined,
     AudioOutlined,
     GlobalOutlined,
     SafetyCertificateOutlined,
+    TeamOutlined,
     ThunderboltOutlined,
-    TeamOutlined
+    VideoCameraOutlined,
 } from '@ant-design/icons'
-import styles from '@/styles/webrtc.module.scss'
+import { Card, Col, Divider, Row, Tag, Timeline } from 'antd'
+import React from 'react'
+import { useTranslation } from 'react-i18next'
 
 const TechIntroduction: React.FC = () => {
     const { t } = useTranslation('webrtc')
@@ -28,38 +28,38 @@ const TechIntroduction: React.FC = () => {
             icon: <VideoCameraOutlined className={styles.feature_icon} />,
             title: t('tech.features.video.title'),
             description: t('tech.features.video.description'),
-            tags: ['H.264', 'VP8', 'VP9', 'AV1']
+            tags: ['H.264', 'VP8', 'VP9', 'AV1'],
         },
         {
             icon: <AudioOutlined className={styles.feature_icon} />,
             title: t('tech.features.audio.title'),
             description: t('tech.features.audio.description'),
-            tags: ['Opus', 'G.711', 'G.722', 'AAC']
+            tags: ['Opus', 'G.711', 'G.722', 'AAC'],
         },
         {
             icon: <GlobalOutlined className={styles.feature_icon} />,
             title: t('tech.features.p2p.title'),
             description: t('tech.features.p2p.description'),
-            tags: ['NAT穿透', 'STUN', 'TURN', 'ICE']
+            tags: ['NAT穿透', 'STUN', 'TURN', 'ICE'],
         },
         {
             icon: <SafetyCertificateOutlined className={styles.feature_icon} />,
             title: t('tech.features.security.title'),
             description: t('tech.features.security.description'),
-            tags: ['DTLS', 'SRTP', '端到端加密']
+            tags: ['DTLS', 'SRTP', '端到端加密'],
         },
         {
             icon: <ThunderboltOutlined className={styles.feature_icon} />,
             title: t('tech.features.realtime.title'),
             description: t('tech.features.realtime.description'),
-            tags: ['低延迟', '<200ms', '自适应码率']
+            tags: ['低延迟', '<200ms', '自适应码率'],
         },
         {
             icon: <TeamOutlined className={styles.feature_icon} />,
             title: t('tech.features.multiuser.title'),
             description: t('tech.features.multiuser.description'),
-            tags: ['SFU', 'MCU', '多人会议']
-        }
+            tags: ['SFU', 'MCU', '多人会议'],
+        },
     ]
 
     const timeline = [
@@ -70,7 +70,7 @@ const TechIntroduction: React.FC = () => {
                     <h4>{t('tech.timeline.step1.title')}</h4>
                     <p>{t('tech.timeline.step1.description')}</p>
                 </div>
-            )
+            ),
         },
         {
             color: 'blue',
@@ -79,7 +79,7 @@ const TechIntroduction: React.FC = () => {
                     <h4>{t('tech.timeline.step2.title')}</h4>
                     <p>{t('tech.timeline.step2.description')}</p>
                 </div>
-            )
+            ),
         },
         {
             color: 'orange',
@@ -88,7 +88,7 @@ const TechIntroduction: React.FC = () => {
                     <h4>{t('tech.timeline.step3.title')}</h4>
                     <p>{t('tech.timeline.step3.description')}</p>
                 </div>
-            )
+            ),
         },
         {
             color: 'red',
@@ -97,8 +97,8 @@ const TechIntroduction: React.FC = () => {
                     <h4>{t('tech.timeline.step4.title')}</h4>
                     <p>{t('tech.timeline.step4.description')}</p>
                 </div>
-            )
-        }
+            ),
+        },
     ]
 
     return (
@@ -106,9 +106,7 @@ const TechIntroduction: React.FC = () => {
             {/* 技术概述 */}
             <Card className={styles.overview_card}>
                 <h2>{t('tech.overview.title')}</h2>
-                <p className={styles.overview_text}>
-                    {t('tech.overview.description')}
-                </p>
+                <p className={styles.overview_text}>{t('tech.overview.description')}</p>
                 <div className={styles.tech_stack}>
                     <Tag color="blue">React Native</Tag>
                     <Tag color="green">WebRTC API</Tag>
@@ -131,9 +129,7 @@ const TechIntroduction: React.FC = () => {
                                     {feature.icon}
                                     <h3>{feature.title}</h3>
                                 </div>
-                                <p className={styles.feature_description}>
-                                    {feature.description}
-                                </p>
+                                <p className={styles.feature_description}>{feature.description}</p>
                                 <div className={styles.feature_tags}>
                                     {feature.tags.map((tag, tagIndex) => (
                                         <Tag key={tagIndex} color="geekblue">
@@ -163,7 +159,7 @@ const TechIntroduction: React.FC = () => {
                 <div className={styles.architecture_diagram}>
                     <div className={styles.architecture_text}>
                         <pre className={styles.architecture_ascii}>
-{`
+                            {`
 ┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
 │   React Native  │    │    Nest.js      │    │   Express.js    │
 │   (视频采集)    │◄──►│   (信令服务)    │◄──►│   (中转服务)    │

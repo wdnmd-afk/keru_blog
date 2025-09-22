@@ -7,9 +7,15 @@
     "outDir": "./dist",
     "rootDir": "./src",
     "baseUrl": ".",
+    // 移除 noEmit 配置以支持项目引用
+    "noEmit": false,
     "paths": {
-      "@": ["./src"],
-      "@/*": ["./src/*"]
+      "@": [
+        "./src"
+      ],
+      "@/*": [
+        "./src/*"
+      ]
     }
   },
   "include": [

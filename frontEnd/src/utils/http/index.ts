@@ -188,7 +188,7 @@ class RequestHttp {
             onDone?: () => void
             onError?: (err: any) => void
         } = {},
-        _object = {}
+        _object: { headers?: Record<string, string> } = {}
     ): Promise<void> {
         try {
             // 获取用户token（复用请求拦截器的逻辑）
@@ -229,7 +229,9 @@ class RequestHttp {
                     )
                 }
 
-                const error = new Error(errorData.message)
+                const error = new Error(errorData.message) as Error & {
+                    response?: { status: number; data: any }
+                }
                 error.response = { status: response.status, data: errorData }
                 handlers.onError?.(error)
                 throw error

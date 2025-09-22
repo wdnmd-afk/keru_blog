@@ -144,10 +144,11 @@ const FloatingActions: React.FC = () => {
                         <Button
                             type="text"
                             icon={<QuestionCircleOutlined />}
-                            className={`${style.action_button} ${floatingActions.activePanel === FloatingActionType.HELP
-                                ? style.active
-                                : ''
-                                }`}
+                            className={`${style.action_button} ${
+                                floatingActions.activePanel === FloatingActionType.HELP
+                                    ? style.active
+                                    : ''
+                            }`}
                             onClick={handleHelp}
                             aria-label={t('help.tooltip', '帮助')}
                         />
@@ -158,10 +159,11 @@ const FloatingActions: React.FC = () => {
                         <Button
                             type="text"
                             icon={<SettingOutlined />}
-                            className={`${style.action_button} ${floatingActions.activePanel === FloatingActionType.SETTINGS
-                                ? style.active
-                                : ''
-                                }`}
+                            className={`${style.action_button} ${
+                                floatingActions.activePanel === FloatingActionType.SETTINGS
+                                    ? style.active
+                                    : ''
+                            }`}
                             onClick={handleSettings}
                             aria-label={t('settings.tooltip', '设置')}
                         />
@@ -172,10 +174,11 @@ const FloatingActions: React.FC = () => {
                         <Button
                             type="text"
                             icon={<MessageOutlined />}
-                            className={`${style.action_button} ${floatingActions.activePanel === FloatingActionType.FEEDBACK
-                                ? style.active
-                                : ''
-                                }`}
+                            className={`${style.action_button} ${
+                                floatingActions.activePanel === FloatingActionType.FEEDBACK
+                                    ? style.active
+                                    : ''
+                            }`}
                             onClick={handleFeedback}
                             aria-label={t('feedback.tooltip', '反馈')}
                         />
@@ -192,9 +195,14 @@ const FloatingActions: React.FC = () => {
                     >
                         <Button
                             type="text"
-                            icon={renderSafeIcon(isCurrentPageFavorited, <HeartFilled />, <HeartOutlined />)}
-                            className={`${style.action_button} ${isCurrentPageFavorited ? style.favorited : ''
-                                }`}
+                            icon={renderSafeIcon(
+                                isCurrentPageFavorited,
+                                <HeartFilled />,
+                                <HeartOutlined />
+                            )}
+                            className={`${style.action_button} ${
+                                isCurrentPageFavorited ? style.favorited : ''
+                            }`}
                             onClick={handleFavorite}
                             aria-label={
                                 isCurrentPageFavorited
@@ -209,10 +217,11 @@ const FloatingActions: React.FC = () => {
                         <Button
                             type="text"
                             icon={<ShareAltOutlined />}
-                            className={`${style.action_button} ${floatingActions.activePanel === FloatingActionType.SHARE
-                                ? style.active
-                                : ''
-                                }`}
+                            className={`${style.action_button} ${
+                                floatingActions.activePanel === FloatingActionType.SHARE
+                                    ? style.active
+                                    : ''
+                            }`}
                             onClick={handleShare}
                             aria-label={t('share.tooltip', '分享')}
                         />

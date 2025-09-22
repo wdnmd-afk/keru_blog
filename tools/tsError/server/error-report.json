@@ -4,9 +4,9 @@
   "projectName": "Server 项目",
   "errors": [],
   "output": "无输出",
-  "duration": 2678,
-  "timestamp": "2025/09/11 14:10:31",
-  "generatedAt": "2025/09/11 14:10:31",
+  "duration": 3187,
+  "timestamp": "2025/09/22 14:58:39",
+  "generatedAt": "2025/09/22 14:58:39",
   "projectPath": "server",
   "tsConfigPath": "server/tsconfig.json"
 }

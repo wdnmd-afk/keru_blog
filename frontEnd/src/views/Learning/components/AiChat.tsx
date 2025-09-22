@@ -1,4 +1,14 @@
-import { ConversationItem, fetchRecentConversations, streamChat, MsgItem, ImageItem, ChatReq } from '@/api/aiApi'
+import {
+    ChatReq,
+    ConversationItem,
+    fetchRecentConversations,
+    ImageItem,
+    MsgItem,
+    streamChat,
+} from '@/api/aiApi'
+import ImagePreview from '@/components/ImagePreview'
+import ImageUpload from '@/components/ImageUpload'
+import { useClipboardImage } from '@/hooks/useClipboardImage'
 import '@/styles/markdown-themes.css'
 import { DeleteOutlined, SendOutlined } from '@ant-design/icons'
 import { Button, Input, Popconfirm } from 'antd'
@@ -7,9 +17,6 @@ import ReactMarkdown from 'react-markdown'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism'
 import remarkGfm from 'remark-gfm'
-import ImageUpload from '@/components/ImageUpload'
-import ImagePreview from '@/components/ImagePreview'
-import { useClipboardImage } from '@/hooks/useClipboardImage'
 import s from './AiChat.module.scss'
 
 // 优化1：将 CodeBlock 组件提取到组件外部，避免每次渲染时重新创建
@@ -133,8 +140,8 @@ const AiChat: React.FC = () => {
 
     // 新增：图片处理函数
     const handleImageAdd = useCallback((image: ImageItem) => {
-        setCurrentImages(prev => {
-            const existingIndex = prev.findIndex(img => img.id === image.id)
+        setCurrentImages((prev) => {
+            const existingIndex = prev.findIndex((img) => img.id === image.id)
             if (existingIndex >= 0) {
                 // 更新现有图片（用于上传状态变化）
                 const newImages = [...prev]
@@ -148,7 +155,7 @@ const AiChat: React.FC = () => {
     }, [])
 
     const handleImageRemove = useCallback((imageId: string) => {
-        setCurrentImages(prev => prev.filter(img => img.id !== imageId))
+        setCurrentImages((prev) => prev.filter((img) => img.id !== imageId))
     }, [])
 
     const handleClearAllImages = useCallback(() => {
@@ -161,7 +168,7 @@ const AiChat: React.FC = () => {
         maxCount: 6,
         currentCount: currentImages.length,
         enabled: true,
-        onImagePaste: handleImageAdd
+        onImagePaste: handleImageAdd,
     })
 
     const listRef = useRef<HTMLDivElement | null>(null)
@@ -234,7 +241,7 @@ const AiChat: React.FC = () => {
             id: `${Date.now()}-u`,
             role: 'user',
             text: content,
-            images: currentImages.length > 0 ? [...currentImages] : undefined
+            images: currentImages.length > 0 ? [...currentImages] : undefined,
         }
         const botMsg: MsgItem = { id: `${Date.now()}-b`, role: 'assistant', text: '' }
 
@@ -247,40 +254,37 @@ const AiChat: React.FC = () => {
         // 构建请求数据，包含图片信息
         const requestData: ChatReq = {
             message: content,
-            images: currentImages.map(img => ({
+            images: currentImages.map((img) => ({
                 url: img.url,
-                type: img.type
-            }))
+                type: img.type,
+            })),
         }
 
         try {
-            await streamChat(
-                requestData,
-                {
-                    onChunk: (t) => {
-                        // 优化8：减少状态更新频率，使用 requestAnimationFrame 批量更新
-                        bufferRef.current += t
-                        const targetId = botIdRef.current
-                        if (!targetId) return
+            await streamChat(requestData, {
+                onChunk: (t) => {
+                    // 优化8：减少状态更新频率，使用 requestAnimationFrame 批量更新
+                    bufferRef.current += t
+                    const targetId = botIdRef.current
+                    if (!targetId) return
 
-                        requestAnimationFrame(() => {
-                            setMessages((prev) =>
-                                prev.map((m) =>
-                                    m.id === targetId ? { ...m, text: bufferRef.current } : m
-                                )
+                    requestAnimationFrame(() => {
+                        setMessages((prev) =>
+                            prev.map((m) =>
+                                m.id === targetId ? { ...m, text: bufferRef.current } : m
                             )
-                        })
-                    },
-                    onDone: () => {
-                        setLoading(false)
-                        botIdRef.current = null
-                    },
-                    onError: () => {
-                        setLoading(false)
-                        botIdRef.current = null
-                    },
-                }
-            )
+                        )
+                    })
+                },
+                onDone: () => {
+                    setLoading(false)
+                    botIdRef.current = null
+                },
+                onError: () => {
+                    setLoading(false)
+                    botIdRef.current = null
+                },
+            })
         } catch (e) {
             setLoading(false)
         }
@@ -335,8 +339,8 @@ const AiChat: React.FC = () => {
                         onKeyDown={onEnter}
                         placeholder={
                             isClipboardSupported()
-                                ? "输入消息，Shift+Enter 换行，Enter 发送，Ctrl+V 粘贴图片"
-                                : "输入消息，Shift+Enter 换行，Enter 发送"
+                                ? '输入消息，Shift+Enter 换行，Enter 发送，Ctrl+V 粘贴图片'
+                                : '输入消息，Shift+Enter 换行，Enter 发送'
                         }
                     />
 
@@ -391,9 +395,7 @@ const AiChat: React.FC = () => {
                 {currentImages.length > 0 && !loading && (
                     <div className={s.hint_text}>
                         已选择 {currentImages.length}/6 张图片
-                        {isClipboardSupported() && currentImages.length < 6 &&
-                            '，可继续粘贴添加'
-                        }
+                        {isClipboardSupported() && currentImages.length < 6 && '，可继续粘贴添加'}
                     </div>
                 )}
             </div>

@@ -1,26 +1,26 @@
-import { Upload, Button, message } from 'antd'
-import { PictureOutlined } from '@ant-design/icons'
 import { Http } from '@/utils'
+import { PictureOutlined } from '@ant-design/icons'
+import { Button, message, Upload } from 'antd'
 import React from 'react'
 
 // 图片项接口定义
 export interface ImageItem {
     id: string
-    url: string          // 图片URL或base64
-    name: string         // 文件名
-    size: number         // 文件大小（字节）
-    type: string         // MIME类型
-    status: 'uploading' | 'uploaded' | 'error'  // 上传状态
+    url: string // 图片URL或base64
+    name: string // 文件名
+    size: number // 文件大小（字节）
+    type: string // MIME类型
+    status: 'uploading' | 'uploaded' | 'error' // 上传状态
 }
 
 interface ImageUploadProps {
-    onImageAdd: (image: ImageItem) => void     // 单个图片添加回调
+    onImageAdd: (image: ImageItem) => void // 单个图片添加回调
     onImagesAdd?: (images: ImageItem[]) => void // 批量图片添加回调
-    disabled?: boolean                         // 是否禁用
-    maxSize?: number                          // 最大文件大小（MB）
-    maxCount?: number                         // 最大图片数量
-    currentCount?: number                     // 当前已有图片数量
-    multiple?: boolean                        // 是否支持多选
+    disabled?: boolean // 是否禁用
+    maxSize?: number // 最大文件大小（MB）
+    maxCount?: number // 最大图片数量
+    currentCount?: number // 当前已有图片数量
+    multiple?: boolean // 是否支持多选
 }
 
 /**
@@ -34,7 +34,7 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
     maxSize = 15,
     maxCount = 6,
     currentCount = 0,
-    multiple = true
+    multiple = true,
 }) => {
     /**
      * 处理单个文件的验证和上传
@@ -61,7 +61,7 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
                 name: file.name,
                 size: file.size,
                 type: file.type,
-                status: 'uploading'
+                status: 'uploading',
             }
 
             // 真实上传到服务器
@@ -74,11 +74,10 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
             const uploadedImage: ImageItem = {
                 ...tempImage,
                 url: response.data.url, // 使用服务器返回的URL
-                status: 'uploaded'
+                status: 'uploaded',
             }
 
             return uploadedImage
-
         } catch (error) {
             console.error('图片上传失败:', error)
             return null
@@ -153,10 +152,10 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
     return (
         <Upload
             beforeUpload={handleUpload}
-            showUploadList={false}  // 不显示默认的文件列表，我们用自定义预览
+            showUploadList={false} // 不显示默认的文件列表，我们用自定义预览
             disabled={disabled || isMaxReached}
-            accept="image/*"        // 只接受图片文件
-            multiple={multiple}     // 支持多选
+            accept="image/*" // 只接受图片文件
+            multiple={multiple} // 支持多选
         >
             <Button
                 icon={<PictureOutlined />}
@@ -167,9 +166,8 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
                 {isMaxReached
                     ? `已达上限(${maxCount}张)`
                     : multiple
-                        ? `上传图片(还可选${remainingCount}张)`
-                        : '上传图片'
-                }
+                      ? `上传图片(还可选${remainingCount}张)`
+                      : '上传图片'}
             </Button>
         </Upload>
     )

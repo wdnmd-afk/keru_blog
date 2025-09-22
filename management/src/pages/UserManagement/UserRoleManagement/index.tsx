@@ -186,7 +186,7 @@ const UserRoleManagement: React.FC = () => {
       render: (_, record) => (
         <Space wrap>
           {record.userRoles && record.userRoles.length > 0 ? (
-            record.userRoles.map((userRole) => (
+            record.userRoles.map((userRole: UserRole) => (
               <Tag key={userRole.id} color="blue">
                 {userRole.role.name}
               </Tag>

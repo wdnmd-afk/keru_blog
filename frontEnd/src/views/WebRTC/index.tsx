@@ -1,6 +1,6 @@
 /**
  * WebRTC主页面组件
- * 
+ *
  * 功能说明：
  * 1. 提供WebRTC功能的主入口页面
  * 2. 包含Tab栏组件，分为"技术介绍"和"实时直播"两个标签页
@@ -8,12 +8,12 @@
  * 4. 实时直播页面提供视频直播功能
  */
 
-import React, { useState } from 'react'
-import { Tabs } from 'antd'
-import { useTranslation } from 'react-i18next'
-import TechIntroduction from './components/TechIntroduction'
-import LiveStreaming from './components/LiveStreaming'
 import styles from '@/styles/webrtc.module.scss'
+import { Tabs } from 'antd'
+import React, { useState } from 'react'
+import { useTranslation } from 'react-i18next'
+import LiveStreaming from './components/LiveStreaming'
+import TechIntroduction from './components/TechIntroduction'
 
 const { TabPane } = Tabs
 

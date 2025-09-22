@@ -1,6 +1,6 @@
 /**
  * WebRTC自定义Hook
- * 
+ *
  * 功能说明：
  * 1. 封装WebRTC连接逻辑
  * 2. 管理PeerConnection生命周期
@@ -8,9 +8,9 @@
  * 4. 提供连接状态和统计信息
  */
 
-import { useState, useRef, useCallback, useEffect } from 'react'
-import { io, Socket } from 'socket.io-client'
 import { message } from 'antd'
+import { useCallback, useEffect, useRef, useState } from 'react'
+import { io, Socket } from 'socket.io-client'
 import { webrtcConfig } from '../config/webrtc.config'
 
 export type ConnectionState = 'disconnected' | 'connecting' | 'connected' | 'failed'
@@ -43,7 +43,7 @@ export const useWebRTC = (): UseWebRTCReturn => {
         frameRate: 0,
         resolution: '0x0',
         duration: '00:00:00',
-        packetLoss: 0
+        packetLoss: 0,
     })
 
     const peerConnectionRef = useRef<RTCPeerConnection | null>(null)
@@ -56,7 +56,7 @@ export const useWebRTC = (): UseWebRTCReturn => {
     // 初始化PeerConnection
     const initializePeerConnection = useCallback(() => {
         const pc = new RTCPeerConnection(webrtcConfig.peerConnectionConfig)
-        
+
         // 处理远程流
         pc.ontrack = (event) => {
             console.log('Received remote stream:', event.streams[0])
@@ -73,7 +73,7 @@ export const useWebRTC = (): UseWebRTCReturn => {
         // 监听连接状态变化
         pc.onconnectionstatechange = () => {
             console.log('Connection state changed:', pc.connectionState)
-            
+
             switch (pc.connectionState) {
                 case 'connected':
                     setConnectionState('connected')
@@ -107,7 +107,7 @@ export const useWebRTC = (): UseWebRTCReturn => {
     // 初始化Socket连接
     const initializeSocket = useCallback(() => {
         const socket = io(webrtcConfig.signalingServerUrl, {
-            transports: ['websocket']
+            transports: ['websocket'],
         })
 
         socket.on('connect', () => {
@@ -121,14 +121,14 @@ export const useWebRTC = (): UseWebRTCReturn => {
         // 处理offer信令
         socket.on('offer', async (offer: RTCSessionDescriptionInit) => {
             console.log('Received offer:', offer)
-            
+
             if (!peerConnectionRef.current) return
 
             try {
                 await peerConnectionRef.current.setRemoteDescription(offer)
                 const answer = await peerConnectionRef.current.createAnswer()
                 await peerConnectionRef.current.setLocalDescription(answer)
-                
+
                 socket.emit('answer', answer)
             } catch (error) {
                 console.error('Error handling offer:', error)
@@ -139,7 +139,7 @@ export const useWebRTC = (): UseWebRTCReturn => {
         // 处理ICE候选
         socket.on('ice-candidate', async (candidate: RTCIceCandidateInit) => {
             console.log('Received ICE candidate:', candidate)
-            
+
             if (!peerConnectionRef.current) return
 
             try {
@@ -196,19 +196,21 @@ export const useWebRTC = (): UseWebRTCReturn => {
             if (report.type === 'inbound-rtp' && report.mediaType === 'video') {
                 bitrate = Math.round((report.bytesReceived * 8) / 1000) // kbps
                 frameRate = report.framesPerSecond || 0
-                
+
                 if (report.frameWidth && report.frameHeight) {
                     resolution = `${report.frameWidth}x${report.frameHeight}`
                 }
             }
-            
+
             if (report.type === 'candidate-pair' && report.state === 'succeeded') {
-                latency = report.currentRoundTripTime ? Math.round(report.currentRoundTripTime * 1000) : 0
+                latency = report.currentRoundTripTime
+                    ? Math.round(report.currentRoundTripTime * 1000)
+                    : 0
             }
         })
 
         // 计算连接时长
-        const duration = startTimeRef.current 
+        const duration = startTimeRef.current
             ? formatDuration(Date.now() - startTimeRef.current)
             : '00:00:00'
 
@@ -218,7 +220,7 @@ export const useWebRTC = (): UseWebRTCReturn => {
             frameRate,
             resolution,
             duration,
-            packetLoss
+            packetLoss,
         }
     }
 
@@ -239,17 +241,16 @@ export const useWebRTC = (): UseWebRTCReturn => {
         }
 
         setConnectionState('connecting')
-        
+
         try {
             // 初始化PeerConnection
             peerConnectionRef.current = initializePeerConnection()
-            
+
             // 初始化Socket连接
             socketRef.current = initializeSocket()
-            
+
             // 通知信令服务器准备接收连接
             socketRef.current.emit('web-client-ready')
-            
         } catch (error) {
             console.error('Error connecting:', error)
             setConnectionState('failed')
@@ -275,7 +276,7 @@ export const useWebRTC = (): UseWebRTCReturn => {
         setRemoteStream(null)
         setConnectionState('disconnected')
         stopStatsCollection()
-        
+
         message.info('已断开连接')
     }, [stopStatsCollection])
 
@@ -300,6 +301,6 @@ export const useWebRTC = (): UseWebRTCReturn => {
         stats,
         connect,
         disconnect,
-        sendMessage
+        sendMessage,
     }
 }

@@ -1,5 +1,12 @@
-import { IsOptional, IsString, MaxLength, MinLength, IsArray, ValidateNested, IsUrl } from 'class-validator'
 import { Type } from 'class-transformer'
+import {
+  IsArray,
+  IsOptional,
+  IsString,
+  MaxLength,
+  MinLength,
+  ValidateNested,
+} from 'class-validator'
 
 // 图片数据 DTO
 export class ImageDto {

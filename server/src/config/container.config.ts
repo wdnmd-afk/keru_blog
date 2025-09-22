@@ -17,7 +17,7 @@ import {
 } from '@/router/controller'
 
 // 导入WebRTC模块
-import { WebRTCController, WebRTCService, WebRTCGateway } from '@/router/webrtc'
+import { WebRTCController, WebRTCGateway, WebRTCService } from '@/router/webrtc'
 
 // 导入服务
 import { AIService } from '@/router/ai/service'
@@ -200,17 +200,18 @@ function createRedisClient(): Redis {
     port: parseInt(process.env.REDIS_PORT || '6379'),
     password: process.env.REDIS_PASSWORD,
     db: parseInt(process.env.REDIS_DB || '0'),
-    retryDelayOnFailover: 1000,
+    // 使用标准的 ioredis 配置选项
     maxRetriesPerRequest: 3,
     lazyConnect: true,
-    keepAlive: true,
+    // keepAlive 属性在 ioredis 中应该是数字类型或者不设置
+    keepAlive: 30000, // 30秒保持连接
   })
 
   redis.on('connect', () => {
     console.log('Redis connected successfully')
   })
 
-  redis.on('error', (error) => {
+  redis.on('error', error => {
     console.error('Redis connection error:', error)
   })
 

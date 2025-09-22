@@ -14,7 +14,7 @@ import { ChatDto } from './dto'
 
 // 配置 multer 用于AI图片上传
 const storage = multer.diskStorage({
-  destination: async (req, file, cb) => {
+  destination: async (_req, _file, cb) => {
     const uploadDir = path.resolve(process.cwd(), 'static/IMAGE')
     // 确保目录存在
     if (!fse.existsSync(uploadDir)) {
@@ -22,7 +22,7 @@ const storage = multer.diskStorage({
     }
     cb(null, uploadDir)
   },
-  filename: (req, file, cb) => {
+  filename: (_req, file, cb) => {
     // 生成唯一文件名：时间戳 + 随机数 + 原扩展名
     const ext = path.extname(file.originalname)
     const uniqueName = `ai-image-${Date.now()}-${Math.round(Math.random() * 1e9)}${ext}`
@@ -84,9 +84,8 @@ export class AIController extends BaseHttpController {
       try {
         if (userId) {
           // 构建保存的消息内容（包含图片信息）
-          const messageToSave = images && images.length > 0
-            ? `${message} [包含${images.length}张图片]`
-            : message
+          const messageToSave =
+            images && images.length > 0 ? `${message} [包含${images.length}张图片]` : message
 
           console.log(
             `[AI] controller.chat -> saveConversation call: userId=${userId}, qLen=${messageToSave?.length || 0}, aLen=${reply?.length || 0}, images=${images?.length || 0}`
@@ -167,9 +166,8 @@ export class AIController extends BaseHttpController {
       try {
         if (userId) {
           // 构建保存的消息内容（包含图片信息）
-          const messageToSave = images && images.length > 0
-            ? `${message} [包含${images.length}张图片]`
-            : message
+          const messageToSave =
+            images && images.length > 0 ? `${message} [包含${images.length}张图片]` : message
 
           console.log(
             `[AI] controller.chatStream -> saveConversation call: userId=${userId}, qLen=${messageToSave?.length || 0}, aLen=${fullText?.length || 0}, images=${images?.length || 0}`
@@ -286,8 +284,10 @@ export class AIController extends BaseHttpController {
 
       console.log('[AI] 图片上传成功 - 文件ID:', fileRecord.id)
       console.log('[AI] 图片上传成功 - 文件URL:', fileUrl)
-      console.log('[AI] 图片上传成功 - 文件路径:', path.resolve(process.cwd(), 'static/IMAGE', file.filename))
-
+      console.log(
+        '[AI] 图片上传成功 - 文件路径:',
+        path.resolve(process.cwd(), 'static/IMAGE', file.filename)
+      )
       ;(res as any).sendResponse({
         success: true,
         code: 200,

@@ -1,6 +1,6 @@
 /**
  * WebRTC实时直播组件
- * 
+ *
  * 功能说明：
  * 1. 实现WebRTC视频直播功能
  * 2. 支持接收来自React Native端的视频流
@@ -8,19 +8,19 @@
  * 4. 显示连接状态和统计信息
  */
 
-import React, { useRef, useEffect, useState } from 'react'
-import { Card, Button, Select, Slider, Row, Col, Statistic, Alert, Space } from 'antd'
-import { useTranslation } from 'react-i18next'
-import {
-    PlayCircleOutlined,
-    PauseCircleOutlined,
-    SoundOutlined,
-    SettingOutlined,
-    WifiOutlined,
-    ClockCircleOutlined
-} from '@ant-design/icons'
-import { useWebRTC } from '../hooks/useWebRTC'
 import styles from '@/styles/webrtc.module.scss'
+import {
+    ClockCircleOutlined,
+    PauseCircleOutlined,
+    PlayCircleOutlined,
+    SettingOutlined,
+    SoundOutlined,
+    WifiOutlined,
+} from '@ant-design/icons'
+import { Alert, Button, Card, Col, Row, Select, Slider, Space, Statistic } from 'antd'
+import React, { useEffect, useRef, useState } from 'react'
+import { useTranslation } from 'react-i18next'
+import { useWebRTC } from '../hooks/useWebRTC'
 
 const { Option } = Select
 
@@ -30,16 +30,9 @@ const LiveStreaming: React.FC = () => {
     const [isPlaying, setIsPlaying] = useState(false)
     const [volume, setVolume] = useState(80)
     const [quality, setQuality] = useState('720p')
-    
+
     // 使用自定义WebRTC Hook
-    const {
-        connectionState,
-        isConnected,
-        stats,
-        connect,
-        disconnect,
-        remoteStream
-    } = useWebRTC()
+    const { connectionState, isConnected, stats, connect, disconnect, remoteStream } = useWebRTC()
 
     // 当接收到远程流时，设置到video元素
     useEffect(() => {
@@ -114,7 +107,7 @@ const LiveStreaming: React.FC = () => {
                                 muted={false}
                                 poster="/placeholder-video.jpg"
                             />
-                            
+
                             {!remoteStream && (
                                 <div className={styles.video_placeholder}>
                                     <div className={styles.placeholder_content}>
@@ -131,11 +124,15 @@ const LiveStreaming: React.FC = () => {
                             <Space>
                                 <Button
                                     type="primary"
-                                    icon={isPlaying ? <PauseCircleOutlined /> : <PlayCircleOutlined />}
+                                    icon={
+                                        isPlaying ? <PauseCircleOutlined /> : <PlayCircleOutlined />
+                                    }
                                     onClick={handlePlayPause}
                                     disabled={!remoteStream}
                                 >
-                                    {isPlaying ? t('streaming.controls.pause') : t('streaming.controls.play')}
+                                    {isPlaying
+                                        ? t('streaming.controls.pause')
+                                        : t('streaming.controls.play')}
                                 </Button>
 
                                 <div className={styles.volume_control}>
@@ -170,18 +167,18 @@ const LiveStreaming: React.FC = () => {
                     <Card title={t('streaming.connection.title')} className={styles.control_card}>
                         <Space direction="vertical" style={{ width: '100%' }}>
                             <Button
-                                type={isConnected ? 'danger' : 'primary'}
+                                type="primary"
+                                danger={isConnected}
                                 size="large"
                                 block
                                 onClick={handleConnect}
                                 loading={connectionState === 'connecting'}
                             >
-                                {isConnected 
+                                {isConnected
                                     ? t('streaming.connection.disconnect')
-                                    : t('streaming.connection.connect')
-                                }
+                                    : t('streaming.connection.connect')}
                             </Button>
-                            
+
                             <div className={styles.connection_info}>
                                 <p>
                                     <strong>{t('streaming.connection.state')}:</strong>{' '}
@@ -226,10 +223,12 @@ const LiveStreaming: React.FC = () => {
                                 />
                             </Col>
                         </Row>
-                        
+
                         <div className={styles.connection_time}>
                             <ClockCircleOutlined />
-                            <span>{t('streaming.stats.duration')}: {stats.duration}</span>
+                            <span>
+                                {t('streaming.stats.duration')}: {stats.duration}
+                            </span>
                         </div>
                     </Card>
 
@@ -249,7 +248,7 @@ const LiveStreaming: React.FC = () => {
                                     <Option value="360p">360p (500kbps)</Option>
                                 </Select>
                             </div>
-                            
+
                             <div>
                                 <label>{t('streaming.quality.auto_adjust')}</label>
                                 <p className={styles.quality_description}>

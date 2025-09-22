@@ -19,7 +19,9 @@ export class TodoController extends BaseHttpController {
   private getUserId(req: any): string {
     // 尝试从 httpContext 获取用户信息
     if (this.httpContext && this.httpContext.user && this.httpContext.user.details) {
-      return this.httpContext.user.details.id
+      // 添加类型守卫确保 details 对象有 id 属性
+      const details = this.httpContext.user.details as { id: string }
+      return details.id
     }
 
     // 备用方法：从 JWT token 中直接解析

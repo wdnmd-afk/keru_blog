@@ -1,16 +1,22 @@
-import { Image, Button, Space, Tooltip, Spin, Popconfirm } from 'antd'
-import { DeleteOutlined, EyeOutlined, LoadingOutlined, ExclamationCircleOutlined, ClearOutlined } from '@ant-design/icons'
+import {
+    ClearOutlined,
+    DeleteOutlined,
+    ExclamationCircleOutlined,
+    EyeOutlined,
+    LoadingOutlined,
+} from '@ant-design/icons'
+import { Button, Image, Popconfirm, Spin, Tooltip } from 'antd'
 import React from 'react'
 import { ImageItem } from './ImageUpload'
 
 interface ImagePreviewProps {
-    images: ImageItem[]                          // 图片列表
-    onImageRemove: (imageId: string) => void    // 删除图片回调
-    onClearAll?: () => void                     // 清空所有图片回调
-    readonly?: boolean                          // 是否只读模式
-    maxDisplay?: number                         // 最大显示数量
-    size?: number                              // 预览图尺寸
-    showBatchActions?: boolean                  // 是否显示批量操作按钮
+    images: ImageItem[] // 图片列表
+    onImageRemove: (imageId: string) => void // 删除图片回调
+    onClearAll?: () => void // 清空所有图片回调
+    readonly?: boolean // 是否只读模式
+    maxDisplay?: number // 最大显示数量
+    size?: number // 预览图尺寸
+    showBatchActions?: boolean // 是否显示批量操作按钮
 }
 
 /**
@@ -24,7 +30,7 @@ const ImagePreview: React.FC<ImagePreviewProps> = ({
     readonly = false,
     maxDisplay = 6,
     size = 60,
-    showBatchActions = true
+    showBatchActions = true,
 }) => {
     // 如果没有图片，不渲染组件
     if (!images || images.length === 0) return null
@@ -48,7 +54,7 @@ const ImagePreview: React.FC<ImagePreviewProps> = ({
                 borderRadius: 6,
                 overflow: 'hidden',
                 border: '1px solid #d9d9d9',
-                backgroundColor: '#fafafa'
+                backgroundColor: '#fafafa',
             }}
         >
             {/* 主图片 */}
@@ -59,21 +65,23 @@ const ImagePreview: React.FC<ImagePreviewProps> = ({
                 height={80} // 固定高度80px
                 style={{
                     objectFit: 'cover',
-                    display: 'block'
+                    display: 'block',
                 }}
                 preview={{
                     mask: <EyeOutlined style={{ color: 'white' }} />,
-                    maskClassName: 'image-preview-mask'
+                    maskClassName: 'image-preview-mask',
                 }}
                 placeholder={
-                    <div style={{
-                        width: 80,
-                        height: 80,
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        backgroundColor: '#f5f5f5'
-                    }}>
+                    <div
+                        style={{
+                            width: 80,
+                            height: 80,
+                            display: 'flex',
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            backgroundColor: '#f5f5f5',
+                        }}
+                    >
                         <LoadingOutlined />
                     </div>
                 }
@@ -87,20 +95,22 @@ const ImagePreview: React.FC<ImagePreviewProps> = ({
 
             {/* 上传中状态遮罩 */}
             {image.status === 'uploading' && (
-                <div style={{
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    right: 0,
-                    bottom: 0,
-                    background: 'rgba(0,0,0,0.6)',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    color: 'white',
-                    fontSize: 12
-                }}>
+                <div
+                    style={{
+                        position: 'absolute',
+                        top: 0,
+                        left: 0,
+                        right: 0,
+                        bottom: 0,
+                        background: 'rgba(0,0,0,0.6)',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        color: 'white',
+                        fontSize: 12,
+                    }}
+                >
                     <Spin size="small" />
                     <div style={{ marginTop: 4 }}>上传中...</div>
                 </div>
@@ -108,20 +118,22 @@ const ImagePreview: React.FC<ImagePreviewProps> = ({
 
             {/* 上传失败状态遮罩 */}
             {image.status === 'error' && (
-                <div style={{
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    right: 0,
-                    bottom: 0,
-                    background: 'rgba(255,77,79,0.8)',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    color: 'white',
-                    fontSize: 12
-                }}>
+                <div
+                    style={{
+                        position: 'absolute',
+                        top: 0,
+                        left: 0,
+                        right: 0,
+                        bottom: 0,
+                        background: 'rgba(255,77,79,0.8)',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        color: 'white',
+                        fontSize: 12,
+                    }}
+                >
                     <ExclamationCircleOutlined />
                     <div style={{ marginTop: 4 }}>上传失败</div>
                 </div>
@@ -150,7 +162,7 @@ const ImagePreview: React.FC<ImagePreviewProps> = ({
                             justifyContent: 'center',
                             fontSize: 10,
                             color: 'white',
-                            boxShadow: '0 2px 4px rgba(0,0,0,0.2)'
+                            boxShadow: '0 2px 4px rgba(0,0,0,0.2)',
                         }}
                     />
                 </Tooltip>
@@ -168,20 +180,22 @@ const ImagePreview: React.FC<ImagePreviewProps> = ({
                     }
                     placement="bottom"
                 >
-                    <div style={{
-                        position: 'absolute',
-                        bottom: 0,
-                        left: 0,
-                        right: 0,
-                        background: 'rgba(0,0,0,0.6)',
-                        color: 'white',
-                        fontSize: 10,
-                        padding: '2px 4px',
-                        textAlign: 'center',
-                        overflow: 'hidden',
-                        textOverflow: 'ellipsis',
-                        whiteSpace: 'nowrap'
-                    }}>
+                    <div
+                        style={{
+                            position: 'absolute',
+                            bottom: 0,
+                            left: 0,
+                            right: 0,
+                            background: 'rgba(0,0,0,0.6)',
+                            color: 'white',
+                            fontSize: 10,
+                            padding: '2px 4px',
+                            textAlign: 'center',
+                            overflow: 'hidden',
+                            textOverflow: 'ellipsis',
+                            whiteSpace: 'nowrap',
+                        }}
+                    >
                         {image.name}
                     </div>
                 </Tooltip>
@@ -193,20 +207,22 @@ const ImagePreview: React.FC<ImagePreviewProps> = ({
      * 渲染"更多"指示器
      */
     const renderMoreIndicator = () => (
-        <div style={{
-            width: 80, // 固定宽度80px
-            height: 80, // 固定高度80px
-            flexShrink: 0, // 防止在flex布局中被压缩
-            border: '1px dashed #d9d9d9',
-            borderRadius: 6,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'center',
-            color: '#999',
-            fontSize: 12,
-            backgroundColor: '#fafafa'
-        }}>
+        <div
+            style={{
+                width: 80, // 固定宽度80px
+                height: 80, // 固定高度80px
+                flexShrink: 0, // 防止在flex布局中被压缩
+                border: '1px dashed #d9d9d9',
+                borderRadius: 6,
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                justifyContent: 'center',
+                color: '#999',
+                fontSize: 12,
+                backgroundColor: '#fafafa',
+            }}
+        >
             <div>+{images.length - maxDisplay}</div>
             <div style={{ fontSize: 10 }}>更多</div>
         </div>
@@ -216,16 +232,18 @@ const ImagePreview: React.FC<ImagePreviewProps> = ({
         <div className="image-preview-container" style={{ marginBottom: 8 }}>
             {/* 批量操作按钮 */}
             {!readonly && showBatchActions && images.length > 1 && (
-                <div style={{
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                    alignItems: 'center',
-                    marginBottom: 8,
-                    padding: '4px 8px',
-                    background: 'rgba(0,0,0,0.02)',
-                    borderRadius: 4,
-                    border: '1px solid #f0f0f0'
-                }}>
+                <div
+                    style={{
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        alignItems: 'center',
+                        marginBottom: 8,
+                        padding: '4px 8px',
+                        background: 'rgba(0,0,0,0.02)',
+                        borderRadius: 4,
+                        border: '1px solid #f0f0f0',
+                    }}
+                >
                     <span style={{ fontSize: 12, color: '#666' }}>
                         已选择 {images.length} 张图片
                     </span>
@@ -239,12 +257,7 @@ const ImagePreview: React.FC<ImagePreviewProps> = ({
                             onConfirm={onClearAll}
                             placement="topRight"
                         >
-                            <Button
-                                type="text"
-                                size="small"
-                                danger
-                                icon={<ClearOutlined />}
-                            >
+                            <Button type="text" size="small" danger icon={<ClearOutlined />}>
                                 清空全部
                             </Button>
                         </Popconfirm>
@@ -253,18 +266,20 @@ const ImagePreview: React.FC<ImagePreviewProps> = ({
             )}
 
             {/* 图片横向布局 */}
-            <div style={{
-                display: 'flex',
-                flexWrap: 'nowrap',
-                gap: 8,
-                overflowX: 'auto',
-                overflowY: 'hidden',
-                padding: '4px 0',
-                maxWidth: '100%',
-                // 自定义滚动条样式
-                scrollbarWidth: 'thin',
-                scrollbarColor: '#d9d9d9 transparent'
-            }}>
+            <div
+                style={{
+                    display: 'flex',
+                    flexWrap: 'nowrap',
+                    gap: 8,
+                    overflowX: 'auto',
+                    overflowY: 'hidden',
+                    padding: '4px 0',
+                    maxWidth: '100%',
+                    // 自定义滚动条样式
+                    scrollbarWidth: 'thin',
+                    scrollbarColor: '#d9d9d9 transparent',
+                }}
+            >
                 {displayImages.map(renderImageItem)}
                 {hasMore && renderMoreIndicator()}
             </div>

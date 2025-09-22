@@ -31,7 +31,7 @@ export class PublicFeedbackController extends BaseHttpController {
       }
 
       // 若请求头中携带 JWT，则尝试从中提取用户名/邮箱，优先级：入参 > JWT > null
-      const decoded: any = getJwt(req)
+      const decoded = getJwt(req)
       const tokenName = decoded?.name || decoded?.username || null
       const tokenEmail = decoded?.email || null
 
@@ -44,14 +44,14 @@ export class PublicFeedbackController extends BaseHttpController {
           userEmail: userEmail || tokenEmail || null,
           category: category || 'OTHER',
           status: 'PENDING',
-        } as any,
+        },
       })
 
       const r = ApiResponse.success(created, '提交成功', req.requestId)
-      res.json(r.toJSON())
+      return res.json(r.toJSON())
     } catch (error: any) {
       const r = ApiResponse.error(500, error.message || '提交失败', req.requestId)
-      res.status(500).json(r.toJSON())
+      return res.status(500).json(r.toJSON())
     }
   }
 }

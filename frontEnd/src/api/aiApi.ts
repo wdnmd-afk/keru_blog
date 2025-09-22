@@ -3,11 +3,11 @@ import { Http } from '@/utils'
 // 图片项接口定义（与组件保持一致）
 export interface ImageItem {
     id: string
-    url: string          // 图片URL或base64
-    name: string         // 文件名
-    size: number         // 文件大小（字节）
-    type: string         // MIME类型
-    status: 'uploading' | 'uploaded' | 'error'  // 上传状态
+    url: string // 图片URL或base64
+    name: string // 文件名
+    size: number // 文件大小（字节）
+    type: string // MIME类型
+    status: 'uploading' | 'uploaded' | 'error' // 上传状态
 }
 
 // 消息项接口定义（扩展支持图片）
@@ -15,7 +15,7 @@ export interface MsgItem {
     id: string
     role: 'user' | 'assistant'
     text: string
-    images?: ImageItem[]  // 可选的图片数组
+    images?: ImageItem[] // 可选的图片数组
 }
 
 // 请求体类型定义（扩展支持图片）
@@ -23,9 +23,9 @@ export interface ChatReq {
     message: string
     conversationId?: string
     images?: {
-        url: string      // 图片URL或base64
-        type: string     // MIME类型
-    }[]                  // 可选的图片数组
+        url: string // 图片URL或base64
+        type: string // MIME类型
+    }[] // 可选的图片数组
 }
 
 // 非流式问答接口
@@ -60,7 +60,6 @@ export interface ConversationItem {
 }
 
 export async function fetchRecentConversations(): Promise<{
-    success: boolean
     code: number
     message: string
     data: ConversationItem[]
