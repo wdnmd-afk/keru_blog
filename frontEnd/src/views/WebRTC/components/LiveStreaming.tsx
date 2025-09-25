@@ -24,6 +24,31 @@ import { useWebRTC } from '../hooks/useWebRTC'
 
 const { Option } = Select
 
+/**
+ * 安全的图标渲染函数
+ * 防止图标组件返回 null 导致的 React.createElement 错误
+ */
+const renderSafeIcon = (
+    condition: boolean | undefined,
+    trueIcon: React.ReactNode,
+    falseIcon: React.ReactNode,
+    fallbackIcon: React.ReactNode = <PlayCircleOutlined />
+): React.ReactNode => {
+    try {
+        if (condition === true) {
+            return trueIcon || fallbackIcon
+        } else if (condition === false) {
+            return falseIcon || fallbackIcon
+        } else {
+            // 未定义状态，使用默认图标
+            return fallbackIcon
+        }
+    } catch (error) {
+        console.warn('图标渲染错误:', error)
+        return fallbackIcon
+    }
+}
+
 const LiveStreaming: React.FC = () => {
     const { t } = useTranslation('webrtc')
     const videoRef = useRef<HTMLVideoElement>(null)
@@ -33,6 +58,17 @@ const LiveStreaming: React.FC = () => {
 
     // 使用自定义WebRTC Hook
     const { connectionState, isConnected, stats, connect, disconnect, remoteStream } = useWebRTC()
+
+    // 添加状态初始化检查，防止在状态未完全初始化时渲染导致图标错误
+    if (!connectionState) {
+        return (
+            <div className={styles.live_streaming}>
+                <div style={{ textAlign: 'center', padding: '50px' }}>
+                    <p>正在初始化 WebRTC 连接...</p>
+                </div>
+            </div>
+        )
+    }
 
     // 当接收到远程流时，设置到video元素
     useEffect(() => {
@@ -69,18 +105,18 @@ const LiveStreaming: React.FC = () => {
         }
     }
 
-    const getConnectionStatusColor = () => {
+    const getConnectionStatusColor = (): 'success' | 'warning' | 'info' | 'error' => {
         switch (connectionState) {
             case 'connected':
                 return 'success'
             case 'connecting':
                 return 'warning'
             case 'disconnected':
-                return 'default'
+                return 'info'  // 使用 'info' 替代 'default'，确保类型安全
             case 'failed':
                 return 'error'
             default:
-                return 'default'
+                return 'info'  // 默认使用 'info' 类型
         }
     }
 
@@ -88,8 +124,8 @@ const LiveStreaming: React.FC = () => {
         <div className={styles.live_streaming}>
             {/* 连接状态提示 */}
             <Alert
-                message={t(`streaming.connection.status.${connectionState}`)}
-                type={getConnectionStatusColor() as any}
+                message={t(`streaming.connection.status.${connectionState}`, '连接状态')}
+                type={getConnectionStatusColor()}
                 showIcon
                 className={styles.connection_alert}
             />
@@ -124,9 +160,11 @@ const LiveStreaming: React.FC = () => {
                             <Space>
                                 <Button
                                     type="primary"
-                                    icon={
-                                        isPlaying ? <PauseCircleOutlined /> : <PlayCircleOutlined />
-                                    }
+                                    icon={renderSafeIcon(
+                                        isPlaying,
+                                        <PauseCircleOutlined />,
+                                        <PlayCircleOutlined />
+                                    )}
                                     onClick={handlePlayPause}
                                     disabled={!remoteStream}
                                 >

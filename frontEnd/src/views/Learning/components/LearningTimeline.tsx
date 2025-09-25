@@ -17,7 +17,7 @@
 
 import styles from '@/styles/learning.module.scss'
 import { AppstoreOutlined, BarsOutlined, PartitionOutlined } from '@ant-design/icons'
-import { Button, Timeline } from 'antd'
+import { Button, Space, Timeline } from 'antd'
 import React, { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import TechFlowTimeline from './TechFlowTimeline'
@@ -82,7 +82,8 @@ const LearningTimeline: React.FC = () => {
                         <p>{t('timeline.subtitle')}</p>
                     </div>
                     <div className={styles.view_switcher}>
-                        <Button.Group>
+                        {/* 使用 Space.Compact 替代已弃用的 Button.Group */}
+                        <Space.Compact>
                             <Button
                                 type={viewMode === 'timeline' ? 'primary' : 'default'}
                                 icon={<BarsOutlined />}
@@ -104,27 +105,28 @@ const LearningTimeline: React.FC = () => {
                             >
                                 {t('timeline.view_tree', '树状图')}
                             </Button>
-                        </Button.Group>
+                        </Space.Compact>
                     </div>
                 </div>
             </div>
 
             <div className={styles.timeline_content}>
                 {viewMode === 'timeline' ? (
-                    <Timeline mode="left" className={styles.learning_timeline}>
-                        {timelineData.map((item, index) => (
-                            <Timeline.Item
-                                key={index}
-                                color={item.status === 'processing' ? 'blue' : 'green'}
-                                label={<span className={styles.timeline_time}>{item.time}</span>}
-                            >
+                    <Timeline
+                        mode="left"
+                        className={styles.learning_timeline}
+                        items={timelineData.map((item, index) => ({
+                            key: index,
+                            color: item.status === 'processing' ? 'blue' : 'green',
+                            label: <span className={styles.timeline_time}>{item.time}</span>,
+                            children: (
                                 <div className={styles.timeline_item_content}>
                                     <h3>{item.title}</h3>
                                     <p>{item.description}</p>
                                 </div>
-                            </Timeline.Item>
-                        ))}
-                    </Timeline>
+                            )
+                        }))}
+                    />
                 ) : viewMode === 'flowchart' ? (
                     <TechFlowTimeline />
                 ) : (

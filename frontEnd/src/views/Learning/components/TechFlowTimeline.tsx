@@ -23,7 +23,7 @@ import {
     RocketOutlined,
     StarOutlined,
 } from '@ant-design/icons'
-import { Button, Progress, Tag } from 'antd'
+import { Button, Progress, Space, Tag } from 'antd'
 import React, { useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import TechNodeModal from './TechNodeModal'
@@ -370,7 +370,8 @@ const TechFlowTimeline: React.FC = () => {
                         </p>
                     </div>
                     <div className={styles.zoom_controls}>
-                        <Button.Group>
+                        {/* 使用 Space.Compact 替代已弃用的 Button.Group */}
+                        <Space.Compact>
                             <Button
                                 icon={<MinusOutlined />}
                                 onClick={handleZoomOut}
@@ -386,7 +387,7 @@ const TechFlowTimeline: React.FC = () => {
                                 disabled={zoomLevel >= 2}
                                 title="放大"
                             />
-                        </Button.Group>
+                        </Space.Compact>
                     </div>
                 </div>
             </div>

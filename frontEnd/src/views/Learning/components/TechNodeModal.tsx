@@ -216,17 +216,14 @@ const TechNodeModal: React.FC<TechNodeModalProps> = ({ visible, node, onClose })
                             </>
                         }
                     >
-                        <Timeline>
-                            {node.achievements.map((achievement, index) => (
-                                <Timeline.Item
-                                    key={index}
-                                    color="green"
-                                    dot={<CheckCircleOutlined style={{ color: '#52c41a' }} />}
-                                >
-                                    {achievement}
-                                </Timeline.Item>
-                            ))}
-                        </Timeline>
+                        <Timeline
+                            items={node.achievements.map((achievement, index) => ({
+                                key: index,
+                                color: "green",
+                                dot: <CheckCircleOutlined style={{ color: '#52c41a' }} />,
+                                children: achievement
+                            }))}
+                        />
                     </Card>
                 )}
             </div>

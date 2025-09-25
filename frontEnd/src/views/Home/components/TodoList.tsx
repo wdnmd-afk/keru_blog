@@ -94,7 +94,7 @@ const TodoList = () => {
                 onCancel={handleCancel}
                 okText={t('todo.modal.confirm')}
                 cancelText={t('todo.modal.cancel')}
-                destroyOnClose
+                destroyOnHidden
             >
                 <Form form={form} layout="vertical" name="todo_form">
                     <Form.Item

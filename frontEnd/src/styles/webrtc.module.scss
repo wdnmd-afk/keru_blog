@@ -1,17 +1,34 @@
 /**
- * WebRTC模块样式文件
- * 
+ * WebRTC模块样式文件 - iOS 风格优化版
+ *
  * 功能说明：
- * 1. 定义WebRTC相关组件的样式
- * 2. 包含响应式设计和主题适配
- * 3. 提供统一的视觉风格
+ * 1. 定义WebRTC相关组件的iOS风格样式
+ * 2. 包含毛玻璃效果、现代化阴影和动画
+ * 3. 提供统一的iOS设计语言视觉风格
  */
+
+@import './ios-design-system.scss';
 
 // ==================== 主容器样式 ====================
 .webrtc_container {
     padding: 24px;
     min-height: 100vh;
-    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    background: linear-gradient(135deg, var(--ios-bg-primary) 0%, #E5E5EA 50%, var(--ios-bg-primary) 100%);
+    position: relative;
+
+    // 添加微妙的纹理效果
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: radial-gradient(circle at 20% 50%, rgba(0, 122, 255, 0.03) 0%, transparent 50%),
+            radial-gradient(circle at 80% 20%, rgba(175, 82, 222, 0.03) 0%, transparent 50%),
+            radial-gradient(circle at 40% 80%, rgba(52, 199, 89, 0.03) 0%, transparent 50%);
+        pointer-events: none;
+    }
 
     @media (max-width: 768px) {
         padding: 16px;
@@ -20,17 +37,62 @@
 
 .webrtc_header {
     text-align: center;
-    margin-bottom: 32px;
+    margin-bottom: 40px;
+    position: relative;
+    z-index: 1;
+
+    .header_controls {
+        position: absolute;
+        top: 0;
+        right: 0;
+        display: flex;
+        gap: 8px;
+        z-index: 10;
+
+        .theme_toggle,
+        .theme_mode {
+            @include ios-glass(0.8);
+            border-radius: var(--ios-radius-full);
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            @include ios-shadow('small');
+
+            &:hover {
+                transform: scale(1.05);
+                @include ios-shadow('medium');
+            }
+
+            &:active {
+                transform: scale(0.95);
+            }
+
+            :global(.anticon) {
+                color: var(--ios-text-primary);
+                font-size: 18px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            position: relative;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+    }
 
     .page_title {
         font-size: 2.5rem;
         font-weight: 700;
-        color: #1890ff;
         margin-bottom: 16px;
-        background: linear-gradient(45deg, #1890ff, #722ed1);
+        background: linear-gradient(45deg, var(--ios-blue), var(--ios-purple));
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
+        letter-spacing: -0.02em;
+        animation: ios-slide-in-up 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 
         @media (max-width: 768px) {
             font-size: 2rem;
@@ -39,18 +101,74 @@
 
     .page_description {
         font-size: 1.1rem;
-        color: #666;
+        color: var(--ios-text-secondary);
         max-width: 600px;
         margin: 0 auto;
         line-height: 1.6;
+        font-weight: 400;
+        animation: ios-slide-in-up 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.2s both;
+    }
+}
+
+// iOS 风格分段控制器
+.ios_segmented_wrapper {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 32px;
+    position: relative;
+    z-index: 1;
+}
+
+.ios_segmented_control {
+    @include ios-segmented-control();
+    min-width: 320px;
+    animation: ios-bounce-in 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.4s both;
+
+    .segment_item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 12px 20px;
+        font-size: 15px;
+        font-weight: 500;
+
+        .segment_icon {
+            font-size: 16px;
+            transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .segment_label {
+            transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        &.active {
+            .segment_icon {
+                color: var(--ios-blue);
+                transform: scale(1.1);
+            }
+        }
+
+        &:hover:not(.active) {
+            .segment_icon {
+                transform: scale(1.05);
+            }
+        }
+    }
+
+    .segment_indicator {
+        background: var(--ios-bg-secondary);
+        @include ios-shadow('small');
     }
 }
 
 .webrtc_content {
-    background: white;
-    border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    @include ios-glass();
+    border-radius: var(--ios-radius-2xl);
+    @include ios-shadow('large');
     overflow: hidden;
+    position: relative;
+    z-index: 1;
+    animation: ios-slide-in-up 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.6s both;
 }
 
 // ==================== Tab栏样式 ====================
@@ -258,19 +376,60 @@
 
 // ==================== 实时直播页面样式 ====================
 .live_streaming {
+    padding: 24px;
+
     .connection_alert {
         margin-bottom: 24px;
-        border-radius: 8px;
+        border-radius: var(--ios-radius-large);
+        border: none;
+        @include ios-glass(0.9);
+        @include ios-shadow('medium');
+
+        // 自定义状态指示器
+        :global(.ant-alert-icon) {
+            display: none;
+        }
+
+        &::before {
+            content: '';
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            margin-right: 8px;
+            vertical-align: middle;
+        }
+
+        &:global(.ant-alert-success)::before {
+            background: var(--ios-green);
+            animation: ios-pulse 2s infinite;
+        }
+
+        &:global(.ant-alert-warning)::before {
+            background: var(--ios-orange);
+            animation: ios-pulse 1s infinite;
+        }
+
+        &:global(.ant-alert-info)::before {
+            background: var(--ios-text-quaternary);
+        }
+
+        &:global(.ant-alert-error)::before {
+            background: var(--ios-red);
+            animation: ios-pulse 1.5s infinite;
+        }
     }
 
     .video_card {
-        border: none;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+        @include ios-card(true);
+        border-radius: var(--ios-radius-2xl);
+        overflow: hidden;
+        margin-bottom: 24px;
 
         .video_container {
             position: relative;
-            background: #000;
-            border-radius: 8px;
+            background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+            border-radius: var(--ios-radius-xl) var(--ios-radius-xl) 0 0;
             overflow: hidden;
             aspect-ratio: 16/9;
 
@@ -278,6 +437,7 @@
                 width: 100%;
                 height: 100%;
                 object-fit: cover;
+                border-radius: var(--ios-radius-xl) var(--ios-radius-xl) 0 0;
             }
 
             .video_placeholder {
@@ -289,41 +449,110 @@
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                background: linear-gradient(135deg, var(--ios-blue) 0%, var(--ios-purple) 100%);
+                @include ios-glass(0.3);
 
                 .placeholder_content {
                     text-align: center;
                     color: white;
+                    animation: ios-bounce-in 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 
                     .placeholder_icon {
                         font-size: 48px;
                         margin-bottom: 16px;
-                        opacity: 0.8;
+                        opacity: 0.9;
+                        animation: ios-pulse 3s infinite;
                     }
 
                     h3 {
                         color: white;
                         margin-bottom: 8px;
                         font-size: 1.2rem;
+                        font-weight: 600;
+                        letter-spacing: -0.01em;
                     }
 
                     p {
                         color: rgba(255, 255, 255, 0.8);
                         margin: 0;
+                        font-weight: 400;
                     }
                 }
             }
         }
 
         .video_controls {
-            padding: 16px;
-            background: #fafafa;
-            border-top: 1px solid #e8e8e8;
+            padding: 20px;
+            @include ios-glass(0.95);
+            border-top: 1px solid var(--ios-glass-border);
+            backdrop-filter: blur(20px);
 
             .volume_control {
                 display: flex;
                 align-items: center;
-                gap: 8px;
+                gap: 12px;
+
+                :global(.ant-slider) {
+                    .ant-slider-rail {
+                        background: var(--ios-bg-quaternary);
+                        height: 4px;
+                        border-radius: 2px;
+                    }
+
+                    .ant-slider-track {
+                        background: var(--ios-blue);
+                        height: 4px;
+                        border-radius: 2px;
+                    }
+
+                    .ant-slider-handle {
+                        border: 2px solid var(--ios-blue);
+                        background: var(--ios-bg-secondary);
+                        width: 16px;
+                        height: 16px;
+                        margin-top: -6px;
+                        @include ios-shadow('small');
+
+                        &:hover,
+                        &:focus {
+                            border-color: var(--ios-blue-dark);
+                            @include ios-shadow('medium');
+                        }
+                    }
+                }
+            }
+
+            // iOS 风格按钮覆盖
+            :global(.ant-btn) {
+                @include ios-button('primary');
+                height: 40px;
+                padding: 0 20px;
+                font-size: 15px;
+
+                &:not(.ant-btn-primary) {
+                    @include ios-button('secondary');
+                }
+            }
+
+            // iOS 风格选择器
+            :global(.ant-select) {
+                .ant-select-selector {
+                    border-radius: var(--ios-radius-medium);
+                    border: 1px solid var(--ios-glass-border);
+                    background: var(--ios-glass-bg);
+                    backdrop-filter: blur(10px);
+                    height: 40px;
+
+                    .ant-select-selection-item {
+                        line-height: 38px;
+                        font-weight: 500;
+                    }
+                }
+
+                &.ant-select-focused .ant-select-selector {
+                    border-color: var(--ios-blue);
+                    @include ios-shadow('medium');
+                }
             }
         }
     }
@@ -331,45 +560,311 @@
     .control_card,
     .stats_card,
     .quality_card {
-        margin-bottom: 16px;
-        border: none;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+        @include ios-card(true);
+        margin-bottom: 20px;
+        border-radius: var(--ios-radius-xl);
+
+        :global(.ant-card-head) {
+            border-bottom: 1px solid var(--ios-glass-border);
+            background: var(--ios-glass-bg-dark);
+            border-radius: var(--ios-radius-xl) var(--ios-radius-xl) 0 0;
+            padding: 16px 20px;
+        }
 
         :global(.ant-card-head-title) {
             font-weight: 600;
-            color: #333;
+            color: var(--ios-text-primary);
+            font-size: 16px;
+            letter-spacing: -0.01em;
+        }
+
+        :global(.ant-card-body) {
+            padding: 20px;
+            background: var(--ios-glass-bg);
         }
 
         .connection_info {
             margin-top: 16px;
-            padding: 12px;
-            background: #f8f9fa;
-            border-radius: 6px;
+            padding: 16px;
+            background: var(--ios-bg-quaternary);
+            border-radius: var(--ios-radius-medium);
+            border: 1px solid var(--ios-glass-border);
 
             p {
                 margin: 0;
                 font-size: 14px;
-                color: #666;
+                color: var(--ios-text-secondary);
+                font-weight: 500;
             }
         }
 
         .connection_time {
             margin-top: 16px;
             padding-top: 16px;
-            border-top: 1px solid #e8e8e8;
+            border-top: 1px solid var(--ios-glass-border);
             display: flex;
             align-items: center;
             gap: 8px;
-            color: #666;
+            color: var(--ios-text-secondary);
             font-size: 14px;
+            font-weight: 500;
+
+            .ios-status-indicator {
+                margin-right: 4px;
+            }
         }
 
         .quality_description {
             font-size: 14px;
-            color: #666;
+            color: var(--ios-text-tertiary);
             margin: 8px 0 0 0;
             line-height: 1.5;
+            font-weight: 400;
         }
+    }
+}
+
+// ==================== 图表和数据可视化样式 ====================
+.stats_chart_container {
+    .stats_chart_card {
+        @include ios-card(true);
+        border-radius: var(--ios-radius-xl);
+        margin-bottom: 24px;
+
+        :global(.ant-card-head) {
+            border-bottom: 1px solid var(--ios-glass-border);
+            background: var(--ios-glass-bg-dark);
+            border-radius: var(--ios-radius-xl) var(--ios-radius-xl) 0 0;
+        }
+
+        :global(.ant-card-body) {
+            background: var(--ios-glass-bg);
+        }
+    }
+
+    .stats_metric_card {
+        @include ios-glass();
+        border-radius: var(--ios-radius-large);
+        padding: 20px;
+        text-align: center;
+        transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        border: none;
+
+        &:hover {
+            transform: translateY(-2px);
+            @include ios-shadow('large');
+        }
+
+        :global(.ant-statistic-title) {
+            color: var(--ios-text-secondary);
+            font-size: 12px;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        :global(.ant-statistic-content) {
+            margin-bottom: 12px;
+        }
+    }
+
+    .chart_card {
+        @include ios-glass();
+        border-radius: var(--ios-radius-large);
+        padding: 20px;
+        border: none;
+
+        .simple_chart {
+            height: 120px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+
+            .chart_value {
+                font-size: 24px;
+                font-weight: 600;
+                margin-bottom: 16px;
+            }
+
+            .chart_bars {
+                display: flex;
+                align-items: end;
+                gap: 4px;
+                height: 60px;
+
+                .chart_bar {
+                    width: 8px;
+                    border-radius: 4px 4px 0 0;
+                    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+                    animation: chart-bar-grow 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+
+                    &:hover {
+                        transform: scaleY(1.1);
+                    }
+                }
+            }
+        }
+    }
+
+    .no_data_placeholder {
+        text-align: center;
+        padding: 60px 20px;
+        color: var(--ios-text-tertiary);
+    }
+}
+
+// ==================== 技术介绍页面增强样式 ====================
+.tech_introduction {
+    .architecture_svg_container {
+        @include ios-glass();
+        border-radius: var(--ios-radius-xl);
+        padding: 24px;
+        margin: 24px 0;
+        overflow: hidden;
+
+        .architecture_svg {
+            width: 100%;
+            height: auto;
+            max-height: 400px;
+            border-radius: var(--ios-radius-medium);
+
+            text {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            }
+        }
+    }
+
+    .tech_stack_section {
+        margin: 32px 0;
+
+        .tech_stack_card {
+            @include ios-glass();
+            border-radius: var(--ios-radius-large);
+            padding: 20px;
+            margin-bottom: 16px;
+            border: none;
+
+            .tech_category_header {
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                margin-bottom: 16px;
+
+                .category_icon {
+                    font-size: 20px;
+                    color: var(--ios-blue);
+                }
+
+                h4 {
+                    margin: 0;
+                    color: var(--ios-text-primary);
+                    font-weight: 600;
+                }
+            }
+
+            .tech_item {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin-bottom: 12px;
+
+                .tech_name {
+                    font-weight: 500;
+                    color: var(--ios-text-primary);
+                }
+
+                .tech_progress {
+                    flex: 1;
+                    margin: 0 16px;
+
+                    :global(.ant-progress-bg) {
+                        background: var(--ios-bg-quaternary);
+                    }
+                }
+
+                .tech_level {
+                    font-size: 12px;
+                    color: var(--ios-text-secondary);
+                    min-width: 30px;
+                    text-align: right;
+                }
+            }
+        }
+    }
+
+    .performance_metrics {
+        .metric_card {
+            @include ios-glass();
+            border-radius: var(--ios-radius-large);
+            padding: 24px;
+            text-align: center;
+            border: none;
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+            &:hover {
+                transform: translateY(-4px);
+                @include ios-shadow('large');
+            }
+
+            .metric_icon {
+                font-size: 32px;
+                margin-bottom: 12px;
+                display: block;
+            }
+
+            .metric_value {
+                font-size: 28px;
+                font-weight: 700;
+                margin-bottom: 4px;
+                display: block;
+            }
+
+            .metric_description {
+                font-size: 12px;
+                color: var(--ios-text-tertiary);
+                margin-top: 8px;
+            }
+        }
+    }
+}
+
+// ==================== 动画关键帧 ====================
+@keyframes chart-bar-grow {
+    from {
+        height: 0;
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes metric-pulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+@keyframes data-flow {
+    0% {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateX(100%);
+        opacity: 0;
     }
 }
 
@@ -435,6 +930,7 @@
         opacity: 0;
         transform: translateY(20px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);

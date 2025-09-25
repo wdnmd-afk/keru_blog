@@ -1,0 +1,444 @@
+/**
+ * iOS 设计系统样式文件
+ * 
+ * 功能说明：
+ * 1. 定义 iOS 风格的设计变量和混合宏
+ * 2. 提供统一的颜色系统、阴影效果、动画曲线
+ * 3. 实现毛玻璃效果和现代化的视觉元素
+ */
+
+// ==================== iOS 颜色系统 ====================
+:root {
+  // 主色调 - iOS 蓝色系
+  --ios-blue: #007AFF;
+  --ios-blue-light: #5AC8FA;
+  --ios-blue-dark: #0051D5;
+  --ios-blue-ultra-light: rgba(0, 122, 255, 0.1);
+
+  // 背景色系
+  --ios-bg-primary: #F2F2F7;
+  --ios-bg-secondary: #FFFFFF;
+  --ios-bg-tertiary: rgba(255, 255, 255, 0.8);
+  --ios-bg-quaternary: rgba(116, 116, 128, 0.08);
+
+  // 毛玻璃效果
+  --ios-glass-bg: rgba(255, 255, 255, 0.7);
+  --ios-glass-bg-dark: rgba(255, 255, 255, 0.9);
+  --ios-glass-border: rgba(255, 255, 255, 0.2);
+  --ios-glass-border-strong: rgba(255, 255, 255, 0.4);
+
+  // 文字颜色
+  --ios-text-primary: #000000;
+  --ios-text-secondary: #3C3C43;
+  --ios-text-tertiary: #3C3C4399;
+  --ios-text-quaternary: #3C3C434D;
+
+  // 状态颜色
+  --ios-green: #34C759;
+  --ios-red: #FF3B30;
+  --ios-orange: #FF9500;
+  --ios-yellow: #FFCC00;
+  --ios-purple: #AF52DE;
+  --ios-pink: #FF2D92;
+
+  // 阴影系统
+  --ios-shadow-small: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  --ios-shadow-medium: 0 4px 6px rgba(0, 0, 0, 0.07), 0 1px 3px rgba(0, 0, 0, 0.06);
+  --ios-shadow-large: 0 10px 15px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.05);
+  --ios-shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1), 0 10px 10px rgba(0, 0, 0, 0.04);
+
+  // 圆角系统
+  --ios-radius-small: 8px;
+  --ios-radius-medium: 12px;
+  --ios-radius-large: 16px;
+  --ios-radius-xl: 20px;
+  --ios-radius-2xl: 24px;
+  --ios-radius-full: 50px;
+}
+
+// ==================== iOS 混合宏 ====================
+
+// 毛玻璃效果混合宏 - 增强版
+@mixin ios-glass($opacity: 0.7, $blur: 20px) {
+  background: var(--ios-glass-bg);
+  backdrop-filter: blur($blur);
+  -webkit-backdrop-filter: blur($blur);
+  border: 1px solid var(--ios-glass-border);
+
+  // 添加微妙的内阴影效果
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+
+  // 深色模式下的特殊处理
+  :root[data-theme="dark"] &,
+  .theme-dark & {
+    backdrop-filter: blur(#{$blur * 1.5}); // 深色模式下增强模糊
+    -webkit-backdrop-filter: blur(#{$blur * 1.5});
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  }
+}
+
+// 增强毛玻璃效果（用于重要元素）
+@mixin ios-glass-enhanced($opacity: 0.85, $blur: 30px) {
+  background: var(--ios-glass-bg-dark);
+  backdrop-filter: blur($blur) saturate(1.2);
+  -webkit-backdrop-filter: blur($blur) saturate(1.2);
+  border: 1px solid var(--ios-glass-border-strong);
+
+  // 添加边框高光效果
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(135deg,
+        rgba(255, 255, 255, 0.2) 0%,
+        rgba(255, 255, 255, 0.05) 50%,
+        rgba(255, 255, 255, 0.1) 100%);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    pointer-events: none;
+  }
+
+  // 深色模式下的边框高光
+  :root[data-theme="dark"] &::before,
+  .theme-dark &::before {
+    background: linear-gradient(135deg,
+        rgba(255, 255, 255, 0.1) 0%,
+        rgba(255, 255, 255, 0.02) 50%,
+        rgba(255, 255, 255, 0.05) 100%);
+  }
+}
+
+// iOS 风格阴影
+@mixin ios-shadow($level: 'medium') {
+  @if $level =='small' {
+    box-shadow: var(--ios-shadow-small);
+  }
+
+  @else if $level =='medium' {
+    box-shadow: var(--ios-shadow-medium);
+  }
+
+  @else if $level =='large' {
+    box-shadow: var(--ios-shadow-large);
+  }
+
+  @else if $level =='xl' {
+    box-shadow: var(--ios-shadow-xl);
+  }
+}
+
+// iOS 风格按钮
+@mixin ios-button($type: 'primary') {
+  border-radius: var(--ios-radius-large);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  border: none;
+
+  @if $type =='primary' {
+    background: var(--ios-blue);
+    color: white;
+    @include ios-shadow('medium');
+
+    &:hover {
+      background: var(--ios-blue-dark);
+      transform: translateY(-1px);
+      @include ios-shadow('large');
+    }
+
+    &:active {
+      transform: translateY(0);
+      @include ios-shadow('small');
+    }
+  }
+
+  @else if $type =='secondary' {
+    background: var(--ios-bg-quaternary);
+    color: var(--ios-blue);
+
+    &:hover {
+      background: var(--ios-blue-ultra-light);
+    }
+  }
+}
+
+// iOS 风格卡片
+@mixin ios-card($glass: true) {
+  border-radius: var(--ios-radius-xl);
+  border: none;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+  @if $glass {
+    @include ios-glass();
+    @include ios-shadow('medium');
+  }
+
+  @else {
+    background: var(--ios-bg-secondary);
+    @include ios-shadow('small');
+  }
+
+  &:hover {
+    transform: translateY(-2px);
+    @include ios-shadow('large');
+  }
+}
+
+// 分段控制器样式
+@mixin ios-segmented-control() {
+  background: var(--ios-bg-quaternary);
+  border-radius: var(--ios-radius-full);
+  padding: 2px;
+  display: flex;
+  position: relative;
+
+  .segment-item {
+    flex: 1;
+    padding: 8px 16px;
+    text-align: center;
+    border-radius: calc(var(--ios-radius-full) - 2px);
+    font-weight: 500;
+    color: var(--ios-text-secondary);
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    position: relative;
+    z-index: 1;
+
+    &.active {
+      color: var(--ios-text-primary);
+    }
+  }
+
+  .segment-indicator {
+    position: absolute;
+    top: 2px;
+    bottom: 2px;
+    background: var(--ios-bg-secondary);
+    border-radius: calc(var(--ios-radius-full) - 2px);
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    @include ios-shadow('small');
+  }
+}
+
+// ==================== iOS 动画关键帧 ====================
+
+// 脉冲动画（用于状态指示器）
+@keyframes ios-pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(1.1);
+    opacity: 0.7;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+// 弹性进入动画
+@keyframes ios-bounce-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.3) translateY(20px);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.05) translateY(-5px);
+  }
+
+  70% {
+    transform: scale(0.9) translateY(0);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+// 滑动进入动画
+@keyframes ios-slide-in-up {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// 渐变闪烁动画
+@keyframes ios-shimmer {
+  0% {
+    background-position: -200px 0;
+  }
+
+  100% {
+    background-position: calc(200px + 100%) 0;
+  }
+}
+
+// ==================== iOS 工具类 ====================
+
+// 状态指示器
+.ios-status-indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 8px;
+
+  &.connected {
+    background: var(--ios-green);
+    animation: ios-pulse 2s infinite;
+  }
+
+  &.connecting {
+    background: var(--ios-orange);
+    animation: ios-pulse 1s infinite;
+  }
+
+  &.disconnected {
+    background: var(--ios-text-quaternary);
+  }
+
+  &.error {
+    background: var(--ios-red);
+    animation: ios-pulse 1.5s infinite;
+  }
+}
+
+// 毛玻璃容器
+.ios-glass-container {
+  @include ios-glass();
+  @include ios-shadow('medium');
+  border-radius: var(--ios-radius-xl);
+  padding: 20px;
+}
+
+// iOS 风格按钮类
+.ios-button-primary {
+  @include ios-button('primary');
+}
+
+.ios-button-secondary {
+  @include ios-button('secondary');
+}
+
+// iOS 风格卡片类
+.ios-card {
+  @include ios-card(true);
+}
+
+.ios-card-solid {
+  @include ios-card(false);
+}
+
+// 分段控制器类
+.ios-segmented-control {
+  @include ios-segmented-control();
+}
+
+// ==================== 响应式适配 ====================
+@media (max-width: 768px) {
+  :root {
+    --ios-radius-xl: 16px;
+    --ios-radius-2xl: 20px;
+  }
+
+  .ios-glass-container {
+    padding: 16px;
+  }
+}
+
+// ==================== 深色模式支持 ====================
+// 使用 data 属性进行主题切换，支持手动和自动模式
+:root[data-theme="dark"],
+.theme-dark {
+  --ios-bg-primary: #000000;
+  --ios-bg-secondary: #1C1C1E;
+  --ios-bg-tertiary: rgba(28, 28, 30, 0.85);
+  --ios-bg-quaternary: rgba(116, 116, 128, 0.18);
+
+  // 深色模式下增强的毛玻璃效果
+  --ios-glass-bg: rgba(28, 28, 30, 0.85);
+  --ios-glass-bg-dark: rgba(28, 28, 30, 0.95);
+  --ios-glass-border: rgba(84, 84, 88, 0.3);
+  --ios-glass-border-strong: rgba(84, 84, 88, 0.5);
+
+  // 深色模式文字颜色
+  --ios-text-primary: #FFFFFF;
+  --ios-text-secondary: #EBEBF5;
+  --ios-text-tertiary: #EBEBF599;
+  --ios-text-quaternary: #EBEBF54D;
+
+  // 深色模式状态颜色（更亮的变体）
+  --ios-blue: #0A84FF;
+  --ios-blue-light: #64D2FF;
+  --ios-blue-dark: #0056CC;
+  --ios-green: #30D158;
+  --ios-red: #FF453A;
+  --ios-orange: #FF9F0A;
+  --ios-yellow: #FFD60A;
+  --ios-purple: #BF5AF2;
+  --ios-pink: #FF375F;
+
+  // 深色模式阴影系统（更强的阴影）
+  --ios-shadow-small: 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px 2px rgba(0, 0, 0, 0.4);
+  --ios-shadow-medium: 0 4px 6px rgba(0, 0, 0, 0.2), 0 1px 3px rgba(0, 0, 0, 0.15);
+  --ios-shadow-large: 0 10px 15px rgba(0, 0, 0, 0.3), 0 4px 6px rgba(0, 0, 0, 0.15);
+  --ios-shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.4), 0 10px 10px rgba(0, 0, 0, 0.15);
+}
+
+// 自动模式：跟随系统主题
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    --ios-bg-primary: #000000;
+    --ios-bg-secondary: #1C1C1E;
+    --ios-bg-tertiary: rgba(28, 28, 30, 0.85);
+    --ios-bg-quaternary: rgba(116, 116, 128, 0.18);
+
+    --ios-glass-bg: rgba(28, 28, 30, 0.85);
+    --ios-glass-bg-dark: rgba(28, 28, 30, 0.95);
+    --ios-glass-border: rgba(84, 84, 88, 0.3);
+    --ios-glass-border-strong: rgba(84, 84, 88, 0.5);
+
+    --ios-text-primary: #FFFFFF;
+    --ios-text-secondary: #EBEBF5;
+    --ios-text-tertiary: #EBEBF599;
+    --ios-text-quaternary: #EBEBF54D;
+
+    --ios-blue: #0A84FF;
+    --ios-blue-light: #64D2FF;
+    --ios-blue-dark: #0056CC;
+    --ios-green: #30D158;
+    --ios-red: #FF453A;
+    --ios-orange: #FF9F0A;
+    --ios-yellow: #FFD60A;
+    --ios-purple: #BF5AF2;
+    --ios-pink: #FF375F;
+
+    --ios-shadow-small: 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px 2px rgba(0, 0, 0, 0.4);
+    --ios-shadow-medium: 0 4px 6px rgba(0, 0, 0, 0.2), 0 1px 3px rgba(0, 0, 0, 0.15);
+    --ios-shadow-large: 0 10px 15px rgba(0, 0, 0, 0.3), 0 4px 6px rgba(0, 0, 0, 0.15);
+    --ios-shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.4), 0 10px 10px rgba(0, 0, 0, 0.15);
+  }
+}
