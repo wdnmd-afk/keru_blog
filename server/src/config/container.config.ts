@@ -15,6 +15,10 @@ import {
   TodoController,
   User,
 } from '@/router/controller'
+// 新增导入：HTML→PDF 控制器
+import { HtmlPdfController } from '@/router/htmlpdf/controller'
+// 新增导入：模板管理控制器
+import { TemplateController } from '@/router/template/controller'
 
 // 导入WebRTC模块
 import { WebRTCController, WebRTCGateway, WebRTCService } from '@/router/webrtc'
@@ -29,6 +33,10 @@ import {
   TodoService,
   UserService,
 } from '@/router/service'
+// 新增导入：HTML→PDF 服务
+import { HtmlPdfService } from '@/router/htmlpdf/service'
+// 新增导入：模板管理服务
+import { TemplateService } from '@/router/template/service'
 
 // 导入中间件
 import { AuthMiddleware } from '@/middleware/auth'
@@ -50,6 +58,8 @@ export const TYPES = {
   PublicFeedbackController: Symbol.for('PublicFeedbackController'),
   AIController: Symbol.for('AIController'),
   WebRTCController: Symbol.for('WebRTCController'),
+  HtmlPdfController: Symbol.for('HtmlPdfController'), // HTML→PDF 控制器
+  TemplateController: Symbol.for('TemplateController'), // 模板管理 控制器
 
   // 服务
   UserService: Symbol.for('UserService'),
@@ -61,6 +71,8 @@ export const TYPES = {
   AIService: Symbol.for('AIService'),
   WebRTCService: Symbol.for('WebRTCService'),
   WebRTCGateway: Symbol.for('WebRTCGateway'),
+  HtmlPdfService: Symbol.for('HtmlPdfService'), // HTML→PDF 服务
+  TemplateService: Symbol.for('TemplateService'), // 模板管理 服务
 
   // 基础设施
   PrismaClient: Symbol.for('PrismaClient'),
@@ -118,6 +130,10 @@ function registerControllers(container: Container): void {
   container.bind(TYPES.AIController).to(AIController)
   // WebRTC 控制器
   container.bind(TYPES.WebRTCController).to(WebRTCController)
+  // HTML→PDF 控制器
+  container.bind(TYPES.HtmlPdfController).to(HtmlPdfController)
+  // 模板管理 控制器
+  container.bind(TYPES.TemplateController).to(TemplateController)
 
   // 为了兼容现有代码，保留原有的绑定方式
   container.bind(User).to(User)
@@ -127,6 +143,8 @@ function registerControllers(container: Container): void {
   container.bind(TodoController).to(TodoController)
   container.bind(FeedbackController).to(FeedbackController)
   container.bind(PublicFeedbackController).to(PublicFeedbackController)
+  container.bind(HtmlPdfController).to(HtmlPdfController)
+  container.bind(TemplateController).to(TemplateController)
 }
 
 /**
@@ -154,6 +172,12 @@ function registerServices(container: Container): void {
   container.bind(TYPES.WebRTCService).to(WebRTCService)
   container.bind(WebRTCService).to(WebRTCService)
   container.bind('WebRTCService').to(WebRTCService)
+  // 绑定 HTML→PDF 服务
+  container.bind(TYPES.HtmlPdfService).to(HtmlPdfService)
+  container.bind(HtmlPdfService).to(HtmlPdfService)
+  // 绑定 模板管理 服务
+  container.bind(TYPES.TemplateService).to(TemplateService)
+  container.bind(TemplateService).to(TemplateService)
 }
 
 /**

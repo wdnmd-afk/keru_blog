@@ -76,6 +76,11 @@ const menuItems = [
       { key: "/feedback-management", label: "意见反馈" },
     ],
   },
+  {
+    key: "/template-management",
+    icon: <ProfileOutlined />,
+    label: "模板管理",
+  },
 ];
 
 // 面包屑映射
@@ -96,6 +101,7 @@ const breadcrumbMap: Record<string, string> = {
   "/system-monitor/logs": "日志管理",
   "/system-monitor/performance": "性能监控",
   "/feedback-management": "意见反馈管理",
+  "/template-management": "模板管理",
 };
 
 interface ManagementLayoutProps {

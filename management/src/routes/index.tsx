@@ -71,6 +71,8 @@ const LazyComponents = {
 
   // ==================== 意见反馈管理 ====================
   FeedbackManagement: lazy(() => import("@/pages/FeedbackManagement")), // 意见反馈管理
+  // ==================== 模板管理 ====================
+  TemplateManagement: lazy(() => import("@/pages/TemplateManagement")), // 模板管理
 };
 
 /**
@@ -194,6 +196,12 @@ const privateRoutes = [
     path: "/feedback-management",
     component: <LazyComponents.FeedbackManagement />,
     description: "意见反馈管理",
+  },
+  // ==================== 模板管理路由 ====================
+  {
+    path: "/template-management",
+    component: <LazyComponents.TemplateManagement />,
+    description: "模板管理",
   },
 ];
 

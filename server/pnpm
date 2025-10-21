@@ -1,0 +1,21 @@
+..                                       |  WARN  Ignoring broken lockfile at E:\github\keru_blog\node_modules\.pnpm: Lockfile E:\github\keru_blog\node_modules\.pnpm\lock.yaml not compatible with current pnpm
+..                                       |  WARN  Ignoring broken lockfile at E:\github\keru_blog: Lockfile E:\github\keru_blog\pnpm-lock.yaml not compatible with current pnpm
+ WARN  GET https://registry.npmmirror.com/add error (ERR_INVALID_THIS). Will retry in 10 seconds. 2 retries left.
+ WARN  GET https://registry.npmmirror.com/puppeteer error (ERR_INVALID_THIS). Will retry in 10 seconds. 2 retries left.
+ WARN  GET https://registry.npmmirror.com/handlebars error (ERR_INVALID_THIS). Will retry in 10 seconds. 2 retries left.
+ WARN  GET https://registry.npmmirror.com/sanitize-html error (ERR_INVALID_THIS). Will retry in 10 seconds. 2 retries left.
+ WARN  GET https://registry.npmmirror.com/@types%2Fmulter error (ERR_INVALID_THIS). Will retry in 10 seconds. 2 retries left.
+ WARN  GET https://registry.npmmirror.com/@types%2Fnode error (ERR_INVALID_THIS). Will retry in 10 seconds. 2 retries left.
+ WARN  GET https://registry.npmmirror.com/prettier error (ERR_INVALID_THIS). Will retry in 10 seconds. 2 retries left.
+ WARN  GET https://registry.npmmirror.com/prettier-plugin-organize-imports error (ERR_INVALID_THIS). Will retry in 10 seconds. 2 retries left.
+ WARN  GET https://registry.npmmirror.com/prisma error (ERR_INVALID_THIS). Will retry in 10 seconds. 2 retries left.
+ WARN  GET https://registry.npmmirror.com/ts-node error (ERR_INVALID_THIS). Will retry in 10 seconds. 2 retries left.
+ WARN  GET https://registry.npmmirror.com/typescript error (ERR_INVALID_THIS). Will retry in 10 seconds. 2 retries left.
+ WARN  GET https://registry.npmmirror.com/@babel%2Fplugin-transform-modules-commonjs error (ERR_INVALID_THIS). Will retry in 10 seconds. 2 retries left.
+ WARN  GET https://registry.npmmirror.com/@types%2Fexpress error (ERR_INVALID_THIS). Will retry in 10 seconds. 2 retries left.
+ WARN  GET https://registry.npmmirror.com/@types%2Fuuid error (ERR_INVALID_THIS). Will retry in 10 seconds. 2 retries left.
+ WARN  GET https://registry.npmmirror.com/class-transformer error (ERR_INVALID_THIS). Will retry in 10 seconds. 2 retries left.
+ WARN  GET https://registry.npmmirror.com/class-validator error (ERR_INVALID_THIS). Will retry in 10 seconds. 2 retries left.
+..                                       | Progress: resolved 1, reused 0, downloaded 0, added 0
+..                                       | Progress: resolved 1, reused 1, downloaded 0, added 0
+��ֹ������������(Y/N)? 

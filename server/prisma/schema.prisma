@@ -202,3 +202,22 @@ enum RoleStatus {
   INACTIVE  // 停用
 }
 
+// ================= HTML 模板 =================
+model HtmlTemplate {
+  id         String       @id @unique @default(cuid())
+  name       String       @unique
+  type       TemplateType
+  content    String       @db.Text
+  widthMm    Int?
+  heightMm   Int?
+  fields     Json?
+  remark     String?
+  createdAt  DateTime     @default(now())
+  updatedAt  DateTime     @updatedAt
+}
+
+enum TemplateType {
+  A4
+  A5
+  CUSTOM
+}

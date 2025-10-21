@@ -135,6 +135,8 @@ function setupMiddleware(app: express.Application, config: AppConfig, container:
   console.log(path.resolve(process.cwd(), config.upload.uploadDir))
   // 静态文件托管
   app.use('/static', express.static(path.resolve(process.cwd(), config.upload.uploadDir)))
+  // 暴露临时目录以便访问生成的 PDF（如 /temp/pdf/20251021/xxx.pdf）
+  app.use('/temp', express.static(path.resolve(process.cwd(), 'temp')))
 
   console.log('⚙️  Middleware setup completed')
 }
