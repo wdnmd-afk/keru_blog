@@ -16,6 +16,7 @@ export interface Feedback {
   userEmail?: string | null; // 反馈人邮箱
   category: FeedbackCategory; // 类型/分类
   status: FeedbackStatus; // 处理状态
+  advice?: string | null; // AI 建议（可为空）
   createdAt: string | number; // 创建时间
   updatedAt: string | number; // 更新时间
 }

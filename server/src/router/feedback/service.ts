@@ -13,6 +13,7 @@ export interface Feedback {
   userEmail?: string | null
   category: FeedbackCategory
   status: FeedbackStatus
+  advice?: string | null
   createdAt: string | number
   updatedAt: string | number
 }

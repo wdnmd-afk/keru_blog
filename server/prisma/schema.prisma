@@ -107,6 +107,7 @@ model Feedback {
   userEmail  String?
   category   FeedbackCategory
   status     FeedbackStatus   @default(PENDING)
+  advice     String?          @db.Text
   createdAt  DateTime         @default(now())
   updatedAt  DateTime         @updatedAt
 }

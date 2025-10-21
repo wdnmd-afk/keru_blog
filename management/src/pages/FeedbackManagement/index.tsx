@@ -124,6 +124,35 @@ const FeedbackManagement: React.FC = () => {
         },
       },
       {
+        title: "AI建议",
+        dataIndex: "advice",
+        key: "advice",
+        minWidth: 360,
+        ellipsis: true,
+        render: (advice: string | null) => {
+          const pure = (advice || "-").trim();
+          const short = pure.length > 60 ? pure.slice(0, 60) + "..." : pure;
+          return (
+            <Space>
+              <span title={pure}>{short}</span>
+              {pure && pure !== "-" && pure.length > 60 && (
+                <Button
+                  type="link"
+                  size="small"
+                  icon={<EyeOutlined />}
+                  onClick={() => {
+                    setDetailContent(pure);
+                    setDetailOpen(true);
+                  }}
+                >
+                  查看
+                </Button>
+              )}
+            </Space>
+          );
+        },
+      },
+      {
         title: "姓名",
         dataIndex: "userName",
         key: "userName",
@@ -316,6 +345,8 @@ const FeedbackManagement: React.FC = () => {
             stripe
             size="middle"
             tableLayout="auto"
+            // 开启排序提示并指定自定义样式类，改变文字颜色
+            showSorterTooltip={{ rootClassName: 'sorter-tooltip-blue' }}
             fetchData={fetchData}
           />
         </div>

@@ -11,6 +11,10 @@
   color: #333;
 }
 
+.sorter-tooltip-blue .ant-tooltip-inner {
+  color: #5E83BB !important;
+}
+
 .KT_Box {
   font-size: 18px;
 }
@@ -40,6 +44,16 @@
   flex-direction: column;
   scrollbar-color: auto !important;
   height: 100%;
+}
+.KT_Box .ant-table .ant-table-thead th {
+  color: #fff;
+}
+.KT_Box .ant-table .ant-table-thead th.ant-table-column-has-sorters:hover,
+.KT_Box .ant-table .ant-table-thead th.ant-table-column-has-sorters .ant-table-column-sorters:hover {
+  background: #5E83BB !important;
+}
+.KT_Box .ant-table th.ant-table-column-sort {
+  background: #5E83BB !important;
 }
 .KT_Box .ant-table .ant-table-cell::before {
   display: none;

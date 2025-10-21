@@ -13,6 +13,13 @@
     }
 }
 
+// 排序提示 Tooltip 文字颜色（仅用于设置了 rootClassName="sorter-tooltip-blue" 的提示）
+.sorter-tooltip-blue {
+    .ant-tooltip-inner {
+        color: #5E83BB !important;
+    }
+}
+
 .KT_Box {
     font-size: 18px;
     .ant-table-wrapper {
@@ -41,6 +48,20 @@
         flex-direction: column;
         scrollbar-color: auto !important;
         height: 100%;
+
+        // 表头 hover 覆盖：可排序列在悬停时不再变白，保持主题色背景（例如 #5E83BB）与可读性
+        .ant-table-thead {
+            th {
+                color: #fff; // 保持表头字体为白色，适配深色背景
+            }
+            th.ant-table-column-has-sorters:hover,
+            th.ant-table-column-has-sorters .ant-table-column-sorters:hover {
+                background: #5E83BB !important; // 移除默认 hover 的浅色背景
+            }
+        }
+        th.ant-table-column-sort{
+            background: #5E83BB !important;
+        }
 
         .ant-table-cell {
             &::before {
