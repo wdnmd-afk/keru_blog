@@ -56,4 +56,22 @@ export class HtmlPdfController extends BaseHttpController {
       return (res as any).sendResponse({ success: false, code: 500, message: error.message || '生成失败' })
     }
   }
+
+  /**
+   * 列出已生成的 PDF 文件
+   * POST /api/htmlpdf/list
+   * body: { templateId?: string }
+   * 返回：Array<{ url, fileName, size, dateKey, templateId?, createdAt? }>
+   */
+  @httpPost('/list')
+  public async list(req: Request, res: Response) {
+    try {
+      const body = (req.body || {}) as { templateId?: string }
+      const data = await this.service.listPdfs({ templateId: body.templateId })
+      return (res as any).sendResponse({ success: true, code: 200, message: 'OK', data })
+    } catch (error: any) {
+      console.error('[htmlpdf] list error:', error)
+      return (res as any).sendResponse({ success: false, code: 500, message: error.message || '查询失败' })
+    }
+  }
 }

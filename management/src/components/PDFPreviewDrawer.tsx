@@ -14,7 +14,7 @@ export interface PDFPreviewDrawerProps {
   height?: number | string;
 }
 
-const PDFPreviewDrawer: React.FC<PDFPreviewDrawerProps> = ({ open, src, fileName, onClose, height = "80vh" }) => {
+const PDFPreviewDrawer: React.FC<PDFPreviewDrawerProps> = ({ open, src, fileName, onClose, height = "calc(100vh - 64px)" }) => {
   return (
     <Drawer
       title={fileName ? `PDF 预览 - ${fileName}` : "PDF 预览"}
@@ -23,7 +23,7 @@ const PDFPreviewDrawer: React.FC<PDFPreviewDrawerProps> = ({ open, src, fileName
       open={open}
       onClose={onClose}
       destroyOnClose
-      bodyStyle={{ padding: 0 }}
+      bodyStyle={{ padding: 0, overflow: "hidden" }}
     >
       {src ? (
         <iframe title="pdf-preview" src={src} style={{ width: "100%", height, border: 0 }} />

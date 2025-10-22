@@ -48,4 +48,11 @@ export class User {
     const result = await this.UserService.resetPassword(req.body)
     res.sendResponse(result)
   }
+
+  // 登出接口（兼容管理端 AuthApi.logout 调用）
+  @PostMapping('/logout')
+  public async logout(_req: Request, res: customResponse) {
+    const result = await this.UserService.logout()
+    res.sendResponse(result)
+  }
 }

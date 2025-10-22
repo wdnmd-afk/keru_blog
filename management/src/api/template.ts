@@ -81,6 +81,15 @@ export interface GeneratePdfResult {
   size: number;
 }
 
+export interface PdfRecord {
+  url: string;
+  fileName: string;
+  size: number;
+  dateKey?: string;
+  templateId?: string;
+  createdAt?: string;
+}
+
 export class TemplateApi {
   // 分页查询
   static async query(
@@ -137,6 +146,15 @@ export class TemplateApi {
     );
     // 统一响应结构下 data 为包裹后的对象
     return (res as any).data;
+  }
+
+  // 列出已生成的 PDF
+  static async listPdfs(templateId?: string): Promise<PdfRecord[]> {
+    const res = await ManagementApi.post<{ success: boolean; code: number; message: string; data: PdfRecord[] }>(
+      "/htmlpdf/list",
+      templateId ? { templateId } : {},
+    );
+    return (res as any).data || [];
   }
 }
 

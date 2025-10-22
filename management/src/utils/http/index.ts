@@ -1,5 +1,5 @@
 // Management 系统 HTTP 请求工具
-import { BrowserLocalStorage, ManagementMessageBox } from "@/utils";
+import { BrowserLocalStorage } from "@/utils";
 import { message } from "antd";
 import axios, {
   AxiosError,
@@ -30,6 +30,8 @@ class ManagementHttp {
   service: AxiosInstance;
   public controller = new AbortController();
   public signal = this.controller.signal;
+  // 避免 401 重复跳转登录导致闪烁
+  private static redirectingUnauthorized = false;
 
   public constructor(config: AxiosRequestConfig) {
     // 创建 axios 实例
@@ -118,14 +120,14 @@ class ManagementHttp {
         // 根据错误状态码处理
         switch (data.code) {
           case ResultEnum.UNAUTHORIZED:
-            ManagementMessageBox.confirm({
-              content: "登录已过期，请重新登录",
-              confirm: () => {
-                BrowserLocalStorage.remove("userInfo");
-                BrowserLocalStorage.remove("savedLoginInfo");
-                window.location.href = "/login";
-              },
-            });
+            if (!ManagementHttp.redirectingUnauthorized) {
+              ManagementHttp.redirectingUnauthorized = true;
+              // 直接清理并跳转，避免与登录页自动跳转形成循环闪烁
+              BrowserLocalStorage.remove("userInfo");
+              BrowserLocalStorage.remove("savedLoginInfo");
+              // 使用 replace 避免历史回退再次进入受限页
+              window.location.replace("/login");
+            }
             return Promise.reject(data);
           case ResultEnum.FORBIDDEN:
             message.error("权限不足，无法访问该资源");

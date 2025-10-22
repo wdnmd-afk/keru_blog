@@ -75,6 +75,8 @@ const LazyComponents = {
   TemplateManagement: lazy(() => import("@/pages/TemplateManagement")), // 模板管理
   // ==================== PDF 内容填充 ====================
   PDFFill: lazy(() => import("@/pages/PDFContentFill")), // PDF 内容填充（生成 PDF）
+  // ==================== PDF 文件库 ====================
+  PDFLibrary: lazy(() => import("@/pages/PDFLibrary")), // PDF 文件库
 };
 
 /**
@@ -210,6 +212,12 @@ const privateRoutes = [
     path: "/pdf-fill",
     component: <LazyComponents.PDFFill />,
     description: "PDF 内容填充与生成",
+  },
+  // ==================== PDF 文件库 ====================
+  {
+    path: "/pdf-library",
+    component: <LazyComponents.PDFLibrary />,
+    description: "PDF 文件库",
   },
 ];
 

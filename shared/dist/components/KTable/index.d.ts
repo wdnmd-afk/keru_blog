@@ -11,6 +11,7 @@ interface IKTableProps extends TableProps<any> {
     stripe?: boolean;
     showCheck?: boolean;
     rowClick?: (record: any) => void;
+    rowDoubleClick?: (record: any) => void;
 }
 export interface IKTableColumns extends ColumnProps<any> {
 }

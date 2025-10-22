@@ -958,6 +958,7 @@ const KTable = require$$0.forwardRef(
     columns,
     onChange,
     rowClick,
+    rowDoubleClick,
     ...props
   }, ref) => {
     const [currentPage, setCurrentPage] = useState(1);
@@ -1031,6 +1032,9 @@ const KTable = require$$0.forwardRef(
     const handleRowClick = (record) => {
       rowClick == null ? void 0 : rowClick(record);
     };
+    const handleRowDoubleClick = (record) => {
+      rowDoubleClick == null ? void 0 : rowDoubleClick(record);
+    };
     const paginationConfig = {
       current: currentPage,
       pageSize,
@@ -1073,7 +1077,8 @@ const KTable = require$$0.forwardRef(
             rowSelection,
             onChange: handleTableChange,
             onRow: (record) => ({
-              onClick: () => handleRowClick(record)
+              onClick: () => handleRowClick(record),
+              onDoubleClick: () => handleRowDoubleClick(record)
             }),
             rowClassName: getRowClassName,
             scroll: { x: "max-content", y: scrollY ?? "calc(100vh - 300px)" }

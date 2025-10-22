@@ -5,6 +5,7 @@
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { Button, Card, Drawer, Form, Input, InputNumber, Modal, Select, Space, Tabs, Tag, Switch, message } from "antd";
 import { PlusOutlined, SearchOutlined, ReloadOutlined, EditOutlined, DeleteOutlined, EyeOutlined, CodeOutlined, FilePdfOutlined } from "@ant-design/icons";
+import { useNavigate } from "react-router-dom";
 import { KTable, type IKTableColumns } from "shared/components";
 import TemplateApi, { type HtmlTemplate, type QueryTemplateRequest, type TemplateType, type UpsertTemplateRequest, type GeneratePdfRequest } from "@/api/template";
 import PDFPreviewDrawer from "@/components/PDFPreviewDrawer";
@@ -35,6 +36,7 @@ const formatDateTime = (v: string | number) => {
 
 // 列表页 + 编辑抽屉
 const TemplateManagement: React.FC = () => {
+  const navigate = useNavigate();
   // 列表状态
   const [list, setList] = useState<HtmlTemplate[]>([]);
   const [total, setTotal] = useState(0);
@@ -294,6 +296,7 @@ const TemplateManagement: React.FC = () => {
             tableLayout="auto"
             showSorterTooltip={{ rootClassName: 'sorter-tooltip-blue' }}
             fetchData={fetchData}
+            rowDoubleClick={(record: HtmlTemplate) => navigate(`/pdf-library?templateId=${record.id}`)}
           />
         </div>
       </Card>
