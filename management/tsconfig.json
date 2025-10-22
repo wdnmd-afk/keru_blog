@@ -29,7 +29,9 @@
       "@": ["src"],
       "@/*": ["src/*"],
       "shared": ["../shared/src"],
-      "shared/*": ["../shared/src/*"]
+      "shared/*": ["../shared/src/*"],
+      "@frontend": ["../frontEnd/src"],
+      "@frontend/*": ["../frontEnd/src/*"]
     }
   },
   "include": [

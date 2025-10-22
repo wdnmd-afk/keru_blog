@@ -17,6 +17,12 @@ export interface HtmlTemplate {
   heightMm?: number | null;
   fields?: any | null; // 字段 schema（可选）
   remark?: string | null;
+  // 模板级页眉/页脚配置
+  displayHeaderFooter?: boolean | null;
+  headerHtml?: string | null;
+  footerHtml?: string | null;
+  headerHeightMm?: number | null;
+  footerHeightMm?: number | null;
   createdAt: string;
   updatedAt: string;
 }
@@ -39,6 +45,12 @@ export interface UpsertTemplateRequest {
   heightMm?: number | null;
   fields?: any | null;
   remark?: string | null;
+  // 模板级页眉/页脚配置（可选）
+  displayHeaderFooter?: boolean;
+  headerHtml?: string | null;
+  footerHtml?: string | null;
+  headerHeightMm?: number | null;
+  footerHeightMm?: number | null;
 }
 
 // HTML 预览与 PDF 生成入参
@@ -46,6 +58,8 @@ export interface RenderHtmlRequest {
   templateId: string;
   data?: Record<string, any>;
   sanitize?: boolean;
+  /** 预览时是否注入模板的页眉/页脚（仅影响 render-html 返回的 HTML，不影响 PDF 生成），默认 false */
+  previewHeaderFooter?: boolean;
 }
 export interface GeneratePdfRequest extends RenderHtmlRequest {
   options?: {
@@ -54,6 +68,11 @@ export interface GeneratePdfRequest extends RenderHtmlRequest {
     heightMm?: number;
     marginMm?: Partial<Record<"top" | "right" | "bottom" | "left", number>>;
     fileName?: string;
+    displayHeaderFooter?: boolean;
+    headerHtml?: string;
+    footerHtml?: string;
+    headerHeightMm?: number;
+    footerHeightMm?: number;
   };
 }
 export interface GeneratePdfResult {

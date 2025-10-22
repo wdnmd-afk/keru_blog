@@ -9,8 +9,8 @@ import path from 'path'
 import fs from 'fs-extra'
 import Handlebars from 'handlebars'
 import sanitizeHtml from 'sanitize-html'
-import { fileURLToPath } from 'url'
 import os from 'os'
+import { createAppConfig } from '@/config/app.config'
 
 // 使用 puppeteer-core，要求本机存在可执行浏览器（或设置 PUPPETEER_EXECUTABLE_PATH）
 import puppeteer, { Browser } from 'puppeteer-core'
@@ -41,9 +41,58 @@ export class HtmlPdfService {
     const tpl = await this.getTemplate(params.templateId)
     const html = this.compileTemplate(tpl.content, params.data || {})
 
+    // 预览模式：根据模板配置注入页眉/页脚（仅用于 HTML 预览，非 Puppeteer 头尾）
+    let withHeaderFooter = html
+    if (params.previewHeaderFooter) {
+      const displayHeaderFooter = (tpl as any).displayHeaderFooter ?? true
+      if (displayHeaderFooter) {
+        const headerHeightMm = (tpl as any).headerHeightMm ?? 15
+        const footerHeightMm = (tpl as any).footerHeightMm ?? 15
+        const defaultHeader = this.defaultHeaderHtml()
+        const defaultFooter = this.defaultFooterHtml()
+        const headerSrc = (tpl as any).headerHtml ?? defaultHeader
+        const footerSrc = (tpl as any).footerHtml ?? defaultFooter
+        const headerHtml = this.compileTemplate(headerSrc, params.data || {})
+        const footerHtml = this.compileTemplate(footerSrc, params.data || {})
+
+        const styleBlock = `\n<style>\n  body { margin-top: ${headerHeightMm}mm; margin-bottom: ${footerHeightMm}mm; }\n  .__tpl-header { position: fixed; top: 0; left: 0; right: 0; height: ${headerHeightMm}mm; z-index: 9999; }\n  .__tpl-footer { position: fixed; bottom: 0; left: 0; right: 0; height: ${footerHeightMm}mm; z-index: 9999; }\n</style>\n`
+        const headerWrap = `\n<div class="__tpl-header">${headerHtml}</div>\n`
+        const footerWrap = `\n<div class="__tpl-footer">${footerHtml}</div>\n`
+
+        // 将样式注入 <head>，头尾容器注入 <body>
+        let tmp = withHeaderFooter
+        if (tmp.includes('</head>')) {
+          tmp = tmp.replace('</head>', styleBlock + '</head>')
+        } else {
+          tmp = styleBlock + tmp
+        }
+
+        // 尝试在 <body ...> 后插入 header，</body> 前插入 footer
+        const bodyOpenIdx = tmp.toLowerCase().indexOf('<body')
+        if (bodyOpenIdx >= 0) {
+          const gtIdx = tmp.indexOf('>', bodyOpenIdx)
+          if (gtIdx > bodyOpenIdx) {
+            tmp = tmp.slice(0, gtIdx + 1) + headerWrap + tmp.slice(gtIdx + 1)
+          } else {
+            // 回退：直接在文首插入（极少数异常结构）
+            tmp = headerWrap + tmp
+          }
+        } else {
+          // 无 <body> 标签时，直接在文首插入
+          tmp = headerWrap + tmp
+        }
+        if (tmp.includes('</body>')) {
+          tmp = tmp.replace('</body>', footerWrap + '</body>')
+        } else {
+          tmp = tmp + footerWrap
+        }
+        withHeaderFooter = tmp
+      }
+    }
+
     // 默认开启清洗，避免 script 等危险标签
     const needSanitize = params.sanitize !== false
-    const safeHtml = needSanitize ? this.sanitize(html) : html
+    const safeHtml = needSanitize ? this.sanitize(withHeaderFooter) : withHeaderFooter
     return safeHtml
   }
 
@@ -65,11 +114,47 @@ export class HtmlPdfService {
       params.options?.heightMm ?? tpl.heightMm ?? undefined,
     )
 
-    const margins = this.resolveMargins(params.options?.marginMm)
+    // 处理页眉/页脚与边距（默认从模板读取，options 可覆盖）
+    const opts = params.options || {}
+    const tDisplay = (tpl as any).displayHeaderFooter ?? true
+    const tHeaderHeight = (tpl as any).headerHeightMm ?? 15
+    const tFooterHeight = (tpl as any).footerHeightMm ?? 15
+    const displayHeaderFooter = opts.displayHeaderFooter ?? tDisplay
+    const headerHeightMm = opts.headerHeightMm ?? tHeaderHeight
+    const footerHeightMm = opts.footerHeightMm ?? tFooterHeight
 
-    // 目标输出目录：temp/pdf/YYYYMMDD
+    // 初始边距
+    const margins = this.resolveMargins(opts.marginMm)
+    // 将 mm 字符串解析为数值以便比较与联动
+    const parseMm = (v?: string) => {
+      if (!v) return 0
+      const n = Number(String(v).replace('mm', '').trim())
+      return Number.isFinite(n) ? n : 0
+    }
+    let topMm = parseMm((margins as any).top)
+    let bottomMm = parseMm((margins as any).bottom)
+    const left = (margins as any).left
+    const right = (margins as any).right
+    if (displayHeaderFooter) {
+      // 预留页眉页脚空间，避免内容被覆盖
+      topMm = Math.max(topMm, headerHeightMm)
+      bottomMm = Math.max(bottomMm, footerHeightMm)
+    }
+    const finalMargins = { top: `${topMm}mm`, bottom: `${bottomMm}mm`, left, right }
+
+    // 生成页眉/页脚模板（支持 handlebars 变量）
+    const defaultHeader = this.defaultHeaderHtml()
+    const defaultFooter = this.defaultFooterHtml()
+    const headerSrc = opts.headerHtml ?? (tpl as any).headerHtml ?? defaultHeader
+    const footerSrc = opts.footerHtml ?? (tpl as any).footerHtml ?? defaultFooter
+    const headerTemplate = this.compileTemplate(headerSrc, params.data || {})
+    const footerTemplate = this.compileTemplate(footerSrc, params.data || {})
+
+    // 目标输出目录：static/PDF/YYYYMMDD（对外通过 /static 暴露）
     const dateKey = this.getDateKey()
-    const outDir = path.resolve(process.cwd(), 'temp', 'pdf', dateKey)
+    const config = createAppConfig()
+    const staticRoot = config.upload.uploadDir || 'static'
+    const outDir = path.resolve(process.cwd(), staticRoot, 'PDF', dateKey)
     await fs.ensureDir(outDir)
 
     const baseName = (params.options?.fileName || `pdf_${Date.now()}`) + '.pdf'
@@ -82,18 +167,21 @@ export class HtmlPdfService {
       // 设置页面内容并等待静态资源加载
       await page.setContent(compiledHtml, { waitUntil: 'networkidle0' })
 
-      const pdfBuffer = await page.pdf({
+      await page.pdf({
         path: outPath, // 直接落盘
         format, // 与 width/height 互斥，传了 format 就不需要 width/height
         width,  // 仅在自定义时生效，如 '148mm'
         height, // 仅在自定义时生效
-        margin: margins,
+        margin: finalMargins,
         printBackground: true,
         preferCSSPageSize: true,
+        displayHeaderFooter,
+        headerTemplate: displayHeaderFooter ? headerTemplate : undefined,
+        footerTemplate: displayHeaderFooter ? footerTemplate : undefined,
       })
 
       const stat = await fs.stat(outPath)
-      const url = `/temp/pdf/${dateKey}/${baseName}`
+      const url = `/static/PDF/${dateKey}/${baseName}`
 
       return { url, fileName: baseName, size: stat.size }
     } finally {
@@ -104,9 +192,32 @@ export class HtmlPdfService {
   // ================= 私有方法 =================
 
   /**
+   * 默认页眉 HTML（每页固定显示）
+   * Puppeteer 会替换 .date/.title/.pageNumber/.totalPages 等占位符
+   */
+  private defaultHeaderHtml(): string {
+    return `
+    <div style="font-size:9px; color:#666; width:100%; padding:0 10mm; display:flex; justify-content:space-between; align-items:center;">
+      <span class="title"></span>
+      <span class="date"></span>
+    </div>`
+  }
+
+  /**
+   * 默认页脚 HTML（包含页码）
+   */
+  private defaultFooterHtml(): string {
+    return `
+    <div style="font-size:9px; color:#666; width:100%; padding:0 10mm; display:flex; justify-content:space-between; align-items:center;">
+      <span>Powered by Keru</span>
+      <span><span class="pageNumber"></span> / <span class="totalPages"></span></span>
+    </div>`
+  }
+
+  /**
    * 读取模板（Prisma）
    */
-  private async getTemplate(id: string): Promise<{ id: string; type: string; content: string; widthMm?: number | null; heightMm?: number | null }> {
+  private async getTemplate(id: string): Promise<{ id: string; type: string; content: string; widthMm?: number | null; heightMm?: number | null; displayHeaderFooter?: boolean | null; headerHtml?: string | null; footerHtml?: string | null; headerHeightMm?: number | null; footerHeightMm?: number | null }> {
     const prisma: any = this.PrismaDB.prisma as any
     const tpl = await prisma.htmlTemplate.findUnique({ where: { id } })
     if (!tpl) throw new Error('模板不存在')

@@ -73,6 +73,8 @@ const LazyComponents = {
   FeedbackManagement: lazy(() => import("@/pages/FeedbackManagement")), // 意见反馈管理
   // ==================== 模板管理 ====================
   TemplateManagement: lazy(() => import("@/pages/TemplateManagement")), // 模板管理
+  // ==================== PDF 内容填充 ====================
+  PDFFill: lazy(() => import("@/pages/PDFContentFill")), // PDF 内容填充（生成 PDF）
 };
 
 /**
@@ -202,6 +204,12 @@ const privateRoutes = [
     path: "/template-management",
     component: <LazyComponents.TemplateManagement />,
     description: "模板管理",
+  },
+  // ==================== PDF 内容填充路由 ====================
+  {
+    path: "/pdf-fill",
+    component: <LazyComponents.PDFFill />,
+    description: "PDF 内容填充与生成",
   },
 ];
 

@@ -29,6 +29,11 @@ export default defineConfig({
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/management-api/, "/api"),
       },
+      // 静态资源代理（用于预览生成的 PDF：/static/PDF/**）
+      "/static": {
+        target: "http://127.0.0.1:5566",
+        changeOrigin: true,
+      },
     },
   },
   resolve: {

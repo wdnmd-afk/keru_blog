@@ -15,6 +15,12 @@ export interface HtmlTemplateInput {
   heightMm?: number | null
   fields?: any | null
   remark?: string | null
+  // 模板级页眉/页脚配置（可选）
+  displayHeaderFooter?: boolean
+  headerHtml?: string | null
+  footerHtml?: string | null
+  headerHeightMm?: number | null
+  footerHeightMm?: number | null
 }
 
 export interface QueryTemplateParams {
@@ -69,6 +75,12 @@ export class TemplateService {
         heightMm: payload.heightMm ?? null,
         fields: payload.fields ?? null,
         remark: payload.remark ?? null,
+        // 模板级页眉/页脚
+        displayHeaderFooter: payload.displayHeaderFooter ?? true,
+        headerHtml: payload.headerHtml ?? null,
+        footerHtml: payload.footerHtml ?? null,
+        headerHeightMm: payload.headerHeightMm ?? null,
+        footerHeightMm: payload.footerHeightMm ?? null,
       },
     })
     return record
@@ -94,6 +106,12 @@ export class TemplateService {
         heightMm: payload.heightMm ?? null,
         fields: payload.fields ?? null,
         remark: payload.remark ?? null,
+        // 模板级页眉/页脚
+        displayHeaderFooter: payload.displayHeaderFooter ?? true,
+        headerHtml: payload.headerHtml ?? null,
+        footerHtml: payload.footerHtml ?? null,
+        headerHeightMm: payload.headerHeightMm ?? null,
+        footerHeightMm: payload.footerHeightMm ?? null,
       },
     })
     return record

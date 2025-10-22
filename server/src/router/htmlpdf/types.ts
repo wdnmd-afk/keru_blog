@@ -11,6 +11,8 @@ export interface RenderHtmlRequest {
   data?: Record<string, any>
   /** 是否启用 HTML 安全清洗（默认 true） */
   sanitize?: boolean
+  /** 预览时是否注入模板的页眉/页脚（仅影响 render-html 返回的 HTML，不影响 PDF 生成），默认 false */
+  previewHeaderFooter?: boolean
 }
 
 // 生成 PDF 入参
@@ -26,12 +28,22 @@ export interface GeneratePdfRequest extends RenderHtmlRequest {
     marginMm?: Partial<Record<'top' | 'right' | 'bottom' | 'left', number>>
     /** 自定义文件名（不含扩展名），默认按时间与随机ID生成 */
     fileName?: string
+    /** 是否显示并固定页眉/页脚（默认 true，开启后每页重复渲染） */
+    displayHeaderFooter?: boolean
+    /** 页眉 HTML 模板（支持 handlebars 变量），为空则使用默认模板 */
+    headerHtml?: string
+    /** 页脚 HTML 模板（支持 handlebars 变量），为空则使用默认模板（包含页码） */
+    footerHtml?: string
+    /** 页眉占用高度（mm），用于与 margin.top 联动，默认 15 */
+    headerHeightMm?: number
+    /** 页脚占用高度（mm），用于与 margin.bottom 联动，默认 15 */
+    footerHeightMm?: number
   }
 }
 
 // 生成 PDF 返回结果
 export interface GeneratePdfResult {
-  /** 可直接访问的 URL，如 /temp/pdf/20251021/xxx.pdf */
+  /** 可直接访问的 URL，如 /static/PDF/20251021/xxx.pdf */
   url: string
   /** 生成的文件名，例如 xxx.pdf */
   fileName: string

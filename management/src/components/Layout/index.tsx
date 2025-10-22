@@ -19,6 +19,7 @@ import {
   LogoutOutlined,
   ProfileOutlined,
   BellOutlined,
+  FilePdfOutlined,
 } from "@ant-design/icons";
 import { useLocation, useNavigate } from "react-router-dom";
 import { BrowserLocalStorage, ManagementMessageBox } from "@/utils";
@@ -81,6 +82,15 @@ const menuItems = [
     icon: <ProfileOutlined />,
     label: "模板管理",
   },
+  // PDF 一级菜单（指向 PDF 内容填充页面）
+  {
+    key: "pdf",
+    icon: <FilePdfOutlined />,
+    label: "PDF",
+    children: [
+      { key: "/pdf-fill", label: "PDF 内容填充" },
+    ],
+  },
 ];
 
 // 面包屑映射
@@ -102,6 +112,7 @@ const breadcrumbMap: Record<string, string> = {
   "/system-monitor/performance": "性能监控",
   "/feedback-management": "意见反馈管理",
   "/template-management": "模板管理",
+  "/pdf-fill": "PDF 内容填充",
 };
 
 interface ManagementLayoutProps {
@@ -270,6 +281,7 @@ const ManagementLayout: React.FC<ManagementLayoutProps> = ({ children }) => {
             "server-config",
             "user-management",
             "system-monitor",
+            "pdf",
           ]}
           items={menuItems}
           onClick={handleMenuClick}

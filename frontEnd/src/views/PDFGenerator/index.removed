@@ -1,0 +1,323 @@
+// 前台 PDF 生成器页面
+// 功能：选择模板 -> 填写数据(JSON) -> 预览HTML -> 生成PDF并预览/下载
+// 说明：为简化演示，数据输入使用 JSON 文本框；后续可根据模板 fields 自动生成动态表单
+
+import React, { useCallback, useEffect, useMemo, useState } from 'react'
+import { EyeOutlined, FilePdfOutlined, ReloadOutlined } from '@ant-design/icons'
+import { Button, Card, Form, Input, Modal, Select, Space, Tag, Tabs, message } from 'antd'
+import TemplateApiFront, { type HtmlTemplate, type TemplateType } from '@/api/template'
+
+const { TextArea } = Input
+
+// 模板类型颜色映射（中文注释：用于给模板类型打标签颜色）
+const TypeTag: React.FC<{ type: TemplateType }> = ({ type }) => {
+  const color = type === 'A4' ? 'blue' : type === 'A5' ? 'green' : 'default'
+  return <Tag color={color}>{type}</Tag>
+}
+
+const PDFGenerator: React.FC = () => {
+  // 模板列表与选择
+  const [tplList, setTplList] = useState<HtmlTemplate[]>([])
+  const [loading, setLoading] = useState(false)
+  const [templateId, setTemplateId] = useState<string>()
+  // 选中的模板（如无需使用可省略）
+  // const [selected, setSelected] = useState<HtmlTemplate | null>(null)
+  // 当前模板的字段 schema（来自后端 HtmlTemplate.fields）
+  const [fieldsSchema, setFieldsSchema] = useState<any[] | null>(null)
+  // Tab 切换（form/json），默认优先显示可视化表单
+  const [activeTab, setActiveTab] = useState<'form' | 'json'>('form')
+  // 表单实例
+  const [form] = Form.useForm()
+
+  // 数据输入（JSON 字符串）
+  const [dataJson, setDataJson] = useState<string>(
+    JSON.stringify(
+      {
+        hospital: { name: '某某医院', department: '检验科', address: 'XX省XX市XX路1号', phone: '010-000000' },
+        patient: { name: '张三', gender: '男', age: 32, visitId: 'MZ20251021001', sampleNo: 'S20251021001' },
+        report: { doctor: '李四', reviewer: '王五', reportDate: '2025-10-21', sampleType: '全血' },
+        items: [],
+        remarks: '如有疑问，请与检验科联系',
+      },
+      null,
+      2,
+    ),
+  )
+
+  // HTML 预览
+  const [previewOpen, setPreviewOpen] = useState(false)
+  const [previewHtml, setPreviewHtml] = useState('')
+
+  // ====== 工具函数：处理嵌套 JSON 的扁平化与还原（以 a.b.c 路径表达） ======
+  // 中文注释：将嵌套对象拍平成『路径->值』的键值对，便于与 antd Form 绑定
+  const flatten = useCallback((obj: any, prefix = '', out: Record<string, any> = {}) => {
+    if (obj && typeof obj === 'object' && !Array.isArray(obj)) {
+      for (const k of Object.keys(obj)) {
+        const p = prefix ? `${prefix}.${k}` : k
+        flatten(obj[k], p, out)
+      }
+    } else {
+      out[prefix] = obj
+    }
+    return out
+  }, [])
+
+  // 中文注释：将『路径->值』恢复为嵌套对象
+  const unflatten = useCallback((flat: Record<string, any>) => {
+    const res: any = {}
+    for (const [path, value] of Object.entries(flat)) {
+      if (!path) continue
+      const keys = path.split('.')
+      let cur = res
+      for (let i = 0; i < keys.length; i++) {
+        const key = keys[i]
+        if (i === keys.length - 1) {
+          cur[key] = value
+        } else {
+          if (typeof cur[key] !== 'object' || cur[key] === null) cur[key] = {}
+          cur = cur[key]
+        }
+      }
+    }
+    return res
+  }, [])
+
+  // 解析 JSON 工具（放在 useEffect 之前，避免“声明之前已使用”）
+  const parseJsonSafe = useCallback((txt?: string) => {
+    if (!txt) return {}
+    try {
+      return JSON.parse(txt)
+    } catch {
+      return {}
+    }
+  }, [])
+
+  // 拉取模板列表
+  const fetchTemplates = async () => {
+    setLoading(true)
+    try {
+      const res = await TemplateApiFront.query({ page: 1, pageSize: 100 })
+      setTplList(res.data || [])
+    } catch (e: any) {
+      message.error(e?.message || '获取模板失败')
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  useEffect(() => {
+    fetchTemplates()
+  }, [])
+
+  // 选择模板后更新选中项，并拉取详情以获取 fields（中文注释）
+  useEffect(() => {
+    const run = async () => {
+      if (!templateId) {
+        setFieldsSchema(null)
+        return
+      }
+      // const cur = tplList.find((x) => x.id === templateId) || null
+      // setSelected(cur)
+      try {
+        const detail = await TemplateApiFront.detail(templateId)
+        let fs: any = detail?.fields ?? null
+        // 兼容字符串 JSON
+        if (typeof fs === 'string') {
+          try { fs = JSON.parse(fs) } catch { fs = null }
+        }
+        // 仅接受数组结构
+        setFieldsSchema(Array.isArray(fs) ? fs : null)
+        // 若存在字段 schema，尝试从当前 JSON 解析为扁平值回填 form
+        const curData = parseJsonSafe(dataJson)
+        const flat = flatten(curData)
+        form.setFieldsValue(flat)
+        setActiveTab(Array.isArray(fs) && fs.length > 0 ? 'form' : 'json')
+      } catch (e) {
+        setFieldsSchema(null)
+        setActiveTab('json')
+      }
+    }
+    run()
+  }, [templateId, tplList, dataJson, flatten, form, parseJsonSafe])
+
+  // 预览 HTML
+  const handlePreviewHtml = async () => {
+    if (!templateId) return message.info('请先选择模板')
+    try {
+      const html = await TemplateApiFront.renderHtml({ templateId, data: parseJsonSafe(dataJson), sanitize: true })
+      setPreviewHtml(html)
+      setPreviewOpen(true)
+    } catch (e: any) {
+      message.error(e?.message || '预览失败')
+    }
+  }
+
+  // 生成 PDF
+  const handleGeneratePdf = async () => {
+    if (!templateId) return message.info('请先选择模板')
+    try {
+      const result = await TemplateApiFront.generatePdf({ templateId, data: parseJsonSafe(dataJson), sanitize: true })
+      if (result?.url) {
+        window.open(result.url, '_blank')
+      } else {
+        message.success('生成成功，但未返回可访问的 URL')
+      }
+    } catch (e: any) {
+      message.error(e?.message || '生成失败')
+    }
+  }
+
+  // 模板下拉选项（中文注释：在下拉内同时展示名称与类型标签）
+  const tplOptions = useMemo(
+    () =>
+      tplList.map((t) => ({
+        label: (
+          <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+            <span>{t.name}</span>
+            <TypeTag type={t.type} />
+          </div>
+        ),
+        value: t.id,
+      })),
+    [tplList],
+  )
+
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
+      <Card
+        title="PDF 生成器"
+        extra={
+          <Space>
+            <Button icon={<ReloadOutlined />} onClick={fetchTemplates} loading={loading}>
+              刷新模板
+            </Button>
+          </Space>
+        }
+        style={{ height: '100%', display: 'flex', flexDirection: 'column' }}
+        bodyStyle={{ display: 'flex', flexDirection: 'column', flex: 1, minHeight: 0 }}
+      >
+        {/* 选择模板与操作按钮 */}
+        <Space wrap size={16} style={{ marginBottom: 16 }}>
+          <Select
+            placeholder="请选择模板"
+            style={{ width: 360 }}
+            options={tplOptions}
+            value={templateId}
+            onChange={setTemplateId}
+            showSearch
+            optionFilterProp="label"
+          />
+          <Button type="primary" icon={<EyeOutlined />} onClick={handlePreviewHtml}>
+            预览HTML
+          </Button>
+          <Button icon={<FilePdfOutlined />} onClick={handleGeneratePdf}>
+            生成PDF
+          </Button>
+        </Space>
+
+        {/* 数据输入：支持『可视化表单』与『JSON 文本』两种方式（中文注释） */}
+        <Tabs
+          activeKey={activeTab}
+          onChange={(k) => setActiveTab(k as any)}
+          items={[
+            {
+              key: 'form',
+              label: '可视化表单',
+              children: (
+                <div>
+                  {(!fieldsSchema || fieldsSchema.length === 0) ? (
+                    <div style={{ color: '#999' }}>该模板未配置字段（fields），请切换到 JSON 文本模式填写数据。</div>
+                  ) : (
+                    <Form
+                      form={form}
+                      layout="vertical"
+                      onValuesChange={(_, allValues) => {
+                        // 将扁平值还原为嵌套 JSON，并同步更新 JSON 文本框
+                        const nested = unflatten(allValues as any)
+                        setDataJson(JSON.stringify(nested, null, 2))
+                      }}
+                    >
+                      {fieldsSchema.map((f: any) => {
+                        const name = f.key as string
+                        const label = f.label || f.key
+                        const required = !!f.required
+                        const placeholder = f.placeholder
+                        const type = (f.type || 'text') as string
+
+                        if (type === 'select') {
+                          return (
+                            <Form.Item key={name} name={name} label={label} rules={required ? [{ required: true, message: `请选择${label}` }] : []}>
+                              <Select
+                                placeholder={placeholder}
+                                options={(Array.isArray(f.options) ? f.options : []).map((x: any) => ({ label: String(x), value: x }))}
+                                showSearch
+                                optionFilterProp="label"
+                              />
+                            </Form.Item>
+                          )
+                        }
+
+                        if (type === 'textarea') {
+                          return (
+                            <Form.Item key={name} name={name} label={label} rules={required ? [{ required: true, message: `请输入${label}` }] : []}>
+                              <TextArea rows={4} placeholder={placeholder} />
+                            </Form.Item>
+                          )
+                        }
+
+                        // number/date 默认用 Input 简化（可后续替换为 InputNumber/DatePicker）
+                        const inputType = type === 'number' ? 'number' : 'text'
+                        return (
+                          <Form.Item key={name} name={name} label={label} rules={required ? [{ required: true, message: `请输入${label}` }] : []}>
+                            <Input type={inputType as any} placeholder={placeholder} />
+                          </Form.Item>
+                        )
+                      })}
+                    </Form>
+                  )}
+                </div>
+              )
+            },
+            {
+              key: 'json',
+              label: 'JSON 文本',
+              children: (
+                <Form layout="vertical">
+                  <Form.Item label="模板数据(JSON)">
+                    <TextArea
+                      rows={18}
+                      placeholder="请输入用于替换 {{变量}} 的 JSON 数据"
+                      value={dataJson}
+                      onChange={(e) => {
+                        const v = e.target.value
+                        setDataJson(v)
+                        try {
+                          const obj = JSON.parse(v)
+                          // JSON 变更时同步回填表单（若有 fields）
+                          if (fieldsSchema && fieldsSchema.length > 0) {
+                            form.setFieldsValue(flatten(obj))
+                          }
+                        } catch {
+                          // 忽略 JSON 解析错误，用户继续编辑
+                        }
+                      }}
+                    />
+                  </Form.Item>
+                </Form>
+              )
+            }
+          ]}
+        />
+      </Card>
+
+      {/* HTML 预览对话框 */}
+      <Modal title="HTML 预览" open={previewOpen} width={980} footer={null} onCancel={() => setPreviewOpen(false)}>
+        <div style={{ height: 600, border: '1px solid #f0f0f0' }}>
+          <iframe title="html-preview" style={{ width: '100%', height: '100%', border: 0 }} srcDoc={previewHtml} />
+        </div>
+      </Modal>
+    </div>
+  )
+}
+
+export default PDFGenerator

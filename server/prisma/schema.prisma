@@ -212,6 +212,12 @@ model HtmlTemplate {
   heightMm   Int?
   fields     Json?
   remark     String?
+  // ===== 模板级页眉/页脚配置 =====
+  displayHeaderFooter Boolean   @default(true) // 是否固定显示页眉/页脚
+  headerHtml          String?   @db.Text       // 页眉 HTML 片段（可选）
+  footerHtml          String?   @db.Text       // 页脚 HTML 片段（可选）
+  headerHeightMm      Int?                      // 页眉高度（mm），建议默认 15
+  footerHeightMm      Int?                      // 页脚高度（mm），建议默认 15
   createdAt  DateTime     @default(now())
   updatedAt  DateTime     @updatedAt
 }

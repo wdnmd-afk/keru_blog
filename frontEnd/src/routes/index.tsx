@@ -45,6 +45,7 @@ const LazyComponents = {
     // ==================== Technology子模块 ====================
     TechnologyLayout: lazy(() => import('@/views/Technology/TechnologyLayout.tsx')), // Technology子路由布局
     ReactDetail: lazy(() => import('@/views/Technology/pages/ReactDetail.tsx')), // React技术详解
+    // （已迁移至管理端 /pdf-fill）
 }
 
 /**
@@ -111,6 +112,7 @@ const privateRoutes = [
         component: <LazyComponents.Files />,
         description: '文件管理 - 文件上传、预览、管理功能',
     },
+    // （/pdf-generator 已迁移到管理端，不再在前台提供）
 ]
 
 /**
@@ -141,7 +143,7 @@ const AppRoutes: React.FC = () => {
         <Router>
             <Routes>
                 {/* ==================== 公共路由渲染 ==================== */}
-                {publicRoutes.map(({ path, component, description }) => (
+                {publicRoutes.map(({ path, component, description: _description }) => (
                     <Route
                         key={path}
                         path={path}
@@ -155,7 +157,7 @@ const AppRoutes: React.FC = () => {
                 ))}
 
                 {/* ==================== 私有路由渲染 ==================== */}
-                {privateRoutes.map(({ path, component, description }) => (
+                {privateRoutes.map(({ path, component, description: _description }) => (
                     <Route
                         key={path}
                         path={path}

@@ -3,10 +3,11 @@
 // 风格与布局参考 `management/src/pages/FeedbackManagement/index.tsx`
 
 import React, { useCallback, useEffect, useMemo, useState } from "react";
-import { Button, Card, Drawer, Form, Input, InputNumber, Modal, Select, Space, Tabs, Tag, message } from "antd";
+import { Button, Card, Drawer, Form, Input, InputNumber, Modal, Select, Space, Tabs, Tag, Switch, message } from "antd";
 import { PlusOutlined, SearchOutlined, ReloadOutlined, EditOutlined, DeleteOutlined, EyeOutlined, CodeOutlined, FilePdfOutlined } from "@ant-design/icons";
 import { KTable, type IKTableColumns } from "shared/components";
 import TemplateApi, { type HtmlTemplate, type QueryTemplateRequest, type TemplateType, type UpsertTemplateRequest, type GeneratePdfRequest } from "@/api/template";
+import PDFPreviewDrawer from "@/components/PDFPreviewDrawer";
 
 const { TextArea } = Input;
 
@@ -50,6 +51,11 @@ const TemplateManagement: React.FC = () => {
   const [editing, setEditing] = useState<HtmlTemplate | null>(null);
   const [previewOpen, setPreviewOpen] = useState(false);
   const [previewHtml, setPreviewHtml] = useState("");
+  // PDF 预览抽屉
+  const [pdfOpen, setPdfOpen] = useState(false);
+  const [pdfUrl, setPdfUrl] = useState<string | undefined>(undefined);
+  const [pdfName, setPdfName] = useState<string | undefined>(undefined);
+  const [pdfSize, setPdfSize] = useState<number | undefined>(undefined);
 
   const [form] = Form.useForm<UpsertTemplateRequest>();
   // 监听表单中的当前模板类型，用于控制宽高禁用与默认赋值
@@ -135,7 +141,15 @@ const TemplateManagement: React.FC = () => {
     setEditing(null);
     form.resetFields();
     // 新建默认 A4，并自动赋值标准尺寸
-    form.setFieldsValue({ type: "A4", widthMm: 210, heightMm: 297 } as any);
+    form.setFieldsValue({
+      type: "A4",
+      widthMm: 210,
+      heightMm: 297,
+      // 模板级页眉/页脚默认值
+      displayHeaderFooter: true,
+      headerHeightMm: 15,
+      footerHeightMm: 15,
+    } as any);
     setOpen(true);
   };
 
@@ -151,6 +165,12 @@ const TemplateManagement: React.FC = () => {
       heightMm: record.heightMm ?? undefined,
       fields: record.fields ? JSON.stringify(record.fields, null, 2) : undefined,
       remark: record.remark ?? undefined,
+      // 模板级页眉/页脚
+      displayHeaderFooter: record.displayHeaderFooter ?? true,
+      headerHeightMm: record.headerHeightMm ?? 15,
+      footerHeightMm: record.footerHeightMm ?? 15,
+      headerHtml: record.headerHtml ?? undefined,
+      footerHtml: record.footerHtml ?? undefined,
     } as any);
     setOpen(true);
   };
@@ -202,7 +222,8 @@ const TemplateManagement: React.FC = () => {
   // 预览 HTML
   const handlePreviewHtml = async (record: HtmlTemplate) => {
     try {
-      const html = await TemplateApi.renderHtml({ templateId: record.id, data: {}, sanitize: true });
+      // 预览时注入模板级页眉/页脚
+      const html = await TemplateApi.renderHtml({ templateId: record.id, data: {}, sanitize: true, previewHeaderFooter: true });
       setPreviewHtml(html);
       setPreviewOpen(true);
     } catch (e: any) {
@@ -214,7 +235,10 @@ const TemplateManagement: React.FC = () => {
   const handlePreviewPdf = async (record: HtmlTemplate) => {
     try {
       const result = await TemplateApi.generatePdf({ templateId: record.id, data: {}, sanitize: true } as GeneratePdfRequest);
-      window.open(result.url, "_blank");
+      setPdfUrl(result.url);
+      setPdfName(result.fileName);
+      setPdfSize(result.size);
+      setPdfOpen(true);
     } catch (e: any) {
       message.error(e?.message || "生成失败");
     }
@@ -303,6 +327,29 @@ const TemplateManagement: React.FC = () => {
             <Input placeholder="可选" />
           </Form.Item>
 
+          {/* 模板级页眉/页脚配置 */}
+          <Card size="small" title="页眉/页脚配置（模板级，PDF 生成时默认生效）" style={{ marginBottom: 12 }}>
+            <Space wrap size={16}>
+              <Form.Item label="固定页眉/页脚" name="displayHeaderFooter" valuePropName="checked">
+                <Switch />
+              </Form.Item>
+              <Form.Item label="页眉高度(mm)" name="headerHeightMm">
+                <InputNumber min={0} max={100} style={{ width: 160 }} />
+              </Form.Item>
+              <Form.Item label="页脚高度(mm)" name="footerHeightMm">
+                <InputNumber min={0} max={100} style={{ width: 160 }} />
+              </Form.Item>
+            </Space>
+            <Space align="start" size={16} wrap style={{ marginTop: 12 }}>
+              <Form.Item label="页眉 HTML（可选）" name="headerHtml" style={{ flex: 1, minWidth: 380 }}>
+                <TextArea rows={6} placeholder="可包含 {{变量}}；Puppeteer 支持 .title/.date 默认占位" />
+              </Form.Item>
+              <Form.Item label="页脚 HTML（可选）" name="footerHtml" style={{ flex: 1, minWidth: 380 }}>
+                <TextArea rows={6} placeholder="可包含 {{变量}}；可用 .pageNumber/.totalPages 显示页码" />
+              </Form.Item>
+            </Space>
+          </Card>
+
           <Tabs
             items={[
               {
@@ -348,6 +395,14 @@ const TemplateManagement: React.FC = () => {
           <iframe title="html-preview" style={{ width: '100%', height: '100%', border: 0 }} srcDoc={previewHtml} />
         </div>
       </Modal>
+
+      {/* PDF 抽屉预览 */}
+      <PDFPreviewDrawer
+        open={pdfOpen}
+        src={pdfUrl}
+        fileName={pdfName}
+        onClose={() => setPdfOpen(false)}
+      />
     </div>
   );
 };

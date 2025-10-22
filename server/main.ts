@@ -11,6 +11,8 @@ import path from 'path'
 // 导入配置模块
 import { AppConfig, createAppConfig, printConfigSummary, validateConfig } from '@/config/app.config'
 import { closeContainer, createContainer } from '@/config/container.config'
+// 临时 PDF 清理任务
+import { setupTempPdfCleanup } from '@/jobs/cleanupTemp'
 
 // 导入中间件
 import {
@@ -75,6 +77,13 @@ async function bootstrap() {
       console.log(`🔌 WebSocket URL: ws://${config.server.host}:${config.server.port}`)
       console.log('✅ Server started successfully!')
     })
+
+    // 8.1 启动临时 PDF 清理任务（默认保留3天、每日执行一次；可通过环境变量覆盖）
+    const retentionDaysRaw = Number(process.env.TEMP_PDF_RETENTION_DAYS ?? 3)
+    const intervalMsRaw = Number(process.env.TEMP_PDF_CLEAN_INTERVAL_MS ?? 24 * 60 * 60 * 1000)
+    const retentionDays = Number.isFinite(retentionDaysRaw) ? retentionDaysRaw : 3
+    const intervalMs = Number.isFinite(intervalMsRaw) ? intervalMsRaw : 24 * 60 * 60 * 1000
+    setupTempPdfCleanup({ retentionDays, intervalMs })
 
     // 9. 设置优雅关闭
     setupGracefulShutdown(serverInstance, container, webSocketServer)
