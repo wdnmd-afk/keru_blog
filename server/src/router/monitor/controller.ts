@@ -56,11 +56,28 @@ export class MonitorController extends BaseHttpController {
   /** POST /api/monitor/logs  客户端日志上报 */
   @httpPost('/logs')
   public async ingestClientLog(req: Request, res: Response) {
-    const { source, level, message, context } = (req.body || {}) as any
+    const { source, type, level, message, context } = (req.body || {}) as any
     if (!message) {
       return (res as any).sendResponse({ success: false, code: 400, message: 'message 为必填' })
     }
-    const result = await this.service.writeClientLog({ source, level, message, context })
+    const result = await this.service.writeClientLog({ source, type, level, message, context })
+    ;(res as any).sendResponse(result)
+  }
+
+  /** GET /api/monitor/db-logs?source=&type=&level=&keyword=&start=&end=&page=&pageSize=  数据库日志查询 */
+  @httpGet('/db-logs')
+  public async dbLogs(req: Request, res: Response) {
+    const params = {
+      source: (req.query.source as string) || undefined,
+      type: (req.query.type as string) || undefined,
+      level: (req.query.level as string) || undefined,
+      keyword: (req.query.keyword as string) || undefined,
+      start: (req.query.start as string) || undefined,
+      end: (req.query.end as string) || undefined,
+      page: req.query.page ? Number(req.query.page) : undefined,
+      pageSize: req.query.pageSize ? Number(req.query.pageSize) : undefined,
+    }
+    const result = await this.service.dbLogs(params)
     ;(res as any).sendResponse(result)
   }
 }

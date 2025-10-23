@@ -4,7 +4,7 @@
 // 3. 通配符匹配：支持 * 后缀的前缀匹配
 const whitelistConfig = {
   // 精确路径匹配（推荐用于关键接口）
-  exactPaths: ['/user/login', '/user/register', '/user/resetPassword', '/health'],
+  exactPaths: ['/user/login', '/user/register', '/user/resetPassword', '/health', '/public/monitor/logs'],
 
   // 路径段匹配（安全的模糊匹配）
   // 格式：['segment1', 'segment2'] 表示路径必须包含这些连续的段
@@ -13,10 +13,11 @@ const whitelistConfig = {
     ['user', 'register'],
     ['user', 'resetPassword'],
     ['public', 'feedback'],
+    ['public', 'monitor'],
   ],
 
   // 通配符匹配（用于静态资源等）
-  wildcardPaths: ['/static/*', '/public/*'],
+  wildcardPaths: ['/static/*', '/public/*', '/public/monitor/*'],
 }
 
 /**

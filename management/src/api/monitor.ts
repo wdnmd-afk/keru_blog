@@ -65,6 +65,26 @@ class MonitorApi {
     const res = await ManagementApi.post<{ ok: boolean }>("/monitor/logs", payload);
     return !!res.data;
   }
+
+  /**
+   * 查询数据库日志（system_logs）
+   */
+  static async dbLogs(params: {
+    source?: string;
+    type?: string;
+    level?: string;
+    keyword?: string;
+    start?: string;
+    end?: string;
+    page?: number;
+    pageSize?: number;
+  }): Promise<{ total: number; items: any[]; page: number; pageSize: number }> {
+    const res = await ManagementApi.get<{ total: number; items: any[]; page: number; pageSize: number }>(
+      "/monitor/db-logs",
+      params as any
+    );
+    return (res.data as any) || { total: 0, items: [], page: 1, pageSize: 20 };
+  }
 }
 
 export default MonitorApi;

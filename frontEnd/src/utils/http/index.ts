@@ -1,4 +1,5 @@
 import { BrowserLocalStorage } from '@/utils'
+import { reportApiError } from '@/utils/monitor'
 import { message, Modal } from 'antd'
 import axios, {
     AxiosError,
@@ -84,6 +85,8 @@ class RequestHttp {
                 if (!response) {
                     // 请求被取消或网络错误，没有response
                     console.log('请求被取消或网络错误:', error.message)
+                    // 上报网络错误
+                    reportApiError(error)
                     return Promise.reject(error)
                 }
 
@@ -130,9 +133,11 @@ class RequestHttp {
                 switch (data.code) {
                     case ResultEnum.ERROR:
                         message.error(data.message)
+                        reportApiError(error)
                         break
                     case ResultEnum.NORMAL_ERROR:
                         message.error(data.message)
+                        reportApiError(error)
                         break
                 }
                 // 服务器结果都没有返回(可能服务器错误可能客户端断网)，断网处理:可以跳转到断网页面
@@ -249,9 +254,13 @@ class RequestHttp {
             let buffer = ''
 
             try {
-                while (true) {
+                let doneReading = false
+                while (!doneReading) {
                     const { value, done } = await reader.read()
-                    if (done) break
+                    if (done) {
+                        doneReading = true
+                        break
+                    }
 
                     buffer += decoder.decode(value, { stream: true })
 

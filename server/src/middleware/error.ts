@@ -2,6 +2,8 @@
 import { ApiResponse, BusinessException } from '@/common'
 import { isWhiteListPath } from '@/config/whitelist'
 import { NextFunction, Request, Response } from 'express'
+import { getGlobalContainer } from '@/config/container.instance'
+import { MonitorService } from '@/router/monitor/service'
 import passport from 'passport'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -39,6 +41,35 @@ function errorHandlingMiddleware() {
       ip: req.ip,
       userAgent: req.get('User-Agent'),
     })
+
+    // 将严重错误写入数据库系统日志（防守：不影响主流程）
+    ;(async () => {
+      try {
+        const container = getGlobalContainer()
+        if (!container) return
+        const monitor = container.get<MonitorService>(MonitorService)
+        await monitor.writeDbLog({
+          source: 'server',
+          type: 'server_error',
+          level: 'error',
+          message: err?.message || '服务器内部错误',
+          context: {
+            requestId,
+            url: req.url,
+            method: req.method,
+            ip: req.ip,
+            userAgent: req.get('User-Agent') || '',
+            stack: err?.stack || '',
+          },
+          route: req.path,
+          userId: (req as any)?.user?.id || undefined,
+          ip: req.ip,
+          userAgent: req.get('User-Agent') || undefined,
+        })
+      } catch (e) {
+        // 忽略入库失败，避免影响错误响应
+      }
+    })()
 
     let response: ApiResponse<null>
 

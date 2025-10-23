@@ -11,6 +11,7 @@ import path from 'path'
 // 导入配置模块
 import { AppConfig, createAppConfig, printConfigSummary, validateConfig } from '@/config/app.config'
 import { closeContainer, createContainer } from '@/config/container.config'
+import { setGlobalContainer } from '@/config/container.instance'
 // 临时 PDF 清理任务
 import { setupTempPdfCleanup } from '@/jobs/cleanupTemp'
 
@@ -45,6 +46,8 @@ async function bootstrap() {
 
     // 2. 创建依赖注入容器
     const container = createContainer()
+    // 注册全局容器，供中间件等非DI环境访问服务
+    setGlobalContainer(container)
 
     // 2.1 初始化权限中间件
     const prismaClient = container.get<() => PrismaClient>('PrismaClient')()

@@ -72,7 +72,8 @@ const menuItems = [
     label: "系统监控",
     children: [
       { key: "/system-monitor", label: "系统概览" },
-      { key: "/system-monitor/logs", label: "日志管理" },
+      { key: "/system-monitor/file-logs", label: "文件日志" },
+      { key: "/system-monitor/db-logs", label: "数据库日志" },
       { key: "/system-monitor/performance", label: "性能监控" },
       { key: "/feedback-management", label: "意见反馈" },
     ],
@@ -108,7 +109,9 @@ const breadcrumbMap: Record<string, string> = {
   "/user-management/roles": "角色管理",
   "/user-management/permissions": "权限管理",
   "/system-monitor": "系统监控",
-  "/system-monitor/logs": "日志管理",
+  "/system-monitor/logs": "日志管理", // 兼容旧路由
+  "/system-monitor/file-logs": "日志管理",
+  "/system-monitor/db-logs": "数据库日志",
   "/system-monitor/performance": "性能监控",
   "/feedback-management": "意见反馈管理",
   "/template-management": "模板管理",
@@ -357,8 +360,10 @@ const ManagementLayout: React.FC<ManagementLayoutProps> = ({ children }) => {
             padding: "24px",
             background: "#fff",
             borderRadius: "8px",
-            minHeight: "calc(100vh - 112px)",
-            overflow: "auto",
+            height: "calc(100vh - 112px)",
+            display: "flex",
+            flexDirection: "column",
+            overflow: "hidden",
           }}
         >
           {children}

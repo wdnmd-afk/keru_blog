@@ -21,7 +21,7 @@ import { HtmlPdfController } from '@/router/htmlpdf/controller'
 import { TemplateController } from '@/router/template/controller'
 // 新增导入：配置管理与系统监控控制器
 import { ConfigController } from '@/router/config/controller'
-import { MonitorController } from '@/router/monitor/controller'
+import { MonitorController, PublicMonitorController } from '@/router/controller'
 
 // 导入WebRTC模块
 import { WebRTCController, WebRTCGateway, WebRTCService } from '@/router/webrtc'
@@ -148,6 +148,8 @@ function registerControllers(container: Container): void {
   container.bind(TYPES.ConfigController).to(ConfigController)
   // 系统监控 控制器
   container.bind(TYPES.MonitorController).to(MonitorController)
+  // 公共监控 控制器（无需登录）
+  container.bind(PublicMonitorController).to(PublicMonitorController)
 
   // 为了兼容现有代码，保留原有的绑定方式
   container.bind(User).to(User)
@@ -161,6 +163,7 @@ function registerControllers(container: Container): void {
   container.bind(TemplateController).to(TemplateController)
   container.bind(ConfigController).to(ConfigController)
   container.bind(MonitorController).to(MonitorController)
+  container.bind(PublicMonitorController).to(PublicMonitorController)
 }
 
 /**

@@ -154,6 +154,7 @@ importers:
       axios: ^1.7.3
       commitlint: ^19.4.0
       d3: ^7.9.0
+      dayjs: ^1.11.13
       eslint: ^8.57.0
       eslint-config-prettier: ^9.1.0
       eslint-plugin-prettier: ^5.2.1
@@ -198,6 +199,7 @@ importers:
       antd: 5.27.6_nnrd3gsncyragczmpvfhocinkq
       axios: 1.12.2
       d3: 7.9.0
+      dayjs: 1.11.18
       i18next: 25.6.0_typescript@5.9.3
       i18next-browser-languagedetector: 8.2.0
       immer: 10.1.3

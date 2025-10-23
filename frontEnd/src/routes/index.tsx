@@ -16,9 +16,10 @@
 
 import { useGlobalStore } from '@/store'
 import { BrowserLocalStorage } from '@/utils'
+import { reportPageView } from '@/utils/monitor'
 import Layout from '@/views/systemPages/Layout.tsx'
-import React, { lazy } from 'react'
-import { Navigate, Route, BrowserRouter as Router, Routes } from 'react-router-dom'
+import React, { lazy, useEffect } from 'react'
+import { Navigate, Route, BrowserRouter as Router, Routes, useLocation } from 'react-router-dom'
 
 /**
  * 懒加载组件配置
@@ -129,6 +130,16 @@ const privateRoutes = [
  * - 检查本地存储中的 userInfo
  * - 任一存在即认为用户已登录
  */
+// 路由变化监听组件（必须在 Router 内部）
+const RouteTracker: React.FC = () => {
+    const location = useLocation()
+    useEffect(() => {
+        reportPageView(location.pathname + location.search)
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [location.pathname, location.search])
+    return null
+}
+
 const AppRoutes: React.FC = () => {
     // 获取全局用户状态
     const user = useGlobalStore((state) => state.user)
@@ -141,6 +152,8 @@ const AppRoutes: React.FC = () => {
 
     return (
         <Router>
+            {/* 页面浏览埋点 */}
+            <RouteTracker />
             <Routes>
                 {/* ==================== 公共路由渲染 ==================== */}
                 {publicRoutes.map(({ path, component, description: _description }) => (

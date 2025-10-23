@@ -1,12 +1,15 @@
-import { injectable } from 'inversify'
+import { injectable, inject } from 'inversify'
 import os from 'os'
 import fs from 'fs'
 import fsp from 'fs/promises'
 import path from 'path'
 import { Result } from '@/utils'
+import { PrismaDB } from '@/db'
 
 @injectable()
 export class MonitorService {
+  // 注入 Prisma，用于将日志写入数据库
+  constructor(@inject(PrismaDB) private readonly PrismaDB: PrismaDB) {}
   // 读取服务器健康状态（后续可扩展 DB/Redis 自检）
   public async health() {
     try {
@@ -88,7 +91,7 @@ export class MonitorService {
   /**
    * 客户端日志上报（管理端/前台均可复用），写入到 logs/management/YYYYMMDD.log
    */
-  public async writeClientLog(data: { source?: string; level?: string; message: string; context?: any }) {
+  public async writeClientLog(data: { source?: string; type?: string; level?: string; message: string; context?: any }) {
     try {
       const dateKey = this.getDateKey()
       // 根据 source 路由到 logs/<category>/YYYYMMDD.log（仅允许白名单内类别）
@@ -101,14 +104,122 @@ export class MonitorService {
       const entry = {
         ts: new Date().toISOString(),
         source: safeCategory,
+        type: (data.type || 'client_log').toLowerCase(),
         level: data.level || 'info',
         message: data.message,
         context: data.context || null,
       }
       await fsp.appendFile(file, JSON.stringify(entry) + '\n', 'utf-8')
+
+      // 同步写入数据库 system_logs 表
+      await this.writeDbLog({
+        source: entry.source,
+        type: entry.type,
+        level: entry.level,
+        message: entry.message,
+        context: entry.context,
+        route: (entry.context && entry.context.route) || undefined,
+        userId: (entry.context && entry.context.userId) || undefined,
+        ip: (entry.context && (entry.context.ip || entry.context.clientIp)) || undefined,
+        userAgent: (entry.context && entry.context.userAgent) || undefined,
+      })
       return Result.success(true)
     } catch (e: any) {
       return Result.error(500, e?.message || 'write client log failed')
+    }
+  }
+
+  /**
+   * 写入系统日志（数据库）
+   */
+  public async writeDbLog(payload: {
+    source: string
+    type: string
+    level: string
+    message: string
+    context?: any
+    route?: string
+    userId?: string
+    ip?: string
+    userAgent?: string
+  }) {
+    try {
+      await (this.PrismaDB.prisma as any).systemLog.create({
+        data: {
+          source: payload.source,
+          type: payload.type,
+          level: payload.level,
+          message: payload.message,
+          context: payload.context || undefined,
+          route: payload.route || null,
+          userId: payload.userId || null,
+          ip: payload.ip || null,
+          userAgent: payload.userAgent || null,
+        },
+      })
+      return Result.success(true)
+    } catch (e: any) {
+      return Result.error(500, e?.message || 'write db log failed')
+    }
+  }
+
+  /**
+   * 数据库日志查询（支持分页与筛选）
+   */
+  public async dbLogs(params: {
+    source?: string
+    type?: string
+    level?: string
+    keyword?: string
+    start?: string
+    end?: string
+    page?: number
+    pageSize?: number
+  }) {
+    try {
+      const {
+        source,
+        type,
+        level,
+        keyword,
+        start,
+        end,
+        page = 1,
+        pageSize = 20,
+      } = params || {}
+
+      const where: any = {}
+      if (source) where.source = source
+      if (type) where.type = type
+      if (level) where.level = level
+      if (keyword) {
+        where.OR = [
+          { message: { contains: keyword } },
+          { route: { contains: keyword } },
+        ]
+      }
+      if (start || end) {
+        where.createdAt = {}
+        if (start) where.createdAt.gte = new Date(start)
+        if (end) where.createdAt.lte = new Date(end)
+      }
+
+      const skip = Math.max(0, (page - 1) * pageSize)
+      const take = Math.max(1, Math.min(200, pageSize))
+
+      const [total, items] = await Promise.all([
+        (this.PrismaDB.prisma as any).systemLog.count({ where }),
+        (this.PrismaDB.prisma as any).systemLog.findMany({
+          where,
+          skip,
+          take,
+          orderBy: { createdAt: 'desc' },
+        }),
+      ])
+
+      return Result.success({ total, items, page, pageSize: take })
+    } catch (e: any) {
+      return Result.error(500, e?.message || 'query db logs failed')
     }
   }
 

@@ -68,6 +68,9 @@ const LazyComponents = {
   PerformanceMonitor: lazy(
     () => import("@/views/SystemMonitor/PerformanceMonitor"),
   ), // 性能监控
+  // 拆分后的日志页面
+  FileLogs: lazy(() => import("@/views/SystemMonitor/FileLogs")), // 文件日志
+  DbLogs: lazy(() => import("@/views/SystemMonitor/DbLogs")), // 数据库日志
 
   // ==================== 意见反馈管理 ====================
   FeedbackManagement: lazy(() => import("@/pages/FeedbackManagement")), // 意见反馈管理
@@ -186,8 +189,18 @@ const privateRoutes = [
   },
   {
     path: "/system-monitor/logs",
-    component: <LazyComponents.LogManagement />,
-    description: "日志管理",
+    component: <Navigate to="/system-monitor/file-logs" replace />,
+    description: "日志管理（兼容路由，重定向至文件日志）",
+  },
+  {
+    path: "/system-monitor/file-logs",
+    component: <LazyComponents.FileLogs />,
+    description: "系统监控 - 文件日志",
+  },
+  {
+    path: "/system-monitor/db-logs",
+    component: <LazyComponents.DbLogs />,
+    description: "系统监控 - 数据库日志",
   },
   {
     path: "/system-monitor/performance",

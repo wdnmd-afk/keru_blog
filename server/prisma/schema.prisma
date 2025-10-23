@@ -227,3 +227,21 @@ enum TemplateType {
   A5
   CUSTOM
 }
+
+// ================= 系统日志表 =================
+model SystemLog {
+  id         String   @id @unique @default(cuid())
+  source     String              // 日志来源：frontend/management/server 等
+  type       String              // 日志类型：behavior/api_error/server_error/server_info 等
+  level      String              // 日志级别：info/warn/error
+  message    String   @db.Text   // 中文说明/解释
+  context    Json?               // 结构化上下文（如路由、接口、参数、堆栈等）
+  route      String?
+  userId     String?
+  ip         String?
+  userAgent  String?
+  createdAt  DateTime @default(now())
+
+  @@index([source, type, level, createdAt])
+  @@map("system_logs")
+}
