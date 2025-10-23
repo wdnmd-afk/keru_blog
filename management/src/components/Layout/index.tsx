@@ -173,9 +173,9 @@ const ManagementLayout: React.FC<ManagementLayoutProps> = ({ children }) => {
             clearUser();
             console.log("[Layout] 用户状态已清除");
 
-            // 跳转到登录页面
-            navigate("/login", { replace: true });
-            console.log("[Layout] 已跳转到登录页面");
+            // 跳转到登录页面：使用硬跳转避免历史/上下文导致的未切换页面现象
+            window.location.replace("/login");
+            console.log("[Layout] 已跳转到登录页面（硬跳转）");
           },
         });
         break;

@@ -32,3 +32,11 @@ export { UserApi } from "./user";
 // 导出意见反馈相关
 export * from "./feedback";
 export { FeedbackApi } from "./feedback";
+
+// 导出配置管理相关
+export * from "./config";
+export { default as ConfigApi } from "./config";
+
+// 导出系统监控相关
+export * from "./monitor";
+export { default as MonitorApi } from "./monitor";

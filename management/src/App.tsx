@@ -1,23 +1,64 @@
-import React, { useEffect } from "react";
-import { ConfigProvider } from "antd";
+import React, { useEffect, useMemo, useState } from "react";
+import { ConfigProvider, theme as antdTheme } from "antd";
 import zhCN from "antd/locale/zh_CN";
 import ManagementRoutes from "@/routes";
 import { initializeManagementStore } from "@/store";
+import { ConfigApi, type FrontendConfig } from "@/api";
+import { ManagementApi } from "@/utils";
 
 // 管理系统主应用组件
 const App: React.FC = () => {
-  // 初始化状态存储
+  // 主题配置（从后端装载）
+  const [primaryColor, setPrimaryColor] = useState<string>("#8785a2");
+  const [mode, setMode] = useState<"light" | "dark">("light");
+
+  // 初始化状态存储 + 加载主题配置
   useEffect(() => {
     initializeManagementStore();
+    (async () => {
+      try {
+        const cfg = await ConfigApi.getFrontendConfig();
+        if (cfg?.theme?.primaryColor) setPrimaryColor(cfg.theme.primaryColor);
+        if (cfg?.theme?.mode === "dark" || cfg?.theme?.mode === "light") setMode(cfg.theme.mode);
+        // 应用 API 基础前缀到 axios 实例（仅运行时影响，开发代理仍需 Vite 配置配合）
+        if (cfg?.api?.managementApiBaseUrl) {
+          try {
+            (ManagementApi as any).service.defaults.baseURL = cfg.api.managementApiBaseUrl;
+          } catch {}
+        }
+      } catch (e) {
+        // 静默失败，沿用默认主题
+      }
+    })();
+  }, []);
+
+  // 监听前端配置变更事件（保存后即时生效，无需刷新）
+  useEffect(() => {
+    const handler = (e: Event) => {
+      const detail = (e as CustomEvent<Partial<FrontendConfig>>).detail || {};
+      if (detail.theme) {
+        if (detail.theme.primaryColor) setPrimaryColor(detail.theme.primaryColor);
+        if (detail.theme.mode === "dark" || detail.theme.mode === "light") setMode(detail.theme.mode);
+      }
+      if (detail.api?.managementApiBaseUrl) {
+        try {
+          (ManagementApi as any).service.defaults.baseURL = detail.api.managementApiBaseUrl;
+        } catch {}
+      }
+    };
+    window.addEventListener("management:frontend-config-updated", handler as EventListener);
+    return () => window.removeEventListener("management:frontend-config-updated", handler as EventListener);
   }, []);
 
   return (
     <ConfigProvider
       locale={zhCN}
       theme={{
+        // 根据后端配置切换明暗算法
+        algorithm: mode === "dark" ? antdTheme.darkAlgorithm : antdTheme.defaultAlgorithm,
         token: {
-          // 基于配色盘的完整色彩系统
-          colorPrimary: "#8785a2", // 主色调 - 专业稳重的紫灰色
+          // 基于配色盘的完整色彩系统（主色由后端配置覆盖）
+          colorPrimary: primaryColor,
           colorSuccess: "#ffe2e2", // 成功色 - 温和的浅粉色
           colorWarning: "#ffc7c7", // 警告色 - 温暖的粉红色
           colorError: "#ff8a80", // 错误色 - 柔和的红色
@@ -56,6 +97,44 @@ const App: React.FC = () => {
           boxShadowSecondary: "0 4px 16px rgba(135, 133, 162, 0.15)",
         },
         components: {
+          // 组件级主题：确保选中项文字为白色，背景为主题色
+          Menu: {
+            // 默认与悬停
+            itemBg: 'transparent',
+            itemColor: '#2c2c2c',
+            itemHoverBg: 'rgba(135, 133, 162, 0.1)',
+            itemHoverColor: primaryColor,
+            // 选中态
+            itemSelectedBg: primaryColor,
+            itemSelectedColor: '#ffffff',
+            // 激活态
+            itemActiveBg: primaryColor,
+            // 子菜单/分组
+            subMenuItemBg: '#f6f6f6',
+            groupTitleColor: '#2c2c2c',
+            subMenuItemSelectedColor: primaryColor,
+            // 水平菜单
+            horizontalItemSelectedBg: primaryColor,
+            horizontalItemSelectedColor: '#ffffff',
+            // 弹出菜单
+            popupBg: '#ffffff',
+            // 禁用
+            itemDisabledColor: 'rgba(44, 44, 44, 0.25)',
+          },
+          // 下拉选项选中态
+          Select: {
+            optionSelectedBg: primaryColor,
+            optionSelectedColor: '#ffffff',
+            // 悬停项（增强对比度）
+            optionActiveBg: primaryColor,
+          },
+          // 单选按钮（Button 样式）选中态
+          Radio: {
+            buttonSolidCheckedBg: primaryColor,
+            buttonSolidCheckedHoverBg: primaryColor,
+            buttonSolidCheckedActiveBg: primaryColor,
+            buttonSolidCheckedColor: '#ffffff',
+          },
           // Layout 组件配色
           Layout: {
             bodyBg: "#f6f6f6", // 使用配色盘的浅灰背景
@@ -63,38 +142,6 @@ const App: React.FC = () => {
             siderBg: "#ffffff", // 侧边栏纯白背景
             triggerBg: "#8785a2", // 触发器主色调
             triggerColor: "#ffffff", // 触发器文字白色
-          },
-
-          // Menu 组件配色
-          Menu: {
-            itemBg: "transparent", // 菜单项透明背景
-            itemColor: "#2c2c2c", // 默认菜单项文字色（深灰）
-            itemSelectedBg: "#8785a2", // 选中项背景使用主色调
-            itemSelectedColor: "#ffffff", // 选中项文字白色，确保对比度
-            itemHoverBg: "rgba(135, 133, 162, 0.1)", // 悬停背景使用主色调的浅色版本
-            itemHoverColor: "#8785a2", // 悬停文字主色调
-            itemActiveBg: "#8785a2", // 激活背景主色调
-            // 注意：itemActiveColor 在 Ant Design v5 中不存在，已移除
-
-            // 子菜单配色
-            subMenuItemBg: "#f6f6f6", // 子菜单背景浅灰
-            // 注意：subMenuItemSelectedBg 在 Ant Design v5 中不存在，已移除
-
-            // 分组和标题配色 - 确保父级菜单可见
-            groupTitleColor: "#2c2c2c", // 分组标题文字色（深灰）
-
-            // 关键配置：子菜单选中时的父级菜单标题颜色
-            subMenuItemSelectedColor: "#8785a2", // 子菜单选中时父级菜单标题颜色（主色调）
-
-            // 水平菜单配色
-            horizontalItemSelectedBg: "#8785a2", // 水平菜单选中项背景
-            horizontalItemSelectedColor: "#ffffff", // 水平菜单选中项文字
-
-            // 弹出菜单配色
-            popupBg: "#ffffff", // 弹出菜单背景
-
-            // 确保父级菜单在子菜单选中时保持可见
-            itemDisabledColor: "rgba(44, 44, 44, 0.25)", // 禁用项文字色
           },
 
           // Card 组件配色

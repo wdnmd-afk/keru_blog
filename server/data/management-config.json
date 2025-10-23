@@ -1,0 +1,30 @@
+{
+  "frontend": {
+    "theme": {
+      "mode": "dark",
+      "primaryColor": "#8785a2"
+    },
+    "features": {
+      "enableFeedback": true,
+      "enablePdf": true,
+      "enableWebRTC": false,
+      "enableSystemMonitor": true
+    },
+    "api": {
+      "devApiBaseUrl": "/dev-api",
+      "managementApiBaseUrl": "/management-api"
+    }
+  },
+  "server": {
+    "jwt": {
+      "expiresIn": "1d"
+    },
+    "redis": {
+      "host": "localhost",
+      "port": 6379
+    },
+    "database": {
+      "url": "mysql://root:123456@localhost:3306/test"
+    }
+  }
+}

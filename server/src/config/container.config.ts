@@ -19,6 +19,9 @@ import {
 import { HtmlPdfController } from '@/router/htmlpdf/controller'
 // 新增导入：模板管理控制器
 import { TemplateController } from '@/router/template/controller'
+// 新增导入：配置管理与系统监控控制器
+import { ConfigController } from '@/router/config/controller'
+import { MonitorController } from '@/router/monitor/controller'
 
 // 导入WebRTC模块
 import { WebRTCController, WebRTCGateway, WebRTCService } from '@/router/webrtc'
@@ -37,6 +40,9 @@ import {
 import { HtmlPdfService } from '@/router/htmlpdf/service'
 // 新增导入：模板管理服务
 import { TemplateService } from '@/router/template/service'
+// 新增导入：配置管理与系统监控服务
+import { ConfigService } from '@/router/config/service'
+import { MonitorService } from '@/router/monitor/service'
 
 // 导入中间件
 import { AuthMiddleware } from '@/middleware/auth'
@@ -60,6 +66,8 @@ export const TYPES = {
   WebRTCController: Symbol.for('WebRTCController'),
   HtmlPdfController: Symbol.for('HtmlPdfController'), // HTML→PDF 控制器
   TemplateController: Symbol.for('TemplateController'), // 模板管理 控制器
+  ConfigController: Symbol.for('ConfigController'), // 配置管理 控制器
+  MonitorController: Symbol.for('MonitorController'), // 系统监控 控制器
 
   // 服务
   UserService: Symbol.for('UserService'),
@@ -73,6 +81,8 @@ export const TYPES = {
   WebRTCGateway: Symbol.for('WebRTCGateway'),
   HtmlPdfService: Symbol.for('HtmlPdfService'), // HTML→PDF 服务
   TemplateService: Symbol.for('TemplateService'), // 模板管理 服务
+  ConfigService: Symbol.for('ConfigService'), // 配置管理 服务
+  MonitorService: Symbol.for('MonitorService'), // 系统监控 服务
 
   // 基础设施
   PrismaClient: Symbol.for('PrismaClient'),
@@ -134,6 +144,10 @@ function registerControllers(container: Container): void {
   container.bind(TYPES.HtmlPdfController).to(HtmlPdfController)
   // 模板管理 控制器
   container.bind(TYPES.TemplateController).to(TemplateController)
+  // 配置管理 控制器
+  container.bind(TYPES.ConfigController).to(ConfigController)
+  // 系统监控 控制器
+  container.bind(TYPES.MonitorController).to(MonitorController)
 
   // 为了兼容现有代码，保留原有的绑定方式
   container.bind(User).to(User)
@@ -145,6 +159,8 @@ function registerControllers(container: Container): void {
   container.bind(PublicFeedbackController).to(PublicFeedbackController)
   container.bind(HtmlPdfController).to(HtmlPdfController)
   container.bind(TemplateController).to(TemplateController)
+  container.bind(ConfigController).to(ConfigController)
+  container.bind(MonitorController).to(MonitorController)
 }
 
 /**
@@ -178,6 +194,12 @@ function registerServices(container: Container): void {
   // 绑定 模板管理 服务
   container.bind(TYPES.TemplateService).to(TemplateService)
   container.bind(TemplateService).to(TemplateService)
+  // 绑定 配置管理 服务
+  container.bind(TYPES.ConfigService).to(ConfigService)
+  container.bind(ConfigService).to(ConfigService)
+  // 绑定 系统监控 服务
+  container.bind(TYPES.MonitorService).to(MonitorService)
+  container.bind(MonitorService).to(MonitorService)
 }
 
 /**

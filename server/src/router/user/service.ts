@@ -154,6 +154,16 @@ export class UserService {
     }
   }
 
+  //登出接口：前端为无状态JWT，后端仅返回成功即可
+  public async logout() {
+    try {
+      return Result.success('退出登录成功')
+    } catch (error) {
+      console.error('用户登出错误:', error)
+      return Result.error(500, '退出登录失败，请重试')
+    }
+  }
+
   private generateRandomLongId(): string {
     return crypto.randomInt(1, 92233775807) + '' // 生成一个随机的long类型ID
   }

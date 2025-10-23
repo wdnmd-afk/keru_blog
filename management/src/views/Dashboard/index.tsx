@@ -17,6 +17,7 @@ import {
   ArrowUpOutlined,
   ArrowDownOutlined,
 } from "@ant-design/icons";
+import { useNavigate } from "react-router-dom";
 
 // 注意：这里演示了跨项目组件引用的配置
 // import LanguageSwitcher from '@frontend-components/LanguageSwitcher';
@@ -24,6 +25,7 @@ import {
 const { Title, Text, Paragraph } = Typography;
 
 const Dashboard: React.FC = () => {
+  const navigate = useNavigate();
   return (
     <div className="dashboard-container">
       {/* 页面标题 */}
@@ -107,12 +109,12 @@ const Dashboard: React.FC = () => {
               <div>
                 <Title level={4}>快捷操作</Title>
                 <Space wrap>
-                  <Button type="primary" icon={<SettingOutlined />}>
+                  <Button type="primary" icon={<SettingOutlined />} onClick={() => navigate('/frontend-config')}>
                     前端配置
                   </Button>
-                  <Button icon={<DatabaseOutlined />}>数据库配置</Button>
-                  <Button icon={<UserOutlined />}>用户管理</Button>
-                  <Button icon={<MonitorOutlined />}>系统监控</Button>
+                  <Button icon={<DatabaseOutlined />} onClick={() => navigate('/server-config/database')}>数据库配置</Button>
+                  <Button icon={<UserOutlined />} onClick={() => navigate('/user-management')}>用户管理</Button>
+                  <Button icon={<MonitorOutlined />} onClick={() => navigate('/system-monitor')}>系统监控</Button>
                 </Space>
               </div>
             </Space>

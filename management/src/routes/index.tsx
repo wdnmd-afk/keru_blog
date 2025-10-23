@@ -14,7 +14,7 @@
  * - ManagementRoutes: 主路由组件，处理路由渲染和权限验证
  */
 
-import { BrowserLocalStorage } from "@/utils";
+import { useManagementStore } from "@/store";
 import Layout from "@/components/Layout";
 import React, { lazy } from "react";
 import {
@@ -235,13 +235,11 @@ const privateRoutes = [
  * - 存在且包含有效 token 即认为管理员已登录
  */
 const ManagementRoutes: React.FC = () => {
-  // 获取本地存储的用户信息 - 与登录逻辑保持一致
-  const userInfo = BrowserLocalStorage.get("userInfo");
+  // 使用 Zustand 的响应式状态，确保清理后会触发重渲染，避免需要点击两次
+  const isAuthenticated = useManagementStore((state) => state.isAuthenticated);
+  const user = useManagementStore((state) => state.user);
 
-  // 判断管理员是否已登录
-  const isAuthenticated = userInfo && userInfo.token;
-
-  console.log("Management 路由权限检查:", { isAuthenticated, userInfo });
+  console.log("Management 路由权限检查:", { isAuthenticated, user });
 
   return (
     <Router>
@@ -261,7 +259,12 @@ const ManagementRoutes: React.FC = () => {
                   </div>
                 }
               >
-                {component}
+                {path === '/login' && isAuthenticated ? (
+                  // 已登录访问 /login 时直接重定向到 dashboard，避免停留在登录页
+                  <Navigate to="/dashboard" replace />
+                ) : (
+                  component
+                )}
               </React.Suspense>
             }
           />

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import {
   Form,
   Input,
@@ -36,20 +36,51 @@ interface LoginFormData {
 const ManagementLogin: React.FC = () => {
   const [form] = Form.useForm();
   const [loading, setLoading] = useState(false);
+  const [checking, setChecking] = useState(true); // 首屏校验中，展示全屏加载
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
   const { actions } = useManagementStore();
 
+  // 解析并校验 JWT 是否有效（带 Bearer 前缀）
+  const isJwtValid = useCallback((bearerToken?: string): boolean => {
+    if (!bearerToken || typeof bearerToken !== "string") return false;
+    try {
+      const token = bearerToken.replace(/^Bearer\s+/i, "");
+      const parts = token.split(".");
+      if (parts.length !== 3) return false;
+      const payload = JSON.parse(atob(parts[1].replace(/-/g, "+").replace(/_/g, "/")));
+      if (payload && typeof payload.exp === "number") {
+        const now = Math.floor(Date.now() / 1000);
+        // 预留 30s 时间偏移
+        return now < payload.exp - 30;
+      }
+      // 无 exp 视作有效
+      return true;
+    } catch {
+      return false;
+    }
+  }, []);
+
+  const checkedRef = useRef(false);
+
   // 组件加载时检查是否已登录 - 与 frontEnd 保持一致
   useEffect(() => {
+    if (checkedRef.current) return; // 避免重复执行导致的闪烁
+    checkedRef.current = true;
     console.log("[Login] 组件加载，检查登录状态");
     const userInfo = BrowserLocalStorage.get("userInfo");
     console.log("[Login] 本地存储的用户信息:", userInfo);
 
     if (userInfo && userInfo.token) {
-      console.log("[Login] 用户已登录，跳转到 dashboard");
-      navigate("/dashboard", { replace: true });
-      return;
+      if (isJwtValid(userInfo.token)) {
+        console.log("[Login] 用户已登录，跳转到 dashboard");
+        // 使用硬跳转避免路由上下文不一致导致的页面仍留在登录页
+        window.location.replace("/dashboard");
+        return;
+      } else {
+        console.warn("[Login] 本地 token 已失效，清理并留在登录页");
+        BrowserLocalStorage.remove("userInfo");
+      }
     }
 
     // 检查是否有保存的登录信息 - 与 frontEnd 保持一致
@@ -64,7 +95,8 @@ const ManagementLogin: React.FC = () => {
         remember: true,
       });
     }
-  }, [navigate, form]);
+    setChecking(false);
+  }, [navigate, form, isJwtValid]);
 
   // 处理登录提交
   const handleLogin = async (values: LoginFormData) => {
@@ -114,7 +146,7 @@ const ManagementLogin: React.FC = () => {
         console.log("[Login] 准备跳转到 dashboard");
         setTimeout(() => {
           console.log("[Login] 执行页面跳转");
-          navigate("/dashboard", { replace: true });
+          window.location.replace("/dashboard");
         }, 100); // 短暂延迟确保状态更新完成
       }
     } catch (error: any) {
@@ -140,6 +172,14 @@ const ManagementLogin: React.FC = () => {
       className="min-h-screen relative flex items-center justify-center p-4"
       style={{ backgroundColor: "#f0f2f5" }}
     >
+      {(checking || loading) && (
+        <div style={{position:'fixed',inset:0,background:'rgba(255,255,255,0.65)',display:'flex',alignItems:'center',justifyContent:'center',zIndex:9999}}>
+          <div style={{display:'flex',flexDirection:'column',alignItems:'center',gap:12}}>
+            <LoadingOutlined style={{fontSize:32,color:'#8785a2'}} />
+            <span style={{color:'#6b6b83'}}>处理中，请稍候…</span>
+          </div>
+        </div>
+      )}
       {/* 动画背景 */}
       <AnimatedBackground />
 
