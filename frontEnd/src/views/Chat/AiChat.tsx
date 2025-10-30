@@ -10,8 +10,9 @@ import ImagePreview from '@/components/ImagePreview'
 import ImageUpload from '@/components/ImageUpload'
 import { useClipboardImage } from '@/hooks/useClipboardImage'
 import '@/styles/markdown-themes.css'
-import { DeleteOutlined, SendOutlined } from '@ant-design/icons'
+import { ArrowLeftOutlined, DeleteOutlined, SendOutlined } from '@ant-design/icons'
 import { Button, Input, Popconfirm } from 'antd'
+import { useNavigate } from 'react-router-dom'
 import React, { memo, useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import ReactMarkdown from 'react-markdown'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
@@ -132,6 +133,7 @@ function useThrottle<T extends (...args: any[]) => any>(fn: T, delay: number): T
 // AI Chat 组件：支持 SSE 流式接收，样式遵循 Learning 模块配色
 const AiChat: React.FC = () => {
     const [messages, setMessages] = useState<MsgItem[]>([])
+    const navigate = useNavigate()
     const [input, setInput] = useState('')
     const [loading, setLoading] = useState(false)
 
@@ -312,6 +314,27 @@ const AiChat: React.FC = () => {
 
     return (
         <div className={s.chat_container}>
+            {/* 返回按钮 */}
+            <div style={{ padding: '8px 0 12px 0' }}>
+                <Button
+                    onClick={() => navigate(-1)}
+                    icon={<ArrowLeftOutlined />}
+                    ghost
+                    type="default"
+                    size="middle"
+                    style={{
+                        color: '#ffffff',
+                        borderColor: 'rgba(255,255,255,0.35)',
+                        background: 'transparent',
+                        borderRadius: 999,
+                        height: 36,
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                    }}
+                >
+                    返回
+                </Button>
+            </div>
             <div ref={listRef} className={s.messages}>
                 {messageList}
             </div>

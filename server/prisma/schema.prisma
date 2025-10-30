@@ -21,6 +21,9 @@ model User {
   files      File[]
   todos      Todo[]
   userRoles  UserRole[]   // 用户角色关联
+  ownedChatRooms   ChatRoom[]          // 反向关系：我拥有的聊天室（对应 ChatRoom.owner）
+  chatParticipants ChatParticipant[]   // 反向关系：我参与的聊天室记录（对应 ChatParticipant.user）
+  chatMessages     ChatMessage[]       // 反向关系：我发送的聊天室消息
 }
 
 model UserDetail {
@@ -244,4 +247,57 @@ model SystemLog {
 
   @@index([source, type, level, createdAt])
   @@map("system_logs")
+}
+
+// ================= 聊天室相关模型 =================
+
+/// 聊天室状态
+enum ChatRoomStatus {
+  ACTIVE   // 进行中/已开启
+  ENDED    // 已关闭/结束
+}
+
+/// 聊天室表
+model ChatRoom {
+  id          String          @id @unique @default(cuid())
+  roomNo      String          @unique                      // 房间号（人类可读，便于分享）
+  name        String                                        // 聊天室名称
+  coverUrl    String?                                       // 封面图 URL（可选）
+  ownerId     String                                        // 拥有者用户ID
+  owner       User            @relation(fields: [ownerId], references: [id])
+  status      ChatRoomStatus  @default(ACTIVE)              // 状态：ACTIVE/ENDED
+  createdAt   DateTime        @default(now())               // 创建时间
+  startTime   DateTime        @default(now())               // 开始时间
+  endTime     DateTime?                                     // 结束时间
+  participants ChatParticipant[]                            // 参与者列表
+  messages     ChatMessage[]                                // 聊天消息
+
+  @@index([ownerId, status, createdAt])
+}
+
+/// 聊天室参与者表（用于统计当前在线人数和历史参与记录）
+model ChatParticipant {
+  id       String   @id @unique @default(cuid())
+  roomId   String
+  userId   String
+  room     ChatRoom @relation(fields: [roomId], references: [id], onDelete: Cascade)
+  user     User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  joinAt   DateTime @default(now())
+  leaveAt  DateTime?
+
+  @@index([roomId, userId, leaveAt])
+}
+
+/// 聊天消息表（持久化消息、用于进入房间时加载最近记录）
+model ChatMessage {
+  id        String   @id @unique @default(cuid())
+  roomId    String
+  userId    String
+  content   String   @db.Text
+  createdAt DateTime @default(now())
+
+  room ChatRoom @relation(fields: [roomId], references: [id], onDelete: Cascade)
+  user User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([roomId, createdAt])
 }

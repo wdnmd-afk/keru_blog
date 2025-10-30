@@ -1,9 +1,11 @@
-import useTheme, { getThemeColors } from '@/hooks/useTheme'
-import { ArrowRightOutlined, DeleteOutlined, LoginOutlined, RobotOutlined } from '@ant-design/icons'
-import { Button, Empty, Input, Modal, Space, Tag, Typography, message } from 'antd'
-import React, { useCallback, useMemo, useState } from 'react'
+import { LoginOutlined, RobotOutlined } from '@ant-design/icons'
+import { Input, message, Modal, Space, Tabs, Typography } from 'antd'
+import React, { useCallback, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import s from './ChatEntry.module.scss'
+import ChatRoomList from './components/ChatRoomList'
+import LiveList from './components/LiveList'
+import MyRooms from './components/MyRooms'
 
 const { Title, Text } = Typography
 
@@ -42,10 +44,6 @@ const saveRecentRooms = (rooms: RecentRoom[]) => {
 const ChatEntry: React.FC = () => {
     const navigate = useNavigate()
 
-    // 主题色获取（避免暗色模式文字不可见）
-    const { resolvedTheme } = useTheme()
-    const colors = useMemo(() => getThemeColors(resolvedTheme), [resolvedTheme])
-
     // 加入房间弹窗与输入状态
     const [showJoin, setShowJoin] = useState(false)
     const [roomId, setRoomId] = useState('')
@@ -75,32 +73,7 @@ const ChatEntry: React.FC = () => {
         navigate(`/chat/room/${encodeURIComponent(id)}?name=${encodeURIComponent(name)}`)
     }, [roomId, nickname, rooms, navigate])
 
-    // 快速进入历史房间
-    const quickEnter = useCallback(
-        (r: RecentRoom) => {
-            navigate(
-                `/chat/room/${encodeURIComponent(r.id)}?name=${encodeURIComponent(r.nickname || '访客')}`
-            )
-        },
-        [navigate]
-    )
-
-    // 删除某条历史
-    const removeOne = useCallback(
-        (id: string) => {
-            const next = rooms.filter((r) => r.id !== id)
-            setRooms(next)
-            saveRecentRooms(next)
-        },
-        [rooms]
-    )
-
-    // 清空历史
-    const clearAll = useCallback(() => {
-        setRooms([])
-        saveRecentRooms([])
-        message.success('已清空最近房间')
-    }, [])
+    // 保留最近房间记录但不在页面展示（为后续可能的入口复用）
 
     return (
         <div className={s.page}>
@@ -349,80 +322,17 @@ const ChatEntry: React.FC = () => {
                 </div>
             </div>
 
-            {/* 最近聊天室列表 */}
+            {/* 底部 Tabs：聊天室 / 直播 / 我的 */}
             <div className={s.section}>
-                <div className={s.sectionHeader}>
-                    {/* 深色背景下使用白色标题，确保对比度 */}
-                    <Title level={4} style={{ margin: 0, color: '#ffffff' }}>
-                        聊天室列表
-                    </Title>
-                    {rooms.length > 0 && (
-                        <Button
-                            type="link"
-                            size="small"
-                            onClick={clearAll}
-                            style={{ padding: 0, color: 'rgba(255,255,255,0.85)' }}
-                        >
-                            清空
-                        </Button>
-                    )}
-                </div>
-
-                {rooms.length > 0 ? (
-                    <div className={s.grid}>
-                        {rooms.map((r) => (
-                            <div
-                                key={`${r.id}-${r.time}`}
-                                className={s.roomCard}
-                                onClick={() => quickEnter(r)}
-                                role="button"
-                            >
-                                <div className={s.roomTopBar} onClick={(e) => e.stopPropagation()}>
-                                    <Button
-                                        size="small"
-                                        type="text"
-                                        icon={<DeleteOutlined />}
-                                        onClick={() => removeOne(r.id)}
-                                    />
-                                </div>
-                                <div className={s.roomBody}>
-                                    <div className={s.roomId} style={{ color: colors.text }}>
-                                        {r.id}
-                                    </div>
-                                    <div
-                                        className={s.roomMeta}
-                                        style={{ color: colors.textSecondary }}
-                                    >
-                                        <Tag color="blue" style={{ marginRight: 8 }}>
-                                            昵称 {r.nickname}
-                                        </Tag>
-                                        <Text type="secondary">
-                                            {new Date(r.time).toLocaleString()}
-                                        </Text>
-                                    </div>
-                                    <Button
-                                        type="primary"
-                                        size="small"
-                                        icon={<ArrowRightOutlined />}
-                                        onClick={() => quickEnter(r)}
-                                    >
-                                        进入
-                                    </Button>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                ) : (
-                    <div className={s.emptyWrap}>
-                        <Empty
-                            description={
-                                <span style={{ color: 'rgba(255,255,255,0.65)' }}>
-                                    暂无最近聊天室，点击上方加入一个房间
-                                </span>
-                            }
-                        />
-                    </div>
-                )}
+                <Tabs
+                    className={s.whiteTabs}
+                    size="large"
+                    items={[
+                        { key: 'rooms', label: '聊天室', children: <ChatRoomList /> },
+                        { key: 'live', label: '直播', children: <LiveList /> },
+                        { key: 'mine', label: '我的', children: <MyRooms /> },
+                    ]}
+                />
             </div>
 
             {/* 加入聊天室弹窗 */}

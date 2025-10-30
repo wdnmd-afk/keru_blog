@@ -14,6 +14,7 @@ import {
   RbacController,
   TodoController,
   User,
+  ChatRoomController,
 } from '@/router/controller'
 // 新增导入：HTML→PDF 控制器
 import { HtmlPdfController } from '@/router/htmlpdf/controller'
@@ -35,6 +36,7 @@ import {
   RbacService,
   TodoService,
   UserService,
+  ChatRoomService,
 } from '@/router/service'
 // 新增导入：HTML→PDF 服务
 import { HtmlPdfService } from '@/router/htmlpdf/service'
@@ -68,6 +70,7 @@ export const TYPES = {
   TemplateController: Symbol.for('TemplateController'), // 模板管理 控制器
   ConfigController: Symbol.for('ConfigController'), // 配置管理 控制器
   MonitorController: Symbol.for('MonitorController'), // 系统监控 控制器
+  ChatRoomController: Symbol.for('ChatRoomController'), // 聊天室 控制器
 
   // 服务
   UserService: Symbol.for('UserService'),
@@ -83,6 +86,7 @@ export const TYPES = {
   TemplateService: Symbol.for('TemplateService'), // 模板管理 服务
   ConfigService: Symbol.for('ConfigService'), // 配置管理 服务
   MonitorService: Symbol.for('MonitorService'), // 系统监控 服务
+  ChatRoomService: Symbol.for('ChatRoomService'), // 聊天室 服务
 
   // 基础设施
   PrismaClient: Symbol.for('PrismaClient'),
@@ -151,6 +155,10 @@ function registerControllers(container: Container): void {
   // 公共监控 控制器（无需登录）
   container.bind(PublicMonitorController).to(PublicMonitorController)
 
+  // 聊天室 控制器
+  container.bind(TYPES.ChatRoomController).to(ChatRoomController)
+  container.bind(ChatRoomController).to(ChatRoomController)
+
   // 为了兼容现有代码，保留原有的绑定方式
   container.bind(User).to(User)
   container.bind(BaseController).to(BaseController)
@@ -203,6 +211,10 @@ function registerServices(container: Container): void {
   // 绑定 系统监控 服务
   container.bind(TYPES.MonitorService).to(MonitorService)
   container.bind(MonitorService).to(MonitorService)
+
+  // 聊天室 服务
+  container.bind(TYPES.ChatRoomService).to(ChatRoomService)
+  container.bind(ChatRoomService).to(ChatRoomService)
 }
 
 /**
