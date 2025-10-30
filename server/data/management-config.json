@@ -2,11 +2,11 @@
   "frontend": {
     "theme": {
       "mode": "dark",
-      "primaryColor": "#8785a2"
+      "primaryColor": "#3f72af"
     },
     "features": {
       "enableFeedback": true,
-      "enablePdf": true,
+      "enablePdf": false,
       "enableWebRTC": false,
       "enableSystemMonitor": true
     },

@@ -43,6 +43,11 @@ const LazyComponents = {
     Files: lazy(() => import('@/views/Files/index.tsx')), // 文件管理模块 - 文件上传、预览、管理
     WebRTC: lazy(() => import('@/views/WebRTC/index.tsx')), // WebRTC模块 - 实时视频通信功能
 
+    // ==================== Chat 模块 ====================
+    ChatEntry: lazy(() => import('@/views/Chat/index.tsx')), // 聊天入口：AI聊天或输入房间号
+    ChatAi: lazy(() => import('@/views/Chat/AiChat')), // AI 聊天（保持原有流式渲染）
+    ChatRoom: lazy(() => import('@/views/Chat/ChatRoom')), // 聊天室（默认本地渲染，预留 Socket 接入）
+
     // ==================== Technology子模块 ====================
     TechnologyLayout: lazy(() => import('@/views/Technology/TechnologyLayout.tsx')), // Technology子路由布局
     ReactDetail: lazy(() => import('@/views/Technology/pages/ReactDetail.tsx')), // React技术详解
@@ -92,6 +97,22 @@ const privateRoutes = [
         path: '/learning',
         component: <LazyComponents.Learning />,
         description: '学习模块 - 学习历程和学习计划管理',
+    },
+    // ==================== Chat 模块路由 ====================
+    {
+        path: '/chat',
+        component: <LazyComponents.ChatEntry />,
+        description: '聊天入口 - 选择 AI 聊天或房间号进入聊天室',
+    },
+    {
+        path: '/chat/ai',
+        component: <LazyComponents.ChatAi />,
+        description: 'AI 聊天（SSE 流式渲染）',
+    },
+    {
+        path: '/chat/room/:roomId',
+        component: <LazyComponents.ChatRoom />,
+        description: '聊天室 - 通过房间号加入（默认本地直连，预留 Socket 接入）',
     },
     {
         path: '/webrtc',

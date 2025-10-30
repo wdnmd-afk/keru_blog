@@ -3,18 +3,23 @@
 // 说明：为避免 Prisma Client 未生成导致的类型报错，这里通过 any 访问 htmlTemplate 模型，
 // 待执行 prisma generate 后可改回强类型。
 
+import { createAppConfig } from '@/config/app.config'
 import { PrismaDB } from '@/db'
-import { inject, injectable } from 'inversify'
-import path from 'path'
 import fs from 'fs-extra'
 import Handlebars from 'handlebars'
-import sanitizeHtml from 'sanitize-html'
+import { inject, injectable } from 'inversify'
 import os from 'os'
-import { createAppConfig } from '@/config/app.config'
+import path from 'path'
+import sanitizeHtml from 'sanitize-html'
 
 // 使用 puppeteer-core，要求本机存在可执行浏览器（或设置 PUPPETEER_EXECUTABLE_PATH）
 import puppeteer, { Browser } from 'puppeteer-core'
-import type { GeneratePdfRequest, GeneratePdfResult, RenderHtmlRequest, TemplateType } from './types'
+import type {
+  GeneratePdfRequest,
+  GeneratePdfResult,
+  RenderHtmlRequest,
+  TemplateType,
+} from './types'
 
 @injectable()
 export class HtmlPdfService {
@@ -74,7 +79,14 @@ export class HtmlPdfService {
   }
 
   /** 记录生成的 PDF 到索引文件 */
-  private async appendPdfIndex(record: { templateId: string; url: string; fileName: string; size: number; dateKey: string; createdAt: string }) {
+  private async appendPdfIndex(record: {
+    templateId: string
+    url: string
+    fileName: string
+    size: number
+    dateKey: string
+    createdAt: string
+  }) {
     const config = createAppConfig()
     const staticRoot = config.upload.uploadDir || 'static'
     const indexPath = path.resolve(process.cwd(), staticRoot, 'PDF', '_index.json')
@@ -102,9 +114,11 @@ export class HtmlPdfService {
     let index: any[] = []
     try {
       if (await fs.pathExists(indexPath)) {
-        index = JSON.parse(await fs.readFile(indexPath, 'utf-8') || '[]')
+        index = JSON.parse((await fs.readFile(indexPath, 'utf-8')) || '[]')
       }
-    } catch { index = [] }
+    } catch {
+      index = []
+    }
 
     const map = new Map<string, any>()
     for (const it of index) map.set(it.url, it)
@@ -123,7 +137,13 @@ export class HtmlPdfService {
           if (map.has(url)) continue
           const fstat = await fs.stat(path.join(dir, f)).catch(() => null)
           if (!fstat) continue
-          map.set(url, { url, fileName: f, size: fstat.size, dateKey: d, createdAt: new Date(fstat.mtimeMs).toISOString() })
+          map.set(url, {
+            url,
+            fileName: f,
+            size: fstat.size,
+            dateKey: d,
+            createdAt: new Date(fstat.mtimeMs).toISOString(),
+          })
         }
       }
     }
@@ -218,7 +238,7 @@ export class HtmlPdfService {
     const { width, height, format } = this.resolveSize(
       params.options?.type || (tpl.type as TemplateType),
       params.options?.widthMm ?? tpl.widthMm ?? undefined,
-      params.options?.heightMm ?? tpl.heightMm ?? undefined,
+      params.options?.heightMm ?? tpl.heightMm ?? undefined
     )
 
     // 处理页眉/页脚与边距（默认从模板读取，options 可覆盖）
@@ -278,7 +298,7 @@ export class HtmlPdfService {
       await page.pdf({
         path: outPath, // 直接落盘
         format, // 与 width/height 互斥，传了 format 就不需要 width/height
-        width,  // 仅在自定义时生效，如 '148mm'
+        width, // 仅在自定义时生效，如 '148mm'
         height, // 仅在自定义时生效
         margin: finalMargins,
         printBackground: true,
@@ -335,7 +355,18 @@ export class HtmlPdfService {
   /**
    * 读取模板（Prisma）
    */
-  private async getTemplate(id: string): Promise<{ id: string; type: string; content: string; widthMm?: number | null; heightMm?: number | null; displayHeaderFooter?: boolean | null; headerHtml?: string | null; footerHtml?: string | null; headerHeightMm?: number | null; footerHeightMm?: number | null }> {
+  private async getTemplate(id: string): Promise<{
+    id: string
+    type: string
+    content: string
+    widthMm?: number | null
+    heightMm?: number | null
+    displayHeaderFooter?: boolean | null
+    headerHtml?: string | null
+    footerHtml?: string | null
+    headerHeightMm?: number | null
+    footerHeightMm?: number | null
+  }> {
     const prisma: any = this.PrismaDB.prisma as any
     const tpl = await prisma.htmlTemplate.findUnique({ where: { id } })
     if (!tpl) throw new Error('模板不存在')
@@ -356,12 +387,20 @@ export class HtmlPdfService {
   private sanitize(html: string): string {
     return sanitizeHtml(html, {
       allowedTags: sanitizeHtml.defaults.allowedTags.concat([
-        'img', 'style', 'section', 'article', 'header', 'footer', 'main', 'figure', 'figcaption'
+        'img',
+        'style',
+        'section',
+        'article',
+        'header',
+        'footer',
+        'main',
+        'figure',
+        'figcaption',
       ]),
       allowedAttributes: {
         ...sanitizeHtml.defaults.allowedAttributes,
         img: ['src', 'alt', 'width', 'height', 'style'],
-        '*': ['style', 'class', 'id']
+        '*': ['style', 'class', 'id'],
       },
       // 允许内联样式（根据业务需要可进一步限制）
       allowVulnerableTags: true,
@@ -372,7 +411,11 @@ export class HtmlPdfService {
   /**
    * 尺寸解析：A4/A5 或自定义毫米宽高
    */
-  private resolveSize(type: TemplateType, widthMm?: number, heightMm?: number): { format?: 'A4' | 'A5'; width?: string; height?: string } {
+  private resolveSize(
+    type: TemplateType,
+    widthMm?: number,
+    heightMm?: number
+  ): { format?: 'A4' | 'A5'; width?: string; height?: string } {
     if (type === 'A4') return { format: 'A4' }
     if (type === 'A5') return { format: 'A5' }
 
@@ -416,11 +459,7 @@ export class HtmlPdfService {
     this.browser = await puppeteer.launch({
       executablePath,
       headless: true,
-      args: [
-        '--no-sandbox',
-        '--disable-setuid-sandbox',
-        '--disable-dev-shm-usage',
-      ],
+      args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage'],
     })
     return this.browser
   }

@@ -1,0 +1,405 @@
+.page {
+  padding: 20px;
+  min-height: 100%;
+  /* 页面背景与容器一致的浅黑 */
+  background-color: oklch(0.185 0 0);
+}
+
+.section {
+  margin-bottom: 24px;
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.grid {
+  display: grid;
+  /* 加大卡片尺寸，适配长方形面板 */
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 18px;
+}
+
+/* 通用卡片基类：方形、圆角、投影、平滑过渡 */
+.cardBase {
+  position: relative;
+  border-radius: 14px;
+  overflow: hidden;
+  aspect-ratio: 1 / 1;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 16px;
+}
+
+.cardBase:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+}
+
+/* 亮色主题下的卡片背景 */
+:global([data-theme='light']) .cardBase {
+  background: linear-gradient(180deg, #ffffff 0%, #f6f7fb 100%);
+  color: #1f2937;
+  border-color: rgba(0, 0, 0, 0.06);
+}
+
+/* 暗色主题下的卡片背景（与站点深色渐变协调） */
+:global([data-theme='dark']) .cardBase {
+  background: linear-gradient(180deg, #1f2937 0%, #0f172a 100%);
+  color: #e5e7eb;
+  border-color: rgba(255, 255, 255, 0.06);
+}
+
+.moduleCard {
+  @extend .cardBase;
+}
+
+.moduleInner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.iconWrap {
+  /* 加大图标容器尺寸 */
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(59, 130, 246, 0.15);
+}
+
+.title {
+  font-size: 18px; /* 加大标题字号 */
+  font-weight: 600;
+}
+
+.desc {
+  font-size: 13px; /* 加大描述字号 */
+  opacity: 0.8;
+}
+
+/* 聊天室卡片 */
+.roomCard {
+  @extend .cardBase;
+  padding: 14px;
+}
+
+.roomTopBar {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: flex;
+  gap: 6px;
+}
+
+.roomBody {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.roomId {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.roomMeta {
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+.emptyWrap {
+  padding: 18px 0;
+}
+
+/* 深色主题整体文字对比度增强（仅当前页面作用域） */
+:global([data-theme='dark']) .page {
+  color: rgba(255, 255, 255, 0.88);
+}
+
+:global([data-theme='dark']) .emptyWrap {
+  color: rgba(255, 255, 255, 0.65);
+}
+
+/* ================== Electric Border 卡片样式 ================== */
+/* 支持通过行内样式设置 --electric-color / --electric-light-color */
+.electricCard {
+  @extend .cardBase;
+  position: relative;
+  padding: 2px; /* 外层渐变描边的厚度 */
+  border-radius: 20px;
+  aspect-ratio: 1 / 1; /* 保持正方形 */
+  overflow: visible; /* 允许发光层超出可见 */
+  /* 背景渐变：与示例接近的深色渐变叠加主题色弱渐变 */
+  background:
+    linear-gradient(-30deg, rgba(255,255,255,0.06), transparent 40%, rgba(255,255,255,0.06)) ,
+    linear-gradient(180deg, rgba(0,0,0,0.35), rgba(0,0,0,0.5));
+}
+
+.electricLayer {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none; /* 保证点击透传到容器 */
+}
+
+/* 主描边：应用噪声位移滤镜形成“雷电”锯齿边 */
+.electricStroke {
+  @extend .electricLayer;
+  border: 2px solid var(--electric-color, #dd8448);
+  filter: url(#turbulent-displace);
+}
+
+/* 发光层 1：轻微模糊 */
+.electricGlow1 {
+  @extend .electricLayer;
+  border: 2px solid var(--electric-color, #dd8448);
+  opacity: 0.6;
+  filter: blur(1.5px);
+}
+
+/* 发光层 2：更大范围模糊，颜色更亮 */
+.electricGlow2 {
+  @extend .electricLayer;
+  border: 2px solid var(--electric-light-color, #ffb377);
+  opacity: 0.9;
+  filter: blur(4px);
+}
+
+/* 叠加高光（可选，提升戏剧性） */
+.electricOverlay {
+  @extend .electricLayer;
+  mix-blend-mode: overlay;
+  opacity: 0.6;
+  filter: blur(16px);
+  background: linear-gradient(-30deg, rgba(255,255,255,0.6), transparent 30%, transparent 70%, rgba(255,255,255,0.6));
+  transform: scale(1.05);
+}
+
+.electricContent {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ================== Electric Panel（长方形） ================== */
+.electricPanel {
+  position: relative;
+  border-radius: 24px;
+  height: 260px; /* 长方形高度 */
+  padding: 2px;
+  overflow: visible;
+  cursor: pointer;
+  will-change: transform, filter;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  /* 电流特效 CSS 变量（可被行内样式覆盖） */
+  --electric-border-color: var(--electric-color, #dd8448);
+  --gradient-color: oklch(from var(--electric-border-color) 0.3 calc(c / 2) h / 0.4);
+  --color-neutral-900: oklch(0.185 0 0);
+  /* 面板外层渐变，与示例接近 */
+  background:
+    linear-gradient(-30deg, var(--gradient-color, rgba(221,132,72,0.22)), transparent, var(--gradient-color, rgba(221,132,72,0.22))),
+    linear-gradient(to bottom, var(--color-neutral-900, oklch(0.185 0 0)), var(--color-neutral-900, oklch(0.185 0 0)));
+}
+
+/* 面板内发光柔光层 */
+.panelGlow {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  z-index: 1;
+  opacity: 0.22; /* 降低整体柔光 */
+  filter: blur(24px);
+  transform: scale(1.04);
+  background: linear-gradient(-30deg, var(--electric-light-color, #ffb377), transparent 60%, var(--electric-color, #dd8448));
+}
+
+.panelContent {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 32px;
+  gap: 8px;
+}
+
+/* ======= 示例同款层级：外边框 + 主卡片(位移滤镜) + 发光 + Overlay + 背景光 ======= */
+.panelInner {
+  position: absolute;
+  inset: 0;
+  border-radius: 24px;
+}
+
+.panelBorderOuter {
+  position: absolute;
+  inset: 0;
+  border: 2px solid rgba(221, 132, 72, 0.5);
+  border-radius: 24px;
+  padding-right: 4px;
+  padding-bottom: 4px;
+  pointer-events: none;
+}
+
+.panelMainCard {
+  width: 100%;
+  height: 100%;
+  border-radius: 24px;
+  border: 2px solid var(--electric-color, #dd8448);
+  margin-top: -4px;
+  margin-left: -4px;
+  filter: url(#turbulent-displace);
+}
+
+.panelEdgeGlow1,
+.panelEdgeGlow2,
+.panelOverlay1,
+.panelOverlay2,
+.panelBackgroundGlow {
+  position: absolute;
+  inset: 0;
+  border-radius: 24px;
+  pointer-events: none;
+}
+
+.panelEdgeGlow1 {
+  border: 2px solid rgba(221, 132, 72, 0.6);
+  filter: blur(1px);
+}
+
+.panelEdgeGlow2 {
+  border: 2px solid var(--electric-light-color, #ffb377);
+  filter: blur(4px);
+}
+
+.panelOverlay1 {
+  opacity: 0.18; /* 显著减弱 */
+  mix-blend-mode: overlay;
+  transform: scale(1.06);
+  filter: blur(14px);
+  background: linear-gradient(-30deg, var(--electric-light-color, #ffb377), transparent 30%, transparent 70%, var(--electric-light-color, #ffb377));
+}
+
+.panelOverlay2 {
+  opacity: 0.08; /* 很弱的补充层 */
+  mix-blend-mode: overlay;
+  transform: scale(1.06);
+  filter: blur(12px);
+  background: linear-gradient(-30deg, var(--electric-light-color, #ffb377), transparent 30%, transparent 70%, var(--electric-light-color, #ffb377));
+}
+
+.panelBackgroundGlow {
+  filter: blur(24px);
+  transform: scale(1.06);
+  opacity: 0.12; /* 降低外扩白光 */
+  z-index: 1;
+  background: linear-gradient(
+    -30deg,
+    var(--electric-light-color, #ffb377),
+    transparent,
+    var(--electric-color, #dd8448)
+  );
+}
+
+.panelTitle {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.panelDesc {
+  opacity: 0.75;
+}
+
+/* 两侧电流描边及发光层 */
+.sideBase {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 8px; /* 加宽以增强锯齿可见度 */
+  border-radius: 24px;
+  pointer-events: none;
+  z-index: 3; /* 高于内容与柔光 */
+  /* 使电流更多地出现在容器外侧 */
+  will-change: filter;
+  transition: filter 0.2s ease, opacity 0.2s ease;
+  /* 轻微内侧渐隐，避免遮挡内容 */
+  -webkit-mask-image: linear-gradient(to right, rgba(0,0,0,0), #000 40%, #000);
+  mask-image: linear-gradient(to right, rgba(0,0,0,0), #000 40%, #000);
+}
+
+.left { left: -4px; }
+.right { right: -4px; }
+
+.sideStroke {
+  @extend .sideBase;
+  background: var(--electric-color, #dd8448);
+  filter: url(#electric-sides);
+}
+
+.sideGlow1 {
+  @extend .sideBase;
+  background: var(--electric-color, #dd8448);
+  opacity: 0.6;
+  filter: blur(1.5px);
+}
+
+.sideGlow2 {
+  @extend .sideBase;
+  background: var(--electric-light-color, #ffb377);
+  opacity: 0.9;
+  filter: blur(4px);
+}
+
+/* 交互：悬浮与按下强化光效与形变 */
+.electricPanel:hover {
+  transform: translateY(-2px);
+}
+
+.electricPanel:hover .panelGlow {
+  opacity: 0.46;
+  filter: blur(32px);
+}
+
+.electricPanel:hover .sideGlow2 {
+  opacity: 1;
+}
+
+.electricPanel:hover .sideStroke {
+  filter: url(#electric-sides-strong);
+}
+
+.electricPanel:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.electricPanel:active .panelGlow {
+  opacity: 0.52;
+}
+
+.electricPanel:active .sideStroke {
+  filter: url(#electric-sides-strong);
+}

@@ -17,11 +17,12 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     const [activeMenu, setActiveMenu] = useState<string>(location.pathname)
 
     // 使用国际化的导航菜单项
+    // 顶部导航菜单：新增 Chat，移除 WebRTC
     const headerList: MenuItem[] = [
         { name: t('header.navigation.home'), path: '/' },
         { name: t('header.navigation.learning'), path: '/learning' },
         { name: t('header.navigation.files'), path: '/files' },
-        { name: t('header.navigation.webrtc'), path: '/webrtc' },
+        { name: t('header.navigation.chat'), path: '/chat' },
         { name: t('header.navigation.technology'), path: '/technology' },
     ]
     const handleMenuClick = (item: MenuItem) => {

@@ -33,6 +33,7 @@ const PDFLibrary: React.FC = () => {
   }, []);
 
   // 加载模板列表
+  // 中文注释：用于下拉筛选 PDF 记录的模板来源，调用管理端接口 -> /management-api/template/query -> 服务端 /api/template/query
   const fetchTemplates = useCallback(async () => {
     try {
       const res = await TemplateApi.query({ page: 1, pageSize: 200 });
@@ -43,6 +44,8 @@ const PDFLibrary: React.FC = () => {
   }, []);
 
   // 查询PDF列表
+  // 中文注释：/management-api/htmlpdf/list -> /api/htmlpdf/list 返回完整列表；
+  // 这里在前端进行“关键字过滤 + 手动分页（slice）”，并将分页状态交给 KTable 管理（通过 fetchData 回调触发）。
   const fetchData = useCallback(async (page: number, size: number) => {
     setLoading(true);
     try {
@@ -64,6 +67,7 @@ const PDFLibrary: React.FC = () => {
   useEffect(() => { fetchTemplates(); }, [fetchTemplates]);
 
   const columns: IKTableColumns[] = useMemo(() => [
+    // 中文注释：文件名/访问URL/日期/大小/生成时间 均来自服务端 list 索引或扫描磁盘结果
     { title: "文件名", dataIndex: "fileName", key: "fileName", ellipsis: true },
     { title: "访问URL", dataIndex: "url", key: "url", ellipsis: true, render: (v: string) => <a href={v} target="_blank" rel="noreferrer">{v}</a> },
     { title: "日期", dataIndex: "dateKey", key: "dateKey", width: 120 },
@@ -102,10 +106,12 @@ const PDFLibrary: React.FC = () => {
           <KTable
             columns={columns}
             dataSource={list}
+            // 中文注释：使用 URL 作为唯一 rowKey，避免同名文件造成 key 冲突；
             rowKey={(r: any) => `${r.url}`}
             loading={loading}
             total={total}
             pageSize={pageSize}
+            // 中文注释：KTable 会在分页变化时调用 fetchData(page,pageSize)，本页面内完成手动分页与关键字过滤
             fetchData={fetchData}
             stripe
           />

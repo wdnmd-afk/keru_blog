@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import { ConfigProvider, theme as antdTheme } from "antd";
 import zhCN from "antd/locale/zh_CN";
 import ManagementRoutes from "@/routes";
-import { initializeManagementStore } from "@/store";
+import { initializeManagementStore, useManagementStore } from "@/store";
 import { ConfigApi, type FrontendConfig } from "@/api";
 import { ManagementApi } from "@/utils";
 
@@ -11,10 +11,18 @@ const App: React.FC = () => {
   // 主题配置（从后端装载）
   const [primaryColor, setPrimaryColor] = useState<string>("#8785a2");
   const [mode, setMode] = useState<"light" | "dark">("light");
+  // 从全局状态获取是否已认证，用于条件加载配置，避免未登录 401 造成刷新循环
+  const isAuthenticated = useManagementStore((state) => state.isAuthenticated);
 
-  // 初始化状态存储 + 加载主题配置
+  // 初始化状态存储
   useEffect(() => {
+    // 初始化状态（恢复本地用户信息与系统配置）
     initializeManagementStore();
+  }, []);
+
+  // 加载主题/前端配置：仅在已登录后请求，避免未登录触发 401 被拦截器重定向导致无限刷新
+  useEffect(() => {
+    if (!isAuthenticated) return; // 未登录不请求配置
     (async () => {
       try {
         const cfg = await ConfigApi.getFrontendConfig();
@@ -30,7 +38,7 @@ const App: React.FC = () => {
         // 静默失败，沿用默认主题
       }
     })();
-  }, []);
+  }, [isAuthenticated]);
 
   // 监听前端配置变更事件（保存后即时生效，无需刷新）
   useEffect(() => {
@@ -123,10 +131,11 @@ const App: React.FC = () => {
           },
           // 下拉选项选中态
           Select: {
+            // 选中项：主色背景+白字，保证对比
             optionSelectedBg: primaryColor,
             optionSelectedColor: '#ffffff',
-            // 悬停项（增强对比度）
-            optionActiveBg: primaryColor,
+            // 悬停项：浅色高亮，避免深色背景+深色文字
+            optionActiveBg: 'rgba(135, 133, 162, 0.12)',
           },
           // 单选按钮（Button 样式）选中态
           Radio: {
@@ -134,6 +143,12 @@ const App: React.FC = () => {
             buttonSolidCheckedHoverBg: primaryColor,
             buttonSolidCheckedActiveBg: primaryColor,
             buttonSolidCheckedColor: '#ffffff',
+          },
+          // 日期选择器：统一浅色面板与深色文字，提高可读性（仅使用已知合法 token）
+          DatePicker: {
+            colorBgContainer: '#ffffff',
+            colorText: '#2c2c2c',
+            colorTextDisabled: '#9ca3af',
           },
           // Layout 组件配色
           Layout: {
@@ -181,12 +196,9 @@ const App: React.FC = () => {
             defaultColor: "#6b6b83", // 默认标签文字
           },
 
-          // Message 组件配色
+          // Message 组件：避免深底深字（使用已知 token）
           Message: {
-            colorSuccess: "#ffe2e2", // 成功消息浅粉色
-            colorWarning: "#ffc7c7", // 警告消息粉红色
-            colorError: "#ff8a80", // 错误消息柔和红色
-            colorInfo: "#8785a2", // 信息消息主色调
+            contentBg: '#ffffff',
           },
         },
       }}
