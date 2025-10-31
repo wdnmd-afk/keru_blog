@@ -80,6 +80,8 @@ const LazyComponents = {
   PDFFill: lazy(() => import("@/pages/PDFContentFill")), // PDF 内容填充（生成 PDF）
   // ==================== PDF 文件库 ====================
   PDFLibrary: lazy(() => import("@/pages/PDFLibrary")), // PDF 文件库
+  // ==================== 医学检验建议（调试） ====================
+  PDFMedicalAdvice: lazy(() => import("@/pages/PDFMedicalAdvice")),
 };
 
 /**
@@ -231,6 +233,12 @@ const privateRoutes = [
     path: "/pdf-library",
     component: <LazyComponents.PDFLibrary />,
     description: "PDF 文件库",
+  },
+  // ==================== 医学检验建议（调试） ====================
+  {
+    path: "/pdf-medical-advice",
+    component: <LazyComponents.PDFMedicalAdvice />,
+    description: "医学检验建议（调试）",
   },
 ];
 

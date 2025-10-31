@@ -15,6 +15,7 @@ import {
   TodoController,
   User,
   ChatRoomController,
+  MedLabController, // 医学检验建议控制器
 } from '@/router/controller'
 // 新增导入：HTML→PDF 控制器
 import { HtmlPdfController } from '@/router/htmlpdf/controller'
@@ -72,6 +73,7 @@ export const TYPES = {
   ConfigController: Symbol.for('ConfigController'), // 配置管理 控制器
   MonitorController: Symbol.for('MonitorController'), // 系统监控 控制器
   ChatRoomController: Symbol.for('ChatRoomController'), // 聊天室 控制器
+  MedLabController: Symbol.for('MedLabController'), // 医学检验建议 控制器
 
   // 服务
   UserService: Symbol.for('UserService'),
@@ -157,6 +159,9 @@ function registerControllers(container: Container): void {
   // 公共监控 控制器（无需登录）
   container.bind(PublicMonitorController).to(PublicMonitorController)
 
+  // 医学检验建议 控制器
+  container.bind(TYPES.MedLabController).to(MedLabController)
+
   // 聊天室 控制器
   container.bind(TYPES.ChatRoomController).to(ChatRoomController)
   container.bind(ChatRoomController).to(ChatRoomController)
@@ -174,6 +179,7 @@ function registerControllers(container: Container): void {
   container.bind(ConfigController).to(ConfigController)
   container.bind(MonitorController).to(MonitorController)
   container.bind(PublicMonitorController).to(PublicMonitorController)
+  container.bind(MedLabController).to(MedLabController)
 }
 
 /**

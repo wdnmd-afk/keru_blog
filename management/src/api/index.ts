@@ -40,3 +40,7 @@ export { default as ConfigApi } from "./config";
 // 导出系统监控相关
 export * from "./monitor";
 export { default as MonitorApi } from "./monitor";
+
+// 导出医学检验建议相关
+export * from "./medlab";
+export { default as MedLabApi } from "./medlab";

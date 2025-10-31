@@ -90,6 +90,7 @@ const menuItems = [
     label: "PDF",
     children: [
       { key: "/pdf-fill", label: "PDF 内容填充" },
+      { key: "/pdf-medical-advice", label: "AI 检验建议" },
     ],
   },
 ];
@@ -116,6 +117,7 @@ const breadcrumbMap: Record<string, string> = {
   "/feedback-management": "意见反馈管理",
   "/template-management": "模板管理",
   "/pdf-fill": "PDF 内容填充",
+  "/pdf-medical-advice": "医学检验建议（调试）",
 };
 
 interface ManagementLayoutProps {

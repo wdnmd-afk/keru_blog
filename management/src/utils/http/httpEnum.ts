@@ -8,7 +8,7 @@ export enum ResultEnum {
   FORBIDDEN = 403,
   NOT_FOUND = 404,
   NORMAL_ERROR = 400,
-  TIMEOUT = 10000,
+  TIMEOUT = 300000,
 }
 
 // 请求方法枚举

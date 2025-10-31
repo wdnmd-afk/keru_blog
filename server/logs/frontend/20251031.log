@@ -22,3 +22,5 @@
 {"ts":"2025-10-31T02:36:31.325Z","source":"frontend","type":"page_view","level":"info","message":"页面浏览","context":{"route":"/files","title":"KeruのBlog","referrer":"http://localhost:9394/files","viewport":{"w":1920,"h":911}}}
 {"ts":"2025-10-31T02:37:15.624Z","source":"frontend","type":"api_error","level":"error","message":"接口请求错误","context":{"route":"/htmlpdf/generate-raw","method":"POST","errMsg":"timeout of 30000ms exceeded"}}
 {"ts":"2025-10-31T02:42:49.740Z","source":"frontend","type":"api_error","level":"error","message":"接口请求错误","context":{"route":"/htmlpdf/generate-raw","method":"POST","errMsg":"timeout of 30000ms exceeded"}}
+{"ts":"2025-10-31T08:08:40.253Z","source":"frontend","type":"page_view","level":"info","message":"页面浏览","context":{"route":"/files","title":"KeruのBlog","referrer":"http://localhost:9394/files","viewport":{"w":1920,"h":911}}}
+{"ts":"2025-10-31T08:08:40.254Z","source":"frontend","type":"page_view","level":"info","message":"页面浏览","context":{"route":"/files","title":"KeruのBlog","referrer":"http://localhost:9394/files","viewport":{"w":1920,"h":911}}}
