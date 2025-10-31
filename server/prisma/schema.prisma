@@ -210,7 +210,7 @@ model HtmlTemplate {
   id         String       @id @unique @default(cuid())
   name       String       @unique
   type       TemplateType
-  content    String       @db.Text
+  content    String       @db.LongText
   widthMm    Int?
   heightMm   Int?
   fields     Json?

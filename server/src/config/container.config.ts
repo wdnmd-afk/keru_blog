@@ -45,6 +45,7 @@ import { TemplateService } from '@/router/template/service'
 // 新增导入：配置管理与系统监控服务
 import { ConfigService } from '@/router/config/service'
 import { MonitorService } from '@/router/monitor/service'
+import { PdfJobService } from '@/router/htmlpdf/job.service'
 
 // 导入中间件
 import { AuthMiddleware } from '@/middleware/auth'
@@ -87,6 +88,7 @@ export const TYPES = {
   ConfigService: Symbol.for('ConfigService'), // 配置管理 服务
   MonitorService: Symbol.for('MonitorService'), // 系统监控 服务
   ChatRoomService: Symbol.for('ChatRoomService'), // 聊天室 服务
+  PdfJobService: Symbol.for('PdfJobService'), // PDF 异步任务 服务
 
   // 基础设施
   PrismaClient: Symbol.for('PrismaClient'),
@@ -211,6 +213,10 @@ function registerServices(container: Container): void {
   // 绑定 系统监控 服务
   container.bind(TYPES.MonitorService).to(MonitorService)
   container.bind(MonitorService).to(MonitorService)
+
+  // PDF 异步任务 服务
+  container.bind(TYPES.PdfJobService).to(PdfJobService)
+  container.bind(PdfJobService).to(PdfJobService)
 
   // 聊天室 服务
   container.bind(TYPES.ChatRoomService).to(ChatRoomService)

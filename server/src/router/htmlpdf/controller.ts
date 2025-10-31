@@ -4,14 +4,93 @@
 import { AuthMiddleware } from '@/middleware/auth'
 import { Request, Response } from 'express'
 import { inject } from 'inversify'
-import { BaseHttpController, controller, httpPost } from 'inversify-express-utils'
+import { BaseHttpController, controller, httpGet, httpPost } from 'inversify-express-utils'
 import { HtmlPdfService } from './service'
-import type { GeneratePdfRequest, RenderHtmlRequest } from './types'
+import type { GeneratePdfRequest, RenderHtmlRequest, GeneratePdfFromHtmlRequest } from './types'
+import { PdfJobService } from './job.service'
 
 @controller('/htmlpdf', AuthMiddleware)
 export class HtmlPdfController extends BaseHttpController {
-  constructor(@inject(HtmlPdfService) private readonly service: HtmlPdfService) {
+  constructor(
+    @inject(HtmlPdfService) private readonly service: HtmlPdfService,
+    @inject(PdfJobService) private readonly jobService: PdfJobService
+  ) {
     super()
+  }
+
+  /**
+   * 入队一个“原始 HTML → PDF”任务（异步）
+   * POST /api/htmlpdf/enqueue-raw
+   * body: { html: string, options?: {...} }
+   * 返回：{ jobId }
+   */
+  @httpPost('/enqueue-raw')
+  public async enqueueRaw(req: Request, res: Response) {
+    try {
+      const body = (req.body || {}) as GeneratePdfFromHtmlRequest
+      if (!body.html) {
+        return (res as any).sendResponse({ success: false, code: 400, message: 'html 为必填' })
+      }
+      const { jobId } = await this.jobService.enqueueRaw(body)
+      return (res as any).sendResponse({ success: true, code: 200, message: 'ENQUEUED', data: { jobId } })
+    } catch (error: any) {
+      console.error('[htmlpdf] enqueue-raw error:', error)
+      return (res as any).sendResponse({ success: false, code: 500, message: error.message || '入队失败' })
+    }
+  }
+
+  /**
+   * 查询任务状态
+   * GET /api/htmlpdf/job/:id
+   * 返回：{ jobId, status, url?, fileName?, size?, error?, createdAt, updatedAt }
+   */
+  @httpGet('/job/:id')
+  public async getJob(req: Request, res: Response) {
+    try {
+      const id = String(req.params.id || '')
+      if (!id) return (res as any).sendResponse({ success: false, code: 400, message: 'id 为必填' })
+      const data = await this.jobService.getStatus(id)
+      if (!data) return (res as any).sendResponse({ success: false, code: 404, message: '任务不存在或已过期' })
+      return (res as any).sendResponse({ success: true, code: 200, message: 'OK', data })
+    } catch (error: any) {
+      console.error('[htmlpdf] get job error:', error)
+      return (res as any).sendResponse({ success: false, code: 500, message: error.message || '查询失败' })
+    }
+  }
+
+  /**
+   * 直接从原始 HTML 生成 PDF（不依赖模板）
+   * POST /api/htmlpdf/generate-raw
+   * body: { html: string, options?: {...} }
+   * 返回：{ url, fileName, size }
+   */
+  @httpPost('/generate-raw')
+  public async generateRaw(req: Request, res: Response) {
+    try {
+      const timeoutMsRaw = Number(process.env.PDF_HTTP_TIMEOUT_MS)
+      const timeoutMs = Number.isFinite(timeoutMsRaw) && timeoutMsRaw > 0 ? timeoutMsRaw : 180000
+      res.setTimeout(timeoutMs)
+      const body = (req.body || {}) as GeneratePdfFromHtmlRequest
+      if (!body.html) {
+        return (res as any).sendResponse({ success: false, code: 400, message: 'html 为必填' })
+      }
+      // 异步模式：直接入队返回 200，不等待生成
+      const asyncFlag = (() => {
+        const q = (req.query?.async as any) ?? undefined
+        if (q !== undefined) return String(q).toLowerCase() === '1' || String(q).toLowerCase() === 'true'
+        if (typeof (body as any).async === 'boolean') return (body as any).async
+        return false
+      })()
+      if (asyncFlag) {
+        const { jobId } = await this.jobService.enqueueRaw(body)
+        return (res as any).sendResponse({ success: true, code: 200, message: 'ENQUEUED', data: { jobId } })
+      }
+      const result = await this.service.generatePdfFromRaw(body)
+      return (res as any).sendResponse({ success: true, code: 200, message: 'OK', data: result })
+    } catch (error: any) {
+      console.error('[htmlpdf] generate-raw error:', error)
+      return (res as any).sendResponse({ success: false, code: 500, message: error.message || '生成失败' })
+    }
   }
 
   /**
@@ -23,6 +102,9 @@ export class HtmlPdfController extends BaseHttpController {
   @httpPost('/render-html')
   public async renderHtml(req: Request, res: Response) {
     try {
+      const timeoutMsRaw = Number(process.env.PDF_HTTP_TIMEOUT_MS)
+      const timeoutMs = Number.isFinite(timeoutMsRaw) && timeoutMsRaw > 0 ? timeoutMsRaw : 180000
+      res.setTimeout(timeoutMs)
       const body = (req.body || {}) as RenderHtmlRequest
       if (!body.templateId) {
         return (res as any).sendResponse({ success: false, code: 400, message: 'templateId 为必填' })
@@ -45,6 +127,9 @@ export class HtmlPdfController extends BaseHttpController {
   @httpPost('/generate')
   public async generate(req: Request, res: Response) {
     try {
+      const timeoutMsRaw = Number(process.env.PDF_HTTP_TIMEOUT_MS)
+      const timeoutMs = Number.isFinite(timeoutMsRaw) && timeoutMsRaw > 0 ? timeoutMsRaw : 180000
+      res.setTimeout(timeoutMs)
       const body = (req.body || {}) as GeneratePdfRequest
       if (!body.templateId) {
         return (res as any).sendResponse({ success: false, code: 400, message: 'templateId 为必填' })

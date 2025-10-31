@@ -34,6 +34,11 @@ export default defineConfig({
         target: "http://127.0.0.1:5566",
         changeOrigin: true,
       },
+      // 临时资源代理（用于预览生成的 PDF：/temp/pdf/**）
+      "/temp": {
+        target: "http://127.0.0.1:5566",
+        changeOrigin: true,
+      },
     },
   },
   resolve: {

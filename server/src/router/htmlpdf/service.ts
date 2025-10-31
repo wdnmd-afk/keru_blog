@@ -19,6 +19,7 @@ import type {
   GeneratePdfResult,
   RenderHtmlRequest,
   TemplateType,
+  GeneratePdfFromHtmlRequest,
 } from './types'
 
 @injectable()
@@ -39,6 +40,21 @@ export class HtmlPdfService {
       })
       HtmlPdfService.helpersRegistered = true
     }
+  }
+  // ======== 通用超时配置 ========
+  /** 读取渲染超时（毫秒），默认 180000，可通过环境变量 PDF_RENDER_TIMEOUT_MS 覆盖 */
+  private static readTimeoutMs(): number {
+    const v = Number(process.env.PDF_RENDER_TIMEOUT_MS)
+    if (Number.isFinite(v) && v > 0) return v
+    return 180000
+  }
+
+  /** 设置页面级超时，统一控制导航/等待等 */
+  private setPageTimeout(page: any, ms = HtmlPdfService.readTimeoutMs()) {
+    try {
+      page.setDefaultNavigationTimeout(ms)
+      page.setDefaultTimeout(ms)
+    } catch {}
   }
   // ======== reset.css 注入与 PDF 索引 ========
   /** 读取并缓存 reset.css 内容 */
@@ -65,7 +81,7 @@ export class HtmlPdfService {
     // 1) 关闭 body 的默认 margin/padding，避免与 Puppeteer 的 margin 叠加导致大空白（保留 Puppeteer 页边距）
     // 2) 允许 .card 在页面内拆分，避免整块大卡片被整体推到下一页造成留白
     // 3) 表格表头保持重复；行内避免跨页断开
-    const printOverrides = `\n<style id="pdf-print-overrides">\n@media print {\n  body { margin: 0 !important; padding: 0 !important; }\n  .card { page-break-inside: auto !important; break-inside: auto !important; }\n  .table thead { display: table-header-group; }\n  .table tr { page-break-inside: avoid; break-inside: avoid-page; }\n}\n</style>\n`
+    const printOverrides = `\n<style id="pdf-print-overrides">\n@media print {\n  body { margin: 0 !important; padding: 0 !important; }\n  .card { page-break-inside: auto !important; break-inside: auto !important; }\n  .table thead { display: table-header-group; }\n  .table tr { page-break-inside: avoid; break-inside: avoid-page; }\n  /* 覆盖 ActiveReports 样式，避免单页模板因 page-break-after: always 多出空白页 */\n  .arjs-reportPage { page-break-after: auto !important; }\n}\n</style>\n`
 
     // 预览与通用显示的 UI 覆盖：
     // - 提升基础字号与行高，优化 Q&A 可读性
@@ -78,6 +94,119 @@ export class HtmlPdfService {
     return tag + html
   }
 
+  /**
+   * 注入仅用于“原始HTML转换”的打印修复（不包含 UI 覆盖与 body 额外 padding）
+   * - 去除 body 额外 padding 以免干扰外部传入边距
+   * - 覆盖 ActiveReports 的强制分页规则
+   */
+  private injectPrintFixesRaw(html: string): string {
+    const css = this.getResetCss()
+    const printOnly = `\n<style id="pdf-raw-print-fixes">\n@media print {\n  body { margin: 0 !important; padding: 0 !important; }\n  .table thead { display: table-header-group; }\n  .table tr { page-break-inside: avoid; break-inside: avoid-page; }\n  .arjs-reportPage { page-break-after: auto !important; break-after: auto !important; }\n}\n</style>\n`
+    const resetTag = css ? `\n<style id="pdf-reset">\n${css}\n</style>\n` : ''
+    const tag = `${resetTag}${printOnly}`
+    if (html.includes('</head>')) return html.replace('</head>', tag + '</head>')
+    return tag + html
+  }
+
+  /**
+   * 预处理原始 HTML：
+   * - 移除 <title> 以避免被某些主题样式/页眉引用
+   * - 移除 @page 规则，避免干扰 Puppeteer 的 format/width/height 与外部边距
+   * - 根据选项执行安全清洗（可选允许脚本）
+   */
+  private preprocessRawHtml(
+    html: string,
+    opts?: { sanitize?: boolean; allowScripts?: boolean }
+  ): string {
+    let out = html || ''
+    try {
+      // 移除 <title>...</title>
+      out = out.replace(/<title\b[^>]*>[\s\S]*?<\/title>/gi, '')
+      // 移除所有 @page 规则（含多行）
+      out = out.replace(/@page[^{}]*\{[\s\S]*?\}/gi, '')
+    } catch {
+      // 忽略预处理异常，按原样继续
+    }
+    // 注入打印修复（不包含 UI 覆盖与 padding）
+    out = this.injectPrintFixesRaw(out)
+    // 是否执行安全清洗（默认 true）
+    const needSanitize = opts?.sanitize !== false
+    if (needSanitize) {
+      out = this.sanitize(out, opts?.allowScripts)
+    }
+    return out
+  }
+
+  /**
+   * 直接从原始 HTML 生成 PDF（不依赖模板）
+   */
+  public async generatePdfFromRaw(params: GeneratePdfFromHtmlRequest): Promise<GeneratePdfResult> {
+    if (!params?.html) throw new Error('html 为必填')
+
+    // 预处理 + （可选）清洗
+    const allowScriptsEnv = String(process.env.PDF_RAW_ALLOW_SCRIPTS ?? '1').toLowerCase()
+    const allowScriptsDefault = allowScriptsEnv === '1' || allowScriptsEnv === 'true' || allowScriptsEnv === 'yes'
+    const compiledHtml = this.preprocessRawHtml(params.html, {
+      sanitize: params.options?.sanitize !== false,
+      allowScripts: params.options?.allowScripts ?? allowScriptsDefault,
+    })
+
+    // 解析尺寸（默认 A4）
+    const type: TemplateType = (params.options?.type as TemplateType) || 'A4'
+    const { width, height, format } = this.resolveSize(
+      type,
+      params.options?.widthMm,
+      params.options?.heightMm
+    )
+
+    // 边距（直接使用入参，不引入模板级缓冲）
+    const margins = this.resolveMargins(params.options?.marginMm)
+    const displayHeaderFooter = params.options?.displayHeaderFooter ?? false
+
+    // 落盘目录
+    const dateKey = this.getDateKey()
+    const outDir = path.resolve(process.cwd(), 'temp', 'pdf', dateKey)
+    await fs.ensureDir(outDir)
+    const baseName = (params.options?.fileName || `pdf_${Date.now()}`) + '.pdf'
+    const outPath = path.join(outDir, baseName)
+
+    const browser = await HtmlPdfService.getBrowser()
+    const page = await browser.newPage()
+    try {
+      // 配置页面超时 3 分钟
+      this.setPageTimeout(page)
+      const waitUntil = params.options?.waitUntil || 'networkidle0'
+      await page.setContent(compiledHtml, { waitUntil, timeout: HtmlPdfService.readTimeoutMs() })
+      await page.pdf({
+        path: outPath,
+        format,
+        width,
+        height,
+        margin: margins,
+        printBackground: true,
+        // 关键：禁用 CSS 页面尺寸优先，确保传入的 format/width/height 与 margin 生效
+        preferCSSPageSize: false,
+        displayHeaderFooter,
+        headerTemplate: displayHeaderFooter ? this.defaultHeaderHtml() : undefined,
+        footerTemplate: displayHeaderFooter ? this.defaultFooterHtml() : undefined,
+      })
+
+      const stat = await fs.stat(outPath)
+      const url = `/temp/pdf/${dateKey}/${baseName}`
+      await this.appendPdfIndex({
+        templateId: 'RAW',
+        url,
+        fileName: baseName,
+        size: stat.size,
+        dateKey,
+        createdAt: new Date().toISOString(),
+      })
+      return { url, fileName: baseName, size: stat.size }
+    } finally {
+      await page.close().catch(() => void 0)
+    }
+  }
+
   /** 记录生成的 PDF 到索引文件 */
   private async appendPdfIndex(record: {
     templateId: string
@@ -87,9 +216,8 @@ export class HtmlPdfService {
     dateKey: string
     createdAt: string
   }) {
-    const config = createAppConfig()
-    const staticRoot = config.upload.uploadDir || 'static'
-    const indexPath = path.resolve(process.cwd(), staticRoot, 'PDF', '_index.json')
+    // 索引统一写入 temp/pdf 目录
+    const indexPath = path.resolve(process.cwd(), 'temp', 'pdf', '_index.json')
     let list: any[] = []
     try {
       if (await fs.pathExists(indexPath)) {
@@ -105,9 +233,8 @@ export class HtmlPdfService {
 
   /** 列出 PDF（合并索引与磁盘文件，尽量完整） */
   public async listPdfs(filter?: { templateId?: string }) {
-    const config = createAppConfig()
-    const staticRoot = config.upload.uploadDir || 'static'
-    const pdfRoot = path.resolve(process.cwd(), staticRoot, 'PDF')
+    // 改为从 temp/pdf 读取
+    const pdfRoot = path.resolve(process.cwd(), 'temp', 'pdf')
     const indexPath = path.join(pdfRoot, '_index.json')
 
     // 1) 读索引
@@ -133,7 +260,7 @@ export class HtmlPdfService {
         const files = await fs.readdir(dir)
         for (const f of files) {
           if (!f.toLowerCase().endsWith('.pdf')) continue
-          const url = `/static/PDF/${d}/${f}`
+          const url = `/temp/pdf/${d}/${f}`
           if (map.has(url)) continue
           const fstat = await fs.stat(path.join(dir, f)).catch(() => null)
           if (!fstat) continue
@@ -217,9 +344,8 @@ export class HtmlPdfService {
       }
     }
 
-    // 默认开启清洗，避免 script 等危险标签
-    const needSanitize = params.sanitize !== false
-    const safeHtml = needSanitize ? this.sanitize(withHeaderFooter) : withHeaderFooter
+    // 强制开启安全清洗，避免 script 等危险标签；忽略外部关闭设置
+    const safeHtml = this.sanitize(withHeaderFooter)
     return safeHtml
   }
 
@@ -232,7 +358,8 @@ export class HtmlPdfService {
     const compiledHtml = await this.renderHtml({
       templateId: params.templateId,
       data: params.data,
-      sanitize: params.sanitize,
+      // 强制安全清洗
+      sanitize: true,
     })
 
     const { width, height, format } = this.resolveSize(
@@ -278,11 +405,9 @@ export class HtmlPdfService {
     const headerTemplate = this.compileTemplate(headerSrc, params.data || {})
     const footerTemplate = this.compileTemplate(footerSrc, params.data || {})
 
-    // 目标输出目录：static/PDF/YYYYMMDD（对外通过 /static 暴露）
+    // 目标输出目录：temp/pdf/YYYYMMDD（对外通过 /temp 暴露）
     const dateKey = this.getDateKey()
-    const config = createAppConfig()
-    const staticRoot = config.upload.uploadDir || 'static'
-    const outDir = path.resolve(process.cwd(), staticRoot, 'PDF', dateKey)
+    const outDir = path.resolve(process.cwd(), 'temp', 'pdf', dateKey)
     await fs.ensureDir(outDir)
 
     const baseName = (params.options?.fileName || `pdf_${Date.now()}`) + '.pdf'
@@ -292,8 +417,10 @@ export class HtmlPdfService {
     const page = await browser.newPage()
 
     try {
+      // 配置页面超时 3 分钟
+      this.setPageTimeout(page)
       // 设置页面内容并等待静态资源加载
-      await page.setContent(compiledHtml, { waitUntil: 'networkidle0' })
+      await page.setContent(compiledHtml, { waitUntil: 'networkidle0', timeout: HtmlPdfService.readTimeoutMs() })
 
       await page.pdf({
         path: outPath, // 直接落盘
@@ -309,7 +436,7 @@ export class HtmlPdfService {
       })
 
       const stat = await fs.stat(outPath)
-      const url = `/static/PDF/${dateKey}/${baseName}`
+      const url = `/temp/pdf/${dateKey}/${baseName}`
 
       // 记录索引（用于 PDF 文件库查询）
       await this.appendPdfIndex({
@@ -384,25 +511,58 @@ export class HtmlPdfService {
   /**
    * 安全清洗（可根据需要扩展白名单）
    */
-  private sanitize(html: string): string {
+  private sanitize(html: string, allowScripts?: boolean): string {
+    // 扩展允许标签以支持 SVG/Canvas
+    const svgTags = [
+      'svg',
+      'path',
+      'circle',
+      'ellipse',
+      'rect',
+      'line',
+      'polyline',
+      'polygon',
+      'g',
+      'text',
+      'defs',
+      'clipPath',
+      'mask',
+      'pattern',
+      'marker',
+      'linearGradient',
+      'radialGradient',
+      'stop',
+      'title',
+      'desc',
+      'use',
+      'symbol',
+    ]
+    const base = sanitizeHtml.defaults.allowedTags.concat([
+      'img',
+      'style',
+      'section',
+      'article',
+      'header',
+      'footer',
+      'main',
+      'figure',
+      'figcaption',
+      'canvas',
+      ...svgTags,
+    ])
+    const allowedTags = allowScripts ? base.concat(['script']) : base
+
+    const allowedAttributes: Record<string, string[]> = {
+      ...sanitizeHtml.defaults.allowedAttributes,
+      img: ['src', 'alt', 'width', 'height', 'style'],
+      '*': ['style', 'class', 'id', 'viewBox', 'width', 'height', 'fill', 'stroke', 'stroke-width', 'stroke-linecap', 'stroke-linejoin', 'stroke-dasharray', 'stroke-dashoffset', 'x', 'y', 'cx', 'cy', 'rx', 'ry', 'r', 'd', 'points', 'transform', 'preserveAspectRatio', 'href', 'xlink:href'],
+      svg: ['xmlns', 'viewBox', 'width', 'height'],
+      use: ['href', 'xlink:href'],
+    }
+
     return sanitizeHtml(html, {
-      allowedTags: sanitizeHtml.defaults.allowedTags.concat([
-        'img',
-        'style',
-        'section',
-        'article',
-        'header',
-        'footer',
-        'main',
-        'figure',
-        'figcaption',
-      ]),
-      allowedAttributes: {
-        ...sanitizeHtml.defaults.allowedAttributes,
-        img: ['src', 'alt', 'width', 'height', 'style'],
-        '*': ['style', 'class', 'id'],
-      },
-      // 允许内联样式（根据业务需要可进一步限制）
+      allowedTags,
+      allowedAttributes,
       allowVulnerableTags: true,
       allowedSchemesByTag: { img: ['http', 'https', 'data'] },
     })

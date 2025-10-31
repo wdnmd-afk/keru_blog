@@ -54,6 +54,12 @@ function createViteProxy(
             // 静态文件路径不需要重写，直接转发
             rewrite: (path: string) => path,
         },
+        // 临时文件代理 - 用于访问临时PDF：/temp/pdf/**
+        '/temp': {
+            target: proxyConfig.target,
+            changeOrigin: true,
+            rewrite: (path: string) => path,
+        },
     }
     return proxy
 }

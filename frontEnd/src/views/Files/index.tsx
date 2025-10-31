@@ -5,6 +5,7 @@ import React from 'react'
 import { useTranslation } from 'react-i18next'
 import FilePreview from './FilePreview'
 import Upload from './Upload'
+import HtmlToPdf from './HtmlToPdf'
 
 /**
  * Files 主组件
@@ -61,6 +62,18 @@ const Files: React.FC = () => {
                     showDetails={process.env.NODE_ENV === 'development'}
                 >
                     <FilePreview />
+                </FilesErrorBoundary>
+            ),
+        },
+        {
+            key: '3',
+            label: <span className="flex items-center gap-2">🧾 HTML转PDF</span>,
+            children: (
+                <FilesErrorBoundary
+                    onError={handleError}
+                    showDetails={process.env.NODE_ENV === 'development'}
+                >
+                    <HtmlToPdf />
                 </FilesErrorBoundary>
             ),
         },

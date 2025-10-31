@@ -1,0 +1,583 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>超长医学综合检验报告单 - PDF 压力测试（18+页）</title>
+    <style>
+      /* A4 页面设置 */
+      @page {
+        size: A4;
+        margin: 1.8cm 1.5cm;
+        @top-center {
+          content: "XX医院医学检验报告";
+          font-size: 10px;
+          color: #0056b3;
+        }
+        @bottom-center {
+          content: "第 " counter(page) " 页 / 共 " counter(pages) " 页";
+          font-size: 9px;
+          color: #666;
+        }
+      }
+
+      body {
+        font-family: "SimSun", "Microsoft YaHei", "Arial", sans-serif;
+        font-size: 11.5px;
+        line-height: 1.7;
+        color: #222;
+        margin: 0;
+        padding: 0;
+        background: #fafafa;
+      }
+
+      .container {
+        width: 100%;
+        max-width: 190mm;
+        margin: 0 auto;
+        background: #fff;
+        padding: 15mm;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+      }
+
+      h1 {
+        font-size: 20px;
+        text-align: center;
+        color: #0056b3;
+        margin: 10px 0;
+        border-bottom: 2px solid #0056b3;
+        padding-bottom: 8px;
+      }
+      h2 {
+        font-size: 16px;
+        color: #0066cc;
+        border-left: 4px solid #0066cc;
+        padding-left: 10px;
+        margin-top: 25px;
+      }
+      h3 {
+        font-size: 14px;
+        color: #0077dd;
+        margin-top: 18px;
+      }
+      h4,
+      h5,
+      h6 {
+        font-size: 12.5px;
+        color: #333;
+        margin: 15px 0 8px;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 12px 0;
+        font-size: 10.5px;
+        page-break-inside: avoid;
+      }
+
+      th,
+      td {
+        border: 1px solid #ddd;
+        padding: 5px 7px;
+        text-align: left;
+        vertical-align: top;
+      }
+
+      th {
+        background-color: #f0f8ff;
+        font-weight: bold;
+        color: #0056b3;
+      }
+
+      .highlight {
+        background-color: #fff3cd !important;
+        font-weight: bold;
+        color: #d4380d;
+      }
+      .low {
+        background-color: #d9f7be !important;
+        color: #389e0d;
+      }
+      .high {
+        background-color: #ffccc7 !important;
+        color: #d4380d;
+      }
+
+      .page-break {
+        page-break-before: always;
+      }
+      .no-break {
+        page-break-inside: avoid;
+      }
+
+      pre,
+      code {
+        background: #f6f8fa;
+        padding: 8px;
+        border-radius: 4px;
+        font-family: "Courier New", monospace;
+        font-size: 10px;
+        overflow-x: auto;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+      }
+
+      blockquote {
+        margin: 15px 0;
+        padding: 10px 15px;
+        background: #f0f7ff;
+        border-left: 5px solid #0066cc;
+        font-style: italic;
+        color: #555;
+      }
+
+      figure {
+        margin: 15px 0;
+        text-align: center;
+      }
+
+      figcaption {
+        font-size: 10px;
+        color: #666;
+        margin-top: 5px;
+      }
+
+      img {
+        max-width: 100%;
+        height: auto;
+        border: 1px solid #eee;
+        border-radius: 4px;
+      }
+
+      details {
+        margin: 10px 0;
+        padding: 8px;
+        background: #f9f9f9;
+        border: 1px solid #eee;
+        border-radius: 4px;
+      }
+
+      summary {
+        cursor: pointer;
+        font-weight: bold;
+        color: #0056b3;
+      }
+
+      hr {
+        border: none;
+        border-top: 1px dashed #ccc;
+        margin: 20px 0;
+      }
+
+      .footer {
+        margin-top: 40px;
+        padding-top: 15px;
+        border-top: 2px solid #0056b3;
+        text-align: center;
+        font-size: 10px;
+        color: #666;
+      }
+
+      .badge {
+        display: inline-block;
+        padding: 2px 6px;
+        font-size: 9px;
+        border-radius: 3px;
+        margin-right: 5px;
+      }
+      .badge-danger {
+        background: #ff4d4f;
+        color: #fff;
+      }
+      .badge-warning {
+        background: #ffa940;
+        color: #fff;
+      }
+      .badge-success {
+        background: #73d13d;
+        color: #fff;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        margin: 15px 0;
+      }
+
+      .card {
+        border: 1px solid #eee;
+        padding: 10px;
+        border-radius: 6px;
+        background: #fdfdfd;
+      }
+
+      canvas {
+        border: 1px solid #ddd;
+        width: 100%;
+        height: 150px;
+      }
+      svg {
+        width: 100%;
+        height: 120px;
+      }
+
+      .math {
+        font-family: "Times New Roman", serif;
+        font-style: italic;
+        color: #0066cc;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>XX医院 综合医学检验报告单（超长测试版）</h1>
+
+      <!-- 患者信息 -->
+      <section class="no-break">
+        <h2>一、患者基本信息</h2>
+        <table>
+          <tr>
+            <th>姓名</th>
+            <td>李明</td>
+            <th>性别</th>
+            <td>男</td>
+            <th>年龄</th>
+            <td>58岁</td>
+          </tr>
+          <tr>
+            <th>住院号</th>
+            <td>INP-2025-08976</td>
+            <th>病案号</th>
+            <td>MR-2025-1123</td>
+            <th>床号</th>
+            <td>内分泌科 12床</td>
+          </tr>
+          <tr>
+            <th>送检医师</th>
+            <td>张主任医师</td>
+            <th>送检科室</th>
+            <td>内分泌科</td>
+            <th>报告时间</th>
+            <td>2025-10-31 14:20:00</td>
+          </tr>
+          <tr>
+            <th>标本类型</th>
+            <td colspan="5">空腹静脉血、尿液、胸部CT、腹部超声、心电图</td>
+          </tr>
+        </table>
+      </section>
+
+      <hr />
+
+      <!-- 血常规 -->
+      <section>
+        <h2>二、血常规检查</h2>
+        <table id="blood-routine"></table>
+      </section>
+
+      <!-- 生化全项 -->
+      <section>
+        <h2>三、生化全项检查</h2>
+        <table id="biochemistry"></table>
+      </section>
+
+      <!-- 甲状腺功能 -->
+      <section>
+        <h2>四、甲状腺功能检查</h2>
+        <table id="thyroid"></table>
+      </section>
+
+      <!-- 肿瘤标志物 -->
+      <section>
+        <h2>五、肿瘤标志物筛查</h2>
+        <table id="tumor-markers"></table>
+      </section>
+
+      <!-- 影像学报告 -->
+      <section>
+        <h2>六、影像学检查报告</h2>
+        <div class="grid">
+          <div class="card">
+            <h4>胸部CT（2025-10-30）</h4>
+            <p>
+              <strong>检查所见：</strong> 双肺野清晰，右肺中叶见一约 8mm
+              结节影，边界清晰，密度均匀，伴钙化。纵隔未见肿大淋巴结。心脏形态正常。
+            </p>
+            <figure>
+              <img
+                src="https://via.placeholder.com/600x350/0066cc/ffffff?text=CT+Right+Lung+Nodule"
+                alt="胸部CT"
+              />
+              <figcaption>图1：右肺中叶结节（箭头所指）</figcaption>
+            </figure>
+            <p>
+              <strong>诊断意见：</strong> 右肺良性结节可能，建议 6 个月后复查。
+            </p>
+          </div>
+          <div class="card">
+            <h4>腹部超声（2025-10-30）</h4>
+            <p>
+              <strong>检查所见：</strong>
+              肝脏大小正常，包膜光滑，实质回声均匀。胆囊壁稍厚，未见结石。胰腺、脾脏、双肾未见明显异常。
+            </p>
+            <figure>
+              <img
+                src="https://via.placeholder.com/600x350/00a86b/ffffff?text=Abdominal+Ultrasound"
+                alt="腹部超声"
+              />
+              <figcaption>图2：肝胆胰脾超声正常</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <!-- 心电图 -->
+      <section>
+        <h2>七、心电图检查</h2>
+        <blockquote>
+          <strong>心电图诊断：</strong> 窦性心律，频率 78 次/分，PR 间期
+          160ms，QRS 波群正常，ST-T 未见明显异常。印象：正常心电图。
+        </blockquote>
+        <figure>
+          <img
+            src="https://via.placeholder.com/800x200/333333/ffffff?text=ECG+Waveform+Simulation"
+            alt="心电图波形"
+          />
+          <figcaption>图3：标准12导联心电图</figcaption>
+        </figure>
+      </section>
+
+      <!-- 病程记录（长文本） -->
+      <section>
+        <h2>八、入院病程记录（模拟超长文本）</h2>
+        <details>
+          <summary>点击展开完整病程（约1500字）</summary>
+          <pre id="case-history"></pre>
+        </details>
+      </section>
+
+      <!-- 用药建议 -->
+      <section>
+        <h2>九、AI辅助用药建议（结构化输出）</h2>
+        <div class="grid">
+          <div class="card">
+            <h5>降糖治疗</h5>
+            <ul>
+              <li>二甲双胍 0.5g tid po</li>
+              <li>阿卡波糖 50mg tid po（餐时）</li>
+              <li>血糖监测：空腹 + 三餐后2小时</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h5>调脂治疗</h5>
+            <ul>
+              <li>阿托伐他汀 20mg qn po</li>
+              <li>监测肝功能、CK（1月后）</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h5>肺结节随访</h5>
+            <ul>
+              <li>2026-04-30 复查胸部CT</li>
+              <li>避免吸烟及二手烟</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h5>生活方式干预</h5>
+            <ul>
+              <li>低糖低脂饮食</li>
+              <li>每周150分钟中等强度运动</li>
+              <li>体重控制（目标BMI &lt; 25）</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- 图表占位 -->
+      <section>
+        <h2>十、数据趋势图（Canvas + SVG）</h2>
+        <div class="grid">
+          <div>
+            <h6>空腹血糖趋势（近6月）</h6>
+            <canvas id="glucose-chart"></canvas>
+          </div>
+          <div>
+            <h6>HbA1c 变化</h6>
+            <svg id="hba1c-svg"></svg>
+          </div>
+        </div>
+      </section>
+
+      <!-- 超长检验项目表（动态生成）-->
+      <section>
+        <h2>十一、扩展检验项目明细（多页表格）</h2>
+        <p>以下为 300+ 项检验结果，用于测试表格跨页、排版稳定性。</p>
+        <div id="long-table-container"></div>
+      </section>
+
+      <!-- 医生签名 -->
+      <section class="no-break">
+        <h2>十二、报告签署</h2>
+        <table>
+          <tr>
+            <th>主检医师</th>
+            <td>张伟 主任医师</td>
+            <td>签名：____________________</td>
+            <td>日期：2025-10-31</td>
+          </tr>
+          <tr>
+            <th>审核医师</th>
+            <td>刘芳 副主任医师</td>
+            <td>签名：____________________</td>
+            <td>日期：2025-10-31</td>
+          </tr>
+          <tr>
+            <th>报告生成系统</th>
+            <td colspan="3">AI辅助医学报告系统 v3.5.1</td>
+          </tr>
+        </table>
+      </section>
+
+      <div class="footer">
+        <p>
+          <strong>重要提示：</strong>
+          本报告仅供临床医生参考，不作为最终诊断依据。结果异常项目已高亮显示，请结合临床综合判断。
+        </p>
+        <p>
+          如需纸质报告，请至检验科窗口领取。电子报告与纸质报告具有同等效力。
+        </p>
+        <p>生成时间：2025-10-31 14:20:00 | 报告ID：REP-20251031-08976</p>
+      </div>
+    </div>
+
+    <!-- ==================== 动态内容生成脚本 ==================== -->
+    <script>
+      // 1. 血常规
+      const bloodItems = [
+        ["白细胞计数 (WBC)", "11.8", "3.5-9.5", "×10⁹/L", "high"],
+        ["红细胞计数 (RBC)", "4.65", "4.3-5.9", "×10¹²/L", ""],
+        ["血红蛋白 (HGB)", "135", "130-175", "g/L", ""],
+        ["血小板计数 (PLT)", "265", "125-350", "×10⁹/L", ""],
+        ["中性粒细胞%", "75.2", "40-75", "%", "high"],
+        ["淋巴细胞%", "18.3", "20-50", "%", "low"],
+        ["嗜酸性粒细胞%", "0.8", "0.4-8.0", "%", ""],
+      ];
+      document.getElementById("blood-routine").innerHTML =
+        "<tr><th>项目</th><th>结果</th><th>参考值</th><th>单位</th><th>提示</th></tr>" +
+        bloodItems
+          .map(
+            (row) =>
+              `<tr><td>${row[0]}</td><td>${row[1]}</td><td>${row[2]}</td><td>${row[3]}</td><td class="${row[4]}">${row[4] ? (row[4] === "high" ? "↑" : "↓") : ""}</td></tr>`
+          )
+          .join("");
+
+      // 2. 生化全项（50+项）
+      const bioItems = [
+        ["空腹血糖", "8.2", "3.9-6.1", "mmol/L", "high"],
+        ["糖化血红蛋白", "7.8", "<6.5", "%", "high"],
+        ["总胆固醇", "6.1", "<5.2", "mmol/L", "high"],
+        ["甘油三酯", "2.8", "<1.7", "mmol/L", "high"],
+        ["高密度脂蛋白", "0.9", ">1.0", "mmol/L", "low"],
+        ["低密度脂蛋白", "4.2", "<3.4", "mmol/L", "high"],
+        ["谷丙转氨酶", "58", "9-50", "U/L", "high"],
+        ["谷草转氨酶", "42", "15-40", "U/L", "high"],
+        ["总胆红素", "18.5", "5-21", "μmol/L", ""],
+        ["肌酐", "96", "57-111", "μmol/L", ""],
+        ["尿酸", "485", "208-428", "μmol/L", "high"],
+        ["钾", "4.2", "3.5-5.3", "mmol/L", ""],
+        ["钠", "138", "137-147", "mmol/L", ""],
+        ["氯", "102", "99-110", "mmol/L", ""],
+      ];
+      let bioHtml =
+        "<tr><th>项目</th><th>结果</th><th>参考值</th><th>单位</th><th>提示</th></tr>";
+      for (let i = 0; i < 8; i++)
+        bioHtml += bioItems
+          .map(
+            (row) =>
+              `<tr><td>${row[0]}</td><td>${row[1]}</td><td>${row[2]}</td><td>${row[3]}</td><td class="${row[4]}">${row[4] ? "↑" : ""}</td></tr>`
+          )
+          .join("");
+      document.getElementById("biochemistry").innerHTML = bioHtml;
+
+      // 3. 甲状腺、肿瘤标志物（略）
+      const thyroid = [
+        ["TSH", "5.82", "0.27-4.2", "μIU/mL", "high"],
+        ["FT3", "3.1", "3.1-6.8", "pmol/L", ""],
+        ["FT4", "12.8", "12-22", "pmol/L", ""],
+      ];
+
+      // 4. 超长表格（300+行，6页+）
+      const longItems = [
+        "CEA",
+        "AFP",
+        "CA19-9",
+        "CA125",
+        "PSA",
+        "NSE",
+        "CYFRA21-1",
+        "SCC",
+        "Ferritin",
+        "Vitamin B12",
+        "Folate",
+        "CRP",
+        "ESR",
+        "ANA",
+        "RF",
+        "Anti-CCP",
+        "IgG",
+        "IgA",
+        "IgM",
+        "C3",
+        "C4",
+      ];
+      let longHtml = "";
+      for (let page = 1; page <= 25; page++) {
+        longHtml += `<div class="page-break"><h3>扩展检验项目 - 第 ${page} 页</h3><table>`;
+        longHtml +=
+          "<tr><th>项目</th><th>结果</th><th>参考值</th><th>单位</th><th>提示</th></tr>";
+        for (let i = 0; i < 35; i++) {
+          const item = longItems[Math.floor(Math.random() * longItems.length)];
+          const val = (Math.random() * 200 + 1).toFixed(2);
+          const ref = (Math.random() * 100 + 10).toFixed(1);
+          const unit = ["ng/mL", "U/mL", "μg/L", "pg/mL", "mm/h"][
+            Math.floor(Math.random() * 5)
+          ];
+          const flag =
+            Math.random() > 0.9 ? "high" : Math.random() > 0.85 ? "low" : "";
+          longHtml += `<tr><td>${item} (${page}-${i})</td><td>${val}</td><td>${ref}</td><td>${unit}</td><td class="${flag}">${flag ? "↑" : ""}</td></tr>`;
+        }
+        longHtml += `</table></div>`;
+      }
+      document.getElementById("long-table-container").innerHTML = longHtml;
+
+      // 5. 病程记录（长文本）
+      const caseText = `患者李明，男，58岁，因“发现血糖升高3年，加重伴乏力1月”于2025-10-28收入院。患者3年前体检发现空腹血糖7.8mmol/L，诊断为2型糖尿病，间断口服二甲双胍治疗，血糖控制欠佳。近1月出现乏力、口干、多尿症状加重，空腹血糖波动在8.5-10.2mmol/L，餐后血糖>14mmol/L。既往史：高血压病史10年，规律服用氨氯地平5mg qd，血压控制在130-140/80-85mmHg。否认冠心病、脑梗死史。个人史：吸烟30年，20支/日，已戒烟1年。家族史：父亲患糖尿病。\n\n入院查体：T 36.5℃，P 82次/分，R 18次/分，BP 138/82mmHg。BMI 27.8kg/m²。神清，皮肤无黄染，双肺呼吸音清，未闻及干湿啰音。心率82次/分，律齐，各瓣膜区未闻及病理性杂音。腹软，无压痛，反跳痛，肝脾肋下未及，移动性浊音阴性。双下肢无水肿。\n\n辅助检查：...（此处省略1500字详细描述，包括每日查房、用药调整、血糖曲线、并发症筛查等）\n\n初步诊断：1. 2型糖尿病（控制不佳）；2. 高血压病2级（高危）；3. 右肺结节（待排恶性）。`;
+      document.getElementById("case-history").textContent = caseText.repeat(8);
+
+      // 6. Canvas 图表占位
+      const canvas = document.getElementById("glucose-chart");
+      const ctx = canvas.getContext("2d");
+      ctx.fillStyle = "#e6f7ff";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = "#1890ff";
+      ctx.fillRect(50, 80, 30, 50);
+      ctx.fillRect(100, 60, 30, 70);
+      ctx.fillRect(150, 90, 30, 40);
+      ctx.fillRect(200, 70, 30, 60);
+      ctx.fillRect(250, 50, 30, 80);
+      ctx.fillRect(300, 85, 30, 45);
+      ctx.font = "10px Arial";
+      ctx.fillStyle = "#000";
+      ctx.fillText("空腹血糖趋势", 10, 20);
+
+      // 7. SVG 折线图
+      document.getElementById("hba1c-svg").innerHTML = `
+    <svg viewBox="0 0 400 120">
+      <polyline fill="none" stroke="#52c41a" stroke-width="2" points="50,100 100,80 150,70 200,65 250,60 300,55 350,50"/>
+      <text x="10" y="20" font-size="12">HbA1c 下降趋势</text>
+    </svg>`;
+    </script>
+  </body>
+</html>
